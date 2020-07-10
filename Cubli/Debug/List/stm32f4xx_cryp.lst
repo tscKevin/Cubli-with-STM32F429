@@ -1,0 +1,1745 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         10/Jul/2020  15:12:04
+# Copyright 1999-2019 IAR Systems AB.
+#
+#    Cpu mode     =  
+#    Endian       =  little
+#    Source file  =
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_cryp.c
+#    Command line =
+#        -f C:\Users\Evan\AppData\Local\Temp\EWDF2A.tmp
+#        (E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_cryp.c
+#        -D USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List
+#        -o
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "D:\IAR
+#        Systems\Embedded Workbench 8.3\arm\inc\c\DLib_Config_Normal.h" -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Include\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\iar\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\inc\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\User\inc\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\User\src\
+#        -Ol --use_c++_inline -I "D:\IAR Systems\Embedded Workbench
+#        8.3\arm\CMSIS\Core\Include\" -I "D:\IAR Systems\Embedded Workbench
+#        8.3\arm\CMSIS\DSP\Include\")
+#    Locale       =  C
+#    List file    =
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List\stm32f4xx_cryp.lst
+#    Object file  =
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\Obj\stm32f4xx_cryp.o
+#
+###############################################################################
+
+E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_cryp.c
+      1          /**
+      2            ******************************************************************************
+      3            * @file    stm32f4xx_cryp.c
+      4            * @author  MCD Application Team
+      5            * @version V1.8.0
+      6            * @date    04-November-2016
+      7            * @brief   This file provides firmware functions to manage the following 
+      8            *          functionalities of the  Cryptographic processor (CRYP) peripheral:
+      9            *           + Initialization and Configuration functions
+     10            *           + Data treatment functions 
+     11            *           + Context swapping functions     
+     12            *           + DMA interface function       
+     13            *           + Interrupts and flags management       
+     14            *
+     15          @verbatim
+     16           ===================================================================      
+     17                           ##### How to use this driver #####
+     18           =================================================================== 
+     19           [..]
+     20             (#) Enable the CRYP controller clock using 
+     21                 RCC_AHB2PeriphClockCmd(RCC_AHB2Periph_CRYP, ENABLE); function.
+     22            
+     23             (#) Initialize the CRYP using CRYP_Init(), CRYP_KeyInit() and if needed 
+     24                 CRYP_IVInit(). 
+     25            
+     26             (#) Flush the IN and OUT FIFOs by using CRYP_FIFOFlush() function.
+     27            
+     28             (#) Enable the CRYP controller using the CRYP_Cmd() function. 
+     29            
+     30             (#) If using DMA for Data input and output transfer, activate the needed DMA 
+     31                 Requests using CRYP_DMACmd() function 
+     32            
+     33             (#) If DMA is not used for data transfer, use CRYP_DataIn() and  CRYP_DataOut() 
+     34                 functions to enter data to IN FIFO and get result from OUT FIFO.
+     35            
+     36             (#) To control CRYP events you can use one of the following two methods:
+     37                 (++) Check on CRYP flags using the CRYP_GetFlagStatus() function.  
+     38                 (++) Use CRYP interrupts through the function CRYP_ITConfig() at 
+     39                      initialization phase and CRYP_GetITStatus() function into interrupt 
+     40                      routines in processing phase.
+     41                   
+     42             (#) Save and restore Cryptographic processor context using CRYP_SaveContext() 
+     43                 and CRYP_RestoreContext() functions.     
+     44            
+     45            
+     46           *** Procedure to perform an encryption or a decryption ***
+     47           ========================================================== 
+     48            
+     49           *** Initialization ***
+     50           ====================== 
+     51           [..] 
+     52             (#) Initialize the peripheral using CRYP_Init(), CRYP_KeyInit() and CRYP_IVInit 
+     53                 functions:
+     54                 (++) Configure the key size (128-, 192- or 256-bit, in the AES only) 
+     55                 (++) Enter the symmetric key 
+     56                 (++) Configure the data type
+     57                 (++) In case of decryption in AES-ECB or AES-CBC, you must prepare 
+     58                      the key: configure the key preparation mode. Then Enable the CRYP 
+     59                      peripheral using CRYP_Cmd() function: the BUSY flag is set. 
+     60                      Wait until BUSY flag is reset : the key is prepared for decryption
+     61                 (++) Configure the algorithm and chaining (the DES/TDES in ECB/CBC, the 
+     62                      AES in ECB/CBC/CTR) 
+     63                 (++) Configure the direction (encryption/decryption).
+     64                 (++) Write the initialization vectors (in CBC or CTR modes only)
+     65            
+     66             (#) Flush the IN and OUT FIFOs using the CRYP_FIFOFlush() function
+     67            
+     68            
+     69            *** Basic Processing mode (polling mode) *** 
+     70            ============================================  
+     71            [..]
+     72              (#) Enable the cryptographic processor using CRYP_Cmd() function.
+     73            
+     74              (#) Write the first blocks in the input FIFO (2 to 8 words) using 
+     75                  CRYP_DataIn() function.
+     76            
+     77              (#) Repeat the following sequence until the complete message has been 
+     78                  processed:
+     79            
+     80                  (++) Wait for flag CRYP_FLAG_OFNE occurs (using CRYP_GetFlagStatus() 
+     81                      function), then read the OUT-FIFO using CRYP_DataOut() function
+     82                      (1 block or until the FIFO is empty)
+     83            
+     84                   (++) Wait for flag CRYP_FLAG_IFNF occurs, (using CRYP_GetFlagStatus() 
+     85                      function then write the IN FIFO using CRYP_DataIn() function 
+     86                      (1 block or until the FIFO is full)
+     87            
+     88              (#) At the end of the processing, CRYP_FLAG_BUSY flag will be reset and 
+     89                    both FIFOs are empty (CRYP_FLAG_IFEM is set and CRYP_FLAG_OFNE is 
+     90                    reset). You can disable the peripheral using CRYP_Cmd() function.
+     91            
+     92           *** Interrupts Processing mode *** 
+     93           ==================================
+     94           [..] In this mode, Processing is done when the data are transferred by the 
+     95                CPU during interrupts.
+     96            
+     97              (#) Enable the interrupts CRYP_IT_INI and CRYP_IT_OUTI using CRYP_ITConfig()
+     98                  function.
+     99            
+    100              (#) Enable the cryptographic processor using CRYP_Cmd() function.
+    101            
+    102              (#) In the CRYP_IT_INI interrupt handler : load the input message into the 
+    103                   IN FIFO using CRYP_DataIn() function . You can load 2 or 4 words at a 
+    104                   time, or load data until the IN FIFO is full. When the last word of
+    105                   the message has been entered into the IN FIFO, disable the CRYP_IT_INI 
+    106                   interrupt (using CRYP_ITConfig() function).
+    107            
+    108              (#) In the CRYP_IT_OUTI interrupt handler : read the output message from 
+    109                   the OUT FIFO using CRYP_DataOut() function. You can read 1 block (2 or 
+    110                   4 words) at a time or read data until the FIFO is empty.
+    111                   When the last word has been read, INIM=0, BUSY=0 and both FIFOs are 
+    112                   empty (CRYP_FLAG_IFEM is set and CRYP_FLAG_OFNE is reset). 
+    113                   You can disable the CRYP_IT_OUTI interrupt (using CRYP_ITConfig() 
+    114                   function) and you can disable the peripheral using CRYP_Cmd() function.
+    115            
+    116           *** DMA Processing mode *** 
+    117           ===========================
+    118           [..] In this mode, Processing is done when the DMA is used to transfer the 
+    119                data from/to the memory.
+    120            
+    121              (#) Configure the DMA controller to transfer the input data from the 
+    122                   memory using DMA_Init() function. 
+    123                   The transfer length is the length of the message. 
+    124                   As message padding is not managed by the peripheral, the message 
+    125                   length must be an entire number of blocks. The data are transferred 
+    126                   in burst mode. The burst length is 4 words in the AES and 2 or 4 
+    127                   words in the DES/TDES. The DMA should be configured to set an 
+    128                   interrupt on transfer completion of the output data to indicate that 
+    129                   the processing is finished. 
+    130                   Refer to DMA peripheral driver for more details.  
+    131            
+    132               (#) Enable the cryptographic processor using CRYP_Cmd() function. 
+    133                   Enable the DMA requests CRYP_DMAReq_DataIN and CRYP_DMAReq_DataOUT 
+    134                   using CRYP_DMACmd() function.
+    135            
+    136               (#) All the transfers and processing are managed by the DMA and the 
+    137                   cryptographic processor. The DMA transfer complete interrupt indicates 
+    138                   that the processing is complete. Both FIFOs are normally empty and 
+    139                   CRYP_FLAG_BUSY flag is reset.
+    140            
+    141              @endverbatim
+    142            *
+    143            ******************************************************************************
+    144            * @attention
+    145            *
+    146            * <h2><center>&copy; COPYRIGHT 2016 STMicroelectronics</center></h2>
+    147            *
+    148            * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
+    149            * You may not use this file except in compliance with the License.
+    150            * You may obtain a copy of the License at:
+    151            *
+    152            *        http://www.st.com/software_license_agreement_liberty_v2
+    153            *
+    154            * Unless required by applicable law or agreed to in writing, software 
+    155            * distributed under the License is distributed on an "AS IS" BASIS, 
+    156            * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    157            * See the License for the specific language governing permissions and
+    158            * limitations under the License.
+    159            *
+    160            ******************************************************************************  
+    161            */
+    162          
+    163          /* Includes ------------------------------------------------------------------*/
+    164          #include "stm32f4xx_cryp.h"
+    165          #include "stm32f4xx_rcc.h"
+    166          
+    167          /** @addtogroup STM32F4xx_StdPeriph_Driver
+    168            * @{
+    169            */
+    170          
+    171          /** @defgroup CRYP 
+    172            * @brief CRYP driver modules
+    173            * @{
+    174            */ 
+    175          
+    176          /* Private typedef -----------------------------------------------------------*/
+    177          /* Private define ------------------------------------------------------------*/
+    178          #define FLAG_MASK     ((uint8_t)0x20)
+    179          #define MAX_TIMEOUT   ((uint16_t)0xFFFF)
+    180          
+    181          /* Private macro -------------------------------------------------------------*/
+    182          /* Private variables ---------------------------------------------------------*/
+    183          /* Private function prototypes -----------------------------------------------*/
+    184          /* Private functions ---------------------------------------------------------*/
+    185          
+    186          /** @defgroup CRYP_Private_Functions
+    187            * @{
+    188            */ 
+    189          
+    190          /** @defgroup CRYP_Group1 Initialization and Configuration functions
+    191           *  @brief    Initialization and Configuration functions 
+    192           *
+    193          @verbatim    
+    194           ===============================================================================
+    195                       ##### Initialization and Configuration functions #####
+    196           ===============================================================================  
+    197           [..] This section provides functions allowing to 
+    198             (+) Initialize the cryptographic Processor using CRYP_Init() function 
+    199                 (++)  Encrypt or Decrypt 
+    200                 (++)  mode : TDES-ECB, TDES-CBC, 
+    201                              DES-ECB, DES-CBC, 
+    202                              AES-ECB, AES-CBC, AES-CTR, AES-Key, AES-GCM, AES-CCM 
+    203                 (++) DataType :  32-bit data, 16-bit data, bit data or bit-string
+    204                 (++) Key Size (only in AES modes)
+    205             (+) Configure the Encrypt or Decrypt Key using CRYP_KeyInit() function 
+    206             (+) Configure the Initialization Vectors(IV) for CBC and CTR modes using 
+    207                 CRYP_IVInit() function.  
+    208             (+) Flushes the IN and OUT FIFOs : using CRYP_FIFOFlush() function.                         
+    209             (+) Enable or disable the CRYP Processor using CRYP_Cmd() function 
+    210                 
+    211          @endverbatim
+    212            * @{
+    213            */
+    214          /**
+    215            * @brief  Deinitializes the CRYP peripheral registers to their default reset values
+    216            * @param  None
+    217            * @retval None
+    218            */
+
+   \                                 In section .text, align 2, keep-with-next
+    219          void CRYP_DeInit(void)
+    220          {
+   \                     CRYP_DeInit: (+1)
+   \        0x0   0xB580             PUSH     {R7,LR}
+    221            /* Enable CRYP reset state */
+    222            RCC_AHB2PeriphResetCmd(RCC_AHB2Periph_CRYP, ENABLE);
+   \        0x2   0x2101             MOVS     R1,#+1
+   \        0x4   0x2010             MOVS     R0,#+16
+   \        0x6   0x....'....        BL       RCC_AHB2PeriphResetCmd
+    223          
+    224            /* Release CRYP from reset state */
+    225            RCC_AHB2PeriphResetCmd(RCC_AHB2Periph_CRYP, DISABLE);
+   \        0xA   0x2100             MOVS     R1,#+0
+   \        0xC   0x2010             MOVS     R0,#+16
+   \        0xE   0x....'....        BL       RCC_AHB2PeriphResetCmd
+    226          }
+   \       0x12   0xBD01             POP      {R0,PC}          ;; return
+    227          
+    228          /**
+    229            * @brief  Initializes the CRYP peripheral according to the specified parameters
+    230            *         in the CRYP_InitStruct.
+    231            * @param  CRYP_InitStruct: pointer to a CRYP_InitTypeDef structure that contains
+    232            *         the configuration information for the CRYP peripheral.
+    233            * @retval None
+    234            */
+
+   \                                 In section .text, align 2, keep-with-next
+    235          void CRYP_Init(CRYP_InitTypeDef* CRYP_InitStruct)
+    236          {
+    237            /* Check the parameters */
+    238            assert_param(IS_CRYP_ALGOMODE(CRYP_InitStruct->CRYP_AlgoMode));
+    239            assert_param(IS_CRYP_DATATYPE(CRYP_InitStruct->CRYP_DataType));
+    240            assert_param(IS_CRYP_ALGODIR(CRYP_InitStruct->CRYP_AlgoDir));
+    241          
+    242            /* Select Algorithm mode*/  
+    243            CRYP->CR &= ~CRYP_CR_ALGOMODE;
+   \                     CRYP_Init: (+1)
+   \        0x0   0x....'....        LDR.W    R2,??DataTable15  ;; 0x50060000
+   \        0x4   0x6813             LDR      R3,[R2, #+0]
+   \        0x6   0x....'....        LDR.W    R1,??DataTable15_1  ;; 0xfff7ffc7
+   \        0xA   0x400B             ANDS     R3,R1,R3
+   \        0xC   0x6013             STR      R3,[R2, #+0]
+    244            CRYP->CR |= CRYP_InitStruct->CRYP_AlgoMode;
+   \        0xE   0x6813             LDR      R3,[R2, #+0]
+   \       0x10   0x6841             LDR      R1,[R0, #+4]
+   \       0x12   0x430B             ORRS     R3,R1,R3
+   \       0x14   0x6013             STR      R3,[R2, #+0]
+    245          
+    246            /* Select dataType */ 
+    247            CRYP->CR &= ~CRYP_CR_DATATYPE;
+   \       0x16   0x6811             LDR      R1,[R2, #+0]
+   \       0x18   0xF031 0x01C0      BICS     R1,R1,#0xC0
+   \       0x1C   0x6011             STR      R1,[R2, #+0]
+    248            CRYP->CR |= CRYP_InitStruct->CRYP_DataType;
+   \       0x1E   0x6813             LDR      R3,[R2, #+0]
+   \       0x20   0x6881             LDR      R1,[R0, #+8]
+   \       0x22   0x430B             ORRS     R3,R1,R3
+   \       0x24   0x6013             STR      R3,[R2, #+0]
+    249          
+    250            /* select Key size (used only with AES algorithm) */
+    251            if ((CRYP_InitStruct->CRYP_AlgoMode != CRYP_AlgoMode_TDES_ECB) &&
+    252                (CRYP_InitStruct->CRYP_AlgoMode != CRYP_AlgoMode_TDES_CBC) &&
+    253                (CRYP_InitStruct->CRYP_AlgoMode != CRYP_AlgoMode_DES_ECB) &&
+    254                (CRYP_InitStruct->CRYP_AlgoMode != CRYP_AlgoMode_DES_CBC))
+   \       0x26   0x6841             LDR      R1,[R0, #+4]
+   \       0x28   0x2900             CMP      R1,#+0
+   \       0x2A   0xD010             BEQ.N    ??CRYP_Init_0
+   \       0x2C   0x6841             LDR      R1,[R0, #+4]
+   \       0x2E   0x2908             CMP      R1,#+8
+   \       0x30   0xD00D             BEQ.N    ??CRYP_Init_0
+   \       0x32   0x6841             LDR      R1,[R0, #+4]
+   \       0x34   0x2910             CMP      R1,#+16
+   \       0x36   0xD00A             BEQ.N    ??CRYP_Init_0
+   \       0x38   0x6841             LDR      R1,[R0, #+4]
+   \       0x3A   0x2918             CMP      R1,#+24
+   \       0x3C   0xD007             BEQ.N    ??CRYP_Init_0
+    255            {
+    256              assert_param(IS_CRYP_KEYSIZE(CRYP_InitStruct->CRYP_KeySize));
+    257              CRYP->CR &= ~CRYP_CR_KEYSIZE;
+   \       0x3E   0x6811             LDR      R1,[R2, #+0]
+   \       0x40   0xF431 0x7140      BICS     R1,R1,#0x300
+   \       0x44   0x6011             STR      R1,[R2, #+0]
+    258              CRYP->CR |= CRYP_InitStruct->CRYP_KeySize; /* Key size and value must be 
+   \       0x46   0x6813             LDR      R3,[R2, #+0]
+   \       0x48   0x68C1             LDR      R1,[R0, #+12]
+   \       0x4A   0x430B             ORRS     R3,R1,R3
+   \       0x4C   0x6013             STR      R3,[R2, #+0]
+    259                                                            configured once the key has 
+    260                                                            been prepared */
+    261            }
+    262          
+    263            /* Select data Direction */ 
+    264            CRYP->CR &= ~CRYP_CR_ALGODIR;
+   \                     ??CRYP_Init_0: (+1)
+   \       0x4E   0x6811             LDR      R1,[R2, #+0]
+   \       0x50   0xF031 0x0104      BICS     R1,R1,#0x4
+   \       0x54   0x6011             STR      R1,[R2, #+0]
+    265            CRYP->CR |= CRYP_InitStruct->CRYP_AlgoDir;
+   \       0x56   0x6811             LDR      R1,[R2, #+0]
+   \       0x58   0x6800             LDR      R0,[R0, #+0]
+   \       0x5A   0x4301             ORRS     R1,R0,R1
+   \       0x5C   0x6011             STR      R1,[R2, #+0]
+    266          }
+   \       0x5E   0x4770             BX       LR               ;; return
+    267          
+    268          /**
+    269            * @brief  Fills each CRYP_InitStruct member with its default value.
+    270            * @param  CRYP_InitStruct: pointer to a CRYP_InitTypeDef structure which will
+    271            *         be initialized.
+    272            * @retval None
+    273            */
+
+   \                                 In section .text, align 2, keep-with-next
+    274          void CRYP_StructInit(CRYP_InitTypeDef* CRYP_InitStruct)
+    275          {
+    276            /* Initialize the CRYP_AlgoDir member */
+    277            CRYP_InitStruct->CRYP_AlgoDir = CRYP_AlgoDir_Encrypt;
+   \                     CRYP_StructInit: (+1)
+   \        0x0   0x2100             MOVS     R1,#+0
+   \        0x2   0x6001             STR      R1,[R0, #+0]
+    278          
+    279            /* initialize the CRYP_AlgoMode member */
+    280            CRYP_InitStruct->CRYP_AlgoMode = CRYP_AlgoMode_TDES_ECB;
+   \        0x4   0x2100             MOVS     R1,#+0
+   \        0x6   0x6041             STR      R1,[R0, #+4]
+    281          
+    282            /* initialize the CRYP_DataType member */
+    283            CRYP_InitStruct->CRYP_DataType = CRYP_DataType_32b;
+   \        0x8   0x2100             MOVS     R1,#+0
+   \        0xA   0x6081             STR      R1,[R0, #+8]
+    284            
+    285            /* Initialize the CRYP_KeySize member */
+    286            CRYP_InitStruct->CRYP_KeySize = CRYP_KeySize_128b;
+   \        0xC   0x2100             MOVS     R1,#+0
+   \        0xE   0x60C1             STR      R1,[R0, #+12]
+    287          }
+   \       0x10   0x4770             BX       LR               ;; return
+    288          
+    289          /**
+    290            * @brief  Initializes the CRYP Keys according to the specified parameters in
+    291            *         the CRYP_KeyInitStruct.
+    292            * @param  CRYP_KeyInitStruct: pointer to a CRYP_KeyInitTypeDef structure that
+    293            *         contains the configuration information for the CRYP Keys.
+    294            * @retval None
+    295            */
+
+   \                                 In section .text, align 2, keep-with-next
+    296          void CRYP_KeyInit(CRYP_KeyInitTypeDef* CRYP_KeyInitStruct)
+    297          {
+    298            /* Key Initialisation */
+    299            CRYP->K0LR = CRYP_KeyInitStruct->CRYP_Key0Left;
+   \                     CRYP_KeyInit: (+1)
+   \        0x0   0x6801             LDR      R1,[R0, #+0]
+   \        0x2   0x....'....        LDR.W    R2,??DataTable15_2  ;; 0x50060020
+   \        0x6   0x6011             STR      R1,[R2, #+0]
+    300            CRYP->K0RR = CRYP_KeyInitStruct->CRYP_Key0Right;
+   \        0x8   0x6841             LDR      R1,[R0, #+4]
+   \        0xA   0x....'....        LDR.W    R2,??DataTable15_3  ;; 0x50060024
+   \        0xE   0x6011             STR      R1,[R2, #+0]
+    301            CRYP->K1LR = CRYP_KeyInitStruct->CRYP_Key1Left;
+   \       0x10   0x6881             LDR      R1,[R0, #+8]
+   \       0x12   0x....'....        LDR.W    R2,??DataTable15_4  ;; 0x50060028
+   \       0x16   0x6011             STR      R1,[R2, #+0]
+    302            CRYP->K1RR = CRYP_KeyInitStruct->CRYP_Key1Right;
+   \       0x18   0x68C1             LDR      R1,[R0, #+12]
+   \       0x1A   0x....'....        LDR.W    R2,??DataTable15_5  ;; 0x5006002c
+   \       0x1E   0x6011             STR      R1,[R2, #+0]
+    303            CRYP->K2LR = CRYP_KeyInitStruct->CRYP_Key2Left;
+   \       0x20   0x6901             LDR      R1,[R0, #+16]
+   \       0x22   0x....'....        LDR.W    R2,??DataTable15_6  ;; 0x50060030
+   \       0x26   0x6011             STR      R1,[R2, #+0]
+    304            CRYP->K2RR = CRYP_KeyInitStruct->CRYP_Key2Right;
+   \       0x28   0x6941             LDR      R1,[R0, #+20]
+   \       0x2A   0x....'....        LDR.W    R2,??DataTable15_7  ;; 0x50060034
+   \       0x2E   0x6011             STR      R1,[R2, #+0]
+    305            CRYP->K3LR = CRYP_KeyInitStruct->CRYP_Key3Left;
+   \       0x30   0x6981             LDR      R1,[R0, #+24]
+   \       0x32   0x....             LDR.N    R2,??DataTable15_8  ;; 0x50060038
+   \       0x34   0x6011             STR      R1,[R2, #+0]
+    306            CRYP->K3RR = CRYP_KeyInitStruct->CRYP_Key3Right;
+   \       0x36   0x69C0             LDR      R0,[R0, #+28]
+   \       0x38   0x....             LDR.N    R1,??DataTable15_9  ;; 0x5006003c
+   \       0x3A   0x6008             STR      R0,[R1, #+0]
+    307          }
+   \       0x3C   0x4770             BX       LR               ;; return
+    308          
+    309          /**
+    310            * @brief  Fills each CRYP_KeyInitStruct member with its default value.
+    311            * @param  CRYP_KeyInitStruct: pointer to a CRYP_KeyInitTypeDef structure 
+    312            *         which will be initialized.
+    313            * @retval None
+    314            */
+
+   \                                 In section .text, align 2, keep-with-next
+    315          void CRYP_KeyStructInit(CRYP_KeyInitTypeDef* CRYP_KeyInitStruct)
+    316          {
+    317            CRYP_KeyInitStruct->CRYP_Key0Left  = 0;
+   \                     CRYP_KeyStructInit: (+1)
+   \        0x0   0x2100             MOVS     R1,#+0
+   \        0x2   0x6001             STR      R1,[R0, #+0]
+    318            CRYP_KeyInitStruct->CRYP_Key0Right = 0;
+   \        0x4   0x2100             MOVS     R1,#+0
+   \        0x6   0x6041             STR      R1,[R0, #+4]
+    319            CRYP_KeyInitStruct->CRYP_Key1Left  = 0;
+   \        0x8   0x2100             MOVS     R1,#+0
+   \        0xA   0x6081             STR      R1,[R0, #+8]
+    320            CRYP_KeyInitStruct->CRYP_Key1Right = 0;
+   \        0xC   0x2100             MOVS     R1,#+0
+   \        0xE   0x60C1             STR      R1,[R0, #+12]
+    321            CRYP_KeyInitStruct->CRYP_Key2Left  = 0;
+   \       0x10   0x2100             MOVS     R1,#+0
+   \       0x12   0x6101             STR      R1,[R0, #+16]
+    322            CRYP_KeyInitStruct->CRYP_Key2Right = 0;
+   \       0x14   0x2100             MOVS     R1,#+0
+   \       0x16   0x6141             STR      R1,[R0, #+20]
+    323            CRYP_KeyInitStruct->CRYP_Key3Left  = 0;
+   \       0x18   0x2100             MOVS     R1,#+0
+   \       0x1A   0x6181             STR      R1,[R0, #+24]
+    324            CRYP_KeyInitStruct->CRYP_Key3Right = 0;
+   \       0x1C   0x2100             MOVS     R1,#+0
+   \       0x1E   0x61C1             STR      R1,[R0, #+28]
+    325          }
+   \       0x20   0x4770             BX       LR               ;; return
+    326          /**
+    327            * @brief  Initializes the CRYP Initialization Vectors(IV) according to the
+    328            *         specified parameters in the CRYP_IVInitStruct.
+    329            * @param  CRYP_IVInitStruct: pointer to a CRYP_IVInitTypeDef structure that contains
+    330            *         the configuration information for the CRYP Initialization Vectors(IV).
+    331            * @retval None
+    332            */
+
+   \                                 In section .text, align 2, keep-with-next
+    333          void CRYP_IVInit(CRYP_IVInitTypeDef* CRYP_IVInitStruct)
+    334          {
+    335            CRYP->IV0LR = CRYP_IVInitStruct->CRYP_IV0Left;
+   \                     CRYP_IVInit: (+1)
+   \        0x0   0x6801             LDR      R1,[R0, #+0]
+   \        0x2   0x....             LDR.N    R2,??DataTable15_10  ;; 0x50060040
+   \        0x4   0x6011             STR      R1,[R2, #+0]
+    336            CRYP->IV0RR = CRYP_IVInitStruct->CRYP_IV0Right;
+   \        0x6   0x6841             LDR      R1,[R0, #+4]
+   \        0x8   0x....             LDR.N    R2,??DataTable15_11  ;; 0x50060044
+   \        0xA   0x6011             STR      R1,[R2, #+0]
+    337            CRYP->IV1LR = CRYP_IVInitStruct->CRYP_IV1Left;
+   \        0xC   0x6881             LDR      R1,[R0, #+8]
+   \        0xE   0x....             LDR.N    R2,??DataTable15_12  ;; 0x50060048
+   \       0x10   0x6011             STR      R1,[R2, #+0]
+    338            CRYP->IV1RR = CRYP_IVInitStruct->CRYP_IV1Right;
+   \       0x12   0x68C0             LDR      R0,[R0, #+12]
+   \       0x14   0x....             LDR.N    R1,??DataTable15_13  ;; 0x5006004c
+   \       0x16   0x6008             STR      R0,[R1, #+0]
+    339          }
+   \       0x18   0x4770             BX       LR               ;; return
+    340          
+    341          /**
+    342            * @brief  Fills each CRYP_IVInitStruct member with its default value.
+    343            * @param  CRYP_IVInitStruct: pointer to a CRYP_IVInitTypeDef Initialization 
+    344            *         Vectors(IV) structure which will be initialized.
+    345            * @retval None
+    346            */
+
+   \                                 In section .text, align 2, keep-with-next
+    347          void CRYP_IVStructInit(CRYP_IVInitTypeDef* CRYP_IVInitStruct)
+    348          {
+    349            CRYP_IVInitStruct->CRYP_IV0Left  = 0;
+   \                     CRYP_IVStructInit: (+1)
+   \        0x0   0x2100             MOVS     R1,#+0
+   \        0x2   0x6001             STR      R1,[R0, #+0]
+    350            CRYP_IVInitStruct->CRYP_IV0Right = 0;
+   \        0x4   0x2100             MOVS     R1,#+0
+   \        0x6   0x6041             STR      R1,[R0, #+4]
+    351            CRYP_IVInitStruct->CRYP_IV1Left  = 0;
+   \        0x8   0x2100             MOVS     R1,#+0
+   \        0xA   0x6081             STR      R1,[R0, #+8]
+    352            CRYP_IVInitStruct->CRYP_IV1Right = 0;
+   \        0xC   0x2100             MOVS     R1,#+0
+   \        0xE   0x60C1             STR      R1,[R0, #+12]
+    353          }
+   \       0x10   0x4770             BX       LR               ;; return
+    354          
+    355          /**
+    356            * @brief  Configures the AES-CCM and AES-GCM phases
+    357            * @note   This function is used only with AES-CCM or AES-GCM Algorithms  
+    358            * @param  CRYP_Phase: specifies the CRYP AES-CCM and AES-GCM phase to be configured.
+    359            *           This parameter can be one of the following values:
+    360            *            @arg CRYP_Phase_Init: Initialization phase
+    361            *            @arg CRYP_Phase_Header: Header phase
+    362            *            @arg CRYP_Phase_Payload: Payload phase
+    363            *            @arg CRYP_Phase_Final: Final phase 
+    364            * @retval None
+    365            */
+
+   \                                 In section .text, align 2, keep-with-next
+    366          void CRYP_PhaseConfig(uint32_t CRYP_Phase)
+    367          { uint32_t tempcr = 0;
+   \                     CRYP_PhaseConfig: (+1)
+   \        0x0   0x2100             MOVS     R1,#+0
+    368          
+    369            /* Check the parameter */
+    370            assert_param(IS_CRYP_PHASE(CRYP_Phase));
+    371          
+    372            /* Get the CR register */
+    373            tempcr = CRYP->CR;
+   \        0x2   0x....             LDR.N    R2,??DataTable15  ;; 0x50060000
+   \        0x4   0x6811             LDR      R1,[R2, #+0]
+    374            
+    375            /* Reset the phase configuration bits: GCMP_CCMPH */
+    376            tempcr &= (uint32_t)(~CRYP_CR_GCM_CCMPH);
+   \        0x6   0xF431 0x3140      BICS     R1,R1,#0x30000
+    377            /* Set the selected phase */
+    378            tempcr |= (uint32_t)CRYP_Phase;
+   \        0xA   0x4308             ORRS     R0,R0,R1
+    379          
+    380            /* Set the CR register */ 
+    381            CRYP->CR = tempcr;    
+   \        0xC   0x6010             STR      R0,[R2, #+0]
+    382          }
+   \        0xE   0x4770             BX       LR               ;; return
+    383          
+    384          /**
+    385            * @brief  Flushes the IN and OUT FIFOs (that is read and write pointers of the 
+    386            *         FIFOs are reset)
+    387            * @note   The FIFOs must be flushed only when BUSY flag is reset.  
+    388            * @param  None
+    389            * @retval None
+    390            */
+
+   \                                 In section .text, align 2, keep-with-next
+    391          void CRYP_FIFOFlush(void)
+    392          {
+    393            /* Reset the read and write pointers of the FIFOs */
+    394            CRYP->CR |= CRYP_CR_FFLUSH;
+   \                     CRYP_FIFOFlush: (+1)
+   \        0x0   0x....             LDR.N    R0,??DataTable15  ;; 0x50060000
+   \        0x2   0x6801             LDR      R1,[R0, #+0]
+   \        0x4   0xF451 0x4180      ORRS     R1,R1,#0x4000
+   \        0x8   0x6001             STR      R1,[R0, #+0]
+    395          }
+   \        0xA   0x4770             BX       LR               ;; return
+    396          
+    397          /**
+    398            * @brief  Enables or disables the CRYP peripheral.
+    399            * @param  NewState: new state of the CRYP peripheral.
+    400            *          This parameter can be: ENABLE or DISABLE.
+    401            * @retval None
+    402            */
+
+   \                                 In section .text, align 2, keep-with-next
+    403          void CRYP_Cmd(FunctionalState NewState)
+    404          {
+    405            /* Check the parameters */
+    406            assert_param(IS_FUNCTIONAL_STATE(NewState));
+    407          
+    408            if (NewState != DISABLE)
+   \                     CRYP_Cmd: (+1)
+   \        0x0   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \        0x2   0x2800             CMP      R0,#+0
+   \        0x4   0xD005             BEQ.N    ??CRYP_Cmd_0
+    409            {
+    410              /* Enable the Cryptographic processor */
+    411              CRYP->CR |= CRYP_CR_CRYPEN;
+   \        0x6   0x....             LDR.N    R0,??DataTable15  ;; 0x50060000
+   \        0x8   0x6801             LDR      R1,[R0, #+0]
+   \        0xA   0xF451 0x4100      ORRS     R1,R1,#0x8000
+   \        0xE   0x6001             STR      R1,[R0, #+0]
+   \       0x10   0xE004             B.N      ??CRYP_Cmd_1
+    412            }
+    413            else
+    414            {
+    415              /* Disable the Cryptographic processor */
+    416              CRYP->CR &= ~CRYP_CR_CRYPEN;
+   \                     ??CRYP_Cmd_0: (+1)
+   \       0x12   0x....             LDR.N    R0,??DataTable15  ;; 0x50060000
+   \       0x14   0x6801             LDR      R1,[R0, #+0]
+   \       0x16   0xF431 0x4100      BICS     R1,R1,#0x8000
+   \       0x1A   0x6001             STR      R1,[R0, #+0]
+    417            }
+    418          }
+   \                     ??CRYP_Cmd_1: (+1)
+   \       0x1C   0x4770             BX       LR               ;; return
+    419          /**
+    420            * @}
+    421            */
+    422            
+    423          /** @defgroup CRYP_Group2 CRYP Data processing functions
+    424           *  @brief    CRYP Data processing functions
+    425           *
+    426          @verbatim    
+    427           ===============================================================================
+    428                              ##### CRYP Data processing functions #####
+    429           ===============================================================================  
+    430           [..] This section provides functions allowing the encryption and decryption 
+    431                operations: 
+    432             (+) Enter data to be treated in the IN FIFO : using CRYP_DataIn() function.
+    433             (+) Get the data result from the OUT FIFO : using CRYP_DataOut() function.
+    434          
+    435          @endverbatim
+    436            * @{
+    437            */
+    438          
+    439          /**
+    440            * @brief  Writes data in the Data Input register (DIN).
+    441            * @note   After the DIN register has been read once or several times, 
+    442            *         the FIFO must be flushed (using CRYP_FIFOFlush() function).  
+    443            * @param  Data: data to write in Data Input register
+    444            * @retval None
+    445            */
+
+   \                                 In section .text, align 2, keep-with-next
+    446          void CRYP_DataIn(uint32_t Data)
+    447          {
+    448            CRYP->DR = Data;
+   \                     CRYP_DataIn: (+1)
+   \        0x0   0x....             LDR.N    R1,??DataTable15_14  ;; 0x50060008
+   \        0x2   0x6008             STR      R0,[R1, #+0]
+    449          }
+   \        0x4   0x4770             BX       LR               ;; return
+    450          
+    451          /**
+    452            * @brief  Returns the last data entered into the output FIFO.
+    453            * @param  None
+    454            * @retval Last data entered into the output FIFO.
+    455            */
+
+   \                                 In section .text, align 2, keep-with-next
+    456          uint32_t CRYP_DataOut(void)
+    457          {
+    458            return CRYP->DOUT;
+   \                     CRYP_DataOut: (+1)
+   \        0x0   0x....             LDR.N    R0,??DataTable15_15  ;; 0x5006000c
+   \        0x2   0x6800             LDR      R0,[R0, #+0]
+   \        0x4   0x4770             BX       LR               ;; return
+    459          }
+    460          /**
+    461            * @}
+    462            */
+    463            
+    464          /** @defgroup CRYP_Group3 Context swapping functions
+    465           *  @brief   Context swapping functions
+    466           *
+    467          @verbatim   
+    468           ===============================================================================
+    469                                ##### Context swapping functions #####
+    470           ===============================================================================  
+    471           [..] This section provides functions allowing to save and store CRYP Context
+    472          
+    473           [..] It is possible to interrupt an encryption/ decryption/ key generation process 
+    474                to perform another processing with a higher priority, and to complete the 
+    475                interrupted process later on, when the higher-priority task is complete. To do 
+    476                so, the context of the interrupted task must be saved from the CRYP registers 
+    477                to memory, and then be restored from memory to the CRYP registers.
+    478             
+    479             (#) To save the current context, use CRYP_SaveContext() function
+    480             (#) To restore the saved context, use CRYP_RestoreContext() function 
+    481          
+    482          @endverbatim
+    483            * @{
+    484            */
+    485            
+    486          /**
+    487            * @brief  Saves the CRYP peripheral Context. 
+    488            * @note   This function stops DMA transfer before to save the context. After 
+    489            *         restoring the context, you have to enable the DMA again (if the DMA
+    490            *         was previously used).
+    491            * @param  CRYP_ContextSave: pointer to a CRYP_Context structure that contains
+    492            *         the repository for current context.
+    493            * @param  CRYP_KeyInitStruct: pointer to a CRYP_KeyInitTypeDef structure that 
+    494            *         contains the configuration information for the CRYP Keys.  
+    495            * @retval None
+    496            */
+
+   \                                 In section .text, align 2, keep-with-next
+    497          ErrorStatus CRYP_SaveContext(CRYP_Context* CRYP_ContextSave,
+    498                                       CRYP_KeyInitTypeDef* CRYP_KeyInitStruct)
+    499          {
+   \                     CRYP_SaveContext: (+1)
+   \        0x0   0xB4F8             PUSH     {R3-R7}
+    500            __IO uint32_t timeout = 0;
+   \        0x2   0x2200             MOVS     R2,#+0
+   \        0x4   0x9200             STR      R2,[SP, #+0]
+    501            uint32_t ckeckmask = 0, bitstatus;    
+   \        0x6   0x2200             MOVS     R2,#+0
+    502            ErrorStatus status = ERROR;
+   \        0x8   0x2200             MOVS     R2,#+0
+    503          
+    504            /* Stop DMA transfers on the IN FIFO by clearing the DIEN bit in the CRYP_DMACR */
+    505            CRYP->DMACR &= ~(uint32_t)CRYP_DMACR_DIEN;
+   \        0xA   0x....             LDR.N    R2,??DataTable15_16  ;; 0x50060010
+   \        0xC   0x6813             LDR      R3,[R2, #+0]
+   \        0xE   0x085B             LSRS     R3,R3,#+1
+   \       0x10   0x005B             LSLS     R3,R3,#+1
+   \       0x12   0x6013             STR      R3,[R2, #+0]
+    506              
+    507            /* Wait until both the IN and OUT FIFOs are empty  
+    508              (IFEM=1 and OFNE=0 in the CRYP_SR register) and the 
+    509               BUSY bit is cleared. */
+    510          
+    511            if ((CRYP->CR & (uint32_t)(CRYP_CR_ALGOMODE_TDES_ECB | CRYP_CR_ALGOMODE_TDES_CBC)) != (uint32_t)0 )/* TDES */
+   \       0x14   0x....             LDR.N    R3,??DataTable15  ;; 0x50060000
+   \       0x16   0x681C             LDR      R4,[R3, #+0]
+   \       0x18   0x0724             LSLS     R4,R4,#+28
+   \       0x1A   0xD501             BPL.N    ??CRYP_SaveContext_0
+    512            { 
+    513              ckeckmask =  CRYP_SR_IFEM | CRYP_SR_BUSY ;
+   \       0x1C   0x2411             MOVS     R4,#+17
+   \       0x1E   0xE000             B.N      ??CRYP_SaveContext_1
+    514            }
+    515            else /* AES or DES */
+    516            {
+    517              ckeckmask =  CRYP_SR_IFEM | CRYP_SR_BUSY | CRYP_SR_OFNE;
+   \                     ??CRYP_SaveContext_0: (+1)
+   \       0x20   0x2415             MOVS     R4,#+21
+    518            }           
+    519             
+    520            do 
+    521            {
+    522              bitstatus = CRYP->SR & ckeckmask;
+   \                     ??CRYP_SaveContext_1: (+1)
+   \       0x22   0x....             LDR.N    R6,??DataTable15_17  ;; 0x50060004
+   \       0x24   0x6835             LDR      R5,[R6, #+0]
+   \       0x26   0x4025             ANDS     R5,R4,R5
+    523              timeout++;
+   \       0x28   0x9F00             LDR      R7,[SP, #+0]
+   \       0x2A   0x1C7F             ADDS     R7,R7,#+1
+   \       0x2C   0x9700             STR      R7,[SP, #+0]
+    524            }
+    525            while ((timeout != MAX_TIMEOUT) && (bitstatus != CRYP_SR_IFEM));
+   \       0x2E   0x9F00             LDR      R7,[SP, #+0]
+   \       0x30   0xF64F 0x7CFF      MOVW     R12,#+65535
+   \       0x34   0x4567             CMP      R7,R12
+   \       0x36   0xD001             BEQ.N    ??CRYP_SaveContext_2
+   \       0x38   0x2D01             CMP      R5,#+1
+   \       0x3A   0xD1F2             BNE.N    ??CRYP_SaveContext_1
+    526               
+    527            if ((CRYP->SR & ckeckmask) != CRYP_SR_IFEM)
+   \                     ??CRYP_SaveContext_2: (+1)
+   \       0x3C   0x6835             LDR      R5,[R6, #+0]
+   \       0x3E   0x402C             ANDS     R4,R4,R5
+   \       0x40   0x2C01             CMP      R4,#+1
+   \       0x42   0xD001             BEQ.N    ??CRYP_SaveContext_3
+    528            {
+    529              status = ERROR;
+   \       0x44   0x2000             MOVS     R0,#+0
+   \       0x46   0xE058             B.N      ??CRYP_SaveContext_4
+    530            }
+    531            else
+    532            {      
+    533              /* Stop DMA transfers on the OUT FIFO by 
+    534                 - writing the DOEN bit to 0 in the CRYP_DMACR register 
+    535                 - and clear the CRYPEN bit. */
+    536          
+    537              CRYP->DMACR &= ~(uint32_t)CRYP_DMACR_DOEN;
+   \                     ??CRYP_SaveContext_3: (+1)
+   \       0x48   0x6814             LDR      R4,[R2, #+0]
+   \       0x4A   0xF034 0x0402      BICS     R4,R4,#0x2
+   \       0x4E   0x6014             STR      R4,[R2, #+0]
+    538              CRYP->CR &= ~(uint32_t)CRYP_CR_CRYPEN;
+   \       0x50   0x681A             LDR      R2,[R3, #+0]
+   \       0x52   0xF432 0x4200      BICS     R2,R2,#0x8000
+   \       0x56   0x601A             STR      R2,[R3, #+0]
+    539          
+    540              /* Save the current configuration (bit 19, bit[17:16] and bits [9:2] in the CRYP_CR register) */
+    541              CRYP_ContextSave->CR_CurrentConfig  = CRYP->CR & (CRYP_CR_GCM_CCMPH |
+    542                                                                CRYP_CR_KEYSIZE  |
+    543                                                                CRYP_CR_DATATYPE |
+    544                                                                CRYP_CR_ALGOMODE |
+    545                                                                CRYP_CR_ALGODIR);
+   \       0x58   0x681B             LDR      R3,[R3, #+0]
+   \       0x5A   0x....             LDR.N    R2,??DataTable15_18  ;; 0xb03fc
+   \       0x5C   0x4013             ANDS     R3,R2,R3
+   \       0x5E   0x6003             STR      R3,[R0, #+0]
+    546          
+    547              /* and, if not in ECB mode, the initialization vectors. */
+    548              CRYP_ContextSave->CRYP_IV0LR = CRYP->IV0LR;
+   \       0x60   0x....             LDR.N    R2,??DataTable15_10  ;; 0x50060040
+   \       0x62   0x6812             LDR      R2,[R2, #+0]
+   \       0x64   0x6042             STR      R2,[R0, #+4]
+    549              CRYP_ContextSave->CRYP_IV0RR = CRYP->IV0RR;
+   \       0x66   0x....             LDR.N    R2,??DataTable15_11  ;; 0x50060044
+   \       0x68   0x6812             LDR      R2,[R2, #+0]
+   \       0x6A   0x6082             STR      R2,[R0, #+8]
+    550              CRYP_ContextSave->CRYP_IV1LR = CRYP->IV1LR;
+   \       0x6C   0x....             LDR.N    R2,??DataTable15_12  ;; 0x50060048
+   \       0x6E   0x6812             LDR      R2,[R2, #+0]
+   \       0x70   0x60C2             STR      R2,[R0, #+12]
+    551              CRYP_ContextSave->CRYP_IV1RR = CRYP->IV1RR;
+   \       0x72   0x....             LDR.N    R2,??DataTable15_13  ;; 0x5006004c
+   \       0x74   0x6812             LDR      R2,[R2, #+0]
+   \       0x76   0x6102             STR      R2,[R0, #+16]
+    552          
+    553              /* save The key value */
+    554              CRYP_ContextSave->CRYP_K0LR = CRYP_KeyInitStruct->CRYP_Key0Left; 
+   \       0x78   0x680A             LDR      R2,[R1, #+0]
+   \       0x7A   0x6142             STR      R2,[R0, #+20]
+    555              CRYP_ContextSave->CRYP_K0RR = CRYP_KeyInitStruct->CRYP_Key0Right; 
+   \       0x7C   0x684A             LDR      R2,[R1, #+4]
+   \       0x7E   0x6182             STR      R2,[R0, #+24]
+    556              CRYP_ContextSave->CRYP_K1LR = CRYP_KeyInitStruct->CRYP_Key1Left; 
+   \       0x80   0x688A             LDR      R2,[R1, #+8]
+   \       0x82   0x61C2             STR      R2,[R0, #+28]
+    557              CRYP_ContextSave->CRYP_K1RR = CRYP_KeyInitStruct->CRYP_Key1Right; 
+   \       0x84   0x68CA             LDR      R2,[R1, #+12]
+   \       0x86   0x6202             STR      R2,[R0, #+32]
+    558              CRYP_ContextSave->CRYP_K2LR = CRYP_KeyInitStruct->CRYP_Key2Left; 
+   \       0x88   0x690A             LDR      R2,[R1, #+16]
+   \       0x8A   0x6242             STR      R2,[R0, #+36]
+    559              CRYP_ContextSave->CRYP_K2RR = CRYP_KeyInitStruct->CRYP_Key2Right; 
+   \       0x8C   0x694A             LDR      R2,[R1, #+20]
+   \       0x8E   0x6282             STR      R2,[R0, #+40]
+    560              CRYP_ContextSave->CRYP_K3LR = CRYP_KeyInitStruct->CRYP_Key3Left; 
+   \       0x90   0x698A             LDR      R2,[R1, #+24]
+   \       0x92   0x62C2             STR      R2,[R0, #+44]
+    561              CRYP_ContextSave->CRYP_K3RR = CRYP_KeyInitStruct->CRYP_Key3Right; 
+   \       0x94   0x69C9             LDR      R1,[R1, #+28]
+   \       0x96   0x6301             STR      R1,[R0, #+48]
+    562          
+    563              /* Save the content of context swap registers */
+    564              CRYP_ContextSave->CRYP_CSGCMCCMR[0] = CRYP->CSGCMCCM0R;
+   \       0x98   0x....             LDR.N    R1,??DataTable15_19  ;; 0x50060050
+   \       0x9A   0x6809             LDR      R1,[R1, #+0]
+   \       0x9C   0x6341             STR      R1,[R0, #+52]
+    565              CRYP_ContextSave->CRYP_CSGCMCCMR[1] = CRYP->CSGCMCCM1R;
+   \       0x9E   0x....             LDR.N    R1,??DataTable15_20  ;; 0x50060054
+   \       0xA0   0x6809             LDR      R1,[R1, #+0]
+   \       0xA2   0x6381             STR      R1,[R0, #+56]
+    566              CRYP_ContextSave->CRYP_CSGCMCCMR[2] = CRYP->CSGCMCCM2R;
+   \       0xA4   0x....             LDR.N    R1,??DataTable15_21  ;; 0x50060058
+   \       0xA6   0x6809             LDR      R1,[R1, #+0]
+   \       0xA8   0x63C1             STR      R1,[R0, #+60]
+    567              CRYP_ContextSave->CRYP_CSGCMCCMR[3] = CRYP->CSGCMCCM3R;
+   \       0xAA   0x....             LDR.N    R1,??DataTable15_22  ;; 0x5006005c
+   \       0xAC   0x6809             LDR      R1,[R1, #+0]
+   \       0xAE   0x6401             STR      R1,[R0, #+64]
+    568              CRYP_ContextSave->CRYP_CSGCMCCMR[4] = CRYP->CSGCMCCM4R;
+   \       0xB0   0x....             LDR.N    R1,??DataTable15_23  ;; 0x50060060
+   \       0xB2   0x6809             LDR      R1,[R1, #+0]
+   \       0xB4   0x6441             STR      R1,[R0, #+68]
+    569              CRYP_ContextSave->CRYP_CSGCMCCMR[5] = CRYP->CSGCMCCM5R;
+   \       0xB6   0x....             LDR.N    R1,??DataTable15_24  ;; 0x50060064
+   \       0xB8   0x6809             LDR      R1,[R1, #+0]
+   \       0xBA   0x6481             STR      R1,[R0, #+72]
+    570              CRYP_ContextSave->CRYP_CSGCMCCMR[6] = CRYP->CSGCMCCM6R;
+   \       0xBC   0x....             LDR.N    R1,??DataTable15_25  ;; 0x50060068
+   \       0xBE   0x6809             LDR      R1,[R1, #+0]
+   \       0xC0   0x64C1             STR      R1,[R0, #+76]
+    571              CRYP_ContextSave->CRYP_CSGCMCCMR[7] = CRYP->CSGCMCCM7R;
+   \       0xC2   0x....             LDR.N    R1,??DataTable15_26  ;; 0x5006006c
+   \       0xC4   0x6809             LDR      R1,[R1, #+0]
+   \       0xC6   0x6501             STR      R1,[R0, #+80]
+    572              
+    573              CRYP_ContextSave->CRYP_CSGCMR[0] = CRYP->CSGCM0R;
+   \       0xC8   0x....             LDR.N    R1,??DataTable15_27  ;; 0x50060070
+   \       0xCA   0x6809             LDR      R1,[R1, #+0]
+   \       0xCC   0x6541             STR      R1,[R0, #+84]
+    574              CRYP_ContextSave->CRYP_CSGCMR[1] = CRYP->CSGCM1R;
+   \       0xCE   0x....             LDR.N    R1,??DataTable15_28  ;; 0x50060074
+   \       0xD0   0x6809             LDR      R1,[R1, #+0]
+   \       0xD2   0x6581             STR      R1,[R0, #+88]
+    575              CRYP_ContextSave->CRYP_CSGCMR[2] = CRYP->CSGCM2R;
+   \       0xD4   0x....             LDR.N    R1,??DataTable15_29  ;; 0x50060078
+   \       0xD6   0x6809             LDR      R1,[R1, #+0]
+   \       0xD8   0x65C1             STR      R1,[R0, #+92]
+    576              CRYP_ContextSave->CRYP_CSGCMR[3] = CRYP->CSGCM3R;
+   \       0xDA   0x....             LDR.N    R1,??DataTable15_30  ;; 0x5006007c
+   \       0xDC   0x6809             LDR      R1,[R1, #+0]
+   \       0xDE   0x6601             STR      R1,[R0, #+96]
+    577              CRYP_ContextSave->CRYP_CSGCMR[4] = CRYP->CSGCM4R;
+   \       0xE0   0x....             LDR.N    R1,??DataTable15_31  ;; 0x50060080
+   \       0xE2   0x6809             LDR      R1,[R1, #+0]
+   \       0xE4   0x6641             STR      R1,[R0, #+100]
+    578              CRYP_ContextSave->CRYP_CSGCMR[5] = CRYP->CSGCM5R;
+   \       0xE6   0x....             LDR.N    R1,??DataTable15_32  ;; 0x50060084
+   \       0xE8   0x6809             LDR      R1,[R1, #+0]
+   \       0xEA   0x6681             STR      R1,[R0, #+104]
+    579              CRYP_ContextSave->CRYP_CSGCMR[6] = CRYP->CSGCM6R;
+   \       0xEC   0x....             LDR.N    R1,??DataTable15_33  ;; 0x50060088
+   \       0xEE   0x6809             LDR      R1,[R1, #+0]
+   \       0xF0   0x66C1             STR      R1,[R0, #+108]
+    580              CRYP_ContextSave->CRYP_CSGCMR[7] = CRYP->CSGCM7R;
+   \       0xF2   0x....             LDR.N    R1,??DataTable15_34  ;; 0x5006008c
+   \       0xF4   0x6809             LDR      R1,[R1, #+0]
+   \       0xF6   0x6701             STR      R1,[R0, #+112]
+    581              
+    582             /* When needed, save the DMA status (pointers for IN and OUT messages, 
+    583                number of remaining bytes, etc.) */
+    584               
+    585              status = SUCCESS;
+   \       0xF8   0x2001             MOVS     R0,#+1
+    586            }
+    587          
+    588             return status;
+   \                     ??CRYP_SaveContext_4: (+1)
+   \       0xFA   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0xFC   0xBCF2             POP      {R1,R4-R7}
+   \       0xFE   0x4770             BX       LR               ;; return
+    589          }
+    590          
+    591          /**
+    592            * @brief  Restores the CRYP peripheral Context.
+    593            * @note   Since the DMA transfer is stopped in CRYP_SaveContext() function,
+    594            *         after restoring the context, you have to enable the DMA again (if the
+    595            *         DMA was previously used).  
+    596            * @param  CRYP_ContextRestore: pointer to a CRYP_Context structure that contains
+    597            *         the repository for saved context.
+    598            * @note   The data that were saved during context saving must be rewritten into
+    599            *         the IN FIFO.
+    600            * @retval None
+    601            */
+
+   \                                 In section .text, align 2, keep-with-next
+    602          void CRYP_RestoreContext(CRYP_Context* CRYP_ContextRestore)  
+    603          {
+    604          
+    605            /* Configure the processor with the saved configuration */
+    606            CRYP->CR = CRYP_ContextRestore->CR_CurrentConfig;
+   \                     CRYP_RestoreContext: (+1)
+   \        0x0   0x....             LDR.N    R1,??DataTable15  ;; 0x50060000
+   \        0x2   0x6802             LDR      R2,[R0, #+0]
+   \        0x4   0x600A             STR      R2,[R1, #+0]
+    607          
+    608            /* restore The key value */
+    609            CRYP->K0LR = CRYP_ContextRestore->CRYP_K0LR; 
+   \        0x6   0x6942             LDR      R2,[R0, #+20]
+   \        0x8   0x....             LDR.N    R3,??DataTable15_2  ;; 0x50060020
+   \        0xA   0x601A             STR      R2,[R3, #+0]
+    610            CRYP->K0RR = CRYP_ContextRestore->CRYP_K0RR;
+   \        0xC   0x6982             LDR      R2,[R0, #+24]
+   \        0xE   0x....             LDR.N    R3,??DataTable15_3  ;; 0x50060024
+   \       0x10   0x601A             STR      R2,[R3, #+0]
+    611            CRYP->K1LR = CRYP_ContextRestore->CRYP_K1LR;
+   \       0x12   0x69C2             LDR      R2,[R0, #+28]
+   \       0x14   0x....             LDR.N    R3,??DataTable15_4  ;; 0x50060028
+   \       0x16   0x601A             STR      R2,[R3, #+0]
+    612            CRYP->K1RR = CRYP_ContextRestore->CRYP_K1RR;
+   \       0x18   0x6A02             LDR      R2,[R0, #+32]
+   \       0x1A   0x....             LDR.N    R3,??DataTable15_5  ;; 0x5006002c
+   \       0x1C   0x601A             STR      R2,[R3, #+0]
+    613            CRYP->K2LR = CRYP_ContextRestore->CRYP_K2LR;
+   \       0x1E   0x6A42             LDR      R2,[R0, #+36]
+   \       0x20   0x....             LDR.N    R3,??DataTable15_6  ;; 0x50060030
+   \       0x22   0x601A             STR      R2,[R3, #+0]
+    614            CRYP->K2RR = CRYP_ContextRestore->CRYP_K2RR;
+   \       0x24   0x6A82             LDR      R2,[R0, #+40]
+   \       0x26   0x....             LDR.N    R3,??DataTable15_7  ;; 0x50060034
+   \       0x28   0x601A             STR      R2,[R3, #+0]
+    615            CRYP->K3LR = CRYP_ContextRestore->CRYP_K3LR;
+   \       0x2A   0x6AC2             LDR      R2,[R0, #+44]
+   \       0x2C   0x....             LDR.N    R3,??DataTable15_8  ;; 0x50060038
+   \       0x2E   0x601A             STR      R2,[R3, #+0]
+    616            CRYP->K3RR = CRYP_ContextRestore->CRYP_K3RR;
+   \       0x30   0x6B02             LDR      R2,[R0, #+48]
+   \       0x32   0x....             LDR.N    R3,??DataTable15_9  ;; 0x5006003c
+   \       0x34   0x601A             STR      R2,[R3, #+0]
+    617          
+    618            /* and the initialization vectors. */
+    619            CRYP->IV0LR = CRYP_ContextRestore->CRYP_IV0LR;
+   \       0x36   0x6842             LDR      R2,[R0, #+4]
+   \       0x38   0x....             LDR.N    R3,??DataTable15_10  ;; 0x50060040
+   \       0x3A   0x601A             STR      R2,[R3, #+0]
+    620            CRYP->IV0RR = CRYP_ContextRestore->CRYP_IV0RR;
+   \       0x3C   0x6882             LDR      R2,[R0, #+8]
+   \       0x3E   0x....             LDR.N    R3,??DataTable15_11  ;; 0x50060044
+   \       0x40   0x601A             STR      R2,[R3, #+0]
+    621            CRYP->IV1LR = CRYP_ContextRestore->CRYP_IV1LR;
+   \       0x42   0x68C2             LDR      R2,[R0, #+12]
+   \       0x44   0x....             LDR.N    R3,??DataTable15_12  ;; 0x50060048
+   \       0x46   0x601A             STR      R2,[R3, #+0]
+    622            CRYP->IV1RR = CRYP_ContextRestore->CRYP_IV1RR;
+   \       0x48   0x6902             LDR      R2,[R0, #+16]
+   \       0x4A   0x....             LDR.N    R3,??DataTable15_13  ;; 0x5006004c
+   \       0x4C   0x601A             STR      R2,[R3, #+0]
+    623          
+    624            /* Restore the content of context swap registers */
+    625            CRYP->CSGCMCCM0R = CRYP_ContextRestore->CRYP_CSGCMCCMR[0];
+   \       0x4E   0x6B42             LDR      R2,[R0, #+52]
+   \       0x50   0x....             LDR.N    R3,??DataTable15_19  ;; 0x50060050
+   \       0x52   0x601A             STR      R2,[R3, #+0]
+    626            CRYP->CSGCMCCM1R = CRYP_ContextRestore->CRYP_CSGCMCCMR[1];
+   \       0x54   0x6B82             LDR      R2,[R0, #+56]
+   \       0x56   0x....             LDR.N    R3,??DataTable15_20  ;; 0x50060054
+   \       0x58   0x601A             STR      R2,[R3, #+0]
+    627            CRYP->CSGCMCCM2R = CRYP_ContextRestore->CRYP_CSGCMCCMR[2];
+   \       0x5A   0x6BC2             LDR      R2,[R0, #+60]
+   \       0x5C   0x....             LDR.N    R3,??DataTable15_21  ;; 0x50060058
+   \       0x5E   0x601A             STR      R2,[R3, #+0]
+    628            CRYP->CSGCMCCM3R = CRYP_ContextRestore->CRYP_CSGCMCCMR[3];
+   \       0x60   0x6C02             LDR      R2,[R0, #+64]
+   \       0x62   0x....             LDR.N    R3,??DataTable15_22  ;; 0x5006005c
+   \       0x64   0x601A             STR      R2,[R3, #+0]
+    629            CRYP->CSGCMCCM4R = CRYP_ContextRestore->CRYP_CSGCMCCMR[4];
+   \       0x66   0x6C42             LDR      R2,[R0, #+68]
+   \       0x68   0x....             LDR.N    R3,??DataTable15_23  ;; 0x50060060
+   \       0x6A   0x601A             STR      R2,[R3, #+0]
+    630            CRYP->CSGCMCCM5R = CRYP_ContextRestore->CRYP_CSGCMCCMR[5];
+   \       0x6C   0x6C82             LDR      R2,[R0, #+72]
+   \       0x6E   0x....             LDR.N    R3,??DataTable15_24  ;; 0x50060064
+   \       0x70   0x601A             STR      R2,[R3, #+0]
+    631            CRYP->CSGCMCCM6R = CRYP_ContextRestore->CRYP_CSGCMCCMR[6];
+   \       0x72   0x6CC2             LDR      R2,[R0, #+76]
+   \       0x74   0x....             LDR.N    R3,??DataTable15_25  ;; 0x50060068
+   \       0x76   0x601A             STR      R2,[R3, #+0]
+    632            CRYP->CSGCMCCM7R = CRYP_ContextRestore->CRYP_CSGCMCCMR[7];
+   \       0x78   0x6D02             LDR      R2,[R0, #+80]
+   \       0x7A   0x....             LDR.N    R3,??DataTable15_26  ;; 0x5006006c
+   \       0x7C   0x601A             STR      R2,[R3, #+0]
+    633            
+    634            CRYP->CSGCM0R = CRYP_ContextRestore->CRYP_CSGCMR[0];
+   \       0x7E   0x6D42             LDR      R2,[R0, #+84]
+   \       0x80   0x....             LDR.N    R3,??DataTable15_27  ;; 0x50060070
+   \       0x82   0x601A             STR      R2,[R3, #+0]
+    635            CRYP->CSGCM1R = CRYP_ContextRestore->CRYP_CSGCMR[1];
+   \       0x84   0x6D82             LDR      R2,[R0, #+88]
+   \       0x86   0x....             LDR.N    R3,??DataTable15_28  ;; 0x50060074
+   \       0x88   0x601A             STR      R2,[R3, #+0]
+    636            CRYP->CSGCM2R = CRYP_ContextRestore->CRYP_CSGCMR[2];
+   \       0x8A   0x6DC2             LDR      R2,[R0, #+92]
+   \       0x8C   0x....             LDR.N    R3,??DataTable15_29  ;; 0x50060078
+   \       0x8E   0x601A             STR      R2,[R3, #+0]
+    637            CRYP->CSGCM3R = CRYP_ContextRestore->CRYP_CSGCMR[3];
+   \       0x90   0x6E02             LDR      R2,[R0, #+96]
+   \       0x92   0x....             LDR.N    R3,??DataTable15_30  ;; 0x5006007c
+   \       0x94   0x601A             STR      R2,[R3, #+0]
+    638            CRYP->CSGCM4R = CRYP_ContextRestore->CRYP_CSGCMR[4];
+   \       0x96   0x6E42             LDR      R2,[R0, #+100]
+   \       0x98   0x....             LDR.N    R3,??DataTable15_31  ;; 0x50060080
+   \       0x9A   0x601A             STR      R2,[R3, #+0]
+    639            CRYP->CSGCM5R = CRYP_ContextRestore->CRYP_CSGCMR[5];
+   \       0x9C   0x6E82             LDR      R2,[R0, #+104]
+   \       0x9E   0x....             LDR.N    R3,??DataTable15_32  ;; 0x50060084
+   \       0xA0   0x601A             STR      R2,[R3, #+0]
+    640            CRYP->CSGCM6R = CRYP_ContextRestore->CRYP_CSGCMR[6];
+   \       0xA2   0x6EC2             LDR      R2,[R0, #+108]
+   \       0xA4   0x....             LDR.N    R3,??DataTable15_33  ;; 0x50060088
+   \       0xA6   0x601A             STR      R2,[R3, #+0]
+    641            CRYP->CSGCM7R = CRYP_ContextRestore->CRYP_CSGCMR[7];
+   \       0xA8   0x6F00             LDR      R0,[R0, #+112]
+   \       0xAA   0x....             LDR.N    R2,??DataTable15_34  ;; 0x5006008c
+   \       0xAC   0x6010             STR      R0,[R2, #+0]
+    642            
+    643            /* Enable the cryptographic processor */
+    644            CRYP->CR |= CRYP_CR_CRYPEN;
+   \       0xAE   0x6808             LDR      R0,[R1, #+0]
+   \       0xB0   0xF450 0x4000      ORRS     R0,R0,#0x8000
+   \       0xB4   0x6008             STR      R0,[R1, #+0]
+    645          }
+   \       0xB6   0x4770             BX       LR               ;; return
+    646          /**
+    647            * @}
+    648            */
+    649          
+    650          /** @defgroup CRYP_Group4 CRYP's DMA interface Configuration function
+    651           *  @brief   CRYP's DMA interface Configuration function 
+    652           *
+    653          @verbatim   
+    654           ===============================================================================
+    655                       ##### CRYP's DMA interface Configuration function #####
+    656           ===============================================================================  
+    657           [..] This section provides functions allowing to configure the DMA interface for 
+    658                CRYP data input and output transfer.
+    659             
+    660           [..] When the DMA mode is enabled (using the CRYP_DMACmd() function), data can be 
+    661                transferred:
+    662             (+) From memory to the CRYP IN FIFO using the DMA peripheral by enabling 
+    663                 the CRYP_DMAReq_DataIN request.
+    664             (+) From the CRYP OUT FIFO to the memory using the DMA peripheral by enabling 
+    665                 the CRYP_DMAReq_DataOUT request.
+    666          
+    667          @endverbatim
+    668            * @{
+    669            */
+    670          
+    671          /**
+    672            * @brief  Enables or disables the CRYP DMA interface.
+    673            * @param  CRYP_DMAReq: specifies the CRYP DMA transfer request to be enabled or disabled.
+    674            *           This parameter can be any combination of the following values:
+    675            *            @arg CRYP_DMAReq_DataOUT: DMA for outgoing(Tx) data transfer
+    676            *            @arg CRYP_DMAReq_DataIN: DMA for incoming(Rx) data transfer
+    677            * @param  NewState: new state of the selected CRYP DMA transfer request.
+    678            *          This parameter can be: ENABLE or DISABLE.
+    679            * @retval None
+    680            */
+
+   \                                 In section .text, align 2, keep-with-next
+    681          void CRYP_DMACmd(uint8_t CRYP_DMAReq, FunctionalState NewState)
+    682          {
+    683            /* Check the parameters */
+    684            assert_param(IS_CRYP_DMAREQ(CRYP_DMAReq));
+    685            assert_param(IS_FUNCTIONAL_STATE(NewState));
+    686          
+    687            if (NewState != DISABLE)
+   \                     CRYP_DMACmd: (+1)
+   \        0x0   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \        0x2   0x2900             CMP      R1,#+0
+   \        0x4   0xD005             BEQ.N    ??CRYP_DMACmd_0
+    688            {
+    689              /* Enable the selected CRYP DMA request */
+    690              CRYP->DMACR |= CRYP_DMAReq;
+   \        0x6   0x....             LDR.N    R1,??DataTable15_16  ;; 0x50060010
+   \        0x8   0x680A             LDR      R2,[R1, #+0]
+   \        0xA   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \        0xC   0x4310             ORRS     R0,R0,R2
+   \        0xE   0x6008             STR      R0,[R1, #+0]
+   \       0x10   0xE005             B.N      ??CRYP_DMACmd_1
+    691            }
+    692            else
+    693            {
+    694              /* Disable the selected CRYP DMA request */
+    695              CRYP->DMACR &= (uint8_t)~CRYP_DMAReq;
+   \                     ??CRYP_DMACmd_0: (+1)
+   \       0x12   0x....             LDR.N    R1,??DataTable15_16  ;; 0x50060010
+   \       0x14   0x680A             LDR      R2,[R1, #+0]
+   \       0x16   0x43C0             MVNS     R0,R0
+   \       0x18   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x1A   0x4010             ANDS     R0,R0,R2
+   \       0x1C   0x6008             STR      R0,[R1, #+0]
+    696            }
+    697          }
+   \                     ??CRYP_DMACmd_1: (+1)
+   \       0x1E   0x4770             BX       LR               ;; return
+    698          /**
+    699            * @}
+    700            */
+    701          
+    702          /** @defgroup CRYP_Group5 Interrupts and flags management functions
+    703           *  @brief   Interrupts and flags management functions
+    704           *
+    705          @verbatim   
+    706           ===============================================================================
+    707                        ##### Interrupts and flags management functions #####
+    708           ===============================================================================  
+    709           
+    710           [..] This section provides functions allowing to configure the CRYP Interrupts and 
+    711                to get the status and Interrupts pending bits.
+    712          
+    713           [..] The CRYP provides 2 Interrupts sources and 7 Flags:
+    714          
+    715           *** Flags : ***
+    716           ===============
+    717           [..] 
+    718             (#) CRYP_FLAG_IFEM :  Set when Input FIFO is empty. This Flag is cleared only
+    719                 by hardware.
+    720                
+    721             (#) CRYP_FLAG_IFNF :  Set when Input FIFO is not full. This Flag is cleared 
+    722                 only by hardware.
+    723          
+    724          
+    725             (#) CRYP_FLAG_INRIS  : Set when Input FIFO Raw interrupt is pending it gives 
+    726                 the raw interrupt state prior to masking of the input FIFO service interrupt.
+    727                 This Flag is cleared only by hardware.
+    728               
+    729             (#) CRYP_FLAG_OFNE   : Set when Output FIFO not empty. This Flag is cleared 
+    730                 only by hardware.
+    731                  
+    732             (#) CRYP_FLAG_OFFU   : Set when Output FIFO is full. This Flag is cleared only 
+    733                 by hardware.
+    734                                     
+    735             (#) CRYP_FLAG_OUTRIS : Set when Output FIFO Raw interrupt is pending it gives 
+    736                 the raw interrupt state prior to masking of the output FIFO service interrupt.
+    737                 This Flag is cleared only by hardware.
+    738                                         
+    739             (#) CRYP_FLAG_BUSY   : Set when the CRYP core is currently processing a block 
+    740                 of data or a key preparation (for AES decryption). This Flag is cleared 
+    741                 only by hardware. To clear it, the CRYP core must be disabled and the last
+    742                 processing has completed. 
+    743          
+    744           *** Interrupts : ***
+    745           ====================
+    746           [..]
+    747             (#) CRYP_IT_INI   : The input FIFO service interrupt is asserted when there 
+    748                are less than 4 words in the input FIFO. This interrupt is associated to 
+    749                CRYP_FLAG_INRIS flag.
+    750          
+    751                -@- This interrupt is cleared by performing write operations to the input FIFO 
+    752                    until it holds 4 or more words. The input FIFO service interrupt INMIS is 
+    753                    enabled with the CRYP enable bit. Consequently, when CRYP is disabled, the 
+    754                    INMIS signal is low even if the input FIFO is empty.
+    755          
+    756          
+    757          
+    758             (#) CRYP_IT_OUTI  : The output FIFO service interrupt is asserted when there 
+    759                 is one or more (32-bit word) data items in the output FIFO. This interrupt 
+    760                 is associated to CRYP_FLAG_OUTRIS flag.
+    761          
+    762                 -@- This interrupt is cleared by reading data from the output FIFO until there 
+    763                     is no valid (32-bit) word left (that is, the interrupt follows the state 
+    764                     of the OFNE (output FIFO not empty) flag).
+    765          
+    766           *** Managing the CRYP controller events : ***
+    767           =============================================
+    768           [..] The user should identify which mode will be used in his application to manage 
+    769                the CRYP controller events: Polling mode or Interrupt mode.
+    770          
+    771             (#) In the Polling Mode it is advised to use the following functions:
+    772                 (++) CRYP_GetFlagStatus() : to check if flags events occur. 
+    773          
+    774                 -@@- The CRYPT flags do not need to be cleared since they are cleared as 
+    775                      soon as the associated event are reset.   
+    776          
+    777          
+    778             (#) In the Interrupt Mode it is advised to use the following functions:
+    779                 (++) CRYP_ITConfig()       : to enable or disable the interrupt source.
+    780                 (++) CRYP_GetITStatus()    : to check if Interrupt occurs.
+    781          
+    782                 -@@- The CRYPT interrupts have no pending bits, the interrupt is cleared as 
+    783                       soon as the associated event is reset. 
+    784          
+    785          @endverbatim
+    786            * @{
+    787            */ 
+    788          
+    789          /**
+    790            * @brief  Enables or disables the specified CRYP interrupts.
+    791            * @param  CRYP_IT: specifies the CRYP interrupt source to be enabled or disabled.
+    792            *          This parameter can be any combination of the following values:
+    793            *            @arg CRYP_IT_INI: Input FIFO interrupt
+    794            *            @arg CRYP_IT_OUTI: Output FIFO interrupt
+    795            * @param  NewState: new state of the specified CRYP interrupt.
+    796            *           This parameter can be: ENABLE or DISABLE.
+    797            * @retval None
+    798            */
+
+   \                                 In section .text, align 2, keep-with-next
+    799          void CRYP_ITConfig(uint8_t CRYP_IT, FunctionalState NewState)
+    800          {
+    801            /* Check the parameters */
+    802            assert_param(IS_CRYP_CONFIG_IT(CRYP_IT));
+    803            assert_param(IS_FUNCTIONAL_STATE(NewState));
+    804          
+    805            if (NewState != DISABLE)
+   \                     CRYP_ITConfig: (+1)
+   \        0x0   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \        0x2   0x2900             CMP      R1,#+0
+   \        0x4   0xD005             BEQ.N    ??CRYP_ITConfig_0
+    806            {
+    807              /* Enable the selected CRYP interrupt */
+    808              CRYP->IMSCR |= CRYP_IT;
+   \        0x6   0x....             LDR.N    R1,??DataTable15_35  ;; 0x50060014
+   \        0x8   0x680A             LDR      R2,[R1, #+0]
+   \        0xA   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \        0xC   0x4310             ORRS     R0,R0,R2
+   \        0xE   0x6008             STR      R0,[R1, #+0]
+   \       0x10   0xE005             B.N      ??CRYP_ITConfig_1
+    809            }
+    810            else
+    811            {
+    812              /* Disable the selected CRYP interrupt */
+    813              CRYP->IMSCR &= (uint8_t)~CRYP_IT;
+   \                     ??CRYP_ITConfig_0: (+1)
+   \       0x12   0x....             LDR.N    R1,??DataTable15_35  ;; 0x50060014
+   \       0x14   0x680A             LDR      R2,[R1, #+0]
+   \       0x16   0x43C0             MVNS     R0,R0
+   \       0x18   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x1A   0x4010             ANDS     R0,R0,R2
+   \       0x1C   0x6008             STR      R0,[R1, #+0]
+    814            }
+    815          }
+   \                     ??CRYP_ITConfig_1: (+1)
+   \       0x1E   0x4770             BX       LR               ;; return
+    816          
+    817          /**
+    818            * @brief  Checks whether the specified CRYP interrupt has occurred or not.
+    819            * @note   This function checks the status of the masked interrupt (i.e the 
+    820            *         interrupt should be previously enabled).     
+    821            * @param  CRYP_IT: specifies the CRYP (masked) interrupt source to check.
+    822            *           This parameter can be one of the following values:
+    823            *            @arg CRYP_IT_INI: Input FIFO interrupt
+    824            *            @arg CRYP_IT_OUTI: Output FIFO interrupt
+    825            * @retval The new state of CRYP_IT (SET or RESET).
+    826            */
+
+   \                                 In section .text, align 2, keep-with-next
+    827          ITStatus CRYP_GetITStatus(uint8_t CRYP_IT)
+    828          {
+    829            ITStatus bitstatus = RESET;
+   \                     CRYP_GetITStatus: (+1)
+   \        0x0   0x2100             MOVS     R1,#+0
+    830            /* Check the parameters */
+    831            assert_param(IS_CRYP_GET_IT(CRYP_IT));
+    832          
+    833            /* Check the status of the specified CRYP interrupt */
+    834            if ((CRYP->MISR &  CRYP_IT) != (uint8_t)RESET)
+   \        0x2   0x....             LDR.N    R1,??DataTable15_36  ;; 0x5006001c
+   \        0x4   0x6809             LDR      R1,[R1, #+0]
+   \        0x6   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \        0x8   0x4201             TST      R1,R0
+   \        0xA   0xD001             BEQ.N    ??CRYP_GetITStatus_0
+    835            {
+    836              /* CRYP_IT is set */
+    837              bitstatus = SET;
+   \        0xC   0x2001             MOVS     R0,#+1
+   \        0xE   0xE000             B.N      ??CRYP_GetITStatus_1
+    838            }
+    839            else
+    840            {
+    841              /* CRYP_IT is reset */
+    842              bitstatus = RESET;
+   \                     ??CRYP_GetITStatus_0: (+1)
+   \       0x10   0x2000             MOVS     R0,#+0
+    843            }
+    844            /* Return the CRYP_IT status */
+    845            return bitstatus;
+   \                     ??CRYP_GetITStatus_1: (+1)
+   \       0x12   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x14   0x4770             BX       LR               ;; return
+    846          }
+    847          
+    848          /**
+    849            * @brief  Returns whether CRYP peripheral is enabled or disabled.
+    850            * @param  none.
+    851            * @retval Current state of the CRYP peripheral (ENABLE or DISABLE).
+    852            */
+
+   \                                 In section .text, align 2, keep-with-next
+    853          FunctionalState CRYP_GetCmdStatus(void)
+    854          {
+    855            FunctionalState state = DISABLE;
+   \                     CRYP_GetCmdStatus: (+1)
+   \        0x0   0x2000             MOVS     R0,#+0
+    856          
+    857            if ((CRYP->CR & CRYP_CR_CRYPEN) != 0)
+   \        0x2   0x....             LDR.N    R0,??DataTable15  ;; 0x50060000
+   \        0x4   0x6800             LDR      R0,[R0, #+0]
+   \        0x6   0x0400             LSLS     R0,R0,#+16
+   \        0x8   0xD501             BPL.N    ??CRYP_GetCmdStatus_0
+    858            {
+    859              /* CRYPEN bit is set */
+    860              state = ENABLE;
+   \        0xA   0x2001             MOVS     R0,#+1
+   \        0xC   0xE000             B.N      ??CRYP_GetCmdStatus_1
+    861            }
+    862            else
+    863            {
+    864              /* CRYPEN bit is reset */
+    865              state = DISABLE;
+   \                     ??CRYP_GetCmdStatus_0: (+1)
+   \        0xE   0x2000             MOVS     R0,#+0
+    866            }
+    867            return state;
+   \                     ??CRYP_GetCmdStatus_1: (+1)
+   \       0x10   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x12   0x4770             BX       LR               ;; return
+    868          }
+    869          
+    870          /**
+    871            * @brief  Checks whether the specified CRYP flag is set or not.
+    872            * @param  CRYP_FLAG: specifies the CRYP flag to check.
+    873            *          This parameter can be one of the following values:
+    874            *            @arg CRYP_FLAG_IFEM: Input FIFO Empty flag.
+    875            *            @arg CRYP_FLAG_IFNF: Input FIFO Not Full flag.
+    876            *            @arg CRYP_FLAG_OFNE: Output FIFO Not Empty flag.
+    877            *            @arg CRYP_FLAG_OFFU: Output FIFO Full flag.
+    878            *            @arg CRYP_FLAG_BUSY: Busy flag.
+    879            *            @arg CRYP_FLAG_OUTRIS: Output FIFO raw interrupt flag.
+    880            *            @arg CRYP_FLAG_INRIS: Input FIFO raw interrupt flag.
+    881            * @retval The new state of CRYP_FLAG (SET or RESET).
+    882            */
+
+   \                                 In section .text, align 2, keep-with-next
+    883          FlagStatus CRYP_GetFlagStatus(uint8_t CRYP_FLAG)
+    884          {
+    885            FlagStatus bitstatus = RESET;
+   \                     CRYP_GetFlagStatus: (+1)
+   \        0x0   0x2100             MOVS     R1,#+0
+    886            uint32_t tempreg = 0;
+   \        0x2   0x2100             MOVS     R1,#+0
+    887          
+    888            /* Check the parameters */
+    889            assert_param(IS_CRYP_GET_FLAG(CRYP_FLAG));
+    890          
+    891            /* check if the FLAG is in RISR register */
+    892            if ((CRYP_FLAG & FLAG_MASK) != 0x00) 
+   \        0x4   0x0681             LSLS     R1,R0,#+26
+   \        0x6   0xD502             BPL.N    ??CRYP_GetFlagStatus_0
+    893            {
+    894              tempreg = CRYP->RISR;
+   \        0x8   0x....             LDR.N    R1,??DataTable15_37  ;; 0x50060018
+   \        0xA   0x6809             LDR      R1,[R1, #+0]
+   \        0xC   0xE001             B.N      ??CRYP_GetFlagStatus_1
+    895            }
+    896            else  /* The FLAG is in SR register */
+    897            {
+    898              tempreg = CRYP->SR;
+   \                     ??CRYP_GetFlagStatus_0: (+1)
+   \        0xE   0x....             LDR.N    R1,??DataTable15_17  ;; 0x50060004
+   \       0x10   0x6809             LDR      R1,[R1, #+0]
+    899            }
+    900          
+    901          
+    902            /* Check the status of the specified CRYP flag */
+    903            if ((tempreg & CRYP_FLAG ) != (uint8_t)RESET)
+   \                     ??CRYP_GetFlagStatus_1: (+1)
+   \       0x12   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x14   0x4201             TST      R1,R0
+   \       0x16   0xD001             BEQ.N    ??CRYP_GetFlagStatus_2
+    904            {
+    905              /* CRYP_FLAG is set */
+    906              bitstatus = SET;
+   \       0x18   0x2001             MOVS     R0,#+1
+   \       0x1A   0xE000             B.N      ??CRYP_GetFlagStatus_3
+    907            }
+    908            else
+    909            {
+    910              /* CRYP_FLAG is reset */
+    911              bitstatus = RESET;
+   \                     ??CRYP_GetFlagStatus_2: (+1)
+   \       0x1C   0x2000             MOVS     R0,#+0
+    912            }
+    913          
+    914            /* Return the CRYP_FLAG status */
+    915            return  bitstatus;
+   \                     ??CRYP_GetFlagStatus_3: (+1)
+   \       0x1E   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x20   0x4770             BX       LR               ;; return
+    916          }
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable15:
+   \        0x0   0x5006'0000        DC32     0x50060000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable15_1:
+   \        0x0   0xFFF7'FFC7        DC32     0xfff7ffc7
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable15_2:
+   \        0x0   0x5006'0020        DC32     0x50060020
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable15_3:
+   \        0x0   0x5006'0024        DC32     0x50060024
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable15_4:
+   \        0x0   0x5006'0028        DC32     0x50060028
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable15_5:
+   \        0x0   0x5006'002C        DC32     0x5006002c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable15_6:
+   \        0x0   0x5006'0030        DC32     0x50060030
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable15_7:
+   \        0x0   0x5006'0034        DC32     0x50060034
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable15_8:
+   \        0x0   0x5006'0038        DC32     0x50060038
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable15_9:
+   \        0x0   0x5006'003C        DC32     0x5006003c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable15_10:
+   \        0x0   0x5006'0040        DC32     0x50060040
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable15_11:
+   \        0x0   0x5006'0044        DC32     0x50060044
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable15_12:
+   \        0x0   0x5006'0048        DC32     0x50060048
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable15_13:
+   \        0x0   0x5006'004C        DC32     0x5006004c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable15_14:
+   \        0x0   0x5006'0008        DC32     0x50060008
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable15_15:
+   \        0x0   0x5006'000C        DC32     0x5006000c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable15_16:
+   \        0x0   0x5006'0010        DC32     0x50060010
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable15_17:
+   \        0x0   0x5006'0004        DC32     0x50060004
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable15_18:
+   \        0x0   0x000B'03FC        DC32     0xb03fc
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable15_19:
+   \        0x0   0x5006'0050        DC32     0x50060050
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable15_20:
+   \        0x0   0x5006'0054        DC32     0x50060054
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable15_21:
+   \        0x0   0x5006'0058        DC32     0x50060058
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable15_22:
+   \        0x0   0x5006'005C        DC32     0x5006005c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable15_23:
+   \        0x0   0x5006'0060        DC32     0x50060060
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable15_24:
+   \        0x0   0x5006'0064        DC32     0x50060064
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable15_25:
+   \        0x0   0x5006'0068        DC32     0x50060068
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable15_26:
+   \        0x0   0x5006'006C        DC32     0x5006006c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable15_27:
+   \        0x0   0x5006'0070        DC32     0x50060070
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable15_28:
+   \        0x0   0x5006'0074        DC32     0x50060074
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable15_29:
+   \        0x0   0x5006'0078        DC32     0x50060078
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable15_30:
+   \        0x0   0x5006'007C        DC32     0x5006007c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable15_31:
+   \        0x0   0x5006'0080        DC32     0x50060080
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable15_32:
+   \        0x0   0x5006'0084        DC32     0x50060084
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable15_33:
+   \        0x0   0x5006'0088        DC32     0x50060088
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable15_34:
+   \        0x0   0x5006'008C        DC32     0x5006008c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable15_35:
+   \        0x0   0x5006'0014        DC32     0x50060014
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable15_36:
+   \        0x0   0x5006'001C        DC32     0x5006001c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable15_37:
+   \        0x0   0x5006'0018        DC32     0x50060018
+    917          
+    918          /**
+    919            * @}
+    920            */
+    921          
+    922          /**
+    923            * @}
+    924            */ 
+    925          
+    926          /**
+    927            * @}
+    928            */ 
+    929          
+    930          /**
+    931            * @}
+    932            */ 
+    933          
+    934          /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   CRYP_Cmd
+       0   CRYP_DMACmd
+       0   CRYP_DataIn
+       0   CRYP_DataOut
+       8   CRYP_DeInit
+         8   -> RCC_AHB2PeriphResetCmd
+       0   CRYP_FIFOFlush
+       0   CRYP_GetCmdStatus
+       0   CRYP_GetFlagStatus
+       0   CRYP_GetITStatus
+       0   CRYP_ITConfig
+       0   CRYP_IVInit
+       0   CRYP_IVStructInit
+       0   CRYP_Init
+       0   CRYP_KeyInit
+       0   CRYP_KeyStructInit
+       0   CRYP_PhaseConfig
+       0   CRYP_RestoreContext
+      20   CRYP_SaveContext
+       0   CRYP_StructInit
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable15
+       4  ??DataTable15_1
+       4  ??DataTable15_10
+       4  ??DataTable15_11
+       4  ??DataTable15_12
+       4  ??DataTable15_13
+       4  ??DataTable15_14
+       4  ??DataTable15_15
+       4  ??DataTable15_16
+       4  ??DataTable15_17
+       4  ??DataTable15_18
+       4  ??DataTable15_19
+       4  ??DataTable15_2
+       4  ??DataTable15_20
+       4  ??DataTable15_21
+       4  ??DataTable15_22
+       4  ??DataTable15_23
+       4  ??DataTable15_24
+       4  ??DataTable15_25
+       4  ??DataTable15_26
+       4  ??DataTable15_27
+       4  ??DataTable15_28
+       4  ??DataTable15_29
+       4  ??DataTable15_3
+       4  ??DataTable15_30
+       4  ??DataTable15_31
+       4  ??DataTable15_32
+       4  ??DataTable15_33
+       4  ??DataTable15_34
+       4  ??DataTable15_35
+       4  ??DataTable15_36
+       4  ??DataTable15_37
+       4  ??DataTable15_4
+       4  ??DataTable15_5
+       4  ??DataTable15_6
+       4  ??DataTable15_7
+       4  ??DataTable15_8
+       4  ??DataTable15_9
+      30  CRYP_Cmd
+      32  CRYP_DMACmd
+       6  CRYP_DataIn
+       6  CRYP_DataOut
+      20  CRYP_DeInit
+      12  CRYP_FIFOFlush
+      20  CRYP_GetCmdStatus
+      34  CRYP_GetFlagStatus
+      22  CRYP_GetITStatus
+      32  CRYP_ITConfig
+      26  CRYP_IVInit
+      18  CRYP_IVStructInit
+      96  CRYP_Init
+      62  CRYP_KeyInit
+      34  CRYP_KeyStructInit
+      16  CRYP_PhaseConfig
+     184  CRYP_RestoreContext
+     256  CRYP_SaveContext
+      18  CRYP_StructInit
+
+ 
+ 1'076 bytes in section .text
+ 
+ 1'076 bytes of CODE memory
+
+Errors: none
+Warnings: none

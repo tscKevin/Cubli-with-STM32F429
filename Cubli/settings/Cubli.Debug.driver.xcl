@@ -1,0 +1,19 @@
+"--endian=little" 
+
+"--cpu=Cortex-M4" 
+
+"--fpu=VFPv4_SP" 
+
+"-p" 
+
+"D:\IAR Systems\Embedded Workbench 8.3\arm\CONFIG\debugger\ST\STM32F429ZI.ddf" 
+
+"--semihosting" 
+
+"--device=STM32F429ZI" 
+
+"--multicore_nr_of_cores=1" 
+
+
+
+

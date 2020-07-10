@@ -1,0 +1,963 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         10/Jul/2020  15:12:06
+# Copyright 1999-2019 IAR Systems AB.
+#
+#    Cpu mode     =  
+#    Endian       =  little
+#    Source file  =
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_dcmi.c
+#    Command line =
+#        -f C:\Users\Evan\AppData\Local\Temp\EWE395.tmp
+#        (E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_dcmi.c
+#        -D USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List
+#        -o
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "D:\IAR
+#        Systems\Embedded Workbench 8.3\arm\inc\c\DLib_Config_Normal.h" -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Include\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\iar\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\inc\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\User\inc\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\User\src\
+#        -Ol --use_c++_inline -I "D:\IAR Systems\Embedded Workbench
+#        8.3\arm\CMSIS\Core\Include\" -I "D:\IAR Systems\Embedded Workbench
+#        8.3\arm\CMSIS\DSP\Include\")
+#    Locale       =  C
+#    List file    =
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List\stm32f4xx_dcmi.lst
+#    Object file  =
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\Obj\stm32f4xx_dcmi.o
+#
+###############################################################################
+
+E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_dcmi.c
+      1          /**
+      2            ******************************************************************************
+      3            * @file    stm32f4xx_dcmi.c
+      4            * @author  MCD Application Team
+      5            * @version V1.8.0
+      6            * @date    04-November-2016
+      7            * @brief   This file provides firmware functions to manage the following 
+      8            *          functionalities of the DCMI peripheral:           
+      9            *           + Initialization and Configuration
+     10            *           + Image capture functions  
+     11            *           + Interrupts and flags management
+     12            *
+     13           @verbatim          
+     14           ===============================================================================
+     15                                  ##### How to use this driver #####
+     16           ===============================================================================  
+     17              [..]       
+     18                The sequence below describes how to use this driver to capture image
+     19                from a camera module connected to the DCMI Interface.
+     20                This sequence does not take into account the configuration of the  
+     21                camera module, which should be made before to configure and enable
+     22                the DCMI to capture images.
+     23                       
+     24                (#) Enable the clock for the DCMI and associated GPIOs using the following 
+     25                    functions:
+     26                    RCC_AHB2PeriphClockCmd(RCC_AHB2Periph_DCMI, ENABLE);
+     27                    RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOx, ENABLE);
+     28            
+     29                (#) DCMI pins configuration 
+     30                  (++) Connect the involved DCMI pins to AF13 using the following function 
+     31                      GPIO_PinAFConfig(GPIOx, GPIO_PinSourcex, GPIO_AF_DCMI); 
+     32                  (++) Configure these DCMI pins in alternate function mode by calling 
+     33                      the function GPIO_Init();
+     34                
+     35                (#) Declare a DCMI_InitTypeDef structure, for example:
+     36                    DCMI_InitTypeDef  DCMI_InitStructure;
+     37                    and fill the DCMI_InitStructure variable with the allowed values
+     38                    of the structure member.
+     39              
+     40                (#) Initialize the DCMI interface by calling the function
+     41                    DCMI_Init(&DCMI_InitStructure); 
+     42              
+     43                (#) Configure the DMA2_Stream1 channel1 to transfer Data from DCMI DR
+     44                    register to the destination memory buffer.
+     45              
+     46                (#) Enable DCMI interface using the function
+     47                    DCMI_Cmd(ENABLE);
+     48                             
+     49                (#) Start the image capture using the function
+     50                    DCMI_CaptureCmd(ENABLE);
+     51                             
+     52                (#) At this stage the DCMI interface waits for the first start of frame,
+     53                    then a DMA request is generated continuously/once (depending on the
+     54                    mode used, Continuous/Snapshot) to transfer the received data into
+     55                    the destination memory. 
+     56               
+     57                -@-  If you need to capture only a rectangular window from the received
+     58                     image, you have to use the DCMI_CROPConfig() function to configure 
+     59                     the coordinates and size of the window to be captured, then enable 
+     60                     the Crop feature using DCMI_CROPCmd(ENABLE);  
+     61                     In this case, the Crop configuration should be made before to enable
+     62                     and start the DCMI interface. 
+     63          
+     64           @endverbatim     
+     65            ******************************************************************************
+     66            * @attention
+     67            *
+     68            * <h2><center>&copy; COPYRIGHT 2016 STMicroelectronics</center></h2>
+     69            *
+     70            * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
+     71            * You may not use this file except in compliance with the License.
+     72            * You may obtain a copy of the License at:
+     73            *
+     74            *        http://www.st.com/software_license_agreement_liberty_v2
+     75            *
+     76            * Unless required by applicable law or agreed to in writing, software 
+     77            * distributed under the License is distributed on an "AS IS" BASIS, 
+     78            * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     79            * See the License for the specific language governing permissions and
+     80            * limitations under the License.
+     81            *
+     82            ******************************************************************************
+     83            */
+     84          
+     85          /* Includes ------------------------------------------------------------------*/
+     86          #include "stm32f4xx_dcmi.h"
+     87          #include "stm32f4xx_rcc.h"
+     88          
+     89          /** @addtogroup STM32F4xx_StdPeriph_Driver
+     90            * @{
+     91            */
+     92          
+     93          /** @defgroup DCMI 
+     94            * @brief DCMI driver modules
+     95            * @{
+     96            */ 
+     97          
+     98          /* Private typedef -----------------------------------------------------------*/
+     99          /* Private define ------------------------------------------------------------*/
+    100          /* Private macro -------------------------------------------------------------*/
+    101          /* Private variables ---------------------------------------------------------*/
+    102          /* Private function prototypes -----------------------------------------------*/
+    103          /* Private functions ---------------------------------------------------------*/
+    104          
+    105          /** @defgroup DCMI_Private_Functions
+    106            * @{
+    107            */ 
+    108          
+    109          /** @defgroup DCMI_Group1 Initialization and Configuration functions
+    110           *  @brief   Initialization and Configuration functions 
+    111           *
+    112          @verbatim   
+    113           ===============================================================================
+    114                        ##### Initialization and Configuration functions #####
+    115           ===============================================================================  
+    116          
+    117          @endverbatim
+    118            * @{
+    119            */
+    120          
+    121          /**
+    122            * @brief  Deinitializes the DCMI registers to their default reset values.
+    123            * @param  None
+    124            * @retval None
+    125            */
+
+   \                                 In section .text, align 2, keep-with-next
+    126          void DCMI_DeInit(void)
+    127          {
+    128            DCMI->CR = 0x0;
+   \                     DCMI_DeInit: (+1)
+   \        0x0   0x2000             MOVS     R0,#+0
+   \        0x2   0x....             LDR.N    R1,??DataTable13  ;; 0x50050000
+   \        0x4   0x6008             STR      R0,[R1, #+0]
+    129            DCMI->IER = 0x0;
+   \        0x6   0x2000             MOVS     R0,#+0
+   \        0x8   0x....             LDR.N    R1,??DataTable13_1  ;; 0x5005000c
+   \        0xA   0x6008             STR      R0,[R1, #+0]
+    130            DCMI->ICR = 0x1F;
+   \        0xC   0x201F             MOVS     R0,#+31
+   \        0xE   0x....             LDR.N    R1,??DataTable13_2  ;; 0x50050014
+   \       0x10   0x6008             STR      R0,[R1, #+0]
+    131            DCMI->ESCR = 0x0;
+   \       0x12   0x2000             MOVS     R0,#+0
+   \       0x14   0x....             LDR.N    R1,??DataTable13_3  ;; 0x50050018
+   \       0x16   0x6008             STR      R0,[R1, #+0]
+    132            DCMI->ESUR = 0x0;
+   \       0x18   0x2000             MOVS     R0,#+0
+   \       0x1A   0x....             LDR.N    R1,??DataTable13_4  ;; 0x5005001c
+   \       0x1C   0x6008             STR      R0,[R1, #+0]
+    133            DCMI->CWSTRTR = 0x0;
+   \       0x1E   0x2000             MOVS     R0,#+0
+   \       0x20   0x....             LDR.N    R1,??DataTable13_5  ;; 0x50050020
+   \       0x22   0x6008             STR      R0,[R1, #+0]
+    134            DCMI->CWSIZER = 0x0;
+   \       0x24   0x2000             MOVS     R0,#+0
+   \       0x26   0x....             LDR.N    R1,??DataTable13_6  ;; 0x50050024
+   \       0x28   0x6008             STR      R0,[R1, #+0]
+    135          }
+   \       0x2A   0x4770             BX       LR               ;; return
+    136          
+    137          /**
+    138            * @brief  Initializes the DCMI according to the specified parameters in the DCMI_InitStruct.
+    139            * @param  DCMI_InitStruct: pointer to a DCMI_InitTypeDef structure that contains 
+    140            *         the configuration information for the DCMI.
+    141            * @retval None
+    142            */
+
+   \                                 In section .text, align 2, keep-with-next
+    143          void DCMI_Init(DCMI_InitTypeDef* DCMI_InitStruct)
+    144          {
+   \                     DCMI_Init: (+1)
+   \        0x0   0xB410             PUSH     {R4}
+    145            uint32_t temp = 0x0;
+   \        0x2   0x2100             MOVS     R1,#+0
+    146            
+    147            /* Check the parameters */
+    148            assert_param(IS_DCMI_CAPTURE_MODE(DCMI_InitStruct->DCMI_CaptureMode));
+    149            assert_param(IS_DCMI_SYNCHRO(DCMI_InitStruct->DCMI_SynchroMode));
+    150            assert_param(IS_DCMI_PCKPOLARITY(DCMI_InitStruct->DCMI_PCKPolarity));
+    151            assert_param(IS_DCMI_VSPOLARITY(DCMI_InitStruct->DCMI_VSPolarity));
+    152            assert_param(IS_DCMI_HSPOLARITY(DCMI_InitStruct->DCMI_HSPolarity));
+    153            assert_param(IS_DCMI_CAPTURE_RATE(DCMI_InitStruct->DCMI_CaptureRate));
+    154            assert_param(IS_DCMI_EXTENDED_DATA(DCMI_InitStruct->DCMI_ExtendedDataMode));
+    155          
+    156            /* The DCMI configuration registers should be programmed correctly before 
+    157            enabling the CR_ENABLE Bit and the CR_CAPTURE Bit */
+    158            DCMI->CR &= ~(DCMI_CR_ENABLE | DCMI_CR_CAPTURE);
+   \        0x4   0x....             LDR.N    R3,??DataTable13  ;; 0x50050000
+   \        0x6   0x681A             LDR      R2,[R3, #+0]
+   \        0x8   0x....             LDR.N    R1,??DataTable13_7  ;; 0xffffbffe
+   \        0xA   0x400A             ANDS     R2,R1,R2
+   \        0xC   0x601A             STR      R2,[R3, #+0]
+    159             
+    160            /* Reset the old DCMI configuration */
+    161            temp = DCMI->CR;
+   \        0xE   0x681A             LDR      R2,[R3, #+0]
+    162            
+    163            temp &= ~((uint32_t)DCMI_CR_CM     | DCMI_CR_ESS   | DCMI_CR_PCKPOL |
+    164                                DCMI_CR_HSPOL  | DCMI_CR_VSPOL | DCMI_CR_FCRC_0 | 
+    165                                DCMI_CR_FCRC_1 | DCMI_CR_EDM_0 | DCMI_CR_EDM_1); 
+   \       0x10   0x....             LDR.N    R1,??DataTable13_8  ;; 0xfffff00d
+   \       0x12   0x400A             ANDS     R2,R1,R2
+    166                            
+    167            /* Sets the new configuration of the DCMI peripheral */
+    168            temp |= ((uint32_t)DCMI_InitStruct->DCMI_CaptureMode |
+    169                               DCMI_InitStruct->DCMI_SynchroMode |
+    170                               DCMI_InitStruct->DCMI_PCKPolarity |
+    171                               DCMI_InitStruct->DCMI_VSPolarity |
+    172                               DCMI_InitStruct->DCMI_HSPolarity |
+    173                               DCMI_InitStruct->DCMI_CaptureRate |
+    174                               DCMI_InitStruct->DCMI_ExtendedDataMode);
+   \       0x14   0x8804             LDRH     R4,[R0, #+0]
+   \       0x16   0x8841             LDRH     R1,[R0, #+2]
+   \       0x18   0x430C             ORRS     R4,R1,R4
+   \       0x1A   0x8881             LDRH     R1,[R0, #+4]
+   \       0x1C   0x430C             ORRS     R4,R1,R4
+   \       0x1E   0x88C1             LDRH     R1,[R0, #+6]
+   \       0x20   0x430C             ORRS     R4,R1,R4
+   \       0x22   0x8901             LDRH     R1,[R0, #+8]
+   \       0x24   0x430C             ORRS     R4,R1,R4
+   \       0x26   0x8941             LDRH     R1,[R0, #+10]
+   \       0x28   0x430C             ORRS     R4,R1,R4
+   \       0x2A   0x8980             LDRH     R0,[R0, #+12]
+   \       0x2C   0x4304             ORRS     R4,R0,R4
+   \       0x2E   0x4322             ORRS     R2,R4,R2
+    175          
+    176            DCMI->CR = temp;                              
+   \       0x30   0x601A             STR      R2,[R3, #+0]
+    177          }
+   \       0x32   0xBC10             POP      {R4}
+   \       0x34   0x4770             BX       LR               ;; return
+    178          
+    179          /**
+    180            * @brief  Fills each DCMI_InitStruct member with its default value.
+    181            * @param  DCMI_InitStruct : pointer to a DCMI_InitTypeDef structure which will
+    182            *         be initialized.
+    183            * @retval None
+    184            */
+
+   \                                 In section .text, align 2, keep-with-next
+    185          void DCMI_StructInit(DCMI_InitTypeDef* DCMI_InitStruct)
+    186          {
+    187            /* Set the default configuration */
+    188            DCMI_InitStruct->DCMI_CaptureMode = DCMI_CaptureMode_Continuous;
+   \                     DCMI_StructInit: (+1)
+   \        0x0   0x2100             MOVS     R1,#+0
+   \        0x2   0x8001             STRH     R1,[R0, #+0]
+    189            DCMI_InitStruct->DCMI_SynchroMode = DCMI_SynchroMode_Hardware;
+   \        0x4   0x2100             MOVS     R1,#+0
+   \        0x6   0x8041             STRH     R1,[R0, #+2]
+    190            DCMI_InitStruct->DCMI_PCKPolarity = DCMI_PCKPolarity_Falling;
+   \        0x8   0x2100             MOVS     R1,#+0
+   \        0xA   0x8081             STRH     R1,[R0, #+4]
+    191            DCMI_InitStruct->DCMI_VSPolarity = DCMI_VSPolarity_Low;
+   \        0xC   0x2100             MOVS     R1,#+0
+   \        0xE   0x80C1             STRH     R1,[R0, #+6]
+    192            DCMI_InitStruct->DCMI_HSPolarity = DCMI_HSPolarity_Low;
+   \       0x10   0x2100             MOVS     R1,#+0
+   \       0x12   0x8101             STRH     R1,[R0, #+8]
+    193            DCMI_InitStruct->DCMI_CaptureRate = DCMI_CaptureRate_All_Frame;
+   \       0x14   0x2100             MOVS     R1,#+0
+   \       0x16   0x8141             STRH     R1,[R0, #+10]
+    194            DCMI_InitStruct->DCMI_ExtendedDataMode = DCMI_ExtendedDataMode_8b;
+   \       0x18   0x2100             MOVS     R1,#+0
+   \       0x1A   0x8181             STRH     R1,[R0, #+12]
+    195          }
+   \       0x1C   0x4770             BX       LR               ;; return
+    196          
+    197          /**
+    198            * @brief  Initializes the DCMI peripheral CROP mode according to the specified
+    199            *         parameters in the DCMI_CROPInitStruct.
+    200            * @note   This function should be called before to enable and start the DCMI interface.   
+    201            * @param  DCMI_CROPInitStruct:  pointer to a DCMI_CROPInitTypeDef structure that 
+    202            *         contains the configuration information for the DCMI peripheral CROP mode.
+    203            * @retval None
+    204            */
+
+   \                                 In section .text, align 2, keep-with-next
+    205          void DCMI_CROPConfig(DCMI_CROPInitTypeDef* DCMI_CROPInitStruct)
+    206          {  
+    207            /* Sets the CROP window coordinates */
+    208            DCMI->CWSTRTR = (uint32_t)((uint32_t)DCMI_CROPInitStruct->DCMI_HorizontalOffsetCount |
+    209                            ((uint32_t)DCMI_CROPInitStruct->DCMI_VerticalStartLine << 16));
+   \                     DCMI_CROPConfig: (+1)
+   \        0x0   0x8841             LDRH     R1,[R0, #+2]
+   \        0x2   0x8802             LDRH     R2,[R0, #+0]
+   \        0x4   0xEA51 0x4102      ORRS     R1,R1,R2, LSL #+16
+   \        0x8   0x....             LDR.N    R2,??DataTable13_5  ;; 0x50050020
+   \        0xA   0x6011             STR      R1,[R2, #+0]
+    210          
+    211            /* Sets the CROP window size */
+    212            DCMI->CWSIZER = (uint32_t)(DCMI_CROPInitStruct->DCMI_CaptureCount |
+    213                            ((uint32_t)DCMI_CROPInitStruct->DCMI_VerticalLineCount << 16));
+   \        0xC   0x88C1             LDRH     R1,[R0, #+6]
+   \        0xE   0x8880             LDRH     R0,[R0, #+4]
+   \       0x10   0xEA51 0x4100      ORRS     R1,R1,R0, LSL #+16
+   \       0x14   0x....             LDR.N    R0,??DataTable13_6  ;; 0x50050024
+   \       0x16   0x6001             STR      R1,[R0, #+0]
+    214          }
+   \       0x18   0x4770             BX       LR               ;; return
+    215          
+    216          /**
+    217            * @brief  Enables or disables the DCMI Crop feature.
+    218            * @note   This function should be called before to enable and start the DCMI interface.
+    219            * @param  NewState: new state of the DCMI Crop feature. 
+    220            *          This parameter can be: ENABLE or DISABLE.
+    221            * @retval None
+    222            */
+
+   \                                 In section .text, align 2, keep-with-next
+    223          void DCMI_CROPCmd(FunctionalState NewState)
+    224          {
+    225            /* Check the parameters */
+    226            assert_param(IS_FUNCTIONAL_STATE(NewState));
+    227              
+    228            if (NewState != DISABLE)
+   \                     DCMI_CROPCmd: (+1)
+   \        0x0   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \        0x2   0x2800             CMP      R0,#+0
+   \        0x4   0xD005             BEQ.N    ??DCMI_CROPCmd_0
+    229            {
+    230              /* Enable the DCMI Crop feature */
+    231              DCMI->CR |= (uint32_t)DCMI_CR_CROP;
+   \        0x6   0x....             LDR.N    R0,??DataTable13  ;; 0x50050000
+   \        0x8   0x6801             LDR      R1,[R0, #+0]
+   \        0xA   0xF051 0x0104      ORRS     R1,R1,#0x4
+   \        0xE   0x6001             STR      R1,[R0, #+0]
+   \       0x10   0xE004             B.N      ??DCMI_CROPCmd_1
+    232            }
+    233            else
+    234            {
+    235              /* Disable the DCMI Crop feature */
+    236              DCMI->CR &= ~(uint32_t)DCMI_CR_CROP;
+   \                     ??DCMI_CROPCmd_0: (+1)
+   \       0x12   0x....             LDR.N    R0,??DataTable13  ;; 0x50050000
+   \       0x14   0x6801             LDR      R1,[R0, #+0]
+   \       0x16   0xF031 0x0104      BICS     R1,R1,#0x4
+   \       0x1A   0x6001             STR      R1,[R0, #+0]
+    237            }
+    238          }
+   \                     ??DCMI_CROPCmd_1: (+1)
+   \       0x1C   0x4770             BX       LR               ;; return
+    239          
+    240          /**
+    241            * @brief  Sets the embedded synchronization codes
+    242            * @param  DCMI_CodesInitTypeDef: pointer to a DCMI_CodesInitTypeDef structure that
+    243            *         contains the embedded synchronization codes for the DCMI peripheral.
+    244            * @retval None
+    245            */
+
+   \                                 In section .text, align 2, keep-with-next
+    246          void DCMI_SetEmbeddedSynchroCodes(DCMI_CodesInitTypeDef* DCMI_CodesInitStruct)
+    247          {
+    248            DCMI->ESCR = (uint32_t)(DCMI_CodesInitStruct->DCMI_FrameStartCode |
+    249                                    ((uint32_t)DCMI_CodesInitStruct->DCMI_LineStartCode << 8)|
+    250                                    ((uint32_t)DCMI_CodesInitStruct->DCMI_LineEndCode << 16)|
+    251                                    ((uint32_t)DCMI_CodesInitStruct->DCMI_FrameEndCode << 24));
+   \                     DCMI_SetEmbeddedSynchroCodes: (+1)
+   \        0x0   0x7801             LDRB     R1,[R0, #+0]
+   \        0x2   0x7842             LDRB     R2,[R0, #+1]
+   \        0x4   0xEA51 0x2102      ORRS     R1,R1,R2, LSL #+8
+   \        0x8   0x7882             LDRB     R2,[R0, #+2]
+   \        0xA   0xEA51 0x4102      ORRS     R1,R1,R2, LSL #+16
+   \        0xE   0x78C0             LDRB     R0,[R0, #+3]
+   \       0x10   0xEA51 0x6100      ORRS     R1,R1,R0, LSL #+24
+   \       0x14   0x....             LDR.N    R0,??DataTable13_3  ;; 0x50050018
+   \       0x16   0x6001             STR      R1,[R0, #+0]
+    252          }
+   \       0x18   0x4770             BX       LR               ;; return
+    253          
+    254          /**
+    255            * @brief  Enables or disables the DCMI JPEG format.
+    256            * @note   The Crop and Embedded Synchronization features cannot be used in this mode.  
+    257            * @param  NewState: new state of the DCMI JPEG format. 
+    258            *          This parameter can be: ENABLE or DISABLE.
+    259            * @retval None
+    260            */
+
+   \                                 In section .text, align 2, keep-with-next
+    261          void DCMI_JPEGCmd(FunctionalState NewState)
+    262          {
+    263            /* Check the parameters */
+    264            assert_param(IS_FUNCTIONAL_STATE(NewState));
+    265           
+    266            if (NewState != DISABLE)
+   \                     DCMI_JPEGCmd: (+1)
+   \        0x0   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \        0x2   0x2800             CMP      R0,#+0
+   \        0x4   0xD005             BEQ.N    ??DCMI_JPEGCmd_0
+    267            {
+    268              /* Enable the DCMI JPEG format */
+    269              DCMI->CR |= (uint32_t)DCMI_CR_JPEG;
+   \        0x6   0x....             LDR.N    R0,??DataTable13  ;; 0x50050000
+   \        0x8   0x6801             LDR      R1,[R0, #+0]
+   \        0xA   0xF051 0x0108      ORRS     R1,R1,#0x8
+   \        0xE   0x6001             STR      R1,[R0, #+0]
+   \       0x10   0xE004             B.N      ??DCMI_JPEGCmd_1
+    270            }
+    271            else
+    272            {
+    273              /* Disable the DCMI JPEG format */
+    274              DCMI->CR &= ~(uint32_t)DCMI_CR_JPEG;
+   \                     ??DCMI_JPEGCmd_0: (+1)
+   \       0x12   0x....             LDR.N    R0,??DataTable13  ;; 0x50050000
+   \       0x14   0x6801             LDR      R1,[R0, #+0]
+   \       0x16   0xF031 0x0108      BICS     R1,R1,#0x8
+   \       0x1A   0x6001             STR      R1,[R0, #+0]
+    275            }
+    276          }
+   \                     ??DCMI_JPEGCmd_1: (+1)
+   \       0x1C   0x4770             BX       LR               ;; return
+    277          /**
+    278            * @}
+    279            */
+    280          
+    281          /** @defgroup DCMI_Group2 Image capture functions
+    282           *  @brief   Image capture functions
+    283           *
+    284          @verbatim   
+    285           ===============================================================================
+    286                              ##### Image capture functions #####
+    287           ===============================================================================  
+    288          
+    289          @endverbatim
+    290            * @{
+    291            */
+    292            
+    293          /**
+    294            * @brief  Enables or disables the DCMI interface.
+    295            * @param  NewState: new state of the DCMI interface. 
+    296            *          This parameter can be: ENABLE or DISABLE.
+    297            * @retval None
+    298            */
+
+   \                                 In section .text, align 2, keep-with-next
+    299          void DCMI_Cmd(FunctionalState NewState)
+    300          {
+    301            /* Check the parameters */
+    302            assert_param(IS_FUNCTIONAL_STATE(NewState));
+    303            
+    304            if (NewState != DISABLE)
+   \                     DCMI_Cmd: (+1)
+   \        0x0   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \        0x2   0x2800             CMP      R0,#+0
+   \        0x4   0xD005             BEQ.N    ??DCMI_Cmd_0
+    305            {
+    306              /* Enable the DCMI by setting ENABLE bit */
+    307              DCMI->CR |= (uint32_t)DCMI_CR_ENABLE;
+   \        0x6   0x....             LDR.N    R0,??DataTable13  ;; 0x50050000
+   \        0x8   0x6801             LDR      R1,[R0, #+0]
+   \        0xA   0xF451 0x4180      ORRS     R1,R1,#0x4000
+   \        0xE   0x6001             STR      R1,[R0, #+0]
+   \       0x10   0xE004             B.N      ??DCMI_Cmd_1
+    308            }
+    309            else
+    310            {
+    311              /* Disable the DCMI by clearing ENABLE bit */
+    312              DCMI->CR &= ~(uint32_t)DCMI_CR_ENABLE;
+   \                     ??DCMI_Cmd_0: (+1)
+   \       0x12   0x....             LDR.N    R0,??DataTable13  ;; 0x50050000
+   \       0x14   0x6801             LDR      R1,[R0, #+0]
+   \       0x16   0xF431 0x4180      BICS     R1,R1,#0x4000
+   \       0x1A   0x6001             STR      R1,[R0, #+0]
+    313            }
+    314          }
+   \                     ??DCMI_Cmd_1: (+1)
+   \       0x1C   0x4770             BX       LR               ;; return
+    315          
+    316          /**
+    317            * @brief  Enables or disables the DCMI Capture.
+    318            * @param  NewState: new state of the DCMI capture. 
+    319            *          This parameter can be: ENABLE or DISABLE.
+    320            * @retval None
+    321            */
+
+   \                                 In section .text, align 2, keep-with-next
+    322          void DCMI_CaptureCmd(FunctionalState NewState)
+    323          {
+    324            /* Check the parameters */
+    325            assert_param(IS_FUNCTIONAL_STATE(NewState));
+    326              
+    327            if (NewState != DISABLE)
+   \                     DCMI_CaptureCmd: (+1)
+   \        0x0   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \        0x2   0x2800             CMP      R0,#+0
+   \        0x4   0xD005             BEQ.N    ??DCMI_CaptureCmd_0
+    328            {
+    329              /* Enable the DCMI Capture */
+    330              DCMI->CR |= (uint32_t)DCMI_CR_CAPTURE;
+   \        0x6   0x....             LDR.N    R0,??DataTable13  ;; 0x50050000
+   \        0x8   0x6801             LDR      R1,[R0, #+0]
+   \        0xA   0xF051 0x0101      ORRS     R1,R1,#0x1
+   \        0xE   0x6001             STR      R1,[R0, #+0]
+   \       0x10   0xE004             B.N      ??DCMI_CaptureCmd_1
+    331            }
+    332            else
+    333            {
+    334              /* Disable the DCMI Capture */
+    335              DCMI->CR &= ~(uint32_t)DCMI_CR_CAPTURE;
+   \                     ??DCMI_CaptureCmd_0: (+1)
+   \       0x12   0x....             LDR.N    R0,??DataTable13  ;; 0x50050000
+   \       0x14   0x6801             LDR      R1,[R0, #+0]
+   \       0x16   0x0849             LSRS     R1,R1,#+1
+   \       0x18   0x0049             LSLS     R1,R1,#+1
+   \       0x1A   0x6001             STR      R1,[R0, #+0]
+    336            }
+    337          }
+   \                     ??DCMI_CaptureCmd_1: (+1)
+   \       0x1C   0x4770             BX       LR               ;; return
+    338          
+    339          /**
+    340            * @brief  Reads the data stored in the DR register.
+    341            * @param  None 
+    342            * @retval Data register value
+    343            */
+
+   \                                 In section .text, align 2, keep-with-next
+    344          uint32_t DCMI_ReadData(void)
+    345          {
+    346            return DCMI->DR;
+   \                     DCMI_ReadData: (+1)
+   \        0x0   0x....             LDR.N    R0,??DataTable13_9  ;; 0x50050028
+   \        0x2   0x6800             LDR      R0,[R0, #+0]
+   \        0x4   0x4770             BX       LR               ;; return
+    347          }
+    348          /**
+    349            * @}
+    350            */
+    351          
+    352          /** @defgroup DCMI_Group3 Interrupts and flags management functions
+    353           *  @brief   Interrupts and flags management functions
+    354           *
+    355          @verbatim   
+    356           ===============================================================================
+    357                       ##### Interrupts and flags management functions #####
+    358           ===============================================================================  
+    359          
+    360          @endverbatim
+    361            * @{
+    362            */
+    363          
+    364          /**
+    365            * @brief  Enables or disables the DCMI interface interrupts.
+    366            * @param  DCMI_IT: specifies the DCMI interrupt sources to be enabled or disabled. 
+    367            *          This parameter can be any combination of the following values:
+    368            *            @arg DCMI_IT_FRAME: Frame capture complete interrupt mask
+    369            *            @arg DCMI_IT_OVF: Overflow interrupt mask
+    370            *            @arg DCMI_IT_ERR: Synchronization error interrupt mask
+    371            *            @arg DCMI_IT_VSYNC: VSYNC interrupt mask
+    372            *            @arg DCMI_IT_LINE: Line interrupt mask
+    373            * @param  NewState: new state of the specified DCMI interrupts.
+    374            *          This parameter can be: ENABLE or DISABLE.
+    375            * @retval None
+    376            */
+
+   \                                 In section .text, align 2, keep-with-next
+    377          void DCMI_ITConfig(uint16_t DCMI_IT, FunctionalState NewState)
+    378          {
+    379            /* Check the parameters */
+    380            assert_param(IS_DCMI_CONFIG_IT(DCMI_IT));
+    381            assert_param(IS_FUNCTIONAL_STATE(NewState));
+    382            
+    383            if (NewState != DISABLE)
+   \                     DCMI_ITConfig: (+1)
+   \        0x0   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \        0x2   0x2900             CMP      R1,#+0
+   \        0x4   0xD005             BEQ.N    ??DCMI_ITConfig_0
+    384            {
+    385              /* Enable the Interrupt sources */
+    386              DCMI->IER |= DCMI_IT;
+   \        0x6   0x....             LDR.N    R1,??DataTable13_1  ;; 0x5005000c
+   \        0x8   0x680A             LDR      R2,[R1, #+0]
+   \        0xA   0xB280             UXTH     R0,R0            ;; ZeroExt  R0,R0,#+16,#+16
+   \        0xC   0x4310             ORRS     R0,R0,R2
+   \        0xE   0x6008             STR      R0,[R1, #+0]
+   \       0x10   0xE005             B.N      ??DCMI_ITConfig_1
+    387            }
+    388            else
+    389            {
+    390              /* Disable the Interrupt sources */
+    391              DCMI->IER &= (uint16_t)(~DCMI_IT);
+   \                     ??DCMI_ITConfig_0: (+1)
+   \       0x12   0x....             LDR.N    R1,??DataTable13_1  ;; 0x5005000c
+   \       0x14   0x680A             LDR      R2,[R1, #+0]
+   \       0x16   0x43C0             MVNS     R0,R0
+   \       0x18   0xB280             UXTH     R0,R0            ;; ZeroExt  R0,R0,#+16,#+16
+   \       0x1A   0x4010             ANDS     R0,R0,R2
+   \       0x1C   0x6008             STR      R0,[R1, #+0]
+    392            }  
+    393          }
+   \                     ??DCMI_ITConfig_1: (+1)
+   \       0x1E   0x4770             BX       LR               ;; return
+    394          
+    395          /**
+    396            * @brief  Checks whether the  DCMI interface flag is set or not.
+    397            * @param  DCMI_FLAG: specifies the flag to check.
+    398            *          This parameter can be one of the following values:
+    399            *            @arg DCMI_FLAG_FRAMERI: Frame capture complete Raw flag mask
+    400            *            @arg DCMI_FLAG_OVFRI: Overflow Raw flag mask
+    401            *            @arg DCMI_FLAG_ERRRI: Synchronization error Raw flag mask
+    402            *            @arg DCMI_FLAG_VSYNCRI: VSYNC Raw flag mask
+    403            *            @arg DCMI_FLAG_LINERI: Line Raw flag mask
+    404            *            @arg DCMI_FLAG_FRAMEMI: Frame capture complete Masked flag mask
+    405            *            @arg DCMI_FLAG_OVFMI: Overflow Masked flag mask
+    406            *            @arg DCMI_FLAG_ERRMI: Synchronization error Masked flag mask
+    407            *            @arg DCMI_FLAG_VSYNCMI: VSYNC Masked flag mask
+    408            *            @arg DCMI_FLAG_LINEMI: Line Masked flag mask
+    409            *            @arg DCMI_FLAG_HSYNC: HSYNC flag mask
+    410            *            @arg DCMI_FLAG_VSYNC: VSYNC flag mask
+    411            *            @arg DCMI_FLAG_FNE: Fifo not empty flag mask
+    412            * @retval The new state of DCMI_FLAG (SET or RESET).
+    413            */
+
+   \                                 In section .text, align 2, keep-with-next
+    414          FlagStatus DCMI_GetFlagStatus(uint16_t DCMI_FLAG)
+    415          {
+    416            FlagStatus bitstatus = RESET;
+   \                     DCMI_GetFlagStatus: (+1)
+   \        0x0   0x2100             MOVS     R1,#+0
+    417            uint32_t dcmireg, tempreg = 0;
+   \        0x2   0x2100             MOVS     R1,#+0
+    418          
+    419            /* Check the parameters */
+    420            assert_param(IS_DCMI_GET_FLAG(DCMI_FLAG));
+    421            
+    422            /* Get the DCMI register index */
+    423            dcmireg = (((uint16_t)DCMI_FLAG) >> 12);
+   \        0x4   0x0001             MOVS     R1,R0
+   \        0x6   0xB289             UXTH     R1,R1            ;; ZeroExt  R1,R1,#+16,#+16
+   \        0x8   0x0B09             LSRS     R1,R1,#+12
+   \        0xA   0xB289             UXTH     R1,R1            ;; ZeroExt  R1,R1,#+16,#+16
+    424            
+    425            if (dcmireg == 0x00) /* The FLAG is in RISR register */
+   \        0xC   0x2900             CMP      R1,#+0
+   \        0xE   0xD102             BNE.N    ??DCMI_GetFlagStatus_0
+    426            {
+    427              tempreg= DCMI->RISR;
+   \       0x10   0x....             LDR.N    R1,??DataTable13_10  ;; 0x50050008
+   \       0x12   0x6809             LDR      R1,[R1, #+0]
+   \       0x14   0xE006             B.N      ??DCMI_GetFlagStatus_1
+    428            }
+    429            else if (dcmireg == 0x02) /* The FLAG is in SR register */
+   \                     ??DCMI_GetFlagStatus_0: (+1)
+   \       0x16   0x2902             CMP      R1,#+2
+   \       0x18   0xD102             BNE.N    ??DCMI_GetFlagStatus_2
+    430            {
+    431              tempreg = DCMI->SR;
+   \       0x1A   0x....             LDR.N    R1,??DataTable13_11  ;; 0x50050004
+   \       0x1C   0x6809             LDR      R1,[R1, #+0]
+   \       0x1E   0xE001             B.N      ??DCMI_GetFlagStatus_1
+    432            }
+    433            else /* The FLAG is in MISR register */
+    434            {
+    435              tempreg = DCMI->MISR;
+   \                     ??DCMI_GetFlagStatus_2: (+1)
+   \       0x20   0x....             LDR.N    R1,??DataTable13_12  ;; 0x50050010
+   \       0x22   0x6809             LDR      R1,[R1, #+0]
+    436            }
+    437            
+    438            if ((tempreg & DCMI_FLAG) != (uint16_t)RESET )
+   \                     ??DCMI_GetFlagStatus_1: (+1)
+   \       0x24   0xB280             UXTH     R0,R0            ;; ZeroExt  R0,R0,#+16,#+16
+   \       0x26   0x4201             TST      R1,R0
+   \       0x28   0xD001             BEQ.N    ??DCMI_GetFlagStatus_3
+    439            {
+    440              bitstatus = SET;
+   \       0x2A   0x2001             MOVS     R0,#+1
+   \       0x2C   0xE000             B.N      ??DCMI_GetFlagStatus_4
+    441            }
+    442            else
+    443            {
+    444              bitstatus = RESET;
+   \                     ??DCMI_GetFlagStatus_3: (+1)
+   \       0x2E   0x2000             MOVS     R0,#+0
+    445            }
+    446            /* Return the DCMI_FLAG status */
+    447            return  bitstatus;
+   \                     ??DCMI_GetFlagStatus_4: (+1)
+   \       0x30   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x32   0x4770             BX       LR               ;; return
+    448          }
+    449          
+    450          /**
+    451            * @brief  Clears the DCMI's pending flags.
+    452            * @param  DCMI_FLAG: specifies the flag to clear.
+    453            *          This parameter can be any combination of the following values:
+    454            *            @arg DCMI_FLAG_FRAMERI: Frame capture complete Raw flag mask
+    455            *            @arg DCMI_FLAG_OVFRI: Overflow Raw flag mask
+    456            *            @arg DCMI_FLAG_ERRRI: Synchronization error Raw flag mask
+    457            *            @arg DCMI_FLAG_VSYNCRI: VSYNC Raw flag mask
+    458            *            @arg DCMI_FLAG_LINERI: Line Raw flag mask
+    459            * @retval None
+    460            */
+
+   \                                 In section .text, align 2, keep-with-next
+    461          void DCMI_ClearFlag(uint16_t DCMI_FLAG)
+    462          {
+    463            /* Check the parameters */
+    464            assert_param(IS_DCMI_CLEAR_FLAG(DCMI_FLAG));
+    465            
+    466            /* Clear the flag by writing in the ICR register 1 in the corresponding 
+    467            Flag position*/
+    468            
+    469            DCMI->ICR = DCMI_FLAG;
+   \                     DCMI_ClearFlag: (+1)
+   \        0x0   0xB280             UXTH     R0,R0            ;; ZeroExt  R0,R0,#+16,#+16
+   \        0x2   0x....             LDR.N    R1,??DataTable13_2  ;; 0x50050014
+   \        0x4   0x6008             STR      R0,[R1, #+0]
+    470          }
+   \        0x6   0x4770             BX       LR               ;; return
+    471          
+    472          /**
+    473            * @brief  Checks whether the DCMI interrupt has occurred or not.
+    474            * @param  DCMI_IT: specifies the DCMI interrupt source to check.
+    475            *          This parameter can be one of the following values:
+    476            *            @arg DCMI_IT_FRAME: Frame capture complete interrupt mask
+    477            *            @arg DCMI_IT_OVF: Overflow interrupt mask
+    478            *            @arg DCMI_IT_ERR: Synchronization error interrupt mask
+    479            *            @arg DCMI_IT_VSYNC: VSYNC interrupt mask
+    480            *            @arg DCMI_IT_LINE: Line interrupt mask
+    481            * @retval The new state of DCMI_IT (SET or RESET).
+    482            */
+
+   \                                 In section .text, align 2, keep-with-next
+    483          ITStatus DCMI_GetITStatus(uint16_t DCMI_IT)
+    484          {
+    485            ITStatus bitstatus = RESET;
+   \                     DCMI_GetITStatus: (+1)
+   \        0x0   0x2100             MOVS     R1,#+0
+    486            uint32_t itstatus = 0;
+   \        0x2   0x2100             MOVS     R1,#+0
+    487            
+    488            /* Check the parameters */
+    489            assert_param(IS_DCMI_GET_IT(DCMI_IT));
+    490            
+    491            itstatus = DCMI->MISR & DCMI_IT; /* Only masked interrupts are checked */
+   \        0x4   0x....             LDR.N    R1,??DataTable13_12  ;; 0x50050010
+   \        0x6   0x6809             LDR      R1,[R1, #+0]
+   \        0x8   0xB280             UXTH     R0,R0            ;; ZeroExt  R0,R0,#+16,#+16
+   \        0xA   0x4008             ANDS     R0,R0,R1
+    492            
+    493            if ((itstatus != (uint16_t)RESET))
+   \        0xC   0x2800             CMP      R0,#+0
+   \        0xE   0xD001             BEQ.N    ??DCMI_GetITStatus_0
+    494            {
+    495              bitstatus = SET;
+   \       0x10   0x2001             MOVS     R0,#+1
+   \       0x12   0xE000             B.N      ??DCMI_GetITStatus_1
+    496            }
+    497            else
+    498            {
+    499              bitstatus = RESET;
+   \                     ??DCMI_GetITStatus_0: (+1)
+   \       0x14   0x2000             MOVS     R0,#+0
+    500            }
+    501            return bitstatus;
+   \                     ??DCMI_GetITStatus_1: (+1)
+   \       0x16   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x18   0x4770             BX       LR               ;; return
+    502          }
+    503          
+    504          /**
+    505            * @brief  Clears the DCMI's interrupt pending bits.
+    506            * @param  DCMI_IT: specifies the DCMI interrupt pending bit to clear.
+    507            *          This parameter can be any combination of the following values:
+    508            *            @arg DCMI_IT_FRAME: Frame capture complete interrupt mask
+    509            *            @arg DCMI_IT_OVF: Overflow interrupt mask
+    510            *            @arg DCMI_IT_ERR: Synchronization error interrupt mask
+    511            *            @arg DCMI_IT_VSYNC: VSYNC interrupt mask
+    512            *            @arg DCMI_IT_LINE: Line interrupt mask
+    513            * @retval None
+    514            */
+
+   \                                 In section .text, align 2, keep-with-next
+    515          void DCMI_ClearITPendingBit(uint16_t DCMI_IT)
+    516          {
+    517            /* Clear the interrupt pending Bit by writing in the ICR register 1 in the 
+    518            corresponding pending Bit position*/
+    519            
+    520            DCMI->ICR = DCMI_IT;
+   \                     DCMI_ClearITPendingBit: (+1)
+   \        0x0   0xB280             UXTH     R0,R0            ;; ZeroExt  R0,R0,#+16,#+16
+   \        0x2   0x....             LDR.N    R1,??DataTable13_2  ;; 0x50050014
+   \        0x4   0x6008             STR      R0,[R1, #+0]
+    521          }
+   \        0x6   0x4770             BX       LR               ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable13:
+   \        0x0   0x5005'0000        DC32     0x50050000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable13_1:
+   \        0x0   0x5005'000C        DC32     0x5005000c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable13_2:
+   \        0x0   0x5005'0014        DC32     0x50050014
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable13_3:
+   \        0x0   0x5005'0018        DC32     0x50050018
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable13_4:
+   \        0x0   0x5005'001C        DC32     0x5005001c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable13_5:
+   \        0x0   0x5005'0020        DC32     0x50050020
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable13_6:
+   \        0x0   0x5005'0024        DC32     0x50050024
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable13_7:
+   \        0x0   0xFFFF'BFFE        DC32     0xffffbffe
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable13_8:
+   \        0x0   0xFFFF'F00D        DC32     0xfffff00d
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable13_9:
+   \        0x0   0x5005'0028        DC32     0x50050028
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable13_10:
+   \        0x0   0x5005'0008        DC32     0x50050008
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable13_11:
+   \        0x0   0x5005'0004        DC32     0x50050004
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable13_12:
+   \        0x0   0x5005'0010        DC32     0x50050010
+    522          /**
+    523            * @}
+    524            */ 
+    525          
+    526          /**
+    527            * @}
+    528            */ 
+    529          
+    530          /**
+    531            * @}
+    532            */ 
+    533          
+    534          /**
+    535            * @}
+    536            */ 
+    537          
+    538          /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   DCMI_CROPCmd
+       0   DCMI_CROPConfig
+       0   DCMI_CaptureCmd
+       0   DCMI_ClearFlag
+       0   DCMI_ClearITPendingBit
+       0   DCMI_Cmd
+       0   DCMI_DeInit
+       0   DCMI_GetFlagStatus
+       0   DCMI_GetITStatus
+       0   DCMI_ITConfig
+       4   DCMI_Init
+       0   DCMI_JPEGCmd
+       0   DCMI_ReadData
+       0   DCMI_SetEmbeddedSynchroCodes
+       0   DCMI_StructInit
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable13
+       4  ??DataTable13_1
+       4  ??DataTable13_10
+       4  ??DataTable13_11
+       4  ??DataTable13_12
+       4  ??DataTable13_2
+       4  ??DataTable13_3
+       4  ??DataTable13_4
+       4  ??DataTable13_5
+       4  ??DataTable13_6
+       4  ??DataTable13_7
+       4  ??DataTable13_8
+       4  ??DataTable13_9
+      30  DCMI_CROPCmd
+      26  DCMI_CROPConfig
+      30  DCMI_CaptureCmd
+       8  DCMI_ClearFlag
+       8  DCMI_ClearITPendingBit
+      30  DCMI_Cmd
+      44  DCMI_DeInit
+      52  DCMI_GetFlagStatus
+      26  DCMI_GetITStatus
+      32  DCMI_ITConfig
+      54  DCMI_Init
+      30  DCMI_JPEGCmd
+       6  DCMI_ReadData
+      26  DCMI_SetEmbeddedSynchroCodes
+      30  DCMI_StructInit
+
+ 
+ 484 bytes in section .text
+ 
+ 484 bytes of CODE memory
+
+Errors: none
+Warnings: none

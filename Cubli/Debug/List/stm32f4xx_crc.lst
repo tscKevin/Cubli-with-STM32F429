@@ -1,0 +1,276 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         10/Jul/2020  15:12:04
+# Copyright 1999-2019 IAR Systems AB.
+#
+#    Cpu mode     =  
+#    Endian       =  little
+#    Source file  =
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_crc.c
+#    Command line =
+#        -f C:\Users\Evan\AppData\Local\Temp\EWDE00.tmp
+#        (E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_crc.c
+#        -D USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List
+#        -o
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "D:\IAR
+#        Systems\Embedded Workbench 8.3\arm\inc\c\DLib_Config_Normal.h" -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Include\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\iar\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\inc\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\User\inc\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\User\src\
+#        -Ol --use_c++_inline -I "D:\IAR Systems\Embedded Workbench
+#        8.3\arm\CMSIS\Core\Include\" -I "D:\IAR Systems\Embedded Workbench
+#        8.3\arm\CMSIS\DSP\Include\")
+#    Locale       =  C
+#    List file    =
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List\stm32f4xx_crc.lst
+#    Object file  =
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\Obj\stm32f4xx_crc.o
+#
+###############################################################################
+
+E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_crc.c
+      1          /**
+      2            ******************************************************************************
+      3            * @file    stm32f4xx_crc.c
+      4            * @author  MCD Application Team
+      5            * @version V1.8.0
+      6            * @date    04-November-2016
+      7            * @brief   This file provides all the CRC firmware functions.
+      8            ******************************************************************************
+      9            * @attention
+     10            *
+     11            * <h2><center>&copy; COPYRIGHT 2016 STMicroelectronics</center></h2>
+     12            *
+     13            * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
+     14            * You may not use this file except in compliance with the License.
+     15            * You may obtain a copy of the License at:
+     16            *
+     17            *        http://www.st.com/software_license_agreement_liberty_v2
+     18            *
+     19            * Unless required by applicable law or agreed to in writing, software 
+     20            * distributed under the License is distributed on an "AS IS" BASIS, 
+     21            * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     22            * See the License for the specific language governing permissions and
+     23            * limitations under the License.
+     24            *
+     25            ******************************************************************************
+     26            */
+     27          
+     28          /* Includes ------------------------------------------------------------------*/
+     29          #include "stm32f4xx_crc.h"
+     30          
+     31          /** @addtogroup STM32F4xx_StdPeriph_Driver
+     32            * @{
+     33            */
+     34          
+     35          /** @defgroup CRC 
+     36            * @brief CRC driver modules
+     37            * @{
+     38            */
+     39          
+     40          /* Private typedef -----------------------------------------------------------*/
+     41          /* Private define ------------------------------------------------------------*/
+     42          /* Private macro -------------------------------------------------------------*/
+     43          /* Private variables ---------------------------------------------------------*/
+     44          /* Private function prototypes -----------------------------------------------*/
+     45          /* Private functions ---------------------------------------------------------*/
+     46          
+     47          /** @defgroup CRC_Private_Functions
+     48            * @{
+     49            */
+     50          
+     51          /**
+     52            * @brief  Resets the CRC Data register (DR).
+     53            * @param  None
+     54            * @retval None
+     55            */
+
+   \                                 In section .text, align 2, keep-with-next
+     56          void CRC_ResetDR(void)
+     57          {
+     58            /* Reset CRC generator */
+     59            CRC->CR = CRC_CR_RESET;
+   \                     CRC_ResetDR: (+1)
+   \        0x0   0x2001             MOVS     R0,#+1
+   \        0x2   0x....             LDR.N    R1,??DataTable5  ;; 0x40023008
+   \        0x4   0x6008             STR      R0,[R1, #+0]
+     60          }
+   \        0x6   0x4770             BX       LR               ;; return
+     61          
+     62          /**
+     63            * @brief  Computes the 32-bit CRC of a given data word(32-bit).
+     64            * @param  Data: data word(32-bit) to compute its CRC
+     65            * @retval 32-bit CRC
+     66            */
+
+   \                                 In section .text, align 2, keep-with-next
+     67          uint32_t CRC_CalcCRC(uint32_t Data)
+     68          {
+     69            CRC->DR = Data;
+   \                     CRC_CalcCRC: (+1)
+   \        0x0   0x....             LDR.N    R1,??DataTable5_1  ;; 0x40023000
+   \        0x2   0x6008             STR      R0,[R1, #+0]
+     70            
+     71            return (CRC->DR);
+   \        0x4   0x6808             LDR      R0,[R1, #+0]
+   \        0x6   0x4770             BX       LR               ;; return
+     72          }
+     73          
+     74          /**
+     75            * @brief  Computes the 32-bit CRC of a given buffer of data word(32-bit).
+     76            * @param  pBuffer: pointer to the buffer containing the data to be computed
+     77            * @param  BufferLength: length of the buffer to be computed					
+     78            * @retval 32-bit CRC
+     79            */
+
+   \                                 In section .text, align 2, keep-with-next
+     80          uint32_t CRC_CalcBlockCRC(uint32_t pBuffer[], uint32_t BufferLength)
+     81          {
+   \                     CRC_CalcBlockCRC: (+1)
+   \        0x0   0xB410             PUSH     {R4}
+     82            uint32_t index = 0;
+   \        0x2   0x2200             MOVS     R2,#+0
+     83            
+     84            for(index = 0; index < BufferLength; index++)
+   \        0x4   0x2200             MOVS     R2,#+0
+   \        0x6   0xE004             B.N      ??CRC_CalcBlockCRC_0
+     85            {
+     86              CRC->DR = pBuffer[index];
+   \                     ??CRC_CalcBlockCRC_1: (+1)
+   \        0x8   0xF850 0x3022      LDR      R3,[R0, R2, LSL #+2]
+   \        0xC   0x....             LDR.N    R4,??DataTable5_1  ;; 0x40023000
+   \        0xE   0x6023             STR      R3,[R4, #+0]
+     87            }
+   \       0x10   0x1C52             ADDS     R2,R2,#+1
+   \                     ??CRC_CalcBlockCRC_0: (+1)
+   \       0x12   0x428A             CMP      R2,R1
+   \       0x14   0xD3F8             BCC.N    ??CRC_CalcBlockCRC_1
+     88            return (CRC->DR);
+   \       0x16   0x....             LDR.N    R0,??DataTable5_1  ;; 0x40023000
+   \       0x18   0x6800             LDR      R0,[R0, #+0]
+   \       0x1A   0xBC10             POP      {R4}
+   \       0x1C   0x4770             BX       LR               ;; return
+     89          }
+     90          
+     91          /**
+     92            * @brief  Returns the current CRC value.
+     93            * @param  None
+     94            * @retval 32-bit CRC
+     95            */
+
+   \                                 In section .text, align 2, keep-with-next
+     96          uint32_t CRC_GetCRC(void)
+     97          {
+     98            return (CRC->DR);
+   \                     CRC_GetCRC: (+1)
+   \        0x0   0x....             LDR.N    R0,??DataTable5_1  ;; 0x40023000
+   \        0x2   0x6800             LDR      R0,[R0, #+0]
+   \        0x4   0x4770             BX       LR               ;; return
+     99          }
+    100          
+    101          /**
+    102            * @brief  Stores a 8-bit data in the Independent Data(ID) register.
+    103            * @param  IDValue: 8-bit value to be stored in the ID register 					
+    104            * @retval None
+    105            */
+
+   \                                 In section .text, align 2, keep-with-next
+    106          void CRC_SetIDRegister(uint8_t IDValue)
+    107          {
+    108            CRC->IDR = IDValue;
+   \                     CRC_SetIDRegister: (+1)
+   \        0x0   0x....             LDR.N    R1,??DataTable5_2  ;; 0x40023004
+   \        0x2   0x7008             STRB     R0,[R1, #+0]
+    109          }
+   \        0x4   0x4770             BX       LR               ;; return
+    110          
+    111          /**
+    112            * @brief  Returns the 8-bit data stored in the Independent Data(ID) register
+    113            * @param  None
+    114            * @retval 8-bit value of the ID register 
+    115            */
+
+   \                                 In section .text, align 2, keep-with-next
+    116          uint8_t CRC_GetIDRegister(void)
+    117          {
+    118            return (CRC->IDR);
+   \                     CRC_GetIDRegister: (+1)
+   \        0x0   0x....             LDR.N    R0,??DataTable5_2  ;; 0x40023004
+   \        0x2   0x7800             LDRB     R0,[R0, #+0]
+   \        0x4   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \        0x6   0x4770             BX       LR               ;; return
+    119          }
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5:
+   \        0x0   0x4002'3008        DC32     0x40023008
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_1:
+   \        0x0   0x4002'3000        DC32     0x40023000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_2:
+   \        0x0   0x4002'3004        DC32     0x40023004
+    120          
+    121          /**
+    122            * @}
+    123            */
+    124          
+    125          /**
+    126            * @}
+    127            */
+    128          
+    129          /**
+    130            * @}
+    131            */
+    132          
+    133          /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       4   CRC_CalcBlockCRC
+       0   CRC_CalcCRC
+       0   CRC_GetCRC
+       0   CRC_GetIDRegister
+       0   CRC_ResetDR
+       0   CRC_SetIDRegister
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable5
+       4  ??DataTable5_1
+       4  ??DataTable5_2
+      30  CRC_CalcBlockCRC
+       8  CRC_CalcCRC
+       6  CRC_GetCRC
+       8  CRC_GetIDRegister
+       8  CRC_ResetDR
+       6  CRC_SetIDRegister
+
+ 
+ 78 bytes in section .text
+ 
+ 78 bytes of CODE memory
+
+Errors: none
+Warnings: none

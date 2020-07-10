@@ -1,0 +1,718 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         10/Jul/2020  15:12:11
+# Copyright 1999-2019 IAR Systems AB.
+#
+#    Cpu mode     =  
+#    Endian       =  little
+#    Source file  =
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_syscfg.c
+#    Command line =
+#        -f C:\Users\Evan\AppData\Local\Temp\EWF833.tmp
+#        (E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_syscfg.c
+#        -D USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List
+#        -o
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "D:\IAR
+#        Systems\Embedded Workbench 8.3\arm\inc\c\DLib_Config_Normal.h" -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Include\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\iar\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\inc\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\User\inc\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\User\src\
+#        -Ol --use_c++_inline -I "D:\IAR Systems\Embedded Workbench
+#        8.3\arm\CMSIS\Core\Include\" -I "D:\IAR Systems\Embedded Workbench
+#        8.3\arm\CMSIS\DSP\Include\")
+#    Locale       =  C
+#    List file    =
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List\stm32f4xx_syscfg.lst
+#    Object file  =
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\Obj\stm32f4xx_syscfg.o
+#
+###############################################################################
+
+E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_syscfg.c
+      1          /**
+      2            ******************************************************************************
+      3            * @file    stm32f4xx_syscfg.c
+      4            * @author  MCD Application Team
+      5            * @version V1.8.0
+      6            * @date    04-November-2016
+      7            * @brief   This file provides firmware functions to manage the SYSCFG peripheral.
+      8            *
+      9           @verbatim
+     10              
+     11           ===============================================================================
+     12                               ##### How to use this driver #####
+     13           ===============================================================================
+     14              [..] This driver provides functions for:
+     15                      
+     16                 (#) Remapping the memory accessible in the code area using SYSCFG_MemoryRemapConfig()
+     17                      
+     18                 (#) Swapping the internal flash Bank1 and Bank2 this features is only visible for 
+     19                     STM32F42xxx/43xxx devices Devices. 
+     20                          
+     21                 (#) Manage the EXTI lines connection to the GPIOs using SYSCFG_EXTILineConfig()
+     22                        
+     23                 (#) Select the ETHERNET media interface (RMII/RII) using SYSCFG_ETH_MediaInterfaceConfig()
+     24            
+     25                 -@- SYSCFG APB clock must be enabled to get write access to SYSCFG registers,
+     26                     using RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);
+     27                             
+     28           @endverbatim      
+     29            ******************************************************************************
+     30            * @attention
+     31            *
+     32            * <h2><center>&copy; COPYRIGHT 2016 STMicroelectronics</center></h2>
+     33            *
+     34            * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
+     35            * You may not use this file except in compliance with the License.
+     36            * You may obtain a copy of the License at:
+     37            *
+     38            *        http://www.st.com/software_license_agreement_liberty_v2
+     39            *
+     40            * Unless required by applicable law or agreed to in writing, software 
+     41            * distributed under the License is distributed on an "AS IS" BASIS, 
+     42            * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     43            * See the License for the specific language governing permissions and
+     44            * limitations under the License.
+     45            *
+     46            ******************************************************************************
+     47            */
+     48          
+     49          /* Includes ------------------------------------------------------------------*/
+     50          #include "stm32f4xx_syscfg.h"
+     51          #include "stm32f4xx_rcc.h"
+     52          
+     53          /** @addtogroup STM32F4xx_StdPeriph_Driver
+     54            * @{
+     55            */
+     56          
+     57          /** @defgroup SYSCFG 
+     58            * @brief SYSCFG driver modules
+     59            * @{
+     60            */ 
+     61          
+     62          /* Private typedef -----------------------------------------------------------*/
+     63          /* Private define ------------------------------------------------------------*/
+     64          /* ------------ RCC registers bit address in the alias region ----------- */
+     65          #define SYSCFG_OFFSET             (SYSCFG_BASE - PERIPH_BASE)
+     66          /* ---  MEMRMP Register ---*/ 
+     67          /* Alias word address of UFB_MODE bit */ 
+     68          #define MEMRMP_OFFSET             SYSCFG_OFFSET 
+     69          #define UFB_MODE_BitNumber        ((uint8_t)0x8) 
+     70          #define UFB_MODE_BB               (PERIPH_BB_BASE + (MEMRMP_OFFSET * 32) + (UFB_MODE_BitNumber * 4)) 
+     71              
+     72          /* ---  PMC Register ---*/ 
+     73          /* Alias word address of MII_RMII_SEL bit */ 
+     74          #define PMC_OFFSET                (SYSCFG_OFFSET + 0x04) 
+     75          #define MII_RMII_SEL_BitNumber    ((uint8_t)0x17) 
+     76          #define PMC_MII_RMII_SEL_BB       (PERIPH_BB_BASE + (PMC_OFFSET * 32) + (MII_RMII_SEL_BitNumber * 4)) 
+     77              
+     78          /* ---  CMPCR Register ---*/ 
+     79          /* Alias word address of CMP_PD bit */ 
+     80          #define CMPCR_OFFSET              (SYSCFG_OFFSET + 0x20) 
+     81          #define CMP_PD_BitNumber          ((uint8_t)0x00) 
+     82          #define CMPCR_CMP_PD_BB           (PERIPH_BB_BASE + (CMPCR_OFFSET * 32) + (CMP_PD_BitNumber * 4)) 
+     83          
+     84          /* ---  MCHDLYCR Register ---*/ 
+     85          /* Alias word address of BSCKSEL bit */ 
+     86          #define MCHDLYCR_OFFSET            (SYSCFG_OFFSET + 0x30) 
+     87          #define BSCKSEL_BIT_NUMBER         POSITION_VAL(SYSCFG_MCHDLYCR_BSCKSEL)
+     88          #define MCHDLYCR_BSCKSEL_BB        (uint32_t)(PERIPH_BB_BASE + (MCHDLYCR_OFFSET * 32) + (BSCKSEL_BIT_NUMBER * 4))
+     89          
+     90          /* Private macro -------------------------------------------------------------*/
+     91          /* Private variables ---------------------------------------------------------*/
+     92          /* Private function prototypes -----------------------------------------------*/
+     93          /* Private functions ---------------------------------------------------------*/
+     94          
+     95          /** @defgroup SYSCFG_Private_Functions
+     96            * @{
+     97            */ 
+     98          
+     99          /**
+    100            * @brief  Deinitializes the Alternate Functions (remap and EXTI configuration)
+    101            *   registers to their default reset values.
+    102            * @param  None
+    103            * @retval None
+    104            */
+
+   \                                 In section .text, align 2, keep-with-next
+    105          void SYSCFG_DeInit(void)
+    106          {
+   \                     SYSCFG_DeInit: (+1)
+   \        0x0   0xB580             PUSH     {R7,LR}
+    107             RCC_APB2PeriphResetCmd(RCC_APB2Periph_SYSCFG, ENABLE);
+   \        0x2   0x2101             MOVS     R1,#+1
+   \        0x4   0xF44F 0x4080      MOV      R0,#+16384
+   \        0x8   0x....'....        BL       RCC_APB2PeriphResetCmd
+    108             RCC_APB2PeriphResetCmd(RCC_APB2Periph_SYSCFG, DISABLE);
+   \        0xC   0x2100             MOVS     R1,#+0
+   \        0xE   0xF44F 0x4080      MOV      R0,#+16384
+   \       0x12   0x....'....        BL       RCC_APB2PeriphResetCmd
+    109          }
+   \       0x16   0xBD01             POP      {R0,PC}          ;; return
+    110          
+    111          /**
+    112            * @brief  Changes the mapping of the specified pin.
+    113            * @param  SYSCFG_Memory: selects the memory remapping.
+    114            *         This parameter can be one of the following values:
+    115            *            @arg SYSCFG_MemoryRemap_Flash:       Main Flash memory mapped at 0x00000000  
+    116            *            @arg SYSCFG_MemoryRemap_SystemFlash: System Flash memory mapped at 0x00000000
+    117            *            @arg SYSCFG_MemoryRemap_FSMC:        FSMC (Bank1 (NOR/PSRAM 1 and 2) mapped at 0x00000000 for STM32F405xx/407xx, STM32F415xx/417xx and STM32F413_423xx devices. 
+    118            *            @arg SYSCFG_MemoryRemap_FMC:         FMC (Bank1 (NOR/PSRAM 1 and 2) mapped at 0x00000000 for STM32F42xxx/43xxx devices. 
+    119            *            @arg SYSCFG_MemoryRemap_ExtMEM:      External Memory mapped at 0x00000000 for STM32F446xx/STM32F469_479xx devices. 
+    120            *            @arg SYSCFG_MemoryRemap_SRAM:        Embedded SRAM (112kB) mapped at 0x00000000
+    121            *            @arg SYSCFG_MemoryRemap_SDRAM:       FMC (External SDRAM)  mapped at 0x00000000 for STM32F42xxx/43xxx devices.            
+    122            * @retval None
+    123            */
+
+   \                                 In section .text, align 2, keep-with-next
+    124          void SYSCFG_MemoryRemapConfig(uint8_t SYSCFG_MemoryRemap)
+    125          {
+    126            /* Check the parameters */
+    127            assert_param(IS_SYSCFG_MEMORY_REMAP_CONFING(SYSCFG_MemoryRemap));
+    128          
+    129            SYSCFG->MEMRMP = SYSCFG_MemoryRemap;
+   \                     SYSCFG_MemoryRemapConfig: (+1)
+   \        0x0   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \        0x2   0x....             LDR.N    R1,??DataTable6  ;; 0x40013800
+   \        0x4   0x6008             STR      R0,[R1, #+0]
+    130          }
+   \        0x6   0x4770             BX       LR               ;; return
+    131          
+    132          /**
+    133            * @brief  Enables or disables the Internal FLASH Bank Swapping.
+    134            *   
+    135            * @note   This function can be used only for STM32F42xxx/43xxx devices. 
+    136            *
+    137            * @param  NewState: new state of Internal FLASH Bank swapping.
+    138            *          This parameter can be one of the following values:
+    139            *            @arg ENABLE: Flash Bank2 mapped at 0x08000000 (and aliased @0x00000000) 
+    140            *                         and Flash Bank1 mapped at 0x08100000 (and aliased at 0x00100000)   
+    141            *            @arg DISABLE:(the default state) Flash Bank1 mapped at 0x08000000 (and aliased @0x0000 0000) 
+    142                                      and Flash Bank2 mapped at 0x08100000 (and aliased at 0x00100000)  
+    143            * @retval None
+    144            */
+
+   \                                 In section .text, align 2, keep-with-next
+    145          void SYSCFG_MemorySwappingBank(FunctionalState NewState)
+    146          {
+    147            /* Check the parameters */
+    148            assert_param(IS_FUNCTIONAL_STATE(NewState));
+    149          
+    150            *(__IO uint32_t *) UFB_MODE_BB = (uint32_t)NewState;
+   \                     SYSCFG_MemorySwappingBank: (+1)
+   \        0x0   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \        0x2   0x....             LDR.N    R1,??DataTable6_1  ;; 0x42270020
+   \        0x4   0x6008             STR      R0,[R1, #+0]
+    151          }
+   \        0x6   0x4770             BX       LR               ;; return
+    152          
+    153          /**
+    154            * @brief  Selects the GPIO pin used as EXTI Line.
+    155            * @param  EXTI_PortSourceGPIOx : selects the GPIO port to be used as source for
+    156            *          EXTI lines where x can be (A..K) for STM32F42xxx/43xxx devices, (A..I) 
+    157            *          for STM32F405xx/407xx and STM32F415xx/417xx devices or (A, B, C, D and H)
+    158            *          for STM32401xx devices.  
+    159            *            
+    160            * @param  EXTI_PinSourcex: specifies the EXTI line to be configured.
+    161            *           This parameter can be EXTI_PinSourcex where x can be (0..15, except
+    162            *           for EXTI_PortSourceGPIOI x can be (0..11) for STM32F405xx/407xx
+    163            *           and STM32F405xx/407xx devices and for EXTI_PortSourceGPIOK x can   
+    164            *           be (0..7) for STM32F42xxx/43xxx devices. 
+    165            *             
+    166            * @retval None
+    167            */
+
+   \                                 In section .text, align 2, keep-with-next
+    168          void SYSCFG_EXTILineConfig(uint8_t EXTI_PortSourceGPIOx, uint8_t EXTI_PinSourcex)
+    169          {
+   \                     SYSCFG_EXTILineConfig: (+1)
+   \        0x0   0xB410             PUSH     {R4}
+    170            uint32_t tmp = 0x00;
+   \        0x2   0x2200             MOVS     R2,#+0
+    171          
+    172            /* Check the parameters */
+    173            assert_param(IS_EXTI_PORT_SOURCE(EXTI_PortSourceGPIOx));
+    174            assert_param(IS_EXTI_PIN_SOURCE(EXTI_PinSourcex));
+    175          
+    176            tmp = ((uint32_t)0x0F) << (0x04 * (EXTI_PinSourcex & (uint8_t)0x03));
+   \        0x4   0x230F             MOVS     R3,#+15
+   \        0x6   0xF011 0x0203      ANDS     R2,R1,#0x3
+   \        0xA   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
+   \        0xC   0x0092             LSLS     R2,R2,#+2
+   \        0xE   0xFA13 0xF202      LSLS     R2,R3,R2
+    177            SYSCFG->EXTICR[EXTI_PinSourcex >> 0x02] &= ~tmp;
+   \       0x12   0x....             LDR.N    R3,??DataTable6_2  ;; 0x40013808
+   \       0x14   0x000C             MOVS     R4,R1
+   \       0x16   0xB2E4             UXTB     R4,R4            ;; ZeroExt  R4,R4,#+24,#+24
+   \       0x18   0x10A4             ASRS     R4,R4,#+2
+   \       0x1A   0xF853 0x4024      LDR      R4,[R3, R4, LSL #+2]
+   \       0x1E   0xEA34 0x0202      BICS     R2,R4,R2
+   \       0x22   0x000C             MOVS     R4,R1
+   \       0x24   0xB2E4             UXTB     R4,R4            ;; ZeroExt  R4,R4,#+24,#+24
+   \       0x26   0x10A4             ASRS     R4,R4,#+2
+   \       0x28   0xF843 0x2024      STR      R2,[R3, R4, LSL #+2]
+    178            SYSCFG->EXTICR[EXTI_PinSourcex >> 0x02] |= (((uint32_t)EXTI_PortSourceGPIOx) << (0x04 * (EXTI_PinSourcex & (uint8_t)0x03)));
+   \       0x2C   0x000A             MOVS     R2,R1
+   \       0x2E   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
+   \       0x30   0x1092             ASRS     R2,R2,#+2
+   \       0x32   0xF853 0x4022      LDR      R4,[R3, R2, LSL #+2]
+   \       0x36   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x38   0xF011 0x0203      ANDS     R2,R1,#0x3
+   \       0x3C   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
+   \       0x3E   0x0092             LSLS     R2,R2,#+2
+   \       0x40   0x4090             LSLS     R0,R0,R2
+   \       0x42   0x4320             ORRS     R0,R0,R4
+   \       0x44   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0x46   0x1089             ASRS     R1,R1,#+2
+   \       0x48   0xF843 0x0021      STR      R0,[R3, R1, LSL #+2]
+    179          }
+   \       0x4C   0xBC10             POP      {R4}
+   \       0x4E   0x4770             BX       LR               ;; return
+    180          
+    181          /**
+    182            * @brief  Selects the ETHERNET media interface 
+    183            * @param  SYSCFG_ETH_MediaInterface: specifies the Media Interface mode. 
+    184            *          This parameter can be one of the following values: 
+    185            *            @arg SYSCFG_ETH_MediaInterface_MII: MII mode selected
+    186            *            @arg SYSCFG_ETH_MediaInterface_RMII: RMII mode selected 
+    187            * @retval None 
+    188            */
+
+   \                                 In section .text, align 2, keep-with-next
+    189          void SYSCFG_ETH_MediaInterfaceConfig(uint32_t SYSCFG_ETH_MediaInterface) 
+    190          { 
+    191            assert_param(IS_SYSCFG_ETH_MEDIA_INTERFACE(SYSCFG_ETH_MediaInterface)); 
+    192            /* Configure MII_RMII selection bit */ 
+    193            *(__IO uint32_t *) PMC_MII_RMII_SEL_BB = SYSCFG_ETH_MediaInterface; 
+   \                     SYSCFG_ETH_MediaInterfaceConfig: (+1)
+   \        0x0   0x....             LDR.N    R1,??DataTable6_3  ;; 0x422700dc
+   \        0x2   0x6008             STR      R0,[R1, #+0]
+    194          }
+   \        0x4   0x4770             BX       LR               ;; return
+    195          
+    196          /**
+    197            * @brief  Enables or disables the I/O Compensation Cell.
+    198            * @note   The I/O compensation cell can be used only when the device supply
+    199            *         voltage ranges from 2.4 to 3.6 V.  
+    200            * @param  NewState: new state of the I/O Compensation Cell.
+    201            *          This parameter can be one of the following values:
+    202            *            @arg ENABLE: I/O compensation cell enabled  
+    203            *            @arg DISABLE: I/O compensation cell power-down mode  
+    204            * @retval None
+    205            */
+
+   \                                 In section .text, align 2, keep-with-next
+    206          void SYSCFG_CompensationCellCmd(FunctionalState NewState)
+    207          {
+    208            /* Check the parameters */
+    209            assert_param(IS_FUNCTIONAL_STATE(NewState));
+    210          
+    211            *(__IO uint32_t *) CMPCR_CMP_PD_BB = (uint32_t)NewState;
+   \                     SYSCFG_CompensationCellCmd: (+1)
+   \        0x0   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \        0x2   0x....             LDR.N    R1,??DataTable6_4  ;; 0x42270400
+   \        0x4   0x6008             STR      R0,[R1, #+0]
+    212          }
+   \        0x6   0x4770             BX       LR               ;; return
+    213          
+    214          /**
+    215            * @brief  Checks whether the I/O Compensation Cell ready flag is set or not.
+    216            * @param  None
+    217            * @retval The new state of the I/O Compensation Cell ready flag (SET or RESET)
+    218            */
+
+   \                                 In section .text, align 2, keep-with-next
+    219          FlagStatus SYSCFG_GetCompensationCellStatus(void)
+    220          {
+    221            FlagStatus bitstatus = RESET;
+   \                     SYSCFG_GetCompensationCellStatus: (+1)
+   \        0x0   0x2000             MOVS     R0,#+0
+    222              
+    223            if ((SYSCFG->CMPCR & SYSCFG_CMPCR_READY ) != (uint32_t)RESET)
+   \        0x2   0x....             LDR.N    R0,??DataTable6_5  ;; 0x40013820
+   \        0x4   0x6800             LDR      R0,[R0, #+0]
+   \        0x6   0x05C0             LSLS     R0,R0,#+23
+   \        0x8   0xD501             BPL.N    ??SYSCFG_GetCompensationCellStatus_0
+    224            {
+    225              bitstatus = SET;
+   \        0xA   0x2001             MOVS     R0,#+1
+   \        0xC   0xE000             B.N      ??SYSCFG_GetCompensationCellStatus_1
+    226            }
+    227            else
+    228            {
+    229              bitstatus = RESET;
+   \                     ??SYSCFG_GetCompensationCellStatus_0: (+1)
+   \        0xE   0x2000             MOVS     R0,#+0
+    230            }
+    231            return bitstatus;
+   \                     ??SYSCFG_GetCompensationCellStatus_1: (+1)
+   \       0x10   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x12   0x4770             BX       LR               ;; return
+    232          }
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6:
+   \        0x0   0x4001'3800        DC32     0x40013800
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_1:
+   \        0x0   0x4227'0020        DC32     0x42270020
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_2:
+   \        0x0   0x4001'3808        DC32     0x40013808
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_3:
+   \        0x0   0x4227'00DC        DC32     0x422700dc
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_4:
+   \        0x0   0x4227'0400        DC32     0x42270400
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_5:
+   \        0x0   0x4001'3820        DC32     0x40013820
+    233          
+    234          #if defined(STM32F410xx) || defined(STM32F412xG) || defined(STM32F413_423xx)
+    235          /**
+    236            * @brief  Connects the selected parameter to the break input of TIM1.
+    237            * @note   The selected configuration is locked and can be unlocked by system reset
+    238            * @param  SYSCFG_Break: selects the configuration to be connected to break
+    239            *         input of TIM1
+    240            *   This parameter can be any combination of the following values:
+    241            *     @arg SYSCFG_Break_PVD: PVD interrupt is connected to the break input of TIM1/8.
+    242            *     @arg SYSCFG_Break_HardFault: Lockup output of CortexM4 is connected to the break input of TIM1/8.
+    243            * @retval None
+    244            */
+    245          void SYSCFG_BreakConfig(uint32_t SYSCFG_Break)
+    246          {
+    247            /* Check the parameter */
+    248            assert_param(IS_SYSCFG_LOCK_CONFIG(SYSCFG_Break));
+    249          
+    250            SYSCFG->CFGR2 |= (uint32_t) SYSCFG_Break;
+    251          }
+    252          #endif /* STM32F410xx || STM32F412xG || STM32F413_423xx */
+    253          
+    254          #if defined(STM32F413_423xx)
+    255          /**
+    256            * @brief  Select the DFSDM2 or TIM2_OC1 as clock source for the bitstream clock.
+    257            * @param source: BITSTREAM_CLOCK_DFSDM2.
+    258            *                BITSTREAM_CLOCK_TIM2OC1.           
+    259            * @retval None
+    260            */
+    261          void DFSDM_BitstreamClock_SourceSelection(uint32_t source)
+    262          {
+    263            uint32_t tmp = 0; 
+    264            
+    265            tmp = SYSCFG->MCHDLYCR;
+    266            tmp = (tmp &(~SYSCFG_MCHDLYCR_BSCKSEL));
+    267          
+    268            SYSCFG->MCHDLYCR  = (tmp|source);
+    269          }
+    270          
+    271          /**
+    272            * @brief  Disable Delay Clock for DFSDM1/2.
+    273            * @param MCHDLY: MCHDLY_CLOCK_DFSDM2.
+    274            *                MCHDLY_CLOCK_DFSDM1.               
+    275            * @retval None
+    276            */
+    277          void DFSDM_DisableDelayClock(uint32_t MCHDLY)
+    278          {
+    279            uint32_t tmp = 0; 
+    280            
+    281            tmp = SYSCFG->MCHDLYCR;
+    282            if(MCHDLY == MCHDLY_CLOCK_DFSDM2)
+    283            {
+    284              tmp =tmp &(~SYSCFG_MCHDLYCR_MCHDLY2EN);
+    285            }
+    286            else
+    287            {
+    288              tmp =tmp &(~SYSCFG_MCHDLYCR_MCHDLY1EN);
+    289            }
+    290          
+    291            SYSCFG->MCHDLYCR  = tmp;
+    292          }
+    293          
+    294          /**
+    295            * @brief  Enable Delay Clock for DFSDM1/2.
+    296            * @param MCHDLY: MCHDLY_CLOCK_DFSDM2.
+    297            *                MCHDLY_CLOCK_DFSDM1.         
+    298            * @retval None
+    299            */
+    300          void DFSDM_EnableDelayClock(uint32_t MCHDLY)
+    301          {
+    302            uint32_t tmp = 0; 
+    303            
+    304            tmp = SYSCFG->MCHDLYCR;
+    305            tmp = tmp & ~MCHDLY;
+    306          
+    307            SYSCFG->MCHDLYCR  = (tmp|MCHDLY);
+    308          }
+    309          
+    310          /**
+    311            * @brief  Select the source for CKin signals for DFSDM1/2.
+    312            * @param source: DFSDM2_CKIN_PAD.
+    313            *                DFSDM2_CKIN_DM. 
+    314            *                DFSDM1_CKIN_PAD.
+    315            *                DFSDM1_CKIN_DM.            
+    316            * @retval None
+    317            */
+    318          void DFSDM_ClockIn_SourceSelection(uint32_t source)
+    319          {
+    320            uint32_t tmp = 0; 
+    321            
+    322            tmp = SYSCFG->MCHDLYCR;
+    323            if((source == DFSDM2_CKIN_PAD) || (source == DFSDM2_CKIN_DM))
+    324            {
+    325              tmp =  (tmp & ~SYSCFG_MCHDLYCR_DFSDM2CFG);
+    326            }
+    327            else
+    328            {
+    329              tmp =  (tmp & ~SYSCFG_MCHDLYCR_DFSDM1CFG);
+    330            }
+    331          
+    332            SYSCFG->MCHDLYCR |= (source|tmp);
+    333          }
+    334          
+    335          /**
+    336            * @brief  Select the source for CKOut signals for DFSDM1/2.
+    337            * @param source: DFSDM2_CKOUT_DFSDM2.
+    338            *                DFSDM2_CKOUT_M27. 
+    339            *                DFSDM1_CKOUT_DFSDM1.
+    340            *                DFSDM1_CKOUT_M27.            
+    341            * @retval None
+    342            */
+    343          void DFSDM_ClockOut_SourceSelection(uint32_t source)
+    344          {
+    345            uint32_t tmp = 0; 
+    346            
+    347            tmp = SYSCFG->MCHDLYCR;
+    348          
+    349            if((source == DFSDM2_CKOUT_DFSDM2) || (source == DFSDM2_CKOUT_M27))
+    350            {
+    351              tmp =  (tmp & ~SYSCFG_MCHDLYCR_DFSDM2CKOSEL);
+    352            }
+    353            else
+    354            {
+    355              tmp =  (tmp & ~SYSCFG_MCHDLYCR_DFSDM1CKOSEL);
+    356            }
+    357          
+    358            SYSCFG->MCHDLYCR |= (source|tmp);
+    359          }
+    360          
+    361          /**
+    362            * @brief  Select the source for DataIn0 signals for DFSDM1/2.
+    363            * @param source: DATAIN0_DFSDM2_PAD.
+    364            *                DATAIN0_DFSDM2_DATAIN1. 
+    365            *                DATAIN0_DFSDM1_PAD.
+    366            *                DATAIN0_DFSDM1_DATAIN1.                  
+    367            * @retval None
+    368            */
+    369          void DFSDM_DataIn0_SourceSelection(uint32_t source)
+    370          {
+    371            uint32_t tmp = 0; 
+    372            
+    373            tmp = SYSCFG->MCHDLYCR;
+    374            
+    375            if((source == DATAIN0_DFSDM2_PAD)|| (source == DATAIN0_DFSDM2_DATAIN1))
+    376            {
+    377              tmp =  (tmp & ~SYSCFG_MCHDLYCR_DFSDM2D0SEL);
+    378            }
+    379            else
+    380            {
+    381              tmp =  (tmp & ~SYSCFG_MCHDLYCR_DFSDM1D0SEL);
+    382            }
+    383            SYSCFG->MCHDLYCR |= (source|tmp);
+    384          }
+    385          
+    386          /**
+    387            * @brief  Select the source for DataIn2 signals for DFSDM1/2.
+    388            * @param source: DATAIN2_DFSDM2_PAD.
+    389            *                DATAIN2_DFSDM2_DATAIN3. 
+    390            *                DATAIN2_DFSDM1_PAD.
+    391            *                DATAIN2_DFSDM1_DATAIN3.                  
+    392            * @retval None
+    393            */
+    394          void DFSDM_DataIn2_SourceSelection(uint32_t source)
+    395          {
+    396            uint32_t tmp = 0; 
+    397            
+    398            tmp = SYSCFG->MCHDLYCR;
+    399            
+    400            if((source == DATAIN2_DFSDM2_PAD)|| (source == DATAIN2_DFSDM2_DATAIN3))
+    401            {
+    402              tmp =  (tmp & ~SYSCFG_MCHDLYCR_DFSDM2D2SEL);
+    403            }
+    404            else
+    405            {
+    406              tmp =  (tmp & ~SYSCFG_MCHDLYCR_DFSDM1D2SEL);
+    407            }
+    408            SYSCFG->MCHDLYCR |= (source|tmp);
+    409          }
+    410          
+    411          /**
+    412            * @brief  Select the source for DataIn4 signals for DFSDM2.
+    413            * @param source: DATAIN4_DFSDM2_PAD.
+    414            *                DATAIN4_DFSDM2_DATAIN5                
+    415            * @retval None
+    416            */
+    417          void DFSDM_DataIn4_SourceSelection(uint32_t source)
+    418          {
+    419            uint32_t tmp = 0; 
+    420            
+    421            tmp = SYSCFG->MCHDLYCR;
+    422            tmp =  (tmp & ~SYSCFG_MCHDLYCR_DFSDM2D4SEL);
+    423          
+    424            SYSCFG->MCHDLYCR |= (source|tmp);
+    425          }
+    426          
+    427          /**
+    428            * @brief  Select the source for DataIn6 signals for DFSDM2.
+    429            * @param source: DATAIN6_DFSDM2_PAD.
+    430            *                DATAIN6_DFSDM2_DATAIN7.                  
+    431            * @retval None
+    432            */
+    433          void DFSDM_DataIn6_SourceSelection(uint32_t source)
+    434          {
+    435            uint32_t tmp = 0; 
+    436            
+    437            tmp = SYSCFG->MCHDLYCR;
+    438            
+    439            tmp =  (tmp & ~SYSCFG_MCHDLYCR_DFSDM2D6SEL);
+    440          
+    441            SYSCFG->MCHDLYCR |= (source|tmp);
+    442          }
+    443          
+    444          /**
+    445            * @brief  Configure the distribution of the bitstream clock gated from TIM4.
+    446            * @param source: DFSDM1_CLKIN0_TIM4OC2
+    447            *                DFSDM1_CLKIN2_TIM4OC2
+    448            *                DFSDM1_CLKIN1_TIM4OC1
+    449            *                DFSDM1_CLKIN3_TIM4OC1                         
+    450            * @retval None
+    451            */
+    452          void DFSDM1_BitStreamClk_Config(uint32_t source)
+    453          {
+    454            uint32_t tmp = 0; 
+    455            
+    456            tmp = SYSCFG->MCHDLYCR;
+    457          
+    458            if ((source == DFSDM1_CLKIN0_TIM4OC2) || (source == DFSDM1_CLKIN2_TIM4OC2))
+    459            {
+    460              tmp =  (tmp & ~SYSCFG_MCHDLYCR_DFSDM1CK02SEL);
+    461            }
+    462            else
+    463            {
+    464              tmp =  (tmp & ~SYSCFG_MCHDLYCR_DFSDM1CK13SEL);
+    465            }
+    466          
+    467            SYSCFG->MCHDLYCR |= (source|tmp);
+    468          }
+    469          
+    470          /**
+    471            * @brief  Configure the distribution of the bitstream clock gated from TIM3.
+    472            * @param source: DFSDM2_CLKIN0_TIM3OC4
+    473            *                DFSDM2_CLKIN4_TIM3OC4
+    474            *                DFSDM2_CLKIN1_TIM3OC3
+    475            *                DFSDM2_CLKIN5_TIM3OC3 
+    476            *                DFSDM2_CLKIN2_TIM3OC2
+    477            *                DFSDM2_CLKIN6_TIM3OC2
+    478            *                DFSDM2_CLKIN3_TIM3OC1
+    479            *                DFSDM2_CLKIN7_TIM3OC1                        
+    480            * @retval None
+    481            */
+    482          void DFSDM2_BitStreamClk_Config(uint32_t source)
+    483          {
+    484            uint32_t tmp = 0; 
+    485            
+    486            tmp = SYSCFG->MCHDLYCR;
+    487          
+    488            if ((source == DFSDM2_CLKIN0_TIM3OC4) || (source == DFSDM2_CLKIN4_TIM3OC4))
+    489            {
+    490              tmp =  (tmp & ~SYSCFG_MCHDLYCR_DFSDM2CK04SEL);
+    491            }
+    492            else if ((source == DFSDM2_CLKIN1_TIM3OC3) || (source == DFSDM2_CLKIN5_TIM3OC3))
+    493            {
+    494              tmp =  (tmp & ~SYSCFG_MCHDLYCR_DFSDM2CK15SEL);
+    495              
+    496            }else  if ((source == DFSDM2_CLKIN2_TIM3OC2) || (source == DFSDM2_CLKIN6_TIM3OC2))
+    497            {
+    498              tmp =  (tmp & ~SYSCFG_MCHDLYCR_DFSDM2CK26SEL);
+    499            }
+    500            else
+    501            {
+    502              tmp =  (tmp & ~SYSCFG_MCHDLYCR_DFSDM2CK37SEL);
+    503            }
+    504          
+    505            SYSCFG->MCHDLYCR |= (source|tmp);
+    506          }
+    507          
+    508          #endif /* STM32F413_423xx */
+    509          /**
+    510            * @}
+    511            */
+    512          
+    513          /**
+    514            * @}
+    515            */
+    516          
+    517          /**
+    518            * @}
+    519            */
+    520          
+    521          /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/   
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   SYSCFG_CompensationCellCmd
+       8   SYSCFG_DeInit
+         8   -> RCC_APB2PeriphResetCmd
+       0   SYSCFG_ETH_MediaInterfaceConfig
+       4   SYSCFG_EXTILineConfig
+       0   SYSCFG_GetCompensationCellStatus
+       0   SYSCFG_MemoryRemapConfig
+       0   SYSCFG_MemorySwappingBank
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable6
+       4  ??DataTable6_1
+       4  ??DataTable6_2
+       4  ??DataTable6_3
+       4  ??DataTable6_4
+       4  ??DataTable6_5
+       8  SYSCFG_CompensationCellCmd
+      24  SYSCFG_DeInit
+       6  SYSCFG_ETH_MediaInterfaceConfig
+      80  SYSCFG_EXTILineConfig
+      20  SYSCFG_GetCompensationCellStatus
+       8  SYSCFG_MemoryRemapConfig
+       8  SYSCFG_MemorySwappingBank
+
+ 
+ 178 bytes in section .text
+ 
+ 178 bytes of CODE memory
+
+Errors: none
+Warnings: none

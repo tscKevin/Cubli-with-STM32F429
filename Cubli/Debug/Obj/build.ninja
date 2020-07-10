@@ -1,0 +1,78 @@
+#Generating source browse information for project Cubli
+
+
+#Abbreviations
+cc = D$:\IAR$ Systems\Embedded$ Workbench$ 8.3\common\bin\SourceIndexer.exe
+ll = D$:\IAR$ Systems\Embedded$ Workbench$ 8.3\common\bin\PbdLink.exe
+bd = D$:\IAR$ Systems\Embedded$ Workbench$ 8.3\common\bin\makeBrowseData.exe
+
+
+
+#Rules
+rule index
+  depfile = $out.dep
+  command = $cc -out=$out -f $in
+rule link
+  command = $ll -M $out $in
+rule browsedata
+  command = $bd $in -output  $out
+
+
+
+#Build steps
+build system_stm32f4xx.pbi : index system_stm32f4xx.xcl
+build misc.pbi : index misc.xcl
+build stm32f4xx_adc.pbi : index stm32f4xx_adc.xcl
+build stm32f4xx_can.pbi : index stm32f4xx_can.xcl
+build stm32f4xx_cec.pbi : index stm32f4xx_cec.xcl
+build stm32f4xx_crc.pbi : index stm32f4xx_crc.xcl
+build stm32f4xx_cryp.pbi : index stm32f4xx_cryp.xcl
+build stm32f4xx_cryp_aes.pbi : index stm32f4xx_cryp_aes.xcl
+build stm32f4xx_cryp_des.pbi : index stm32f4xx_cryp_des.xcl
+build stm32f4xx_cryp_tdes.pbi : index stm32f4xx_cryp_tdes.xcl
+build stm32f4xx_dac.pbi : index stm32f4xx_dac.xcl
+build stm32f4xx_dbgmcu.pbi : index stm32f4xx_dbgmcu.xcl
+build stm32f4xx_dcmi.pbi : index stm32f4xx_dcmi.xcl
+build stm32f4xx_dfsdm.pbi : index stm32f4xx_dfsdm.xcl
+build stm32f4xx_dma.pbi : index stm32f4xx_dma.xcl
+build stm32f4xx_dma2d.pbi : index stm32f4xx_dma2d.xcl
+build stm32f4xx_dsi.pbi : index stm32f4xx_dsi.xcl
+build stm32f4xx_exti.pbi : index stm32f4xx_exti.xcl
+build stm32f4xx_flash.pbi : index stm32f4xx_flash.xcl
+build stm32f4xx_flash_ramfunc.pbi : index stm32f4xx_flash_ramfunc.xcl
+build stm32f4xx_fmc.pbi : index stm32f4xx_fmc.xcl
+build stm32f4xx_fmpi2c.pbi : index stm32f4xx_fmpi2c.xcl
+build stm32f4xx_gpio.pbi : index stm32f4xx_gpio.xcl
+build stm32f4xx_hash.pbi : index stm32f4xx_hash.xcl
+build stm32f4xx_hash_md5.pbi : index stm32f4xx_hash_md5.xcl
+build stm32f4xx_hash_sha1.pbi : index stm32f4xx_hash_sha1.xcl
+build stm32f4xx_i2c.pbi : index stm32f4xx_i2c.xcl
+build stm32f4xx_iwdg.pbi : index stm32f4xx_iwdg.xcl
+build stm32f4xx_lptim.pbi : index stm32f4xx_lptim.xcl
+build stm32f4xx_ltdc.pbi : index stm32f4xx_ltdc.xcl
+build stm32f4xx_pwr.pbi : index stm32f4xx_pwr.xcl
+build stm32f4xx_qspi.pbi : index stm32f4xx_qspi.xcl
+build stm32f4xx_rcc.pbi : index stm32f4xx_rcc.xcl
+build stm32f4xx_rng.pbi : index stm32f4xx_rng.xcl
+build stm32f4xx_rtc.pbi : index stm32f4xx_rtc.xcl
+build stm32f4xx_sai.pbi : index stm32f4xx_sai.xcl
+build stm32f4xx_sdio.pbi : index stm32f4xx_sdio.xcl
+build stm32f4xx_spdifrx.pbi : index stm32f4xx_spdifrx.xcl
+build stm32f4xx_spi.pbi : index stm32f4xx_spi.xcl
+build stm32f4xx_syscfg.pbi : index stm32f4xx_syscfg.xcl
+build stm32f4xx_tim.pbi : index stm32f4xx_tim.xcl
+build stm32f4xx_usart.pbi : index stm32f4xx_usart.xcl
+build stm32f4xx_wwdg.pbi : index stm32f4xx_wwdg.xcl
+build main.pbi : index main.xcl
+build stm32f4xx_it.pbi : index stm32f4xx_it.xcl
+build Cubli_part0.pbi : link system_stm32f4xx.pbi misc.pbi stm32f4xx_adc.pbi stm32f4xx_can.pbi stm32f4xx_cec.pbi stm32f4xx_crc.pbi stm32f4xx_cryp.pbi
+build Cubli_part1.pbi : link stm32f4xx_cryp_aes.pbi stm32f4xx_cryp_des.pbi stm32f4xx_cryp_tdes.pbi stm32f4xx_dac.pbi stm32f4xx_dbgmcu.pbi stm32f4xx_dcmi.pbi stm32f4xx_dfsdm.pbi
+build Cubli_part2.pbi : link stm32f4xx_dma.pbi stm32f4xx_dma2d.pbi stm32f4xx_dsi.pbi stm32f4xx_exti.pbi stm32f4xx_flash.pbi stm32f4xx_flash_ramfunc.pbi stm32f4xx_fmc.pbi
+build Cubli_part3.pbi : link stm32f4xx_fmpi2c.pbi stm32f4xx_gpio.pbi stm32f4xx_hash.pbi stm32f4xx_hash_md5.pbi stm32f4xx_hash_sha1.pbi stm32f4xx_i2c.pbi stm32f4xx_iwdg.pbi
+build Cubli_part4.pbi : link stm32f4xx_lptim.pbi stm32f4xx_ltdc.pbi stm32f4xx_pwr.pbi stm32f4xx_qspi.pbi stm32f4xx_rcc.pbi stm32f4xx_rng.pbi stm32f4xx_rtc.pbi
+build Cubli_part5.pbi : link stm32f4xx_sai.pbi stm32f4xx_sdio.pbi stm32f4xx_spdifrx.pbi stm32f4xx_spi.pbi stm32f4xx_syscfg.pbi stm32f4xx_tim.pbi stm32f4xx_usart.pbi
+build Cubli_part6.pbi : link stm32f4xx_wwdg.pbi main.pbi stm32f4xx_it.pbi
+build Cubli.pbd : link Cubli_part0.pbi Cubli_part1.pbi Cubli_part2.pbi Cubli_part3.pbi Cubli_part4.pbi Cubli_part5.pbi Cubli_part6.pbi
+build Cubli.pbw : browsedata Cubli.pbd
+
+

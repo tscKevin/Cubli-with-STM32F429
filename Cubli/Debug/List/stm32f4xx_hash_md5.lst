@@ -1,0 +1,644 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         10/Jul/2020  15:12:08
+# Copyright 1999-2019 IAR Systems AB.
+#
+#    Cpu mode     =  
+#    Endian       =  little
+#    Source file  =
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_hash_md5.c
+#    Command line =
+#        -f C:\Users\Evan\AppData\Local\Temp\EWEC6B.tmp
+#        (E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_hash_md5.c
+#        -D USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List
+#        -o
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "D:\IAR
+#        Systems\Embedded Workbench 8.3\arm\inc\c\DLib_Config_Normal.h" -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Include\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\iar\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\inc\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\User\inc\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\User\src\
+#        -Ol --use_c++_inline -I "D:\IAR Systems\Embedded Workbench
+#        8.3\arm\CMSIS\Core\Include\" -I "D:\IAR Systems\Embedded Workbench
+#        8.3\arm\CMSIS\DSP\Include\")
+#    Locale       =  C
+#    List file    =
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List\stm32f4xx_hash_md5.lst
+#    Object file  =
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\Obj\stm32f4xx_hash_md5.o
+#
+###############################################################################
+
+E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_hash_md5.c
+      1          /**
+      2            ******************************************************************************
+      3            * @file    stm32f4xx_hash_md5.c
+      4            * @author  MCD Application Team
+      5            * @version V1.8.0
+      6            * @date    04-November-2016
+      7            * @brief   This file provides high level functions to compute the HASH MD5 and
+      8            *          HMAC MD5 Digest of an input message.
+      9            *          It uses the stm32f4xx_hash.c/.h drivers to access the STM32F4xx HASH
+     10            *          peripheral.
+     11            *
+     12          @verbatim
+     13           ===================================================================
+     14                            ##### How to use this driver #####
+     15           ===================================================================
+     16           [..]
+     17             (#) Enable The HASH controller clock using 
+     18                 RCC_AHB2PeriphClockCmd(RCC_AHB2Periph_HASH, ENABLE); function.
+     19            
+     20             (#) Calculate the HASH MD5 Digest using HASH_MD5() function.
+     21            
+     22             (#) Calculate the HMAC MD5 Digest using HMAC_MD5() function.
+     23            
+     24          @endverbatim
+     25            *
+     26            ******************************************************************************
+     27            * @attention
+     28            *
+     29            * <h2><center>&copy; COPYRIGHT 2016 STMicroelectronics</center></h2>
+     30            *
+     31            * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
+     32            * You may not use this file except in compliance with the License.
+     33            * You may obtain a copy of the License at:
+     34            *
+     35            *        http://www.st.com/software_license_agreement_liberty_v2
+     36            *
+     37            * Unless required by applicable law or agreed to in writing, software 
+     38            * distributed under the License is distributed on an "AS IS" BASIS, 
+     39            * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     40            * See the License for the specific language governing permissions and
+     41            * limitations under the License.
+     42            *
+     43            ******************************************************************************
+     44            */
+     45          
+     46          /* Includes ------------------------------------------------------------------*/
+     47          #include "stm32f4xx_hash.h"
+     48          
+     49          /** @addtogroup STM32F4xx_StdPeriph_Driver
+     50            * @{
+     51            */
+     52          
+     53          /** @defgroup HASH 
+     54            * @brief HASH driver modules
+     55            * @{
+     56            */
+     57          
+     58          /* Private typedef -----------------------------------------------------------*/
+     59          /* Private define ------------------------------------------------------------*/
+     60          #define MD5BUSY_TIMEOUT    ((uint32_t) 0x00010000)
+     61          
+     62          /* Private macro -------------------------------------------------------------*/
+     63          /* Private variables ---------------------------------------------------------*/
+     64          /* Private function prototypes -----------------------------------------------*/
+     65          /* Private functions ---------------------------------------------------------*/
+     66          
+     67          /** @defgroup HASH_Private_Functions
+     68            * @{
+     69            */ 
+     70          
+     71          /** @defgroup HASH_Group7 High Level MD5 functions
+     72           *  @brief   High Level MD5 Hash and HMAC functions 
+     73           *
+     74          @verbatim   
+     75           ===============================================================================
+     76                        ##### High Level MD5 Hash and HMAC functions #####
+     77           ===============================================================================
+     78          
+     79          
+     80          @endverbatim
+     81            * @{
+     82            */
+     83          
+     84          /**
+     85            * @brief  Compute the HASH MD5 digest.
+     86            * @param  Input: pointer to the Input buffer to be treated.
+     87            * @param  Ilen: length of the Input buffer.
+     88            * @param  Output: the returned digest
+     89            * @retval An ErrorStatus enumeration value:
+     90            *          - SUCCESS: digest computation done
+     91            *          - ERROR: digest computation failed
+     92            */
+
+   \                                 In section .text, align 2, keep-with-next
+     93          ErrorStatus HASH_MD5(uint8_t *Input, uint32_t Ilen, uint8_t Output[16])
+     94          {
+   \                     HASH_MD5: (+1)
+   \        0x0   0xE92D 0x41F0      PUSH     {R4-R8,LR}
+   \        0x4   0xB08E             SUB      SP,SP,#+56
+   \        0x6   0x0006             MOVS     R6,R0
+   \        0x8   0x000F             MOVS     R7,R1
+   \        0xA   0x0014             MOVS     R4,R2
+     95            HASH_InitTypeDef MD5_HASH_InitStructure;
+     96            HASH_MsgDigest MD5_MessageDigest;
+     97            __IO uint16_t nbvalidbitsdata = 0;
+   \        0xC   0x2000             MOVS     R0,#+0
+   \        0xE   0xF8AD 0x0000      STRH     R0,[SP, #+0]
+     98            uint32_t i = 0;
+   \       0x12   0x2000             MOVS     R0,#+0
+     99            __IO uint32_t counter = 0;
+   \       0x14   0x2000             MOVS     R0,#+0
+   \       0x16   0x9001             STR      R0,[SP, #+4]
+    100            uint32_t busystatus = 0;
+   \       0x18   0x2000             MOVS     R0,#+0
+    101            ErrorStatus status = SUCCESS;
+   \       0x1A   0x2501             MOVS     R5,#+1
+    102            uint32_t inputaddr  = (uint32_t)Input;
+    103            uint32_t outputaddr = (uint32_t)Output;
+    104          
+    105          
+    106            /* Number of valid bits in last word of the Input data */
+    107            nbvalidbitsdata = 8 * (Ilen % 4);
+   \       0x1C   0xF017 0x0003      ANDS     R0,R7,#0x3
+   \       0x20   0xB280             UXTH     R0,R0            ;; ZeroExt  R0,R0,#+16,#+16
+   \       0x22   0x00C0             LSLS     R0,R0,#+3
+   \       0x24   0xF8AD 0x0000      STRH     R0,[SP, #+0]
+    108          
+    109            /* HASH peripheral initialization */
+    110            HASH_DeInit();
+   \       0x28   0x....'....        BL       HASH_DeInit
+    111          
+    112            /* HASH Configuration */
+    113            MD5_HASH_InitStructure.HASH_AlgoSelection = HASH_AlgoSelection_MD5;
+   \       0x2C   0x2080             MOVS     R0,#+128
+   \       0x2E   0x9002             STR      R0,[SP, #+8]
+    114            MD5_HASH_InitStructure.HASH_AlgoMode = HASH_AlgoMode_HASH;
+   \       0x30   0x2000             MOVS     R0,#+0
+   \       0x32   0x9003             STR      R0,[SP, #+12]
+    115            MD5_HASH_InitStructure.HASH_DataType = HASH_DataType_8b;
+   \       0x34   0x2020             MOVS     R0,#+32
+   \       0x36   0x9004             STR      R0,[SP, #+16]
+    116            HASH_Init(&MD5_HASH_InitStructure);
+   \       0x38   0xA802             ADD      R0,SP,#+8
+   \       0x3A   0x....'....        BL       HASH_Init
+    117          
+    118            /* Configure the number of valid bits in last word of the data */
+    119            HASH_SetLastWordValidBitsNbr(nbvalidbitsdata);
+   \       0x3E   0xF8BD 0x0000      LDRH     R0,[SP, #+0]
+   \       0x42   0x....'....        BL       HASH_SetLastWordValidBitsNbr
+    120          
+    121            /* Write the Input block in the IN FIFO */
+    122            for(i=0; i<Ilen; i+=4)
+   \       0x46   0xF05F 0x0800      MOVS     R8,#+0
+   \       0x4A   0xE005             B.N      ??HASH_MD5_0
+    123            {
+    124              HASH_DataIn(*(uint32_t*)inputaddr);
+   \                     ??HASH_MD5_1: (+1)
+   \       0x4C   0x6830             LDR      R0,[R6, #+0]
+   \       0x4E   0x....'....        BL       HASH_DataIn
+    125              inputaddr+=4;
+   \       0x52   0x1D36             ADDS     R6,R6,#+4
+    126            }
+   \       0x54   0xF118 0x0804      ADDS     R8,R8,#+4
+   \                     ??HASH_MD5_0: (+1)
+   \       0x58   0x45B8             CMP      R8,R7
+   \       0x5A   0xD3F7             BCC.N    ??HASH_MD5_1
+    127          
+    128            /* Start the HASH processor */
+    129            HASH_StartDigest();
+   \       0x5C   0x....'....        BL       HASH_StartDigest
+    130          
+    131            /* wait until the Busy flag is RESET */
+    132            do
+    133            {
+    134              busystatus = HASH_GetFlagStatus(HASH_FLAG_BUSY);
+   \                     ??HASH_MD5_2: (+1)
+   \       0x60   0x2008             MOVS     R0,#+8
+   \       0x62   0x....'....        BL       HASH_GetFlagStatus
+    135              counter++;
+   \       0x66   0x9901             LDR      R1,[SP, #+4]
+   \       0x68   0x1C49             ADDS     R1,R1,#+1
+   \       0x6A   0x9101             STR      R1,[SP, #+4]
+    136            }while ((counter != MD5BUSY_TIMEOUT) && (busystatus != RESET));
+   \       0x6C   0x9901             LDR      R1,[SP, #+4]
+   \       0x6E   0xF5B1 0x3F80      CMP      R1,#+65536
+   \       0x72   0xD001             BEQ.N    ??HASH_MD5_3
+   \       0x74   0x2800             CMP      R0,#+0
+   \       0x76   0xD1F3             BNE.N    ??HASH_MD5_2
+    137          
+    138            if (busystatus != RESET)
+   \                     ??HASH_MD5_3: (+1)
+   \       0x78   0x2800             CMP      R0,#+0
+   \       0x7A   0xD001             BEQ.N    ??HASH_MD5_4
+    139            {
+    140               status = ERROR;
+   \       0x7C   0x2500             MOVS     R5,#+0
+   \       0x7E   0xE011             B.N      ??HASH_MD5_5
+    141            }
+    142            else
+    143            {
+    144              /* Read the message digest */
+    145              HASH_GetDigest(&MD5_MessageDigest);
+   \                     ??HASH_MD5_4: (+1)
+   \       0x80   0xA806             ADD      R0,SP,#+24
+   \       0x82   0x....'....        BL       HASH_GetDigest
+    146              *(uint32_t*)(outputaddr)  = __REV(MD5_MessageDigest.Data[0]);
+   \       0x86   0x9806             LDR      R0,[SP, #+24]
+   \       0x88   0xBA00             REV      R0,R0
+   \       0x8A   0x6020             STR      R0,[R4, #+0]
+    147              outputaddr+=4;
+   \       0x8C   0x1D24             ADDS     R4,R4,#+4
+    148              *(uint32_t*)(outputaddr)  = __REV(MD5_MessageDigest.Data[1]);
+   \       0x8E   0x9807             LDR      R0,[SP, #+28]
+   \       0x90   0xBA00             REV      R0,R0
+   \       0x92   0x6020             STR      R0,[R4, #+0]
+    149              outputaddr+=4;
+   \       0x94   0x1D24             ADDS     R4,R4,#+4
+    150              *(uint32_t*)(outputaddr)  = __REV(MD5_MessageDigest.Data[2]);
+   \       0x96   0x9808             LDR      R0,[SP, #+32]
+   \       0x98   0xBA00             REV      R0,R0
+   \       0x9A   0x6020             STR      R0,[R4, #+0]
+    151              outputaddr+=4;
+   \       0x9C   0x1D24             ADDS     R4,R4,#+4
+    152              *(uint32_t*)(outputaddr)  = __REV(MD5_MessageDigest.Data[3]);
+   \       0x9E   0x9809             LDR      R0,[SP, #+36]
+   \       0xA0   0xBA00             REV      R0,R0
+   \       0xA2   0x6020             STR      R0,[R4, #+0]
+    153            }
+    154            return status; 
+   \                     ??HASH_MD5_5: (+1)
+   \       0xA4   0x0028             MOVS     R0,R5
+   \       0xA6   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0xA8   0xB00E             ADD      SP,SP,#+56
+   \       0xAA   0xE8BD 0x81F0      POP      {R4-R8,PC}       ;; return
+    155          }
+    156          
+    157          /**
+    158            * @brief  Compute the HMAC MD5 digest.
+    159            * @param  Key: pointer to the Key used for HMAC.
+    160            * @param  Keylen: length of the Key used for HMAC.
+    161            * @param  Input: pointer to the Input buffer to be treated.
+    162            * @param  Ilen: length of the Input buffer.
+    163            * @param  Output: the returned digest  
+    164            * @retval An ErrorStatus enumeration value:
+    165            *          - SUCCESS: digest computation done
+    166            *          - ERROR: digest computation failed
+    167            */
+
+   \                                 In section .text, align 2, keep-with-next
+    168          ErrorStatus HMAC_MD5(uint8_t *Key, uint32_t Keylen, uint8_t *Input, 
+    169                               uint32_t Ilen, uint8_t Output[16])
+    170          {
+   \                     HMAC_MD5: (+1)
+   \        0x0   0xE92D 0x4FF8      PUSH     {R3-R11,LR}
+   \        0x4   0xB08E             SUB      SP,SP,#+56
+   \        0x6   0x0005             MOVS     R5,R0
+   \        0x8   0x000E             MOVS     R6,R1
+   \        0xA   0x4698             MOV      R8,R3
+   \        0xC   0x9F18             LDR      R7,[SP, #+96]
+    171            HASH_InitTypeDef MD5_HASH_InitStructure;
+    172            HASH_MsgDigest MD5_MessageDigest;
+    173            __IO uint16_t nbvalidbitsdata = 0;
+   \        0xE   0x2000             MOVS     R0,#+0
+   \       0x10   0xF8AD 0x0006      STRH     R0,[SP, #+6]
+    174            __IO uint16_t nbvalidbitskey = 0;
+   \       0x14   0x2000             MOVS     R0,#+0
+   \       0x16   0xF8AD 0x0004      STRH     R0,[SP, #+4]
+    175            uint32_t i = 0;
+   \       0x1A   0x2000             MOVS     R0,#+0
+    176            __IO uint32_t counter = 0;
+   \       0x1C   0x2000             MOVS     R0,#+0
+   \       0x1E   0x9000             STR      R0,[SP, #+0]
+    177            uint32_t busystatus = 0;
+   \       0x20   0x2000             MOVS     R0,#+0
+    178            ErrorStatus status = SUCCESS;
+   \       0x22   0x2401             MOVS     R4,#+1
+    179            uint32_t keyaddr    = (uint32_t)Key;
+   \       0x24   0x46AA             MOV      R10,R5
+    180            uint32_t inputaddr  = (uint32_t)Input;
+   \       0x26   0x4691             MOV      R9,R2
+    181            uint32_t outputaddr = (uint32_t)Output;
+    182          
+    183            /* Number of valid bits in last word of the Input data */
+    184            nbvalidbitsdata = 8 * (Ilen % 4);
+   \       0x28   0xF018 0x0003      ANDS     R0,R8,#0x3
+   \       0x2C   0xB280             UXTH     R0,R0            ;; ZeroExt  R0,R0,#+16,#+16
+   \       0x2E   0x00C0             LSLS     R0,R0,#+3
+   \       0x30   0xF8AD 0x0006      STRH     R0,[SP, #+6]
+    185          
+    186            /* Number of valid bits in last word of the Key */
+    187            nbvalidbitskey = 8 * (Keylen % 4);
+   \       0x34   0xF016 0x0003      ANDS     R0,R6,#0x3
+   \       0x38   0xB280             UXTH     R0,R0            ;; ZeroExt  R0,R0,#+16,#+16
+   \       0x3A   0x00C0             LSLS     R0,R0,#+3
+   \       0x3C   0xF8AD 0x0004      STRH     R0,[SP, #+4]
+    188             
+    189            /* HASH peripheral initialization */
+    190            HASH_DeInit();
+   \       0x40   0x....'....        BL       HASH_DeInit
+    191          
+    192            /* HASH Configuration */
+    193            MD5_HASH_InitStructure.HASH_AlgoSelection = HASH_AlgoSelection_MD5;
+   \       0x44   0x2080             MOVS     R0,#+128
+   \       0x46   0x9002             STR      R0,[SP, #+8]
+    194            MD5_HASH_InitStructure.HASH_AlgoMode = HASH_AlgoMode_HMAC;
+   \       0x48   0x2040             MOVS     R0,#+64
+   \       0x4A   0x9003             STR      R0,[SP, #+12]
+    195            MD5_HASH_InitStructure.HASH_DataType = HASH_DataType_8b;
+   \       0x4C   0x2020             MOVS     R0,#+32
+   \       0x4E   0x9004             STR      R0,[SP, #+16]
+    196            if(Keylen > 64)
+   \       0x50   0x2E41             CMP      R6,#+65
+   \       0x52   0xD303             BCC.N    ??HMAC_MD5_0
+    197            {
+    198              /* HMAC long Key */
+    199              MD5_HASH_InitStructure.HASH_HMACKeyType = HASH_HMACKeyType_LongKey;
+   \       0x54   0xF45F 0x3080      MOVS     R0,#+65536
+   \       0x58   0x9005             STR      R0,[SP, #+20]
+   \       0x5A   0xE001             B.N      ??HMAC_MD5_1
+    200            }
+    201            else
+    202            {
+    203              /* HMAC short Key */
+    204              MD5_HASH_InitStructure.HASH_HMACKeyType = HASH_HMACKeyType_ShortKey;
+   \                     ??HMAC_MD5_0: (+1)
+   \       0x5C   0x2000             MOVS     R0,#+0
+   \       0x5E   0x9005             STR      R0,[SP, #+20]
+    205            }
+    206            HASH_Init(&MD5_HASH_InitStructure);
+   \                     ??HMAC_MD5_1: (+1)
+   \       0x60   0xA802             ADD      R0,SP,#+8
+   \       0x62   0x....'....        BL       HASH_Init
+    207          
+    208            /* Configure the number of valid bits in last word of the Key */
+    209            HASH_SetLastWordValidBitsNbr(nbvalidbitskey);
+   \       0x66   0xF8BD 0x0004      LDRH     R0,[SP, #+4]
+   \       0x6A   0x....'....        BL       HASH_SetLastWordValidBitsNbr
+    210          
+    211            /* Write the Key */
+    212            for(i=0; i<Keylen; i+=4)
+   \       0x6E   0xF05F 0x0B00      MOVS     R11,#+0
+   \       0x72   0xE007             B.N      ??HMAC_MD5_2
+    213            {
+    214              HASH_DataIn(*(uint32_t*)keyaddr);
+   \                     ??HMAC_MD5_3: (+1)
+   \       0x74   0xF8DA 0x0000      LDR      R0,[R10, #+0]
+   \       0x78   0x....'....        BL       HASH_DataIn
+    215              keyaddr+=4;
+   \       0x7C   0xF11A 0x0A04      ADDS     R10,R10,#+4
+    216            }
+   \       0x80   0xF11B 0x0B04      ADDS     R11,R11,#+4
+   \                     ??HMAC_MD5_2: (+1)
+   \       0x84   0x45B3             CMP      R11,R6
+   \       0x86   0xD3F5             BCC.N    ??HMAC_MD5_3
+    217            
+    218            /* Start the HASH processor */
+    219            HASH_StartDigest();
+   \       0x88   0x....'....        BL       HASH_StartDigest
+    220          
+    221            /* wait until the Busy flag is RESET */
+    222            do
+    223            {
+    224              busystatus = HASH_GetFlagStatus(HASH_FLAG_BUSY);
+   \                     ??HMAC_MD5_4: (+1)
+   \       0x8C   0x2008             MOVS     R0,#+8
+   \       0x8E   0x....'....        BL       HASH_GetFlagStatus
+    225              counter++;
+   \       0x92   0x9900             LDR      R1,[SP, #+0]
+   \       0x94   0x1C49             ADDS     R1,R1,#+1
+   \       0x96   0x9100             STR      R1,[SP, #+0]
+    226            }while ((counter != MD5BUSY_TIMEOUT) && (busystatus != RESET));
+   \       0x98   0x9900             LDR      R1,[SP, #+0]
+   \       0x9A   0xF5B1 0x3F80      CMP      R1,#+65536
+   \       0x9E   0xD001             BEQ.N    ??HMAC_MD5_5
+   \       0xA0   0x2800             CMP      R0,#+0
+   \       0xA2   0xD1F3             BNE.N    ??HMAC_MD5_4
+    227          
+    228            if (busystatus != RESET)
+   \                     ??HMAC_MD5_5: (+1)
+   \       0xA4   0x2800             CMP      R0,#+0
+   \       0xA6   0xD001             BEQ.N    ??HMAC_MD5_6
+    229            {
+    230               status = ERROR;
+   \       0xA8   0x2400             MOVS     R4,#+0
+   \       0xAA   0xE059             B.N      ??HMAC_MD5_7
+    231            }
+    232            else
+    233            {
+    234              /* Configure the number of valid bits in last word of the Input data */
+    235              HASH_SetLastWordValidBitsNbr(nbvalidbitsdata);
+   \                     ??HMAC_MD5_6: (+1)
+   \       0xAC   0xF8BD 0x0006      LDRH     R0,[SP, #+6]
+   \       0xB0   0x....'....        BL       HASH_SetLastWordValidBitsNbr
+    236          
+    237              /* Write the Input block in the IN FIFO */
+    238              for(i=0; i<Ilen; i+=4)
+   \       0xB4   0xF05F 0x0A00      MOVS     R10,#+0
+   \       0xB8   0xE007             B.N      ??HMAC_MD5_8
+    239              {
+    240                HASH_DataIn(*(uint32_t*)inputaddr);
+   \                     ??HMAC_MD5_9: (+1)
+   \       0xBA   0xF8D9 0x0000      LDR      R0,[R9, #+0]
+   \       0xBE   0x....'....        BL       HASH_DataIn
+    241                inputaddr+=4;
+   \       0xC2   0xF119 0x0904      ADDS     R9,R9,#+4
+    242              }
+   \       0xC6   0xF11A 0x0A04      ADDS     R10,R10,#+4
+   \                     ??HMAC_MD5_8: (+1)
+   \       0xCA   0x45C2             CMP      R10,R8
+   \       0xCC   0xD3F5             BCC.N    ??HMAC_MD5_9
+    243          
+    244              /* Start the HASH processor */
+    245              HASH_StartDigest();
+   \       0xCE   0x....'....        BL       HASH_StartDigest
+    246          
+    247              /* wait until the Busy flag is RESET */
+    248              counter =0;
+   \       0xD2   0x2000             MOVS     R0,#+0
+   \       0xD4   0x9000             STR      R0,[SP, #+0]
+    249              do
+    250              {
+    251                 busystatus = HASH_GetFlagStatus(HASH_FLAG_BUSY);
+   \                     ??HMAC_MD5_10: (+1)
+   \       0xD6   0x2008             MOVS     R0,#+8
+   \       0xD8   0x....'....        BL       HASH_GetFlagStatus
+    252                 counter++;
+   \       0xDC   0x9900             LDR      R1,[SP, #+0]
+   \       0xDE   0x1C49             ADDS     R1,R1,#+1
+   \       0xE0   0x9100             STR      R1,[SP, #+0]
+    253              }while ((counter != MD5BUSY_TIMEOUT) && (busystatus != RESET));
+   \       0xE2   0x9900             LDR      R1,[SP, #+0]
+   \       0xE4   0xF5B1 0x3F80      CMP      R1,#+65536
+   \       0xE8   0xD001             BEQ.N    ??HMAC_MD5_11
+   \       0xEA   0x2800             CMP      R0,#+0
+   \       0xEC   0xD1F3             BNE.N    ??HMAC_MD5_10
+    254          
+    255              if (busystatus != RESET)
+   \                     ??HMAC_MD5_11: (+1)
+   \       0xEE   0x2800             CMP      R0,#+0
+   \       0xF0   0xD001             BEQ.N    ??HMAC_MD5_12
+    256              {
+    257                status = ERROR;
+   \       0xF2   0x2400             MOVS     R4,#+0
+   \       0xF4   0xE034             B.N      ??HMAC_MD5_7
+    258              }
+    259              else
+    260              {  
+    261                /* Configure the number of valid bits in last word of the Key */
+    262                HASH_SetLastWordValidBitsNbr(nbvalidbitskey);
+   \                     ??HMAC_MD5_12: (+1)
+   \       0xF6   0xF8BD 0x0004      LDRH     R0,[SP, #+4]
+   \       0xFA   0x....'....        BL       HASH_SetLastWordValidBitsNbr
+    263          
+    264                /* Write the Key */
+    265                keyaddr = (uint32_t)Key;
+    266                for(i=0; i<Keylen; i+=4)
+   \       0xFE   0xF05F 0x0800      MOVS     R8,#+0
+   \      0x102   0xE005             B.N      ??HMAC_MD5_13
+    267                {
+    268                  HASH_DataIn(*(uint32_t*)keyaddr);
+   \                     ??HMAC_MD5_14: (+1)
+   \      0x104   0x6828             LDR      R0,[R5, #+0]
+   \      0x106   0x....'....        BL       HASH_DataIn
+    269                  keyaddr+=4;
+   \      0x10A   0x1D2D             ADDS     R5,R5,#+4
+    270                }
+   \      0x10C   0xF118 0x0804      ADDS     R8,R8,#+4
+   \                     ??HMAC_MD5_13: (+1)
+   \      0x110   0x45B0             CMP      R8,R6
+   \      0x112   0xD3F7             BCC.N    ??HMAC_MD5_14
+    271            
+    272                 /* Start the HASH processor */
+    273                 HASH_StartDigest();
+   \      0x114   0x....'....        BL       HASH_StartDigest
+    274          
+    275                 /* wait until the Busy flag is RESET */
+    276                 counter =0;
+   \      0x118   0x2000             MOVS     R0,#+0
+   \      0x11A   0x9000             STR      R0,[SP, #+0]
+    277                 do
+    278                 {
+    279                    busystatus = HASH_GetFlagStatus(HASH_FLAG_BUSY);
+   \                     ??HMAC_MD5_15: (+1)
+   \      0x11C   0x2008             MOVS     R0,#+8
+   \      0x11E   0x....'....        BL       HASH_GetFlagStatus
+    280                    counter++;
+   \      0x122   0x9900             LDR      R1,[SP, #+0]
+   \      0x124   0x1C49             ADDS     R1,R1,#+1
+   \      0x126   0x9100             STR      R1,[SP, #+0]
+    281                }while ((counter != MD5BUSY_TIMEOUT) && (busystatus != RESET));
+   \      0x128   0x9900             LDR      R1,[SP, #+0]
+   \      0x12A   0xF5B1 0x3F80      CMP      R1,#+65536
+   \      0x12E   0xD001             BEQ.N    ??HMAC_MD5_16
+   \      0x130   0x2800             CMP      R0,#+0
+   \      0x132   0xD1F3             BNE.N    ??HMAC_MD5_15
+    282          
+    283                if (busystatus != RESET)
+   \                     ??HMAC_MD5_16: (+1)
+   \      0x134   0x2800             CMP      R0,#+0
+   \      0x136   0xD001             BEQ.N    ??HMAC_MD5_17
+    284                {
+    285                   status = ERROR;
+   \      0x138   0x2400             MOVS     R4,#+0
+   \      0x13A   0xE011             B.N      ??HMAC_MD5_7
+    286                }
+    287                else
+    288                {
+    289                   /* Read the message digest */
+    290                   HASH_GetDigest(&MD5_MessageDigest);
+   \                     ??HMAC_MD5_17: (+1)
+   \      0x13C   0xA806             ADD      R0,SP,#+24
+   \      0x13E   0x....'....        BL       HASH_GetDigest
+    291                   *(uint32_t*)(outputaddr)  = __REV(MD5_MessageDigest.Data[0]);
+   \      0x142   0x9806             LDR      R0,[SP, #+24]
+   \      0x144   0xBA00             REV      R0,R0
+   \      0x146   0x6038             STR      R0,[R7, #+0]
+    292                   outputaddr+=4;
+   \      0x148   0x1D3F             ADDS     R7,R7,#+4
+    293                   *(uint32_t*)(outputaddr)  = __REV(MD5_MessageDigest.Data[1]);
+   \      0x14A   0x9807             LDR      R0,[SP, #+28]
+   \      0x14C   0xBA00             REV      R0,R0
+   \      0x14E   0x6038             STR      R0,[R7, #+0]
+    294                   outputaddr+=4;
+   \      0x150   0x1D3F             ADDS     R7,R7,#+4
+    295                   *(uint32_t*)(outputaddr)  = __REV(MD5_MessageDigest.Data[2]);
+   \      0x152   0x9808             LDR      R0,[SP, #+32]
+   \      0x154   0xBA00             REV      R0,R0
+   \      0x156   0x6038             STR      R0,[R7, #+0]
+    296                   outputaddr+=4;
+   \      0x158   0x1D3F             ADDS     R7,R7,#+4
+    297                   *(uint32_t*)(outputaddr)  = __REV(MD5_MessageDigest.Data[3]);
+   \      0x15A   0x9809             LDR      R0,[SP, #+36]
+   \      0x15C   0xBA00             REV      R0,R0
+   \      0x15E   0x6038             STR      R0,[R7, #+0]
+    298                }
+    299              }
+    300            }
+    301            return status;  
+   \                     ??HMAC_MD5_7: (+1)
+   \      0x160   0x0020             MOVS     R0,R4
+   \      0x162   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \      0x164   0xB00F             ADD      SP,SP,#+60
+   \      0x166   0xE8BD 0x8FF0      POP      {R4-R11,PC}      ;; return
+    302          }
+    303          /**
+    304            * @}
+    305            */ 
+    306          
+    307          /**
+    308            * @}
+    309            */ 
+    310          
+    311          /**
+    312            * @}
+    313            */ 
+    314          
+    315          /**
+    316            * @}
+    317            */ 
+    318          
+    319          /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+    320          
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+      80   HASH_MD5
+        80   -> HASH_DataIn
+        80   -> HASH_DeInit
+        80   -> HASH_GetDigest
+        80   -> HASH_GetFlagStatus
+        80   -> HASH_Init
+        80   -> HASH_SetLastWordValidBitsNbr
+        80   -> HASH_StartDigest
+      96   HMAC_MD5
+        96   -> HASH_DataIn
+        96   -> HASH_DeInit
+        96   -> HASH_GetDigest
+        96   -> HASH_GetFlagStatus
+        96   -> HASH_Init
+        96   -> HASH_SetLastWordValidBitsNbr
+        96   -> HASH_StartDigest
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+     174  HASH_MD5
+     362  HMAC_MD5
+
+ 
+ 536 bytes in section .text
+ 
+ 536 bytes of CODE memory
+
+Errors: none
+Warnings: none

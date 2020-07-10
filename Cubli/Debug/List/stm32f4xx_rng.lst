@@ -1,0 +1,603 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         10/Jul/2020  15:12:10
+# Copyright 1999-2019 IAR Systems AB.
+#
+#    Cpu mode     =  
+#    Endian       =  little
+#    Source file  =
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_rng.c
+#    Command line =
+#        -f C:\Users\Evan\AppData\Local\Temp\EWF3F7.tmp
+#        (E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_rng.c
+#        -D USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List
+#        -o
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "D:\IAR
+#        Systems\Embedded Workbench 8.3\arm\inc\c\DLib_Config_Normal.h" -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Include\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\iar\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\inc\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\User\inc\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\User\src\
+#        -Ol --use_c++_inline -I "D:\IAR Systems\Embedded Workbench
+#        8.3\arm\CMSIS\Core\Include\" -I "D:\IAR Systems\Embedded Workbench
+#        8.3\arm\CMSIS\DSP\Include\")
+#    Locale       =  C
+#    List file    =
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List\stm32f4xx_rng.lst
+#    Object file  =
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\Obj\stm32f4xx_rng.o
+#
+###############################################################################
+
+E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_rng.c
+      1          /**
+      2            ******************************************************************************
+      3            * @file    stm32f4xx_rng.c
+      4            * @author  MCD Application Team
+      5            * @version V1.8.0
+      6            * @date    04-November-2016
+      7            * @brief This file provides firmware functions to manage the following 
+      8            *          functionalities of the Random Number Generator (RNG) peripheral:           
+      9            *           + Initialization and Configuration 
+     10            *           + Get 32 bit Random number      
+     11            *           + Interrupts and flags management       
+     12            *         
+     13          @verbatim
+     14                                           
+     15           ===================================================================      
+     16                           ##### How to use this driver #####
+     17           ===================================================================          
+     18           [..]
+     19             (#) Enable The RNG controller clock using 
+     20                 RCC_AHB2PeriphClockCmd(RCC_AHB2Periph_RNG, ENABLE) function.
+     21                          
+     22             (#) Activate the RNG peripheral using RNG_Cmd() function.
+     23                      
+     24             (#) Wait until the 32 bit Random number Generator contains a valid  random data
+     25                (using polling/interrupt mode). For more details, refer to "Interrupts and 
+     26                flags management functions" module description.
+     27                       
+     28             (#) Get the 32 bit Random number using RNG_GetRandomNumber() function
+     29                      
+     30             (#) To get another 32 bit Random number, go to step 3.       
+     31                   
+     32                          
+     33          @endverbatim
+     34            *         
+     35            ******************************************************************************
+     36            * @attention
+     37            *
+     38            * <h2><center>&copy; COPYRIGHT 2016 STMicroelectronics</center></h2>
+     39            *
+     40            * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
+     41            * You may not use this file except in compliance with the License.
+     42            * You may obtain a copy of the License at:
+     43            *
+     44            *        http://www.st.com/software_license_agreement_liberty_v2
+     45            *
+     46            * Unless required by applicable law or agreed to in writing, software 
+     47            * distributed under the License is distributed on an "AS IS" BASIS, 
+     48            * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     49            * See the License for the specific language governing permissions and
+     50            * limitations under the License.
+     51            *
+     52            ******************************************************************************  
+     53            */
+     54          
+     55          /* Includes ------------------------------------------------------------------*/
+     56          #include "stm32f4xx_rng.h"
+     57          #include "stm32f4xx_rcc.h"
+     58          
+     59          /** @addtogroup STM32F4xx_StdPeriph_Driver
+     60            * @{
+     61            */
+     62          
+     63          /** @defgroup RNG 
+     64            * @brief RNG driver modules
+     65            * @{
+     66            */ 
+     67          #if defined(STM32F40_41xxx) || defined(STM32F427_437xx) || defined(STM32F410xx) || defined(STM32F412xG) || defined(STM32F413_423xx) || defined(STM32F429_439xx) || defined(STM32F469_479xx)  
+     68          /* Private typedef -----------------------------------------------------------*/
+     69          /* Private define ------------------------------------------------------------*/
+     70          /* Private macro -------------------------------------------------------------*/
+     71          /* Private variables ---------------------------------------------------------*/
+     72          /* Private function prototypes -----------------------------------------------*/
+     73          /* Private functions ---------------------------------------------------------*/
+     74          
+     75          /** @defgroup RNG_Private_Functions
+     76            * @{
+     77            */ 
+     78          
+     79          /** @defgroup RNG_Group1 Initialization and Configuration functions
+     80           *  @brief    Initialization and Configuration functions 
+     81           *
+     82          @verbatim    
+     83           ===============================================================================
+     84                       ##### Initialization and Configuration functions #####
+     85           ===============================================================================  
+     86           [..] This section provides functions allowing to 
+     87             (+) Initialize the RNG peripheral
+     88             (+) Enable or disable the RNG peripheral
+     89             
+     90          @endverbatim
+     91            * @{
+     92            */
+     93          
+     94          /**
+     95            * @brief  De-initializes the RNG peripheral registers to their default reset values.
+     96            * @param  None
+     97            * @retval None
+     98            */
+
+   \                                 In section .text, align 2, keep-with-next
+     99          void RNG_DeInit(void)
+    100          {
+   \                     RNG_DeInit: (+1)
+   \        0x0   0xB580             PUSH     {R7,LR}
+    101          #if defined(STM32F40_41xxx) || defined(STM32F427_437xx) || defined(STM32F429_439xx) || defined(STM32F469_479xx)  
+    102            /* Enable RNG reset state */
+    103            RCC_AHB2PeriphResetCmd(RCC_AHB2Periph_RNG, ENABLE);
+   \        0x2   0x2101             MOVS     R1,#+1
+   \        0x4   0x2040             MOVS     R0,#+64
+   \        0x6   0x....'....        BL       RCC_AHB2PeriphResetCmd
+    104          
+    105            /* Release RNG from reset state */
+    106            RCC_AHB2PeriphResetCmd(RCC_AHB2Periph_RNG, DISABLE);
+   \        0xA   0x2100             MOVS     R1,#+0
+   \        0xC   0x2040             MOVS     R0,#+64
+   \        0xE   0x....'....        BL       RCC_AHB2PeriphResetCmd
+    107          #endif /* STM32F40_41xxx || STM32F427_437xx || STM32F429_439xx || STM32F469_479xx */
+    108          #if defined(STM32F410xx)
+    109             /* Enable RNG reset state */
+    110            RCC_AHB1PeriphResetCmd(RCC_AHB1Periph_RNG, ENABLE);
+    111          
+    112            /* Release RNG from reset state */
+    113            RCC_AHB1PeriphResetCmd(RCC_AHB1Periph_RNG, DISABLE); 
+    114          #endif /* STM32F410xx*/  
+    115          }
+   \       0x12   0xBD01             POP      {R0,PC}          ;; return
+    116          
+    117          /**
+    118            * @brief  Enables or disables the RNG peripheral.
+    119            * @param  NewState: new state of the RNG peripheral.
+    120            *          This parameter can be: ENABLE or DISABLE.
+    121            * @retval None
+    122            */
+
+   \                                 In section .text, align 2, keep-with-next
+    123          void RNG_Cmd(FunctionalState NewState)
+    124          {
+    125            /* Check the parameters */
+    126            assert_param(IS_FUNCTIONAL_STATE(NewState));
+    127          
+    128            if (NewState != DISABLE)
+   \                     RNG_Cmd: (+1)
+   \        0x0   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \        0x2   0x2800             CMP      R0,#+0
+   \        0x4   0xD005             BEQ.N    ??RNG_Cmd_0
+    129            {
+    130              /* Enable the RNG */
+    131              RNG->CR |= RNG_CR_RNGEN;
+   \        0x6   0x....             LDR.N    R0,??DataTable7  ;; 0x50060800
+   \        0x8   0x6801             LDR      R1,[R0, #+0]
+   \        0xA   0xF051 0x0104      ORRS     R1,R1,#0x4
+   \        0xE   0x6001             STR      R1,[R0, #+0]
+   \       0x10   0xE004             B.N      ??RNG_Cmd_1
+    132            }
+    133            else
+    134            {
+    135              /* Disable the RNG */
+    136              RNG->CR &= ~RNG_CR_RNGEN;
+   \                     ??RNG_Cmd_0: (+1)
+   \       0x12   0x....             LDR.N    R0,??DataTable7  ;; 0x50060800
+   \       0x14   0x6801             LDR      R1,[R0, #+0]
+   \       0x16   0xF031 0x0104      BICS     R1,R1,#0x4
+   \       0x1A   0x6001             STR      R1,[R0, #+0]
+    137            }
+    138          }
+   \                     ??RNG_Cmd_1: (+1)
+   \       0x1C   0x4770             BX       LR               ;; return
+    139          /**
+    140            * @}
+    141            */
+    142          
+    143          /** @defgroup RNG_Group2 Get 32 bit Random number function
+    144           *  @brief    Get 32 bit Random number function 
+    145           *
+    146          
+    147          @verbatim    
+    148           ===============================================================================
+    149                           ##### Get 32 bit Random number function #####
+    150           ===============================================================================  
+    151           [..] This section provides a function allowing to get the 32 bit Random number  
+    152            
+    153             (@)  Before to call this function you have to wait till DRDY flag is set,
+    154                  using RNG_GetFlagStatus(RNG_FLAG_DRDY) function. 
+    155             
+    156          @endverbatim
+    157            * @{
+    158            */
+    159          
+    160          
+    161          /**
+    162            * @brief  Returns a 32-bit random number.
+    163            *   
+    164            * @note   Before to call this function you have to wait till DRDY (data ready)
+    165            *         flag is set, using RNG_GetFlagStatus(RNG_FLAG_DRDY) function.
+    166            * @note   Each time the Random number data is read (using RNG_GetRandomNumber()
+    167            *         function), the RNG_FLAG_DRDY flag is automatically cleared.
+    168            * @note   In the case of a seed error, the generation of random numbers is 
+    169            *         interrupted for as long as the SECS bit is '1'. If a number is 
+    170            *         available in the RNG_DR register, it must not be used because it may 
+    171            *         not have enough entropy. In this case, it is recommended to clear the 
+    172            *         SEIS bit(using RNG_ClearFlag(RNG_FLAG_SECS) function), then disable 
+    173            *         and enable the RNG peripheral (using RNG_Cmd() function) to 
+    174            *         reinitialize and restart the RNG.
+    175            * @note   In the case of a clock error, the RNG is no more able to generate 
+    176            *         random numbers because the PLL48CLK clock is not correct. User have 
+    177            *         to check that the clock controller is correctly configured to provide
+    178            *         the RNG clock and clear the CEIS bit (using RNG_ClearFlag(RNG_FLAG_CECS) 
+    179            *         function) . The clock error has no impact on the previously generated 
+    180            *         random numbers, and the RNG_DR register contents can be used.
+    181            *         
+    182            * @param  None
+    183            * @retval 32-bit random number.
+    184            */
+
+   \                                 In section .text, align 2, keep-with-next
+    185          uint32_t RNG_GetRandomNumber(void)
+    186          {
+    187            /* Return the 32 bit random number from the DR register */
+    188            return RNG->DR;
+   \                     RNG_GetRandomNumber: (+1)
+   \        0x0   0x....             LDR.N    R0,??DataTable7_1  ;; 0x50060808
+   \        0x2   0x6800             LDR      R0,[R0, #+0]
+   \        0x4   0x4770             BX       LR               ;; return
+    189          }
+    190          
+    191          
+    192          /**
+    193            * @}
+    194            */
+    195          
+    196          /** @defgroup RNG_Group3 Interrupts and flags management functions
+    197           *  @brief   Interrupts and flags management functions
+    198           *
+    199          @verbatim   
+    200           ===============================================================================
+    201                       ##### Interrupts and flags management functions #####
+    202           ===============================================================================  
+    203          
+    204           [..] This section provides functions allowing to configure the RNG Interrupts and 
+    205                to get the status and clear flags and Interrupts pending bits.
+    206            
+    207           [..] The RNG provides 3 Interrupts sources and 3 Flags:
+    208            
+    209           *** Flags : ***
+    210           ===============
+    211           [..] 
+    212              (#) RNG_FLAG_DRDY :  In the case of the RNG_DR register contains valid 
+    213                  random data. it is cleared by reading the valid data(using 
+    214                  RNG_GetRandomNumber() function).
+    215          
+    216              (#) RNG_FLAG_CECS : In the case of a seed error detection. 
+    217                
+    218              (#) RNG_FLAG_SECS : In the case of a clock error detection.
+    219                        
+    220           *** Interrupts ***
+    221           ==================
+    222           [..] If enabled, an RNG interrupt is pending :
+    223              
+    224             (#) In the case of the RNG_DR register contains valid random data. 
+    225                 This interrupt source is cleared once the RNG_DR register has been read 
+    226                 (using RNG_GetRandomNumber() function) until a new valid value is 
+    227                 computed; or 
+    228             (#) In the case of a seed error : One of the following faulty sequences has 
+    229                 been detected:
+    230                 (++) More than 64 consecutive bits at the same value (0 or 1)
+    231                 (++) More than 32 consecutive alternance of 0 and 1 (0101010101...01)
+    232                 This interrupt source is cleared using RNG_ClearITPendingBit(RNG_IT_SEI)
+    233                 function; or
+    234             (#) In the case of a clock error : the PLL48CLK (RNG peripheral clock source) 
+    235                 was not correctly detected (fPLL48CLK< fHCLK/16). This interrupt source is
+    236                 cleared using RNG_ClearITPendingBit(RNG_IT_CEI) function.
+    237                 -@- note In this case, User have to check that the clock controller is 
+    238                     correctly configured to provide the RNG clock. 
+    239          
+    240           *** Managing the RNG controller events : ***
+    241           ============================================
+    242           [..] The user should identify which mode will be used in his application to manage 
+    243                the RNG controller events: Polling mode or Interrupt mode.
+    244            
+    245             (#) In the Polling Mode it is advised to use the following functions:
+    246                 (++) RNG_GetFlagStatus() : to check if flags events occur. 
+    247                 (++) RNG_ClearFlag()     : to clear the flags events.
+    248            
+    249                 -@@- RNG_FLAG_DRDY can not be cleared by RNG_ClearFlag(). it is cleared only 
+    250                      by reading the Random number data.      
+    251            
+    252             (#)  In the Interrupt Mode it is advised to use the following functions:
+    253                  (++) RNG_ITConfig()       : to enable or disable the interrupt source.
+    254                  (++) RNG_GetITStatus()    : to check if Interrupt occurs.
+    255                  (++) RNG_ClearITPendingBit() : to clear the Interrupt pending Bit 
+    256                       (corresponding Flag). 
+    257            
+    258          @endverbatim
+    259            * @{
+    260            */ 
+    261          
+    262          /**
+    263            * @brief  Enables or disables the RNG interrupt.
+    264            * @note   The RNG provides 3 interrupt sources,
+    265            *           - Computed data is ready event (DRDY), and           
+    266            *           - Seed error Interrupt (SEI) and 
+    267            *           - Clock error Interrupt (CEI), 
+    268            *         all these interrupts sources are enabled by setting the IE bit in 
+    269            *         CR register. However, each interrupt have its specific status bit
+    270            *         (see RNG_GetITStatus() function) and clear bit except the DRDY event
+    271            *         (see RNG_ClearITPendingBit() function).
+    272            * @param  NewState: new state of the RNG interrupt.
+    273            *          This parameter can be: ENABLE or DISABLE.
+    274            * @retval None
+    275            */
+
+   \                                 In section .text, align 2, keep-with-next
+    276          void RNG_ITConfig(FunctionalState NewState)
+    277          {
+    278            /* Check the parameters */
+    279            assert_param(IS_FUNCTIONAL_STATE(NewState));
+    280          
+    281            if (NewState != DISABLE)
+   \                     RNG_ITConfig: (+1)
+   \        0x0   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \        0x2   0x2800             CMP      R0,#+0
+   \        0x4   0xD005             BEQ.N    ??RNG_ITConfig_0
+    282            {
+    283              /* Enable the RNG interrupt */
+    284              RNG->CR |= RNG_CR_IE;
+   \        0x6   0x....             LDR.N    R0,??DataTable7  ;; 0x50060800
+   \        0x8   0x6801             LDR      R1,[R0, #+0]
+   \        0xA   0xF051 0x0108      ORRS     R1,R1,#0x8
+   \        0xE   0x6001             STR      R1,[R0, #+0]
+   \       0x10   0xE004             B.N      ??RNG_ITConfig_1
+    285            }
+    286            else
+    287            {
+    288              /* Disable the RNG interrupt */
+    289              RNG->CR &= ~RNG_CR_IE;
+   \                     ??RNG_ITConfig_0: (+1)
+   \       0x12   0x....             LDR.N    R0,??DataTable7  ;; 0x50060800
+   \       0x14   0x6801             LDR      R1,[R0, #+0]
+   \       0x16   0xF031 0x0108      BICS     R1,R1,#0x8
+   \       0x1A   0x6001             STR      R1,[R0, #+0]
+    290            }
+    291          }
+   \                     ??RNG_ITConfig_1: (+1)
+   \       0x1C   0x4770             BX       LR               ;; return
+    292          
+    293          /**
+    294            * @brief  Checks whether the specified RNG flag is set or not.
+    295            * @param  RNG_FLAG: specifies the RNG flag to check.
+    296            *          This parameter can be one of the following values:
+    297            *            @arg RNG_FLAG_DRDY: Data Ready flag.
+    298            *            @arg RNG_FLAG_CECS: Clock Error Current flag.
+    299            *            @arg RNG_FLAG_SECS: Seed Error Current flag.
+    300            * @retval The new state of RNG_FLAG (SET or RESET).
+    301            */
+
+   \                                 In section .text, align 2, keep-with-next
+    302          FlagStatus RNG_GetFlagStatus(uint8_t RNG_FLAG)
+    303          {
+    304            FlagStatus bitstatus = RESET;
+   \                     RNG_GetFlagStatus: (+1)
+   \        0x0   0x2100             MOVS     R1,#+0
+    305            /* Check the parameters */
+    306            assert_param(IS_RNG_GET_FLAG(RNG_FLAG));
+    307          
+    308            /* Check the status of the specified RNG flag */
+    309            if ((RNG->SR & RNG_FLAG) != (uint8_t)RESET)
+   \        0x2   0x....             LDR.N    R1,??DataTable7_2  ;; 0x50060804
+   \        0x4   0x6809             LDR      R1,[R1, #+0]
+   \        0x6   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \        0x8   0x4201             TST      R1,R0
+   \        0xA   0xD001             BEQ.N    ??RNG_GetFlagStatus_0
+    310            {
+    311              /* RNG_FLAG is set */
+    312              bitstatus = SET;
+   \        0xC   0x2001             MOVS     R0,#+1
+   \        0xE   0xE000             B.N      ??RNG_GetFlagStatus_1
+    313            }
+    314            else
+    315            {
+    316              /* RNG_FLAG is reset */
+    317              bitstatus = RESET;
+   \                     ??RNG_GetFlagStatus_0: (+1)
+   \       0x10   0x2000             MOVS     R0,#+0
+    318            }
+    319            /* Return the RNG_FLAG status */
+    320            return  bitstatus;
+   \                     ??RNG_GetFlagStatus_1: (+1)
+   \       0x12   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x14   0x4770             BX       LR               ;; return
+    321          }
+    322          
+    323          
+    324          /**
+    325            * @brief  Clears the RNG flags.
+    326            * @param  RNG_FLAG: specifies the flag to clear. 
+    327            *          This parameter can be any combination of the following values:
+    328            *            @arg RNG_FLAG_CECS: Clock Error Current flag.
+    329            *            @arg RNG_FLAG_SECS: Seed Error Current flag.
+    330            * @note   RNG_FLAG_DRDY can not be cleared by RNG_ClearFlag() function. 
+    331            *         This flag is cleared only by reading the Random number data (using 
+    332            *         RNG_GetRandomNumber() function).                           
+    333            * @retval None
+    334            */
+
+   \                                 In section .text, align 2, keep-with-next
+    335          void RNG_ClearFlag(uint8_t RNG_FLAG)
+    336          {
+    337            /* Check the parameters */
+    338            assert_param(IS_RNG_CLEAR_FLAG(RNG_FLAG));
+    339            /* Clear the selected RNG flags */
+    340            RNG->SR = ~(uint32_t)(((uint32_t)RNG_FLAG) << 4);
+   \                     RNG_ClearFlag: (+1)
+   \        0x0   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \        0x2   0xEA7F 0x1000      MVNS     R0,R0, LSL #+4
+   \        0x6   0x....             LDR.N    R1,??DataTable7_2  ;; 0x50060804
+   \        0x8   0x6008             STR      R0,[R1, #+0]
+    341          }
+   \        0xA   0x4770             BX       LR               ;; return
+    342          
+    343          /**
+    344            * @brief  Checks whether the specified RNG interrupt has occurred or not.
+    345            * @param  RNG_IT: specifies the RNG interrupt source to check.
+    346            *          This parameter can be one of the following values:
+    347            *            @arg RNG_IT_CEI: Clock Error Interrupt.
+    348            *            @arg RNG_IT_SEI: Seed Error Interrupt.                   
+    349            * @retval The new state of RNG_IT (SET or RESET).
+    350            */
+
+   \                                 In section .text, align 2, keep-with-next
+    351          ITStatus RNG_GetITStatus(uint8_t RNG_IT)
+    352          {
+    353            ITStatus bitstatus = RESET;
+   \                     RNG_GetITStatus: (+1)
+   \        0x0   0x2100             MOVS     R1,#+0
+    354            /* Check the parameters */
+    355            assert_param(IS_RNG_GET_IT(RNG_IT));
+    356          
+    357            /* Check the status of the specified RNG interrupt */
+    358            if ((RNG->SR & RNG_IT) != (uint8_t)RESET)
+   \        0x2   0x....             LDR.N    R1,??DataTable7_2  ;; 0x50060804
+   \        0x4   0x6809             LDR      R1,[R1, #+0]
+   \        0x6   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \        0x8   0x4201             TST      R1,R0
+   \        0xA   0xD001             BEQ.N    ??RNG_GetITStatus_0
+    359            {
+    360              /* RNG_IT is set */
+    361              bitstatus = SET;
+   \        0xC   0x2001             MOVS     R0,#+1
+   \        0xE   0xE000             B.N      ??RNG_GetITStatus_1
+    362            }
+    363            else
+    364            {
+    365              /* RNG_IT is reset */
+    366              bitstatus = RESET;
+   \                     ??RNG_GetITStatus_0: (+1)
+   \       0x10   0x2000             MOVS     R0,#+0
+    367            }
+    368            /* Return the RNG_IT status */
+    369            return bitstatus;
+   \                     ??RNG_GetITStatus_1: (+1)
+   \       0x12   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x14   0x4770             BX       LR               ;; return
+    370          }
+    371          
+    372          
+    373          /**
+    374            * @brief  Clears the RNG interrupt pending bit(s).
+    375            * @param  RNG_IT: specifies the RNG interrupt pending bit(s) to clear.
+    376            *          This parameter can be any combination of the following values:
+    377            *            @arg RNG_IT_CEI: Clock Error Interrupt.
+    378            *            @arg RNG_IT_SEI: Seed Error Interrupt.
+    379            * @retval None
+    380            */
+
+   \                                 In section .text, align 2, keep-with-next
+    381          void RNG_ClearITPendingBit(uint8_t RNG_IT)
+    382          {
+    383            /* Check the parameters */
+    384            assert_param(IS_RNG_IT(RNG_IT));
+    385          
+    386            /* Clear the selected RNG interrupt pending bit */
+    387            RNG->SR = (uint8_t)~RNG_IT;
+   \                     RNG_ClearITPendingBit: (+1)
+   \        0x0   0x43C0             MVNS     R0,R0
+   \        0x2   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \        0x4   0x....             LDR.N    R1,??DataTable7_2  ;; 0x50060804
+   \        0x6   0x6008             STR      R0,[R1, #+0]
+    388          }
+   \        0x8   0x4770             BX       LR               ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7:
+   \        0x0   0x5006'0800        DC32     0x50060800
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_1:
+   \        0x0   0x5006'0808        DC32     0x50060808
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_2:
+   \        0x0   0x5006'0804        DC32     0x50060804
+    389          /**
+    390            * @}
+    391            */ 
+    392            
+    393          /**
+    394            * @}
+    395            */ 
+    396          #endif /* STM32F40_41xxx || STM32F427_437xx || STM32F410xx || STM32F412xG || STM32F413_423xx || STM32F429_439xx || STM32F469_479xx */
+    397          /**
+    398            * @}
+    399            */ 
+    400          
+    401          /**
+    402            * @}
+    403            */ 
+    404          
+    405          
+    406          /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   RNG_ClearFlag
+       0   RNG_ClearITPendingBit
+       0   RNG_Cmd
+       8   RNG_DeInit
+         8   -> RCC_AHB2PeriphResetCmd
+       0   RNG_GetFlagStatus
+       0   RNG_GetITStatus
+       0   RNG_GetRandomNumber
+       0   RNG_ITConfig
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable7
+       4  ??DataTable7_1
+       4  ??DataTable7_2
+      12  RNG_ClearFlag
+      10  RNG_ClearITPendingBit
+      30  RNG_Cmd
+      20  RNG_DeInit
+      22  RNG_GetFlagStatus
+      22  RNG_GetITStatus
+       6  RNG_GetRandomNumber
+      30  RNG_ITConfig
+
+ 
+ 164 bytes in section .text
+ 
+ 164 bytes of CODE memory
+
+Errors: none
+Warnings: none

@@ -1,0 +1,1643 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         10/Jul/2020  15:12:10
+# Copyright 1999-2019 IAR Systems AB.
+#
+#    Cpu mode     =  
+#    Endian       =  little
+#    Source file  =
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_sai.c
+#    Command line =
+#        -f C:\Users\Evan\AppData\Local\Temp\EWF551.tmp
+#        (E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_sai.c
+#        -D USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List
+#        -o
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "D:\IAR
+#        Systems\Embedded Workbench 8.3\arm\inc\c\DLib_Config_Normal.h" -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Include\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\iar\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\inc\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\User\inc\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\User\src\
+#        -Ol --use_c++_inline -I "D:\IAR Systems\Embedded Workbench
+#        8.3\arm\CMSIS\Core\Include\" -I "D:\IAR Systems\Embedded Workbench
+#        8.3\arm\CMSIS\DSP\Include\")
+#    Locale       =  C
+#    List file    =
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List\stm32f4xx_sai.lst
+#    Object file  =
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\Obj\stm32f4xx_sai.o
+#
+###############################################################################
+
+E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_sai.c
+      1          /**
+      2            ******************************************************************************
+      3            * @file    stm32f4xx_sai.c
+      4            * @author  MCD Application Team
+      5            * @version V1.8.0
+      6            * @date    04-November-2016  
+      7            * @brief   This file provides firmware functions to manage the following 
+      8            *          functionalities of the Serial Audio Interface (SAI):
+      9            *           + Initialization and Configuration
+     10            *           + Data transfers functions
+     11            *           + DMA transfers management
+     12            *           + Interrupts and flags management 
+     13            *           
+     14            @verbatim
+     15           ===============================================================================
+     16                               ##### How to use this driver #####
+     17           ===============================================================================
+     18              [..] 
+     19              
+     20                 (#) Enable peripheral clock using the following functions 
+     21                     RCC_APB2PeriphClockCmd(RCC_APB2Periph_SAI1, ENABLE) for SAI1
+     22            
+     23                 (#) For each SAI Block A/B enable SCK, SD, FS and MCLK GPIO clocks 
+     24                     using RCC_AHB1PeriphClockCmd() function.
+     25            
+     26                 (#) Peripherals alternate function: 
+     27                     (++) Connect the pin to the desired peripherals' Alternate 
+     28                          Function (AF) using GPIO_PinAFConfig() function.
+     29                     (++) Configure the desired pin in alternate function by:
+     30                          GPIO_InitStruct->GPIO_Mode = GPIO_Mode_AF
+     31                     (++) Select the type, pull-up/pull-down and output speed via 
+     32                          GPIO_PuPd, GPIO_OType and GPIO_Speed members
+     33                     (++) Call GPIO_Init() function
+     34                     -@@- If an external clock source is used then the I2S CKIN pin should be 
+     35                         also configured in Alternate function Push-pull pull-up mode.
+     36                          
+     37                (#) The SAI clock can be generated from different clock source :
+     38                    PLL I2S, PLL SAI or external clock source.
+     39                    (++) The PLL I2S is configured using the following functions RCC_PLLI2SConfig(), 
+     40                         RCC_PLLI2SCmd(ENABLE), RCC_GetFlagStatus(RCC_FLAG_PLLI2SRDY) and 
+     41                         RCC_SAIPLLI2SClkDivConfig() or;
+     42                        
+     43                    (++) The PLL SAI is configured using the following functions RCC_PLLSAIConfig(), 
+     44                         RCC_PLLSAICmd(ENABLE), RCC_GetFlagStatus(RCC_FLAG_PLLSAIRDY) and 
+     45                         RCC_SAIPLLSAIClkDivConfig()or;          
+     46                        
+     47                    (++) External clock source is configured using the function 
+     48                         RCC_I2SCLKConfig(RCC_I2S2CLKSource_Ext) and after setting correctly the 
+     49                         define constant I2S_EXTERNAL_CLOCK_VAL in the stm32f4xx_conf.h file.      
+     50                          
+     51                (#) Each SAI Block A or B has its own clock generator to make these two blocks 
+     52                    completely independent. The Clock generator is configured using RCC_SAIBlockACLKConfig() and 
+     53                    RCC_SAIBlockBCLKConfig() functions.
+     54                            
+     55                (#) Each SAI Block A or B can be configured separately : 
+     56                    (++) Program the Master clock divider, Audio mode, Protocol, Data Length, Clock Strobing Edge, 
+     57                         Synchronous mode, Output drive and FIFO Thresold using SAI_Init() function.   
+     58                         In case of master mode, program the Master clock divider (MCKDIV) using 
+     59                         the following formula :  
+     60                         (+++) MCLK_x = SAI_CK_x / (MCKDIV * 2) with MCLK_x = 256 * FS
+     61                         (+++) FS = SAI_CK_x / (MCKDIV * 2) * 256
+     62                         (+++) MCKDIV = SAI_CK_x / FS * 512
+     63                   (++) Program the Frame Length, Frame active Length, FS Definition, FS Polarity, 
+     64                        FS Offset using SAI_FrameInit() function.    
+     65                   (++) Program the Slot First Bit Offset, Slot Size, Slot Number, Slot Active 
+     66                        using SAI_SlotInit() function. 
+     67                             
+     68                (#) Enable the NVIC and the corresponding interrupt using the function 
+     69                    SAI_ITConfig() if you need to use interrupt mode. 
+     70            
+     71                (#) When using the DMA mode 
+     72                    (++) Configure the DMA using DMA_Init() function
+     73                    (++) Active the needed channel Request using SAI_DMACmd() function
+     74             
+     75                (#) Enable the SAI using the SAI_Cmd() function.
+     76             
+     77                (#) Enable the DMA using the DMA_Cmd() function when using DMA mode. 
+     78            
+     79                (#) The SAI has some specific functions which can be useful depending 
+     80                    on the audio protocol selected.  
+     81                    (++) Enable Mute mode when the audio block is a transmitter using SAI_MuteModeCmd()
+     82                         function and configure the value transmitted during mute using SAI_MuteValueConfig().  
+     83                    (++) Detect the Mute mode when audio block is a receiver using SAI_MuteFrameCounterConfig().             
+     84                    (++) Enable the MONO mode without any data preprocessing in memory when the number
+     85                         of slot is equal to 2 using SAI_MonoModeConfig() function.
+     86                    (++) Enable data companding algorithm (U law and A law) using SAI_CompandingModeConfig().
+     87                    (++) Choose the behavior of the SD line in output when an inactive slot is sent 
+     88                         on the data line using SAI_TRIStateConfig() function.   
+     89            [..]               
+     90             (@)    In master TX mode: enabling the audio block immediately generates the bit clock 
+     91                    for the external slaves even if there is no data in the FIFO, However FS signal 
+     92                    generation is conditioned by the presence of data in the FIFO.
+     93                           
+     94             (@)    In master RX mode: enabling the audio block immediately generates the bit clock 
+     95                    and FS signal for the external slaves. 
+     96                          
+     97             (@)    It is mandatory to respect the following conditions in order to avoid bad SAI behavior: 
+     98                      (+@)  First bit Offset <= (SLOT size - Data size)
+     99                      (+@)  Data size <= SLOT size
+    100                      (+@)  Number of SLOT x SLOT size = Frame length
+    101                      (+@)  The number of slots should be even when bit FSDEF in the SAI_xFRCR is set.    
+    102            
+    103              @endverbatim  
+    104          
+    105            ******************************************************************************
+    106            * @attention
+    107            *
+    108            * <h2><center>&copy; COPYRIGHT 2016 STMicroelectronics</center></h2>
+    109            *
+    110            * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
+    111            * You may not use this file except in compliance with the License.
+    112            * You may obtain a copy of the License at:
+    113            *
+    114            *        http://www.st.com/software_license_agreement_liberty_v2
+    115            *
+    116            * Unless required by applicable law or agreed to in writing, software 
+    117            * distributed under the License is distributed on an "AS IS" BASIS, 
+    118            * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    119            * See the License for the specific language governing permissions and
+    120            * limitations under the License.
+    121            *
+    122            ******************************************************************************
+    123            */ 
+    124          
+    125          /* Includes ------------------------------------------------------------------*/
+    126          #include "stm32f4xx_sai.h"
+    127          #include "stm32f4xx_rcc.h"
+    128          
+    129          /** @addtogroup STM32F4xx_StdPeriph_Driver
+    130            * @{
+    131            */
+    132          
+    133          /** @defgroup SAI 
+    134            * @brief SAI driver modules
+    135            * @{
+    136            */ 
+    137          #if defined (STM32F40_41xxx) || defined (STM32F427_437xx) || defined (STM32F429_439xx) || \
+    138              defined (STM32F401xx) || defined (STM32F411xE) || defined (STM32F446xx) || defined (STM32F469_479xx) || \
+    139              defined (STM32F413_423xx)
+    140          
+    141          /* Private typedef -----------------------------------------------------------*/
+    142          /* Private define ------------------------------------------------------------*/
+    143          
+    144          /* *SAI registers Masks */
+    145          #define CR1_CLEAR_MASK            ((uint32_t)0xFF07C010)
+    146          #define FRCR_CLEAR_MASK           ((uint32_t)0xFFF88000)
+    147          #define SLOTR_CLEAR_MASK          ((uint32_t)0x0000F020)
+    148          
+    149          /* Private macro -------------------------------------------------------------*/
+    150          /* Private variables ---------------------------------------------------------*/
+    151          /* Private function prototypes -----------------------------------------------*/
+    152          /* Private functions ---------------------------------------------------------*/
+    153          
+    154          /** @defgroup SAI_Private_Functions
+    155            * @{
+    156            */
+    157          
+    158          /** @defgroup SAI_Group1 Initialization and Configuration functions
+    159           *  @brief   Initialization and Configuration functions 
+    160           *
+    161          @verbatim   
+    162           ===============================================================================
+    163                      ##### Initialization and Configuration functions #####
+    164           ===============================================================================  
+    165            [..]
+    166            This section provides a set of functions allowing to initialize the SAI Audio 
+    167            Block Mode, Audio Protocol, Data size, Synchronization between audio block, 
+    168            Master clock Divider, Fifo threshold, Frame configuration, slot configuration,
+    169            Tristate mode, Companding mode and Mute mode.  
+    170            [..] 
+    171            The SAI_Init(), SAI_FrameInit() and SAI_SlotInit() functions follows the SAI Block
+    172            configuration procedures for Master mode and Slave mode (details for these procedures 
+    173            are available in reference manual(RM0090).
+    174            
+    175          @endverbatim
+    176            * @{
+    177            */
+    178          
+    179          /**
+    180            * @brief  Deinitialize the SAIx peripheral registers to their default reset values.
+    181            * @param  SAIx: To select the SAIx peripheral, where x can be the different instances 
+    182            *                     
+    183            * @retval None
+    184            */
+
+   \                                 In section .text, align 2, keep-with-next
+    185          void SAI_DeInit(SAI_TypeDef* SAIx)
+    186          {
+   \                     SAI_DeInit: (+1)
+   \        0x0   0xB580             PUSH     {R7,LR}
+    187            /* Check the parameters */
+    188            assert_param(IS_SAI_PERIPH(SAIx));
+    189            
+    190            if(SAIx == SAI1)
+   \        0x2   0x....             LDR.N    R1,??DataTable2  ;; 0x40015800
+   \        0x4   0x4288             CMP      R0,R1
+   \        0x6   0xD109             BNE.N    ??SAI_DeInit_0
+    191            {
+    192              /* Enable SAI1 reset state */
+    193              RCC_APB2PeriphResetCmd(RCC_APB2Periph_SAI1, ENABLE);
+   \        0x8   0x2101             MOVS     R1,#+1
+   \        0xA   0xF45F 0x0080      MOVS     R0,#+4194304
+   \        0xE   0x....'....        BL       RCC_APB2PeriphResetCmd
+    194              /* Release SAI1 from reset state */
+    195              RCC_APB2PeriphResetCmd(RCC_APB2Periph_SAI1, DISABLE); 
+   \       0x12   0x2100             MOVS     R1,#+0
+   \       0x14   0xF45F 0x0080      MOVS     R0,#+4194304
+   \       0x18   0x....'....        BL       RCC_APB2PeriphResetCmd
+    196            }
+    197            else
+    198            {
+    199          #if defined(STM32F446xx)
+    200            if(SAIx == SAI2)
+    201              {
+    202                /* Enable SAI2 reset state */
+    203                RCC_APB2PeriphResetCmd(RCC_APB2Periph_SAI2, ENABLE);
+    204                /* Release SAI2 from reset state */
+    205                RCC_APB2PeriphResetCmd(RCC_APB2Periph_SAI2, DISABLE);   
+    206              }
+    207          #endif /* STM32F446xx */
+    208            }
+    209          }
+   \                     ??SAI_DeInit_0: (+1)
+   \       0x1C   0xBD01             POP      {R0,PC}          ;; return
+    210          
+    211          /**
+    212            * @brief  Initializes the SAI Block x peripheral according to the specified 
+    213            *         parameters in the SAI_InitStruct.
+    214            *         
+    215            * @note   SAI clock is generated from a specific output of the PLLSAI or a specific  
+    216            *         output of the PLLI2S or from an alternate function bypassing the PLL I2S.
+    217            *        
+    218            * @param  SAI_Block_x: where x can be A or B to select the SAI Block peripheral.
+    219            * @param  SAI_InitStruct: pointer to a SAI_InitTypeDef structure that
+    220            *         contains the configuration information for the specified SAI Block peripheral.             
+    221            * @retval None
+    222            */
+
+   \                                 In section .text, align 2, keep-with-next
+    223          void SAI_Init(SAI_Block_TypeDef* SAI_Block_x, SAI_InitTypeDef* SAI_InitStruct)
+    224          {
+   \                     SAI_Init: (+1)
+   \        0x0   0xB410             PUSH     {R4}
+    225            uint32_t tmpreg = 0;
+   \        0x2   0x2200             MOVS     R2,#+0
+    226            
+    227            /* Check the parameters */
+    228            assert_param(IS_SAI_BLOCK_PERIPH(SAI_Block_x));
+    229            
+    230            /* Check the SAI Block parameters */
+    231            assert_param(IS_SAI_BLOCK_MODE(SAI_InitStruct->SAI_AudioMode));
+    232            assert_param(IS_SAI_BLOCK_PROTOCOL(SAI_InitStruct->SAI_Protocol));
+    233            assert_param(IS_SAI_BLOCK_DATASIZE(SAI_InitStruct->SAI_DataSize));
+    234            assert_param(IS_SAI_BLOCK_FIRST_BIT(SAI_InitStruct->SAI_FirstBit));
+    235            assert_param(IS_SAI_BLOCK_CLOCK_STROBING(SAI_InitStruct->SAI_ClockStrobing));
+    236            assert_param(IS_SAI_BLOCK_SYNCHRO(SAI_InitStruct->SAI_Synchro));
+    237            assert_param(IS_SAI_BLOCK_SYNCEXT(SAI_InitStruct->SAI_SynchroExt));
+    238            assert_param(IS_SAI_BLOCK_OUTPUT_DRIVE(SAI_InitStruct->SAI_OUTDRIV));
+    239            assert_param(IS_SAI_BLOCK_NODIVIDER(SAI_InitStruct->SAI_NoDivider));
+    240            assert_param(IS_SAI_BLOCK_MASTER_DIVIDER(SAI_InitStruct->SAI_MasterDivider));
+    241            assert_param(IS_SAI_BLOCK_FIFO_THRESHOLD(SAI_InitStruct->SAI_FIFOThreshold));
+    242          
+    243            /* SAI Block_x CR1 Configuration */
+    244            /* Get the SAI Block_x CR1 value */
+    245            tmpreg = SAI_Block_x->CR1;
+   \        0x4   0x6803             LDR      R3,[R0, #+0]
+    246            /* Clear MODE, PRTCFG, DS, LSBFIRST, CKSTR, SYNCEN, OUTDRIV, NODIV, and MCKDIV bits */
+    247            tmpreg &= CR1_CLEAR_MASK;
+   \        0x6   0x....             LDR.N    R2,??DataTable2_1  ;; 0xff07c010
+   \        0x8   0x4013             ANDS     R3,R2,R3
+    248            /* Configure SAI_Block_x: Audio mode, Protocol, Data Size, first transmitted bit, Clock strobing 
+    249               edge, Synchronization mode, Output drive, Master Divider and FIFO level */  
+    250            /* Set MODE bits according to SAI_AudioMode value       */
+    251            /* Set PRTCFG bits according to SAI_Protocol value      */
+    252            /* Set DS bits according to SAI_DataSize value          */
+    253            /* Set LSBFIRST bit according to SAI_FirstBit value     */
+    254            /* Set CKSTR bit according to SAI_ClockStrobing value   */
+    255            /* Set SYNCEN bit according to SAI_Synchro value        */
+    256            /* Set OUTDRIV bit according to SAI_OUTDRIV value       */
+    257            /* Set NODIV bit according to SAI_NoDivider value       */
+    258            /* Set MCKDIV bits according to SAI_MasterDivider value */
+    259            tmpreg |= (uint32_t)(SAI_InitStruct->SAI_AudioMode     | SAI_InitStruct->SAI_Protocol  |
+    260                                 SAI_InitStruct->SAI_DataSize      | SAI_InitStruct->SAI_FirstBit  |  
+    261                                 SAI_InitStruct->SAI_ClockStrobing | SAI_InitStruct->SAI_Synchro   |  
+    262                                 SAI_InitStruct->SAI_OUTDRIV       | SAI_InitStruct->SAI_NoDivider |
+    263                                 SAI_InitStruct->SAI_SynchroExt    | (uint32_t)((SAI_InitStruct->SAI_MasterDivider) << 20));
+   \        0xA   0x680C             LDR      R4,[R1, #+0]
+   \        0xC   0x684A             LDR      R2,[R1, #+4]
+   \        0xE   0x4314             ORRS     R4,R2,R4
+   \       0x10   0x688A             LDR      R2,[R1, #+8]
+   \       0x12   0x4314             ORRS     R4,R2,R4
+   \       0x14   0x68CA             LDR      R2,[R1, #+12]
+   \       0x16   0x4314             ORRS     R4,R2,R4
+   \       0x18   0x690A             LDR      R2,[R1, #+16]
+   \       0x1A   0x4314             ORRS     R4,R2,R4
+   \       0x1C   0x694A             LDR      R2,[R1, #+20]
+   \       0x1E   0x4314             ORRS     R4,R2,R4
+   \       0x20   0x69CA             LDR      R2,[R1, #+28]
+   \       0x22   0x4314             ORRS     R4,R2,R4
+   \       0x24   0x6A0A             LDR      R2,[R1, #+32]
+   \       0x26   0x4314             ORRS     R4,R2,R4
+   \       0x28   0x698A             LDR      R2,[R1, #+24]
+   \       0x2A   0x4314             ORRS     R4,R2,R4
+   \       0x2C   0x6A4A             LDR      R2,[R1, #+36]
+   \       0x2E   0xEA54 0x5402      ORRS     R4,R4,R2, LSL #+20
+   \       0x32   0x4323             ORRS     R3,R4,R3
+    264            /* Write to SAI_Block_x CR1 */
+    265            SAI_Block_x->CR1 = tmpreg;
+   \       0x34   0x6003             STR      R3,[R0, #+0]
+    266            
+    267            /* SAI Block_x CR2 Configuration */
+    268            /* Get the SAIBlock_x CR2 value */
+    269            tmpreg = SAI_Block_x->CR2;
+   \       0x36   0x6842             LDR      R2,[R0, #+4]
+    270            /* Clear FTH bits */
+    271            tmpreg &= ~(SAI_xCR2_FTH);
+   \       0x38   0x0892             LSRS     R2,R2,#+2
+   \       0x3A   0x0092             LSLS     R2,R2,#+2
+    272            /* Configure the FIFO Level */
+    273            /* Set FTH bits according to SAI_FIFOThreshold value */ 
+    274            tmpreg |= (uint32_t)(SAI_InitStruct->SAI_FIFOThreshold);
+   \       0x3C   0x6A89             LDR      R1,[R1, #+40]
+   \       0x3E   0x430A             ORRS     R2,R1,R2
+    275            /* Write to SAI_Block_x CR2 */
+    276            SAI_Block_x->CR2 = tmpreg;
+   \       0x40   0x6042             STR      R2,[R0, #+4]
+    277          }
+   \       0x42   0xBC10             POP      {R4}
+   \       0x44   0x4770             BX       LR               ;; return
+    278          
+    279          /**
+    280            * @brief  Initializes the SAI Block Audio frame according to the specified 
+    281            *         parameters in the SAI_FrameInitStruct.
+    282            *         
+    283            * @note   this function has no meaning if the AC'97 or SPDIF audio protocol 
+    284            *         are selected. 
+    285            *               
+    286            * @param  SAI_Block_x: where x can be A or B to select the SAI Block peripheral.
+    287            * @param  SAI_FrameInitStruct: pointer to an SAI_FrameInitTypeDef structure that
+    288            *         contains the configuration of audio frame for a specified SAI Block                       
+    289            * @retval None
+    290            */
+
+   \                                 In section .text, align 2, keep-with-next
+    291          void SAI_FrameInit(SAI_Block_TypeDef* SAI_Block_x, SAI_FrameInitTypeDef* SAI_FrameInitStruct)
+    292          {
+   \                     SAI_FrameInit: (+1)
+   \        0x0   0xB410             PUSH     {R4}
+    293            uint32_t tmpreg = 0;
+   \        0x2   0x2200             MOVS     R2,#+0
+    294            
+    295            /* Check the parameters */
+    296            assert_param(IS_SAI_BLOCK_PERIPH(SAI_Block_x));
+    297            
+    298            /* Check the SAI Block frame parameters */
+    299            assert_param(IS_SAI_BLOCK_FRAME_LENGTH(SAI_FrameInitStruct->SAI_FrameLength));
+    300            assert_param(IS_SAI_BLOCK_ACTIVE_FRAME(SAI_FrameInitStruct->SAI_ActiveFrameLength));
+    301            assert_param(IS_SAI_BLOCK_FS_DEFINITION(SAI_FrameInitStruct->SAI_FSDefinition));
+    302            assert_param(IS_SAI_BLOCK_FS_POLARITY(SAI_FrameInitStruct->SAI_FSPolarity));
+    303            assert_param(IS_SAI_BLOCK_FS_OFFSET(SAI_FrameInitStruct->SAI_FSOffset));
+    304          
+    305            /* SAI Block_x FRCR Configuration */
+    306            /* Get the SAI Block_x FRCR value */
+    307            tmpreg = SAI_Block_x->FRCR;
+   \        0x4   0x6883             LDR      R3,[R0, #+8]
+    308            /* Clear FRL, FSALL, FSDEF, FSPOL, FSOFF bits */
+    309            tmpreg &= FRCR_CLEAR_MASK;
+   \        0x6   0x....             LDR.N    R2,??DataTable2_2  ;; 0xfff88000
+   \        0x8   0x4013             ANDS     R3,R2,R3
+    310            /* Configure SAI_Block_x Frame: Frame Length, Active Frame Length, Frame Synchronization
+    311               Definition, Frame Synchronization Polarity and Frame Synchronization Polarity */
+    312            /* Set FRL bits according to SAI_FrameLength value         */
+    313            /* Set FSALL bits according to SAI_ActiveFrameLength value */
+    314            /* Set FSDEF bit according to SAI_FSDefinition value       */
+    315            /* Set FSPOL bit according to SAI_FSPolarity value         */
+    316            /* Set FSOFF bit according to SAI_FSOffset value           */
+    317            tmpreg |= (uint32_t)((uint32_t)(SAI_FrameInitStruct->SAI_FrameLength - 1)  | 
+    318                                 SAI_FrameInitStruct->SAI_FSOffset     | 
+    319                                 SAI_FrameInitStruct->SAI_FSDefinition |    
+    320                                 SAI_FrameInitStruct->SAI_FSPolarity   |                        
+    321                                 (uint32_t)((SAI_FrameInitStruct->SAI_ActiveFrameLength - 1) << 8));
+   \        0xA   0x680C             LDR      R4,[R1, #+0]
+   \        0xC   0x1E64             SUBS     R4,R4,#+1
+   \        0xE   0x690A             LDR      R2,[R1, #+16]
+   \       0x10   0x4314             ORRS     R4,R2,R4
+   \       0x12   0x688A             LDR      R2,[R1, #+8]
+   \       0x14   0x4314             ORRS     R4,R2,R4
+   \       0x16   0x68CA             LDR      R2,[R1, #+12]
+   \       0x18   0x4314             ORRS     R4,R2,R4
+   \       0x1A   0x6849             LDR      R1,[R1, #+4]
+   \       0x1C   0x1E49             SUBS     R1,R1,#+1
+   \       0x1E   0xEA54 0x2401      ORRS     R4,R4,R1, LSL #+8
+   \       0x22   0x4323             ORRS     R3,R4,R3
+    322                                 
+    323            /* Write to SAI_Block_x FRCR */
+    324            SAI_Block_x->FRCR = tmpreg;
+   \       0x24   0x6083             STR      R3,[R0, #+8]
+    325          }
+   \       0x26   0xBC10             POP      {R4}
+   \       0x28   0x4770             BX       LR               ;; return
+    326          
+    327          /**
+    328            * @brief  Initializes the SAI Block audio Slot according to the specified 
+    329            *         parameters in the SAI_SlotInitStruct.
+    330            *         
+    331            * @note   this function has no meaning if the AC'97 or SPDIF audio protocol 
+    332            *         are selected.
+    333            *               
+    334            * @param  SAI_Block_x: where x can be A or B to select the SAI Block peripheral.
+    335            * @param  SAI_SlotInitStruct: pointer to an SAI_SlotInitTypeDef structure that
+    336            *         contains the configuration of audio slot for a specified SAI Block                      
+    337            * @retval None
+    338            */
+
+   \                                 In section .text, align 2, keep-with-next
+    339          void SAI_SlotInit(SAI_Block_TypeDef* SAI_Block_x, SAI_SlotInitTypeDef* SAI_SlotInitStruct)
+    340          {
+   \                     SAI_SlotInit: (+1)
+   \        0x0   0xB410             PUSH     {R4}
+    341            uint32_t tmpreg = 0;
+   \        0x2   0x2200             MOVS     R2,#+0
+    342            
+    343            /* Check the parameters */
+    344            assert_param(IS_SAI_BLOCK_PERIPH(SAI_Block_x));
+    345            
+    346            /* Check the SAI Block Slot parameters */
+    347            assert_param(IS_SAI_BLOCK_FIRSTBIT_OFFSET(SAI_SlotInitStruct->SAI_FirstBitOffset));
+    348            assert_param(IS_SAI_BLOCK_SLOT_SIZE(SAI_SlotInitStruct->SAI_SlotSize));
+    349            assert_param(IS_SAI_BLOCK_SLOT_NUMBER(SAI_SlotInitStruct->SAI_SlotNumber));
+    350            assert_param(IS_SAI_SLOT_ACTIVE(SAI_SlotInitStruct->SAI_SlotActive));
+    351          
+    352            /* SAI Block_x SLOTR Configuration */
+    353            /* Get the SAI Block_x SLOTR value */
+    354            tmpreg = SAI_Block_x->SLOTR;
+   \        0x4   0x68C3             LDR      R3,[R0, #+12]
+    355            /* Clear FBOFF, SLOTSZ, NBSLOT, SLOTEN bits */
+    356            tmpreg &= SLOTR_CLEAR_MASK;
+   \        0x6   0xF24F 0x0220      MOVW     R2,#+61472
+   \        0xA   0x4013             ANDS     R3,R2,R3
+    357            /* Configure SAI_Block_x Slot: First bit offset, Slot size, Number of Slot in  
+    358               audio frame and slots activated in audio frame */
+    359            /* Set FBOFF bits according to SAI_FirstBitOffset value  */
+    360            /* Set SLOTSZ bits according to SAI_SlotSize value       */
+    361            /* Set NBSLOT bits according to SAI_SlotNumber value     */
+    362            /* Set SLOTEN bits according to SAI_SlotActive value     */
+    363            tmpreg |= (uint32_t)(SAI_SlotInitStruct->SAI_FirstBitOffset | 
+    364                                 SAI_SlotInitStruct->SAI_SlotSize       | 
+    365                                 SAI_SlotInitStruct->SAI_SlotActive     |    
+    366                                 (uint32_t)((SAI_SlotInitStruct->SAI_SlotNumber - 1) <<  8));
+   \        0xC   0x680C             LDR      R4,[R1, #+0]
+   \        0xE   0x684A             LDR      R2,[R1, #+4]
+   \       0x10   0x4314             ORRS     R4,R2,R4
+   \       0x12   0x68CA             LDR      R2,[R1, #+12]
+   \       0x14   0x4314             ORRS     R4,R2,R4
+   \       0x16   0x6889             LDR      R1,[R1, #+8]
+   \       0x18   0x1E49             SUBS     R1,R1,#+1
+   \       0x1A   0xEA54 0x2401      ORRS     R4,R4,R1, LSL #+8
+   \       0x1E   0x4323             ORRS     R3,R4,R3
+    367                                 
+    368            /* Write to SAI_Block_x SLOTR */
+    369            SAI_Block_x->SLOTR = tmpreg;
+   \       0x20   0x60C3             STR      R3,[R0, #+12]
+    370          }
+   \       0x22   0xBC10             POP      {R4}
+   \       0x24   0x4770             BX       LR               ;; return
+    371          
+    372          /**
+    373            * @brief  Fills each SAI_InitStruct member with its default value.
+    374            * @param  SAI_InitStruct: pointer to a SAI_InitTypeDef structure which will 
+    375            *         be initialized.  
+    376            * @retval None
+    377            */
+
+   \                                 In section .text, align 2, keep-with-next
+    378          void SAI_StructInit(SAI_InitTypeDef* SAI_InitStruct)
+    379          {
+    380            /* Reset SAI init structure parameters values */
+    381            /* Initialize the SAI_AudioMode member */
+    382            SAI_InitStruct->SAI_AudioMode = SAI_Mode_MasterTx;
+   \                     SAI_StructInit: (+1)
+   \        0x0   0x2100             MOVS     R1,#+0
+   \        0x2   0x6001             STR      R1,[R0, #+0]
+    383            /* Initialize the SAI_Protocol member */
+    384            SAI_InitStruct->SAI_Protocol = SAI_Free_Protocol;
+   \        0x4   0x2100             MOVS     R1,#+0
+   \        0x6   0x6041             STR      R1,[R0, #+4]
+    385            /* Initialize the SAI_DataSize member */
+    386            SAI_InitStruct->SAI_DataSize = SAI_DataSize_8b;
+   \        0x8   0x2140             MOVS     R1,#+64
+   \        0xA   0x6081             STR      R1,[R0, #+8]
+    387            /* Initialize the SAI_FirstBit member */
+    388            SAI_InitStruct->SAI_FirstBit = SAI_FirstBit_MSB;
+   \        0xC   0x2100             MOVS     R1,#+0
+   \        0xE   0x60C1             STR      R1,[R0, #+12]
+    389            /* Initialize the SAI_ClockStrobing member */
+    390            SAI_InitStruct->SAI_ClockStrobing = SAI_ClockStrobing_FallingEdge;
+   \       0x10   0x2100             MOVS     R1,#+0
+   \       0x12   0x6101             STR      R1,[R0, #+16]
+    391            /* Initialize the SAI_Synchro member */
+    392            SAI_InitStruct->SAI_Synchro = SAI_Asynchronous;
+   \       0x14   0x2100             MOVS     R1,#+0
+   \       0x16   0x6141             STR      R1,[R0, #+20]
+    393              /* Initialize the SAI_SynchroExt member */
+    394            SAI_InitStruct->SAI_SynchroExt = SAI_SyncExt_Disable;
+   \       0x18   0x2100             MOVS     R1,#+0
+   \       0x1A   0x6181             STR      R1,[R0, #+24]
+    395            /* Initialize the SAI_OUTDRIV member */
+    396            SAI_InitStruct->SAI_OUTDRIV = SAI_OutputDrive_Disabled;
+   \       0x1C   0x2100             MOVS     R1,#+0
+   \       0x1E   0x61C1             STR      R1,[R0, #+28]
+    397            /* Initialize the SAI_NoDivider member */
+    398            SAI_InitStruct->SAI_NoDivider = SAI_MasterDivider_Enabled;
+   \       0x20   0x2100             MOVS     R1,#+0
+   \       0x22   0x6201             STR      R1,[R0, #+32]
+    399            /* Initialize the SAI_MasterDivider member */
+    400            SAI_InitStruct->SAI_MasterDivider = 0;
+   \       0x24   0x2100             MOVS     R1,#+0
+   \       0x26   0x6241             STR      R1,[R0, #+36]
+    401            /* Initialize the SAI_FIFOThreshold member */
+    402            SAI_InitStruct->SAI_FIFOThreshold = SAI_Threshold_FIFOEmpty;
+   \       0x28   0x2100             MOVS     R1,#+0
+   \       0x2A   0x6281             STR      R1,[R0, #+40]
+    403          }
+   \       0x2C   0x4770             BX       LR               ;; return
+    404          
+    405          /**
+    406            * @brief  Fills each SAI_FrameInitStruct member with its default value.
+    407            * @param  SAI_FrameInitStruct: pointer to a SAI_FrameInitTypeDef structure 
+    408            *         which will be initialized.                     
+    409            * @retval None
+    410            */
+
+   \                                 In section .text, align 2, keep-with-next
+    411          void SAI_FrameStructInit(SAI_FrameInitTypeDef* SAI_FrameInitStruct)
+    412          {
+    413            /* Reset SAI Frame init structure parameters values */
+    414            /* Initialize the SAI_FrameLength member */
+    415            SAI_FrameInitStruct->SAI_FrameLength = 8;
+   \                     SAI_FrameStructInit: (+1)
+   \        0x0   0x2108             MOVS     R1,#+8
+   \        0x2   0x6001             STR      R1,[R0, #+0]
+    416            /* Initialize the SAI_ActiveFrameLength member */
+    417            SAI_FrameInitStruct->SAI_ActiveFrameLength = 1;
+   \        0x4   0x2101             MOVS     R1,#+1
+   \        0x6   0x6041             STR      R1,[R0, #+4]
+    418            /* Initialize the SAI_FSDefinition member */
+    419            SAI_FrameInitStruct->SAI_FSDefinition = SAI_FS_StartFrame;
+   \        0x8   0x2100             MOVS     R1,#+0
+   \        0xA   0x6081             STR      R1,[R0, #+8]
+    420            /* Initialize the SAI_FSPolarity member */
+    421            SAI_FrameInitStruct->SAI_FSPolarity = SAI_FS_ActiveLow;
+   \        0xC   0x2100             MOVS     R1,#+0
+   \        0xE   0x60C1             STR      R1,[R0, #+12]
+    422            /* Initialize the SAI_FSOffset member */
+    423            SAI_FrameInitStruct->SAI_FSOffset = SAI_FS_FirstBit;
+   \       0x10   0x2100             MOVS     R1,#+0
+   \       0x12   0x6101             STR      R1,[R0, #+16]
+    424          }
+   \       0x14   0x4770             BX       LR               ;; return
+    425          
+    426          /**
+    427            * @brief  Fills each SAI_SlotInitStruct member with its default value.
+    428            * @param  SAI_SlotInitStruct: pointer to a SAI_SlotInitTypeDef structure 
+    429            *         which will be initialized.                     
+    430            * @retval None
+    431            */
+
+   \                                 In section .text, align 2, keep-with-next
+    432          void SAI_SlotStructInit(SAI_SlotInitTypeDef* SAI_SlotInitStruct)
+    433          {
+    434            /* Reset SAI Slot init structure parameters values */
+    435            /* Initialize the SAI_FirstBitOffset member */
+    436            SAI_SlotInitStruct->SAI_FirstBitOffset = 0;
+   \                     SAI_SlotStructInit: (+1)
+   \        0x0   0x2100             MOVS     R1,#+0
+   \        0x2   0x6001             STR      R1,[R0, #+0]
+    437            /* Initialize the SAI_SlotSize member */
+    438            SAI_SlotInitStruct->SAI_SlotSize = SAI_SlotSize_DataSize;
+   \        0x4   0x2100             MOVS     R1,#+0
+   \        0x6   0x6041             STR      R1,[R0, #+4]
+    439            /* Initialize the SAI_SlotNumber member */
+    440            SAI_SlotInitStruct->SAI_SlotNumber = 1;
+   \        0x8   0x2101             MOVS     R1,#+1
+   \        0xA   0x6081             STR      R1,[R0, #+8]
+    441            /* Initialize the SAI_SlotActive member */
+    442            SAI_SlotInitStruct->SAI_SlotActive = SAI_Slot_NotActive;
+   \        0xC   0x2100             MOVS     R1,#+0
+   \        0xE   0x60C1             STR      R1,[R0, #+12]
+    443          
+    444          }
+   \       0x10   0x4770             BX       LR               ;; return
+    445          
+    446          /**
+    447            * @brief  Enables or disables the specified SAI Block peripheral.
+    448            * @param  SAI_Block_x: where x can be A or B to select the SAI Block peripheral.
+    449            * @param  NewState: new state of the SAI_Block_x peripheral. 
+    450            *          This parameter can be: ENABLE or DISABLE.
+    451            * @retval None
+    452            */
+
+   \                                 In section .text, align 2, keep-with-next
+    453          void SAI_Cmd(SAI_Block_TypeDef* SAI_Block_x, FunctionalState NewState)
+    454          {
+    455            /* Check the parameters */
+    456            assert_param(IS_SAI_BLOCK_PERIPH(SAI_Block_x));
+    457            assert_param(IS_FUNCTIONAL_STATE(NewState));
+    458            if (NewState != DISABLE)
+   \                     SAI_Cmd: (+1)
+   \        0x0   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \        0x2   0x2900             CMP      R1,#+0
+   \        0x4   0xD004             BEQ.N    ??SAI_Cmd_0
+    459            {
+    460              /* Enable the selected SAI peripheral */
+    461              SAI_Block_x->CR1 |= SAI_xCR1_SAIEN;
+   \        0x6   0x6801             LDR      R1,[R0, #+0]
+   \        0x8   0xF451 0x3180      ORRS     R1,R1,#0x10000
+   \        0xC   0x6001             STR      R1,[R0, #+0]
+   \        0xE   0xE003             B.N      ??SAI_Cmd_1
+    462            }
+    463            else
+    464            {
+    465              /* Disable the selected SAI peripheral */
+    466              SAI_Block_x->CR1 &= ~(SAI_xCR1_SAIEN);
+   \                     ??SAI_Cmd_0: (+1)
+   \       0x10   0x6801             LDR      R1,[R0, #+0]
+   \       0x12   0xF431 0x3180      BICS     R1,R1,#0x10000
+   \       0x16   0x6001             STR      R1,[R0, #+0]
+    467            }
+    468          }
+   \                     ??SAI_Cmd_1: (+1)
+   \       0x18   0x4770             BX       LR               ;; return
+    469          
+    470          /**
+    471            * @brief  Configures the mono mode for the selected SAI block.
+    472            * 
+    473            * @note  This function has a meaning only when the number of slot is equal to 2. 
+    474            *      
+    475            * @param  SAI_Block_x: where x can be A or B to select the SAI Block peripheral.
+    476            * @param  SAI_MonoMode: specifies the SAI block mono mode.
+    477            *          This parameter can be one of the following values:
+    478            *            @arg SAI_MonoMode : Set mono audio mode
+    479            *            @arg SAI_StreoMode : Set streo audio mode                       
+    480            * @retval None
+    481            */
+
+   \                                 In section .text, align 2, keep-with-next
+    482          void SAI_MonoModeConfig(SAI_Block_TypeDef* SAI_Block_x, uint32_t SAI_Mono_StreoMode)
+    483          {
+    484            /* Check the parameters */
+    485            assert_param(IS_SAI_BLOCK_PERIPH(SAI_Block_x));
+    486            assert_param(IS_SAI_BLOCK_MONO_STREO_MODE(SAI_MonoMode));
+    487            /* Clear MONO bit */
+    488            SAI_Block_x->CR1 &= ~(SAI_xCR1_MONO);
+   \                     SAI_MonoModeConfig: (+1)
+   \        0x0   0x6801             LDR      R1,[R0, #+0]
+   \        0x2   0xF431 0x5180      BICS     R1,R1,#0x1000
+   \        0x6   0x6001             STR      R1,[R0, #+0]
+    489            /* Set new Mono Mode value */
+    490            SAI_Block_x->CR1 |= SAI_MonoMode;
+   \        0x8   0x6801             LDR      R1,[R0, #+0]
+   \        0xA   0xF451 0x5180      ORRS     R1,R1,#0x1000
+   \        0xE   0x6001             STR      R1,[R0, #+0]
+    491          }
+   \       0x10   0x4770             BX       LR               ;; return
+    492          
+    493          /**
+    494            * @brief  Configures the TRIState management on data line for the selected SAI block.
+    495            * 
+    496            * @note  This function has a meaning only when the SAI block is configured in transmitter 
+    497            *      
+    498            * @param  SAI_Block_x: where x can be A or B to select the SAI Block peripheral.
+    499            * @param  SAI_TRIState: specifies the SAI block TRIState management.
+    500            *          This parameter can be one of the following values:
+    501            *            @arg SAI_Output_NotReleased : SD output line is still driven by the SAI.
+    502            *            @arg SAI_Output_Released : SD output line is released (HI-Z)                       
+    503            * @retval None
+    504            */
+
+   \                                 In section .text, align 2, keep-with-next
+    505          void SAI_TRIStateConfig(SAI_Block_TypeDef* SAI_Block_x, uint32_t SAI_TRIState)
+    506          {
+    507            /* Check the parameters */
+    508            assert_param(IS_SAI_BLOCK_PERIPH(SAI_Block_x));
+    509            assert_param(IS_SAI_BLOCK_TRISTATE_MANAGEMENT(SAI_TRIState));
+    510            /* Clear MONO bit */
+    511            SAI_Block_x->CR1 &= ~(SAI_xCR1_MONO);
+   \                     SAI_TRIStateConfig: (+1)
+   \        0x0   0x6801             LDR      R1,[R0, #+0]
+   \        0x2   0xF431 0x5180      BICS     R1,R1,#0x1000
+   \        0x6   0x6001             STR      R1,[R0, #+0]
+    512            /* Set new Mono Mode value */
+    513            SAI_Block_x->CR1 |= SAI_MonoMode;  
+   \        0x8   0x6801             LDR      R1,[R0, #+0]
+   \        0xA   0xF451 0x5180      ORRS     R1,R1,#0x1000
+   \        0xE   0x6001             STR      R1,[R0, #+0]
+    514            
+    515          }
+   \       0x10   0x4770             BX       LR               ;; return
+    516          
+    517          /**
+    518            * @brief  Configures the companding mode for the selected SAI block.
+    519            * 
+    520            * @note  The data expansion or data compression are determined by the state of
+    521            *        SAI block selected (transmitter or receiver). 
+    522          
+    523            * @param  SAI_Block_x: where x can be A or B to select the SAI Block peripheral.              
+    524            * @param  SAI_CompandingMode: specifies the SAI block companding mode.
+    525            *          This parameter can be one of the following values:
+    526            *            @arg SAI_NoCompanding : no companding algorithm set
+    527            *            @arg SAI_ULaw_1CPL_Companding : Set U law (algorithm 1's complement representation)
+    528            *            @arg SAI_ALaw_1CPL_Companding : Set A law (algorithm 1's complement representation)  
+    529            *            @arg SAI_ULaw_2CPL_Companding : Set U law (algorithm 2's complement representation)
+    530            *            @arg SAI_ALaw_2CPL_Companding : Set A law (algorithm 2's complement representation)  
+    531            * @retval None
+    532            */
+
+   \                                 In section .text, align 2, keep-with-next
+    533          void SAI_CompandingModeConfig(SAI_Block_TypeDef* SAI_Block_x, uint32_t SAI_CompandingMode)
+    534          {
+    535            /* Check the parameters */
+    536            assert_param(IS_SAI_BLOCK_PERIPH(SAI_Block_x));
+    537            assert_param(IS_SAI_BLOCK_COMPANDING_MODE(SAI_CompandingMode));
+    538            /* Clear Companding Mode bits */
+    539            SAI_Block_x->CR2 &= ~(SAI_xCR2_COMP);
+   \                     SAI_CompandingModeConfig: (+1)
+   \        0x0   0x6842             LDR      R2,[R0, #+4]
+   \        0x2   0xF432 0x4240      BICS     R2,R2,#0xC000
+   \        0x6   0x6042             STR      R2,[R0, #+4]
+    540            /* Set new Companding Mode value */
+    541            SAI_Block_x->CR2 |= SAI_CompandingMode;
+   \        0x8   0x6842             LDR      R2,[R0, #+4]
+   \        0xA   0x4311             ORRS     R1,R1,R2
+   \        0xC   0x6041             STR      R1,[R0, #+4]
+    542          }
+   \        0xE   0x4770             BX       LR               ;; return
+    543          
+    544          /**
+    545            * @brief  Enables or disables the Mute mode for the selected SAI block.
+    546            *    
+    547            * @note   This function has a meaning only when the audio block is transmitter
+    548            * @note   Mute mode is applied for an entire frame for all the valid slot
+    549            *         It becomes active at the end of an audio frame when set somewhere in a frame. 
+    550            *         Mute mode exit occurs at the end of the frame in which the bit MUTE has been set.
+    551            *
+    552            * @param  SAI_Block_x: where x can be A or B to select the SAI Block peripheral.
+    553            * @param  NewState: new state of the SAIx block. 
+    554            *          This parameter can be: ENABLE or DISABLE.
+    555            * @retval None
+    556            */
+
+   \                                 In section .text, align 2, keep-with-next
+    557          void SAI_MuteModeCmd(SAI_Block_TypeDef* SAI_Block_x, FunctionalState NewState)
+    558          {
+    559            /* Check the parameters */
+    560            assert_param(IS_SAI_BLOCK_PERIPH(SAI_Block_x));
+    561            assert_param(IS_FUNCTIONAL_STATE(NewState));
+    562            if (NewState != DISABLE)
+   \                     SAI_MuteModeCmd: (+1)
+   \        0x0   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \        0x2   0x2900             CMP      R1,#+0
+   \        0x4   0xD004             BEQ.N    ??SAI_MuteModeCmd_0
+    563            {
+    564              /* Enable the selected SAI block mute mode */
+    565              SAI_Block_x->CR2 |= SAI_xCR2_MUTE;
+   \        0x6   0x6841             LDR      R1,[R0, #+4]
+   \        0x8   0xF051 0x0120      ORRS     R1,R1,#0x20
+   \        0xC   0x6041             STR      R1,[R0, #+4]
+   \        0xE   0xE003             B.N      ??SAI_MuteModeCmd_1
+    566            }
+    567            else
+    568            {
+    569              /* Disable the selected SAI SS output */
+    570              SAI_Block_x->CR2 &= ~(SAI_xCR2_MUTE);
+   \                     ??SAI_MuteModeCmd_0: (+1)
+   \       0x10   0x6841             LDR      R1,[R0, #+4]
+   \       0x12   0xF031 0x0120      BICS     R1,R1,#0x20
+   \       0x16   0x6041             STR      R1,[R0, #+4]
+    571            }
+    572          }
+   \                     ??SAI_MuteModeCmd_1: (+1)
+   \       0x18   0x4770             BX       LR               ;; return
+    573          
+    574          /**
+    575            * @brief  Configure the mute value for the selected SAI block.
+    576            *    
+    577            * @note   This function has a meaning only when the audio block is transmitter
+    578            * @note   the configuration last value sent during mute mode has only a meaning 
+    579            *          when the number of slot is lower or equal to 2 and if the MUTE bit is set.
+    580            *           
+    581            * @param  SAI_Block_x: where x can be A or B to select the SAI Block peripheral.
+    582            * @param  SAI_MuteValue: specifies the SAI block mute value.
+    583            *          This parameter can be one of the following values:
+    584            *            @arg SAI_ZeroValue : bit value 0 is sent during Mute Mode
+    585            *            @arg SAI_LastSentValue : Last value is sent during Mute Mode  
+    586            * @retval None
+    587            */
+
+   \                                 In section .text, align 2, keep-with-next
+    588          void SAI_MuteValueConfig(SAI_Block_TypeDef* SAI_Block_x, uint32_t SAI_MuteValue)
+    589          {
+    590            /* Check the parameters */
+    591            assert_param(IS_SAI_BLOCK_PERIPH(SAI_Block_x));
+    592            assert_param(IS_SAI_BLOCK_MUTE_VALUE(SAI_MuteValue));
+    593            
+    594            /* Clear Mute value bits */
+    595            SAI_Block_x->CR2 &= ~(SAI_xCR2_MUTEVAL);
+   \                     SAI_MuteValueConfig: (+1)
+   \        0x0   0x6842             LDR      R2,[R0, #+4]
+   \        0x2   0xF032 0x0240      BICS     R2,R2,#0x40
+   \        0x6   0x6042             STR      R2,[R0, #+4]
+    596            /* Set new Mute value */
+    597            SAI_Block_x->CR2 |= SAI_MuteValue;
+   \        0x8   0x6842             LDR      R2,[R0, #+4]
+   \        0xA   0x4311             ORRS     R1,R1,R2
+   \        0xC   0x6041             STR      R1,[R0, #+4]
+    598          }
+   \        0xE   0x4770             BX       LR               ;; return
+    599          
+    600          /**
+    601            * @brief  Enables or disables the Mute mode for the selected SAI block. 
+    602            *
+    603            * @note   This function has a meaning only when the audio block is Receiver
+    604            * @param  SAI_Block_x: where x can be A or B to select the SAI Block peripheral.
+    605            * @param  SAI_MuteCounter: specifies the SAI block mute value.
+    606            *         This parameter can be a number between 0 and 63.  
+    607           
+    608            * @retval None
+    609            */
+
+   \                                 In section .text, align 2, keep-with-next
+    610          void SAI_MuteFrameCounterConfig(SAI_Block_TypeDef* SAI_Block_x, uint32_t SAI_MuteCounter)
+    611          {
+    612            /* Check the parameters */
+    613            assert_param(IS_SAI_BLOCK_PERIPH(SAI_Block_x));
+    614            assert_param(IS_SAI_BLOCK_MUTE_COUNTER(SAI_MuteCounter));
+    615            
+    616            /* Clear Mute value bits */
+    617            SAI_Block_x->CR2 &= ~(SAI_xCR2_MUTECNT);
+   \                     SAI_MuteFrameCounterConfig: (+1)
+   \        0x0   0x6842             LDR      R2,[R0, #+4]
+   \        0x2   0xF432 0x52FC      BICS     R2,R2,#0x1F80
+   \        0x6   0x6042             STR      R2,[R0, #+4]
+    618            /* Set new Mute value */
+    619            SAI_Block_x->CR2 |= (SAI_MuteCounter << 7);
+   \        0x8   0x6842             LDR      R2,[R0, #+4]
+   \        0xA   0xEA52 0x12C1      ORRS     R2,R2,R1, LSL #+7
+   \        0xE   0x6042             STR      R2,[R0, #+4]
+    620          }
+   \       0x10   0x4770             BX       LR               ;; return
+    621          #if defined(STM32F427xx) || defined(STM32F437xx) || defined(STM32F429xx) || defined(STM32F439xx) || \
+    622              defined(STM32F469_479xx) || defined(STM32F413_423xx) || defined(STM32F446xx)
+    623          /**
+    624            * @brief  Configure SAI Block synchronization mode 
+    625            * @param  SAI_InitStruct: pointer to a SAI_InitTypeDef structure that
+    626            *         contains the configuration information for the specified SAI Block peripheral.
+    627            * @param  SAIx: To select the SAIx peripheral, where x can be the different instances
+    628            * @retval None 
+    629            */
+    630          void SAI_BlockSynchroConfig(SAI_InitTypeDef* SAI_InitStruct, SAI_TypeDef* SAIx)
+    631          {
+    632            uint32_t tmpregisterGCR = 0U;
+    633          
+    634          #if defined(STM32F446xx)  
+    635            /* This setting must be done with both audio block (A & B) disabled         */
+    636            switch(SAI_InitStruct->SAI_SynchroExt)
+    637            {
+    638            case SAI_SyncExt_Disable :
+    639              tmpregisterGCR = 0U;
+    640              break;
+    641            case SAI_SyncExt_OutBlockA_Enable :
+    642              tmpregisterGCR = SAI_GCR_SYNCOUT_0;
+    643              break;
+    644            case SAI_SyncExt_OutBlockB_Enable :
+    645              tmpregisterGCR = SAI_GCR_SYNCOUT_1;
+    646              break;
+    647            default:
+    648              break;
+    649            }
+    650          
+    651            if(((SAI_InitStruct->SAI_Synchro) == SAI_Synchronous_Ext) && (SAIx == SAI1))
+    652            {
+    653              tmpregisterGCR |= SAI_GCR_SYNCIN_0;
+    654            }
+    655            
+    656            if(SAIx == SAI1)
+    657            {
+    658             SAI1->GCR = tmpregisterGCR;
+    659            }
+    660            else
+    661            {
+    662             SAI2->GCR = tmpregisterGCR; 
+    663            }
+    664          
+    665          #endif /* STM32F446xx */
+    666          #if defined(STM32F427xx) || defined(STM32F437xx) || defined(STM32F429xx) || defined(STM32F439xx) || \
+    667              defined(STM32F469_479xx) || defined(STM32F413_423xx)
+    668            /* This setting must be done with both audio block (A & B) disabled         */
+    669            switch(SAI_InitStruct->SAI_SynchroExt)
+    670            {
+    671            case SAI_SyncExt_Disable :
+    672              tmpregisterGCR = 0U;
+    673              break;
+    674            case SAI_SyncExt_OutBlockA_Enable :
+    675              tmpregisterGCR = SAI_GCR_SYNCOUT_0;
+    676              break;
+    677            case SAI_SyncExt_OutBlockB_Enable :
+    678              tmpregisterGCR = SAI_GCR_SYNCOUT_1;
+    679              break;
+    680            default:
+    681              break;
+    682            }
+    683            SAI1->GCR = tmpregisterGCR;
+    684          #endif /* STM32F427xx || STM32F437xx || STM32F429xx || STM32F439xx || STM32F469_479xx || STM32F413_423xx */ 
+    685          }
+    686          #endif /* STM32F427xx || STM32F437xx || STM32F429xx || STM32F439xx || STM32F469_479xx || STM32F413_423xx || STM32F446xx */
+    687          
+    688          /**
+    689            * @brief  Reinitialize the FIFO pointer
+    690            *   
+    691            * @note   The FIFO pointers can be reinitialized at anytime The data present 
+    692            *         into the FIFO, if it is not empty, will be lost. 
+    693            * 
+    694            * @param  SAI_Block_x: where x can be A or B to select the SAI Block peripheral.
+    695            * @param  NewState: new state of the selected SAI TI communication mode.
+    696            *          This parameter can be: ENABLE or DISABLE.
+    697            * @retval None
+    698            */
+
+   \                                 In section .text, align 2, keep-with-next
+    699          void SAI_FlushFIFO(SAI_Block_TypeDef* SAI_Block_x)
+    700          {
+    701            /* Check the parameters */
+    702            assert_param(IS_SAI_BLOCK_PERIPH(SAI_Block_x));
+    703          
+    704            /* FIFO flush */
+    705            SAI_Block_x->CR2 |= SAI_xCR2_FFLUSH;
+   \                     SAI_FlushFIFO: (+1)
+   \        0x0   0x6841             LDR      R1,[R0, #+4]
+   \        0x2   0xF051 0x0108      ORRS     R1,R1,#0x8
+   \        0x6   0x6041             STR      R1,[R0, #+4]
+    706          }
+   \        0x8   0x4770             BX       LR               ;; return
+    707          
+    708          /**
+    709            * @}
+    710            */
+    711          
+    712          /** @defgroup SAI_Group2 Data transfers functions
+    713           *  @brief   Data transfers functions
+    714           *
+    715          @verbatim   
+    716           ===============================================================================
+    717                                 ##### Data transfers functions #####
+    718           ===============================================================================  
+    719            [..]
+    720            This section provides a set of functions allowing to manage the SAI data transfers.
+    721            [..]
+    722            In reception, data are received and then stored into an internal FIFO while 
+    723            In transmission, data are first stored into an internal FIFO before being 
+    724            transmitted.
+    725            [..]
+    726            The read access of the SAI_xDR register can be done using the SAI_ReceiveData()
+    727            function and returns the Rx buffered value. Whereas a write access to the SAI_DR 
+    728            can be done using SAI_SendData() function and stores the written data into 
+    729            Tx buffer.
+    730          
+    731          @endverbatim
+    732            * @{
+    733            */
+    734          
+    735          /**
+    736            * @brief  Returns the most recent received data by the SAI block x peripheral. 
+    737            * @param  SAI_Block_x: where x can be A or B to select the SAI Block peripheral. 
+    738            *         
+    739            * @retval The value of the received data.
+    740            */
+
+   \                                 In section .text, align 2, keep-with-next
+    741          uint32_t SAI_ReceiveData(SAI_Block_TypeDef* SAI_Block_x)
+    742          {
+    743            /* Check the parameters */
+    744            assert_param(IS_SAI_BLOCK_PERIPH(SAI_Block_x));
+    745            
+    746            /* Return the data in the DR register */
+    747            return SAI_Block_x->DR;
+   \                     SAI_ReceiveData: (+1)
+   \        0x0   0x69C0             LDR      R0,[R0, #+28]
+   \        0x2   0x4770             BX       LR               ;; return
+    748          }
+    749          
+    750          /**
+    751            * @brief  Transmits a Data through the SAI block x peripheral.
+    752            * @param  SAI_Block_x: where x can be A or B to select the SAI Block peripheral.
+    753            *        
+    754            * @param  Data: Data to be transmitted.
+    755            * @retval None
+    756            */
+
+   \                                 In section .text, align 2, keep-with-next
+    757          void SAI_SendData(SAI_Block_TypeDef* SAI_Block_x, uint32_t Data)
+    758          {
+    759            /* Check the parameters */
+    760            assert_param(IS_SAI_BLOCK_PERIPH(SAI_Block_x));
+    761            
+    762            /* Write in the DR register the data to be sent */
+    763            SAI_Block_x->DR = Data;
+   \                     SAI_SendData: (+1)
+   \        0x0   0x61C1             STR      R1,[R0, #+28]
+    764          }
+   \        0x2   0x4770             BX       LR               ;; return
+    765          
+    766          /**
+    767            * @}
+    768            */
+    769          
+    770          /** @defgroup SAI_Group3 DMA transfers management functions
+    771           *  @brief   DMA transfers management functions
+    772            *
+    773          @verbatim   
+    774           ===============================================================================
+    775                            ##### DMA transfers management functions #####
+    776           ===============================================================================  
+    777          
+    778          @endverbatim
+    779            * @{
+    780            */
+    781          
+    782          /**
+    783            * @brief  Enables or disables the SAI Block x DMA interface.
+    784            * @param  SAI_Block_x: where x can be A or B to select the SAI Block peripheral. 
+    785            * @param  NewState: new state of the selected SAI block DMA transfer request.
+    786            *          This parameter can be: ENABLE or DISABLE.
+    787            * @retval None
+    788            */
+
+   \                                 In section .text, align 2, keep-with-next
+    789          void SAI_DMACmd(SAI_Block_TypeDef* SAI_Block_x, FunctionalState NewState)
+    790          {
+    791            /* Check the parameters */
+    792            assert_param(IS_SAI_BLOCK_PERIPH(SAI_Block_x));
+    793            assert_param(IS_FUNCTIONAL_STATE(NewState));
+    794            
+    795            if (NewState != DISABLE)
+   \                     SAI_DMACmd: (+1)
+   \        0x0   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \        0x2   0x2900             CMP      R1,#+0
+   \        0x4   0xD004             BEQ.N    ??SAI_DMACmd_0
+    796            {
+    797              /* Enable the selected SAI block mute mode */
+    798              SAI_Block_x->CR1 |= SAI_xCR1_DMAEN;
+   \        0x6   0x6801             LDR      R1,[R0, #+0]
+   \        0x8   0xF451 0x3100      ORRS     R1,R1,#0x20000
+   \        0xC   0x6001             STR      R1,[R0, #+0]
+   \        0xE   0xE003             B.N      ??SAI_DMACmd_1
+    799            }
+    800            else
+    801            {
+    802              /* Disable the selected SAI SS output */
+    803              SAI_Block_x->CR1 &= ~(SAI_xCR1_DMAEN);
+   \                     ??SAI_DMACmd_0: (+1)
+   \       0x10   0x6801             LDR      R1,[R0, #+0]
+   \       0x12   0xF431 0x3100      BICS     R1,R1,#0x20000
+   \       0x16   0x6001             STR      R1,[R0, #+0]
+    804            }
+    805          }
+   \                     ??SAI_DMACmd_1: (+1)
+   \       0x18   0x4770             BX       LR               ;; return
+    806          
+    807          /**
+    808            * @}
+    809            */
+    810          
+    811          /** @defgroup SAI_Group4 Interrupts and flags management functions
+    812           *  @brief   Interrupts and flags management functions
+    813            *
+    814          @verbatim   
+    815           ===============================================================================
+    816                      ##### Interrupts and flags management functions #####
+    817           ===============================================================================  
+    818            [..]
+    819            This section provides a set of functions allowing to configure the SAI Interrupts 
+    820            sources and check or clear the flags or pending bits status.
+    821            The user should identify which mode will be used in his application to manage 
+    822            the communication: Polling mode, Interrupt mode or DMA mode. 
+    823              
+    824            *** Polling Mode ***
+    825            ====================
+    826            [..]
+    827            In Polling Mode, the SAI communication can be managed by 7 flags:
+    828               (#) SAI_FLAG_FREQ : to indicate if there is a FIFO Request to write or to read.
+    829               (#) SAI_FLAG_MUTEDET : to indicate if a MUTE frame detected
+    830               (#) SAI_FLAG_OVRUDR : to indicate if an Overrun or Underrun error occur
+    831               (#) SAI_FLAG_AFSDET : to indicate if there is the detection of a audio frame 
+    832                                    synchronisation (FS) earlier than expected
+    833               (#) SAI_FLAG_LFSDET : to indicate if there is the detection of a audio frame 
+    834                                    synchronisation (FS) later than expected              
+    835               (#) SAI_FLAG_CNRDY : to indicate if  the codec is not ready to communicate during 
+    836                                   the reception of the TAG 0 (slot0) of the AC97 audio frame 
+    837               (#) SAI_FLAG_WCKCFG: to indicate if wrong clock configuration in master mode 
+    838                                   error occurs.
+    839            [..]
+    840            In this Mode it is advised to use the following functions:
+    841               (+) FlagStatus SAI_GetFlagStatus(SAI_Block_TypeDef* SAI_Block_x, uint32_t SAI_FLAG);
+    842               (+) void SAI_ClearFlag(SAI_Block_TypeDef* SAI_Block_x, uint32_t SAI_FLAG);
+    843          
+    844            *** Interrupt Mode ***
+    845            ======================
+    846            [..]
+    847            In Interrupt Mode, the SAI communication can be managed by 7 interrupt sources
+    848            and 7 pending bits: 
+    849            (+) Pending Bits:
+    850               (##) SAI_IT_FREQ : to indicate if there is a FIFO Request to write or to read.
+    851               (##) SAI_IT_MUTEDET : to indicate if a MUTE frame detected.
+    852               (##) SAI_IT_OVRUDR : to indicate if an Overrun or Underrun error occur.
+    853               (##) SAI_IT_AFSDET : to indicate if there is the detection of a audio frame 
+    854                                    synchronisation (FS) earlier than expected.
+    855               (##) SAI_IT_LFSDET : to indicate if there is the detection of a audio frame 
+    856                                    synchronisation (FS) later than expected.              
+    857               (##) SAI_IT_CNRDY : to indicate if  the codec is not ready to communicate during 
+    858                                   the reception of the TAG 0 (slot0) of the AC97 audio frame. 
+    859               (##) SAI_IT_WCKCFG: to indicate if wrong clock configuration in master mode 
+    860                                   error occurs.
+    861          
+    862            (+) Interrupt Source:
+    863               (##) SAI_IT_FREQ : specifies the interrupt source for FIFO Request.
+    864               (##) SAI_IT_MUTEDET : specifies the interrupt source for MUTE frame detected.
+    865               (##) SAI_IT_OVRUDR : specifies the interrupt source for overrun or underrun error.
+    866               (##) SAI_IT_AFSDET : specifies the interrupt source for anticipated frame synchronization
+    867                                    detection interrupt.
+    868               (##) SAI_IT_LFSDET : specifies the interrupt source for late frame synchronization
+    869                                    detection interrupt.             
+    870               (##) SAI_IT_CNRDY : specifies the interrupt source for codec not ready interrupt
+    871               (##) SAI_IT_WCKCFG: specifies the interrupt source for wrong clock configuration
+    872                                   interrupt.
+    873            [..]                     
+    874            In this Mode it is advised to use the following functions:
+    875               (+) void SAI_ITConfig(SAI_Block_TypeDef* SAI_Block_x, uint32_t SAI_IT, FunctionalState NewState);
+    876               (+) ITStatus SAI_GetITStatus(SAI_Block_TypeDef* SAI_Block_x, uint32_t SAI_IT);
+    877               (+) void SAI_ClearITPendingBit(SAI_Block_TypeDef* SAI_Block_x, uint32_t SAI_IT);
+    878          
+    879            *** DMA Mode ***
+    880            ================
+    881            [..]
+    882            In DMA Mode, each SAI audio block has an independent DMA interface in order to 
+    883            read or to write into the SAI_xDR register (to hit the internal FIFO). 
+    884            There is one DMA channel by audio block following basic DMA request/acknowledge 
+    885            protocol.
+    886            [..]
+    887            In this Mode it is advised to use the following function:
+    888              (+) void SAI_DMACmd(SAI_Block_TypeDef* SAI_Block_x, FunctionalState NewState);
+    889            [..]
+    890            This section provides also functions allowing to
+    891             (+) Check the SAI Block enable status
+    892             (+)Check the FIFO status 
+    893             
+    894            *** SAI Block Enable status ***
+    895            ===============================
+    896            [..]
+    897            After disabling a SAI Block, it is recommended to check (or wait until) the SAI Block 
+    898            is effectively disabled. If a Block is disabled while an audio frame transfer is ongoing
+    899            the current frame will be transferred and the block will be effectively disabled only at 
+    900            the end of audio frame. 
+    901            To monitor this state it is possible to use the following function:
+    902              (+) FunctionalState SAI_GetCmdStatus(SAI_Block_TypeDef* SAI_Block_x); 
+    903           
+    904            *** SAI Block FIFO status ***
+    905            =============================
+    906            [..]
+    907            It is possible to monitor the FIFO status when a transfer is ongoing using the following 
+    908            function:
+    909              (+) uint32_t SAI_GetFIFOStatus(SAI_Block_TypeDef* SAI_Block_x);
+    910              
+    911          @endverbatim
+    912            * @{
+    913            */
+    914          
+    915          /**
+    916            * @brief  Enables or disables the specified SAI Block interrupts.
+    917            * @param  SAI_Block_x: where x can be A or B to select the SAI Block peripheral. 
+    918            * @param  SAI_IT: specifies the SAI interrupt source to be enabled or disabled. 
+    919            *          This parameter can be one of the following values:
+    920            *            @arg SAI_IT_FREQ: FIFO Request interrupt mask
+    921            *            @arg SAI_IT_MUTEDET: MUTE detection interrupt mask
+    922            *            @arg SAI_IT_OVRUDR: overrun/underrun interrupt mask
+    923            *            @arg SAI_IT_AFSDET: anticipated frame synchronization detection 
+    924            *                                interrupt mask  
+    925            *            @arg SAI_IT_LFSDET: late frame synchronization detection interrupt 
+    926            *                                mask
+    927            *            @arg SAI_IT_CNRDY: codec not ready interrupt mask
+    928            *            @arg SAI_IT_WCKCFG: wrong clock configuration interrupt mask      
+    929            * @param  NewState: new state of the specified SAI interrupt.
+    930            *          This parameter can be: ENABLE or DISABLE.
+    931            * @retval None
+    932            */
+
+   \                                 In section .text, align 2, keep-with-next
+    933          void SAI_ITConfig(SAI_Block_TypeDef* SAI_Block_x, uint32_t SAI_IT, FunctionalState NewState)
+    934          { 
+    935            /* Check the parameters */
+    936            assert_param(IS_SAI_BLOCK_PERIPH(SAI_Block_x));
+    937            assert_param(IS_FUNCTIONAL_STATE(NewState));
+    938            assert_param(IS_SAI_BLOCK_CONFIG_IT(SAI_IT));
+    939          
+    940            if (NewState != DISABLE)
+   \                     SAI_ITConfig: (+1)
+   \        0x0   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
+   \        0x2   0x2A00             CMP      R2,#+0
+   \        0x4   0xD003             BEQ.N    ??SAI_ITConfig_0
+    941            {
+    942              /* Enable the selected SAI Block interrupt */
+    943              SAI_Block_x->IMR |= SAI_IT;
+   \        0x6   0x6902             LDR      R2,[R0, #+16]
+   \        0x8   0x4311             ORRS     R1,R1,R2
+   \        0xA   0x6101             STR      R1,[R0, #+16]
+   \        0xC   0xE003             B.N      ??SAI_ITConfig_1
+    944            }
+    945            else
+    946            {
+    947              /* Disable the selected SAI Block interrupt */
+    948              SAI_Block_x->IMR &= ~(SAI_IT);
+   \                     ??SAI_ITConfig_0: (+1)
+   \        0xE   0x6902             LDR      R2,[R0, #+16]
+   \       0x10   0xEA32 0x0101      BICS     R1,R2,R1
+   \       0x14   0x6101             STR      R1,[R0, #+16]
+    949            }
+    950          }
+   \                     ??SAI_ITConfig_1: (+1)
+   \       0x16   0x4770             BX       LR               ;; return
+    951          
+    952          /**
+    953            * @brief  Checks whether the specified SAI block x flag is set or not.
+    954            * @param  SAI_Block_x: where x can be A or B to select the SAI Block peripheral. 
+    955            * @param  SAI_FLAG: specifies the SAI block flag to check. 
+    956            *          This parameter can be one of the following values:
+    957            *            @arg SAI_FLAG_FREQ: FIFO Request flag.  
+    958            *            @arg SAI_FLAG_MUTEDET: MUTE detection flag.  
+    959            *            @arg SAI_FLAG_OVRUDR: overrun/underrun flag.
+    960            *            @arg SAI_FLAG_WCKCFG: wrong clock configuration flag.            
+    961            *            @arg SAI_FLAG_CNRDY: codec not ready flag. 
+    962            *            @arg SAI_FLAG_AFSDET: anticipated frame synchronization detection flag.
+    963            *            @arg SAI_FLAG_LFSDET: late frame synchronization detection flag.
+    964            * @retval The new state of SAI_FLAG (SET or RESET).
+    965            */
+
+   \                                 In section .text, align 2, keep-with-next
+    966          FlagStatus SAI_GetFlagStatus(SAI_Block_TypeDef* SAI_Block_x, uint32_t SAI_FLAG)
+    967          {
+    968            FlagStatus bitstatus = RESET;
+   \                     SAI_GetFlagStatus: (+1)
+   \        0x0   0x2200             MOVS     R2,#+0
+    969            
+    970            /* Check the parameters */
+    971            assert_param(IS_SAI_BLOCK_PERIPH(SAI_Block_x));
+    972            assert_param(IS_SAI_BLOCK_GET_FLAG(SAI_FLAG));
+    973            
+    974            /* Check the status of the specified SAI flag */
+    975            if ((SAI_Block_x->SR & SAI_FLAG) != (uint32_t)RESET)
+   \        0x2   0x6940             LDR      R0,[R0, #+20]
+   \        0x4   0x4208             TST      R0,R1
+   \        0x6   0xD001             BEQ.N    ??SAI_GetFlagStatus_0
+    976            {
+    977              /* SAI_FLAG is set */
+    978              bitstatus = SET;
+   \        0x8   0x2001             MOVS     R0,#+1
+   \        0xA   0xE000             B.N      ??SAI_GetFlagStatus_1
+    979            }
+    980            else
+    981            {
+    982              /* SAI_FLAG is reset */
+    983              bitstatus = RESET;
+   \                     ??SAI_GetFlagStatus_0: (+1)
+   \        0xC   0x2000             MOVS     R0,#+0
+    984            }
+    985            /* Return the SAI_FLAG status */
+    986            return  bitstatus;
+   \                     ??SAI_GetFlagStatus_1: (+1)
+   \        0xE   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x10   0x4770             BX       LR               ;; return
+    987          }
+    988          
+    989          /**
+    990            * @brief  Clears the specified SAI Block x flag.
+    991            * @param  SAI_Block_x: where x can be A or B to select the SAI Block peripheral. 
+    992            * @param  SAI_FLAG: specifies the SAI block flag to check. 
+    993            *          This parameter can be one of the following values: 
+    994            *            @arg SAI_FLAG_MUTEDET: MUTE detection flag.  
+    995            *            @arg SAI_FLAG_OVRUDR: overrun/underrun flag.
+    996            *            @arg SAI_FLAG_WCKCFG: wrong clock configuration flag.            
+    997            *            @arg SAI_FLAG_CNRDY: codec not ready flag. 
+    998            *            @arg SAI_FLAG_AFSDET: anticipated frame synchronization detection flag.
+    999            *            @arg SAI_FLAG_LFSDET: late frame synchronization detection flag. 
+   1000            *  
+   1001            * @note    FREQ (FIFO Request) flag is cleared : 
+   1002            *          - When the audio block is transmitter and the FIFO is full or the FIFO   
+   1003            *            has one data (one buffer mode) depending the bit FTH in the
+   1004            *            SAI_xCR2 register.
+   1005            *          - When the audio block is receiver and the FIFO is not empty           
+   1006            *  
+   1007            * @retval None
+   1008            */
+
+   \                                 In section .text, align 2, keep-with-next
+   1009          void SAI_ClearFlag(SAI_Block_TypeDef* SAI_Block_x, uint32_t SAI_FLAG)
+   1010          {
+   1011            /* Check the parameters */
+   1012            assert_param(IS_SAI_BLOCK_PERIPH(SAI_Block_x));
+   1013            assert_param(IS_SAI_BLOCK_CLEAR_FLAG(SAI_FLAG));
+   1014              
+   1015            /* Clear the selected SAI Block flag */
+   1016            SAI_Block_x->CLRFR |= SAI_FLAG;
+   \                     SAI_ClearFlag: (+1)
+   \        0x0   0x6982             LDR      R2,[R0, #+24]
+   \        0x2   0x4311             ORRS     R1,R1,R2
+   \        0x4   0x6181             STR      R1,[R0, #+24]
+   1017          }
+   \        0x6   0x4770             BX       LR               ;; return
+   1018          
+   1019          /**
+   1020            * @brief  Checks whether the specified SAI Block x interrupt has occurred or not.
+   1021            * @param  SAI_Block_x: where x can be A or B to select the SAI Block peripheral. 
+   1022            * @param  SAI_IT: specifies the SAI interrupt source to be enabled or disabled. 
+   1023            *          This parameter can be one of the following values:
+   1024            *            @arg SAI_IT_FREQ: FIFO Request interrupt 
+   1025            *            @arg SAI_IT_MUTEDET: MUTE detection interrupt 
+   1026            *            @arg SAI_IT_OVRUDR: overrun/underrun interrupt 
+   1027            *            @arg SAI_IT_AFSDET: anticipated frame synchronization detection interrupt                                    
+   1028            *            @arg SAI_IT_LFSDET: late frame synchronization detection interrupt                                
+   1029            *            @arg SAI_IT_CNRDY: codec not ready interrupt 
+   1030            *            @arg SAI_IT_WCKCFG: wrong clock configuration interrupt 
+   1031            *                
+   1032            * @retval The new state of SAI_IT (SET or RESET).
+   1033            */
+
+   \                                 In section .text, align 2, keep-with-next
+   1034          ITStatus SAI_GetITStatus(SAI_Block_TypeDef* SAI_Block_x, uint32_t SAI_IT)
+   1035          {
+   1036            ITStatus bitstatus = RESET;
+   \                     SAI_GetITStatus: (+1)
+   \        0x0   0x2200             MOVS     R2,#+0
+   1037            uint32_t  enablestatus = 0;
+   \        0x2   0x2200             MOVS     R2,#+0
+   1038          
+   1039            /* Check the parameters */
+   1040            assert_param(IS_SAI_BLOCK_PERIPH(SAI_Block_x));
+   1041            assert_param(IS_SAI_BLOCK_CONFIG_IT(SAI_IT));
+   1042            
+   1043            /* Get the SAI_IT enable bit status */
+   1044            enablestatus = (SAI_Block_x->IMR & SAI_IT) ;
+   \        0x4   0x6902             LDR      R2,[R0, #+16]
+   \        0x6   0x400A             ANDS     R2,R1,R2
+   1045          
+   1046            /* Check the status of the specified SAI interrupt */
+   1047            if (((SAI_Block_x->SR & SAI_IT) != (uint32_t)RESET) && (enablestatus != (uint32_t)RESET))
+   \        0x8   0x6940             LDR      R0,[R0, #+20]
+   \        0xA   0x4208             TST      R0,R1
+   \        0xC   0xD003             BEQ.N    ??SAI_GetITStatus_0
+   \        0xE   0x2A00             CMP      R2,#+0
+   \       0x10   0xD001             BEQ.N    ??SAI_GetITStatus_0
+   1048            {
+   1049              /* SAI_IT is set */
+   1050              bitstatus = SET;
+   \       0x12   0x2001             MOVS     R0,#+1
+   \       0x14   0xE000             B.N      ??SAI_GetITStatus_1
+   1051            }
+   1052            else
+   1053            {
+   1054              /* SAI_IT is reset */
+   1055              bitstatus = RESET;
+   \                     ??SAI_GetITStatus_0: (+1)
+   \       0x16   0x2000             MOVS     R0,#+0
+   1056            }
+   1057            /* Return the SAI_IT status */
+   1058            return bitstatus;
+   \                     ??SAI_GetITStatus_1: (+1)
+   \       0x18   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x1A   0x4770             BX       LR               ;; return
+   1059          }
+   1060          
+   1061          /**
+   1062            * @brief  Clears the SAI Block x interrupt pending bit.
+   1063            * @param  SAI_Block_x: where x can be A or B to select the SAI Block peripheral. 
+   1064            * @param  SAI_IT: specifies the SAI Block interrupt pending bit to clear. 
+   1065            *          This parameter can be one of the following values:  
+   1066            *            @arg SAI_IT_MUTEDET: MUTE detection interrupt.  
+   1067            *            @arg SAI_IT_OVRUDR: overrun/underrun interrupt.
+   1068            *            @arg SAI_IT_WCKCFG: wrong clock configuration interrupt.            
+   1069            *            @arg SAI_IT_CNRDY: codec not ready interrupt. 
+   1070            *            @arg SAI_IT_AFSDET: anticipated frame synchronization detection interrupt.
+   1071            *            @arg SAI_IT_LFSDET: late frame synchronization detection interrupt. 
+   1072            *  
+   1073            * @note    FREQ (FIFO Request) flag is cleared : 
+   1074            *          - When the audio block is transmitter and the FIFO is full or the FIFO   
+   1075            *            has one data (one buffer mode) depending the bit FTH in the
+   1076            *            SAI_xCR2 register.
+   1077            *          - When the audio block is receiver and the FIFO is not empty  
+   1078            *            
+   1079            * @retval None
+   1080            */
+
+   \                                 In section .text, align 2, keep-with-next
+   1081          void SAI_ClearITPendingBit(SAI_Block_TypeDef* SAI_Block_x, uint32_t SAI_IT)
+   1082          {
+   1083            /* Check the parameters */
+   1084            assert_param(IS_SAI_BLOCK_PERIPH(SAI_Block_x));
+   1085            assert_param(IS_SAI_BLOCK_CONFIG_IT(SAI_IT));
+   1086          
+   1087            /* Clear the selected SAI Block x interrupt pending bit */
+   1088            SAI_Block_x->CLRFR |= SAI_IT; 
+   \                     SAI_ClearITPendingBit: (+1)
+   \        0x0   0x6982             LDR      R2,[R0, #+24]
+   \        0x2   0x4311             ORRS     R1,R1,R2
+   \        0x4   0x6181             STR      R1,[R0, #+24]
+   1089          }
+   \        0x6   0x4770             BX       LR               ;; return
+   1090          
+   1091          /**
+   1092            * @brief  Returns the status of EN bit for the specified SAI Block x.
+   1093            * @param  SAI_Block_x: where x can be A or B to select the SAI Block peripheral.
+   1094            *   
+   1095            * @note    After disabling a SAI Block, it is recommended to check (or wait until) 
+   1096            *          the SAI Block is effectively disabled. If a Block is disabled while
+   1097            *          an audio frame transfer is ongoing, the current frame will be 
+   1098            *          transferred and the block will be effectively disabled only at 
+   1099            *          the end of audio frame.  
+   1100            *      
+   1101            * @retval Current state of the DMAy Streamx (ENABLE or DISABLE).
+   1102            */
+
+   \                                 In section .text, align 2, keep-with-next
+   1103          FunctionalState SAI_GetCmdStatus(SAI_Block_TypeDef* SAI_Block_x)
+   1104          {
+   1105            FunctionalState state = DISABLE;
+   \                     SAI_GetCmdStatus: (+1)
+   \        0x0   0x2100             MOVS     R1,#+0
+   1106          
+   1107            /* Check the parameters */
+   1108            assert_param(IS_SAI_BLOCK_PERIPH(SAI_Block_x));
+   1109            if ((SAI_Block_x->CR1 & (uint32_t)SAI_xCR1_SAIEN) != 0)
+   \        0x2   0x6800             LDR      R0,[R0, #+0]
+   \        0x4   0x03C0             LSLS     R0,R0,#+15
+   \        0x6   0xD501             BPL.N    ??SAI_GetCmdStatus_0
+   1110            {
+   1111              /* The selected SAI Block x EN bit is set (audio frame transfer is ongoing) */
+   1112              state = ENABLE;
+   \        0x8   0x2001             MOVS     R0,#+1
+   \        0xA   0xE000             B.N      ??SAI_GetCmdStatus_1
+   1113            }
+   1114            else
+   1115            {
+   1116              /* The selected SAI Block x EN bit is cleared (SAI Block is disabled and 
+   1117                  all transfers are complete) */
+   1118              state = DISABLE;
+   \                     ??SAI_GetCmdStatus_0: (+1)
+   \        0xC   0x2000             MOVS     R0,#+0
+   1119            }
+   1120            return state;
+   \                     ??SAI_GetCmdStatus_1: (+1)
+   \        0xE   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x10   0x4770             BX       LR               ;; return
+   1121          }
+   1122          
+   1123          /**
+   1124            * @brief  Returns the current SAI Block x FIFO filled level.
+   1125            * @param  SAI_Block_x: where x can be A or B to select the SAI Block peripheral.
+   1126            *   
+   1127            * @retval The FIFO filling state.
+   1128            *           - SAI_FIFOStatus_Empty: when FIFO is empty  
+   1129            *           - SAI_FIFOStatus_Less1QuarterFull: when FIFO is less than 1 quarter-full 
+   1130            *                                               and not empty.
+   1131            *           - SAI_FIFOStatus_1QuarterFull: if more than 1 quarter-full.
+   1132            *           - SAI_FIFOStatus_HalfFull: if more than 1 half-full.
+   1133            *           - SAI_FIFOStatus_3QuartersFull: if more than 3 quarters-full.
+   1134            *           - SAI_FIFOStatus_Full: when FIFO is full
+   1135            */
+
+   \                                 In section .text, align 2, keep-with-next
+   1136          uint32_t SAI_GetFIFOStatus(SAI_Block_TypeDef* SAI_Block_x)
+   1137          {
+   1138            uint32_t tmpreg = 0;
+   \                     SAI_GetFIFOStatus: (+1)
+   \        0x0   0x2100             MOVS     R1,#+0
+   1139           
+   1140            /* Check the parameters */
+   1141            assert_param(IS_SAI_BLOCK_PERIPH(SAI_Block_x));
+   1142            
+   1143            /* Get the FIFO level bits */
+   1144            tmpreg = (uint32_t)((SAI_Block_x->SR & SAI_xSR_FLVL));
+   \        0x2   0x6940             LDR      R0,[R0, #+20]
+   \        0x4   0xF410 0x20E0      ANDS     R0,R0,#0x70000
+   1145            
+   1146            return tmpreg;
+   \        0x8   0x4770             BX       LR               ;; return
+   1147          }
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2:
+   \        0x0   0x4001'5800        DC32     0x40015800
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_1:
+   \        0x0   0xFF07'C010        DC32     0xff07c010
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_2:
+   \        0x0   0xFFF8'8000        DC32     0xfff88000
+   1148          
+   1149          
+   1150          /**
+   1151            * @}
+   1152            */
+   1153          
+   1154          /**
+   1155            * @}
+   1156            */ 
+   1157          #endif /* STM32F40_41xxx || STM32F427_437xx || STM32F429_439xx || STM32F401xx || STM32F411xE || STM32F446xx || STM32F469_479xx */
+   1158          
+   1159          /**
+   1160            * @}
+   1161            */ 
+   1162          
+   1163          /**
+   1164            * @}
+   1165            */ 
+   1166          
+   1167          /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   SAI_ClearFlag
+       0   SAI_ClearITPendingBit
+       0   SAI_Cmd
+       0   SAI_CompandingModeConfig
+       0   SAI_DMACmd
+       8   SAI_DeInit
+         8   -> RCC_APB2PeriphResetCmd
+       0   SAI_FlushFIFO
+       4   SAI_FrameInit
+       0   SAI_FrameStructInit
+       0   SAI_GetCmdStatus
+       0   SAI_GetFIFOStatus
+       0   SAI_GetFlagStatus
+       0   SAI_GetITStatus
+       0   SAI_ITConfig
+       4   SAI_Init
+       0   SAI_MonoModeConfig
+       0   SAI_MuteFrameCounterConfig
+       0   SAI_MuteModeCmd
+       0   SAI_MuteValueConfig
+       0   SAI_ReceiveData
+       0   SAI_SendData
+       4   SAI_SlotInit
+       0   SAI_SlotStructInit
+       0   SAI_StructInit
+       0   SAI_TRIStateConfig
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable2
+       4  ??DataTable2_1
+       4  ??DataTable2_2
+       8  SAI_ClearFlag
+       8  SAI_ClearITPendingBit
+      26  SAI_Cmd
+      16  SAI_CompandingModeConfig
+      26  SAI_DMACmd
+      30  SAI_DeInit
+      10  SAI_FlushFIFO
+      42  SAI_FrameInit
+      22  SAI_FrameStructInit
+      18  SAI_GetCmdStatus
+      10  SAI_GetFIFOStatus
+      18  SAI_GetFlagStatus
+      28  SAI_GetITStatus
+      24  SAI_ITConfig
+      70  SAI_Init
+      18  SAI_MonoModeConfig
+      18  SAI_MuteFrameCounterConfig
+      26  SAI_MuteModeCmd
+      16  SAI_MuteValueConfig
+       4  SAI_ReceiveData
+       4  SAI_SendData
+      38  SAI_SlotInit
+      18  SAI_SlotStructInit
+      46  SAI_StructInit
+      18  SAI_TRIStateConfig
+
+ 
+ 574 bytes in section .text
+ 
+ 574 bytes of CODE memory
+
+Errors: none
+Warnings: none

@@ -1,0 +1,574 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         10/Jul/2020  15:12:06
+# Copyright 1999-2019 IAR Systems AB.
+#
+#    Cpu mode     =  
+#    Endian       =  little
+#    Source file  =
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_exti.c
+#    Command line =
+#        -f C:\Users\Evan\AppData\Local\Temp\EWE715.tmp
+#        (E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_exti.c
+#        -D USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List
+#        -o
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "D:\IAR
+#        Systems\Embedded Workbench 8.3\arm\inc\c\DLib_Config_Normal.h" -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Include\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\iar\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\inc\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\User\inc\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\User\src\
+#        -Ol --use_c++_inline -I "D:\IAR Systems\Embedded Workbench
+#        8.3\arm\CMSIS\Core\Include\" -I "D:\IAR Systems\Embedded Workbench
+#        8.3\arm\CMSIS\DSP\Include\")
+#    Locale       =  C
+#    List file    =
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List\stm32f4xx_exti.lst
+#    Object file  =
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\Obj\stm32f4xx_exti.o
+#
+###############################################################################
+
+E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_exti.c
+      1          /**
+      2            ******************************************************************************
+      3            * @file    stm32f4xx_exti.c
+      4            * @author  MCD Application Team
+      5            * @version V1.8.0
+      6            * @date    04-November-2016
+      7            * @brief   This file provides firmware functions to manage the following 
+      8            *          functionalities of the EXTI peripheral:
+      9            *           + Initialization and Configuration
+     10            *           + Interrupts and flags management
+     11            *
+     12          @verbatim  
+     13          
+     14           ===============================================================================
+     15                                        ##### EXTI features #####
+     16           ===============================================================================
+     17          
+     18           [..] External interrupt/event lines are mapped as following:
+     19             (#) All available GPIO pins are connected to the 16 external 
+     20                 interrupt/event lines from EXTI0 to EXTI15.
+     21             (#) EXTI line 16 is connected to the PVD Output
+     22             (#) EXTI line 17 is connected to the RTC Alarm event
+     23             (#) EXTI line 18 is connected to the USB OTG FS Wakeup from suspend event
+     24             (#) EXTI line 19 is connected to the Ethernet Wakeup event
+     25             (#) EXTI line 20 is connected to the USB OTG HS (configured in FS) Wakeup event 
+     26             (#) EXTI line 21 is connected to the RTC Tamper and Time Stamp events
+     27             (#) EXTI line 22 is connected to the RTC Wakeup event
+     28             (#) EXTI line 23 is connected to the LPTIM Wakeup event 
+     29          
+     30                                 ##### How to use this driver #####
+     31           ===============================================================================
+     32           
+     33           [..] In order to use an I/O pin as an external interrupt source, follow steps 
+     34                below:
+     35             (#) Configure the I/O in input mode using GPIO_Init()
+     36             (#) Select the input source pin for the EXTI line using SYSCFG_EXTILineConfig()
+     37             (#) Select the mode(interrupt, event) and configure the trigger 
+     38                 selection (Rising, falling or both) using EXTI_Init()
+     39             (#) Configure NVIC IRQ channel mapped to the EXTI line using NVIC_Init()
+     40          
+     41           [..]     
+     42             (@) SYSCFG APB clock must be enabled to get write access to SYSCFG_EXTICRx
+     43                 registers using RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);
+     44          
+     45          @endverbatim
+     46            *
+     47            ******************************************************************************
+     48            * @attention
+     49            *
+     50            * <h2><center>&copy; COPYRIGHT 2016 STMicroelectronics</center></h2>
+     51            *
+     52            * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
+     53            * You may not use this file except in compliance with the License.
+     54            * You may obtain a copy of the License at:
+     55            *
+     56            *        http://www.st.com/software_license_agreement_liberty_v2
+     57            *
+     58            * Unless required by applicable law or agreed to in writing, software 
+     59            * distributed under the License is distributed on an "AS IS" BASIS, 
+     60            * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     61            * See the License for the specific language governing permissions and
+     62            * limitations under the License.
+     63            *
+     64            ******************************************************************************
+     65            */
+     66          
+     67          /* Includes ------------------------------------------------------------------*/
+     68          #include "stm32f4xx_exti.h"
+     69          
+     70          /** @addtogroup STM32F4xx_StdPeriph_Driver
+     71            * @{
+     72            */
+     73          
+     74          /** @defgroup EXTI 
+     75            * @brief EXTI driver modules
+     76            * @{
+     77            */
+     78          
+     79          /* Private typedef -----------------------------------------------------------*/
+     80          /* Private define ------------------------------------------------------------*/
+     81          
+     82          #define EXTI_LINENONE    ((uint32_t)0x00000)  /* No interrupt selected */
+     83          
+     84          /* Private macro -------------------------------------------------------------*/
+     85          /* Private variables ---------------------------------------------------------*/
+     86          /* Private function prototypes -----------------------------------------------*/
+     87          /* Private functions ---------------------------------------------------------*/
+     88          
+     89          /** @defgroup EXTI_Private_Functions
+     90            * @{
+     91            */
+     92          
+     93          /** @defgroup EXTI_Group1 Initialization and Configuration functions
+     94           *  @brief   Initialization and Configuration functions 
+     95           *
+     96          @verbatim   
+     97           ===============================================================================
+     98                       ##### Initialization and Configuration functions #####
+     99           ===============================================================================
+    100          
+    101          @endverbatim
+    102            * @{
+    103            */
+    104          
+    105          /**
+    106            * @brief  Deinitializes the EXTI peripheral registers to their default reset values.
+    107            * @param  None
+    108            * @retval None
+    109            */
+
+   \                                 In section .text, align 2, keep-with-next
+    110          void EXTI_DeInit(void)
+    111          {
+    112            EXTI->IMR = 0x00000000;
+   \                     EXTI_DeInit: (+1)
+   \        0x0   0x2000             MOVS     R0,#+0
+   \        0x2   0x....             LDR.N    R1,??DataTable6  ;; 0x40013c00
+   \        0x4   0x6008             STR      R0,[R1, #+0]
+    113            EXTI->EMR = 0x00000000;
+   \        0x6   0x2000             MOVS     R0,#+0
+   \        0x8   0x....             LDR.N    R1,??DataTable6_1  ;; 0x40013c04
+   \        0xA   0x6008             STR      R0,[R1, #+0]
+    114            EXTI->RTSR = 0x00000000;
+   \        0xC   0x2000             MOVS     R0,#+0
+   \        0xE   0x....             LDR.N    R1,??DataTable6_2  ;; 0x40013c08
+   \       0x10   0x6008             STR      R0,[R1, #+0]
+    115            EXTI->FTSR = 0x00000000;
+   \       0x12   0x2000             MOVS     R0,#+0
+   \       0x14   0x....             LDR.N    R1,??DataTable6_3  ;; 0x40013c0c
+   \       0x16   0x6008             STR      R0,[R1, #+0]
+    116            EXTI->PR = 0x007FFFFF;
+   \       0x18   0x....             LDR.N    R0,??DataTable6_4  ;; 0x7fffff
+   \       0x1A   0x....             LDR.N    R1,??DataTable6_5  ;; 0x40013c14
+   \       0x1C   0x6008             STR      R0,[R1, #+0]
+    117          }
+   \       0x1E   0x4770             BX       LR               ;; return
+    118          
+    119          /**
+    120            * @brief  Initializes the EXTI peripheral according to the specified
+    121            *         parameters in the EXTI_InitStruct.
+    122            * @param  EXTI_InitStruct: pointer to a EXTI_InitTypeDef structure
+    123            *         that contains the configuration information for the EXTI peripheral.
+    124            * @retval None
+    125            */
+
+   \                                 In section .text, align 2, keep-with-next
+    126          void EXTI_Init(EXTI_InitTypeDef* EXTI_InitStruct)
+    127          {
+   \                     EXTI_Init: (+1)
+   \        0x0   0xB430             PUSH     {R4,R5}
+    128            uint32_t tmp = 0;
+   \        0x2   0x2100             MOVS     R1,#+0
+    129          
+    130            /* Check the parameters */
+    131            assert_param(IS_EXTI_MODE(EXTI_InitStruct->EXTI_Mode));
+    132            assert_param(IS_EXTI_TRIGGER(EXTI_InitStruct->EXTI_Trigger));
+    133            assert_param(IS_EXTI_LINE(EXTI_InitStruct->EXTI_Line));  
+    134            assert_param(IS_FUNCTIONAL_STATE(EXTI_InitStruct->EXTI_LineCmd));
+    135          
+    136            tmp = (uint32_t)EXTI_BASE;
+   \        0x4   0x....             LDR.N    R2,??DataTable6  ;; 0x40013c00
+   \        0x6   0x0013             MOVS     R3,R2
+    137               
+    138            if (EXTI_InitStruct->EXTI_LineCmd != DISABLE)
+   \        0x8   0x7981             LDRB     R1,[R0, #+6]
+   \        0xA   0x2900             CMP      R1,#+0
+   \        0xC   0xD02C             BEQ.N    ??EXTI_Init_0
+    139            {
+    140              /* Clear EXTI line configuration */
+    141              EXTI->IMR &= ~EXTI_InitStruct->EXTI_Line;
+   \        0xE   0x....             LDR.N    R4,??DataTable6  ;; 0x40013c00
+   \       0x10   0x6825             LDR      R5,[R4, #+0]
+   \       0x12   0x6801             LDR      R1,[R0, #+0]
+   \       0x14   0x438D             BICS     R5,R5,R1
+   \       0x16   0x6025             STR      R5,[R4, #+0]
+    142              EXTI->EMR &= ~EXTI_InitStruct->EXTI_Line;
+   \       0x18   0x....             LDR.N    R4,??DataTable6_1  ;; 0x40013c04
+   \       0x1A   0x6825             LDR      R5,[R4, #+0]
+   \       0x1C   0x6801             LDR      R1,[R0, #+0]
+   \       0x1E   0x438D             BICS     R5,R5,R1
+   \       0x20   0x6025             STR      R5,[R4, #+0]
+    143              
+    144              tmp += EXTI_InitStruct->EXTI_Mode;
+   \       0x22   0x7901             LDRB     R1,[R0, #+4]
+   \       0x24   0x185B             ADDS     R3,R3,R1
+    145          
+    146              *(__IO uint32_t *) tmp |= EXTI_InitStruct->EXTI_Line;
+   \       0x26   0x681C             LDR      R4,[R3, #+0]
+   \       0x28   0x6801             LDR      R1,[R0, #+0]
+   \       0x2A   0x430C             ORRS     R4,R1,R4
+   \       0x2C   0x601C             STR      R4,[R3, #+0]
+    147          
+    148              /* Clear Rising Falling edge configuration */
+    149              EXTI->RTSR &= ~EXTI_InitStruct->EXTI_Line;
+   \       0x2E   0x....             LDR.N    R3,??DataTable6_2  ;; 0x40013c08
+   \       0x30   0x681C             LDR      R4,[R3, #+0]
+   \       0x32   0x6801             LDR      R1,[R0, #+0]
+   \       0x34   0x438C             BICS     R4,R4,R1
+   \       0x36   0x601C             STR      R4,[R3, #+0]
+    150              EXTI->FTSR &= ~EXTI_InitStruct->EXTI_Line;
+   \       0x38   0x....             LDR.N    R4,??DataTable6_3  ;; 0x40013c0c
+   \       0x3A   0x6825             LDR      R5,[R4, #+0]
+   \       0x3C   0x6801             LDR      R1,[R0, #+0]
+   \       0x3E   0x438D             BICS     R5,R5,R1
+   \       0x40   0x6025             STR      R5,[R4, #+0]
+    151              
+    152              /* Select the trigger for the selected external interrupts */
+    153              if (EXTI_InitStruct->EXTI_Trigger == EXTI_Trigger_Rising_Falling)
+   \       0x42   0x7941             LDRB     R1,[R0, #+5]
+   \       0x44   0x2910             CMP      R1,#+16
+   \       0x46   0xD108             BNE.N    ??EXTI_Init_1
+    154              {
+    155                /* Rising Falling edge */
+    156                EXTI->RTSR |= EXTI_InitStruct->EXTI_Line;
+   \       0x48   0x681A             LDR      R2,[R3, #+0]
+   \       0x4A   0x6801             LDR      R1,[R0, #+0]
+   \       0x4C   0x430A             ORRS     R2,R1,R2
+   \       0x4E   0x601A             STR      R2,[R3, #+0]
+    157                EXTI->FTSR |= EXTI_InitStruct->EXTI_Line;
+   \       0x50   0x6821             LDR      R1,[R4, #+0]
+   \       0x52   0x6800             LDR      R0,[R0, #+0]
+   \       0x54   0x4301             ORRS     R1,R0,R1
+   \       0x56   0x6021             STR      R1,[R4, #+0]
+   \       0x58   0xE00C             B.N      ??EXTI_Init_2
+    158              }
+    159              else
+    160              {
+    161                tmp = (uint32_t)EXTI_BASE;
+    162                tmp += EXTI_InitStruct->EXTI_Trigger;
+   \                     ??EXTI_Init_1: (+1)
+   \       0x5A   0x7941             LDRB     R1,[R0, #+5]
+   \       0x5C   0x1851             ADDS     R1,R2,R1
+    163          
+    164                *(__IO uint32_t *) tmp |= EXTI_InitStruct->EXTI_Line;
+   \       0x5E   0x680A             LDR      R2,[R1, #+0]
+   \       0x60   0x6800             LDR      R0,[R0, #+0]
+   \       0x62   0x4302             ORRS     R2,R0,R2
+   \       0x64   0x600A             STR      R2,[R1, #+0]
+   \       0x66   0xE005             B.N      ??EXTI_Init_2
+    165              }
+    166            }
+    167            else
+    168            {
+    169              tmp += EXTI_InitStruct->EXTI_Mode;
+   \                     ??EXTI_Init_0: (+1)
+   \       0x68   0x7901             LDRB     R1,[R0, #+4]
+   \       0x6A   0x1859             ADDS     R1,R3,R1
+    170          
+    171              /* Disable the selected external lines */
+    172              *(__IO uint32_t *) tmp &= ~EXTI_InitStruct->EXTI_Line;
+   \       0x6C   0x680A             LDR      R2,[R1, #+0]
+   \       0x6E   0x6800             LDR      R0,[R0, #+0]
+   \       0x70   0x4382             BICS     R2,R2,R0
+   \       0x72   0x600A             STR      R2,[R1, #+0]
+    173            }
+    174          }
+   \                     ??EXTI_Init_2: (+1)
+   \       0x74   0xBC30             POP      {R4,R5}
+   \       0x76   0x4770             BX       LR               ;; return
+    175          
+    176          /**
+    177            * @brief  Fills each EXTI_InitStruct member with its reset value.
+    178            * @param  EXTI_InitStruct: pointer to a EXTI_InitTypeDef structure which will
+    179            *         be initialized.
+    180            * @retval None
+    181            */
+
+   \                                 In section .text, align 2, keep-with-next
+    182          void EXTI_StructInit(EXTI_InitTypeDef* EXTI_InitStruct)
+    183          {
+    184            EXTI_InitStruct->EXTI_Line = EXTI_LINENONE;
+   \                     EXTI_StructInit: (+1)
+   \        0x0   0x2100             MOVS     R1,#+0
+   \        0x2   0x6001             STR      R1,[R0, #+0]
+    185            EXTI_InitStruct->EXTI_Mode = EXTI_Mode_Interrupt;
+   \        0x4   0x2100             MOVS     R1,#+0
+   \        0x6   0x7101             STRB     R1,[R0, #+4]
+    186            EXTI_InitStruct->EXTI_Trigger = EXTI_Trigger_Falling;
+   \        0x8   0x210C             MOVS     R1,#+12
+   \        0xA   0x7141             STRB     R1,[R0, #+5]
+    187            EXTI_InitStruct->EXTI_LineCmd = DISABLE;
+   \        0xC   0x2100             MOVS     R1,#+0
+   \        0xE   0x7181             STRB     R1,[R0, #+6]
+    188          }
+   \       0x10   0x4770             BX       LR               ;; return
+    189          
+    190          /**
+    191            * @brief  Generates a Software interrupt on selected EXTI line.
+    192            * @param  EXTI_Line: specifies the EXTI line on which the software interrupt
+    193            *         will be generated.
+    194            *         This parameter can be any combination of EXTI_Linex where x can be (0..22)
+    195            * @retval None
+    196            */
+
+   \                                 In section .text, align 2, keep-with-next
+    197          void EXTI_GenerateSWInterrupt(uint32_t EXTI_Line)
+    198          {
+    199            /* Check the parameters */
+    200            assert_param(IS_EXTI_LINE(EXTI_Line));
+    201            
+    202            EXTI->SWIER |= EXTI_Line;
+   \                     EXTI_GenerateSWInterrupt: (+1)
+   \        0x0   0x....             LDR.N    R1,??DataTable6_6  ;; 0x40013c10
+   \        0x2   0x680A             LDR      R2,[R1, #+0]
+   \        0x4   0x4310             ORRS     R0,R0,R2
+   \        0x6   0x6008             STR      R0,[R1, #+0]
+    203          }
+   \        0x8   0x4770             BX       LR               ;; return
+    204          
+    205          /**
+    206            * @}
+    207            */
+    208          
+    209          /** @defgroup EXTI_Group2 Interrupts and flags management functions
+    210           *  @brief   Interrupts and flags management functions 
+    211           *
+    212          @verbatim   
+    213           ===============================================================================
+    214                       ##### Interrupts and flags management functions #####
+    215           ===============================================================================
+    216          
+    217          @endverbatim
+    218            * @{
+    219            */
+    220          
+    221          /**
+    222            * @brief  Checks whether the specified EXTI line flag is set or not.
+    223            * @param  EXTI_Line: specifies the EXTI line flag to check.
+    224            *          This parameter can be EXTI_Linex where x can be(0..22)
+    225            * @retval The new state of EXTI_Line (SET or RESET).
+    226            */
+
+   \                                 In section .text, align 2, keep-with-next
+    227          FlagStatus EXTI_GetFlagStatus(uint32_t EXTI_Line)
+    228          {
+    229            FlagStatus bitstatus = RESET;
+   \                     EXTI_GetFlagStatus: (+1)
+   \        0x0   0x2100             MOVS     R1,#+0
+    230            /* Check the parameters */
+    231            assert_param(IS_GET_EXTI_LINE(EXTI_Line));
+    232            
+    233            if ((EXTI->PR & EXTI_Line) != (uint32_t)RESET)
+   \        0x2   0x....             LDR.N    R1,??DataTable6_5  ;; 0x40013c14
+   \        0x4   0x6809             LDR      R1,[R1, #+0]
+   \        0x6   0x4201             TST      R1,R0
+   \        0x8   0xD001             BEQ.N    ??EXTI_GetFlagStatus_0
+    234            {
+    235              bitstatus = SET;
+   \        0xA   0x2001             MOVS     R0,#+1
+   \        0xC   0xE000             B.N      ??EXTI_GetFlagStatus_1
+    236            }
+    237            else
+    238            {
+    239              bitstatus = RESET;
+   \                     ??EXTI_GetFlagStatus_0: (+1)
+   \        0xE   0x2000             MOVS     R0,#+0
+    240            }
+    241            return bitstatus;
+   \                     ??EXTI_GetFlagStatus_1: (+1)
+   \       0x10   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x12   0x4770             BX       LR               ;; return
+    242          }
+    243          
+    244          /**
+    245            * @brief  Clears the EXTI's line pending flags.
+    246            * @param  EXTI_Line: specifies the EXTI lines flags to clear.
+    247            *          This parameter can be any combination of EXTI_Linex where x can be (0..22)
+    248            * @retval None
+    249            */
+
+   \                                 In section .text, align 2, keep-with-next
+    250          void EXTI_ClearFlag(uint32_t EXTI_Line)
+    251          {
+    252            /* Check the parameters */
+    253            assert_param(IS_EXTI_LINE(EXTI_Line));
+    254            
+    255            EXTI->PR = EXTI_Line;
+   \                     EXTI_ClearFlag: (+1)
+   \        0x0   0x....             LDR.N    R1,??DataTable6_5  ;; 0x40013c14
+   \        0x2   0x6008             STR      R0,[R1, #+0]
+    256          }
+   \        0x4   0x4770             BX       LR               ;; return
+    257          
+    258          /**
+    259            * @brief  Checks whether the specified EXTI line is asserted or not.
+    260            * @param  EXTI_Line: specifies the EXTI line to check.
+    261            *          This parameter can be EXTI_Linex where x can be(0..22)
+    262            * @retval The new state of EXTI_Line (SET or RESET).
+    263            */
+
+   \                                 In section .text, align 2, keep-with-next
+    264          ITStatus EXTI_GetITStatus(uint32_t EXTI_Line)
+    265          {
+    266            FlagStatus bitstatus = RESET;
+   \                     EXTI_GetITStatus: (+1)
+   \        0x0   0x2100             MOVS     R1,#+0
+    267            /* Check the parameters */
+    268            assert_param(IS_GET_EXTI_LINE(EXTI_Line));
+    269            
+    270            if ((EXTI->PR & EXTI_Line) != (uint32_t)RESET)
+   \        0x2   0x....             LDR.N    R1,??DataTable6_5  ;; 0x40013c14
+   \        0x4   0x6809             LDR      R1,[R1, #+0]
+   \        0x6   0x4201             TST      R1,R0
+   \        0x8   0xD001             BEQ.N    ??EXTI_GetITStatus_0
+    271            {
+    272              bitstatus = SET;
+   \        0xA   0x2001             MOVS     R0,#+1
+   \        0xC   0xE000             B.N      ??EXTI_GetITStatus_1
+    273            }
+    274            else
+    275            {
+    276              bitstatus = RESET;
+   \                     ??EXTI_GetITStatus_0: (+1)
+   \        0xE   0x2000             MOVS     R0,#+0
+    277            }
+    278            return bitstatus;
+   \                     ??EXTI_GetITStatus_1: (+1)
+   \       0x10   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x12   0x4770             BX       LR               ;; return
+    279            
+    280          }
+    281          
+    282          /**
+    283            * @brief  Clears the EXTI's line pending bits.
+    284            * @param  EXTI_Line: specifies the EXTI lines to clear.
+    285            *          This parameter can be any combination of EXTI_Linex where x can be (0..22)
+    286            * @retval None
+    287            */
+
+   \                                 In section .text, align 2, keep-with-next
+    288          void EXTI_ClearITPendingBit(uint32_t EXTI_Line)
+    289          {
+    290            /* Check the parameters */
+    291            assert_param(IS_EXTI_LINE(EXTI_Line));
+    292            
+    293            EXTI->PR = EXTI_Line;
+   \                     EXTI_ClearITPendingBit: (+1)
+   \        0x0   0x....             LDR.N    R1,??DataTable6_5  ;; 0x40013c14
+   \        0x2   0x6008             STR      R0,[R1, #+0]
+    294          }
+   \        0x4   0x4770             BX       LR               ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6:
+   \        0x0   0x4001'3C00        DC32     0x40013c00
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_1:
+   \        0x0   0x4001'3C04        DC32     0x40013c04
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_2:
+   \        0x0   0x4001'3C08        DC32     0x40013c08
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_3:
+   \        0x0   0x4001'3C0C        DC32     0x40013c0c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_4:
+   \        0x0   0x007F'FFFF        DC32     0x7fffff
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_5:
+   \        0x0   0x4001'3C14        DC32     0x40013c14
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_6:
+   \        0x0   0x4001'3C10        DC32     0x40013c10
+    295          
+    296          /**
+    297            * @}
+    298            */
+    299          
+    300          /**
+    301            * @}
+    302            */
+    303          
+    304          /**
+    305            * @}
+    306            */
+    307          
+    308          /**
+    309            * @}
+    310            */
+    311          
+    312          /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   EXTI_ClearFlag
+       0   EXTI_ClearITPendingBit
+       0   EXTI_DeInit
+       0   EXTI_GenerateSWInterrupt
+       0   EXTI_GetFlagStatus
+       0   EXTI_GetITStatus
+       8   EXTI_Init
+       0   EXTI_StructInit
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable6
+       4  ??DataTable6_1
+       4  ??DataTable6_2
+       4  ??DataTable6_3
+       4  ??DataTable6_4
+       4  ??DataTable6_5
+       4  ??DataTable6_6
+       6  EXTI_ClearFlag
+       6  EXTI_ClearITPendingBit
+      32  EXTI_DeInit
+      10  EXTI_GenerateSWInterrupt
+      20  EXTI_GetFlagStatus
+      20  EXTI_GetITStatus
+     120  EXTI_Init
+      18  EXTI_StructInit
+
+ 
+ 260 bytes in section .text
+ 
+ 260 bytes of CODE memory
+
+Errors: none
+Warnings: none
