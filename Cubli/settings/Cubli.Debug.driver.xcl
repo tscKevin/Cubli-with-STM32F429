@@ -2,7 +2,7 @@
 
 "--cpu=Cortex-M4" 
 
-"--fpu=VFPv4_SP" 
+"--fpu=None" 
 
 "-p" 
 
@@ -12,7 +12,15 @@
 
 "--device=STM32F429ZI" 
 
-"--multicore_nr_of_cores=1" 
+"--drv_interface=SWD" 
+
+"--stlink_reset_strategy=0,0" 
+
+"--drv_swo_clock_setup=180000000,1,2000000" 
+
+"--drv_catch_exceptions=0x000" 
+
+"--drv_debug_ap=0" 
 
 
 

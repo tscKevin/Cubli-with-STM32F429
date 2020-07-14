@@ -1,12 +1,14 @@
 "D:\IAR Systems\Embedded Workbench 8.3\arm\bin\armproc.dll" 
 
-"D:\IAR Systems\Embedded Workbench 8.3\arm\bin\armsim2.dll" 
+"D:\IAR Systems\Embedded Workbench 8.3\arm\bin\armstlink2.dll" 
 
 "E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\Exe\Cubli.out" 
 
 --plugin="D:\IAR Systems\Embedded Workbench 8.3\arm\bin\armbat.dll" 
 
 --device_macro="D:\IAR Systems\Embedded Workbench 8.3\arm\config\debugger\ST\STM32F4xx.dmac" 
+
+--flash_loader="D:\IAR Systems\Embedded Workbench 8.3\arm\config\flashloader\ST\FlashSTM32F427xI.board" 
 
 
 

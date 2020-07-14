@@ -1,23 +1,23 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         10/Jul/2020  15:14:44
+# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         14/Jul/2020  18:45:24
 # Copyright 1999-2019 IAR Systems AB.
 #
 #    Cpu mode     =  
 #    Endian       =  little
 #    Source file  =
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\main.c
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\main.c
 #    Command line =
-#        -f C:\Users\Evan\AppData\Local\Temp\EW4F86.tmp
-#        (E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\main.c
+#        -f C:\Users\Evan\AppData\Local\Temp\EWA6E8.tmp
+#        (E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\main.c
 #        -D USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
 #        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List
 #        -o
 #        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\Obj
 #        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
 #        --no_clustering --no_scheduling --debug --endian=little
-#        --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "D:\IAR
-#        Systems\Embedded Workbench 8.3\arm\inc\c\DLib_Config_Normal.h" -I
+#        --cpu=Cortex-M4 -e --fpu=None --dlib_config "D:\IAR Systems\Embedded
+#        Workbench 8.3\arm\inc\c\DLib_Config_Normal.h" -I
 #        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Include\
 #        -I
 #        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\
@@ -28,9 +28,9 @@
 #        -I
 #        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\
 #        -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\User\inc\
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\inc\
 #        -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\User\src\
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\
 #        -Ol --use_c++_inline -I "D:\IAR Systems\Embedded Workbench
 #        8.3\arm\CMSIS\Core\Include\" -I "D:\IAR Systems\Embedded Workbench
 #        8.3\arm\CMSIS\DSP\Include\")
@@ -42,66 +42,84 @@
 #
 ###############################################################################
 
-E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\main.c
+E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\main.c
       1          #include "stm32f4xx.h"
 
    \                                 In section .text, align 4, keep-with-next
       2          void main(void){
    \                     main: (+1)
-   \        0x0   0xB580             PUSH     {R7,LR}
-      3            printf("Start Cubli by STM32F429ZI");
-                   ^
-Warning[Pe223]: function "printf" declared implicitly
-   \        0x2   0x4802             LDR.N    R0,??main_0
-   \        0x4   0x....'....        BL       printf
-      4            while(1){
+   \        0x0   0xB51C             PUSH     {R2-R4,LR}
+      3             GPIO_InitTypeDef GPIO_InitStructure;
+      4            RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOG,ENABLE); //enable GPIOA clock   //
+   \        0x2   0x2101             MOVS     R1,#+1
+   \        0x4   0x2040             MOVS     R0,#+64
+   \        0x6   0x....'....        BL       RCC_AHB1PeriphClockCmd
+      5            GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13 | GPIO_Pin_14;
+   \        0xA   0xF44F 0x40C0      MOV      R0,#+24576
+   \        0xE   0x9000             STR      R0,[SP, #+0]
+      6            GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+   \       0x10   0x2001             MOVS     R0,#+1
+   \       0x12   0xF88D 0x0004      STRB     R0,[SP, #+4]
+      7            GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
+   \       0x16   0x2000             MOVS     R0,#+0
+   \       0x18   0xF88D 0x0005      STRB     R0,[SP, #+5]
+      8            GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+   \       0x1C   0x2000             MOVS     R0,#+0
+   \       0x1E   0xF88D 0x0006      STRB     R0,[SP, #+6]
+      9            GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
+   \       0x22   0x2000             MOVS     R0,#+0
+   \       0x24   0xF88D 0x0007      STRB     R0,[SP, #+7]
+     10            GPIO_Init(GPIOG, &GPIO_InitStructure);
+   \       0x28   0x4C07             LDR.N    R4,??main_0      ;; 0x40021800
+   \       0x2A   0x4669             MOV      R1,SP
+   \       0x2C   0x0020             MOVS     R0,R4
+   \       0x2E   0x....'....        BL       GPIO_Init
+     11            while(1){
+     12              //GPIO_SetBits(GPIOG,GPIO_Pin_13);
+     13              //GPIO_SetBits(GPIOG,GPIO_Pin_14);
+     14              
+     15              GPIO_ToggleBits(GPIOG, GPIO_Pin_13);
    \                     ??main_1: (+1)
-   \        0x8   0xE7FE             B.N      ??main_1
-   \        0xA   0xBF00             Nop      
+   \       0x32   0xF44F 0x5100      MOV      R1,#+8192
+   \       0x36   0x0020             MOVS     R0,R4
+   \       0x38   0x....'....        BL       GPIO_ToggleBits
+     16              //GPIO_ToggleBits(GPIOG, GPIO_Pin_14);
+     17          
+     18              for(int i=0; i<25000000; i++);
+   \       0x3C   0x2000             MOVS     R0,#+0
+   \                     ??main_2: (+1)
+   \       0x3E   0x4903             LDR.N    R1,??main_0+0x4  ;; 0x17d7840
+   \       0x40   0x4288             CMP      R0,R1
+   \       0x42   0xDAF6             BGE.N    ??main_1
+   \       0x44   0x1C40             ADDS     R0,R0,#+1
+   \       0x46   0xE7FA             B.N      ??main_2
    \                     ??main_0:
-   \        0xC   0x....'....        DC32     ?_0
-      5            }
-      6          }
-
-   \                                 In section .rodata, align 4
-   \                     ?_0:
-   \        0x0   0x53 0x74          DC8 "Start Cubli by STM32F429ZI"
-   \              0x61 0x72    
-   \              0x74 0x20    
-   \              0x43 0x75    
-   \              0x62 0x6C    
-   \              0x69 0x20    
-   \              0x62 0x79    
-   \              0x20 0x53    
-   \              0x54 0x4D    
-   \              0x33 0x32    
-   \              0x46 0x34    
-   \              0x32 0x39    
-   \              0x5A 0x49    
-   \              0x00         
-   \       0x1B   0x00               DC8 0
+   \       0x48   0x4002'1800        DC32     0x40021800
+   \       0x4C   0x017D'7840        DC32     0x17d7840
+     19            }
+     20          
+     21          }
 
    Maximum stack usage in bytes:
 
    .cstack Function
    ------- --------
-       8   main
-         8   -> printf
+      16   main
+        16   -> GPIO_Init
+        16   -> GPIO_ToggleBits
+        16   -> RCC_AHB1PeriphClockCmd
 
 
    Section sizes:
 
    Bytes  Function/Label
    -----  --------------
-      28  ?_0
-      16  main
+      80  main
 
  
- 28 bytes in section .rodata
- 16 bytes in section .text
+ 80 bytes in section .text
  
- 16 bytes of CODE  memory
- 28 bytes of CONST memory
+ 80 bytes of CODE memory
 
 Errors: none
-Warnings: 1
+Warnings: none

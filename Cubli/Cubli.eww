@@ -3,8 +3,5 @@
     <project>
         <path>$WS_DIR$\Cubli.ewp</path>
     </project>
-    <project>
-        <path>$WS_DIR$\..\..\..\GPIOTester\GPIOTester.ewp</path>
-    </project>
     <batchBuild />
 </workspace>

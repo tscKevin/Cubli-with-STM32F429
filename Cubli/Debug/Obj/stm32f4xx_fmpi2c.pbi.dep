@@ -15,7 +15,7 @@ stm32f4xx_fmpi2c.pbi: \
   D:\IAR\ Systems\Embedded\ Workbench\ 8.3\arm\inc\c\iccarm_builtin.h \
   D:\IAR\ Systems\Embedded\ Workbench\ 8.3\arm\CMSIS\Core\Include/mpu_armv7.h \
   E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Include/system_stm32f4xx.h \
-  E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\User\inc\stm32f4xx_conf.h \
+  E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\inc\stm32f4xx_conf.h \
   E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h \
   E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h \
   E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h \
