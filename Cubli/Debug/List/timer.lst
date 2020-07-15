@@ -1,0 +1,268 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         16/Jul/2020  00:32:46
+# Copyright 1999-2019 IAR Systems AB.
+#
+#    Cpu mode     =  
+#    Endian       =  little
+#    Source file  =
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\timer.c
+#    Command line =
+#        -f C:\Users\Evan\AppData\Local\Temp\EW6BC.tmp
+#        (E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\timer.c
+#        -D USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List
+#        -o
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=None --dlib_config "D:\IAR Systems\Embedded
+#        Workbench 8.3\arm\inc\c\DLib_Config_Normal.h" -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Include\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\iar\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\inc\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\inc\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\
+#        -Ol --use_c++_inline -I "D:\IAR Systems\Embedded Workbench
+#        8.3\arm\CMSIS\Core\Include\" -I "D:\IAR Systems\Embedded Workbench
+#        8.3\arm\CMSIS\DSP\Include\")
+#    Locale       =  C
+#    List file    =
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List\timer.lst
+#    Object file  =
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\Obj\timer.o
+#
+###############################################################################
+
+E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\timer.c
+      1          #include "timer.h"
+      2          
+      3          
+
+   \                                 In section .bss, align 4
+      4          uint32_t running_tim_cnt = 0;
+   \                     running_tim_cnt:
+   \        0x0                      DS8 4
+      5          /*===============================
+      6          
+      7          測試系統運行時間
+      8          
+      9          ===============================*/
+
+   \                                 In section .text, align 2, keep-with-next
+     10          void time_check(_Time_test *running)
+     11          {
+   \                     time_check: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+     12            running->last_time_us = running->now_time_us;
+   \        0x4   0x6860             LDR      R0,[R4, #+4]
+   \        0x6   0x6020             STR      R0,[R4, #+0]
+     13            running->now_time_us = running_tim_cnt * 5000 + TIM4->CNT;                  //計數累加數加1，则需要5ms = 5000us ，定時器定時5ms需要5000次計數，所以一次CNT值為1us 
+   \        0x8   0x....             LDR.N    R0,??DataTable1
+   \        0xA   0x6800             LDR      R0,[R0, #+0]
+   \        0xC   0xF241 0x3288      MOVW     R2,#+5000
+   \       0x10   0x....             LDR.N    R1,??DataTable1_1  ;; 0x40000824
+   \       0x12   0x6809             LDR      R1,[R1, #+0]
+   \       0x14   0xFB02 0x1000      MLA      R0,R2,R0,R1
+   \       0x18   0x....'....        BL       __aeabi_ui2f
+   \       0x1C   0x6060             STR      R0,[R4, #+4]
+     14            running->delta_time_us = running->now_time_us - running->last_time_us;
+   \       0x1E   0x6860             LDR      R0,[R4, #+4]
+   \       0x20   0x6821             LDR      R1,[R4, #+0]
+   \       0x22   0x....'....        BL       __aeabi_fsub
+   \       0x26   0x60A0             STR      R0,[R4, #+8]
+     15            running->delta_time_ms = running->delta_time_us * 0.001f;
+   \       0x28   0x68A1             LDR      R1,[R4, #+8]
+   \       0x2A   0x....             LDR.N    R0,??DataTable1_2  ;; 0x3a83126f
+   \       0x2C   0x....'....        BL       __aeabi_fmul
+   \       0x30   0x60E0             STR      R0,[R4, #+12]
+     16            //printf("time interrupt is %f\n", running->delta_time_us);
+     17          }
+   \       0x32   0xBD10             POP      {R4,PC}          ;; return
+     18          
+     19          /*===============================
+     20          
+     21          TIM4 interrupt - main
+     22          
+     23          =================================*/
+     24          
+
+   \                                 In section .bss, align 4
+     25          _Time_test run_start;
+   \                     run_start:
+   \        0x0                      DS8 16
+
+   \                                 In section .bss, align 4
+     26          _Time_test run_stop;
+   \                     run_stop:
+   \        0x0                      DS8 16
+
+   \                                 In section .text, align 2, keep-with-next
+     27          void TIM4_IRQHandler(void){
+   \                     TIM4_IRQHandler: (+1)
+   \        0x0   0xB57C             PUSH     {R2-R6,LR}
+     28            if(TIM4->SR&0X0001){//確認更新中斷旗標為有效
+   \        0x2   0x....             LDR.N    R4,??DataTable1_3  ;; 0x40000810
+   \        0x4   0x8820             LDRH     R0,[R4, #+0]
+   \        0x6   0x07C0             LSLS     R0,R0,#+31
+   \        0x8   0xD52F             BPL.N    ??TIM4_IRQHandler_0
+     29          //    GPIO_ToggleBits(GPIOG,GPIO_Pin_14);
+     30          //    MPU6050_Get_Display();
+     31              running_tim_cnt++ ;
+   \        0xA   0x....             LDR.N    R0,??DataTable1
+   \        0xC   0x6801             LDR      R1,[R0, #+0]
+   \        0xE   0x1C49             ADDS     R1,R1,#+1
+   \       0x10   0x6001             STR      R1,[R0, #+0]
+     32              time_check(&run_start);                                                 //timer時間測量
+   \       0x12   0x....             LDR.N    R0,??DataTable1_4
+   \       0x14   0x....'....        BL       time_check
+     33              
+     34              get_gyro_raw();                                                         //陀螺儀raw data
+   \       0x18   0x....'....        BL       get_gyro_raw
+     35              get_deg_s(&gyro_raw_f,&Mpu.deg_s);
+   \       0x1C   0x....             LDR.N    R5,??DataTable1_5
+   \       0x1E   0x....             LDR.N    R6,??DataTable1_6
+   \       0x20   0x0031             MOVS     R1,R6
+   \       0x22   0x0028             MOVS     R0,R5
+   \       0x24   0x....'....        BL       get_deg_s
+     36              get_rad_s(&gyro_raw_f,&Mpu.rad_s);
+   \       0x28   0xF116 0x010C      ADDS     R1,R6,#+12
+   \       0x2C   0x0028             MOVS     R0,R5
+   \       0x2E   0x....'....        BL       get_rad_s
+     37              get_acc_raw();                                                          //加速度計raw data
+   \       0x32   0x....'....        BL       get_acc_raw
+     38              acc_iir_lpf(&acc_raw_f,&acc_att_lpf,Mpu.att_acc_factor);                //姿態演算法需要用的低通濾波器
+   \       0x36   0x....             LDR.N    R5,??DataTable1_7
+   \       0x38   0x6A72             LDR      R2,[R6, #+36]
+   \       0x3A   0x0029             MOVS     R1,R5
+   \       0x3C   0x....             LDR.N    R0,??DataTable1_8
+   \       0x3E   0x....'....        BL       acc_iir_lpf
+     39              get_acc_g(&acc_att_lpf,&Mpu.acc_g);  
+   \       0x42   0xF116 0x0118      ADDS     R1,R6,#+24
+   \       0x46   0x0028             MOVS     R0,R5
+   \       0x48   0x....'....        BL       get_acc_g
+     40              //姿態演算
+     41              mahony_update(Mpu.rad_s.x,Mpu.rad_s.y,Mpu.rad_s.z,Mpu.acc_g.x,Mpu.acc_g.y,Mpu.acc_g.z); 
+   \       0x4C   0x6A30             LDR      R0,[R6, #+32]
+   \       0x4E   0x9001             STR      R0,[SP, #+4]
+   \       0x50   0x69F0             LDR      R0,[R6, #+28]
+   \       0x52   0x9000             STR      R0,[SP, #+0]
+   \       0x54   0x69B3             LDR      R3,[R6, #+24]
+   \       0x56   0x6972             LDR      R2,[R6, #+20]
+   \       0x58   0x6931             LDR      R1,[R6, #+16]
+   \       0x5A   0x68F0             LDR      R0,[R6, #+12]
+   \       0x5C   0x....'....        BL       mahony_update
+     42              Matrix_ready();                                                         //姿態演算矩陣更新                                                       //姿態演算矩陣更新
+   \       0x60   0x....'....        BL       Matrix_ready
+     43              
+     44              time_check(&run_stop); 
+   \       0x64   0x....             LDR.N    R0,??DataTable1_9
+   \       0x66   0x....'....        BL       time_check
+     45            }
+     46            TIM4->SR&=~(1<<0);//清除更新中斷旗標  TIM4->SR = (uint16_t)~TIM_FLAG;
+   \                     ??TIM4_IRQHandler_0: (+1)
+   \       0x6A   0x8821             LDRH     R1,[R4, #+0]
+   \       0x6C   0xF64F 0x70FE      MOVW     R0,#+65534
+   \       0x70   0x4001             ANDS     R1,R0,R1
+   \       0x72   0x8021             STRH     R1,[R4, #+0]
+     47          }
+   \       0x74   0xBD73             POP      {R0,R1,R4-R6,PC}  ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1:
+   \        0x0   0x....'....        DC32     running_tim_cnt
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_1:
+   \        0x0   0x4000'0824        DC32     0x40000824
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_2:
+   \        0x0   0x3A83'126F        DC32     0x3a83126f
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_3:
+   \        0x0   0x4000'0810        DC32     0x40000810
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_4:
+   \        0x0   0x....'....        DC32     run_start
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_5:
+   \        0x0   0x....'....        DC32     gyro_raw_f
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_6:
+   \        0x0   0x....'....        DC32     Mpu
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_7:
+   \        0x0   0x....'....        DC32     acc_att_lpf
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_8:
+   \        0x0   0x....'....        DC32     acc_raw_f
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_9:
+   \        0x0   0x....'....        DC32     run_stop
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+      24   TIM4_IRQHandler
+        24   -> Matrix_ready
+        24   -> acc_iir_lpf
+        24   -> get_acc_g
+        24   -> get_acc_raw
+        24   -> get_deg_s
+        24   -> get_gyro_raw
+        24   -> get_rad_s
+        24   -> mahony_update
+        24   -> time_check
+       8   time_check
+         8   -> __aeabi_fmul
+         8   -> __aeabi_fsub
+         8   -> __aeabi_ui2f
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable1
+       4  ??DataTable1_1
+       4  ??DataTable1_2
+       4  ??DataTable1_3
+       4  ??DataTable1_4
+       4  ??DataTable1_5
+       4  ??DataTable1_6
+       4  ??DataTable1_7
+       4  ??DataTable1_8
+       4  ??DataTable1_9
+     118  TIM4_IRQHandler
+      16  run_start
+      16  run_stop
+       4  running_tim_cnt
+      52  time_check
+
+ 
+  36 bytes in section .bss
+ 210 bytes in section .text
+ 
+ 210 bytes of CODE memory
+  36 bytes of DATA memory
+
+Errors: none
+Warnings: none

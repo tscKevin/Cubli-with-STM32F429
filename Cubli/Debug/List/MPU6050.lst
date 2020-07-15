@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         15/Jul/2020  23:28:29
+# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         15/Jul/2020  23:41:26
 # Copyright 1999-2019 IAR Systems AB.
 #
 #    Cpu mode     =  
@@ -8,7 +8,7 @@
 #    Source file  =
 #        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\MPU6050.c
 #    Command line =
-#        -f C:\Users\Evan\AppData\Local\Temp\EW2AA2.tmp
+#        -f C:\Users\Evan\AppData\Local\Temp\EW72B.tmp
 #        (E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\MPU6050.c
 #        -D USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
 #        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List
@@ -465,7 +465,7 @@ Warning[Pa093]: implicit conversion from floating point to integer
     127          //求取IIR濾波係數
 
    \                                 In section .text, align 2, keep-with-next
-    128          void get_iir_factor(float *out_factor,float Time, float Cut_Off)
+    128          void get_iir_factor(float *out_factor,float Time, float Cut_Off)//30 or 25
     129          {
    \                     get_iir_factor: (+1)
    \        0x0   0xB538             PUSH     {R3-R5,LR}

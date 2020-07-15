@@ -2662,16 +2662,22 @@
             <name>$PROJ_DIR$\user\src\iic.h</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\user\src\imu.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\user\src\imu.h</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\user\src\MPU6050.c</name>
         </file>
         <file>
             <name>$PROJ_DIR$\user\src\MPU6050.h</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\user\src\time.c</name>
+            <name>$PROJ_DIR$\user\src\timer.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\user\src\time.h</name>
+            <name>$PROJ_DIR$\user\src\timer.h</name>
         </file>
     </group>
     <group>

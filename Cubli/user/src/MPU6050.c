@@ -125,7 +125,7 @@ void get_rad_s(SI_F_XYZ *gyro_in,SI_F_XYZ *gyro_out)
 }
 
 //求取IIR濾波係數
-void get_iir_factor(float *out_factor,float Time, float Cut_Off)
+void get_iir_factor(float *out_factor,float Time, float Cut_Off)//30 or 25
 {
   *out_factor = Time /( Time + 1/(2.0f * PI * Cut_Off) ); //2.0f tell compiler that 2.0 is a float point not a double 
 }

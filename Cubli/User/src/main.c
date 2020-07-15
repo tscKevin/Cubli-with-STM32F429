@@ -1,5 +1,8 @@
 #include "stm32f4xx.h"
 
+#include "iic.h"
+#include "MPU6050.h"
+#include "timer.h"
 void TM4_Interrupt_Init(void){
   TIM_TimeBaseInitTypeDef TIM_BaseStruct;
   RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4,ENABLE);
@@ -35,19 +38,16 @@ void LED_On_Board(void){
   GPIO_Init(GPIOG, &GPIO_InitStructure);
 }
 void main(void){
-  
   systick_setup();
   LED_On_Board();
   IIC_GPIO_Init();
   MPU6050_Init();
   get_mpu_id();
-//  get_iir_factor(&Mpu.att_acc_factor,0.005f,25);
+  get_iir_factor(&Mpu.att_acc_factor,0.005f,25);
   TM4_Interrupt_Init();
   NVIC_Set();
   while(1){
-    
-    GPIO_ToggleBits(GPIOG, GPIO_Pin_13);
-    //GPIO_ToggleBits(GPIOG, GPIO_Pin_14);
-    Delay(1000);
+//    GPIO_ToggleBits(GPIOG, GPIO_Pin_13);
+//    Delay(1000);
   }
 }
