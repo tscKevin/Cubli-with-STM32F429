@@ -1,21 +1,53 @@
 #include "stm32f4xx.h"
-void main(void){
-   GPIO_InitTypeDef GPIO_InitStructure;
+
+void TM4_Interrupt_Init(void){
+  TIM_TimeBaseInitTypeDef TIM_BaseStruct;
+  RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4,ENABLE);
+  TIM_BaseStruct.TIM_Prescaler = 90-1;
+  TIM_BaseStruct.TIM_Period=5000-1;
+  TIM_BaseStruct.TIM_CounterMode=TIM_CounterMode_Up;
+  TIM_BaseStruct.TIM_ClockDivision=TIM_CKD_DIV1;
+  TIM_BaseStruct.TIM_RepetitionCounter=0;
+  TIM_TimeBaseInit(TIM4,&TIM_BaseStruct);
+  TIM_Cmd(TIM4,ENABLE);
+  TIM_ClearFlag(TIM4,TIM_FLAG_Update);
+  TIM_ITConfig(TIM4,TIM_IT_Update,ENABLE);
+}
+void NVIC_Set(void){
+  NVIC_InitTypeDef NVIC_InitStructure;
+  NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);//0~2
+  
+  /*TIM4*/
+  NVIC_InitStructure.NVIC_IRQChannel = TIM4_IRQn;    
+  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
+  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;            
+  NVIC_Init(&NVIC_InitStructure);
+}
+void LED_On_Board(void){
+  GPIO_InitTypeDef GPIO_InitStructure;
   RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOG,ENABLE); //enable GPIOA clock   //
   GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13 | GPIO_Pin_14;
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
-  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
   GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
   GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
   GPIO_Init(GPIOG, &GPIO_InitStructure);
+}
+void main(void){
+  
+  systick_setup();
+  LED_On_Board();
+  IIC_GPIO_Init();
+  MPU6050_Init();
+  get_mpu_id();
+//  get_iir_factor(&Mpu.att_acc_factor,0.005f,25);
+  TM4_Interrupt_Init();
+  NVIC_Set();
   while(1){
-    //GPIO_SetBits(GPIOG,GPIO_Pin_13);
-    //GPIO_SetBits(GPIOG,GPIO_Pin_14);
     
     GPIO_ToggleBits(GPIOG, GPIO_Pin_13);
     //GPIO_ToggleBits(GPIOG, GPIO_Pin_14);
-
-    for(int i=0; i<25000000; i++);
+    Delay(1000);
   }
-
 }

@@ -2643,6 +2643,36 @@
                 </group>
             </group>
         </group>
+        <file>
+            <name>$PROJ_DIR$\user\src\Delay.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\user\src\Delay.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\user\src\filter.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\user\src\filter.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\user\src\iic.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\user\src\iic.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\user\src\MPU6050.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\user\src\MPU6050.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\user\src\time.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\user\src\time.h</name>
+        </file>
     </group>
     <group>
         <name>User</name>

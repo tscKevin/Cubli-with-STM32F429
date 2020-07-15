@@ -1,0 +1,140 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         15/Jul/2020  23:05:34
+# Copyright 1999-2019 IAR Systems AB.
+#
+#    Cpu mode     =  
+#    Endian       =  little
+#    Source file  =
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\filter.c
+#    Command line =
+#        -f C:\Users\Evan\AppData\Local\Temp\EW2CDF.tmp
+#        (E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\filter.c
+#        -D USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List
+#        -o
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=None --dlib_config "D:\IAR Systems\Embedded
+#        Workbench 8.3\arm\inc\c\DLib_Config_Normal.h" -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Include\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\iar\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\inc\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\inc\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\
+#        -Ol --use_c++_inline -I "D:\IAR Systems\Embedded Workbench
+#        8.3\arm\CMSIS\Core\Include\" -I "D:\IAR Systems\Embedded Workbench
+#        8.3\arm\CMSIS\DSP\Include\")
+#    Locale       =  C
+#    List file    =
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List\filter.lst
+#    Object file  =
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\Obj\filter.o
+#
+###############################################################################
+
+E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\filter.c
+      1          #include "filter.h"
+      2          
+      3          
+      4          //二階butterworth-lpf
+
+   \                                 In section .text, align 2, keep-with-next
+      5          float butterworth_lpf(float now_input,_Butterworth_data *buffer, _Butterworth_parameter *parameter)
+      6          {
+   \                     butterworth_lpf: (+1)
+   \        0x0   0xB570             PUSH     {R4-R6,LR}
+   \        0x2   0x000C             MOVS     R4,R1
+   \        0x4   0x0015             MOVS     R5,R2
+      7            buffer->input_data[2] = now_input;
+   \        0x6   0x60A0             STR      R0,[R4, #+8]
+      8            
+      9            /* Butterworth LPF */
+     10            buffer->output_data[2] =   parameter->b[0] * buffer->input_data[2]
+     11              		+ parameter->b[1] * buffer->input_data[1]
+     12                		+ parameter->b[2] * buffer->input_data[0]
+     13                 		- parameter->a[1] * buffer->output_data[1]
+     14                    		- parameter->a[2] * buffer->output_data[0];
+   \        0x8   0x68E9             LDR      R1,[R5, #+12]
+   \        0xA   0x68A0             LDR      R0,[R4, #+8]
+   \        0xC   0x....'....        BL       __aeabi_fmul
+   \       0x10   0x0006             MOVS     R6,R0
+   \       0x12   0x6929             LDR      R1,[R5, #+16]
+   \       0x14   0x6860             LDR      R0,[R4, #+4]
+   \       0x16   0x....'....        BL       __aeabi_fmul
+   \       0x1A   0x0031             MOVS     R1,R6
+   \       0x1C   0x....'....        BL       __aeabi_fadd
+   \       0x20   0x0006             MOVS     R6,R0
+   \       0x22   0x6969             LDR      R1,[R5, #+20]
+   \       0x24   0x6820             LDR      R0,[R4, #+0]
+   \       0x26   0x....'....        BL       __aeabi_fmul
+   \       0x2A   0x0031             MOVS     R1,R6
+   \       0x2C   0x....'....        BL       __aeabi_fadd
+   \       0x30   0x0006             MOVS     R6,R0
+   \       0x32   0x6869             LDR      R1,[R5, #+4]
+   \       0x34   0x6920             LDR      R0,[R4, #+16]
+   \       0x36   0x....'....        BL       __aeabi_fmul
+   \       0x3A   0x0001             MOVS     R1,R0
+   \       0x3C   0x0030             MOVS     R0,R6
+   \       0x3E   0x....'....        BL       __aeabi_fsub
+   \       0x42   0x0006             MOVS     R6,R0
+   \       0x44   0x68A9             LDR      R1,[R5, #+8]
+   \       0x46   0x68E0             LDR      R0,[R4, #+12]
+   \       0x48   0x....'....        BL       __aeabi_fmul
+   \       0x4C   0x0001             MOVS     R1,R0
+   \       0x4E   0x0030             MOVS     R0,R6
+   \       0x50   0x....'....        BL       __aeabi_fsub
+   \       0x54   0x6160             STR      R0,[R4, #+20]
+     15            /* x(n) 保存 */
+     16            buffer->input_data[0] = buffer->input_data[1];
+   \       0x56   0x6860             LDR      R0,[R4, #+4]
+   \       0x58   0x6020             STR      R0,[R4, #+0]
+     17            buffer->input_data[1] = buffer->input_data[2];
+   \       0x5A   0x68A0             LDR      R0,[R4, #+8]
+   \       0x5C   0x6060             STR      R0,[R4, #+4]
+     18            /* y(n) 保存 */
+     19            buffer->output_data[0] = buffer->output_data[1];
+   \       0x5E   0x6920             LDR      R0,[R4, #+16]
+   \       0x60   0x60E0             STR      R0,[R4, #+12]
+     20            buffer->output_data[1] = buffer->output_data[2];
+   \       0x62   0x6960             LDR      R0,[R4, #+20]
+   \       0x64   0x6120             STR      R0,[R4, #+16]
+     21            
+     22            return buffer->output_data[2];
+   \       0x66   0x6960             LDR      R0,[R4, #+20]
+   \       0x68   0xBD70             POP      {R4-R6,PC}       ;; return
+     23          }
+     24          
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+      16   butterworth_lpf
+        16   -> __aeabi_fadd
+        16   -> __aeabi_fmul
+        16   -> __aeabi_fsub
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+     106  butterworth_lpf
+
+ 
+ 106 bytes in section .text
+ 
+ 106 bytes of CODE memory
+
+Errors: none
+Warnings: none

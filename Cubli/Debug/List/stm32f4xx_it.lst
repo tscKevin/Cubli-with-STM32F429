@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         14/Jul/2020  18:43:22
+# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         15/Jul/2020  23:06:53
 # Copyright 1999-2019 IAR Systems AB.
 #
 #    Cpu mode     =  
@@ -8,7 +8,7 @@
 #    Source file  =
 #        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\stm32f4xx_it.c
 #    Command line =
-#        -f C:\Users\Evan\AppData\Local\Temp\EWC77F.tmp
+#        -f C:\Users\Evan\AppData\Local\Temp\EW61D9.tmp
 #        (E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\stm32f4xx_it.c
 #        -D USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
 #        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List
@@ -220,14 +220,10 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\stm32f4
     139            * @param  None
     140            * @retval None
     141            */
-
-   \                                 In section .text, align 2, keep-with-next
-    142          void SysTick_Handler(void)
-    143          {
-    144          //  TimingDelay_Decrement();
-    145          }
-   \                     SysTick_Handler: (+1)
-   \        0x0   0x4770             BX       LR               ;; return
+    142          //void SysTick_Handler(void)
+    143          //{
+    144          ////  TimingDelay_Decrement();
+    145          //}
     146          
     147          /******************************************************************************/
     148          /*                 STM32F4xx Peripherals Interrupt Handlers                   */
@@ -263,7 +259,6 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\stm32f4
        0   NMI_Handler
        0   PendSV_Handler
        0   SVC_Handler
-       0   SysTick_Handler
        0   UsageFault_Handler
 
 
@@ -278,13 +273,12 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\stm32f4
        2  NMI_Handler
        2  PendSV_Handler
        2  SVC_Handler
-       2  SysTick_Handler
        2  UsageFault_Handler
 
  
- 18 bytes in section .text
+ 16 bytes in section .text
  
- 18 bytes of CODE memory
+ 16 bytes of CODE memory
 
 Errors: none
 Warnings: none

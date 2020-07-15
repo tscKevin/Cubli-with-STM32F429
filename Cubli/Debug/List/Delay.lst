@@ -1,0 +1,331 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         15/Jul/2020  23:03:52
+# Copyright 1999-2019 IAR Systems AB.
+#
+#    Cpu mode     =  
+#    Endian       =  little
+#    Source file  =
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\Delay.c
+#    Command line =
+#        -f C:\Users\Evan\AppData\Local\Temp\EW9C78.tmp
+#        (E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\Delay.c
+#        -D USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List
+#        -o
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=None --dlib_config "D:\IAR Systems\Embedded
+#        Workbench 8.3\arm\inc\c\DLib_Config_Normal.h" -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Include\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\iar\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\inc\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\inc\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\
+#        -Ol --use_c++_inline -I "D:\IAR Systems\Embedded Workbench
+#        8.3\arm\CMSIS\Core\Include\" -I "D:\IAR Systems\Embedded Workbench
+#        8.3\arm\CMSIS\DSP\Include\")
+#    Locale       =  C
+#    List file    =
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List\Delay.lst
+#    Object file  =
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\Obj\Delay.o
+#
+###############################################################################
+
+E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\Delay.c
+      1          #include "Delay.h"
+
+   \                                 In section .text, align 2, keep-with-next
+   \   static __interwork __softfp void __NVIC_SetPriority(IRQn_Type, uint32_t)
+   \                     __NVIC_SetPriority: (+1)
+   \        0x0   0x0002             MOVS     R2,R0
+   \        0x2   0xB252             SXTB     R2,R2            ;; SignExt  R2,R2,#+24,#+24
+   \        0x4   0x2A00             CMP      R2,#+0
+   \        0x6   0xD404             BMI.N    ??__NVIC_SetPriority_0
+   \        0x8   0x0109             LSLS     R1,R1,#+4
+   \        0xA   0x....             LDR.N    R2,??DataTable4  ;; 0xe000e400
+   \        0xC   0xB240             SXTB     R0,R0            ;; SignExt  R0,R0,#+24,#+24
+   \        0xE   0x5411             STRB     R1,[R2, R0]
+   \       0x10   0xE007             B.N      ??__NVIC_SetPriority_1
+   \                     ??__NVIC_SetPriority_0: (+1)
+   \       0x12   0x0109             LSLS     R1,R1,#+4
+   \       0x14   0x....             LDR.N    R2,??DataTable4_1  ;; 0xe000ed18
+   \       0x16   0xB240             SXTB     R0,R0            ;; SignExt  R0,R0,#+24,#+24
+   \       0x18   0xF010 0x000F      ANDS     R0,R0,#0xF
+   \       0x1C   0x4410             ADD      R0,R2,R0
+   \       0x1E   0xF800 0x1C04      STRB     R1,[R0, #-4]
+   \                     ??__NVIC_SetPriority_1: (+1)
+   \       0x22   0x4770             BX       LR               ;; return
+
+   \                                 In section .text, align 2, keep-with-next
+   \   static __interwork __softfp uint32_t SysTick_Config(uint32_t)
+   \                     SysTick_Config: (+1)
+   \        0x0   0xB580             PUSH     {R7,LR}
+   \        0x2   0x1E41             SUBS     R1,R0,#+1
+   \        0x4   0xF1B1 0x7F80      CMP      R1,#+16777216
+   \        0x8   0xD301             BCC.N    ??SysTick_Config_0
+   \        0xA   0x2001             MOVS     R0,#+1
+   \        0xC   0xE00E             B.N      ??SysTick_Config_1
+   \                     ??SysTick_Config_0: (+1)
+   \        0xE   0x1E40             SUBS     R0,R0,#+1
+   \       0x10   0x....             LDR.N    R1,??DataTable4_2  ;; 0xe000e014
+   \       0x12   0x6008             STR      R0,[R1, #+0]
+   \       0x14   0x210F             MOVS     R1,#+15
+   \       0x16   0xF05F 0x30FF      MOVS     R0,#-1
+   \       0x1A   0x....'....        BL       __NVIC_SetPriority
+   \       0x1E   0x2000             MOVS     R0,#+0
+   \       0x20   0x....             LDR.N    R1,??DataTable4_3  ;; 0xe000e018
+   \       0x22   0x6008             STR      R0,[R1, #+0]
+   \       0x24   0x2007             MOVS     R0,#+7
+   \       0x26   0x....             LDR.N    R1,??DataTable4_4  ;; 0xe000e010
+   \       0x28   0x6008             STR      R0,[R1, #+0]
+   \       0x2A   0x2000             MOVS     R0,#+0
+   \                     ??SysTick_Config_1: (+1)
+   \       0x2C   0xBD02             POP      {R1,PC}          ;; return
+      2          //
+      3          //static void Delay_Init(void){
+      4          //  static uint8_t init_status=0;
+      5          //  if(!init_status){
+      6          //    init_status=1;
+      7          //    SysTick_CLKSourceConfig(SysTick_CLKSource_HCLK_Div8);
+      8          //    SysTick->CTRL &= ~SysTick_CTRL_ENABLE_Msk;
+      9          //  }
+     10          //}
+     11          //
+     12          //void Delay_us(uint64_t nus){
+     13          //  uint32_t temp = 0;
+     14          //  uint64_t nms=0;
+     15          //  Delay_Init();
+     16          //  
+     17          //  if(nus==0){
+     18          //    return; //delay 0 s;
+     19          //  }
+     20          //  
+     21          //  nms=nus/1000;
+     22          //  nus=nus%1000;
+     23          //  
+     24          //  if(nms>0){
+     25          //    Delay_ms(nms);
+     26          //  }
+     27          //  
+     28          //  if(nus>0){
+     29          //    SysTick->LOAD = SystemCoreClock / 8000000 * nus;
+     30          //    SysTick->VAL = 0x000000;                          /* Empty counter */
+     31          //    SysTick->CTRL |= SysTick_CTRL_ENABLE_Msk;         /* Start the countdown */
+     32          //    
+     33          //    do{
+     34          //      temp = SysTick->CTRL;
+     35          //    }
+     36          //    while(temp&0x01 && !(temp&(1<<16)));        /* Wait time is reached */
+     37          //    
+     38          //    SysTick->CTRL &= ~SysTick_CTRL_ENABLE_Msk;  /* Close Counter */
+     39          //    SysTick->VAL = 0x000000;                    /* Empty counter */
+     40          //  }
+     41          //}
+     42          //void Delay(int nTime){
+     43          //  uint32_t temp = 0;
+     44          //  
+     45          //  Delay_Init();
+     46          //  
+     47          //  if(nTime == 0){
+     48          //    return;
+     49          //  }
+     50          //  
+     51          //  while(nTime > 500){
+     52          //    SysTick->LOAD = SystemCoreClock / 8000 * 500; /* Time load (SysTick-> LOAD is 24bit) */
+     53          //    SysTick->VAL = 0x000000;                      /* Empty counter */
+     54          //    SysTick->CTRL |= SysTick_CTRL_ENABLE_Msk;     /* Start the countdown */
+     55          //    
+     56          //    do{
+     57          //      temp = SysTick->CTRL;
+     58          //    }
+     59          //    while(temp&0x01 && !(temp&(1<<16)));        /* Wait time is reached */
+     60          //    
+     61          //    SysTick->CTRL &= ~SysTick_CTRL_ENABLE_Msk;  /* Close Counter */
+     62          //    SysTick->VAL = 0x000000;                    /* Empty counter */
+     63          //    
+     64          //    nTime -= 500;
+     65          //  }
+     66          //  
+     67          //  SysTick->LOAD = SystemCoreClock / 8000 * nTime; /* Time load (SysTick-> LOAD is 24bit) */
+     68          //  SysTick->VAL = 0x000000;                      /* Empty counter */
+     69          //  SysTick->CTRL |= SysTick_CTRL_ENABLE_Msk;     /* Start the countdown */
+     70          //  
+     71          //  do{
+     72          //    temp = SysTick->CTRL;
+     73          //  }
+     74          //  while(temp&0x01 && !(temp&(1<<16)));        /* Wait time is reached */
+     75          //  
+     76          //  SysTick->CTRL &= ~SysTick_CTRL_ENABLE_Msk;  /* Close Counter */
+     77          //  SysTick->VAL = 0x000000;                    /* Empty counter */
+     78          //}
+     79          //
+     80          //
+     81          //void Delay_s(uint64_t ns){
+     82          //  while(ns > 0){
+     83          //    Delay_ms(1000);
+     84          //    ns--;
+     85          //  }
+     86          //}
+     87          //#include "systick.h"
+     88          //#include "stm32f4xx.h"
+     89          /* 系统滴答定时器 */
+
+   \                                 In section .bss, align 4
+     90          static volatile int TimingDelay; // 防止編譯器優化，所以加上 volatile
+   \                     TimingDelay:
+   \        0x0                      DS8 4
+     91           
+     92          /*
+     93          * 滴答中斷(Tick Interrupt)，此涵式建議寫在：stm32f4xx_it.c 中
+     94          * 中斷次數=實體頻率/自訂值，自訂值由 SysTick_Config() 設定
+     95          */
+
+   \                                 In section .text, align 2, keep-with-next
+     96          void SysTick_Handler(void)
+     97          {
+     98              // TimingDelay 由 Delay() 給值，只要不為 0 他將會一直遞減下去...
+     99              if (TimingDelay != 0)
+   \                     SysTick_Handler: (+1)
+   \        0x0   0x....             LDR.N    R1,??DataTable4_5
+   \        0x2   0x6808             LDR      R0,[R1, #+0]
+   \        0x4   0x2800             CMP      R0,#+0
+   \        0x6   0xD002             BEQ.N    ??SysTick_Handler_0
+    100              { 
+    101                  TimingDelay--;
+   \        0x8   0x6808             LDR      R0,[R1, #+0]
+   \        0xA   0x1E40             SUBS     R0,R0,#+1
+   \        0xC   0x6008             STR      R0,[R1, #+0]
+    102              }
+    103          }
+   \                     ??SysTick_Handler_0: (+1)
+   \        0xE   0x4770             BX       LR               ;; return
+    104           
+    105          /*
+    106          * 延遲函數
+    107          * Delay(1000); // = 延遲一秒
+    108          */
+
+   \                                 In section .text, align 2, keep-with-next
+    109          void Delay(int nTime)
+    110          { 
+    111              // 將 nTime 傳給 TimingDelay，之後讓 TimingDelay 遞減
+    112              //systick_setup();
+    113            TimingDelay = nTime;
+   \                     Delay: (+1)
+   \        0x0   0x....             LDR.N    R1,??DataTable4_5
+   \        0x2   0x6008             STR      R0,[R1, #+0]
+    114           
+    115              // 等待 SysTick_Handler() 中斷涵式
+    116              // 把 TimingDelay 減到 0 才跳出迴圈
+    117              // TimingDelay 非零將會一直空轉
+    118              while(TimingDelay != 0);
+   \                     ??Delay_0: (+1)
+   \        0x4   0x6808             LDR      R0,[R1, #+0]
+   \        0x6   0x2800             CMP      R0,#+0
+   \        0x8   0xD1FC             BNE.N    ??Delay_0
+    119          }
+   \        0xA   0x4770             BX       LR               ;; return
+    120          /**
+    121            * @brief  This function handles SysTick Handler.
+    122            * @param  None
+    123            * @retval None
+    124            */
+
+   \                                 In section .text, align 2, keep-with-next
+    125          void systick_setup(void)
+    126          {
+   \                     systick_setup: (+1)
+   \        0x0   0xB580             PUSH     {R7,LR}
+    127            if (SysTick_Config(168000)) // 168000 也可以用 SystemCoreClock / 1000 取代
+   \        0x2   0x....             LDR.N    R0,??DataTable4_6  ;; 0x29040
+   \        0x4   0x....'....        BL       SysTick_Config
+   \        0x8   0x2800             CMP      R0,#+0
+   \        0xA   0xD000             BEQ.N    ??systick_setup_0
+    128              { 
+    129                  while (1);// SysTick_Config() 的值設定太大，所以終止繼續運行 (人為疏失)
+   \                     ??systick_setup_1: (+1)
+   \        0xC   0xE7FE             B.N      ??systick_setup_1
+    130              }
+    131          }
+   \                     ??systick_setup_0: (+1)
+   \        0xE   0xBD01             POP      {R0,PC}          ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4:
+   \        0x0   0xE000'E400        DC32     0xe000e400
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_1:
+   \        0x0   0xE000'ED18        DC32     0xe000ed18
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_2:
+   \        0x0   0xE000'E014        DC32     0xe000e014
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_3:
+   \        0x0   0xE000'E018        DC32     0xe000e018
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_4:
+   \        0x0   0xE000'E010        DC32     0xe000e010
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_5:
+   \        0x0   0x....'....        DC32     TimingDelay
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_6:
+   \        0x0   0x0002'9040        DC32     0x29040
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   Delay
+       8   SysTick_Config
+         8   -> __NVIC_SetPriority
+       0   SysTick_Handler
+       0   __NVIC_SetPriority
+       8   systick_setup
+         8   -> SysTick_Config
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable4
+       4  ??DataTable4_1
+       4  ??DataTable4_2
+       4  ??DataTable4_3
+       4  ??DataTable4_4
+       4  ??DataTable4_5
+       4  ??DataTable4_6
+      12  Delay
+      46  SysTick_Config
+      16  SysTick_Handler
+       4  TimingDelay
+      36  __NVIC_SetPriority
+      16  systick_setup
+
+ 
+   4 bytes in section .bss
+ 154 bytes in section .text
+ 
+ 154 bytes of CODE memory
+   4 bytes of DATA memory
+
+Errors: none
+Warnings: none

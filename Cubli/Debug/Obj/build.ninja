@@ -63,6 +63,11 @@ build stm32f4xx_syscfg.pbi : index stm32f4xx_syscfg.xcl
 build stm32f4xx_tim.pbi : index stm32f4xx_tim.xcl
 build stm32f4xx_usart.pbi : index stm32f4xx_usart.xcl
 build stm32f4xx_wwdg.pbi : index stm32f4xx_wwdg.xcl
+build Delay.pbi : index Delay.xcl
+build filter.pbi : index filter.xcl
+build iic.pbi : index iic.xcl
+build MPU6050.pbi : index MPU6050.xcl
+build time.pbi : index time.xcl
 build main.pbi : index main.xcl
 build stm32f4xx_it.pbi : index stm32f4xx_it.xcl
 build Cubli_part0.pbi : link system_stm32f4xx.pbi misc.pbi stm32f4xx_adc.pbi stm32f4xx_can.pbi stm32f4xx_cec.pbi stm32f4xx_crc.pbi stm32f4xx_cryp.pbi
@@ -71,8 +76,9 @@ build Cubli_part2.pbi : link stm32f4xx_dma.pbi stm32f4xx_dma2d.pbi stm32f4xx_dsi
 build Cubli_part3.pbi : link stm32f4xx_fmpi2c.pbi stm32f4xx_gpio.pbi stm32f4xx_hash.pbi stm32f4xx_hash_md5.pbi stm32f4xx_hash_sha1.pbi stm32f4xx_i2c.pbi stm32f4xx_iwdg.pbi
 build Cubli_part4.pbi : link stm32f4xx_lptim.pbi stm32f4xx_ltdc.pbi stm32f4xx_pwr.pbi stm32f4xx_qspi.pbi stm32f4xx_rcc.pbi stm32f4xx_rng.pbi stm32f4xx_rtc.pbi
 build Cubli_part5.pbi : link stm32f4xx_sai.pbi stm32f4xx_sdio.pbi stm32f4xx_spdifrx.pbi stm32f4xx_spi.pbi stm32f4xx_syscfg.pbi stm32f4xx_tim.pbi stm32f4xx_usart.pbi
-build Cubli_part6.pbi : link stm32f4xx_wwdg.pbi main.pbi stm32f4xx_it.pbi
-build Cubli.pbd : link Cubli_part0.pbi Cubli_part1.pbi Cubli_part2.pbi Cubli_part3.pbi Cubli_part4.pbi Cubli_part5.pbi Cubli_part6.pbi
+build Cubli_part6.pbi : link stm32f4xx_wwdg.pbi Delay.pbi filter.pbi iic.pbi MPU6050.pbi time.pbi main.pbi
+build Cubli_part7.pbi : link stm32f4xx_it.pbi
+build Cubli.pbd : link Cubli_part0.pbi Cubli_part1.pbi Cubli_part2.pbi Cubli_part3.pbi Cubli_part4.pbi Cubli_part5.pbi Cubli_part6.pbi Cubli_part7.pbi
 build Cubli.pbw : browsedata Cubli.pbd
 
 
