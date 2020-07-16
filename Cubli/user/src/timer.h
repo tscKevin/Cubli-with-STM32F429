@@ -19,8 +19,20 @@ typedef struct
 
 
 void time_check(_Time_test *running);
+float control_velocity(int encoder);
+float control_balance_x(float angle, float Gyro);
+void Max_pwm_limit(int amplitude);
+void set_pwm(int pwm_x);
 
-extern _Time_test run_start; //�ۤv�諸
-extern _Time_test run_stop; // �ۤv�諸
+extern _Time_test run_start;
+extern _Time_test run_stop;
+extern int encoder_x;
+extern int encoder_y;
+extern int encoder_z;
+extern int nvic_flag;
+extern int flag_stop;
+extern float velocity_pwm_x ;
+extern int balance_pwm_x ;
+extern int PWM_X;
 
 #endif

@@ -1,8 +1,7 @@
 #include "stm32f4xx.h"
 
-#include "iic.h"
-#include "MPU6050.h"
 #include "timer.h"
+#include "pwm.h"
 void TM4_Interrupt_Init(void){
   TIM_TimeBaseInitTypeDef TIM_BaseStruct;
   RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4,ENABLE);
@@ -26,6 +25,13 @@ void NVIC_Set(void){
   NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
   NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;            
   NVIC_Init(&NVIC_InitStructure);
+  
+  /*DMA1_Stream6_IRQn*/
+  NVIC_InitStructure.NVIC_IRQChannel = DMA2_Stream7_IRQn;
+  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=2;
+  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 2;		
+  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;			
+  NVIC_Init(&NVIC_InitStructure);
 }
 void LED_On_Board(void){
   GPIO_InitTypeDef GPIO_InitStructure;
@@ -39,15 +45,48 @@ void LED_On_Board(void){
 }
 void main(void){
   systick_setup();
+  TM2_PWM_Init();
+  TIM2->CCR3=1400;
+  Delay(150);
+  TIM2->CCR3=1700;Delay(150);
+  TIM3_EncoderInterface_Init();
+  Delay(5);
+  TM5_PWM_Init();
   LED_On_Board();
   IIC_GPIO_Init();
+  
   MPU6050_Init();
   get_mpu_id();
+  
   get_iir_factor(&Mpu.att_acc_factor,0.005f,25);
   TM4_Interrupt_Init();
   NVIC_Set();
+  Delay(2000);
+  nvic_flag = 1;  //while(1);
   while(1){
-//    GPIO_ToggleBits(GPIOG, GPIO_Pin_13);
-//    Delay(1000);
+    if(att.pit<-27){//jump up
+      Delay(3000);
+      nvic_flag = 0;
+      PWM_X =0;
+      set_pwm(PWM_X);
+      TIM2->CCR3=1250;//1500;
+      Delay(50);
+      nvic_flag = 1;
+      Delay(200);
+      TIM2->CCR3=1700;
+      Delay(200);
+//      
+    }else if(att.pit>27){//jump up
+      Delay(3000);
+      nvic_flag = 0;
+      PWM_X =0;
+      set_pwm(PWM_X);
+      TIM2->CCR3=1250;//1500;
+      Delay(50);
+      nvic_flag = 1;
+      Delay(200);
+      TIM2->CCR3=1700;
+      Delay(200);
+    }
   }
 }

@@ -1,0 +1,667 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         16/Jul/2020  01:12:39
+# Copyright 1999-2019 IAR Systems AB.
+#
+#    Cpu mode     =  
+#    Endian       =  little
+#    Source file  =
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\pwm.c
+#    Command line =
+#        -f C:\Users\Evan\AppData\Local\Temp\EW8EF9.tmp
+#        (E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\pwm.c
+#        -D USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List
+#        -o
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=None --dlib_config "D:\IAR Systems\Embedded
+#        Workbench 8.3\arm\inc\c\DLib_Config_Normal.h" -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Include\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\iar\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\inc\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\inc\
+#        -I
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\
+#        -Ol --use_c++_inline -I "D:\IAR Systems\Embedded Workbench
+#        8.3\arm\CMSIS\Core\Include\" -I "D:\IAR Systems\Embedded Workbench
+#        8.3\arm\CMSIS\DSP\Include\")
+#    Locale       =  C
+#    List file    =
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List\pwm.lst
+#    Object file  =
+#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\Obj\pwm.o
+#
+###############################################################################
+
+E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\pwm.c
+      1          #include "pwm.h"
+      2          /*=========================================================
+      3          
+      4          
+      5          TIM2 pwm PA0、PA1、PA2、PA3
+      6          
+      7          =========================================================*/
+      8          
+
+   \                                 In section .text, align 2, keep-with-next
+      9          void TM2_PWM_Init(void){
+   \                     TM2_PWM_Init: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0xB08A             SUB      SP,SP,#+40
+     10            GPIO_InitTypeDef GPIO_InitStruct;
+     11            RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
+   \        0x4   0x2101             MOVS     R1,#+1
+   \        0x6   0x2002             MOVS     R0,#+2
+   \        0x8   0x....'....        BL       RCC_AHB1PeriphClockCmd
+     12            /* Alternating functions for pins 原本在PB*/
+     13          //  GPIO_PinAFConfig(GPIOA, GPIO_PinSource0, GPIO_AF_TIM2);
+     14          //  GPIO_PinAFConfig(GPIOA, GPIO_PinSource1, GPIO_AF_TIM2);
+     15            GPIO_PinAFConfig(GPIOB, GPIO_PinSource10, GPIO_AF_TIM2);
+   \        0xC   0x....             LDR.N    R4,??DataTable3  ;; 0x40020400
+   \        0xE   0x2201             MOVS     R2,#+1
+   \       0x10   0x210A             MOVS     R1,#+10
+   \       0x12   0x0020             MOVS     R0,R4
+   \       0x14   0x....'....        BL       GPIO_PinAFConfig
+     16            GPIO_PinAFConfig(GPIOB, GPIO_PinSource11, GPIO_AF_TIM2);
+   \       0x18   0x2201             MOVS     R2,#+1
+   \       0x1A   0x210B             MOVS     R1,#+11
+   \       0x1C   0x0020             MOVS     R0,R4
+   \       0x1E   0x....'....        BL       GPIO_PinAFConfig
+     17            
+     18            GPIO_InitStruct.GPIO_Pin = GPIO_Pin_10 | GPIO_Pin_11;// | GPIO_Pin_2 | GPIO_Pin_3;
+   \       0x22   0xF44F 0x6040      MOV      R0,#+3072
+   \       0x26   0x9000             STR      R0,[SP, #+0]
+     19            GPIO_InitStruct.GPIO_OType = GPIO_OType_PP;
+   \       0x28   0x2000             MOVS     R0,#+0
+   \       0x2A   0xF88D 0x0006      STRB     R0,[SP, #+6]
+     20            GPIO_InitStruct.GPIO_PuPd = GPIO_PuPd_NOPULL;
+   \       0x2E   0x2000             MOVS     R0,#+0
+   \       0x30   0xF88D 0x0007      STRB     R0,[SP, #+7]
+     21            GPIO_InitStruct.GPIO_Mode = GPIO_Mode_AF;
+   \       0x34   0x2002             MOVS     R0,#+2
+   \       0x36   0xF88D 0x0004      STRB     R0,[SP, #+4]
+     22            GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
+   \       0x3A   0x2002             MOVS     R0,#+2
+   \       0x3C   0xF88D 0x0005      STRB     R0,[SP, #+5]
+     23            GPIO_Init(GPIOB, &GPIO_InitStruct);
+   \       0x40   0x4669             MOV      R1,SP
+   \       0x42   0x0020             MOVS     R0,R4
+   \       0x44   0x....'....        BL       GPIO_Init
+     24            //Initialize TIM2
+     25            TIM_TimeBaseInitTypeDef TIM_BaseStruct;
+     26            RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2,ENABLE);
+   \       0x48   0x2101             MOVS     R1,#+1
+   \       0x4A   0x2001             MOVS     R0,#+1
+   \       0x4C   0x....'....        BL       RCC_APB1PeriphClockCmd
+     27            TIM_BaseStruct.TIM_Prescaler =90-1;//timer_tick_frequency = Timer_default_frequency / (prescaller_set + 1) 
+   \       0x50   0x2059             MOVS     R0,#+89
+   \       0x52   0xF8AD 0x0008      STRH     R0,[SP, #+8]
+     28            TIM_BaseStruct.TIM_CounterMode = TIM_CounterMode_Up;
+   \       0x56   0x2000             MOVS     R0,#+0
+   \       0x58   0xF8AD 0x000A      STRH     R0,[SP, #+10]
+     29            TIM_BaseStruct.TIM_Period=20000-1;//PWM_frequency = timer_tick_frequency / (TIM_Period + 1) ==> TIM_Period = timer_tick_frequency / PWM_frequency - 1
+   \       0x5C   0xF644 0x601F      MOVW     R0,#+19999
+   \       0x60   0x9003             STR      R0,[SP, #+12]
+     30            TIM_BaseStruct.TIM_ClockDivision=TIM_CKD_DIV1;
+   \       0x62   0x2000             MOVS     R0,#+0
+   \       0x64   0xF8AD 0x0010      STRH     R0,[SP, #+16]
+     31            TIM_BaseStruct.TIM_RepetitionCounter=0;
+   \       0x68   0x2000             MOVS     R0,#+0
+   \       0x6A   0xF88D 0x0012      STRB     R0,[SP, #+18]
+     32            TIM_TimeBaseInit(TIM2, &TIM_BaseStruct);
+   \       0x6E   0xA902             ADD      R1,SP,#+8
+   \       0x70   0xF05F 0x4080      MOVS     R0,#+1073741824
+   \       0x74   0x....'....        BL       TIM_TimeBaseInit
+     33            
+     34            TIM_OCInitTypeDef TIM_OCStruct;
+     35            TIM_OCStruct.TIM_OCMode = TIM_OCMode_PWM1;
+   \       0x78   0x2060             MOVS     R0,#+96
+   \       0x7A   0xF8AD 0x0014      STRH     R0,[SP, #+20]
+     36            TIM_OCStruct.TIM_OutputState = TIM_OutputState_Enable;
+   \       0x7E   0x2001             MOVS     R0,#+1
+   \       0x80   0xF8AD 0x0016      STRH     R0,[SP, #+22]
+     37            TIM_OCStruct.TIM_OCPolarity  = TIM_OCPolarity_High;
+   \       0x84   0x2000             MOVS     R0,#+0
+   \       0x86   0xF8AD 0x0020      STRH     R0,[SP, #+32]
+     38            /*pulse_length = ((TIM_Period + 1) * DutyCycle) / 100 - 1
+     39            25% duty cycle:      pulse_length = ((8399 + 1) * 25) / 100 - 1 = 2099
+     40            50% duty cycle:      pulse_length = ((8399 + 1) * 50) / 100 - 1 = 4199
+     41            75% duty cycle:      pulse_length = ((8399 + 1) * 75) / 100 - 1 = 6299
+     42            100% duty cycle:    pulse_length = ((8399 + 1) * 100) / 100 - 1 = 8399*/
+     43          //  TIM_OCStruct.TIM_Pulse=8399;
+     44          //  TIM_OC1Init(TIM2, &TIM_OCStruct);
+     45          //  TIM_OC1PreloadConfig(TIM2, TIM_OCPreload_Enable);
+     46          //  
+     47          //  TIM_OCStruct.TIM_Pulse=4199;
+     48          //  TIM_OC2Init(TIM2, &TIM_OCStruct);
+     49          //  TIM_OC2PreloadConfig(TIM2, TIM_OCPreload_Enable);
+     50            //  
+     51            TIM_OCStruct.TIM_Pulse=0;
+   \       0x8A   0x2000             MOVS     R0,#+0
+   \       0x8C   0x9007             STR      R0,[SP, #+28]
+     52            TIM_OC3Init(TIM2, &TIM_OCStruct);
+   \       0x8E   0xA905             ADD      R1,SP,#+20
+   \       0x90   0xF05F 0x4080      MOVS     R0,#+1073741824
+   \       0x94   0x....'....        BL       TIM_OC3Init
+     53            TIM_OC3PreloadConfig(TIM2, TIM_OCPreload_Enable);
+   \       0x98   0x2108             MOVS     R1,#+8
+   \       0x9A   0xF05F 0x4080      MOVS     R0,#+1073741824
+   \       0x9E   0x....'....        BL       TIM_OC3PreloadConfig
+     54            
+     55            TIM_OCStruct.TIM_Pulse=0;
+   \       0xA2   0x2000             MOVS     R0,#+0
+   \       0xA4   0x9007             STR      R0,[SP, #+28]
+     56            TIM_OC4Init(TIM2, &TIM_OCStruct);
+   \       0xA6   0xA905             ADD      R1,SP,#+20
+   \       0xA8   0xF05F 0x4080      MOVS     R0,#+1073741824
+   \       0xAC   0x....'....        BL       TIM_OC4Init
+     57            TIM_OC4PreloadConfig(TIM2, TIM_OCPreload_Enable);
+   \       0xB0   0x2108             MOVS     R1,#+8
+   \       0xB2   0xF05F 0x4080      MOVS     R0,#+1073741824
+   \       0xB6   0x....'....        BL       TIM_OC4PreloadConfig
+     58            TIM_Cmd(TIM2,ENABLE);
+   \       0xBA   0x2101             MOVS     R1,#+1
+   \       0xBC   0xF05F 0x4080      MOVS     R0,#+1073741824
+   \       0xC0   0x....'....        BL       TIM_Cmd
+     59          }
+   \       0xC4   0xB00A             ADD      SP,SP,#+40
+   \       0xC6   0xBD10             POP      {R4,PC}          ;; return
+     60          /*=========================================================
+     61          
+     62          
+     63          TIM3 pwm PC6、PC7、PC8、PC9
+     64          
+     65          =========================================================*/
+     66          
+     67          //void TM3_PWM_Init(void){
+     68          //  GPIO_InitTypeDef GPIO_InitStruct;
+     69          //  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOC, ENABLE);
+     70          //  /* Alternating functions for pins 原本在PC 6 7 8 9*/
+     71          //  GPIO_PinAFConfig(GPIOC, GPIO_PinSource6, GPIO_AF_TIM3);
+     72          //  GPIO_PinAFConfig(GPIOC, GPIO_PinSource7, GPIO_AF_TIM3);
+     73          //  /*PB 
+     74          //  // tim3 ch3、4 at PB GPIO_Pin_0  GPIO_Pin_1;
+     75          //  GPIO_PinAFConfig(GPIOD, GPIO_PinSource0, GPIO_AF_TIM3);
+     76          //  GPIO_PinAFConfig(GPIOD, GPIO_PinSource1, GPIO_AF_TIM3);
+     77          //  */
+     78          //  GPIO_InitStruct.GPIO_Pin = GPIO_Pin_6 | GPIO_Pin_7;//GPIO_Pin_8 | GPIO_Pin_9
+     79          //  GPIO_InitStruct.GPIO_OType = GPIO_OType_PP;
+     80          //  GPIO_InitStruct.GPIO_PuPd = GPIO_PuPd_NOPULL;
+     81          //  GPIO_InitStruct.GPIO_Mode = GPIO_Mode_AF;
+     82          //  GPIO_InitStruct.GPIO_Speed = GPIO_Speed_100MHz;
+     83          //  GPIO_Init(GPIOC, &GPIO_InitStruct);
+     84          //  
+     85          //  //Initialize TIM3
+     86          //  TIM_TimeBaseInitTypeDef TIM_BaseStruct;
+     87          //  RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3,ENABLE);
+     88          //  TIM_BaseStruct.TIM_Prescaler =0;//timer_tick_frequency = Timer_default_frequency / (prescaller_set + 1) 
+     89          //  TIM_BaseStruct.TIM_CounterMode = TIM_CounterMode_Up;
+     90          //  TIM_BaseStruct.TIM_Period=8399;//PWM_frequency = timer_tick_frequency / (TIM_Period + 1) ==> TIM_Period = timer_tick_frequency / PWM_frequency - 1
+     91          //  TIM_BaseStruct.TIM_ClockDivision=TIM_CKD_DIV1;
+     92          //  TIM_BaseStruct.TIM_RepetitionCounter=0;
+     93          //  TIM_TimeBaseInit(TIM3, &TIM_BaseStruct);
+     94          //  TIM_Cmd(TIM3,ENABLE);
+     95          //  
+     96          //  //Initialize PWM
+     97          //  TIM_OCInitTypeDef TIM_OCStruct;
+     98          //  /* PWM mode 2 = Clear on compare match */
+     99          //  /* PWM mode 1 = Set on compare match */
+    100          //  TIM_OCStruct.TIM_OCMode = TIM_OCMode_PWM2;
+    101          //  TIM_OCStruct.TIM_OutputState = TIM_OutputState_Enable;
+    102          //  TIM_OCStruct.TIM_OCPolarity  = TIM_OCPolarity_High;
+    103          //  /*pulse_length = ((TIM_Period + 1) * DutyCycle) / 100 - 1
+    104          //  25% duty cycle:      pulse_length = ((8399 + 1) * 25) / 100 - 1 = 2099
+    105          //  50% duty cycle:      pulse_length = ((8399 + 1) * 50) / 100 - 1 = 4199
+    106          //  75% duty cycle:      pulse_length = ((8399 + 1) * 75) / 100 - 1 = 6299
+    107          //  100% duty cycle:    pulse_length = ((8399 + 1) * 100) / 100 - 1 = 8399*/
+    108          //  TIM_OCStruct.TIM_Pulse=2099;
+    109          //  TIM_OC1Init(TIM3, &TIM_OCStruct);
+    110          //  TIM_OC1PreloadConfig(TIM3, TIM_OCPreload_Enable);
+    111          //  
+    112          //  TIM_OCStruct.TIM_Pulse=4199;
+    113          //  TIM_OC2Init(TIM3, &TIM_OCStruct);
+    114          //  TIM_OC2PreloadConfig(TIM3, TIM_OCPreload_Enable);
+    115          //  
+    116          //  /*TIM_OCStruct.TIM_Pulse=6299;
+    117          //  TIM_OC3Init(TIM3, &TIM_OCStruct);
+    118          //  TIM_OC3PreloadConfig(TIM3, TIM_OCPreload_Enable);
+    119          //  
+    120          //  TIM_OCStruct.TIM_Pulse=8399;
+    121          //  TIM_OC4Init(TIM3, &TIM_OCStruct);
+    122          //  TIM_OC4PreloadConfig(TIM3, TIM_OCPreload_Enable);*/
+    123          //}
+    124          
+    125          /*=========================================================
+    126          
+    127          
+    128          TIM4 pwm PB6、PB7、PB8、PB9 or PD12、PD13、PD14、PD15
+    129          
+    130          =========================================================*/
+    131          //
+    132          //void TM4_PWM_Init(void){
+    133          //  GPIO_InitTypeDef GPIO_InitStruct;
+    134          //  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
+    135          //  /* Alternating functions for pins 原本在PB*/
+    136          //  GPIO_PinAFConfig(GPIOD, GPIO_PinSource12, GPIO_AF_TIM4);
+    137          //  GPIO_PinAFConfig(GPIOD, GPIO_PinSource13, GPIO_AF_TIM4);
+    138          //  /*
+    139          //  GPIO_PinAFConfig(GPIOD, GPIO_PinSource14, GPIO_AF_TIM4);
+    140          //  GPIO_PinAFConfig(GPIOD, GPIO_PinSource15, GPIO_AF_TIM4);
+    141          //  */
+    142          //  GPIO_InitStruct.GPIO_Pin = GPIO_Pin_12 | GPIO_Pin_13;// | GPIO_Pin_14 | GPIO_Pin_15;
+    143          //  GPIO_InitStruct.GPIO_OType = GPIO_OType_PP;
+    144          //  GPIO_InitStruct.GPIO_PuPd = GPIO_PuPd_NOPULL;
+    145          //  GPIO_InitStruct.GPIO_Mode = GPIO_Mode_AF;
+    146          //  GPIO_InitStruct.GPIO_Speed = GPIO_Speed_100MHz;
+    147          //  GPIO_Init(GPIOD, &GPIO_InitStruct);
+    148          //  //Initialize TIM4
+    149          //  TIM_TimeBaseInitTypeDef TIM_BaseStruct;
+    150          //  RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4,ENABLE);
+    151          //  TIM_BaseStruct.TIM_Prescaler =0;//timer_tick_frequency = Timer_default_frequency / (prescaller_set + 1) 
+    152          //  TIM_BaseStruct.TIM_CounterMode = TIM_CounterMode_Up;
+    153          //  TIM_BaseStruct.TIM_Period=8399;//PWM_frequency = timer_tick_frequency / (TIM_Period + 1) ==> TIM_Period = timer_tick_frequency / PWM_frequency - 1
+    154          //  TIM_BaseStruct.TIM_ClockDivision=TIM_CKD_DIV1;
+    155          //  TIM_BaseStruct.TIM_RepetitionCounter=0;
+    156          //  TIM_TimeBaseInit(TIM4, &TIM_BaseStruct);
+    157          //  TIM_Cmd(TIM4,ENABLE);
+    158          //  TIM_OCInitTypeDef TIM_OCStruct;
+    159          //  /* PWM mode 2 = Clear on compare match */
+    160          //  /* PWM mode 1 = Set on compare match */
+    161          //  TIM_OCStruct.TIM_OCMode = TIM_OCMode_PWM2;
+    162          //  TIM_OCStruct.TIM_OutputState = TIM_OutputState_Enable;
+    163          //  TIM_OCStruct.TIM_OCPolarity  = TIM_OCPolarity_High;
+    164          //  /*pulse_length = ((TIM_Period + 1) * DutyCycle) / 100 - 1
+    165          //  25% duty cycle:      pulse_length = ((8399 + 1) * 25) / 100 - 1 = 2099
+    166          //  50% duty cycle:      pulse_length = ((8399 + 1) * 50) / 100 - 1 = 4199
+    167          //  75% duty cycle:      pulse_length = ((8399 + 1) * 75) / 100 - 1 = 6299
+    168          //  100% duty cycle:    pulse_length = ((8399 + 1) * 100) / 100 - 1 = 8399*/
+    169          //  TIM_OCStruct.TIM_Pulse=2099;
+    170          //  TIM_OC1Init(TIM4, &TIM_OCStruct);
+    171          //  TIM_OC1PreloadConfig(TIM4, TIM_OCPreload_Enable);
+    172          //  
+    173          //  TIM_OCStruct.TIM_Pulse=4199;
+    174          //  TIM_OC2Init(TIM4, &TIM_OCStruct);
+    175          //  TIM_OC2PreloadConfig(TIM4, TIM_OCPreload_Enable);
+    176          //  
+    177          //  /*TIM_OCStruct.TIM_Pulse=6299;
+    178          //  TIM_OC3Init(TIM4, &TIM_OCStruct);
+    179          //  TIM_OC3PreloadConfig(TIM4, TIM_OCPreload_Enable);
+    180          //  
+    181          //  TIM_OCStruct.TIM_Pulse=8399;
+    182          //  TIM_OC4Init(TIM4, &TIM_OCStruct);
+    183          //  TIM_OC4PreloadConfig(TIM4, TIM_OCPreload_Enable);*/
+    184          //}
+    185          
+    186          
+    187          /*=========================================================
+    188          
+    189          
+    190          TIM5 pwm PA0、PA1、PA2、PA3
+    191          
+    192          =========================================================*/
+    193          
+
+   \                                 In section .text, align 2, keep-with-next
+    194          void TM5_PWM_Init(void){
+   \                     TM5_PWM_Init: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0xB08A             SUB      SP,SP,#+40
+    195            GPIO_InitTypeDef GPIO_InitStruct;
+    196            RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
+   \        0x4   0x2101             MOVS     R1,#+1
+   \        0x6   0x2001             MOVS     R0,#+1
+   \        0x8   0x....'....        BL       RCC_AHB1PeriphClockCmd
+    197            /* Alternating functions for pins 原本在PB*/
+    198            GPIO_PinAFConfig(GPIOA, GPIO_PinSource0, GPIO_AF_TIM5);
+   \        0xC   0x....             LDR.N    R4,??DataTable3_1  ;; 0x40020000
+   \        0xE   0x2202             MOVS     R2,#+2
+   \       0x10   0x2100             MOVS     R1,#+0
+   \       0x12   0x0020             MOVS     R0,R4
+   \       0x14   0x....'....        BL       GPIO_PinAFConfig
+    199            GPIO_PinAFConfig(GPIOA, GPIO_PinSource1, GPIO_AF_TIM5);
+   \       0x18   0x2202             MOVS     R2,#+2
+   \       0x1A   0x2101             MOVS     R1,#+1
+   \       0x1C   0x0020             MOVS     R0,R4
+   \       0x1E   0x....'....        BL       GPIO_PinAFConfig
+    200            GPIO_PinAFConfig(GPIOA, GPIO_PinSource2, GPIO_AF_TIM5);
+   \       0x22   0x2202             MOVS     R2,#+2
+   \       0x24   0x2102             MOVS     R1,#+2
+   \       0x26   0x0020             MOVS     R0,R4
+   \       0x28   0x....'....        BL       GPIO_PinAFConfig
+    201            GPIO_PinAFConfig(GPIOA, GPIO_PinSource3, GPIO_AF_TIM5);
+   \       0x2C   0x2202             MOVS     R2,#+2
+   \       0x2E   0x2103             MOVS     R1,#+3
+   \       0x30   0x0020             MOVS     R0,R4
+   \       0x32   0x....'....        BL       GPIO_PinAFConfig
+    202            
+    203            GPIO_InitStruct.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3;
+   \       0x36   0x200F             MOVS     R0,#+15
+   \       0x38   0x9000             STR      R0,[SP, #+0]
+    204            GPIO_InitStruct.GPIO_OType = GPIO_OType_PP;
+   \       0x3A   0x2000             MOVS     R0,#+0
+   \       0x3C   0xF88D 0x0006      STRB     R0,[SP, #+6]
+    205            GPIO_InitStruct.GPIO_PuPd = GPIO_PuPd_NOPULL;
+   \       0x40   0x2000             MOVS     R0,#+0
+   \       0x42   0xF88D 0x0007      STRB     R0,[SP, #+7]
+    206            GPIO_InitStruct.GPIO_Mode = GPIO_Mode_AF;
+   \       0x46   0x2002             MOVS     R0,#+2
+   \       0x48   0xF88D 0x0004      STRB     R0,[SP, #+4]
+    207            GPIO_InitStruct.GPIO_Speed = GPIO_Speed_100MHz;
+   \       0x4C   0x2003             MOVS     R0,#+3
+   \       0x4E   0xF88D 0x0005      STRB     R0,[SP, #+5]
+    208            GPIO_Init(GPIOA, &GPIO_InitStruct);
+   \       0x52   0x4669             MOV      R1,SP
+   \       0x54   0x0020             MOVS     R0,R4
+   \       0x56   0x....'....        BL       GPIO_Init
+    209            //Initialize TIM5
+    210            TIM_TimeBaseInitTypeDef TIM_BaseStruct;
+    211            RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM5,ENABLE);
+   \       0x5A   0x2101             MOVS     R1,#+1
+   \       0x5C   0x2008             MOVS     R0,#+8
+   \       0x5E   0x....'....        BL       RCC_APB1PeriphClockCmd
+    212            TIM_BaseStruct.TIM_Prescaler =0;//timer_tick_frequency = Timer_default_frequency / (prescaller_set + 1) 
+   \       0x62   0x2000             MOVS     R0,#+0
+   \       0x64   0xF8AD 0x0008      STRH     R0,[SP, #+8]
+    213            TIM_BaseStruct.TIM_CounterMode = TIM_CounterMode_Up;
+   \       0x68   0x2000             MOVS     R0,#+0
+   \       0x6A   0xF8AD 0x000A      STRH     R0,[SP, #+10]
+    214            TIM_BaseStruct.TIM_Period=9000-1;//PWM_frequency = timer_tick_frequency / (TIM_Period + 1) ==> TIM_Period = timer_tick_frequency / PWM_frequency - 1
+   \       0x6E   0xF242 0x3027      MOVW     R0,#+8999
+   \       0x72   0x9003             STR      R0,[SP, #+12]
+    215            TIM_BaseStruct.TIM_ClockDivision=TIM_CKD_DIV1;
+   \       0x74   0x2000             MOVS     R0,#+0
+   \       0x76   0xF8AD 0x0010      STRH     R0,[SP, #+16]
+    216            TIM_BaseStruct.TIM_RepetitionCounter=0;
+   \       0x7A   0x2000             MOVS     R0,#+0
+   \       0x7C   0xF88D 0x0012      STRB     R0,[SP, #+18]
+    217            TIM_TimeBaseInit(TIM5, &TIM_BaseStruct);
+   \       0x80   0x....             LDR.N    R4,??DataTable3_2  ;; 0x40000c00
+   \       0x82   0xA902             ADD      R1,SP,#+8
+   \       0x84   0x0020             MOVS     R0,R4
+   \       0x86   0x....'....        BL       TIM_TimeBaseInit
+    218            
+    219            TIM_OCInitTypeDef TIM_OCStruct;
+    220            TIM_OCStruct.TIM_OCMode = TIM_OCMode_PWM2;
+   \       0x8A   0x2070             MOVS     R0,#+112
+   \       0x8C   0xF8AD 0x0014      STRH     R0,[SP, #+20]
+    221            TIM_OCStruct.TIM_OutputState = TIM_OutputState_Enable;
+   \       0x90   0x2001             MOVS     R0,#+1
+   \       0x92   0xF8AD 0x0016      STRH     R0,[SP, #+22]
+    222            TIM_OCStruct.TIM_OCPolarity  = TIM_OCPolarity_High;
+   \       0x96   0x2000             MOVS     R0,#+0
+   \       0x98   0xF8AD 0x0020      STRH     R0,[SP, #+32]
+    223            /*pulse_length = ((TIM_Period + 1) * DutyCycle) / 100 - 1
+    224            25% duty cycle:      pulse_length = ((8399 + 1) * 25) / 100 - 1 = 2099
+    225            50% duty cycle:      pulse_length = ((8399 + 1) * 50) / 100 - 1 = 4199
+    226            75% duty cycle:      pulse_length = ((8399 + 1) * 75) / 100 - 1 = 6299
+    227            100% duty cycle:    pulse_length = ((8399 + 1) * 100) / 100 - 1 = 8399*/
+    228            TIM_OCStruct.TIM_Pulse=0;
+   \       0x9C   0x2000             MOVS     R0,#+0
+   \       0x9E   0x9007             STR      R0,[SP, #+28]
+    229            TIM_OC1Init(TIM5, &TIM_OCStruct);
+   \       0xA0   0xA905             ADD      R1,SP,#+20
+   \       0xA2   0x0020             MOVS     R0,R4
+   \       0xA4   0x....'....        BL       TIM_OC1Init
+    230            TIM_OC1PreloadConfig(TIM5, TIM_OCPreload_Enable);
+   \       0xA8   0x2108             MOVS     R1,#+8
+   \       0xAA   0x0020             MOVS     R0,R4
+   \       0xAC   0x....'....        BL       TIM_OC1PreloadConfig
+    231            
+    232          //  TIM_OCStruct.TIM_Pulse=0;
+    233          //  TIM_OC2Init(TIM5, &TIM_OCStruct);
+    234          //  TIM_OC2PreloadConfig(TIM5, TIM_OCPreload_Enable);
+    235          //  //  
+    236          //  TIM_OCStruct.TIM_Pulse=0;
+    237          //  TIM_OC3Init(TIM5, &TIM_OCStruct);
+    238          //  TIM_OC3PreloadConfig(TIM5, TIM_OCPreload_Enable);
+    239          //  
+    240          //  TIM_OCStruct.TIM_Pulse=0;
+    241          //  TIM_OC4Init(TIM5, &TIM_OCStruct);
+    242          //  TIM_OC4PreloadConfig(TIM5, TIM_OCPreload_Enable);
+    243            TIM_Cmd(TIM5,ENABLE);
+   \       0xB0   0x2101             MOVS     R1,#+1
+   \       0xB2   0x0020             MOVS     R0,R4
+   \       0xB4   0x....'....        BL       TIM_Cmd
+    244          }
+   \       0xB8   0xB00A             ADD      SP,SP,#+40
+   \       0xBA   0xBD10             POP      {R4,PC}          ;; return
+    245          
+    246          
+    247          /*=========================================================
+    248          
+    249          
+    250          TIM3 EncoderInterface pwm PA6、PA7
+    251          
+    252          =========================================================*/
+    253          
+    254          
+
+   \                                 In section .text, align 2, keep-with-next
+    255          int read_Encoder(void){
+    256            int Encoder_a = 0;
+   \                     read_Encoder: (+1)
+   \        0x0   0x2000             MOVS     R0,#+0
+    257            Encoder_a = (short)TIM3->CNT; //因為設定是65535 所以用short來將逆向的馬達計數轉為負號
+   \        0x2   0x....             LDR.N    R1,??DataTable3_3  ;; 0x40000424
+   \        0x4   0x6808             LDR      R0,[R1, #+0]
+   \        0x6   0xB200             SXTH     R0,R0            ;; SignExt  R0,R0,#+16,#+16
+    258            TIM3->CNT = 0;
+   \        0x8   0x2200             MOVS     R2,#+0
+   \        0xA   0x600A             STR      R2,[R1, #+0]
+    259            return Encoder_a ;
+   \        0xC   0x4770             BX       LR               ;; return
+    260          }
+    261          
+    262          //EncoderInterface
+
+   \                                 In section .text, align 2, keep-with-next
+    263          void TIM3_EncoderInterface_Init(void) {
+   \                     TIM3_EncoderInterface_Init: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0xB088             SUB      SP,SP,#+32
+    264            GPIO_InitTypeDef GPIO_InitStructure;
+    265            RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);
+   \        0x4   0x2101             MOVS     R1,#+1
+   \        0x6   0x2002             MOVS     R0,#+2
+   \        0x8   0x....'....        BL       RCC_APB1PeriphClockCmd
+    266            // GPIOB Clock Enable
+    267            RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
+   \        0xC   0x2101             MOVS     R1,#+1
+   \        0xE   0x2001             MOVS     R0,#+1
+   \       0x10   0x....'....        BL       RCC_AHB1PeriphClockCmd
+    268            // Initalize PB6 (TIM4 Ch1) and PB7 (TIM4 Ch2)
+    269            GPIO_InitStructure.GPIO_Pin     = GPIO_Pin_6 | GPIO_Pin_7;
+   \       0x14   0x20C0             MOVS     R0,#+192
+   \       0x16   0x9000             STR      R0,[SP, #+0]
+    270            GPIO_InitStructure.GPIO_Mode    = GPIO_Mode_AF;
+   \       0x18   0x2002             MOVS     R0,#+2
+   \       0x1A   0xF88D 0x0004      STRB     R0,[SP, #+4]
+    271            GPIO_InitStructure.GPIO_Speed   = GPIO_Speed_100MHz;    // GPIO_High_Speed
+   \       0x1E   0x2003             MOVS     R0,#+3
+   \       0x20   0xF88D 0x0005      STRB     R0,[SP, #+5]
+    272            GPIO_InitStructure.GPIO_OType   = GPIO_OType_PP;
+   \       0x24   0x2000             MOVS     R0,#+0
+   \       0x26   0xF88D 0x0006      STRB     R0,[SP, #+6]
+    273            GPIO_InitStructure.GPIO_PuPd    = GPIO_PuPd_UP;         // Weak Pull-up for safety during startup
+   \       0x2A   0x2001             MOVS     R0,#+1
+   \       0x2C   0xF88D 0x0007      STRB     R0,[SP, #+7]
+    274            GPIO_Init(GPIOA, &GPIO_InitStructure);
+   \       0x30   0x....             LDR.N    R4,??DataTable3_1  ;; 0x40020000
+   \       0x32   0x4669             MOV      R1,SP
+   \       0x34   0x0020             MOVS     R0,R4
+   \       0x36   0x....'....        BL       GPIO_Init
+    275            
+    276            // Assign Alternate Functions to pins
+    277            GPIO_PinAFConfig(GPIOA, GPIO_PinSource6, GPIO_AF_TIM3);
+   \       0x3A   0x2202             MOVS     R2,#+2
+   \       0x3C   0x2106             MOVS     R1,#+6
+   \       0x3E   0x0020             MOVS     R0,R4
+   \       0x40   0x....'....        BL       GPIO_PinAFConfig
+    278            GPIO_PinAFConfig(GPIOA, GPIO_PinSource7, GPIO_AF_TIM3);
+   \       0x44   0x2202             MOVS     R2,#+2
+   \       0x46   0x2107             MOVS     R1,#+7
+   \       0x48   0x0020             MOVS     R0,R4
+   \       0x4A   0x....'....        BL       GPIO_PinAFConfig
+    279            
+    280            TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure;
+    281            TIM_TimeBaseInitStructure.TIM_Period =65535;  //reload value
+   \       0x4E   0xF64F 0x70FF      MOVW     R0,#+65535
+   \       0x52   0x9003             STR      R0,[SP, #+12]
+    282            TIM_TimeBaseInitStructure.TIM_Prescaler=0;  //無分頻
+   \       0x54   0x2000             MOVS     R0,#+0
+   \       0x56   0xF8AD 0x0008      STRH     R0,[SP, #+8]
+    283            TIM_TimeBaseInitStructure.TIM_ClockDivision = 0;
+   \       0x5A   0x2000             MOVS     R0,#+0
+   \       0x5C   0xF8AD 0x0010      STRH     R0,[SP, #+16]
+    284            TIM_TimeBaseInitStructure.TIM_CounterMode=TIM_CounterMode_Up; //向上計數
+   \       0x60   0x2000             MOVS     R0,#+0
+   \       0x62   0xF8AD 0x000A      STRH     R0,[SP, #+10]
+    285            TIM_TimeBaseInitStructure.TIM_ClockDivision=TIM_CKD_DIV1; 
+   \       0x66   0x2000             MOVS     R0,#+0
+   \       0x68   0xF8AD 0x0010      STRH     R0,[SP, #+16]
+    286            TIM_TimeBaseInit(TIM3, &TIM_TimeBaseInitStructure);
+   \       0x6C   0x....             LDR.N    R4,??DataTable3_4  ;; 0x40000400
+   \       0x6E   0xA902             ADD      R1,SP,#+8
+   \       0x70   0x0020             MOVS     R0,R4
+   \       0x72   0x....'....        BL       TIM_TimeBaseInit
+    287            
+    288            
+    289            TIM_ICInitTypeDef TIM_ICInitStructure;
+    290            TIM_EncoderInterfaceConfig(TIM3, TIM_EncoderMode_TI12, TIM_ICPolarity_Rising ,TIM_ICPolarity_Rising); // 四分頻stm讀取encoder設置
+   \       0x76   0x2300             MOVS     R3,#+0
+   \       0x78   0x2200             MOVS     R2,#+0
+   \       0x7A   0x2103             MOVS     R1,#+3
+   \       0x7C   0x0020             MOVS     R0,R4
+   \       0x7E   0x....'....        BL       TIM_EncoderInterfaceConfig
+    291            TIM_ICStructInit(&TIM_ICInitStructure); 
+   \       0x82   0xA805             ADD      R0,SP,#+20
+   \       0x84   0x....'....        BL       TIM_ICStructInit
+    292            TIM_ICInitStructure.TIM_ICFilter = 10;//濾波器值(從第10個訊號後才開始計數)
+   \       0x88   0x200A             MOVS     R0,#+10
+   \       0x8A   0xF8AD 0x001C      STRH     R0,[SP, #+28]
+    293            TIM_ICInit(TIM3, &TIM_ICInitStructure);
+   \       0x8E   0xA905             ADD      R1,SP,#+20
+   \       0x90   0x0020             MOVS     R0,R4
+   \       0x92   0x....'....        BL       TIM_ICInit
+    294            
+    295            TIM_ClearFlag(TIM3, TIM_FLAG_Update);//清除TIM3的更新旗標
+   \       0x96   0x2101             MOVS     R1,#+1
+   \       0x98   0x0020             MOVS     R0,R4
+   \       0x9A   0x....'....        BL       TIM_ClearFlag
+    296            TIM_ITConfig(TIM3, TIM_IT_Update, ENABLE);//運行更新
+   \       0x9E   0x2201             MOVS     R2,#+1
+   \       0xA0   0x2101             MOVS     R1,#+1
+   \       0xA2   0x0020             MOVS     R0,R4
+   \       0xA4   0x....'....        BL       TIM_ITConfig
+    297            //IM3定時器
+    298            
+    299          //  NVIC_InitTypeDef NVIC_InitStructure;    
+    300          //  NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);           
+    301          //  
+    302          //  NVIC_InitStructure.NVIC_IRQChannel = TIM3_IRQn;    
+    303          //  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 3;               
+    304          //  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+    305          //  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;            
+    306          //  NVIC_Init(&NVIC_InitStructure);
+    307            TIM_SetCounter(TIM3,0); //TIM3->CNT=0
+   \       0xA8   0x2100             MOVS     R1,#+0
+   \       0xAA   0x0020             MOVS     R0,R4
+   \       0xAC   0x....'....        BL       TIM_SetCounter
+    308            TIM_Cmd(TIM3, ENABLE); 
+   \       0xB0   0x2101             MOVS     R1,#+1
+   \       0xB2   0x0020             MOVS     R0,R4
+   \       0xB4   0x....'....        BL       TIM_Cmd
+    309          }
+   \       0xB8   0xB008             ADD      SP,SP,#+32
+   \       0xBA   0xBD10             POP      {R4,PC}          ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3:
+   \        0x0   0x4002'0400        DC32     0x40020400
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_1:
+   \        0x0   0x4002'0000        DC32     0x40020000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_2:
+   \        0x0   0x4000'0C00        DC32     0x40000c00
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_3:
+   \        0x0   0x4000'0424        DC32     0x40000424
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_4:
+   \        0x0   0x4000'0400        DC32     0x40000400
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+      40   TIM3_EncoderInterface_Init
+        40   -> GPIO_Init
+        40   -> GPIO_PinAFConfig
+        40   -> RCC_AHB1PeriphClockCmd
+        40   -> RCC_APB1PeriphClockCmd
+        40   -> TIM_ClearFlag
+        40   -> TIM_Cmd
+        40   -> TIM_EncoderInterfaceConfig
+        40   -> TIM_ICInit
+        40   -> TIM_ICStructInit
+        40   -> TIM_ITConfig
+        40   -> TIM_SetCounter
+        40   -> TIM_TimeBaseInit
+      48   TM2_PWM_Init
+        48   -> GPIO_Init
+        48   -> GPIO_PinAFConfig
+        48   -> RCC_AHB1PeriphClockCmd
+        48   -> RCC_APB1PeriphClockCmd
+        48   -> TIM_Cmd
+        48   -> TIM_OC3Init
+        48   -> TIM_OC3PreloadConfig
+        48   -> TIM_OC4Init
+        48   -> TIM_OC4PreloadConfig
+        48   -> TIM_TimeBaseInit
+      48   TM5_PWM_Init
+        48   -> GPIO_Init
+        48   -> GPIO_PinAFConfig
+        48   -> RCC_AHB1PeriphClockCmd
+        48   -> RCC_APB1PeriphClockCmd
+        48   -> TIM_Cmd
+        48   -> TIM_OC1Init
+        48   -> TIM_OC1PreloadConfig
+        48   -> TIM_TimeBaseInit
+       0   read_Encoder
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable3
+       4  ??DataTable3_1
+       4  ??DataTable3_2
+       4  ??DataTable3_3
+       4  ??DataTable3_4
+     188  TIM3_EncoderInterface_Init
+     200  TM2_PWM_Init
+     188  TM5_PWM_Init
+      14  read_Encoder
+
+ 
+ 610 bytes in section .text
+ 
+ 610 bytes of CODE memory
+
+Errors: none
+Warnings: none

@@ -44,16 +44,17 @@ main.pbi: \
   E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fmc.h \
   E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_ltdc.h \
   E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sai.h \
-  E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src/iic.h \
-  E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src/Delay.h \
+  E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src/timer.h \
   E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src/MPU6050.h \
   D:\IAR\ Systems\Embedded\ Workbench\ 8.3\arm\inc\c\stdio.h \
   D:\IAR\ Systems\Embedded\ Workbench\ 8.3\arm\inc\c\ysizet.h \
   D:\IAR\ Systems\Embedded\ Workbench\ 8.3\arm\inc\c\stdlib.h \
   D:\IAR\ Systems\Embedded\ Workbench\ 8.3\arm\inc\c\DLib_Product_stdlib.h \
+  E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src/iic.h \
+  E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src/Delay.h \
   E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src/filter.h \
   D:\IAR\ Systems\Embedded\ Workbench\ 8.3\arm\inc\c\math.h \
   D:\IAR\ Systems\Embedded\ Workbench\ 8.3\arm\inc\c\DLib_float_setup.h \
-  E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src/timer.h \
   E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src/imu.h \
-  E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src/mpu6050.h
+  E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src/mpu6050.h \
+  E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src/pwm.h
