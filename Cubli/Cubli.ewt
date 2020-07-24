@@ -2685,6 +2685,12 @@
         <file>
             <name>$PROJ_DIR$\user\src\timer.h</name>
         </file>
+        <file>
+            <name>$PROJ_DIR$\user\src\usart.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\user\src\usart.h</name>
+        </file>
     </group>
     <group>
         <name>User</name>

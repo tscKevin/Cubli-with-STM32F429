@@ -13,14 +13,14 @@
 /****************************************************************/
 typedef struct 
 {
-    float ax;
-    float ay;
-    float az;
-    
-    float gx;
-    float gy;
-    float gz;
-    
+//    float ax;
+//    float ay;
+//    float az;
+//    
+//    float gx;
+//    float gy;
+//    float gz;
+//    
     float pit;//x
     float rol;//y
     float yaw;//z

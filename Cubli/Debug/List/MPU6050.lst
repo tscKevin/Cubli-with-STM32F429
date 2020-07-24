@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         15/Jul/2020  23:41:26
+# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         24/Jul/2020  14:24:57
 # Copyright 1999-2019 IAR Systems AB.
 #
 #    Cpu mode     =  
@@ -8,7 +8,7 @@
 #    Source file  =
 #        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\MPU6050.c
 #    Command line =
-#        -f C:\Users\Evan\AppData\Local\Temp\EW72B.tmp
+#        -f C:\Users\Evan\AppData\Local\Temp\EWB488.tmp
 #        (E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\MPU6050.c
 #        -D USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
 #        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List
@@ -75,239 +75,229 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\MPU6050
       8          SI_F_XYZ gyro_lpf = {0};
    \                     gyro_lpf:
    \        0x0                      DS8 12
-
-   \                                 In section .data, align 4
-      9          SI_F_XYZ gyro_offset = {0,10,-2} ;   //-128 33 -18     //陀螺儀校正數據存取
-   \                     gyro_offset:
-   \        0x0   0x0000'0000        DC32 0x0, 0x4120'0000, 0xc000'0000
-   \              0x4120'0000  
-   \              0xC000'0000  
+      9          //SI_F_XYZ gyro_offset = {0,10,-2} ;   //-128 33 -18     //陀螺儀校正數據存取
 
    \                                 In section .bss, align 4
-     10          _Mpu6050_data Mpu = {0};
+     10          SI_F_XYZ gyro_offset = {0,0,0} ;   //-128 33 -18     //陀螺儀校正數據存取
+   \                     gyro_offset:
+   \        0x0                      DS8 12
+
+   \                                 In section .bss, align 4
+     11          _Mpu6050_data Mpu = {0};
    \                     Mpu:
    \        0x0                      DS8 44
 
    \                                 In section .bss, align 4
-     11          SI_F_XYZ accel_offset={0,0,0};
+     12          SI_F_XYZ accel_offset={0,0,0};
    \                     accel_offset:
    \        0x0                      DS8 12
-     12          
+     13          
 
    \                                 In section .text, align 2, keep-with-next
-     13          void MPU6050_Init(void){
+     14          void MPU6050_Init(void){
    \                     MPU6050_Init: (+1)
    \        0x0   0xB580             PUSH     {R7,LR}
-     14            IIC_Send(SlaveAddress,PWR_MGMT_1,0x0);//唤醒mpu
+     15            IIC_Send(SlaveAddress,PWR_MGMT_1,0x0);//唤醒mpu
    \        0x2   0x2200             MOVS     R2,#+0
    \        0x4   0x216B             MOVS     R1,#+107
    \        0x6   0x20D0             MOVS     R0,#+208
    \        0x8   0x....'....        BL       IIC_Send
-     15            /* when DLPF is disabled( DLPF_CFG=0 or 7)陀螺儀輸出頻率 = 8kHz; 
-     16            when DLPFis enabled,陀螺儀輸出頻率 = 1KHz 
-     17            fs(採樣頻率) = 陀螺儀輸出頻率 / (1 + SMPLRT_DIV)*/	
-     18            IIC_Send(SlaveAddress,SMPLRT_DIV,0x00);//sample rate.  Fsample= 1Khz/(<this value>+1) = 1000Hz	
+     16            /* when DLPF is disabled( DLPF_CFG=0 or 7)陀螺儀輸出頻率 = 8kHz; 
+     17            when DLPFis enabled,陀螺儀輸出頻率 = 1KHz 
+     18            fs(採樣頻率) = 陀螺儀輸出頻率 / (1 + SMPLRT_DIV)*/	
+     19            IIC_Send(SlaveAddress,SMPLRT_DIV,0x00);//sample rate.  Fsample= 1Khz/(<this value>+1) = 1000Hz	
    \        0xC   0x2200             MOVS     R2,#+0
    \        0xE   0x2119             MOVS     R1,#+25
    \       0x10   0x20D0             MOVS     R0,#+208
    \       0x12   0x....'....        BL       IIC_Send
-     19            IIC_Send(SlaveAddress,CONFIG,0x03);//内部低通  acc:44hz	gyro:42hz register 26 :
+     20            IIC_Send(SlaveAddress,CONFIG,0x03);//内部低通  acc:44hz	gyro:42hz register 26 :
    \       0x16   0x2203             MOVS     R2,#+3
    \       0x18   0x211A             MOVS     R1,#+26
    \       0x1A   0x20D0             MOVS     R0,#+208
    \       0x1C   0x....'....        BL       IIC_Send
-     20            IIC_Send(SlaveAddress,GYRO_CONFIG,0x18);// gyro scale  ：+-2000deg/s REGISTER 27
+     21            IIC_Send(SlaveAddress,GYRO_CONFIG,0x18);// gyro scale  ：+-2000deg/s REGISTER 27
    \       0x20   0x2218             MOVS     R2,#+24
    \       0x22   0x211B             MOVS     R1,#+27
    \       0x24   0x20D0             MOVS     R0,#+208
    \       0x26   0x....'....        BL       IIC_Send
-     21            IIC_Send(SlaveAddress,ACCEL_CONFIG,0x10);// Accel scale ：+-8g (65536/16=4096 LSB/g) REGISTER 28 
+     22            IIC_Send(SlaveAddress,ACCEL_CONFIG,0x10);// Accel scale ：+-8g (65536/16=4096 LSB/g) REGISTER 28 
    \       0x2A   0x2210             MOVS     R2,#+16
    \       0x2C   0x211C             MOVS     R1,#+28
    \       0x2E   0x20D0             MOVS     R0,#+208
    \       0x30   0x....'....        BL       IIC_Send
-     22          
-     23            IIC_Send(SlaveAddress,XA_OFFSET_L_TC, 0xDB);
-   \       0x34   0x22DB             MOVS     R2,#+219
+     23          
+     24            /*IIC_Send(SlaveAddress,XA_OFFSET_L_TC, 0xDB);
+     25            IIC_Send(SlaveAddress,XA_OFFSET_H, 0xFD);
+     26            IIC_Send(SlaveAddress,YA_OFFSET_L_TC, 0x5F);
+     27            IIC_Send(SlaveAddress,YA_OFFSET_H, 0x0a);
+     28            
+     29            IIC_Send(SlaveAddress,ZA_OFFSET_L_TC, 0x58);
+     30            IIC_Send(SlaveAddress,ZA_OFFSET_H, 0x04); //65536 or 4096
+     31            
+     32            IIC_Send(SlaveAddress,XG_OFFS_USRL, 0xAC);
+     33            IIC_Send(SlaveAddress,XG_OFFS_USRH, 0xff);
+     34            IIC_Send(SlaveAddress,YG_OFFS_USRL, 0xFe);
+     35            IIC_Send(SlaveAddress,YG_OFFS_USRH, 0xff);
+     36            IIC_Send(SlaveAddress,ZG_OFFS_USRL, 0x16);
+     37            IIC_Send(SlaveAddress,ZG_OFFS_USRH, 0x00);*/
+     38            IIC_Send(SlaveAddress,XA_OFFSET_L_TC, 0x57);
+   \       0x34   0x2257             MOVS     R2,#+87
    \       0x36   0x2107             MOVS     R1,#+7
    \       0x38   0x20D0             MOVS     R0,#+208
    \       0x3A   0x....'....        BL       IIC_Send
-     24            IIC_Send(SlaveAddress,XA_OFFSET_H, 0xFD);
-   \       0x3E   0x22FD             MOVS     R2,#+253
+     39            IIC_Send(SlaveAddress,XA_OFFSET_H, 0xf7);
+   \       0x3E   0x22F7             MOVS     R2,#+247
    \       0x40   0x2106             MOVS     R1,#+6
    \       0x42   0x20D0             MOVS     R0,#+208
    \       0x44   0x....'....        BL       IIC_Send
-     25            IIC_Send(SlaveAddress,YA_OFFSET_L_TC, 0x5F);
-   \       0x48   0x225F             MOVS     R2,#+95
+     40            IIC_Send(SlaveAddress,YA_OFFSET_L_TC, 0x8c);
+   \       0x48   0x228C             MOVS     R2,#+140
    \       0x4A   0x2109             MOVS     R1,#+9
    \       0x4C   0x20D0             MOVS     R0,#+208
    \       0x4E   0x....'....        BL       IIC_Send
-     26            IIC_Send(SlaveAddress,YA_OFFSET_H, 0x0a);
-   \       0x52   0x220A             MOVS     R2,#+10
+     41            IIC_Send(SlaveAddress,YA_OFFSET_H, 0x04);
+   \       0x52   0x2204             MOVS     R2,#+4
    \       0x54   0x2108             MOVS     R1,#+8
    \       0x56   0x20D0             MOVS     R0,#+208
    \       0x58   0x....'....        BL       IIC_Send
-     27            
-     28            IIC_Send(SlaveAddress,ZA_OFFSET_L_TC, 0x58);
-   \       0x5C   0x2258             MOVS     R2,#+88
+     42            
+     43            IIC_Send(SlaveAddress,ZA_OFFSET_L_TC, 0x07);
+   \       0x5C   0x2207             MOVS     R2,#+7
    \       0x5E   0x210B             MOVS     R1,#+11
    \       0x60   0x20D0             MOVS     R0,#+208
    \       0x62   0x....'....        BL       IIC_Send
-     29            IIC_Send(SlaveAddress,ZA_OFFSET_H, 0x04); //65536 or 4096
-   \       0x66   0x2204             MOVS     R2,#+4
+     44            IIC_Send(SlaveAddress,ZA_OFFSET_H, 0x06); //65536 or 4096
+   \       0x66   0x2206             MOVS     R2,#+6
    \       0x68   0x210A             MOVS     R1,#+10
    \       0x6A   0x20D0             MOVS     R0,#+208
    \       0x6C   0x....'....        BL       IIC_Send
-     30            
-     31            IIC_Send(SlaveAddress,XG_OFFS_USRL, 0xAC);
-   \       0x70   0x22AC             MOVS     R2,#+172
+     45            
+     46            IIC_Send(SlaveAddress,XG_OFFS_USRL, 0x54);
+   \       0x70   0x2254             MOVS     R2,#+84
    \       0x72   0x2114             MOVS     R1,#+20
    \       0x74   0x20D0             MOVS     R0,#+208
    \       0x76   0x....'....        BL       IIC_Send
-     32            IIC_Send(SlaveAddress,XG_OFFS_USRH, 0xff);
-   \       0x7A   0x22FF             MOVS     R2,#+255
+     47            IIC_Send(SlaveAddress,XG_OFFS_USRH, 0x00);
+   \       0x7A   0x2200             MOVS     R2,#+0
    \       0x7C   0x2113             MOVS     R1,#+19
    \       0x7E   0x20D0             MOVS     R0,#+208
    \       0x80   0x....'....        BL       IIC_Send
-     33            IIC_Send(SlaveAddress,YG_OFFS_USRL, 0xFe);
-   \       0x84   0x22FE             MOVS     R2,#+254
+     48            IIC_Send(SlaveAddress,YG_OFFS_USRL, 0xef);
+   \       0x84   0x22EF             MOVS     R2,#+239
    \       0x86   0x2116             MOVS     R1,#+22
    \       0x88   0x20D0             MOVS     R0,#+208
    \       0x8A   0x....'....        BL       IIC_Send
-     34            IIC_Send(SlaveAddress,YG_OFFS_USRH, 0xff);
+     49            IIC_Send(SlaveAddress,YG_OFFS_USRH, 0xff);
    \       0x8E   0x22FF             MOVS     R2,#+255
    \       0x90   0x2115             MOVS     R1,#+21
    \       0x92   0x20D0             MOVS     R0,#+208
    \       0x94   0x....'....        BL       IIC_Send
-     35            IIC_Send(SlaveAddress,ZG_OFFS_USRL, 0x16);
-   \       0x98   0x2216             MOVS     R2,#+22
+     50            IIC_Send(SlaveAddress,ZG_OFFS_USRL, 0x49);
+   \       0x98   0x2249             MOVS     R2,#+73
    \       0x9A   0x2118             MOVS     R1,#+24
    \       0x9C   0x20D0             MOVS     R0,#+208
    \       0x9E   0x....'....        BL       IIC_Send
-     36            IIC_Send(SlaveAddress,ZG_OFFS_USRH, 0x00); 
+     51            IIC_Send(SlaveAddress,ZG_OFFS_USRH, 0x00);
    \       0xA2   0x2200             MOVS     R2,#+0
    \       0xA4   0x2117             MOVS     R1,#+23
    \       0xA6   0x20D0             MOVS     R0,#+208
    \       0xA8   0x....'....        BL       IIC_Send
-     37          //  IIC_Send(SlaveAddress,XA_OFFSET_L_TC, 0x88);
-     38          //  IIC_Send(SlaveAddress,XA_OFFSET_H, 0xef);
-     39          //  IIC_Send(SlaveAddress,YA_OFFSET_L_TC, 0xc1);
-     40          //  IIC_Send(SlaveAddress,YA_OFFSET_H, 0xff);
-     41          //  
-     42          //  IIC_Send(SlaveAddress,ZA_OFFSET_L_TC, 0xed);
-     43          //  IIC_Send(SlaveAddress,ZA_OFFSET_H, 0x05); //65536 or 4096
-     44          //  
-     45          //  IIC_Send(SlaveAddress,XG_OFFS_USRL, 0xff);
-     46          //  IIC_Send(SlaveAddress,XG_OFFS_USRH, 0xff);
-     47          //  IIC_Send(SlaveAddress,YG_OFFS_USRL, 0xb0);
-     48          //  IIC_Send(SlaveAddress,YG_OFFS_USRH, 0xff);
-     49          //  IIC_Send(SlaveAddress,ZG_OFFS_USRL, 0xfe);
-     50          //  IIC_Send(SlaveAddress,ZG_OFFS_USRH, 0xff); 
-     51          //  IIC_Send(0xD0,0x07, 0x73);
-     52          //  IIC_Send(0xD0,0x06, 0xFD);
-     53          //  IIC_Send(0xD0,0x09, 0x40);
-     54          //  IIC_Send(0xD0,0x0B, 0x30);
-     55          //  IIC_Send(0xD0,0x0A, 0x04);
-     56          //  IIC_Send(0xD0,0x14, 0x30);
-     57          //  IIC_Send(0xD0,0x13, 0xFF);
-     58          //  IIC_Send(0xD0,0x16, 0xF3);
-     59          //  IIC_Send(0xD0,0x15, 0xFF);
-     60          //  IIC_Send(0xD0,0x18, 0x16);
-     61          //  IIC_Send(0xD0,0x17, 0x00);
-     62          }
+     52          }
    \       0xAC   0xBD01             POP      {R0,PC}          ;; return
-     63          
-     64          
-     65          //two bytes data access
+     53          
+     54          
+     55          //two bytes data access
 
    \                                 In section .text, align 2, keep-with-next
-     66          static s16 get_data(u8 REG_Address){
+     56          static s16 get_data(u8 REG_Address){
    \                     get_data: (+1)
    \        0x0   0xB538             PUSH     {R3-R5,LR}
    \        0x2   0x0004             MOVS     R4,R0
-     67            u16 H,L;
-     68            H = IIC_Read(SlaveAddress,REG_Address);
+     57            u16 H,L;
+     58            H = IIC_Read(SlaveAddress,REG_Address);
    \        0x4   0x0021             MOVS     R1,R4
    \        0x6   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \        0x8   0x20D0             MOVS     R0,#+208
    \        0xA   0x....'....        BL       IIC_Read
    \        0xE   0x0005             MOVS     R5,R0
-     69            L = IIC_Read(SlaveAddress,REG_Address+1);
+     59            L = IIC_Read(SlaveAddress,REG_Address+1);
    \       0x10   0x1C64             ADDS     R4,R4,#+1
    \       0x12   0x0021             MOVS     R1,R4
    \       0x14   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \       0x16   0x20D0             MOVS     R0,#+208
    \       0x18   0x....'....        BL       IIC_Read
-     70            return ((H<<8)|L);
+     60            return ((H<<8)|L);
    \       0x1C   0xEA50 0x2005      ORRS     R0,R0,R5, LSL #+8
    \       0x20   0xB200             SXTH     R0,R0            ;; SignExt  R0,R0,#+16,#+16
    \       0x22   0xBD32             POP      {R1,R4,R5,PC}    ;; return
-     71          }
-     72          //get id
+     61          }
+     62          //get id
 
    \                                 In section .text, align 2, keep-with-next
-     73          u8 get_mpu_id(void){
+     63          u8 get_mpu_id(void){
    \                     get_mpu_id: (+1)
    \        0x0   0xB510             PUSH     {R4,LR}
-     74            u8 mpu_id=0;
+     64            u8 mpu_id=0;
    \        0x2   0x2000             MOVS     R0,#+0
-     75            mpu_id = IIC_Read(SlaveAddress,WHO_AM_I);
+     65            mpu_id = IIC_Read(SlaveAddress,WHO_AM_I);
    \        0x4   0x2175             MOVS     R1,#+117
    \        0x6   0x20D0             MOVS     R0,#+208
    \        0x8   0x....'....        BL       IIC_Read
    \        0xC   0x0004             MOVS     R4,R0
-     76            printf("mpu id is %x\n",mpu_id);
+     66            printf("mpu id is %x\n",mpu_id);
    \        0xE   0x0021             MOVS     R1,R4
    \       0x10   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \       0x12   0x....             LDR.N    R0,??DataTable8
    \       0x14   0x....'....        BL       printf
-     77            return mpu_id;
+     67            return mpu_id;
    \       0x18   0x0020             MOVS     R0,R4
    \       0x1A   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
    \       0x1C   0xBD10             POP      {R4,PC}          ;; return
-     78          }
-     79          //存取加速度計三軸raw data
+     68          }
+     69          /*==================================
+     70          存取加速度計三軸raw data
+     71          ==================================*/
 
    \                                 In section .text, align 2, keep-with-next
-     80          void get_acc_raw(void){
+     72          void get_acc_raw(void){
    \                     get_acc_raw: (+1)
    \        0x0   0xB538             PUSH     {R3-R5,LR}
-     81          //  accel_offset.x = get_data(0x06);
-     82          //  accel_offset.y = get_data(0x08);
-     83            acc_raw.x = get_data(ACCEL_XOUT_H); // get acceleration x data 
+     73          //  accel_offset.x = get_data(0x06);
+     74          //  accel_offset.y = get_data(0x08);
+     75            acc_raw.x = get_data(ACCEL_XOUT_H); // get acceleration x data 
    \        0x2   0x....             LDR.N    R4,??DataTable8_1
    \        0x4   0x203B             MOVS     R0,#+59
    \        0x6   0x....'....        BL       get_data
    \        0xA   0x8020             STRH     R0,[R4, #+0]
-     84            acc_raw.y = get_data(ACCEL_YOUT_H);
+     76            acc_raw.y = get_data(ACCEL_YOUT_H);
    \        0xC   0x203D             MOVS     R0,#+61
    \        0xE   0x....'....        BL       get_data
    \       0x12   0x8060             STRH     R0,[R4, #+2]
-     85            acc_raw.z = get_data(ACCEL_ZOUT_H); 
+     77            acc_raw.z = get_data(ACCEL_ZOUT_H); 
    \       0x14   0x203F             MOVS     R0,#+63
    \       0x16   0x....'....        BL       get_data
    \       0x1A   0x80A0             STRH     R0,[R4, #+4]
-     86            
-     87            acc_raw_f.x = (float)acc_raw.x;
+     78            
+     79            acc_raw_f.x = (float)acc_raw.x;
    \       0x1C   0x....             LDR.N    R5,??DataTable8_2
    \       0x1E   0xF9B4 0x0000      LDRSH    R0,[R4, #+0]
    \       0x22   0x....'....        BL       __aeabi_i2f
    \       0x26   0x6028             STR      R0,[R5, #+0]
-     88            acc_raw_f.y = (float)acc_raw.y;
+     80            acc_raw_f.y = (float)acc_raw.y;
    \       0x28   0xF9B4 0x0002      LDRSH    R0,[R4, #+2]
    \       0x2C   0x....'....        BL       __aeabi_i2f
    \       0x30   0x6068             STR      R0,[R5, #+4]
-     89            acc_raw_f.z = (float)acc_raw.z;
+     81            acc_raw_f.z = (float)acc_raw.z;
    \       0x32   0xF9B4 0x0004      LDRSH    R0,[R4, #+4]
    \       0x36   0x....'....        BL       __aeabi_i2f
    \       0x3A   0x60A8             STR      R0,[R5, #+8]
-     90            //printf(" x raw data is %f\n",acc_raw_f.x);
-     91          }
+     82            //printf(" x raw data is %f\n",acc_raw_f.x);
+     83          }
    \       0x3C   0xBD31             POP      {R0,R4,R5,PC}    ;; return
-     92          
+     84          
 
    \                                 In section .data, align 4
-     93          _Butterworth_parameter gyro_30hz_parameter =
+     85          _Butterworth_parameter gyro_30hz_parameter =
    \                     gyro_30hz_parameter:
    \        0x0   0x3F80'0000        DC32 0x3f80'0000, 0xbf3f'6f1d, 0x3e8b'5fc2, 0x3e06'40c4, 0x3e86'40c4
    \              0xBF3F'6F1D  
@@ -315,25 +305,25 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\MPU6050
    \              0x3E06'40C4  
    \              0x3E86'40C4  
    \       0x14   0x3E06'40C4        DC32 0x3e06'40c4
-     94          {
-     95            //200hz---30hz
-     96            1,  -0.7477891782585,    0.272214937925,
-     97            0.1311064399166,   0.2622128798333,   0.1311064399166 
-     98          }; 
-     99          
+     86          {
+     87            //200hz---30hz
+     88            1,  -0.7477891782585,    0.272214937925,
+     89            0.1311064399166,   0.2622128798333,   0.1311064399166 
+     90          }; 
+     91          
 
    \                                 In section .bss, align 4
-    100          _Butterworth_data   gyro_butter_data[3];
+     92          _Butterworth_data   gyro_butter_data[3];
    \                     gyro_butter_data:
    \        0x0                      DS8 72
-    101          //存取陀螺儀三軸raw data
+     93          //存取陀螺儀三軸raw data
 
    \                                 In section .text, align 2, keep-with-next
-    102          void get_gyro_raw(void)
-    103          {
+     94          void get_gyro_raw(void)
+     95          {
    \                     get_gyro_raw: (+1)
    \        0x0   0xE92D 0x41F0      PUSH     {R4-R8,LR}
-    104            gyro_raw.x = get_data(GYRO_XOUT_H) + gyro_offset.x;
+     96            gyro_raw.x = get_data(GYRO_XOUT_H) + gyro_offset.x;
                               ^
 Warning[Pa093]: implicit conversion from floating point to integer
    \        0x4   0x2043             MOVS     R0,#+67
@@ -346,7 +336,7 @@ Warning[Pa093]: implicit conversion from floating point to integer
    \       0x16   0x....'....        BL       __aeabi_fadd
    \       0x1A   0x....'....        BL       __aeabi_f2iz
    \       0x1E   0x8020             STRH     R0,[R4, #+0]
-    105            gyro_raw.y = get_data(GYRO_YOUT_H) + gyro_offset.y;
+     97            gyro_raw.y = get_data(GYRO_YOUT_H) + gyro_offset.y;
                               ^
 Warning[Pa093]: implicit conversion from floating point to integer
    \       0x20   0x2045             MOVS     R0,#+69
@@ -357,7 +347,7 @@ Warning[Pa093]: implicit conversion from floating point to integer
    \       0x2E   0x....'....        BL       __aeabi_fadd
    \       0x32   0x....'....        BL       __aeabi_f2iz
    \       0x36   0x8060             STRH     R0,[R4, #+2]
-    106            gyro_raw.z = get_data(GYRO_ZOUT_H) + gyro_offset.z;        
+     98            gyro_raw.z = get_data(GYRO_ZOUT_H) + gyro_offset.z;        
                               ^
 Warning[Pa093]: implicit conversion from floating point to integer
    \       0x38   0x2047             MOVS     R0,#+71
@@ -368,8 +358,8 @@ Warning[Pa093]: implicit conversion from floating point to integer
    \       0x46   0x....'....        BL       __aeabi_fadd
    \       0x4A   0x....'....        BL       __aeabi_f2iz
    \       0x4E   0x80A0             STRH     R0,[R4, #+4]
-    107            
-    108            gyro_raw_f.x = (float)butterworth_lpf(((float)gyro_raw.x),&gyro_butter_data[0],&gyro_30hz_parameter);
+     99            
+    100            gyro_raw_f.x = (float)butterworth_lpf(((float)gyro_raw.x),&gyro_butter_data[0],&gyro_30hz_parameter);
    \       0x50   0x....             LDR.N    R5,??DataTable8_5
    \       0x52   0x....             LDR.N    R6,??DataTable8_6
    \       0x54   0x....             LDR.N    R7,??DataTable8_7
@@ -383,7 +373,7 @@ Warning[Pa093]: implicit conversion from floating point to integer
    \       0x68   0x0031             MOVS     R1,R6
    \       0x6A   0x....'....        BL       butterworth_lpf
    \       0x6E   0x6028             STR      R0,[R5, #+0]
-    109            gyro_raw_f.y = (float)butterworth_lpf(((float)gyro_raw.y),&gyro_butter_data[1],&gyro_30hz_parameter);
+    101            gyro_raw_f.y = (float)butterworth_lpf(((float)gyro_raw.y),&gyro_butter_data[1],&gyro_30hz_parameter);
    \       0x70   0x003A             MOVS     R2,R7
    \       0x72   0xF116 0x0118      ADDS     R1,R6,#+24
    \       0x76   0x4688             MOV      R8,R1
@@ -394,7 +384,7 @@ Warning[Pa093]: implicit conversion from floating point to integer
    \       0x84   0x4641             MOV      R1,R8
    \       0x86   0x....'....        BL       butterworth_lpf
    \       0x8A   0x6068             STR      R0,[R5, #+4]
-    110            gyro_raw_f.z = (float)butterworth_lpf(((float)gyro_raw.z),&gyro_butter_data[2],&gyro_30hz_parameter);
+    102            gyro_raw_f.z = (float)butterworth_lpf(((float)gyro_raw.z),&gyro_butter_data[2],&gyro_30hz_parameter);
    \       0x8C   0x003A             MOVS     R2,R7
    \       0x8E   0xF116 0x0130      ADDS     R1,R6,#+48
    \       0x92   0x000E             MOVS     R6,R1
@@ -405,74 +395,74 @@ Warning[Pa093]: implicit conversion from floating point to integer
    \       0xA0   0x0031             MOVS     R1,R6
    \       0xA2   0x....'....        BL       butterworth_lpf
    \       0xA6   0x60A8             STR      R0,[R5, #+8]
-    111          }
+    103          }
    \       0xA8   0xE8BD 0x81F0      POP      {R4-R8,PC}       ;; return
-    112          //raw -> deg/s
+    104          //raw -> deg/s
 
    \                                 In section .text, align 2, keep-with-next
-    113          void get_deg_s(SI_F_XYZ *gyro_in,SI_F_XYZ *gyro_deg_out)
-    114          {
+    105          void get_deg_s(SI_F_XYZ *gyro_in,SI_F_XYZ *gyro_deg_out)
+    106          {
    \                     get_deg_s: (+1)
    \        0x0   0xB570             PUSH     {R4-R6,LR}
    \        0x2   0x0004             MOVS     R4,R0
    \        0x4   0x000D             MOVS     R5,R1
-    115            gyro_deg_out->x = (float)(gyro_in->x * gyro_raw_to_deg_s);
+    107            gyro_deg_out->x = (float)(gyro_in->x * gyro_raw_to_deg_s);
    \        0x6   0x....             LDR.N    R6,??DataTable8_8  ;; 0x3d7a01f4
    \        0x8   0x6820             LDR      R0,[R4, #+0]
    \        0xA   0x0031             MOVS     R1,R6
    \        0xC   0x....'....        BL       __aeabi_fmul
    \       0x10   0x6028             STR      R0,[R5, #+0]
-    116            gyro_deg_out->y = (float)(gyro_in->y * gyro_raw_to_deg_s);
+    108            gyro_deg_out->y = (float)(gyro_in->y * gyro_raw_to_deg_s);
    \       0x12   0x6860             LDR      R0,[R4, #+4]
    \       0x14   0x0031             MOVS     R1,R6
    \       0x16   0x....'....        BL       __aeabi_fmul
    \       0x1A   0x6068             STR      R0,[R5, #+4]
-    117            gyro_deg_out->z = (float)(gyro_in->z * gyro_raw_to_deg_s);    
+    109            gyro_deg_out->z = (float)(gyro_in->z * gyro_raw_to_deg_s);    
    \       0x1C   0x68A0             LDR      R0,[R4, #+8]
    \       0x1E   0x0031             MOVS     R1,R6
    \       0x20   0x....'....        BL       __aeabi_fmul
    \       0x24   0x60A8             STR      R0,[R5, #+8]
-    118          }
+    110          }
    \       0x26   0xBD70             POP      {R4-R6,PC}       ;; return
-    119          //raw -> rad/s
+    111          //raw -> rad/s
 
    \                                 In section .text, align 2, keep-with-next
-    120          void get_rad_s(SI_F_XYZ *gyro_in,SI_F_XYZ *gyro_out)
-    121          {
+    112          void get_rad_s(SI_F_XYZ *gyro_in,SI_F_XYZ *gyro_out)
+    113          {
    \                     get_rad_s: (+1)
    \        0x0   0xB570             PUSH     {R4-R6,LR}
    \        0x2   0x0004             MOVS     R4,R0
    \        0x4   0x000D             MOVS     R5,R1
-    122            gyro_out->x = (float)(gyro_in->x * gyro_raw_to_radian_s);
+    114            gyro_out->x = (float)(gyro_in->x * gyro_raw_to_radian_s);
    \        0x6   0x....             LDR.N    R6,??DataTable8_9  ;; 0x3a8ba16f
    \        0x8   0x6820             LDR      R0,[R4, #+0]
    \        0xA   0x0031             MOVS     R1,R6
    \        0xC   0x....'....        BL       __aeabi_fmul
    \       0x10   0x6028             STR      R0,[R5, #+0]
-    123            gyro_out->y = (float)(gyro_in->y * gyro_raw_to_radian_s);
+    115            gyro_out->y = (float)(gyro_in->y * gyro_raw_to_radian_s);
    \       0x12   0x6860             LDR      R0,[R4, #+4]
    \       0x14   0x0031             MOVS     R1,R6
    \       0x16   0x....'....        BL       __aeabi_fmul
    \       0x1A   0x6068             STR      R0,[R5, #+4]
-    124            gyro_out->z = (float)(gyro_in->z * gyro_raw_to_radian_s);
+    116            gyro_out->z = (float)(gyro_in->z * gyro_raw_to_radian_s);
    \       0x1C   0x68A0             LDR      R0,[R4, #+8]
    \       0x1E   0x0031             MOVS     R1,R6
    \       0x20   0x....'....        BL       __aeabi_fmul
    \       0x24   0x60A8             STR      R0,[R5, #+8]
-    125          }
+    117          }
    \       0x26   0xBD70             POP      {R4-R6,PC}       ;; return
-    126          
-    127          //求取IIR濾波係數
+    118          
+    119          //求取IIR濾波係數
 
    \                                 In section .text, align 2, keep-with-next
-    128          void get_iir_factor(float *out_factor,float Time, float Cut_Off)//30 or 25
-    129          {
+    120          void get_iir_factor(float *out_factor,float Time, float Cut_Off)//30 or 25
+    121          {
    \                     get_iir_factor: (+1)
    \        0x0   0xB538             PUSH     {R3-R5,LR}
    \        0x2   0x0004             MOVS     R4,R0
    \        0x4   0x000D             MOVS     R5,R1
    \        0x6   0x0011             MOVS     R1,R2
-    130            *out_factor = Time /( Time + 1/(2.0f * PI * Cut_Off) ); //2.0f tell compiler that 2.0 is a float point not a double 
+    122            *out_factor = Time /( Time + 1/(2.0f * PI * Cut_Off) ); //2.0f tell compiler that 2.0 is a float point not a double 
    \        0x8   0x....             LDR.N    R0,??DataTable8_10  ;; 0x40c90fdb
    \        0xA   0x....'....        BL       __aeabi_fmul
    \        0xE   0x0001             MOVS     R1,R0
@@ -484,22 +474,22 @@ Warning[Pa093]: implicit conversion from floating point to integer
    \       0x20   0x0028             MOVS     R0,R5
    \       0x22   0x....'....        BL       __aeabi_fdiv
    \       0x26   0x6020             STR      R0,[R4, #+0]
-    131          }
+    123          }
    \       0x28   0xBD31             POP      {R0,R4,R5,PC}    ;; return
-    132          /*==================================
-    133          加速度計
-    134          ==================================*/
-    135          //IIR低通濾波器(加速度)
+    124          /*==================================
+    125          加速度計
+    126          ==================================*/
+    127          //IIR低通濾波器(加速度)
 
    \                                 In section .text, align 2, keep-with-next
-    136          void acc_iir_lpf(SI_F_XYZ *acc_in,SI_F_XYZ *acc_out,float lpf_factor)
-    137          {
+    128          void acc_iir_lpf(SI_F_XYZ *acc_in,SI_F_XYZ *acc_out,float lpf_factor)
+    129          {
    \                     acc_iir_lpf: (+1)
    \        0x0   0xB570             PUSH     {R4-R6,LR}
    \        0x2   0x0004             MOVS     R4,R0
    \        0x4   0x000D             MOVS     R5,R1
    \        0x6   0x0016             MOVS     R6,R2
-    138            acc_out->x = acc_out->x + lpf_factor*(acc_in->x - acc_out->x); 
+    130            acc_out->x = acc_out->x + lpf_factor*(acc_in->x - acc_out->x); 
    \        0x8   0x6820             LDR      R0,[R4, #+0]
    \        0xA   0x6829             LDR      R1,[R5, #+0]
    \        0xC   0x....'....        BL       __aeabi_fsub
@@ -508,7 +498,7 @@ Warning[Pa093]: implicit conversion from floating point to integer
    \       0x16   0x6829             LDR      R1,[R5, #+0]
    \       0x18   0x....'....        BL       __aeabi_fadd
    \       0x1C   0x6028             STR      R0,[R5, #+0]
-    139            acc_out->y = acc_out->y + lpf_factor*(acc_in->y - acc_out->y); 
+    131            acc_out->y = acc_out->y + lpf_factor*(acc_in->y - acc_out->y); 
    \       0x1E   0x6860             LDR      R0,[R4, #+4]
    \       0x20   0x6869             LDR      R1,[R5, #+4]
    \       0x22   0x....'....        BL       __aeabi_fsub
@@ -517,7 +507,7 @@ Warning[Pa093]: implicit conversion from floating point to integer
    \       0x2C   0x6869             LDR      R1,[R5, #+4]
    \       0x2E   0x....'....        BL       __aeabi_fadd
    \       0x32   0x6068             STR      R0,[R5, #+4]
-    140            acc_out->z = acc_out->z + lpf_factor*(acc_in->z - acc_out->z); 
+    132            acc_out->z = acc_out->z + lpf_factor*(acc_in->z - acc_out->z); 
    \       0x34   0x68A0             LDR      R0,[R4, #+8]
    \       0x36   0x68A9             LDR      R1,[R5, #+8]
    \       0x38   0x....'....        BL       __aeabi_fsub
@@ -526,13 +516,13 @@ Warning[Pa093]: implicit conversion from floating point to integer
    \       0x42   0x68A9             LDR      R1,[R5, #+8]
    \       0x44   0x....'....        BL       __aeabi_fadd
    \       0x48   0x60A8             STR      R0,[R5, #+8]
-    141          }
+    133          }
    \       0x4A   0xBD70             POP      {R4-R6,PC}       ;; return
-    142          //加速度計濾波參數
-    143          
+    134          //加速度計濾波參數
+    135          
 
    \                                 In section .data, align 4
-    144          _Butterworth_parameter acc_5hz_parameter =
+    136          _Butterworth_parameter acc_5hz_parameter =
    \                     acc_5hz_parameter:
    \        0x0   0x3F80'0000        DC32 0x3f80'0000, 0xbfe3'aa35, 0x3f4d'0167, 0x3bb5'9faf, 0x3c35'9faf
    \              0xBFE3'AA35  
@@ -540,45 +530,45 @@ Warning[Pa093]: implicit conversion from floating point to integer
    \              0x3BB5'9FAF  
    \              0x3C35'9FAF  
    \       0x14   0x3BB5'9FAF        DC32 0x3bb5'9faf
-    145          {
-    146            //200hz---1hz 200hz = fs(Sampling rate) 1hz = (cut off frequency) 
-    147            //  1,   -1.955578240315,   0.9565436765112,
-    148            //  0.000241359049042, 0.000482718098084, 0.000241359049042
-    149            //200hz---2hz = fs(Sampling rate) 2hz = (cut off frequency)
-    150            //  1,   -1.911197067426,   0.9149758348014,
-    151            //  0.0009446918438402,  0.00188938368768,0.0009446918438402
-    152            //200hz---5hz
-    153            1,                  -1.778631777825,    0.8008026466657,
-    154            0.005542717210281,   0.01108543442056,  0.005542717210281
-    155              //200hz---10hz
-    156              //    1,   -1.561018075801,   0.6413515380576,
-    157              //    0.02008336556421,  0.04016673112842,  0.02008336556421
-    158              //200hz---15hz
-    159              //    1,   -1.348967745253,   0.5139818942197,
-    160              //    0.04125353724172,  0.08250707448344,  0.04125353724172
-    161              //200hz---20hz
-    162              //    1,    -1.14298050254,   0.4128015980962,
-    163              //    0.06745527388907,   0.1349105477781,  0.06745527388907
-    164              //200hz---30hz
-    165              //    1,  -0.7477891782585,    0.272214937925,
-    166              //    0.1311064399166,   0.2622128798333,   0.1311064399166 
-    167          };     
-    168          
+    137          {
+    138            //200hz---1hz 200hz = fs(Sampling rate) 1hz = (cut off frequency) 
+    139            //  1,   -1.955578240315,   0.9565436765112,
+    140            //  0.000241359049042, 0.000482718098084, 0.000241359049042
+    141            //200hz---2hz = fs(Sampling rate) 2hz = (cut off frequency)
+    142            //  1,   -1.911197067426,   0.9149758348014,
+    143            //  0.0009446918438402,  0.00188938368768,0.0009446918438402
+    144            //200hz---5hz
+    145            1,                  -1.778631777825,    0.8008026466657,
+    146            0.005542717210281,   0.01108543442056,  0.005542717210281
+    147              //200hz---10hz
+    148              //    1,   -1.561018075801,   0.6413515380576,
+    149              //    0.02008336556421,  0.04016673112842,  0.02008336556421
+    150              //200hz---15hz
+    151              //    1,   -1.348967745253,   0.5139818942197,
+    152              //    0.04125353724172,  0.08250707448344,  0.04125353724172
+    153              //200hz---20hz
+    154              //    1,    -1.14298050254,   0.4128015980962,
+    155              //    0.06745527388907,   0.1349105477781,  0.06745527388907
+    156              //200hz---30hz
+    157              //    1,  -0.7477891782585,    0.272214937925,
+    158              //    0.1311064399166,   0.2622128798333,   0.1311064399166 
+    159          };     
+    160          
 
    \                                 In section .bss, align 4
-    169          _Butterworth_data   acc_butter_data[3];
+    161          _Butterworth_data   acc_butter_data[3];
    \                     acc_butter_data:
    \        0x0                      DS8 72
-    170          //加速度計巴特沃斯低通
+    162          //加速度計巴特沃斯低通
 
    \                                 In section .text, align 2, keep-with-next
-    171          void acc_butterworth_lpf(SI_F_XYZ *acc_in,SI_F_XYZ *acc_out)
-    172          {
+    163          void acc_butterworth_lpf(SI_F_XYZ *acc_in,SI_F_XYZ *acc_out)
+    164          {
    \                     acc_butterworth_lpf: (+1)
    \        0x0   0xB5F8             PUSH     {R3-R7,LR}
    \        0x2   0x0004             MOVS     R4,R0
    \        0x4   0x000D             MOVS     R5,R1
-    173            acc_out->x = butterworth_lpf(acc_in->x,&acc_butter_data[0],&acc_5hz_parameter);
+    165            acc_out->x = butterworth_lpf(acc_in->x,&acc_butter_data[0],&acc_5hz_parameter);
    \        0x6   0x....             LDR.N    R6,??DataTable8_11
    \        0x8   0x....             LDR.N    R7,??DataTable8_12
    \        0xA   0x003A             MOVS     R2,R7
@@ -586,52 +576,52 @@ Warning[Pa093]: implicit conversion from floating point to integer
    \        0xE   0x6820             LDR      R0,[R4, #+0]
    \       0x10   0x....'....        BL       butterworth_lpf
    \       0x14   0x6028             STR      R0,[R5, #+0]
-    174            acc_out->y = butterworth_lpf(acc_in->y,&acc_butter_data[1],&acc_5hz_parameter);
+    166            acc_out->y = butterworth_lpf(acc_in->y,&acc_butter_data[1],&acc_5hz_parameter);
    \       0x16   0x003A             MOVS     R2,R7
    \       0x18   0xF116 0x0118      ADDS     R1,R6,#+24
    \       0x1C   0x6860             LDR      R0,[R4, #+4]
    \       0x1E   0x....'....        BL       butterworth_lpf
    \       0x22   0x6068             STR      R0,[R5, #+4]
-    175            acc_out->z = butterworth_lpf(acc_in->z,&acc_butter_data[2],&acc_5hz_parameter);
+    167            acc_out->z = butterworth_lpf(acc_in->z,&acc_butter_data[2],&acc_5hz_parameter);
    \       0x24   0x003A             MOVS     R2,R7
    \       0x26   0xF116 0x0130      ADDS     R1,R6,#+48
    \       0x2A   0x68A0             LDR      R0,[R4, #+8]
    \       0x2C   0x....'....        BL       butterworth_lpf
    \       0x30   0x60A8             STR      R0,[R5, #+8]
-    176          }
+    168          }
    \       0x32   0xBDF1             POP      {R0,R4-R7,PC}    ;; return
-    177          //原始加速度量轉為 g
+    169          //原始加速度量轉為 g
 
    \                                 In section .text, align 2, keep-with-next
-    178          void get_acc_g(SI_F_XYZ *acc_in,SI_F_XYZ *acc_out)
-    179          {
+    170          void get_acc_g(SI_F_XYZ *acc_in,SI_F_XYZ *acc_out)
+    171          {
    \                     get_acc_g: (+1)
    \        0x0   0xB570             PUSH     {R4-R6,LR}
    \        0x2   0x0004             MOVS     R4,R0
    \        0x4   0x000D             MOVS     R5,R1
-    180            acc_out->x = (float)(acc_in->x * acc_raw_to_g);
+    172            acc_out->x = (float)(acc_in->x * acc_raw_to_g);
    \        0x6   0xF05F 0x5666      MOVS     R6,#+964689920
    \        0xA   0x6820             LDR      R0,[R4, #+0]
    \        0xC   0x0031             MOVS     R1,R6
    \        0xE   0x....'....        BL       __aeabi_fmul
    \       0x12   0x6028             STR      R0,[R5, #+0]
-    181            acc_out->y = (float)(acc_in->y * acc_raw_to_g);
+    173            acc_out->y = (float)(acc_in->y * acc_raw_to_g);
    \       0x14   0x6860             LDR      R0,[R4, #+4]
    \       0x16   0x0031             MOVS     R1,R6
    \       0x18   0x....'....        BL       __aeabi_fmul
    \       0x1C   0x6068             STR      R0,[R5, #+4]
-    182            acc_out->z = (float)(acc_in->z * acc_raw_to_g);
+    174            acc_out->z = (float)(acc_in->z * acc_raw_to_g);
    \       0x1E   0x68A0             LDR      R0,[R4, #+8]
    \       0x20   0x0031             MOVS     R1,R6
    \       0x22   0x....'....        BL       __aeabi_fmul
    \       0x26   0x60A8             STR      R0,[R5, #+8]
-    183          }
+    175          }
    \       0x28   0xBD70             POP      {R4-R6,PC}       ;; return
-    184          
-    185          //
+    176          
+    177          //
 
    \                                 In section .bss, align 4
-    186          volatile float ax=0,ay=0,az=0,gx=0,gy=0,gz=0;
+    178          volatile float ax=0,ay=0,az=0,gx=0,gy=0,gz=0;
    \                     ax:
    \        0x0                      DS8 4
 
@@ -656,43 +646,43 @@ Warning[Pa093]: implicit conversion from floating point to integer
    \        0x0                      DS8 4
 
    \                                 In section .text, align 2, keep-with-next
-    187          void MPU6050_Get_Display(void){//MPU6050_Show_Data *data){
+    179          void MPU6050_Get_Display(void){//MPU6050_Show_Data *data){
    \                     MPU6050_Get_Display: (+1)
    \        0x0   0xE92D 0x47F0      PUSH     {R4-R10,LR}
-    188            //  /* 计算x, y, z 轴倾角，返回弧度值*/
-    189            //  data->x = acos((IIC_Read_Two_Byte(SlaveAddress,ACCEL_XOUT_H) + accel_offset.x) / 4096.0);
-    190            //  data->y = acos((IIC_Read_Two_Byte(SlaveAddress,ACCEL_YOUT_H) + accel_offset.y) / 4096.0);
-    191            //  data->z = acos((IIC_Read_Two_Byte(SlaveAddress,ACCEL_ZOUT_H) + accel_offset.z) / 4096.0);
-    192            //  
-    193            //  /* 弧度值转换为角度值 */
-    194            //  data->x = data->x * 57.29577;
-    195            //  data->y = data->y * 57.29577;
-    196            //  data->z = data->z * 57.29577;
-    197            s16 data13 = get_data(GYRO_XOUT_H);
+    180            //  /* 计算x, y, z 轴倾角，返回弧度值*/
+    181            //  data->x = acos((IIC_Read_Two_Byte(SlaveAddress,ACCEL_XOUT_H) + accel_offset.x) / 4096.0);
+    182            //  data->y = acos((IIC_Read_Two_Byte(SlaveAddress,ACCEL_YOUT_H) + accel_offset.y) / 4096.0);
+    183            //  data->z = acos((IIC_Read_Two_Byte(SlaveAddress,ACCEL_ZOUT_H) + accel_offset.z) / 4096.0);
+    184            //  
+    185            //  /* 弧度值转换为角度值 */
+    186            //  data->x = data->x * 57.29577;
+    187            //  data->y = data->y * 57.29577;
+    188            //  data->z = data->z * 57.29577;
+    189            s16 data13 = get_data(GYRO_XOUT_H);
    \        0x4   0x2043             MOVS     R0,#+67
    \        0x6   0x....'....        BL       get_data
    \        0xA   0x0004             MOVS     R4,R0
-    198            s16 data14 = get_data(GYRO_YOUT_H);
+    190            s16 data14 = get_data(GYRO_YOUT_H);
    \        0xC   0x2045             MOVS     R0,#+69
    \        0xE   0x....'....        BL       get_data
    \       0x12   0x0005             MOVS     R5,R0
-    199            s16 data15 = get_data(GYRO_ZOUT_H);
+    191            s16 data15 = get_data(GYRO_ZOUT_H);
    \       0x14   0x2047             MOVS     R0,#+71
    \       0x16   0x....'....        BL       get_data
    \       0x1A   0x0006             MOVS     R6,R0
-    200            s16 data16 = get_data(ACCEL_XOUT_H);
+    192            s16 data16 = get_data(ACCEL_XOUT_H);
    \       0x1C   0x203B             MOVS     R0,#+59
    \       0x1E   0x....'....        BL       get_data
    \       0x22   0x4681             MOV      R9,R0
-    201            s16 data17 = get_data(ACCEL_YOUT_H);
+    193            s16 data17 = get_data(ACCEL_YOUT_H);
    \       0x24   0x203D             MOVS     R0,#+61
    \       0x26   0x....'....        BL       get_data
    \       0x2A   0x4682             MOV      R10,R0
-    202            s16 data18 = get_data(ACCEL_ZOUT_H);
+    194            s16 data18 = get_data(ACCEL_ZOUT_H);
    \       0x2C   0x203F             MOVS     R0,#+63
    \       0x2E   0x....'....        BL       get_data
    \       0x32   0x0007             MOVS     R7,R0
-    203            ax = data16+accel_offset.x;
+    195            ax = data16+accel_offset.x;
    \       0x34   0x....'....        LDR.W    R8,??DataTable8_13
    \       0x38   0xFA0F 0xF989      SXTH     R9,R9            ;; SignExt  R9,R9,#+16,#+16
    \       0x3C   0x4648             MOV      R0,R9
@@ -701,7 +691,7 @@ Warning[Pa093]: implicit conversion from floating point to integer
    \       0x46   0x....'....        BL       __aeabi_fadd
    \       0x4A   0x....             LDR.N    R1,??DataTable8_14
    \       0x4C   0x6008             STR      R0,[R1, #+0]
-    204            ay = data17+accel_offset.y;
+    196            ay = data17+accel_offset.y;
    \       0x4E   0xFA0F 0xFA8A      SXTH     R10,R10          ;; SignExt  R10,R10,#+16,#+16
    \       0x52   0x4650             MOV      R0,R10
    \       0x54   0x....'....        BL       __aeabi_i2f
@@ -709,7 +699,7 @@ Warning[Pa093]: implicit conversion from floating point to integer
    \       0x5C   0x....'....        BL       __aeabi_fadd
    \       0x60   0x....             LDR.N    R1,??DataTable8_15
    \       0x62   0x6008             STR      R0,[R1, #+0]
-    205            az = data18+accel_offset.z;
+    197            az = data18+accel_offset.z;
    \       0x64   0xB23F             SXTH     R7,R7            ;; SignExt  R7,R7,#+16,#+16
    \       0x66   0x0038             MOVS     R0,R7
    \       0x68   0x....'....        BL       __aeabi_i2f
@@ -717,7 +707,7 @@ Warning[Pa093]: implicit conversion from floating point to integer
    \       0x70   0x....'....        BL       __aeabi_fadd
    \       0x74   0x....             LDR.N    R1,??DataTable8_16
    \       0x76   0x6008             STR      R0,[R1, #+0]
-    206            gx = data13+gyro_offset.x;
+    198            gx = data13+gyro_offset.x;
    \       0x78   0x....             LDR.N    R7,??DataTable8_4
    \       0x7A   0xB224             SXTH     R4,R4            ;; SignExt  R4,R4,#+16,#+16
    \       0x7C   0x0020             MOVS     R0,R4
@@ -726,7 +716,7 @@ Warning[Pa093]: implicit conversion from floating point to integer
    \       0x84   0x....'....        BL       __aeabi_fadd
    \       0x88   0x....             LDR.N    R1,??DataTable8_17
    \       0x8A   0x6008             STR      R0,[R1, #+0]
-    207            gy = data14+gyro_offset.y;
+    199            gy = data14+gyro_offset.y;
    \       0x8C   0xB22D             SXTH     R5,R5            ;; SignExt  R5,R5,#+16,#+16
    \       0x8E   0x0028             MOVS     R0,R5
    \       0x90   0x....'....        BL       __aeabi_i2f
@@ -734,7 +724,7 @@ Warning[Pa093]: implicit conversion from floating point to integer
    \       0x96   0x....'....        BL       __aeabi_fadd
    \       0x9A   0x....             LDR.N    R1,??DataTable8_18
    \       0x9C   0x6008             STR      R0,[R1, #+0]
-    208            gz = data15+gyro_offset.z;
+    200            gz = data15+gyro_offset.z;
    \       0x9E   0xB236             SXTH     R6,R6            ;; SignExt  R6,R6,#+16,#+16
    \       0xA0   0x0030             MOVS     R0,R6
    \       0xA2   0x....'....        BL       __aeabi_i2f
@@ -742,7 +732,7 @@ Warning[Pa093]: implicit conversion from floating point to integer
    \       0xA8   0x....'....        BL       __aeabi_fadd
    \       0xAC   0x....             LDR.N    R1,??DataTable8_19
    \       0xAE   0x6008             STR      R0,[R1, #+0]
-    209          }
+    201          }
    \       0xB0   0xE8BD 0x87F0      POP      {R4-R10,PC}      ;; return
 
    \                                 In section .text, align 4, keep-with-next
@@ -936,8 +926,8 @@ Warning[Pa093]: implicit conversion from floating point to integer
        4  gz
 
  
-   288 bytes in section .bss
-    60 bytes in section .data
+   300 bytes in section .bss
+    48 bytes in section .data
     16 bytes in section .rodata
  1'026 bytes in section .text
  

@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         15/Jul/2020  23:03:28
+# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         24/Jul/2020  02:34:58
 # Copyright 1999-2019 IAR Systems AB.
 #
 #    Cpu mode     =  
@@ -8,7 +8,7 @@
 #    Source file  =
 #        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\iic.c
 #    Command line =
-#        -f C:\Users\Evan\AppData\Local\Temp\EW3C86.tmp
+#        -f C:\Users\Evan\AppData\Local\Temp\EWA4C6.tmp
 #        (E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\iic.c
 #        -D USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
 #        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List
@@ -56,7 +56,7 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\iic.c
    \        0x4   0x2002             MOVS     R0,#+2
    \        0x6   0x....'....        BL       RCC_AHB1PeriphClockCmd
       6            iic_gpio.GPIO_Pin = SCL_Pin | SDA_Pin;
-   \        0xA   0x20C0             MOVS     R0,#+192
+   \        0xA   0x2003             MOVS     R0,#+3
    \        0xC   0x9000             STR      R0,[SP, #+0]
       7            iic_gpio.GPIO_Mode = GPIO_Mode_OUT;
    \        0xE   0x2001             MOVS     R0,#+1
@@ -76,11 +76,11 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\iic.c
    \       0x2A   0x0020             MOVS     R0,R4
    \       0x2C   0x....'....        BL       GPIO_Init
      12            SCL_HIGH;
-   \       0x30   0x2140             MOVS     R1,#+64
+   \       0x30   0x2101             MOVS     R1,#+1
    \       0x32   0x0020             MOVS     R0,R4
    \       0x34   0x....'....        BL       GPIO_SetBits
      13            SDA_HIGH;
-   \       0x38   0x2180             MOVS     R1,#+128
+   \       0x38   0x2102             MOVS     R1,#+2
    \       0x3A   0x0020             MOVS     R0,R4
    \       0x3C   0x....'....        BL       GPIO_SetBits
      14          }
@@ -101,7 +101,7 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\iic.c
    \        0x0   0xB5E0             PUSH     {R5-R7,LR}
      21            GPIO_InitTypeDef iic_gpio;
      22            iic_gpio.GPIO_Pin = SDA_Pin;
-   \        0x2   0x2080             MOVS     R0,#+128
+   \        0x2   0x2002             MOVS     R0,#+2
    \        0x4   0x9000             STR      R0,[SP, #+0]
      23            iic_gpio.GPIO_PuPd = GPIO_PuPd_UP;
    \        0x6   0x2001             MOVS     R0,#+1
@@ -129,7 +129,7 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\iic.c
    \        0x0   0xB5E0             PUSH     {R5-R7,LR}
      31            GPIO_InitTypeDef iic_gpio;
      32            iic_gpio.GPIO_Pin = SDA_Pin;
-   \        0x2   0x2080             MOVS     R0,#+128
+   \        0x2   0x2002             MOVS     R0,#+2
    \        0x4   0x9000             STR      R0,[SP, #+0]
      33            iic_gpio.GPIO_PuPd = GPIO_PuPd_UP;
    \        0x6   0x2001             MOVS     R0,#+1
@@ -159,7 +159,7 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\iic.c
    \        0x2   0x....'....        BL       SDA_OUT
      42            SCL_HIGH;
    \        0x6   0x....             LDR.N    R4,??DataTable7  ;; 0x40020400
-   \        0x8   0x2140             MOVS     R1,#+64
+   \        0x8   0x2101             MOVS     R1,#+1
    \        0xA   0x0020             MOVS     R0,R4
    \        0xC   0x....'....        BL       GPIO_SetBits
      43            SDA_HIGH;IIC_Delay;
@@ -171,7 +171,7 @@ Warning[Pa131]: this is a function pointer constant. Did you intend a function
              ^
 "E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\iic.c",43  Warning[Pe174]: 
           expression has no effect
-   \       0x10   0x2180             MOVS     R1,#+128
+   \       0x10   0x2102             MOVS     R1,#+2
    \       0x12   0x0020             MOVS     R0,R4
    \       0x14   0x....'....        BL       GPIO_SetBits
    \       0x18   0x....             LDR.N    R5,??DataTable7_1
@@ -185,7 +185,7 @@ Warning[Pa131]: this is a function pointer constant. Did you intend a function
             ^
 "E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\iic.c",45  Warning[Pe174]: 
           expression has no effect
-   \       0x1A   0x2180             MOVS     R1,#+128
+   \       0x1A   0x2102             MOVS     R1,#+2
    \       0x1C   0x0020             MOVS     R0,R4
    \       0x1E   0x....'....        BL       GPIO_ResetBits
      46          }
@@ -208,7 +208,7 @@ Warning[Pa131]: this is a function pointer constant. Did you intend a function
 "E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\iic.c",50  Warning[Pe174]: 
           expression has no effect
    \        0x6   0x....             LDR.N    R4,??DataTable7  ;; 0x40020400
-   \        0x8   0x2140             MOVS     R1,#+64
+   \        0x8   0x2101             MOVS     R1,#+1
    \        0xA   0x0020             MOVS     R0,R4
    \        0xC   0x....'....        BL       GPIO_ResetBits
    \       0x10   0x....             LDR.N    R5,??DataTable7_1
@@ -221,7 +221,7 @@ Warning[Pa131]: this is a function pointer constant. Did you intend a function
             ^
 "E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\iic.c",51  Warning[Pe174]: 
           expression has no effect
-   \       0x12   0x2180             MOVS     R1,#+128
+   \       0x12   0x2102             MOVS     R1,#+2
    \       0x14   0x0020             MOVS     R0,R4
    \       0x16   0x....'....        BL       GPIO_ResetBits
      52            
@@ -234,7 +234,7 @@ Warning[Pa131]: this is a function pointer constant. Did you intend a function
              ^
 "E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\iic.c",53  Warning[Pe174]: 
           expression has no effect
-   \       0x1A   0x2140             MOVS     R1,#+64
+   \       0x1A   0x2101             MOVS     R1,#+1
    \       0x1C   0x0020             MOVS     R0,R4
    \       0x1E   0x....'....        BL       GPIO_SetBits
      54            SDA_HIGH;IIC_Delay;
@@ -246,7 +246,7 @@ Warning[Pa131]: this is a function pointer constant. Did you intend a function
              ^
 "E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\iic.c",54  Warning[Pe174]: 
           expression has no effect
-   \       0x22   0x2180             MOVS     R1,#+128
+   \       0x22   0x2102             MOVS     R1,#+2
    \       0x24   0x0020             MOVS     R0,R4
    \       0x26   0x....'....        BL       GPIO_SetBits
      55          }
@@ -269,12 +269,12 @@ Warning[Pa131]: this is a function pointer constant. Did you intend a function
 "E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\iic.c",59  Warning[Pe174]: 
           expression has no effect
    \        0x6   0x....             LDR.N    R4,??DataTable7  ;; 0x40020400
-   \        0x8   0x2140             MOVS     R1,#+64
+   \        0x8   0x2101             MOVS     R1,#+1
    \        0xA   0x0020             MOVS     R0,R4
    \        0xC   0x....'....        BL       GPIO_ResetBits
    \       0x10   0x....             LDR.N    R5,??DataTable7_1
      60            SDA_HIGH;
-   \       0x12   0x2180             MOVS     R1,#+128
+   \       0x12   0x2102             MOVS     R1,#+2
    \       0x14   0x0020             MOVS     R0,R4
    \       0x16   0x....'....        BL       GPIO_SetBits
      61            
@@ -297,17 +297,17 @@ Warning[Pa131]: this is a function pointer constant. Did you intend a function
              ^
 "E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\iic.c",63  Warning[Pe174]: 
           expression has no effect
-   \       0x1E   0x2140             MOVS     R1,#+64
+   \       0x1E   0x2101             MOVS     R1,#+1
    \       0x20   0x0020             MOVS     R0,R4
    \       0x22   0x....'....        BL       GPIO_SetBits
      64            
      65            if(SDA_READ){
    \       0x26   0x....             LDR.N    R0,??DataTable7_2  ;; 0x40020410
    \       0x28   0x6800             LDR      R0,[R0, #+0]
-   \       0x2A   0x0600             LSLS     R0,R0,#+24
+   \       0x2A   0x0780             LSLS     R0,R0,#+30
    \       0x2C   0xD505             BPL.N    ??IIC_Ack_0
      66              SCL_LOW;
-   \       0x2E   0x2140             MOVS     R1,#+64
+   \       0x2E   0x2101             MOVS     R1,#+1
    \       0x30   0x0020             MOVS     R0,R4
    \       0x32   0x....'....        BL       GPIO_ResetBits
      67              return 0;
@@ -325,7 +325,7 @@ Warning[Pa131]: this is a function pointer constant. Did you intend a function
 "E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\iic.c",70  Warning[Pe174]: 
           expression has no effect
    \                     ??IIC_Ack_0: (+1)
-   \       0x3A   0x2140             MOVS     R1,#+64
+   \       0x3A   0x2101             MOVS     R1,#+1
    \       0x3C   0x0020             MOVS     R0,R4
    \       0x3E   0x....'....        BL       GPIO_ResetBits
      71            return 1;
@@ -361,20 +361,20 @@ Warning[Pa131]: this is a function pointer constant. Did you intend a function
      82              }else{
      83                SDA_LOW;
    \                     ??IIC_Send_Byte_1: (+1)
-   \        0xC   0x2180             MOVS     R1,#+128
+   \        0xC   0x2102             MOVS     R1,#+2
    \        0xE   0x0030             MOVS     R0,R6
    \       0x10   0x....'....        BL       GPIO_ResetBits
    \       0x14   0xE00B             B.N      ??IIC_Send_Byte_2
      84              }
    \                     ??IIC_Send_Byte_3: (+1)
    \       0x16   0x....             LDR.N    R6,??DataTable7  ;; 0x40020400
-   \       0x18   0x2140             MOVS     R1,#+64
+   \       0x18   0x2101             MOVS     R1,#+1
    \       0x1A   0x0030             MOVS     R0,R6
    \       0x1C   0x....'....        BL       GPIO_ResetBits
    \       0x20   0x....             LDR.N    R7,??DataTable7_1
    \       0x22   0x0620             LSLS     R0,R4,#+24
    \       0x24   0xD5F2             BPL.N    ??IIC_Send_Byte_1
-   \       0x26   0x2180             MOVS     R1,#+128
+   \       0x26   0x2102             MOVS     R1,#+2
    \       0x28   0x0030             MOVS     R0,R6
    \       0x2A   0x....'....        BL       GPIO_SetBits
      85              msg<<=1;IIC_Delay;
@@ -397,7 +397,7 @@ Warning[Pa131]: this is a function pointer constant. Did you intend a function
                ^
 "E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\iic.c",86  Warning[Pe174]: 
           expression has no effect
-   \       0x30   0x2140             MOVS     R1,#+64
+   \       0x30   0x2101             MOVS     R1,#+1
    \       0x32   0x0030             MOVS     R0,R6
    \       0x34   0x....'....        BL       GPIO_SetBits
      87            }
@@ -410,7 +410,7 @@ Warning[Pa131]: this is a function pointer constant. Did you intend a function
      88            
      89            SCL_LOW;
    \                     ??IIC_Send_Byte_4: (+1)
-   \       0x42   0x2140             MOVS     R1,#+64
+   \       0x42   0x2101             MOVS     R1,#+1
    \       0x44   0x....             LDR.N    R0,??DataTable7  ;; 0x40020400
    \       0x46   0x....'....        BL       GPIO_ResetBits
      90            if (IIC_Ack()==0){
@@ -450,14 +450,14 @@ Warning[Pa131]: this is a function pointer constant. Did you intend a function
 "E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\iic.c",100  Warning[Pe174]: 
           expression has no effect
    \       0x10   0x....             LDR.N    R6,??DataTable7  ;; 0x40020400
-   \       0x12   0x2140             MOVS     R1,#+64
+   \       0x12   0x2101             MOVS     R1,#+1
    \       0x14   0x0030             MOVS     R0,R6
    \       0x16   0x....'....        BL       GPIO_SetBits
    \       0x1A   0x....             LDR.N    R7,??DataTable7_1
     101              data |= SDA_READ;
    \       0x1C   0x....             LDR.N    R0,??DataTable7_2  ;; 0x40020410
    \       0x1E   0x6800             LDR      R0,[R0, #+0]
-   \       0x20   0x09C0             LSRS     R0,R0,#+7
+   \       0x20   0x0840             LSRS     R0,R0,#+1
    \       0x22   0xF010 0x0001      ANDS     R0,R0,#0x1
    \       0x26   0x4305             ORRS     R5,R0,R5
     102              SCL_LOW;IIC_Delay;
@@ -469,7 +469,7 @@ Warning[Pa131]: this is a function pointer constant. Did you intend a function
               ^
 "E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\iic.c",102  Warning[Pe174]: 
           expression has no effect
-   \       0x28   0x2140             MOVS     R1,#+64
+   \       0x28   0x2101             MOVS     R1,#+1
    \       0x2A   0x0030             MOVS     R0,R6
    \       0x2C   0x....'....        BL       GPIO_ResetBits
     103            }

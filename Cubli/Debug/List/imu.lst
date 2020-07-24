@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         16/Jul/2020  00:51:13
+# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         24/Jul/2020  15:25:31
 # Copyright 1999-2019 IAR Systems AB.
 #
 #    Cpu mode     =  
@@ -8,7 +8,7 @@
 #    Source file  =
 #        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
 #    Command line =
-#        -f C:\Users\Evan\AppData\Local\Temp\EWEC3D.tmp
+#        -f C:\Users\Evan\AppData\Local\Temp\EW2786.tmp
 #        (E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
 #        -D USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
 #        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List
@@ -53,7 +53,7 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
    \                                 In section .bss, align 4
       3          _Attitude att = {0};
    \                     att:
-   \        0x0                      DS8 36
+   \        0x0                      DS8 12
       4          
       5          #define kp 2.0f        //proportional gain governs rate of convergence to accelerometer/magnetometer 
       6          #define ki 0.0001f     //integral gain governs rate of convergenceof gyroscope biases
@@ -483,7 +483,7 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
    \      0x382   0x465B             MOV      R3,R11
    \      0x384   0x....'....        BL       __aeabi_dmul
    \      0x388   0x....'....        BL       __aeabi_d2f
-   \      0x38C   0xF8C8 0x0018      STR      R0,[R8, #+24]
+   \      0x38C   0xF8C8 0x0000      STR      R0,[R8, #+0]
      78            att.rol =  asin(2.0f*(q0*q2 - q1*q3)) * rad_to_angle;       
    \      0x390   0x6821             LDR      R1,[R4, #+0]
    \      0x392   0x6830             LDR      R0,[R6, #+0]
@@ -503,7 +503,7 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
    \      0x3BC   0x465B             MOV      R3,R11
    \      0x3BE   0x....'....        BL       __aeabi_dmul
    \      0x3C2   0x....'....        BL       __aeabi_d2f
-   \      0x3C6   0xF8C8 0x001C      STR      R0,[R8, #+28]
+   \      0x3C6   0xF8C8 0x0004      STR      R0,[R8, #+4]
      79            
      80            //z轴角速度积分的偏航角 
      81          //  att.yaw += Mpu.deg_s.z  * att_time.delta_time_ms*0.0001f;
@@ -553,7 +553,7 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
    \      0x440   0x465B             MOV      R3,R11
    \      0x442   0x....'....        BL       __aeabi_dmul
    \      0x446   0x....'....        BL       __aeabi_d2f
-   \      0x44A   0xF8C8 0x0020      STR      R0,[R8, #+32]
+   \      0x44A   0xF8C8 0x0008      STR      R0,[R8, #+8]
      83            
      84            //printf("the roll is %f\n",att.rol);
      85            //printf("the pit  is %f\n",att.pit);
@@ -1183,7 +1183,7 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
       72  Mat
       12  Matrix_ready
       14  _set_val
-      36  att
+      12  att
       16  att_time
        4  exInt
        4  eyInt
@@ -1204,12 +1204,12 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
       30  to_zero
 
  
-   148 bytes in section .bss
+   124 bytes in section .bss
      4 bytes in section .data
  2'168 bytes in section .text
  
  2'168 bytes of CODE memory
-   152 bytes of DATA memory
+   128 bytes of DATA memory
 
 Errors: none
 Warnings: none

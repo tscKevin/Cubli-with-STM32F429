@@ -19,10 +19,12 @@
 #define RCC_AHB1Periph_GPIO_Port RCC_AHB1Periph_GPIOB
 
 #define SCL_Port GPIOB
-#define SCL_Pin GPIO_Pin_6
+//#define SCL_Pin GPIO_Pin_6
+#define SCL_Pin GPIO_Pin_0
 
 #define SDA_Port GPIOB
-#define SDA_Pin GPIO_Pin_7
+//#define SDA_Pin GPIO_Pin_7
+#define SDA_Pin GPIO_Pin_1
 
 #define SCL_HIGH GPIO_SetBits(SCL_Port,SCL_Pin)
 #define SCL_LOW GPIO_ResetBits(SCL_Port,SCL_Pin)
@@ -55,7 +57,6 @@
  *                     Function declaration
 *****************************************************************/
 
-void IIC_GPIO_Init(void);
 void IIC_GPIO_Init(void);
 void SDA_OUT(void);
 void SDA_IN(void);

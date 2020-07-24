@@ -6,7 +6,8 @@ SI_F_XYZ acc_raw_f = {0};
 SI_F_XYZ gyro_raw_f = {0};
 SI_F_XYZ acc_att_lpf = {0};
 SI_F_XYZ gyro_lpf = {0};
-SI_F_XYZ gyro_offset = {0,10,-2} ;   //-128 33 -18     //陀螺儀校正數據存取
+//SI_F_XYZ gyro_offset = {0,10,-2} ;   //-128 33 -18     //陀螺儀校正數據存取
+SI_F_XYZ gyro_offset = {0,0,0} ;   //-128 33 -18     //陀螺儀校正數據存取
 _Mpu6050_data Mpu = {0};
 SI_F_XYZ accel_offset={0,0,0};
 
@@ -20,7 +21,7 @@ void MPU6050_Init(void){
   IIC_Send(SlaveAddress,GYRO_CONFIG,0x18);// gyro scale  ：+-2000deg/s REGISTER 27
   IIC_Send(SlaveAddress,ACCEL_CONFIG,0x10);// Accel scale ：+-8g (65536/16=4096 LSB/g) REGISTER 28 
 
-  IIC_Send(SlaveAddress,XA_OFFSET_L_TC, 0xDB);
+  /*IIC_Send(SlaveAddress,XA_OFFSET_L_TC, 0xDB);
   IIC_Send(SlaveAddress,XA_OFFSET_H, 0xFD);
   IIC_Send(SlaveAddress,YA_OFFSET_L_TC, 0x5F);
   IIC_Send(SlaveAddress,YA_OFFSET_H, 0x0a);
@@ -33,32 +34,21 @@ void MPU6050_Init(void){
   IIC_Send(SlaveAddress,YG_OFFS_USRL, 0xFe);
   IIC_Send(SlaveAddress,YG_OFFS_USRH, 0xff);
   IIC_Send(SlaveAddress,ZG_OFFS_USRL, 0x16);
-  IIC_Send(SlaveAddress,ZG_OFFS_USRH, 0x00); 
-//  IIC_Send(SlaveAddress,XA_OFFSET_L_TC, 0x88);
-//  IIC_Send(SlaveAddress,XA_OFFSET_H, 0xef);
-//  IIC_Send(SlaveAddress,YA_OFFSET_L_TC, 0xc1);
-//  IIC_Send(SlaveAddress,YA_OFFSET_H, 0xff);
-//  
-//  IIC_Send(SlaveAddress,ZA_OFFSET_L_TC, 0xed);
-//  IIC_Send(SlaveAddress,ZA_OFFSET_H, 0x05); //65536 or 4096
-//  
-//  IIC_Send(SlaveAddress,XG_OFFS_USRL, 0xff);
-//  IIC_Send(SlaveAddress,XG_OFFS_USRH, 0xff);
-//  IIC_Send(SlaveAddress,YG_OFFS_USRL, 0xb0);
-//  IIC_Send(SlaveAddress,YG_OFFS_USRH, 0xff);
-//  IIC_Send(SlaveAddress,ZG_OFFS_USRL, 0xfe);
-//  IIC_Send(SlaveAddress,ZG_OFFS_USRH, 0xff); 
-//  IIC_Send(0xD0,0x07, 0x73);
-//  IIC_Send(0xD0,0x06, 0xFD);
-//  IIC_Send(0xD0,0x09, 0x40);
-//  IIC_Send(0xD0,0x0B, 0x30);
-//  IIC_Send(0xD0,0x0A, 0x04);
-//  IIC_Send(0xD0,0x14, 0x30);
-//  IIC_Send(0xD0,0x13, 0xFF);
-//  IIC_Send(0xD0,0x16, 0xF3);
-//  IIC_Send(0xD0,0x15, 0xFF);
-//  IIC_Send(0xD0,0x18, 0x16);
-//  IIC_Send(0xD0,0x17, 0x00);
+  IIC_Send(SlaveAddress,ZG_OFFS_USRH, 0x00);*/
+  IIC_Send(SlaveAddress,XA_OFFSET_L_TC, 0x57);
+  IIC_Send(SlaveAddress,XA_OFFSET_H, 0xf7);
+  IIC_Send(SlaveAddress,YA_OFFSET_L_TC, 0x8c);
+  IIC_Send(SlaveAddress,YA_OFFSET_H, 0x04);
+  
+  IIC_Send(SlaveAddress,ZA_OFFSET_L_TC, 0x07);
+  IIC_Send(SlaveAddress,ZA_OFFSET_H, 0x06); //65536 or 4096
+  
+  IIC_Send(SlaveAddress,XG_OFFS_USRL, 0x54);
+  IIC_Send(SlaveAddress,XG_OFFS_USRH, 0x00);
+  IIC_Send(SlaveAddress,YG_OFFS_USRL, 0xef);
+  IIC_Send(SlaveAddress,YG_OFFS_USRH, 0xff);
+  IIC_Send(SlaveAddress,ZG_OFFS_USRL, 0x49);
+  IIC_Send(SlaveAddress,ZG_OFFS_USRH, 0x00);
 }
 
 
@@ -76,7 +66,9 @@ u8 get_mpu_id(void){
   printf("mpu id is %x\n",mpu_id);
   return mpu_id;
 }
-//存取加速度計三軸raw data
+/*==================================
+存取加速度計三軸raw data
+==================================*/
 void get_acc_raw(void){
 //  accel_offset.x = get_data(0x06);
 //  accel_offset.y = get_data(0x08);

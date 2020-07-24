@@ -7,6 +7,7 @@
 
 #include "MPU6050.h"
 #include "imu.h"
+#include "usart.h"
 
 
 typedef struct

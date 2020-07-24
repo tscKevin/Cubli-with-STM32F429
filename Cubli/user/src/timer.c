@@ -4,11 +4,11 @@ uint32_t running_tim_cnt = 0;
 
 int Max_Pwm = 8300;
 int flag_stop = 0 ;
-int Velocity_KP = 100;//120; //155 100 300 150  150 
-int Velocity_KI = 65;//80; //80 200 200   80   40
-int Balance_KP =860;//890;//852;// 1700  2000 501 401 401     401  410 430(4.5) 500 970 1120
-float Balance_Ki = 0.035; // 0.2 
-float Balance_KD = 632;//582;// 1000  1200  90 40  180 155 150 350 380  400 572 610
+int Velocity_KP = 200;//120; //155 100 300 150  150 
+int Velocity_KI = 0.65;//80; //80 200 200   80   40
+int Balance_KP =800;//860;//890;//852;// 1700  2000 501 401 401     401  410 430(4.5) 500 970 1120
+float Balance_Ki = 0.02;//0.035; // 0.2 
+float Balance_KD = 66.2;//63.2;//582;// 1000  1200  90 40  180 155 150 350 380  400 572 610
 float velocity_pwm_x = 0.0;
 int balance_pwm_x = 0;
 int PWM_X = 0;
@@ -25,7 +25,7 @@ int encoder_z;
 void time_check(_Time_test *running)
 {
   running->last_time_us = running->now_time_us;
-  running->now_time_us = running_tim_cnt * 5000 + TIM4->CNT;                  //計數累加數加1，则需要5ms = 5000us ，定時器定時5ms需要5000次計數，所以一次CNT值為1us 
+  running->now_time_us = running_tim_cnt * 5000 + TIM5->CNT;                  //計數累加數加1，则需要5ms = 5000us ，定時器定時5ms需要5000次計數，所以一次CNT值為1us 
   running->delta_time_us = running->now_time_us - running->last_time_us;
   running->delta_time_ms = running->delta_time_us * 0.001f;
   //printf("time interrupt is %f\n", running->delta_time_us);
@@ -42,12 +42,14 @@ float control_velocity(int encoder){
   //=============速度PI控制器=======================//	
   Encoder_Least=encoder;        
   Encoder *= 0.7;		                                                  
-  Encoder += Encoder_Least*0.3;	                                
+  Encoder += Encoder_Least*0.3;	             
   Encoder_Integral +=Encoder;                                       //===積分出位移  P比例
+  
   if(Encoder_Integral>27000)  	Encoder_Integral=27000;             //===積分限幅    I積分
   if(Encoder_Integral<-27000)	Encoder_Integral=-27000;            //===積分限幅    D微分
-  if(flag_stop==1) Encoder_Integral=0,Encoder=0; 
-  Velocity=Encoder*Velocity_KP+Encoder_Integral*(Velocity_KI/100);  //===速度控制
+  if(flag_stop==1) Encoder_Integral=0,Encoder=0;
+  
+  Velocity=Encoder*Velocity_KP + Encoder_Integral*Velocity_KI;  //===速度控制
   if(flag_stop==1) Velocity=0;     
   return Velocity;
 }
@@ -57,11 +59,13 @@ float control_balance_x(float angle, float Gyro){
   int balance;
   Bias_last = Bias; 
   Bias_integral += Bias_last;
+  
   if(Bias_integral>4200)  	Bias_integral=4200;               //===積分限幅 4200
   if(Bias_integral<-4200)	Bias_integral=-4200;              //===積分限幅 4200 
-  if(flag_stop==1) Bias_integral=0,Bias=0; 
-  Bias=(angle+0.2);  //=== 偏差  a 0.1 b  0.2 
-  balance= Balance_KP*Bias + Gyro*Balance_KD/10 + Bias_integral*Balance_Ki;  
+  if(flag_stop==1) Bias_integral=0,Bias=0;
+  
+  Bias=(angle+1.5);  //=== 偏差  a 0.1 b  0.2 
+  balance= Bias*Balance_KP + Bias_integral*Balance_Ki + Gyro*Balance_KD;
   return balance;
 }
 /*===============================
@@ -83,7 +87,7 @@ void set_pwm(int pwm_x){
     GPIO_ResetBits(GPIOG,GPIO_Pin_13);
   }
   pwm_x = int_abs(pwm_x);
-  TIM5->CCR1 = pwm_x;
+  TIM8->CCR1 = pwm_x;
 }
 /*===============================
 
@@ -93,8 +97,8 @@ TIM4 interrupt - main
 
 _Time_test run_start;
 _Time_test run_stop;
-void TIM4_IRQHandler(void){
-  if(TIM4->SR&0X0001){//確認更新中斷旗標為有效
+void TIM5_IRQHandler(void){
+  if(TIM5->SR&0X0001){//確認更新中斷旗標為有效
 //    GPIO_ToggleBits(GPIOG,GPIO_Pin_14);
 //    MPU6050_Get_Display();
     running_tim_cnt++ ;
@@ -110,19 +114,21 @@ void TIM4_IRQHandler(void){
     mahony_update(Mpu.rad_s.x,Mpu.rad_s.y,Mpu.rad_s.z,Mpu.acc_g.x,Mpu.acc_g.y,Mpu.acc_g.z); 
     Matrix_ready();                                                         //姿態演算矩陣更新                                                       //姿態演算矩陣更新
     
-    encoder_x=read_Encoder();
+    encoder_x=read_Encoder_x();
+//    encoder_y=read_Encoder_y();
+//    encoder_z=read_Encoder_z();
     
     velocity_pwm_x = -control_velocity(encoder_x);                          //velocity pid
     balance_pwm_x = -control_balance_x(att.pit,Mpu.deg_s.x);                //balance_pid
     PWM_X =   balance_pwm_x + velocity_pwm_x ;    
     
     if (nvic_flag == 1){
-      if(Max_Pwm++>8300)Max_Pwm=8300;//慢慢上升
+//      if(Max_Pwm++>8300)Max_Pwm=8300;//慢慢上升
       Max_pwm_limit(Max_Pwm);
       
-      if ((att.pit>=-15.0) && (att.pit <=15.0)){//balance
+      if ((att.pit>=-10) && (att.pit <=10)){//balance
         set_pwm(PWM_X);
-      }else if(((att.pit <-15.0) && (att.pit >=-27.0)) || ((att.pit > 15.0) && (att.pit<=27))) {//out balance, stop wheel
+      }else if(((att.pit <-10) && (att.pit >=-27)) || ((att.pit > 10) && (att.pit<=27))) {//out balance, stop wheel
         PWM_X = 0;
         set_pwm(0);
       }else if(att.pit<-27){//jump up
@@ -133,7 +139,7 @@ void TIM4_IRQHandler(void){
         set_pwm(PWM_X);
       }
     }
-    time_check(&run_stop); 
+    time_check(&run_stop);
   }
-  TIM4->SR&=~(1<<0);//清除更新中斷旗標  TIM4->SR = (uint16_t)~TIM_FLAG;
+  TIM5->SR&=~(1<<0);//清除更新中斷旗標  TIM4->SR = (uint16_t)~TIM_FLAG;
 }

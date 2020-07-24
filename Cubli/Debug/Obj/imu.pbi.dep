@@ -56,4 +56,8 @@ imu.pbi: \
   D:\IAR\ Systems\Embedded\ Workbench\ 8.3\arm\inc\c\math.h \
   D:\IAR\ Systems\Embedded\ Workbench\ 8.3\arm\inc\c\DLib_float_setup.h \
   E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src/timer.h \
-  E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src/MPU6050.h
+  E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src/MPU6050.h \
+  E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src/usart.h \
+  D:\IAR\ Systems\Embedded\ Workbench\ 8.3\arm\inc\c\string.h \
+  D:\IAR\ Systems\Embedded\ Workbench\ 8.3\arm\inc\c\DLib_Product_string.h \
+  E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src/pwm.h
