@@ -4,13 +4,13 @@ uint32_t running_tim_cnt = 0;
 
 int Max_Pwm = 8300;
 int flag_stop = 0 ;
-int Velocity_KP = 200;//120; //155 100 300 150  150 
-int Velocity_KI = 0.65;//80; //80 200 200   80   40
-int Balance_KP =800;//860;//890;//852;// 1700  2000 501 401 401     401  410 430(4.5) 500 970 1120
+float Velocity_KP = 100;//120; //155 100 300 150  150 
+float Velocity_KI = 0.65;//80; //80 200 200   80   40
+float Balance_KP =750;//860;//890;//852;// 1700  2000 501 401 401     401  410 430(4.5) 500 970 1120
 float Balance_Ki = 0.02;//0.035; // 0.2 
-float Balance_KD = 66.2;//63.2;//582;// 1000  1200  90 40  180 155 150 350 380  400 572 610
+float Balance_KD = 186.2;//63.2;//582;// 1000  1200  90 40  180 155 150 350 380  400 572 610
 float velocity_pwm_x = 0.0;
-int balance_pwm_x = 0;
+float balance_pwm_x = 0.0;
 int PWM_X = 0;
 int nvic_flag=0;
 
@@ -64,7 +64,7 @@ float control_balance_x(float angle, float Gyro){
   if(Bias_integral<-4200)	Bias_integral=-4200;              //===積分限幅 4200 
   if(flag_stop==1) Bias_integral=0,Bias=0;
   
-  Bias=(angle+1.5);  //=== 偏差  a 0.1 b  0.2 
+  Bias=(angle+0.3);  //=== 偏差  a 0.1 b  0.2 
   balance= Bias*Balance_KP + Bias_integral*Balance_Ki + Gyro*Balance_KD;
   return balance;
 }
@@ -126,9 +126,9 @@ void TIM5_IRQHandler(void){
 //      if(Max_Pwm++>8300)Max_Pwm=8300;//慢慢上升
       Max_pwm_limit(Max_Pwm);
       
-      if ((att.pit>=-10) && (att.pit <=10)){//balance
+      if ((att.pit>=-13) && (att.pit <=13)){//balance
         set_pwm(PWM_X);
-      }else if(((att.pit <-10) && (att.pit >=-27)) || ((att.pit > 10) && (att.pit<=27))) {//out balance, stop wheel
+      }else if(((att.pit <-13) && (att.pit >=-27)) || ((att.pit > 13) && (att.pit<=27))) {//out balance, stop wheel
         PWM_X = 0;
         set_pwm(0);
       }else if(att.pit<-27){//jump up

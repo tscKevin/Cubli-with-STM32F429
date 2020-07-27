@@ -1448,14 +1448,14 @@ Marking from fragment #6627 .text (6 cstartup_M.o(rt7M_tl.a)) init:always
     Marking fragment #592 .intvec (7 startup_stm32f429_439xx.o) init:always
   Marking symbol __iar_init_vfp                   Ext (9 cstartup_M.o)
   Marking symbol __cmain                          Glb (15 cmain.o)
-    Marking fragment #8308 .text (8 cmain.o(rt7M_tl.a)) init:always
-Marking from fragment #8308 .text (8 cmain.o(rt7M_tl.a)) init:always
+    Marking fragment #8307 .text (8 cmain.o(rt7M_tl.a)) init:always
+Marking from fragment #8307 .text (8 cmain.o(rt7M_tl.a)) init:always
   Marking symbol __low_level_init                 Glb (8 low_level_init.o)
     Marking fragment #6792 .text (6 low_level_init.o(dl7M_tln.a)) init:always
   Marking symbol _call_main                       Glb (18 cmain.o)
-    Marking fragment #8309 .text (8 cmain.o(rt7M_tl.a))
+    Marking fragment #8308 .text (8 cmain.o(rt7M_tl.a))
   Marking symbol __iar_data_init3                 Glb (10 data_init.o)
-Marking from fragment #8309 .text (8 cmain.o(rt7M_tl.a))
+Marking from fragment #8308 .text (8 cmain.o(rt7M_tl.a))
   Marking symbol __iar_data_init_done             Ext (11 cmain.o)
   Marking symbol __iar_argc_argv                  Ext (10 cmain.o)
   Marking symbol main                             Glb (81 main.o)
@@ -1464,23 +1464,23 @@ Marking from fragment #8309 .text (8 cmain.o(rt7M_tl.a))
     Marking fragment #6798 .text (6 exit.o(dl7M_tln.a))
 Marking from fragment #6798 .text (6 exit.o(dl7M_tln.a))
   Marking symbol _exit                            Glb (14 cexit.o)
-    Marking fragment #8314 .text (6 cexit.o(rt7M_tl.a))
-Marking from fragment #8314 .text (6 cexit.o(rt7M_tl.a))
+    Marking fragment #8313 .text (6 cexit.o(rt7M_tl.a))
+Marking from fragment #8313 .text (6 cexit.o(rt7M_tl.a))
   Marking symbol                                      (9 cexit.o)
-    Marking fragment #8318 .text (6 cexit.o(rt7M_tl.a))
-Marking from fragment #8318 .text (6 cexit.o(rt7M_tl.a))
+    Marking fragment #8317 .text (6 cexit.o(rt7M_tl.a))
+Marking from fragment #8317 .text (6 cexit.o(rt7M_tl.a))
   Marking symbol __exit                           Glb (10 exit.o)
     Marking fragment #6821 .text (6 exit.o(shb_l.a))
 Marking from fragment #6821 .text (6 exit.o(shb_l.a))
   Marking symbol __iar_close_ttio                 Glb (15 iarttio.o)
-    Marking fragment #8319 .text (6 iarttio.o(shb_l.a))
-Marking from fragment #8319 .text (6 iarttio.o(shb_l.a))
+    Marking fragment #8318 .text (6 iarttio.o(shb_l.a))
+Marking from fragment #8318 .text (6 iarttio.o(shb_l.a))
   Marking symbol __iar_lookup_ttioh               Glb (19 XShttio.o)
-    Marking fragment #8324 .text (7 XShttio.o(dl7M_tln.a))
-Marking from fragment #8324 .text (7 XShttio.o(dl7M_tln.a))
+    Marking fragment #8323 .text (7 XShttio.o(dl7M_tln.a))
+Marking from fragment #8323 .text (7 XShttio.o(dl7M_tln.a))
   Marking symbol .text_8                              (16 XShttio.o)
-    Marking fragment #8326 .text (7 XShttio.o(dl7M_tln.a))
-Marking from fragment #8326 .text (7 XShttio.o(dl7M_tln.a))
+    Marking fragment #8325 .text (7 XShttio.o(dl7M_tln.a))
+Marking from fragment #8325 .text (7 XShttio.o(dl7M_tln.a))
   Marking symbol __iar_ttio_handles                   (3 XShttio.o)
     Marking fragment #6854 .data (8 XShttio.o(dl7M_tln.a))
 Marking from fragment #6854 .data (8 XShttio.o(dl7M_tln.a))
@@ -1530,7 +1530,7 @@ Marking from fragment #7004 .text (8 main.o)
   Marking symbol .text_17                             (27 main.o)
     Marking fragment #7013 .text (8 main.o)
 Marking from fragment #7013 .text (8 main.o)
-  Marking symbol nvic_flag                        Glb (203 timer.o)
+  Marking symbol nvic_flag                        Glb (202 timer.o)
     Marking fragment #6439 .bss (19 timer.o)
 Marking from fragment #6439 .bss (19 timer.o)
 Marking from fragment #7002 .text (8 main.o)
@@ -1610,18 +1610,18 @@ Marking from fragment #7035 .text (17 MPU6050.o)
   Marking symbol __aeabi_fdiv                     Glb (6 FltDiv.o)
     Marking fragment #6709 .text (6 FltDiv.o(m7M_tl.a))
   Marking symbol __aeabi_fadd                     Glb (11 FltAdd.o)
-    Marking fragment #8293 .text (6 FltAdd.o(m7M_tl.a))
+    Marking fragment #8292 .text (6 FltAdd.o(m7M_tl.a))
   Marking symbol __aeabi_fdiv                     Glb (6 FltDiv.o)
-Marking from fragment #8293 .text (6 FltAdd.o(m7M_tl.a))
+Marking from fragment #8292 .text (6 FltAdd.o(m7M_tl.a))
   Marking symbol __iar_fsub                       Glb (12 FltAdd.o)
-    Marking fragment #8294 .text (6 FltAdd.o(m7M_tl.a))
+    Marking fragment #8293 .text (6 FltAdd.o(m7M_tl.a))
   Marking symbol __iar_fadd                       Glb (10 FltSub.o)
-    Marking fragment #8297 .text (6 FltSub.o(m7M_tl.a))
-Marking from fragment #8297 .text (6 FltSub.o(m7M_tl.a))
-Marking from fragment #8294 .text (6 FltAdd.o(m7M_tl.a))
+    Marking fragment #8296 .text (6 FltSub.o(m7M_tl.a))
+Marking from fragment #8296 .text (6 FltSub.o(m7M_tl.a))
+Marking from fragment #8293 .text (6 FltAdd.o(m7M_tl.a))
   Marking symbol __iar_fsubStart                  Glb (13 FltAdd.o)
-    Marking fragment #8295 .text (6 FltAdd.o(m7M_tl.a))
-Marking from fragment #8295 .text (6 FltAdd.o(m7M_tl.a))
+    Marking fragment #8294 .text (6 FltAdd.o(m7M_tl.a))
+Marking from fragment #8294 .text (6 FltAdd.o(m7M_tl.a))
 Marking from fragment #6709 .text (6 FltDiv.o(m7M_tl.a))
 Marking from fragment #6640 .text (6 FltMul.o(m7M_tl.a))
 Marking from fragment #7050 .text (17 MPU6050.o)
@@ -1640,7 +1640,7 @@ Marking from fragment #7030 .text (17 MPU6050.o)
     Marking fragment #6721 .text (6 printf.o(dl7M_tln.a))
 Marking from fragment #6721 .text (6 printf.o(dl7M_tln.a))
   Marking symbol _PrintfTiny                      Glb (15 xprintftiny.o)
-    Marking fragment #8328 .text (6 xprintftiny.o(dl7M_tln.a))
+    Marking fragment #8327 .text (6 xprintftiny.o(dl7M_tln.a))
   Marking symbol _Prout                           Glb (9 xprout.o)
     Marking fragment #6779 .text (6 xprout.o(dl7M_tln.a))
 Marking from fragment #6779 .text (6 xprout.o(dl7M_tln.a))
@@ -1661,33 +1661,33 @@ Marking from fragment #6839 .text (6 iarwrite.o(shb_l.a))
   Marking symbol __iar_sh_Move                    Ext (8 iarwrite.o)
 Marking from fragment #6833 .text (6 iarwstd.o(shb_l.a))
   Marking symbol __iar_get_ttio                   Glb (16 iarttio.o)
-    Marking fragment #8320 .text (6 iarttio.o(shb_l.a))
-Marking from fragment #8320 .text (6 iarttio.o(shb_l.a))
+    Marking fragment #8319 .text (6 iarttio.o(shb_l.a))
+Marking from fragment #8319 .text (6 iarttio.o(shb_l.a))
   Marking symbol __iar_close_ttio                 Glb (15 iarttio.o)
   Marking symbol __iar_lookup_ttioh               Glb (19 XShttio.o)
   Marking symbol __iar_ttio_guard_lock            Glb (20 XShttio.o)
-    Marking fragment #8322 .text (7 XShttio.o(dl7M_tln.a))
+    Marking fragment #8321 .text (7 XShttio.o(dl7M_tln.a))
   Marking symbol .text_4                              (8 iarttio.o)
-    Marking fragment #8321 .text (6 iarttio.o(shb_l.a))
+    Marking fragment #8320 .text (6 iarttio.o(shb_l.a))
   Marking symbol __iar_ttio_guard_unlock          Glb (21 XShttio.o)
-    Marking fragment #8323 .text (7 XShttio.o(dl7M_tln.a))
-Marking from fragment #8323 .text (7 XShttio.o(dl7M_tln.a))
+    Marking fragment #8322 .text (7 XShttio.o(dl7M_tln.a))
+Marking from fragment #8322 .text (7 XShttio.o(dl7M_tln.a))
   Marking symbol .text_7                              (14 XShttio.o)
-    Marking fragment #8325 .text (7 XShttio.o(dl7M_tln.a))
-Marking from fragment #8325 .text (7 XShttio.o(dl7M_tln.a))
+    Marking fragment #8324 .text (7 XShttio.o(dl7M_tln.a))
+Marking from fragment #8324 .text (7 XShttio.o(dl7M_tln.a))
   Marking symbol ttio_guard                           (4 XShttio.o)
     Marking fragment #6852 .bss (6 XShttio.o(dl7M_tln.a))
 Marking from fragment #6852 .bss (6 XShttio.o(dl7M_tln.a))
-Marking from fragment #8321 .text (6 iarttio.o(shb_l.a))
-Marking from fragment #8322 .text (7 XShttio.o(dl7M_tln.a))
+Marking from fragment #8320 .text (6 iarttio.o(shb_l.a))
+Marking from fragment #8321 .text (7 XShttio.o(dl7M_tln.a))
   Marking symbol .text_7                              (14 XShttio.o)
-Marking from fragment #8328 .text (6 xprintftiny.o(dl7M_tln.a))
+Marking from fragment #8327 .text (6 xprintftiny.o(dl7M_tln.a))
   Marking symbol out                                  (3 xprintftiny.o)
-    Marking fragment #8327 .text (6 xprintftiny.o(dl7M_tln.a))
+    Marking fragment #8326 .text (6 xprintftiny.o(dl7M_tln.a))
   Marking symbol strlen                           Glb (6 strlen.o)
     Marking fragment #6870 .text (6 strlen.o(rt7M_tl.a))
 Marking from fragment #6870 .text (6 strlen.o(rt7M_tl.a))
-Marking from fragment #8327 .text (6 xprintftiny.o(dl7M_tln.a))
+Marking from fragment #8326 .text (6 xprintftiny.o(dl7M_tln.a))
 Marking from fragment #7040 .text (17 MPU6050.o)
   Marking symbol .rodata29                            (90 MPU6050.o)
     Marking fragment #398 .rodata (29 MPU6050.o)
@@ -2134,7 +2134,7 @@ Marking from fragment #592 .intvec (7 startup_stm32f429_439xx.o) init:always
     Marking fragment #651 .text (66 startup_stm32f429_439xx.o) init:always
   Marking symbol SDIO_IRQHandler                      (474 startup_stm32f429_439xx.o)
     Marking fragment #652 .text (67 startup_stm32f429_439xx.o) init:always
-  Marking symbol TIM5_IRQHandler                  Glb (193 timer.o)
+  Marking symbol TIM5_IRQHandler                  Glb (192 timer.o)
     Marking fragment #8219 .text (23 timer.o) init:always
   Marking symbol SPI3_IRQHandler                      (476 startup_stm32f429_439xx.o)
     Marking fragment #654 .text (69 startup_stm32f429_439xx.o) init:always
@@ -2175,7 +2175,7 @@ Marking from fragment #592 .intvec (7 startup_stm32f429_439xx.o) init:always
   Marking symbol DMA2_Stream6_IRQHandler              (494 startup_stm32f429_439xx.o)
     Marking fragment #672 .text (87 startup_stm32f429_439xx.o) init:always
   Marking symbol DMA2_Stream7_IRQHandler          Glb (131 usart.o)
-    Marking fragment #8266 .text (11 usart.o) init:always
+    Marking fragment #8265 .text (11 usart.o) init:always
   Marking symbol USART6_IRQHandler                    (496 startup_stm32f429_439xx.o)
     Marking fragment #674 .text (89 startup_stm32f429_439xx.o) init:always
   Marking symbol I2C3_EV_IRQHandler                   (497 startup_stm32f429_439xx.o)
@@ -2256,11 +2256,11 @@ Marking from fragment #675 .text (90 startup_stm32f429_439xx.o) init:always
   Marking symbol I2C3_EV_IRQHandler                   (497 startup_stm32f429_439xx.o)
 Marking from fragment #674 .text (89 startup_stm32f429_439xx.o) init:always
   Marking symbol USART6_IRQHandler                    (496 startup_stm32f429_439xx.o)
-Marking from fragment #8266 .text (11 usart.o) init:always
+Marking from fragment #8265 .text (11 usart.o) init:always
   Marking symbol .text_17                             (33 usart.o)
-    Marking fragment #8276 .text (11 usart.o) init:always
+    Marking fragment #8275 .text (11 usart.o) init:always
   Marking symbol .text_18                             (35 usart.o)
-    Marking fragment #8277 .text (11 usart.o) init:always
+    Marking fragment #8276 .text (11 usart.o) init:always
   Marking symbol DMA_GetITStatus                  Glb (165 stm32f4xx_dma.o)
     Marking fragment #7312 .text (8 stm32f4xx_dma.o) init:always
   Marking symbol DMA_Cmd                          Glb (155 stm32f4xx_dma.o)
@@ -2268,8 +2268,8 @@ Marking from fragment #8266 .text (11 usart.o) init:always
   Marking symbol DMA_ClearFlag                    Glb (153 stm32f4xx_dma.o)
     Marking fragment #7310 .text (8 stm32f4xx_dma.o) init:always
   Marking symbol .text_19                             (36 usart.o)
-    Marking fragment #8278 .text (11 usart.o) init:always
-Marking from fragment #8278 .text (11 usart.o) init:always
+    Marking fragment #8277 .text (11 usart.o) init:always
+Marking from fragment #8277 .text (11 usart.o) init:always
   Marking symbol usart1_sent                      Glb (138 usart.o)
     Marking fragment #6539 .data (10 usart.o) init:always
 Marking from fragment #6539 .data (10 usart.o) init:always
@@ -2296,8 +2296,8 @@ Marking from fragment #7312 .text (8 stm32f4xx_dma.o) init:always
     Marking fragment #7341 .text (8 stm32f4xx_dma.o) init:always
   Marking symbol .text_47                             (69 stm32f4xx_dma.o)
 Marking from fragment #7341 .text (8 stm32f4xx_dma.o) init:always
-Marking from fragment #8277 .text (11 usart.o) init:always
 Marking from fragment #8276 .text (11 usart.o) init:always
+Marking from fragment #8275 .text (11 usart.o) init:always
 Marking from fragment #672 .text (87 startup_stm32f429_439xx.o) init:always
   Marking symbol DMA2_Stream6_IRQHandler              (494 startup_stm32f429_439xx.o)
 Marking from fragment #671 .text (86 startup_stm32f429_439xx.o) init:always
@@ -2337,30 +2337,30 @@ Marking from fragment #655 .text (70 startup_stm32f429_439xx.o) init:always
 Marking from fragment #654 .text (69 startup_stm32f429_439xx.o) init:always
   Marking symbol SPI3_IRQHandler                      (476 startup_stm32f429_439xx.o)
 Marking from fragment #8219 .text (23 timer.o) init:always
-  Marking symbol .text_60                             (93 timer.o)
-    Marking fragment #8248 .text (23 timer.o) init:always
+  Marking symbol .text_59                             (92 timer.o)
+    Marking fragment #8247 .text (23 timer.o) init:always
   Marking symbol .text_32                             (64 timer.o)
     Marking fragment #8220 .text (23 timer.o) init:always
-  Marking symbol .text_61                             (94 timer.o)
-    Marking fragment #8249 .text (23 timer.o) init:always
-  Marking symbol time_check                       Glb (208 timer.o)
+  Marking symbol .text_60                             (93 timer.o)
+    Marking fragment #8248 .text (23 timer.o) init:always
+  Marking symbol time_check                       Glb (207 timer.o)
     Marking fragment #8214 .text (23 timer.o) init:always
   Marking symbol get_gyro_raw                     Glb (191 MPU6050.o)
     Marking fragment #7032 .text (17 MPU6050.o) init:always
+  Marking symbol .text_61                             (94 timer.o)
+    Marking fragment #8249 .text (23 timer.o) init:always
   Marking symbol .text_62                             (95 timer.o)
     Marking fragment #8250 .text (23 timer.o) init:always
-  Marking symbol .text_63                             (96 timer.o)
-    Marking fragment #8251 .text (23 timer.o) init:always
   Marking symbol get_deg_s                        Glb (190 MPU6050.o)
     Marking fragment #7033 .text (17 MPU6050.o) init:always
   Marking symbol get_rad_s                        Glb (194 MPU6050.o)
     Marking fragment #7034 .text (17 MPU6050.o) init:always
   Marking symbol get_acc_raw                      Glb (189 MPU6050.o)
     Marking fragment #7031 .text (17 MPU6050.o) init:always
+  Marking symbol .text_63                             (96 timer.o)
+    Marking fragment #8251 .text (23 timer.o) init:always
   Marking symbol .text_64                             (97 timer.o)
     Marking fragment #8252 .text (23 timer.o) init:always
-  Marking symbol .text_65                             (98 timer.o)
-    Marking fragment #8253 .text (23 timer.o) init:always
   Marking symbol acc_iir_lpf                      Glb (181 MPU6050.o)
     Marking fragment #7036 .text (17 MPU6050.o) init:always
   Marking symbol get_acc_g                        Glb (188 MPU6050.o)
@@ -2369,120 +2369,116 @@ Marking from fragment #8219 .text (23 timer.o) init:always
     Marking fragment #6975 .text (18 imu.o) init:always
   Marking symbol Matrix_ready                     Glb (141 imu.o)
     Marking fragment #6978 .text (18 imu.o) init:always
-  Marking symbol .text_66                             (99 timer.o)
-    Marking fragment #8254 .text (23 timer.o) init:always
+  Marking symbol .text_65                             (98 timer.o)
+    Marking fragment #8253 .text (23 timer.o) init:always
   Marking symbol read_Encoder_x                   Glb (95 pwm.o)
     Marking fragment #7062 .text (8 pwm.o) init:always
+  Marking symbol .text_66                             (99 timer.o)
+    Marking fragment #8254 .text (23 timer.o) init:always
+  Marking symbol control_velocity                 Glb (197 timer.o)
+    Marking fragment #8215 .text (23 timer.o) init:always
   Marking symbol .text_67                             (100 timer.o)
     Marking fragment #8255 .text (23 timer.o) init:always
-  Marking symbol control_velocity                 Glb (198 timer.o)
-    Marking fragment #8215 .text (23 timer.o) init:always
   Marking symbol .text_68                             (101 timer.o)
     Marking fragment #8256 .text (23 timer.o) init:always
-  Marking symbol .text_69                             (102 timer.o)
-    Marking fragment #8257 .text (23 timer.o) init:always
-  Marking symbol control_balance_x                Glb (197 timer.o)
+  Marking symbol control_balance_x                Glb (196 timer.o)
     Marking fragment #8216 .text (23 timer.o) init:always
+  Marking symbol .text_56                             (89 timer.o)
+    Marking fragment #8244 .text (23 timer.o) init:always
+  Marking symbol __aeabi_fadd                     Glb (11 FltAdd.o)
+    Marking fragment #8292 .text (6 FltAdd.o(m7M_tl.a)) init:always
   Marking symbol __aeabi_f2iz                     Glb (6 FltToS32.o)
     Marking fragment #6703 .text (6 FltToS32.o(m7M_tl.a)) init:always
-  Marking symbol .text_57                             (90 timer.o)
-    Marking fragment #8245 .text (23 timer.o) init:always
-  Marking symbol __aeabi_i2f                      Glb (6 S32ToFlt.o)
-    Marking fragment #6715 .text (6 S32ToFlt.o(m7M_tl.a)) init:always
-  Marking symbol __aeabi_fadd                     Glb (11 FltAdd.o)
-    Marking fragment #8293 .text (6 FltAdd.o(m7M_tl.a)) init:always
-  Marking symbol __aeabi_f2iz                     Glb (6 FltToS32.o)
+  Marking symbol .text_69                             (102 timer.o)
+    Marking fragment #8257 .text (23 timer.o) init:always
   Marking symbol .text_70                             (103 timer.o)
     Marking fragment #8258 .text (23 timer.o) init:always
+  Marking symbol Max_pwm_limit                    Glb (190 timer.o)
+    Marking fragment #8217 .text (23 timer.o) init:always
   Marking symbol .text_71                             (104 timer.o)
     Marking fragment #8259 .text (23 timer.o) init:always
-  Marking symbol Max_pwm_limit                    Glb (191 timer.o)
-    Marking fragment #8217 .text (23 timer.o) init:always
-  Marking symbol .text_72                             (105 timer.o)
-    Marking fragment #8260 .text (23 timer.o) init:always
   Marking symbol __aeabi_cfrcmple                 Glb (6 FltCmpGe.o)
     Marking fragment #6665 .text (6 FltCmpGe.o(m7M_tl.a)) init:always
-  Marking symbol .text_73                             (106 timer.o)
-    Marking fragment #8261 .text (23 timer.o) init:always
+  Marking symbol .text_72                             (105 timer.o)
+    Marking fragment #8260 .text (23 timer.o) init:always
   Marking symbol __aeabi_cfcmple                  Glb (6 FltCmpLe.o)
     Marking fragment #6659 .text (6 FltCmpLe.o(m7M_tl.a)) init:always
-  Marking symbol set_pwm                          Glb (207 timer.o)
+  Marking symbol set_pwm                          Glb (206 timer.o)
     Marking fragment #8218 .text (23 timer.o) init:always
   Marking symbol __aeabi_cfcmple                  Glb (6 FltCmpLe.o)
+  Marking symbol .text_73                             (106 timer.o)
+    Marking fragment #8261 .text (23 timer.o) init:always
+  Marking symbol __aeabi_cfrcmple                 Glb (6 FltCmpGe.o)
+  Marking symbol .text_72                             (105 timer.o)
+  Marking symbol __aeabi_cfrcmple                 Glb (6 FltCmpGe.o)
   Marking symbol .text_74                             (107 timer.o)
     Marking fragment #8262 .text (23 timer.o) init:always
-  Marking symbol __aeabi_cfrcmple                 Glb (6 FltCmpGe.o)
+  Marking symbol __aeabi_cfcmple                  Glb (6 FltCmpLe.o)
+  Marking symbol set_pwm                          Glb (206 timer.o)
   Marking symbol .text_73                             (106 timer.o)
-  Marking symbol __aeabi_cfrcmple                 Glb (6 FltCmpGe.o)
+  Marking symbol __aeabi_cfcmple                  Glb (6 FltCmpLe.o)
   Marking symbol .text_75                             (108 timer.o)
     Marking fragment #8263 .text (23 timer.o) init:always
-  Marking symbol __aeabi_cfcmple                  Glb (6 FltCmpLe.o)
-  Marking symbol set_pwm                          Glb (207 timer.o)
+  Marking symbol set_pwm                          Glb (206 timer.o)
   Marking symbol .text_74                             (107 timer.o)
-  Marking symbol __aeabi_cfcmple                  Glb (6 FltCmpLe.o)
+  Marking symbol __aeabi_cfrcmple                 Glb (6 FltCmpGe.o)
+  Marking symbol set_pwm                          Glb (206 timer.o)
   Marking symbol .text_76                             (109 timer.o)
     Marking fragment #8264 .text (23 timer.o) init:always
-  Marking symbol set_pwm                          Glb (207 timer.o)
-  Marking symbol .text_75                             (108 timer.o)
-  Marking symbol __aeabi_cfrcmple                 Glb (6 FltCmpGe.o)
-  Marking symbol set_pwm                          Glb (207 timer.o)
-  Marking symbol .text_77                             (110 timer.o)
-    Marking fragment #8265 .text (23 timer.o) init:always
-  Marking symbol time_check                       Glb (208 timer.o)
-Marking from fragment #8265 .text (23 timer.o) init:always
-  Marking symbol run_stop                         Glb (205 timer.o)
+  Marking symbol time_check                       Glb (207 timer.o)
+Marking from fragment #8264 .text (23 timer.o) init:always
+  Marking symbol run_stop                         Glb (204 timer.o)
     Marking fragment #6452 .bss (32 timer.o) init:always
 Marking from fragment #6452 .bss (32 timer.o) init:always
-Marking from fragment #8264 .text (23 timer.o) init:always
 Marking from fragment #8263 .text (23 timer.o) init:always
 Marking from fragment #8262 .text (23 timer.o) init:always
+Marking from fragment #8261 .text (23 timer.o) init:always
 Marking from fragment #8218 .text (23 timer.o) init:always
-  Marking symbol .text_58                             (91 timer.o)
-    Marking fragment #8246 .text (23 timer.o) init:always
+  Marking symbol .text_57                             (90 timer.o)
+    Marking fragment #8245 .text (23 timer.o) init:always
   Marking symbol GPIO_SetBits                     Glb (117 stm32f4xx_gpio.o)
     Marking fragment #7533 .text (8 stm32f4xx_gpio.o) init:always
-  Marking symbol .text_58                             (91 timer.o)
+  Marking symbol .text_57                             (90 timer.o)
   Marking symbol GPIO_ResetBits                   Glb (116 stm32f4xx_gpio.o)
     Marking fragment #7534 .text (8 stm32f4xx_gpio.o) init:always
   Marking symbol int_abs                          Glb (149 imu.o)
     Marking fragment #6995 .text (18 imu.o) init:always
-  Marking symbol .text_59                             (92 timer.o)
-    Marking fragment #8247 .text (23 timer.o) init:always
-Marking from fragment #8247 .text (23 timer.o) init:always
+  Marking symbol .text_58                             (91 timer.o)
+    Marking fragment #8246 .text (23 timer.o) init:always
+Marking from fragment #8246 .text (23 timer.o) init:always
 Marking from fragment #6995 .text (18 imu.o) init:always
 Marking from fragment #7534 .text (8 stm32f4xx_gpio.o) init:always
 Marking from fragment #7533 .text (8 stm32f4xx_gpio.o) init:always
-Marking from fragment #8246 .text (23 timer.o) init:always
+Marking from fragment #8245 .text (23 timer.o) init:always
 Marking from fragment #6659 .text (6 FltCmpLe.o(m7M_tl.a)) init:always
-Marking from fragment #8261 .text (23 timer.o) init:always
-Marking from fragment #6665 .text (6 FltCmpGe.o(m7M_tl.a)) init:always
 Marking from fragment #8260 .text (23 timer.o) init:always
-Marking from fragment #8217 .text (23 timer.o) init:always
-  Marking symbol .text_57                             (90 timer.o)
+Marking from fragment #6665 .text (6 FltCmpGe.o(m7M_tl.a)) init:always
 Marking from fragment #8259 .text (23 timer.o) init:always
-  Marking symbol Max_Pwm                          Glb (190 timer.o)
+Marking from fragment #8217 .text (23 timer.o) init:always
+  Marking symbol .text_56                             (89 timer.o)
+Marking from fragment #8258 .text (23 timer.o) init:always
+  Marking symbol Max_Pwm                          Glb (189 timer.o)
     Marking fragment #6429 .data (9 timer.o) init:always
 Marking from fragment #6429 .data (9 timer.o) init:always
-Marking from fragment #8258 .text (23 timer.o) init:always
-  Marking symbol nvic_flag                        Glb (203 timer.o)
+Marking from fragment #8257 .text (23 timer.o) init:always
+  Marking symbol nvic_flag                        Glb (202 timer.o)
     Marking fragment #6439 .bss (19 timer.o) init:always
 Marking from fragment #6439 .bss (19 timer.o) init:always
-Marking from fragment #8293 .text (6 FltAdd.o(m7M_tl.a)) init:always
+Marking from fragment #6703 .text (6 FltToS32.o(m7M_tl.a)) init:always
+Marking from fragment #8292 .text (6 FltAdd.o(m7M_tl.a)) init:always
   Marking symbol __iar_fsub                       Glb (12 FltAdd.o)
-    Marking fragment #8294 .text (6 FltAdd.o(m7M_tl.a)) init:always
+    Marking fragment #8293 .text (6 FltAdd.o(m7M_tl.a)) init:always
   Marking symbol __iar_fadd                       Glb (10 FltSub.o)
-    Marking fragment #8297 .text (6 FltSub.o(m7M_tl.a)) init:always
-Marking from fragment #8297 .text (6 FltSub.o(m7M_tl.a)) init:always
-Marking from fragment #8294 .text (6 FltAdd.o(m7M_tl.a)) init:always
+    Marking fragment #8296 .text (6 FltSub.o(m7M_tl.a)) init:always
+Marking from fragment #8296 .text (6 FltSub.o(m7M_tl.a)) init:always
+Marking from fragment #8293 .text (6 FltAdd.o(m7M_tl.a)) init:always
   Marking symbol __iar_fsubStart                  Glb (13 FltAdd.o)
-    Marking fragment #8295 .text (6 FltAdd.o(m7M_tl.a)) init:always
-Marking from fragment #8295 .text (6 FltAdd.o(m7M_tl.a)) init:always
-Marking from fragment #6715 .text (6 S32ToFlt.o(m7M_tl.a)) init:always
-Marking from fragment #8245 .text (23 timer.o) init:always
-  Marking symbol PWM_X                            Glb (192 timer.o)
+    Marking fragment #8294 .text (6 FltAdd.o(m7M_tl.a)) init:always
+Marking from fragment #8294 .text (6 FltAdd.o(m7M_tl.a)) init:always
+Marking from fragment #8244 .text (23 timer.o) init:always
+  Marking symbol PWM_X                            Glb (191 timer.o)
     Marking fragment #6438 .bss (18 timer.o) init:always
 Marking from fragment #6438 .bss (18 timer.o) init:always
-Marking from fragment #6703 .text (6 FltToS32.o(m7M_tl.a)) init:always
 Marking from fragment #8216 .text (23 timer.o) init:always
   Marking symbol .text_47                             (80 timer.o)
     Marking fragment #8235 .text (23 timer.o) init:always
@@ -2503,52 +2499,53 @@ Marking from fragment #8216 .text (23 timer.o) init:always
     Marking fragment #8231 .text (23 timer.o) init:always
   Marking symbol __aeabi_f2d                      Glb (6 FltToDbl.o)
     Marking fragment #6683 .text (6 FltToDbl.o(m7M_tl.a)) init:always
-  Marking symbol .text_53                             (86 timer.o)
-    Marking fragment #8241 .text (23 timer.o) init:always
+  Marking symbol .text_38                             (71 timer.o)
+    Marking fragment #8226 .text (23 timer.o) init:always
   Marking symbol __aeabi_dadd                     Glb (9 DblAdd.o)
-    Marking fragment #8306 .text (6 DblAdd.o(m7M_tl.a)) init:always
+    Marking fragment #8305 .text (6 DblAdd.o(m7M_tl.a)) init:always
   Marking symbol __aeabi_d2f                      Glb (6 DblToFlt.o)
     Marking fragment #6671 .text (6 DblToFlt.o(m7M_tl.a)) init:always
-  Marking symbol .text_54                             (87 timer.o)
-    Marking fragment #8242 .text (23 timer.o) init:always
-  Marking symbol __aeabi_i2f                      Glb (6 S32ToFlt.o)
+  Marking symbol .text_53                             (86 timer.o)
+    Marking fragment #8241 .text (23 timer.o) init:always
   Marking symbol __aeabi_fmul                     Glb (6 FltMul.o)
     Marking fragment #6640 .text (6 FltMul.o(m7M_tl.a)) init:always
+  Marking symbol .text_54                             (87 timer.o)
+    Marking fragment #8242 .text (23 timer.o) init:always
+  Marking symbol __aeabi_fmul                     Glb (6 FltMul.o)
+  Marking symbol __aeabi_fadd                     Glb (11 FltAdd.o)
   Marking symbol .text_55                             (88 timer.o)
     Marking fragment #8243 .text (23 timer.o) init:always
   Marking symbol __aeabi_fmul                     Glb (6 FltMul.o)
   Marking symbol __aeabi_fadd                     Glb (11 FltAdd.o)
-  Marking symbol .text_56                             (89 timer.o)
-    Marking fragment #8244 .text (23 timer.o) init:always
-  Marking symbol __aeabi_fmul                     Glb (6 FltMul.o)
-  Marking symbol __aeabi_fadd                     Glb (11 FltAdd.o)
   Marking symbol __aeabi_f2iz                     Glb (6 FltToS32.o)
   Marking symbol __aeabi_i2f                      Glb (6 S32ToFlt.o)
-Marking from fragment #8244 .text (23 timer.o) init:always
-  Marking symbol Balance_KD                       Glb (187 timer.o)
+    Marking fragment #6715 .text (6 S32ToFlt.o(m7M_tl.a)) init:always
+Marking from fragment #6715 .text (6 S32ToFlt.o(m7M_tl.a)) init:always
+Marking from fragment #8243 .text (23 timer.o) init:always
+  Marking symbol Balance_KD                       Glb (186 timer.o)
     Marking fragment #6435 .data (15 timer.o) init:always
 Marking from fragment #6435 .data (15 timer.o) init:always
-Marking from fragment #8243 .text (23 timer.o) init:always
-  Marking symbol Balance_Ki                       Glb (189 timer.o)
+Marking from fragment #8242 .text (23 timer.o) init:always
+  Marking symbol Balance_Ki                       Glb (188 timer.o)
     Marking fragment #6434 .data (14 timer.o) init:always
 Marking from fragment #6434 .data (14 timer.o) init:always
 Marking from fragment #6640 .text (6 FltMul.o(m7M_tl.a)) init:always
-Marking from fragment #8242 .text (23 timer.o) init:always
-  Marking symbol Balance_KP                       Glb (188 timer.o)
+Marking from fragment #8241 .text (23 timer.o) init:always
+  Marking symbol Balance_KP                       Glb (187 timer.o)
     Marking fragment #6433 .data (13 timer.o) init:always
 Marking from fragment #6433 .data (13 timer.o) init:always
 Marking from fragment #6671 .text (6 DblToFlt.o(m7M_tl.a)) init:always
-Marking from fragment #8306 .text (6 DblAdd.o(m7M_tl.a)) init:always
+Marking from fragment #8305 .text (6 DblAdd.o(m7M_tl.a)) init:always
   Marking symbol __iar_dsub                       Glb (10 DblAdd.o)
-    Marking fragment #8307 .text (6 DblAdd.o(m7M_tl.a)) init:always
+    Marking fragment #8306 .text (6 DblAdd.o(m7M_tl.a)) init:always
   Marking symbol __iar_dadd                       Glb (10 DblSub.o)
-    Marking fragment #8311 .text (6 DblSub.o(m7M_tl.a)) init:always
-Marking from fragment #8311 .text (6 DblSub.o(m7M_tl.a)) init:always
-Marking from fragment #8307 .text (6 DblAdd.o(m7M_tl.a)) init:always
-Marking from fragment #8241 .text (23 timer.o) init:always
+    Marking fragment #8310 .text (6 DblSub.o(m7M_tl.a)) init:always
+Marking from fragment #8310 .text (6 DblSub.o(m7M_tl.a)) init:always
+Marking from fragment #8306 .text (6 DblAdd.o(m7M_tl.a)) init:always
+Marking from fragment #8226 .text (23 timer.o) init:always
 Marking from fragment #6683 .text (6 FltToDbl.o(m7M_tl.a)) init:always
 Marking from fragment #8231 .text (23 timer.o) init:always
-  Marking symbol flag_stop                        Glb (202 timer.o)
+  Marking symbol flag_stop                        Glb (201 timer.o)
     Marking fragment #6430 .bss (10 timer.o) init:always
 Marking from fragment #6430 .bss (10 timer.o) init:always
 Marking from fragment #8240 .text (23 timer.o) init:always
@@ -2566,12 +2563,12 @@ Marking from fragment #8235 .text (23 timer.o) init:always
   Marking symbol control_balance_x::Bias_last         (5 timer.o)
     Marking fragment #6448 .bss (28 timer.o) init:always
 Marking from fragment #6448 .bss (28 timer.o) init:always
-Marking from fragment #8257 .text (23 timer.o) init:always
+Marking from fragment #8256 .text (23 timer.o) init:always
   Marking symbol att                              Glb (143 imu.o)
     Marking fragment #163 .bss (9 imu.o) init:always
 Marking from fragment #163 .bss (9 imu.o) init:always
-Marking from fragment #8256 .text (23 timer.o) init:always
-  Marking symbol balance_pwm_x                    Glb (196 timer.o)
+Marking from fragment #8255 .text (23 timer.o) init:always
+  Marking symbol balance_pwm_x                    Glb (195 timer.o)
     Marking fragment #6437 .bss (17 timer.o) init:always
 Marking from fragment #6437 .bss (17 timer.o) init:always
 Marking from fragment #8215 .text (23 timer.o) init:always
@@ -2589,7 +2586,6 @@ Marking from fragment #8215 .text (23 timer.o) init:always
   Marking symbol __aeabi_f2d                      Glb (6 FltToDbl.o)
   Marking symbol __aeabi_f2d                      Glb (6 FltToDbl.o)
   Marking symbol .text_38                             (71 timer.o)
-    Marking fragment #8226 .text (23 timer.o) init:always
   Marking symbol __aeabi_dmul                     Glb (6 DblMul.o)
   Marking symbol __aeabi_dadd                     Glb (9 DblAdd.o)
   Marking symbol __aeabi_d2f                      Glb (6 DblToFlt.o)
@@ -2609,19 +2605,17 @@ Marking from fragment #8215 .text (23 timer.o) init:always
     Marking fragment #8232 .text (23 timer.o) init:always
   Marking symbol .text_45                             (78 timer.o)
     Marking fragment #8233 .text (23 timer.o) init:always
-  Marking symbol __aeabi_i2f                      Glb (6 S32ToFlt.o)
   Marking symbol __aeabi_fmul                     Glb (6 FltMul.o)
   Marking symbol .text_46                             (79 timer.o)
     Marking fragment #8234 .text (23 timer.o) init:always
-  Marking symbol __aeabi_i2f                      Glb (6 S32ToFlt.o)
   Marking symbol __aeabi_fmul                     Glb (6 FltMul.o)
   Marking symbol __aeabi_fadd                     Glb (11 FltAdd.o)
 Marking from fragment #8234 .text (23 timer.o) init:always
-  Marking symbol Velocity_KI                      Glb (194 timer.o)
-    Marking fragment #6432 .bss (12 timer.o) init:always
-Marking from fragment #6432 .bss (12 timer.o) init:always
+  Marking symbol Velocity_KI                      Glb (193 timer.o)
+    Marking fragment #6432 .data (12 timer.o) init:always
+Marking from fragment #6432 .data (12 timer.o) init:always
 Marking from fragment #8233 .text (23 timer.o) init:always
-  Marking symbol Velocity_KP                      Glb (195 timer.o)
+  Marking symbol Velocity_KP                      Glb (194 timer.o)
     Marking fragment #6431 .data (11 timer.o) init:always
 Marking from fragment #6431 .data (11 timer.o) init:always
 Marking from fragment #8232 .text (23 timer.o) init:always
@@ -2635,7 +2629,6 @@ Marking from fragment #8227 .text (23 timer.o) init:always
   Marking symbol control_velocity::Encoder_Integral     (7 timer.o)
     Marking fragment #6447 .bss (27 timer.o) init:always
 Marking from fragment #6447 .bss (27 timer.o) init:always
-Marking from fragment #8226 .text (23 timer.o) init:always
 Marking from fragment #6677 .text (6 DblMul.o(m7M_tl.a)) init:always
 Marking from fragment #8225 .text (23 timer.o) init:always
 Marking from fragment #8224 .text (23 timer.o) init:always
@@ -2646,16 +2639,16 @@ Marking from fragment #8223 .text (23 timer.o) init:always
   Marking symbol control_velocity::Encoder_Least      (8 timer.o)
     Marking fragment #6445 .bss (25 timer.o) init:always
 Marking from fragment #6445 .bss (25 timer.o) init:always
-Marking from fragment #8255 .text (23 timer.o) init:always
-  Marking symbol velocity_pwm_x                   Glb (209 timer.o)
+Marking from fragment #8254 .text (23 timer.o) init:always
+  Marking symbol velocity_pwm_x                   Glb (208 timer.o)
     Marking fragment #6436 .bss (16 timer.o) init:always
 Marking from fragment #6436 .bss (16 timer.o) init:always
 Marking from fragment #7062 .text (8 pwm.o) init:always
   Marking symbol .text_14                             (25 pwm.o)
     Marking fragment #7072 .text (8 pwm.o) init:always
 Marking from fragment #7072 .text (8 pwm.o) init:always
-Marking from fragment #8254 .text (23 timer.o) init:always
-  Marking symbol encoder_x                        Glb (199 timer.o)
+Marking from fragment #8253 .text (23 timer.o) init:always
+  Marking symbol encoder_x                        Glb (198 timer.o)
     Marking fragment #6440 .bss (20 timer.o) init:always
 Marking from fragment #6440 .bss (20 timer.o) init:always
 Marking from fragment #6978 .text (18 imu.o) init:always
@@ -2673,7 +2666,7 @@ Marking from fragment #6977 .text (18 imu.o) init:always
   Marking symbol __aeabi_fmul                     Glb (6 FltMul.o)
   Marking symbol __aeabi_fmul                     Glb (6 FltMul.o)
   Marking symbol __aeabi_fsub                     Glb (9 FltSub.o)
-    Marking fragment #8296 .text (6 FltSub.o(m7M_tl.a)) init:always
+    Marking fragment #8295 .text (6 FltSub.o(m7M_tl.a)) init:always
   Marking symbol __aeabi_fmul                     Glb (6 FltMul.o)
   Marking symbol __aeabi_fmul                     Glb (6 FltMul.o)
   Marking symbol __aeabi_fsub                     Glb (9 FltSub.o)
@@ -2725,7 +2718,7 @@ Marking from fragment #6986 .text (18 imu.o) init:always
   Marking symbol q0                               Glb (153 imu.o)
     Marking fragment #164 .data (10 imu.o) init:always
 Marking from fragment #164 .data (10 imu.o) init:always
-Marking from fragment #8296 .text (6 FltSub.o(m7M_tl.a)) init:always
+Marking from fragment #8295 .text (6 FltSub.o(m7M_tl.a)) init:always
   Marking symbol __iar_fadd                       Glb (10 FltSub.o)
   Marking symbol __iar_fsub                       Glb (12 FltAdd.o)
 Marking from fragment #6989 .text (18 imu.o) init:always
@@ -2795,7 +2788,7 @@ Marking from fragment #6975 .text (18 imu.o) init:always
     Marking fragment #6653 .text (6 FltCmpEq.o(m7M_tl.a)) init:always
   Marking symbol .text_17                             (34 imu.o)
     Marking fragment #6980 .text (18 imu.o) init:always
-  Marking symbol time_check                       Glb (208 timer.o)
+  Marking symbol time_check                       Glb (207 timer.o)
   Marking symbol __aeabi_fmul                     Glb (6 FltMul.o)
   Marking symbol __aeabi_fmul                     Glb (6 FltMul.o)
   Marking symbol __aeabi_fadd                     Glb (11 FltAdd.o)
@@ -2907,7 +2900,7 @@ Marking from fragment #6975 .text (18 imu.o) init:always
   Marking symbol __aeabi_fmul                     Glb (6 FltMul.o)
   Marking symbol __aeabi_f2d                      Glb (6 FltToDbl.o)
   Marking symbol atan2                            Glb (17 atan2_64.o)
-    Marking fragment #8303 .text (6 atan2_64.o(m7M_tl.a)) init:always
+    Marking fragment #8302 .text (6 atan2_64.o(m7M_tl.a)) init:always
   Marking symbol __aeabi_dmul                     Glb (6 DblMul.o)
   Marking symbol __aeabi_d2f                      Glb (6 DblToFlt.o)
   Marking symbol __aeabi_fmul                     Glb (6 FltMul.o)
@@ -2916,7 +2909,7 @@ Marking from fragment #6975 .text (18 imu.o) init:always
   Marking symbol __aeabi_fmul                     Glb (6 FltMul.o)
   Marking symbol __aeabi_f2d                      Glb (6 FltToDbl.o)
   Marking symbol asin                             Glb (23 asin64.o)
-    Marking fragment #8298 .text (6 asin64.o(m7M_tl.a)) init:always
+    Marking fragment #8297 .text (6 asin64.o(m7M_tl.a)) init:always
   Marking symbol __aeabi_dmul                     Glb (6 DblMul.o)
   Marking symbol __aeabi_d2f                      Glb (6 DblToFlt.o)
   Marking symbol __aeabi_fmul                     Glb (6 FltMul.o)
@@ -2935,22 +2928,22 @@ Marking from fragment #6975 .text (18 imu.o) init:always
   Marking symbol atan2                            Glb (17 atan2_64.o)
   Marking symbol __aeabi_dmul                     Glb (6 DblMul.o)
   Marking symbol __aeabi_d2f                      Glb (6 DblToFlt.o)
-Marking from fragment #8298 .text (6 asin64.o(m7M_tl.a)) init:always
+Marking from fragment #8297 .text (6 asin64.o(m7M_tl.a)) init:always
   Marking symbol                                      (14 asin64.o)
-    Marking fragment #8299 .text (6 asin64.o(m7M_tl.a)) init:always
+    Marking fragment #8298 .text (6 asin64.o(m7M_tl.a)) init:always
   Marking symbol                                      (14 asin64.o)
   Marking symbol .text_4                              (8 asin64.o)
-    Marking fragment #8300 .text (6 asin64.o(m7M_tl.a)) init:always
+    Marking fragment #8299 .text (6 asin64.o(m7M_tl.a)) init:always
   Marking symbol __aeabi_dsub                     Glb (9 DblSub.o)
-    Marking fragment #8310 .text (6 DblSub.o(m7M_tl.a)) init:always
+    Marking fragment #8309 .text (6 DblSub.o(m7M_tl.a)) init:always
   Marking symbol __aeabi_dadd                     Glb (9 DblAdd.o)
   Marking symbol __aeabi_dmul                     Glb (6 DblMul.o)
   Marking symbol sqrt                             Glb (7 sqrt.o)
     Marking fragment #6773 .text (6 sqrt.o(m7M_tl.a)) init:always
   Marking symbol .text_5                              (10 asin64.o)
-    Marking fragment #8301 .text (6 asin64.o(m7M_tl.a)) init:always
+    Marking fragment #8300 .text (6 asin64.o(m7M_tl.a)) init:always
   Marking symbol .text_6                              (11 asin64.o)
-    Marking fragment #8302 .text (6 asin64.o(m7M_tl.a)) init:always
+    Marking fragment #8301 .text (6 asin64.o(m7M_tl.a)) init:always
   Marking symbol                                      (14 asin64.o)
   Marking symbol __aeabi_ddiv                     Glb (6 DblDiv.o)
     Marking fragment #6753 .text (6 DblDiv.o(m7M_tl.a)) init:always
@@ -2984,26 +2977,26 @@ Marking from fragment #6767 .text (7 iar_Atan64.o(m7M_tl.a)) init:always
     Marking fragment #6766 .rodata (6 iar_Atan64.o(m7M_tl.a)) init:always
 Marking from fragment #6766 .rodata (6 iar_Atan64.o(m7M_tl.a)) init:always
 Marking from fragment #6753 .text (6 DblDiv.o(m7M_tl.a)) init:always
-Marking from fragment #8302 .text (6 asin64.o(m7M_tl.a)) init:always
 Marking from fragment #8301 .text (6 asin64.o(m7M_tl.a)) init:always
+Marking from fragment #8300 .text (6 asin64.o(m7M_tl.a)) init:always
 Marking from fragment #6773 .text (6 sqrt.o(m7M_tl.a)) init:always
   Marking symbol __iar_errno_set_EDOM             Ext (6 sqrt.o)
-Marking from fragment #8310 .text (6 DblSub.o(m7M_tl.a)) init:always
+Marking from fragment #8309 .text (6 DblSub.o(m7M_tl.a)) init:always
   Marking symbol __iar_dadd                       Glb (10 DblSub.o)
   Marking symbol __iar_dsub                       Glb (10 DblAdd.o)
-Marking from fragment #8300 .text (6 asin64.o(m7M_tl.a)) init:always
 Marking from fragment #8299 .text (6 asin64.o(m7M_tl.a)) init:always
-Marking from fragment #8303 .text (6 atan2_64.o(m7M_tl.a)) init:always
+Marking from fragment #8298 .text (6 asin64.o(m7M_tl.a)) init:always
+Marking from fragment #8302 .text (6 atan2_64.o(m7M_tl.a)) init:always
   Marking symbol __aeabi_ddiv                     Glb (6 DblDiv.o)
   Marking symbol __aeabi_ddiv                     Glb (6 DblDiv.o)
   Marking symbol                                      (13 atan2_64.o)
-    Marking fragment #8305 .text (6 atan2_64.o(m7M_tl.a)) init:always
+    Marking fragment #8304 .text (6 atan2_64.o(m7M_tl.a)) init:always
   Marking symbol                                      (13 atan2_64.o)
   Marking symbol .text_3                              (6 atan2_64.o)
-    Marking fragment #8304 .text (6 atan2_64.o(m7M_tl.a)) init:always
+    Marking fragment #8303 .text (6 atan2_64.o(m7M_tl.a)) init:always
   Marking symbol __iar_Atan64                     Glb (14 iar_Atan64.o)
+Marking from fragment #8303 .text (6 atan2_64.o(m7M_tl.a)) init:always
 Marking from fragment #8304 .text (6 atan2_64.o(m7M_tl.a)) init:always
-Marking from fragment #8305 .text (6 atan2_64.o(m7M_tl.a)) init:always
 Marking from fragment #6992 .text (18 imu.o) init:always
 Marking from fragment #6991 .text (18 imu.o) init:always
   Marking symbol att                              Glb (143 imu.o)
@@ -3049,11 +3042,11 @@ Marking from fragment #7036 .text (17 MPU6050.o) init:always
   Marking symbol __aeabi_fsub                     Glb (9 FltSub.o)
   Marking symbol __aeabi_fmul                     Glb (6 FltMul.o)
   Marking symbol __aeabi_fadd                     Glb (11 FltAdd.o)
-Marking from fragment #8253 .text (23 timer.o) init:always
+Marking from fragment #8252 .text (23 timer.o) init:always
   Marking symbol acc_raw_f                        Glb (183 MPU6050.o)
     Marking fragment #379 .bss (10 MPU6050.o) init:always
 Marking from fragment #379 .bss (10 MPU6050.o) init:always
-Marking from fragment #8252 .text (23 timer.o) init:always
+Marking from fragment #8251 .text (23 timer.o) init:always
   Marking symbol acc_att_lpf                      Glb (178 MPU6050.o)
     Marking fragment #381 .bss (12 MPU6050.o) init:always
 Marking from fragment #381 .bss (12 MPU6050.o) init:always
@@ -3170,11 +3163,11 @@ Marking from fragment #7033 .text (17 MPU6050.o) init:always
   Marking symbol __aeabi_fmul                     Glb (6 FltMul.o)
   Marking symbol __aeabi_fmul                     Glb (6 FltMul.o)
 Marking from fragment #7048 .text (17 MPU6050.o) init:always
-Marking from fragment #8251 .text (23 timer.o) init:always
+Marking from fragment #8250 .text (23 timer.o) init:always
   Marking symbol Mpu                              Glb (176 MPU6050.o)
     Marking fragment #384 .bss (15 MPU6050.o) init:always
 Marking from fragment #384 .bss (15 MPU6050.o) init:always
-Marking from fragment #8250 .text (23 timer.o) init:always
+Marking from fragment #8249 .text (23 timer.o) init:always
   Marking symbol gyro_raw_f                       Glb (202 MPU6050.o)
     Marking fragment #380 .bss (11 MPU6050.o) init:always
 Marking from fragment #380 .bss (11 MPU6050.o) init:always
@@ -3249,15 +3242,15 @@ Marking from fragment #8214 .text (23 timer.o) init:always
 Marking from fragment #8222 .text (23 timer.o) init:always
 Marking from fragment #6740 .text (6 U32ToFlt.o(m7M_tl.a)) init:always
 Marking from fragment #8221 .text (23 timer.o) init:always
-Marking from fragment #8249 .text (23 timer.o) init:always
-  Marking symbol run_start                        Glb (204 timer.o)
+Marking from fragment #8248 .text (23 timer.o) init:always
+  Marking symbol run_start                        Glb (203 timer.o)
     Marking fragment #6451 .bss (31 timer.o) init:always
 Marking from fragment #6451 .bss (31 timer.o) init:always
 Marking from fragment #8220 .text (23 timer.o) init:always
-  Marking symbol running_tim_cnt                  Glb (206 timer.o)
+  Marking symbol running_tim_cnt                  Glb (205 timer.o)
     Marking fragment #6428 .bss (8 timer.o) init:always
 Marking from fragment #6428 .bss (8 timer.o) init:always
-Marking from fragment #8248 .text (23 timer.o) init:always
+Marking from fragment #8247 .text (23 timer.o) init:always
 Marking from fragment #652 .text (67 startup_stm32f429_439xx.o) init:always
   Marking symbol SDIO_IRQHandler                      (474 startup_stm32f429_439xx.o)
 Marking from fragment #651 .text (66 startup_stm32f429_439xx.o) init:always
@@ -3425,20 +3418,20 @@ Marking fragment #6876 .text (6 data_init.o(rt7M_tl.a)) {__iar_data_init3} init:
 Marking fragment #6884 .text (7 zero_init3.o(rt7M_tl.a)) {__iar_zero_init3} init:{__iar_zero_init3}
 Marking fragment #6891 .text (7 copy_init3.o(rt7M_tl.a)) {__iar_copy_init3} init:{__iar_copy_init3}
 Marking fragment #6898 .text (7 rle_init_single.o(rt7M_tl.a)) {__iar_rle_init_single3} init:{__iar_rle_init_single3}
-Marking fragment #8332 .text (7 rle_init.o(rt7M_tl.a)) {__iar_rle_init3} init:{__iar_rle_init3}
+Marking fragment #8331 .text (7 rle_init.o(rt7M_tl.a)) {__iar_rle_init3} init:{__iar_rle_init3}
 Marking fragment #6913 .text (7 packbits_init_single.o(rt7M_tl.a)) {__iar_packbits_init_single3} init:{__iar_packbits_init_single3}
 Marking fragment #6920 .text (7 packbits_init.o(rt7M_tl.a)) {__iar_packbits_init3} init:{__iar_packbits_init3}
 Marking fragment #6927 .text (7 lz77_init_single.o(rt7M_tl.a)) {__iar_lz77_init_single3} init:{__iar_lz77_init_single3}
-Marking fragment #8336 .text (7 lz77_init.o(rt7M_tl.a)) {__iar_lz77_init3} init:{__iar_lz77_init3}
-Marking from fragment #8336 .text (7 lz77_init.o(rt7M_tl.a)) {__iar_lz77_init3} init:{__iar_lz77_init3}
+Marking fragment #8335 .text (7 lz77_init.o(rt7M_tl.a)) {__iar_lz77_init3} init:{__iar_lz77_init3}
+Marking from fragment #8335 .text (7 lz77_init.o(rt7M_tl.a)) {__iar_lz77_init3} init:{__iar_lz77_init3}
   Marking symbol __iar_SB                             (6 lz77_init.o)
     Marking fragment #6933 .rodata (6 lz77_init.o(rt7M_tl.a)) {__iar_lz77_init3} init:{__iar_lz77_init3}
   Marking symbol InStream_StepRegion                  (4 lz77_init.o)
-    Marking fragment #8333 .text (7 lz77_init.o(rt7M_tl.a)) {__iar_lz77_init3} init:{__iar_lz77_init3}
+    Marking fragment #8332 .text (7 lz77_init.o(rt7M_tl.a)) {__iar_lz77_init3} init:{__iar_lz77_init3}
   Marking symbol OutStream_Write                      (5 lz77_init.o)
-    Marking fragment #8335 .text (7 lz77_init.o(rt7M_tl.a)) {__iar_lz77_init3} init:{__iar_lz77_init3}
-  Marking symbol InStream_Read                        (3 lz77_init.o)
     Marking fragment #8334 .text (7 lz77_init.o(rt7M_tl.a)) {__iar_lz77_init3} init:{__iar_lz77_init3}
+  Marking symbol InStream_Read                        (3 lz77_init.o)
+    Marking fragment #8333 .text (7 lz77_init.o(rt7M_tl.a)) {__iar_lz77_init3} init:{__iar_lz77_init3}
   Marking symbol InStream_Read                        (3 lz77_init.o)
   Marking symbol abort                            Glb (9 abort.o)
     Marking fragment #6943 .text (6 abort.o(dl7M_tln.a)) {__iar_lz77_init3} init:{__iar_lz77_init3}
@@ -3450,22 +3443,22 @@ Marking from fragment #6943 .text (6 abort.o(dl7M_tln.a)) {__iar_lz77_init3} ini
     Marking fragment #6821 .text (6 exit.o(shb_l.a)) {__iar_lz77_init3} init:{__iar_lz77_init3}
 Marking from fragment #6821 .text (6 exit.o(shb_l.a)) {__iar_lz77_init3} init:{__iar_lz77_init3}
   Marking symbol __iar_close_ttio                 Glb (15 iarttio.o)
-    Marking fragment #8319 .text (6 iarttio.o(shb_l.a)) {__iar_lz77_init3} init:{__iar_lz77_init3}
-Marking from fragment #8319 .text (6 iarttio.o(shb_l.a)) {__iar_lz77_init3} init:{__iar_lz77_init3}
+    Marking fragment #8318 .text (6 iarttio.o(shb_l.a)) {__iar_lz77_init3} init:{__iar_lz77_init3}
+Marking from fragment #8318 .text (6 iarttio.o(shb_l.a)) {__iar_lz77_init3} init:{__iar_lz77_init3}
   Marking symbol __iar_lookup_ttioh               Glb (19 XShttio.o)
-    Marking fragment #8324 .text (7 XShttio.o(dl7M_tln.a)) {__iar_lz77_init3} init:{__iar_lz77_init3}
-Marking from fragment #8324 .text (7 XShttio.o(dl7M_tln.a)) {__iar_lz77_init3} init:{__iar_lz77_init3}
+    Marking fragment #8323 .text (7 XShttio.o(dl7M_tln.a)) {__iar_lz77_init3} init:{__iar_lz77_init3}
+Marking from fragment #8323 .text (7 XShttio.o(dl7M_tln.a)) {__iar_lz77_init3} init:{__iar_lz77_init3}
   Marking symbol .text_8                              (16 XShttio.o)
-    Marking fragment #8326 .text (7 XShttio.o(dl7M_tln.a)) {__iar_lz77_init3} init:{__iar_lz77_init3}
-Marking from fragment #8326 .text (7 XShttio.o(dl7M_tln.a)) {__iar_lz77_init3} init:{__iar_lz77_init3}
+    Marking fragment #8325 .text (7 XShttio.o(dl7M_tln.a)) {__iar_lz77_init3} init:{__iar_lz77_init3}
+Marking from fragment #8325 .text (7 XShttio.o(dl7M_tln.a)) {__iar_lz77_init3} init:{__iar_lz77_init3}
   Marking symbol __iar_ttio_handles                   (3 XShttio.o)
     Marking fragment #6854 .data (8 XShttio.o(dl7M_tln.a)) {__iar_lz77_init3} init:{__iar_lz77_init3}
 Marking from fragment #6854 .data (8 XShttio.o(dl7M_tln.a)) {__iar_lz77_init3} init:{__iar_lz77_init3}
+Marking from fragment #8333 .text (7 lz77_init.o(rt7M_tl.a)) {__iar_lz77_init3} init:{__iar_lz77_init3}
 Marking from fragment #8334 .text (7 lz77_init.o(rt7M_tl.a)) {__iar_lz77_init3} init:{__iar_lz77_init3}
-Marking from fragment #8335 .text (7 lz77_init.o(rt7M_tl.a)) {__iar_lz77_init3} init:{__iar_lz77_init3}
   Marking symbol __iar_SB                             (6 lz77_init.o)
   Marking symbol abort                            Glb (9 abort.o)
-Marking from fragment #8333 .text (7 lz77_init.o(rt7M_tl.a)) {__iar_lz77_init3} init:{__iar_lz77_init3}
+Marking from fragment #8332 .text (7 lz77_init.o(rt7M_tl.a)) {__iar_lz77_init3} init:{__iar_lz77_init3}
 Marking from fragment #6933 .rodata (6 lz77_init.o(rt7M_tl.a)) {__iar_lz77_init3} init:{__iar_lz77_init3}
 Marking from fragment #6927 .text (7 lz77_init_single.o(rt7M_tl.a)) {__iar_lz77_init_single3} init:{__iar_lz77_init_single3}
   Marking symbol __iar_SB                             (3 lz77_init_single.o)
@@ -3481,14 +3474,14 @@ Marking from fragment #6943 .text (6 abort.o(dl7M_tln.a)) {__iar_packbits_init3}
     Marking fragment #6821 .text (6 exit.o(shb_l.a)) {__iar_packbits_init3} init:{__iar_packbits_init3}
 Marking from fragment #6821 .text (6 exit.o(shb_l.a)) {__iar_packbits_init3} init:{__iar_packbits_init3}
   Marking symbol __iar_close_ttio                 Glb (15 iarttio.o)
-    Marking fragment #8319 .text (6 iarttio.o(shb_l.a)) {__iar_packbits_init3} init:{__iar_packbits_init3}
-Marking from fragment #8319 .text (6 iarttio.o(shb_l.a)) {__iar_packbits_init3} init:{__iar_packbits_init3}
+    Marking fragment #8318 .text (6 iarttio.o(shb_l.a)) {__iar_packbits_init3} init:{__iar_packbits_init3}
+Marking from fragment #8318 .text (6 iarttio.o(shb_l.a)) {__iar_packbits_init3} init:{__iar_packbits_init3}
   Marking symbol __iar_lookup_ttioh               Glb (19 XShttio.o)
-    Marking fragment #8324 .text (7 XShttio.o(dl7M_tln.a)) {__iar_packbits_init3} init:{__iar_packbits_init3}
-Marking from fragment #8324 .text (7 XShttio.o(dl7M_tln.a)) {__iar_packbits_init3} init:{__iar_packbits_init3}
+    Marking fragment #8323 .text (7 XShttio.o(dl7M_tln.a)) {__iar_packbits_init3} init:{__iar_packbits_init3}
+Marking from fragment #8323 .text (7 XShttio.o(dl7M_tln.a)) {__iar_packbits_init3} init:{__iar_packbits_init3}
   Marking symbol .text_8                              (16 XShttio.o)
-    Marking fragment #8326 .text (7 XShttio.o(dl7M_tln.a)) {__iar_packbits_init3} init:{__iar_packbits_init3}
-Marking from fragment #8326 .text (7 XShttio.o(dl7M_tln.a)) {__iar_packbits_init3} init:{__iar_packbits_init3}
+    Marking fragment #8325 .text (7 XShttio.o(dl7M_tln.a)) {__iar_packbits_init3} init:{__iar_packbits_init3}
+Marking from fragment #8325 .text (7 XShttio.o(dl7M_tln.a)) {__iar_packbits_init3} init:{__iar_packbits_init3}
   Marking symbol __iar_ttio_handles                   (3 XShttio.o)
     Marking fragment #6854 .data (8 XShttio.o(dl7M_tln.a)) {__iar_packbits_init3} init:{__iar_packbits_init3}
 Marking from fragment #6854 .data (8 XShttio.o(dl7M_tln.a)) {__iar_packbits_init3} init:{__iar_packbits_init3}
@@ -3497,11 +3490,11 @@ Marking from fragment #6913 .text (7 packbits_init_single.o(rt7M_tl.a)) {__iar_p
   Marking symbol __iar_SB                             (3 packbits_init_single.o)
     Marking fragment #6912 .rodata (6 packbits_init_single.o(rt7M_tl.a)) {__iar_packbits_init_single3} init:{__iar_packbits_init_single3}
 Marking from fragment #6912 .rodata (6 packbits_init_single.o(rt7M_tl.a)) {__iar_packbits_init_single3} init:{__iar_packbits_init_single3}
-Marking from fragment #8332 .text (7 rle_init.o(rt7M_tl.a)) {__iar_rle_init3} init:{__iar_rle_init3}
+Marking from fragment #8331 .text (7 rle_init.o(rt7M_tl.a)) {__iar_rle_init3} init:{__iar_rle_init3}
   Marking symbol __iar_SB                             (4 rle_init.o)
     Marking fragment #6904 .rodata (6 rle_init.o(rt7M_tl.a)) {__iar_rle_init3} init:{__iar_rle_init3}
   Marking symbol InStream_StepRegion                  (3 rle_init.o)
-    Marking fragment #8331 .text (7 rle_init.o(rt7M_tl.a)) {__iar_rle_init3} init:{__iar_rle_init3}
+    Marking fragment #8330 .text (7 rle_init.o(rt7M_tl.a)) {__iar_rle_init3} init:{__iar_rle_init3}
   Marking symbol abort                            Glb (9 abort.o)
     Marking fragment #6943 .text (6 abort.o(dl7M_tln.a)) {__iar_rle_init3} init:{__iar_rle_init3}
 Marking from fragment #6943 .text (6 abort.o(dl7M_tln.a)) {__iar_rle_init3} init:{__iar_rle_init3}
@@ -3509,18 +3502,18 @@ Marking from fragment #6943 .text (6 abort.o(dl7M_tln.a)) {__iar_rle_init3} init
     Marking fragment #6821 .text (6 exit.o(shb_l.a)) {__iar_rle_init3} init:{__iar_rle_init3}
 Marking from fragment #6821 .text (6 exit.o(shb_l.a)) {__iar_rle_init3} init:{__iar_rle_init3}
   Marking symbol __iar_close_ttio                 Glb (15 iarttio.o)
-    Marking fragment #8319 .text (6 iarttio.o(shb_l.a)) {__iar_rle_init3} init:{__iar_rle_init3}
-Marking from fragment #8319 .text (6 iarttio.o(shb_l.a)) {__iar_rle_init3} init:{__iar_rle_init3}
+    Marking fragment #8318 .text (6 iarttio.o(shb_l.a)) {__iar_rle_init3} init:{__iar_rle_init3}
+Marking from fragment #8318 .text (6 iarttio.o(shb_l.a)) {__iar_rle_init3} init:{__iar_rle_init3}
   Marking symbol __iar_lookup_ttioh               Glb (19 XShttio.o)
-    Marking fragment #8324 .text (7 XShttio.o(dl7M_tln.a)) {__iar_rle_init3} init:{__iar_rle_init3}
-Marking from fragment #8324 .text (7 XShttio.o(dl7M_tln.a)) {__iar_rle_init3} init:{__iar_rle_init3}
+    Marking fragment #8323 .text (7 XShttio.o(dl7M_tln.a)) {__iar_rle_init3} init:{__iar_rle_init3}
+Marking from fragment #8323 .text (7 XShttio.o(dl7M_tln.a)) {__iar_rle_init3} init:{__iar_rle_init3}
   Marking symbol .text_8                              (16 XShttio.o)
-    Marking fragment #8326 .text (7 XShttio.o(dl7M_tln.a)) {__iar_rle_init3} init:{__iar_rle_init3}
-Marking from fragment #8326 .text (7 XShttio.o(dl7M_tln.a)) {__iar_rle_init3} init:{__iar_rle_init3}
+    Marking fragment #8325 .text (7 XShttio.o(dl7M_tln.a)) {__iar_rle_init3} init:{__iar_rle_init3}
+Marking from fragment #8325 .text (7 XShttio.o(dl7M_tln.a)) {__iar_rle_init3} init:{__iar_rle_init3}
   Marking symbol __iar_ttio_handles                   (3 XShttio.o)
     Marking fragment #6854 .data (8 XShttio.o(dl7M_tln.a)) {__iar_rle_init3} init:{__iar_rle_init3}
 Marking from fragment #6854 .data (8 XShttio.o(dl7M_tln.a)) {__iar_rle_init3} init:{__iar_rle_init3}
-Marking from fragment #8331 .text (7 rle_init.o(rt7M_tl.a)) {__iar_rle_init3} init:{__iar_rle_init3}
+Marking from fragment #8330 .text (7 rle_init.o(rt7M_tl.a)) {__iar_rle_init3} init:{__iar_rle_init3}
 Marking from fragment #6904 .rodata (6 rle_init.o(rt7M_tl.a)) {__iar_rle_init3} init:{__iar_rle_init3}
 Marking from fragment #6898 .text (7 rle_init_single.o(rt7M_tl.a)) {__iar_rle_init_single3} init:{__iar_rle_init_single3}
   Marking symbol __iar_SB                             (3 rle_init_single.o)
@@ -5235,7 +5228,7 @@ References #6429 .data (9 timer.o)
   Marking fragment #6457 .debug_info (37 timer.o)
 References #6438 .bss (18 timer.o)
   Marking fragment #6458 .debug_info (38 timer.o)
-References #6432 .bss (12 timer.o)
+References #6432 .data (12 timer.o)
   Marking fragment #6459 .debug_info (39 timer.o)
 References #6431 .data (11 timer.o)
   Marking fragment #6460 .debug_info (40 timer.o)
@@ -5359,31 +5352,31 @@ References #8219 .text (23 timer.o)
   Marking fragment #6533 .debug_aranges (171 timer.o)
 References #6539 .data (10 usart.o)
   Marking fragment #6547 .debug_info (18 usart.o)
-References #8266 .text (11 usart.o)
+References #8265 .text (11 usart.o)
   Marking fragment #6549 .iar.debug_line (20 usart.o)
-References #8266 .text (11 usart.o)
+References #8265 .text (11 usart.o)
   Marking fragment #6550 .debug_line (21 usart.o)
-References #8266 .text (11 usart.o)
+References #8265 .text (11 usart.o)
   Marking fragment #6551 .debug_info (22 usart.o)
-References #8266 .text (11 usart.o)
+References #8265 .text (11 usart.o)
   Marking fragment #6552 .debug_frame (23 usart.o)
 References #6547 .debug_info (18 usart.o)
   Marking fragment #6604 .debug_pubnames (91 usart.o)
 References #6551 .debug_info (22 usart.o)
   Marking fragment #6605 .debug_pubnames (94 usart.o)
-References #8266 .text (11 usart.o)
+References #8265 .text (11 usart.o)
   Marking fragment #6606 .debug_aranges (96 usart.o)
-References #8293 .text (6 FltAdd.o(m7M_tl.a))
+References #8292 .text (6 FltAdd.o(m7M_tl.a))
   Marking fragment #6634 .debug_frame (8 FltAdd.o(m7M_tl.a))
-References #8294 .text (6 FltAdd.o(m7M_tl.a))
+References #8293 .text (6 FltAdd.o(m7M_tl.a))
   Marking fragment #6635 .debug_frame (11 FltAdd.o(m7M_tl.a))
-References #8295 .text (6 FltAdd.o(m7M_tl.a))
+References #8294 .text (6 FltAdd.o(m7M_tl.a))
   Marking fragment #6636 .debug_frame (13 FltAdd.o(m7M_tl.a))
 References #6640 .text (6 FltMul.o(m7M_tl.a))
   Marking fragment #6642 .debug_frame (8 FltMul.o(m7M_tl.a))
-References #8296 .text (6 FltSub.o(m7M_tl.a))
+References #8295 .text (6 FltSub.o(m7M_tl.a))
   Marking fragment #6648 .debug_frame (8 FltSub.o(m7M_tl.a))
-References #8297 .text (6 FltSub.o(m7M_tl.a))
+References #8296 .text (6 FltSub.o(m7M_tl.a))
   Marking fragment #6649 .debug_frame (11 FltSub.o(m7M_tl.a))
 References #6653 .text (6 FltCmpEq.o(m7M_tl.a))
   Marking fragment #6655 .debug_frame (8 FltCmpEq.o(m7M_tl.a))
@@ -5397,13 +5390,13 @@ References #6677 .text (6 DblMul.o(m7M_tl.a))
   Marking fragment #6679 .debug_frame (8 DblMul.o(m7M_tl.a))
 References #6683 .text (6 FltToDbl.o(m7M_tl.a))
   Marking fragment #6685 .debug_frame (8 FltToDbl.o(m7M_tl.a))
-References #8298 .text (6 asin64.o(m7M_tl.a))
+References #8297 .text (6 asin64.o(m7M_tl.a))
   Marking fragment #6692 .debug_frame (9 asin64.o(m7M_tl.a))
-References #8299 .text (6 asin64.o(m7M_tl.a))
+References #8298 .text (6 asin64.o(m7M_tl.a))
   Marking fragment #6693 .debug_frame (12 asin64.o(m7M_tl.a))
-References #8303 .text (6 atan2_64.o(m7M_tl.a))
+References #8302 .text (6 atan2_64.o(m7M_tl.a))
   Marking fragment #6699 .debug_frame (9 atan2_64.o(m7M_tl.a))
-References #8305 .text (6 atan2_64.o(m7M_tl.a))
+References #8304 .text (6 atan2_64.o(m7M_tl.a))
   Marking fragment #6700 .debug_frame (12 atan2_64.o(m7M_tl.a))
 References #6703 .text (6 FltToS32.o(m7M_tl.a))
   Marking fragment #6705 .debug_frame (8 FltToS32.o(m7M_tl.a))
@@ -5413,17 +5406,17 @@ References #6715 .text (6 S32ToFlt.o(m7M_tl.a))
   Marking fragment #6717 .debug_frame (8 S32ToFlt.o(m7M_tl.a))
 References #6721 .text (6 printf.o(dl7M_tln.a))
   Marking fragment #6724 .debug_frame (9 printf.o(dl7M_tln.a))
-References #8306 .text (6 DblAdd.o(m7M_tl.a))
+References #8305 .text (6 DblAdd.o(m7M_tl.a))
   Marking fragment #6735 .debug_frame (8 DblAdd.o(m7M_tl.a))
-References #8307 .text (6 DblAdd.o(m7M_tl.a))
+References #8306 .text (6 DblAdd.o(m7M_tl.a))
   Marking fragment #6736 .debug_frame (11 DblAdd.o(m7M_tl.a))
 References #6740 .text (6 U32ToFlt.o(m7M_tl.a))
   Marking fragment #6742 .debug_frame (8 U32ToFlt.o(m7M_tl.a))
 References #6753 .text (6 DblDiv.o(m7M_tl.a))
   Marking fragment #6755 .debug_frame (8 DblDiv.o(m7M_tl.a))
-References #8310 .text (6 DblSub.o(m7M_tl.a))
+References #8309 .text (6 DblSub.o(m7M_tl.a))
   Marking fragment #6761 .debug_frame (8 DblSub.o(m7M_tl.a))
-References #8311 .text (6 DblSub.o(m7M_tl.a))
+References #8310 .text (6 DblSub.o(m7M_tl.a))
   Marking fragment #6762 .debug_frame (11 DblSub.o(m7M_tl.a))
 References #6767 .text (7 iar_Atan64.o(m7M_tl.a))
   Marking fragment #6770 .debug_frame (10 iar_Atan64.o(m7M_tl.a))
@@ -5447,19 +5440,19 @@ References #6833 .text (6 iarwstd.o(shb_l.a))
   Marking fragment #6836 .debug_frame (9 iarwstd.o(shb_l.a))
 References #6839 .text (6 iarwrite.o(shb_l.a))
   Marking fragment #6842 .debug_frame (9 iarwrite.o(shb_l.a))
-References #8319 .text (6 iarttio.o(shb_l.a))
+References #8318 .text (6 iarttio.o(shb_l.a))
   Marking fragment #6848 .debug_frame (9 iarttio.o(shb_l.a))
-References #8320 .text (6 iarttio.o(shb_l.a))
+References #8319 .text (6 iarttio.o(shb_l.a))
   Marking fragment #6849 .debug_frame (12 iarttio.o(shb_l.a))
-References #8322 .text (7 XShttio.o(dl7M_tln.a))
+References #8321 .text (7 XShttio.o(dl7M_tln.a))
   Marking fragment #6857 .debug_frame (11 XShttio.o(dl7M_tln.a))
-References #8323 .text (7 XShttio.o(dl7M_tln.a))
+References #8322 .text (7 XShttio.o(dl7M_tln.a))
   Marking fragment #6858 .debug_frame (14 XShttio.o(dl7M_tln.a))
-References #8324 .text (7 XShttio.o(dl7M_tln.a))
+References #8323 .text (7 XShttio.o(dl7M_tln.a))
   Marking fragment #6859 .debug_frame (16 XShttio.o(dl7M_tln.a))
-References #8327 .text (6 xprintftiny.o(dl7M_tln.a))
+References #8326 .text (6 xprintftiny.o(dl7M_tln.a))
   Marking fragment #6866 .debug_frame (10 xprintftiny.o(dl7M_tln.a))
-References #8328 .text (6 xprintftiny.o(dl7M_tln.a))
+References #8327 .text (6 xprintftiny.o(dl7M_tln.a))
   Marking fragment #6867 .debug_frame (13 xprintftiny.o(dl7M_tln.a))
 References #6870 .text (6 strlen.o(rt7M_tl.a))
   Marking fragment #6872 .debug_frame (8 strlen.o(rt7M_tl.a))
@@ -5471,9 +5464,9 @@ References #6891 .text (7 copy_init3.o(rt7M_tl.a))
   Marking fragment #6894 .debug_frame (10 copy_init3.o(rt7M_tl.a)) {__iar_copy_init3}
 References #6898 .text (7 rle_init_single.o(rt7M_tl.a))
   Marking fragment #6901 .debug_frame (10 rle_init_single.o(rt7M_tl.a)) {__iar_rle_init_single3}
-References #8331 .text (7 rle_init.o(rt7M_tl.a))
+References #8330 .text (7 rle_init.o(rt7M_tl.a))
   Marking fragment #6908 .debug_frame (10 rle_init.o(rt7M_tl.a)) {__iar_rle_init3}
-References #8332 .text (7 rle_init.o(rt7M_tl.a))
+References #8331 .text (7 rle_init.o(rt7M_tl.a))
   Marking fragment #6909 .debug_frame (13 rle_init.o(rt7M_tl.a)) {__iar_rle_init3}
 References #6913 .text (7 packbits_init_single.o(rt7M_tl.a))
   Marking fragment #6916 .debug_frame (10 packbits_init_single.o(rt7M_tl.a)) {__iar_packbits_init_single3}
@@ -5481,13 +5474,13 @@ References #6920 .text (7 packbits_init.o(rt7M_tl.a))
   Marking fragment #6923 .debug_frame (10 packbits_init.o(rt7M_tl.a)) {__iar_packbits_init3}
 References #6927 .text (7 lz77_init_single.o(rt7M_tl.a))
   Marking fragment #6930 .debug_frame (10 lz77_init_single.o(rt7M_tl.a)) {__iar_lz77_init_single3}
-References #8333 .text (7 lz77_init.o(rt7M_tl.a))
+References #8332 .text (7 lz77_init.o(rt7M_tl.a))
   Marking fragment #6937 .debug_frame (10 lz77_init.o(rt7M_tl.a)) {__iar_lz77_init3}
-References #8334 .text (7 lz77_init.o(rt7M_tl.a))
+References #8333 .text (7 lz77_init.o(rt7M_tl.a))
   Marking fragment #6938 .debug_frame (13 lz77_init.o(rt7M_tl.a)) {__iar_lz77_init3}
-References #8335 .text (7 lz77_init.o(rt7M_tl.a))
+References #8334 .text (7 lz77_init.o(rt7M_tl.a))
   Marking fragment #6939 .debug_frame (15 lz77_init.o(rt7M_tl.a)) {__iar_lz77_init3}
-References #8336 .text (7 lz77_init.o(rt7M_tl.a))
+References #8335 .text (7 lz77_init.o(rt7M_tl.a))
   Marking fragment #6940 .debug_frame (17 lz77_init.o(rt7M_tl.a)) {__iar_lz77_init3}
 References #6943 .text (6 abort.o(dl7M_tln.a))
   Marking fragment #6946 .debug_frame (9 abort.o(dl7M_tln.a)) {__iar_rle_init3 __iar_packbits_init3 __iar_lz77_init3}
@@ -5718,86 +5711,86 @@ Marking from fragment #6547 .debug_info (18 usart.o)
   Marking symbol .debug_info7                         (55 usart.o)
   Marking symbol .data10                              (8 usart.o)
 Marking from fragment #6533 .debug_aranges (171 timer.o)
-  Marking symbol .debug_info80                        (157 timer.o)
+  Marking symbol .debug_info80                        (156 timer.o)
   Marking symbol .text_31                             (62 timer.o)
 Marking from fragment #6532 .debug_pubnames (169 timer.o)
-  Marking symbol .debug_info80                        (157 timer.o)
+  Marking symbol .debug_info80                        (156 timer.o)
 Marking from fragment #6531 .debug_pubnames (166 timer.o)
-  Marking symbol .debug_info48                        (153 timer.o)
+  Marking symbol .debug_info48                        (152 timer.o)
 Marking from fragment #6530 .debug_pubnames (163 timer.o)
-  Marking symbol .debug_info47                        (152 timer.o)
+  Marking symbol .debug_info47                        (151 timer.o)
 Marking from fragment #6529 .debug_aranges (160 timer.o)
-  Marking symbol .debug_info75                        (151 timer.o)
+  Marking symbol .debug_info75                        (150 timer.o)
   Marking symbol .text_30                             (56 timer.o)
 Marking from fragment #6528 .debug_pubnames (158 timer.o)
-  Marking symbol .debug_info75                        (151 timer.o)
+  Marking symbol .debug_info75                        (150 timer.o)
 Marking from fragment #6527 .debug_aranges (155 timer.o)
-  Marking symbol .debug_info70                        (147 timer.o)
+  Marking symbol .debug_info70                        (146 timer.o)
   Marking symbol .text_29                             (54 timer.o)
 Marking from fragment #6526 .debug_pubnames (153 timer.o)
-  Marking symbol .debug_info70                        (147 timer.o)
+  Marking symbol .debug_info70                        (146 timer.o)
 Marking from fragment #6525 .debug_aranges (150 timer.o)
-  Marking symbol .debug_info65                        (143 timer.o)
+  Marking symbol .debug_info65                        (142 timer.o)
   Marking symbol .text_28                             (49 timer.o)
 Marking from fragment #6524 .debug_pubnames (148 timer.o)
-  Marking symbol .debug_info65                        (143 timer.o)
+  Marking symbol .debug_info65                        (142 timer.o)
 Marking from fragment #6523 .debug_aranges (145 timer.o)
-  Marking symbol .debug_info60                        (139 timer.o)
+  Marking symbol .debug_info60                        (138 timer.o)
   Marking symbol .text_27                             (43 timer.o)
 Marking from fragment #6522 .debug_pubnames (143 timer.o)
-  Marking symbol .debug_info60                        (139 timer.o)
+  Marking symbol .debug_info60                        (138 timer.o)
 Marking from fragment #6521 .debug_aranges (140 timer.o)
-  Marking symbol .debug_info54                        (135 timer.o)
+  Marking symbol .debug_info54                        (134 timer.o)
   Marking symbol .text23                              (40 timer.o)
 Marking from fragment #6520 .debug_pubnames (138 timer.o)
-  Marking symbol .debug_info54                        (135 timer.o)
+  Marking symbol .debug_info54                        (134 timer.o)
 Marking from fragment #6517 .debug_pubnames (129 timer.o)
-  Marking symbol .debug_info42                        (129 timer.o)
+  Marking symbol .debug_info42                        (128 timer.o)
 Marking from fragment #6516 .debug_pubnames (126 timer.o)
-  Marking symbol .debug_info46                        (128 timer.o)
+  Marking symbol .debug_info46                        (127 timer.o)
 Marking from fragment #6515 .debug_pubnames (123 timer.o)
-  Marking symbol .debug_info38                        (127 timer.o)
+  Marking symbol .debug_info38                        (126 timer.o)
 Marking from fragment #6514 .debug_pubnames (120 timer.o)
-  Marking symbol .debug_info41                        (126 timer.o)
+  Marking symbol .debug_info41                        (125 timer.o)
 Marking from fragment #6513 .debug_pubnames (117 timer.o)
-  Marking symbol .debug_info50                        (125 timer.o)
+  Marking symbol .debug_info50                        (124 timer.o)
 Marking from fragment #6512 .debug_pubnames (114 timer.o)
-  Marking symbol .debug_info34                        (124 timer.o)
+  Marking symbol .debug_info34                        (123 timer.o)
 Marking from fragment #6511 .debug_pubnames (111 timer.o)
-  Marking symbol .debug_info36                        (123 timer.o)
+  Marking symbol .debug_info36                        (122 timer.o)
 Marking from fragment #6510 .debug_pubnames (108 timer.o)
-  Marking symbol .debug_info35                        (122 timer.o)
+  Marking symbol .debug_info35                        (121 timer.o)
 Marking from fragment #6509 .debug_pubnames (105 timer.o)
-  Marking symbol .debug_info39                        (121 timer.o)
+  Marking symbol .debug_info39                        (120 timer.o)
 Marking from fragment #6508 .debug_pubnames (102 timer.o)
-  Marking symbol .debug_info40                        (120 timer.o)
+  Marking symbol .debug_info40                        (119 timer.o)
 Marking from fragment #6507 .debug_pubnames (99 timer.o)
-  Marking symbol .debug_info45                        (119 timer.o)
+  Marking symbol .debug_info45                        (118 timer.o)
 Marking from fragment #6506 .debug_pubnames (96 timer.o)
-  Marking symbol .debug_info37                        (118 timer.o)
+  Marking symbol .debug_info37                        (117 timer.o)
 Marking from fragment #6505 .debug_pubnames (93 timer.o)
-  Marking symbol .debug_info49                        (117 timer.o)
+  Marking symbol .debug_info49                        (116 timer.o)
 Marking from fragment #6495 .debug_frame (81 timer.o)
   Marking symbol .debug_frame81                       (63 timer.o)
   Marking symbol .text_31                             (62 timer.o)
 Marking from fragment #6494 .debug_info (80 timer.o)
-  Marking symbol .debug_abbrev91                      (113 timer.o)
+  Marking symbol .debug_abbrev91                      (112 timer.o)
     Marking fragment #6504 .debug_abbrev (91 timer.o)
   Marking symbol .text_31                             (62 timer.o)
-  Marking symbol .debug_line79                        (155 timer.o)
-  Marking symbol .iar.debug_line78                    (156 timer.o)
-  Marking symbol .debug_info7                         (114 timer.o)
+  Marking symbol .debug_line79                        (154 timer.o)
+  Marking symbol .iar.debug_line78                    (155 timer.o)
+  Marking symbol .debug_info7                         (113 timer.o)
     Marking fragment #6427 .debug_info (7 timer.o)
-  Marking symbol .debug_loc89                         (154 timer.o)
+  Marking symbol .debug_loc89                         (153 timer.o)
     Marking fragment #6502 .debug_loc (89 timer.o)
   Marking symbol .text_31                             (62 timer.o)
   Marking symbol .text_31                             (62 timer.o)
 Marking from fragment #6502 .debug_loc (89 timer.o)
 Marking from fragment #6427 .debug_info (7 timer.o)
-  Marking symbol .debug_abbrev91                      (113 timer.o)
-  Marking symbol .debug_line6                         (115 timer.o)
+  Marking symbol .debug_abbrev91                      (112 timer.o)
+  Marking symbol .debug_line6                         (114 timer.o)
     Marking fragment #6426 .debug_line (6 timer.o)
-  Marking symbol .debug_macinfo90                     (116 timer.o)
+  Marking symbol .debug_macinfo90                     (115 timer.o)
     Marking fragment #6503 .debug_macinfo (90 timer.o)
 Marking from fragment #6503 .debug_macinfo (90 timer.o)
 Marking from fragment #6426 .debug_line (6 timer.o)
@@ -5806,8 +5799,8 @@ Marking from fragment #6493 .debug_line (79 timer.o)
   Marking symbol .text_31                             (62 timer.o)
 Marking from fragment #6492 .iar.debug_line (78 timer.o)
   Marking symbol .text_31                             (62 timer.o)
-  Marking symbol .debug_info80                        (157 timer.o)
-  Marking symbol .debug_info54                        (135 timer.o)
+  Marking symbol .debug_info80                        (156 timer.o)
+  Marking symbol .debug_info54                        (134 timer.o)
   Marking symbol get_gyro_raw                     Glb (191 MPU6050.o)
   Marking symbol get_deg_s                        Glb (190 MPU6050.o)
   Marking symbol get_rad_s                        Glb (194 MPU6050.o)
@@ -5817,31 +5810,31 @@ Marking from fragment #6492 .iar.debug_line (78 timer.o)
   Marking symbol mahony_update                    Glb (151 imu.o)
   Marking symbol Matrix_ready                     Glb (141 imu.o)
   Marking symbol read_Encoder_x                   Glb (95 pwm.o)
-  Marking symbol .debug_info60                        (139 timer.o)
-  Marking symbol .debug_info65                        (143 timer.o)
-  Marking symbol .debug_info70                        (147 timer.o)
-  Marking symbol .debug_info75                        (151 timer.o)
+  Marking symbol .debug_info60                        (138 timer.o)
+  Marking symbol .debug_info65                        (142 timer.o)
+  Marking symbol .debug_info70                        (146 timer.o)
+  Marking symbol .debug_info75                        (150 timer.o)
 Marking from fragment #6491 .debug_frame (76 timer.o)
   Marking symbol .debug_frame76                       (57 timer.o)
   Marking symbol .text_30                             (56 timer.o)
 Marking from fragment #6490 .debug_info (75 timer.o)
-  Marking symbol .debug_abbrev91                      (113 timer.o)
+  Marking symbol .debug_abbrev91                      (112 timer.o)
   Marking symbol .text_30                             (56 timer.o)
-  Marking symbol .debug_line74                        (149 timer.o)
-  Marking symbol .iar.debug_line73                    (150 timer.o)
-  Marking symbol .debug_info7                         (114 timer.o)
-  Marking symbol .debug_loc88                         (148 timer.o)
+  Marking symbol .debug_line74                        (148 timer.o)
+  Marking symbol .iar.debug_line73                    (149 timer.o)
+  Marking symbol .debug_info7                         (113 timer.o)
+  Marking symbol .debug_loc88                         (147 timer.o)
     Marking fragment #6501 .debug_loc (88 timer.o)
   Marking symbol .text_30                             (56 timer.o)
   Marking symbol .text_30                             (56 timer.o)
-  Marking symbol .debug_info7                         (114 timer.o)
-  Marking symbol .debug_loc88                         (148 timer.o)
+  Marking symbol .debug_info7                         (113 timer.o)
+  Marking symbol .debug_loc88                         (147 timer.o)
 Marking from fragment #6501 .debug_loc (88 timer.o)
 Marking from fragment #6489 .debug_line (74 timer.o)
   Marking symbol .text_30                             (56 timer.o)
 Marking from fragment #6488 .iar.debug_line (73 timer.o)
   Marking symbol .text_30                             (56 timer.o)
-  Marking symbol .debug_info75                        (151 timer.o)
+  Marking symbol .debug_info75                        (150 timer.o)
   Marking symbol GPIO_SetBits                     Glb (117 stm32f4xx_gpio.o)
   Marking symbol GPIO_ResetBits                   Glb (116 stm32f4xx_gpio.o)
   Marking symbol int_abs                          Glb (149 imu.o)
@@ -5849,195 +5842,195 @@ Marking from fragment #6487 .debug_frame (71 timer.o)
   Marking symbol .debug_frame71                       (55 timer.o)
   Marking symbol .text_29                             (54 timer.o)
 Marking from fragment #6486 .debug_info (70 timer.o)
-  Marking symbol .debug_abbrev91                      (113 timer.o)
+  Marking symbol .debug_abbrev91                      (112 timer.o)
   Marking symbol .text_29                             (54 timer.o)
-  Marking symbol .debug_line69                        (145 timer.o)
-  Marking symbol .iar.debug_line68                    (146 timer.o)
-  Marking symbol .debug_info7                         (114 timer.o)
-  Marking symbol .debug_loc87                         (144 timer.o)
+  Marking symbol .debug_line69                        (144 timer.o)
+  Marking symbol .iar.debug_line68                    (145 timer.o)
+  Marking symbol .debug_info7                         (113 timer.o)
+  Marking symbol .debug_loc87                         (143 timer.o)
     Marking fragment #6500 .debug_loc (87 timer.o)
   Marking symbol .text_29                             (54 timer.o)
   Marking symbol .text_29                             (54 timer.o)
-  Marking symbol .debug_info7                         (114 timer.o)
-  Marking symbol .debug_loc87                         (144 timer.o)
+  Marking symbol .debug_info7                         (113 timer.o)
+  Marking symbol .debug_loc87                         (143 timer.o)
 Marking from fragment #6500 .debug_loc (87 timer.o)
 Marking from fragment #6485 .debug_line (69 timer.o)
   Marking symbol .text_29                             (54 timer.o)
 Marking from fragment #6484 .iar.debug_line (68 timer.o)
   Marking symbol .text_29                             (54 timer.o)
-  Marking symbol .debug_info70                        (147 timer.o)
+  Marking symbol .debug_info70                        (146 timer.o)
 Marking from fragment #6483 .debug_frame (66 timer.o)
   Marking symbol .debug_frame66                       (50 timer.o)
   Marking symbol .text_28                             (49 timer.o)
 Marking from fragment #6482 .debug_info (65 timer.o)
-  Marking symbol .debug_abbrev91                      (113 timer.o)
+  Marking symbol .debug_abbrev91                      (112 timer.o)
   Marking symbol .text_28                             (49 timer.o)
-  Marking symbol .debug_line64                        (141 timer.o)
-  Marking symbol .iar.debug_line63                    (142 timer.o)
-  Marking symbol .debug_info7                         (114 timer.o)
-  Marking symbol .debug_info7                         (114 timer.o)
-  Marking symbol .debug_loc86                         (140 timer.o)
+  Marking symbol .debug_line64                        (140 timer.o)
+  Marking symbol .iar.debug_line63                    (141 timer.o)
+  Marking symbol .debug_info7                         (113 timer.o)
+  Marking symbol .debug_info7                         (113 timer.o)
+  Marking symbol .debug_loc86                         (139 timer.o)
     Marking fragment #6499 .debug_loc (86 timer.o)
   Marking symbol .text_28                             (49 timer.o)
   Marking symbol .text_28                             (49 timer.o)
-  Marking symbol .debug_info7                         (114 timer.o)
-  Marking symbol .debug_loc86                         (140 timer.o)
-  Marking symbol .debug_info7                         (114 timer.o)
-  Marking symbol .debug_loc86                         (140 timer.o)
-  Marking symbol .debug_info7                         (114 timer.o)
+  Marking symbol .debug_info7                         (113 timer.o)
+  Marking symbol .debug_loc86                         (139 timer.o)
+  Marking symbol .debug_info7                         (113 timer.o)
+  Marking symbol .debug_loc86                         (139 timer.o)
+  Marking symbol .debug_info7                         (113 timer.o)
   Marking symbol control_balance_x::Bias_last         (5 timer.o)
-  Marking symbol .debug_info7                         (114 timer.o)
+  Marking symbol .debug_info7                         (113 timer.o)
   Marking symbol control_balance_x::Bias_integral     (4 timer.o)
-  Marking symbol .debug_info7                         (114 timer.o)
+  Marking symbol .debug_info7                         (113 timer.o)
   Marking symbol control_balance_x::Bias              (3 timer.o)
-  Marking symbol .debug_info7                         (114 timer.o)
-  Marking symbol .debug_loc86                         (140 timer.o)
+  Marking symbol .debug_info7                         (113 timer.o)
+  Marking symbol .debug_loc86                         (139 timer.o)
 Marking from fragment #6499 .debug_loc (86 timer.o)
 Marking from fragment #6481 .debug_line (64 timer.o)
   Marking symbol .text_28                             (49 timer.o)
 Marking from fragment #6480 .iar.debug_line (63 timer.o)
   Marking symbol .text_28                             (49 timer.o)
-  Marking symbol .debug_info65                        (143 timer.o)
+  Marking symbol .debug_info65                        (142 timer.o)
 Marking from fragment #6479 .debug_frame (61 timer.o)
   Marking symbol .debug_frame61                       (44 timer.o)
   Marking symbol .text_27                             (43 timer.o)
 Marking from fragment #6478 .debug_info (60 timer.o)
-  Marking symbol .debug_abbrev91                      (113 timer.o)
+  Marking symbol .debug_abbrev91                      (112 timer.o)
   Marking symbol .text_27                             (43 timer.o)
-  Marking symbol .debug_line59                        (137 timer.o)
-  Marking symbol .iar.debug_line58                    (138 timer.o)
-  Marking symbol .debug_info7                         (114 timer.o)
-  Marking symbol .debug_info7                         (114 timer.o)
-  Marking symbol .debug_loc85                         (136 timer.o)
+  Marking symbol .debug_line59                        (136 timer.o)
+  Marking symbol .iar.debug_line58                    (137 timer.o)
+  Marking symbol .debug_info7                         (113 timer.o)
+  Marking symbol .debug_info7                         (113 timer.o)
+  Marking symbol .debug_loc85                         (135 timer.o)
     Marking fragment #6498 .debug_loc (85 timer.o)
   Marking symbol .text_27                             (43 timer.o)
   Marking symbol .text_27                             (43 timer.o)
-  Marking symbol .debug_info7                         (114 timer.o)
-  Marking symbol .debug_loc85                         (136 timer.o)
-  Marking symbol .debug_info7                         (114 timer.o)
+  Marking symbol .debug_info7                         (113 timer.o)
+  Marking symbol .debug_loc85                         (135 timer.o)
+  Marking symbol .debug_info7                         (113 timer.o)
   Marking symbol control_velocity::Velocity           (9 timer.o)
-  Marking symbol .debug_info7                         (114 timer.o)
+  Marking symbol .debug_info7                         (113 timer.o)
   Marking symbol control_velocity::Encoder_Least      (8 timer.o)
-  Marking symbol .debug_info7                         (114 timer.o)
+  Marking symbol .debug_info7                         (113 timer.o)
   Marking symbol control_velocity::Encoder            (6 timer.o)
-  Marking symbol .debug_info7                         (114 timer.o)
+  Marking symbol .debug_info7                         (113 timer.o)
   Marking symbol control_velocity::Encoder_Integral     (7 timer.o)
 Marking from fragment #6498 .debug_loc (85 timer.o)
 Marking from fragment #6477 .debug_line (59 timer.o)
   Marking symbol .text_27                             (43 timer.o)
 Marking from fragment #6476 .iar.debug_line (58 timer.o)
   Marking symbol .text_27                             (43 timer.o)
-  Marking symbol .debug_info60                        (139 timer.o)
+  Marking symbol .debug_info60                        (138 timer.o)
 Marking from fragment #6475 .debug_frame (55 timer.o)
   Marking symbol .debug_frame55                       (41 timer.o)
   Marking symbol .text23                              (40 timer.o)
 Marking from fragment #6474 .debug_info (54 timer.o)
-  Marking symbol .debug_abbrev91                      (113 timer.o)
+  Marking symbol .debug_abbrev91                      (112 timer.o)
   Marking symbol .text23                              (40 timer.o)
-  Marking symbol .debug_line53                        (133 timer.o)
-  Marking symbol .iar.debug_line52                    (134 timer.o)
-  Marking symbol .debug_info7                         (114 timer.o)
-  Marking symbol .debug_loc84                         (132 timer.o)
+  Marking symbol .debug_line53                        (132 timer.o)
+  Marking symbol .iar.debug_line52                    (133 timer.o)
+  Marking symbol .debug_info7                         (113 timer.o)
+  Marking symbol .debug_loc84                         (131 timer.o)
     Marking fragment #6497 .debug_loc (84 timer.o)
   Marking symbol .text23                              (40 timer.o)
   Marking symbol .text23                              (40 timer.o)
-  Marking symbol .debug_info7                         (114 timer.o)
-  Marking symbol .debug_loc84                         (132 timer.o)
+  Marking symbol .debug_info7                         (113 timer.o)
+  Marking symbol .debug_loc84                         (131 timer.o)
 Marking from fragment #6497 .debug_loc (84 timer.o)
 Marking from fragment #6473 .debug_line (53 timer.o)
   Marking symbol .text23                              (40 timer.o)
 Marking from fragment #6472 .iar.debug_line (52 timer.o)
   Marking symbol .text23                              (40 timer.o)
-  Marking symbol .debug_info54                        (135 timer.o)
+  Marking symbol .debug_info54                        (134 timer.o)
 Marking from fragment #6470 .debug_info (50 timer.o)
-  Marking symbol .debug_abbrev91                      (113 timer.o)
-  Marking symbol .debug_line6                         (115 timer.o)
-  Marking symbol .debug_macinfo90                     (116 timer.o)
-  Marking symbol .debug_info7                         (114 timer.o)
+  Marking symbol .debug_abbrev91                      (112 timer.o)
+  Marking symbol .debug_line6                         (114 timer.o)
+  Marking symbol .debug_macinfo90                     (115 timer.o)
+  Marking symbol .debug_info7                         (113 timer.o)
   Marking symbol .bss16                               (26 timer.o)
 Marking from fragment #6469 .debug_info (49 timer.o)
-  Marking symbol .debug_abbrev91                      (113 timer.o)
-  Marking symbol .debug_line6                         (115 timer.o)
-  Marking symbol .debug_macinfo90                     (116 timer.o)
-  Marking symbol .debug_info7                         (114 timer.o)
+  Marking symbol .debug_abbrev91                      (112 timer.o)
+  Marking symbol .debug_line6                         (114 timer.o)
+  Marking symbol .debug_macinfo90                     (115 timer.o)
+  Marking symbol .debug_info7                         (113 timer.o)
   Marking symbol .bss8                                (10 timer.o)
 Marking from fragment #6468 .debug_info (48 timer.o)
-  Marking symbol .debug_abbrev91                      (113 timer.o)
-  Marking symbol .debug_line6                         (115 timer.o)
-  Marking symbol .debug_macinfo90                     (116 timer.o)
-  Marking symbol .debug_info7                         (114 timer.o)
+  Marking symbol .debug_abbrev91                      (112 timer.o)
+  Marking symbol .debug_line6                         (114 timer.o)
+  Marking symbol .debug_macinfo90                     (115 timer.o)
+  Marking symbol .debug_info7                         (113 timer.o)
   Marking symbol .bss32                               (60 timer.o)
 Marking from fragment #6467 .debug_info (47 timer.o)
-  Marking symbol .debug_abbrev91                      (113 timer.o)
-  Marking symbol .debug_line6                         (115 timer.o)
-  Marking symbol .debug_macinfo90                     (116 timer.o)
-  Marking symbol .debug_info7                         (114 timer.o)
+  Marking symbol .debug_abbrev91                      (112 timer.o)
+  Marking symbol .debug_line6                         (114 timer.o)
+  Marking symbol .debug_macinfo90                     (115 timer.o)
+  Marking symbol .debug_info7                         (113 timer.o)
   Marking symbol .bss31                               (58 timer.o)
 Marking from fragment #6466 .debug_info (46 timer.o)
-  Marking symbol .debug_abbrev91                      (113 timer.o)
-  Marking symbol .debug_line6                         (115 timer.o)
-  Marking symbol .debug_macinfo90                     (116 timer.o)
-  Marking symbol .debug_info7                         (114 timer.o)
+  Marking symbol .debug_abbrev91                      (112 timer.o)
+  Marking symbol .debug_line6                         (114 timer.o)
+  Marking symbol .debug_macinfo90                     (115 timer.o)
+  Marking symbol .debug_info7                         (113 timer.o)
   Marking symbol .bss19                               (32 timer.o)
 Marking from fragment #6465 .debug_info (45 timer.o)
-  Marking symbol .debug_abbrev91                      (113 timer.o)
-  Marking symbol .debug_line6                         (115 timer.o)
-  Marking symbol .debug_macinfo90                     (116 timer.o)
-  Marking symbol .debug_info7                         (114 timer.o)
+  Marking symbol .debug_abbrev91                      (112 timer.o)
+  Marking symbol .debug_line6                         (114 timer.o)
+  Marking symbol .debug_macinfo90                     (115 timer.o)
+  Marking symbol .debug_info7                         (113 timer.o)
   Marking symbol .bss10                               (14 timer.o)
 Marking from fragment #6462 .debug_info (42 timer.o)
-  Marking symbol .debug_abbrev91                      (113 timer.o)
-  Marking symbol .debug_line6                         (115 timer.o)
-  Marking symbol .debug_macinfo90                     (116 timer.o)
-  Marking symbol .debug_info7                         (114 timer.o)
+  Marking symbol .debug_abbrev91                      (112 timer.o)
+  Marking symbol .debug_line6                         (114 timer.o)
+  Marking symbol .debug_macinfo90                     (115 timer.o)
+  Marking symbol .debug_info7                         (113 timer.o)
   Marking symbol .bss20                               (34 timer.o)
 Marking from fragment #6461 .debug_info (41 timer.o)
-  Marking symbol .debug_abbrev91                      (113 timer.o)
-  Marking symbol .debug_line6                         (115 timer.o)
-  Marking symbol .debug_macinfo90                     (116 timer.o)
-  Marking symbol .debug_info7                         (114 timer.o)
+  Marking symbol .debug_abbrev91                      (112 timer.o)
+  Marking symbol .debug_line6                         (114 timer.o)
+  Marking symbol .debug_macinfo90                     (115 timer.o)
+  Marking symbol .debug_info7                         (113 timer.o)
   Marking symbol .bss17                               (28 timer.o)
 Marking from fragment #6460 .debug_info (40 timer.o)
-  Marking symbol .debug_abbrev91                      (113 timer.o)
-  Marking symbol .debug_line6                         (115 timer.o)
-  Marking symbol .debug_macinfo90                     (116 timer.o)
-  Marking symbol .debug_info7                         (114 timer.o)
+  Marking symbol .debug_abbrev91                      (112 timer.o)
+  Marking symbol .debug_line6                         (114 timer.o)
+  Marking symbol .debug_macinfo90                     (115 timer.o)
+  Marking symbol .debug_info7                         (113 timer.o)
   Marking symbol .data11                              (16 timer.o)
 Marking from fragment #6459 .debug_info (39 timer.o)
-  Marking symbol .debug_abbrev91                      (113 timer.o)
-  Marking symbol .debug_line6                         (115 timer.o)
-  Marking symbol .debug_macinfo90                     (116 timer.o)
-  Marking symbol .debug_info7                         (114 timer.o)
-  Marking symbol .bss12                               (18 timer.o)
+  Marking symbol .debug_abbrev91                      (112 timer.o)
+  Marking symbol .debug_line6                         (114 timer.o)
+  Marking symbol .debug_macinfo90                     (115 timer.o)
+  Marking symbol .debug_info7                         (113 timer.o)
+  Marking symbol .data12                              (18 timer.o)
 Marking from fragment #6458 .debug_info (38 timer.o)
-  Marking symbol .debug_abbrev91                      (113 timer.o)
-  Marking symbol .debug_line6                         (115 timer.o)
-  Marking symbol .debug_macinfo90                     (116 timer.o)
-  Marking symbol .debug_info7                         (114 timer.o)
+  Marking symbol .debug_abbrev91                      (112 timer.o)
+  Marking symbol .debug_line6                         (114 timer.o)
+  Marking symbol .debug_macinfo90                     (115 timer.o)
+  Marking symbol .debug_info7                         (113 timer.o)
   Marking symbol .bss18                               (30 timer.o)
 Marking from fragment #6457 .debug_info (37 timer.o)
-  Marking symbol .debug_abbrev91                      (113 timer.o)
-  Marking symbol .debug_line6                         (115 timer.o)
-  Marking symbol .debug_macinfo90                     (116 timer.o)
-  Marking symbol .debug_info7                         (114 timer.o)
+  Marking symbol .debug_abbrev91                      (112 timer.o)
+  Marking symbol .debug_line6                         (114 timer.o)
+  Marking symbol .debug_macinfo90                     (115 timer.o)
+  Marking symbol .debug_info7                         (113 timer.o)
   Marking symbol .data9                               (12 timer.o)
 Marking from fragment #6456 .debug_info (36 timer.o)
-  Marking symbol .debug_abbrev91                      (113 timer.o)
-  Marking symbol .debug_line6                         (115 timer.o)
-  Marking symbol .debug_macinfo90                     (116 timer.o)
-  Marking symbol .debug_info7                         (114 timer.o)
+  Marking symbol .debug_abbrev91                      (112 timer.o)
+  Marking symbol .debug_line6                         (114 timer.o)
+  Marking symbol .debug_macinfo90                     (115 timer.o)
+  Marking symbol .debug_info7                         (113 timer.o)
   Marking symbol .data14                              (22 timer.o)
 Marking from fragment #6455 .debug_info (35 timer.o)
-  Marking symbol .debug_abbrev91                      (113 timer.o)
-  Marking symbol .debug_line6                         (115 timer.o)
-  Marking symbol .debug_macinfo90                     (116 timer.o)
-  Marking symbol .debug_info7                         (114 timer.o)
+  Marking symbol .debug_abbrev91                      (112 timer.o)
+  Marking symbol .debug_line6                         (114 timer.o)
+  Marking symbol .debug_macinfo90                     (115 timer.o)
+  Marking symbol .debug_info7                         (113 timer.o)
   Marking symbol .data13                              (20 timer.o)
 Marking from fragment #6454 .debug_info (34 timer.o)
-  Marking symbol .debug_abbrev91                      (113 timer.o)
-  Marking symbol .debug_line6                         (115 timer.o)
-  Marking symbol .debug_macinfo90                     (116 timer.o)
-  Marking symbol .debug_info7                         (114 timer.o)
+  Marking symbol .debug_abbrev91                      (112 timer.o)
+  Marking symbol .debug_line6                         (114 timer.o)
+  Marking symbol .debug_macinfo90                     (115 timer.o)
+  Marking symbol .debug_info7                         (113 timer.o)
   Marking symbol .data15                              (24 timer.o)
 Marking from fragment #6424 .debug_aranges (56 system_stm32f4xx.o)
   Marking symbol .debug_info28                        (51 system_stm32f4xx.o)
@@ -9360,7 +9353,7 @@ Marking from fragment #186 .debug_line (32 imu.o)
 Marking from fragment #185 .iar.debug_line (31 imu.o)
   Marking symbol .text18                              (23 imu.o)
   Marking symbol .debug_info33                        (83 imu.o)
-  Marking symbol time_check                       Glb (208 timer.o)
+  Marking symbol time_check                       Glb (207 timer.o)
   Marking symbol .debug_info54                        (99 imu.o)
   Marking symbol atan2                            Glb (17 atan2_64.o)
   Marking symbol asin                             Glb (23 asin64.o)
@@ -11849,18 +11842,18 @@ Creating copy init batch C1 (Table) for P1 -> P4, auto
   First match: .data (imu.o #10)
 Selecting packing algorithm for 'auto' batches
   Estimating size for copy init batch C1 (P1 -> P4):
-      copy: 60 bytes
-      packbits: 54 bytes
-      lz77: 51 bytes
+      copy: 64 bytes
+      packbits: 57 bytes
+      lz77: 55 bytes
     Selecting lz77
   Using "copy" instead of "lz77" everywhere reduces total estimated
-    overhead from 549 to 106
+    overhead from 553 to 110
 
 Veneer stats:
 
   216 definitions
-  652 references
-      556 R_ARM_THM_CALL
+  647 references
+      551 R_ARM_THM_CALL
        92 R_ARM_THM_JUMP24
         4 R_ARM_THM_JUMP19
     0 veneers               0 bytes

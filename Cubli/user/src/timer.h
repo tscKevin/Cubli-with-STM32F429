@@ -33,7 +33,7 @@ extern int encoder_z;
 extern int nvic_flag;
 extern int flag_stop;
 extern float velocity_pwm_x ;
-extern int balance_pwm_x ;
+extern float balance_pwm_x ;
 extern int PWM_X;
 
 #endif

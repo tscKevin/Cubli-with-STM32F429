@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         24/Jul/2020  15:28:42
+# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         27/Jul/2020  17:44:09
 # Copyright 1999-2019 IAR Systems AB.
 #
 #    Cpu mode     =  
@@ -8,7 +8,7 @@
 #    Source file  =
 #        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\main.c
 #    Command line =
-#        -f C:\Users\Evan\AppData\Local\Temp\EW10D3.tmp
+#        -f C:\Users\Evan\AppData\Local\Temp\EW649.tmp
 #        (E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\main.c
 #        -D USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
 #        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List
@@ -47,143 +47,131 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\main.c
       2          
       3          #include "timer.h"
       4          #include "pwm.h"
-      5          //void TM4_Interrupt_Init(void){
-      6          //  TIM_TimeBaseInitTypeDef TIM_BaseStruct;
-      7          //  RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4,ENABLE);
-      8          //  TIM_BaseStruct.TIM_Prescaler = 90-1;
-      9          //  TIM_BaseStruct.TIM_Period=5000-1;
-     10          //  TIM_BaseStruct.TIM_CounterMode=TIM_CounterMode_Up;
-     11          //  TIM_BaseStruct.TIM_ClockDivision=TIM_CKD_DIV1;
-     12          //  TIM_BaseStruct.TIM_RepetitionCounter=0;
-     13          //  TIM_TimeBaseInit(TIM4,&TIM_BaseStruct);
-     14          //  TIM_Cmd(TIM4,ENABLE);
-     15          //  TIM_ClearFlag(TIM4,TIM_FLAG_Update);
-     16          //  TIM_ITConfig(TIM4,TIM_IT_Update,ENABLE);
-     17          //}
+      5          
 
    \                                 In section .text, align 2, keep-with-next
-     18          void TM5_Interrupt_Init(void){
+      6          void TM5_Interrupt_Init(void){
    \                     TM5_Interrupt_Init: (+1)
    \        0x0   0xB51F             PUSH     {R0-R4,LR}
-     19            TIM_TimeBaseInitTypeDef TIM_BaseStruct;
-     20            RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM5,ENABLE);
+      7            TIM_TimeBaseInitTypeDef TIM_BaseStruct;
+      8            RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM5,ENABLE);
    \        0x2   0x2101             MOVS     R1,#+1
    \        0x4   0x2008             MOVS     R0,#+8
    \        0x6   0x....'....        BL       RCC_APB1PeriphClockCmd
-     21            TIM_BaseStruct.TIM_Prescaler = 90-1;
+      9            TIM_BaseStruct.TIM_Prescaler = 90-1;
    \        0xA   0x2059             MOVS     R0,#+89
    \        0xC   0xF8AD 0x0000      STRH     R0,[SP, #+0]
-     22            TIM_BaseStruct.TIM_Period=5000-1;
+     10            TIM_BaseStruct.TIM_Period=5000-1;
    \       0x10   0xF241 0x3087      MOVW     R0,#+4999
    \       0x14   0x9001             STR      R0,[SP, #+4]
-     23            TIM_BaseStruct.TIM_CounterMode=TIM_CounterMode_Up;
+     11            TIM_BaseStruct.TIM_CounterMode=TIM_CounterMode_Up;
    \       0x16   0x2000             MOVS     R0,#+0
    \       0x18   0xF8AD 0x0002      STRH     R0,[SP, #+2]
-     24            TIM_BaseStruct.TIM_ClockDivision=TIM_CKD_DIV1;
+     12            TIM_BaseStruct.TIM_ClockDivision=TIM_CKD_DIV1;
    \       0x1C   0x2000             MOVS     R0,#+0
    \       0x1E   0xF8AD 0x0008      STRH     R0,[SP, #+8]
-     25            TIM_BaseStruct.TIM_RepetitionCounter=0;
+     13            TIM_BaseStruct.TIM_RepetitionCounter=0;
    \       0x22   0x2000             MOVS     R0,#+0
    \       0x24   0xF88D 0x000A      STRB     R0,[SP, #+10]
-     26            TIM_TimeBaseInit(TIM5,&TIM_BaseStruct);
+     14            TIM_TimeBaseInit(TIM5,&TIM_BaseStruct);
    \       0x28   0x....             LDR.N    R4,??DataTable2  ;; 0x40000c00
    \       0x2A   0x4669             MOV      R1,SP
    \       0x2C   0x0020             MOVS     R0,R4
    \       0x2E   0x....'....        BL       TIM_TimeBaseInit
-     27            TIM_Cmd(TIM5,ENABLE);
+     15            TIM_Cmd(TIM5,ENABLE);
    \       0x32   0x2101             MOVS     R1,#+1
    \       0x34   0x0020             MOVS     R0,R4
    \       0x36   0x....'....        BL       TIM_Cmd
-     28            TIM_ClearFlag(TIM5,TIM_FLAG_Update);
+     16            TIM_ClearFlag(TIM5,TIM_FLAG_Update);
    \       0x3A   0x2101             MOVS     R1,#+1
    \       0x3C   0x0020             MOVS     R0,R4
    \       0x3E   0x....'....        BL       TIM_ClearFlag
-     29            TIM_ITConfig(TIM5,TIM_IT_Update,ENABLE);
+     17            TIM_ITConfig(TIM5,TIM_IT_Update,ENABLE);
    \       0x42   0x2201             MOVS     R2,#+1
    \       0x44   0x2101             MOVS     R1,#+1
    \       0x46   0x0020             MOVS     R0,R4
    \       0x48   0x....'....        BL       TIM_ITConfig
-     30          }
+     18          }
    \       0x4C   0xBD1F             POP      {R0-R4,PC}       ;; return
 
    \                                 In section .text, align 2, keep-with-next
-     31          void NVIC_Set(void){
+     19          void NVIC_Set(void){
    \                     NVIC_Set: (+1)
    \        0x0   0xB580             PUSH     {R7,LR}
-     32            NVIC_InitTypeDef NVIC_InitStructure;
-     33            NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);//0~2
+     20            NVIC_InitTypeDef NVIC_InitStructure;
+     21            NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);//0~2
    \        0x2   0xF44F 0x60A0      MOV      R0,#+1280
    \        0x6   0x....'....        BL       NVIC_PriorityGroupConfig
-     34            
-     35            /*TIM5*/
-     36            NVIC_InitStructure.NVIC_IRQChannel = TIM5_IRQn;    
+     22            
+     23            /*TIM5*/
+     24            NVIC_InitStructure.NVIC_IRQChannel = TIM5_IRQn;    
    \        0xA   0x2032             MOVS     R0,#+50
    \        0xC   0xF88D 0x0000      STRB     R0,[SP, #+0]
-     37            NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
+     25            NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
    \       0x10   0x2001             MOVS     R0,#+1
    \       0x12   0xF88D 0x0001      STRB     R0,[SP, #+1]
-     38            NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+     26            NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
    \       0x16   0x2000             MOVS     R0,#+0
    \       0x18   0xF88D 0x0002      STRB     R0,[SP, #+2]
-     39            NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;            
+     27            NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;            
    \       0x1C   0x2001             MOVS     R0,#+1
    \       0x1E   0xF88D 0x0003      STRB     R0,[SP, #+3]
-     40            NVIC_Init(&NVIC_InitStructure);
+     28            NVIC_Init(&NVIC_InitStructure);
    \       0x22   0x4668             MOV      R0,SP
    \       0x24   0x....'....        BL       NVIC_Init
-     41            
-     42            /*DMA1_Stream6_IRQn*/
-     43            NVIC_InitStructure.NVIC_IRQChannel = DMA2_Stream7_IRQn;
+     29            
+     30            /*DMA1_Stream6_IRQn*/
+     31            NVIC_InitStructure.NVIC_IRQChannel = DMA2_Stream7_IRQn;
    \       0x28   0x2046             MOVS     R0,#+70
    \       0x2A   0xF88D 0x0000      STRB     R0,[SP, #+0]
-     44            NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=2;
+     32            NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=2;
    \       0x2E   0x2002             MOVS     R0,#+2
    \       0x30   0xF88D 0x0001      STRB     R0,[SP, #+1]
-     45            NVIC_InitStructure.NVIC_IRQChannelSubPriority = 2;		
+     33            NVIC_InitStructure.NVIC_IRQChannelSubPriority = 2;		
    \       0x34   0x2002             MOVS     R0,#+2
    \       0x36   0xF88D 0x0002      STRB     R0,[SP, #+2]
-     46            NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;			
+     34            NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;			
    \       0x3A   0x2001             MOVS     R0,#+1
    \       0x3C   0xF88D 0x0003      STRB     R0,[SP, #+3]
-     47            NVIC_Init(&NVIC_InitStructure);
+     35            NVIC_Init(&NVIC_InitStructure);
    \       0x40   0x4668             MOV      R0,SP
    \       0x42   0x....'....        BL       NVIC_Init
-     48          }
+     36          }
    \       0x46   0xBD01             POP      {R0,PC}          ;; return
 
    \                                 In section .text, align 2, keep-with-next
-     49          void LED_On_Board(void){
+     37          void LED_On_Board(void){
    \                     LED_On_Board: (+1)
    \        0x0   0xB5E0             PUSH     {R5-R7,LR}
-     50            GPIO_InitTypeDef GPIO_InitStructure;
-     51            RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOG,ENABLE); //enable GPIOA clock   //
+     38            GPIO_InitTypeDef GPIO_InitStructure;
+     39            RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOG,ENABLE); //enable GPIOA clock   //
    \        0x2   0x2101             MOVS     R1,#+1
    \        0x4   0x2040             MOVS     R0,#+64
    \        0x6   0x....'....        BL       RCC_AHB1PeriphClockCmd
-     52            GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15;
+     40            GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15;
    \        0xA   0xF44F 0x4060      MOV      R0,#+57344
    \        0xE   0x9000             STR      R0,[SP, #+0]
-     53            GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+     41            GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
    \       0x10   0x2001             MOVS     R0,#+1
    \       0x12   0xF88D 0x0004      STRB     R0,[SP, #+4]
-     54            GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+     42            GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
    \       0x16   0x2002             MOVS     R0,#+2
    \       0x18   0xF88D 0x0005      STRB     R0,[SP, #+5]
-     55            GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+     43            GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
    \       0x1C   0x2000             MOVS     R0,#+0
    \       0x1E   0xF88D 0x0006      STRB     R0,[SP, #+6]
-     56            GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
+     44            GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
    \       0x22   0x2000             MOVS     R0,#+0
    \       0x24   0xF88D 0x0007      STRB     R0,[SP, #+7]
-     57            GPIO_Init(GPIOG, &GPIO_InitStructure);
+     45            GPIO_Init(GPIOG, &GPIO_InitStructure);
    \       0x28   0x4669             MOV      R1,SP
    \       0x2A   0x....             LDR.N    R0,??DataTable2_1  ;; 0x40021800
    \       0x2C   0x....'....        BL       GPIO_Init
-     58          }
+     46          }
    \       0x30   0xBD07             POP      {R0-R2,PC}       ;; return
 
    \                                 In section .bss, align 4
-     59          int a,b,c;
+     47          int a,b,c;
    \                     a:
    \        0x0                      DS8 4
 
@@ -196,97 +184,109 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\main.c
    \        0x0                      DS8 4
 
    \                                 In section .text, align 2, keep-with-next
-     60          void main(void){
+     48          void main(void){
    \                     main: (+1)
    \        0x0   0xB580             PUSH     {R7,LR}
-     61            systick_setup();
+     49            systick_setup();
    \        0x2   0x....'....        BL       systick_setup
-     62            
-     63            TM2_PWM_Init();
+     50            
+     51            TM2_PWM_Init();
    \        0x6   0x....'....        BL       TM2_PWM_Init
-     64            TIM2->CCR1=1700;//PA0
+     52            TIM2->CCR1=1700;//PA0
    \        0xA   0xF240 0x60A4      MOVW     R0,#+1700
    \        0xE   0x....             LDR.N    R1,??DataTable2_2  ;; 0x40000034
    \       0x10   0x6008             STR      R0,[R1, #+0]
-     65            TIM2->CCR3=1700;//PB10
+     53            TIM2->CCR3=1700;//PB10
    \       0x12   0x....             LDR.N    R1,??DataTable2_3  ;; 0x4000003c
    \       0x14   0x6008             STR      R0,[R1, #+0]
-     66            TIM2->CCR4=1700;//PB11
+     54            TIM2->CCR4=1700;//PB11
    \       0x16   0x....             LDR.N    R1,??DataTable2_4  ;; 0x40000040
    \       0x18   0x6008             STR      R0,[R1, #+0]
-     67            Delay(150);
+     55            Delay(150);
    \       0x1A   0x2096             MOVS     R0,#+150
    \       0x1C   0x....'....        BL       Delay
-     68            
-     69            TIM3_EncoderInterface_Init();
+     56            
+     57            TIM3_EncoderInterface_Init();
    \       0x20   0x....'....        BL       TIM3_EncoderInterface_Init
-     70            TIM4_EncoderInterface_Init();
+     58            TIM4_EncoderInterface_Init();
    \       0x24   0x....'....        BL       TIM4_EncoderInterface_Init
-     71            TIM1_EncoderInterface_Init();
+     59            TIM1_EncoderInterface_Init();
    \       0x28   0x....'....        BL       TIM1_EncoderInterface_Init
-     72            Delay(5);
+     60            Delay(5);
    \       0x2C   0x2005             MOVS     R0,#+5
    \       0x2E   0x....'....        BL       Delay
-     73            
-     74            TM8_PWM_Init();
+     61            
+     62            TM8_PWM_Init();
    \       0x32   0x....'....        BL       TM8_PWM_Init
-     75            LED_On_Board();
+     63            LED_On_Board();
    \       0x36   0x....'....        BL       LED_On_Board
-     76            
-     77            IIC_GPIO_Init();
+     64            
+     65            IIC_GPIO_Init();
    \       0x3A   0x....'....        BL       IIC_GPIO_Init
-     78            MPU6050_Init();
+     66            MPU6050_Init();
    \       0x3E   0x....'....        BL       MPU6050_Init
-     79            get_mpu_id();
+     67            get_mpu_id();
    \       0x42   0x....'....        BL       get_mpu_id
-     80          
-     81            get_iir_factor(&Mpu.att_acc_factor,0.005f,25);
+     68          
+     69            get_iir_factor(&Mpu.att_acc_factor,0.005f,25);
    \       0x46   0x....             LDR.N    R2,??DataTable2_5  ;; 0x41c80000
    \       0x48   0x....             LDR.N    R1,??DataTable2_6  ;; 0x3ba3d70a
    \       0x4A   0x....             LDR.N    R0,??DataTable2_7
    \       0x4C   0x....'....        BL       get_iir_factor
-     82            TM5_Interrupt_Init();
+     70            TM5_Interrupt_Init();
    \       0x50   0x....'....        BL       TM5_Interrupt_Init
-     83            NVIC_Set();
+     71            NVIC_Set();
    \       0x54   0x....'....        BL       NVIC_Set
-     84            
-     85            Delay(2000);
+     72            
+     73            Delay(2000);
    \       0x58   0xF44F 0x60FA      MOV      R0,#+2000
    \       0x5C   0x....'....        BL       Delay
-     86            nvic_flag = 1;
+     74            nvic_flag = 1;
    \       0x60   0x2001             MOVS     R0,#+1
    \       0x62   0x....             LDR.N    R1,??DataTable2_8
    \       0x64   0x6008             STR      R0,[R1, #+0]
-     87            
-     88            /*
-     89            TIM8->CCR1 = 1000;//x pin13
-     90            Delay(1000);
-     91            TIM8->CCR2 = 2000;//z
-     92            Delay(1000);
-     93            TIM8->CCR3 = 2000;//y
-     94            */
-     95            while(1){
+     75            
+     76            /*
+     77            TIM8->CCR1 = 1000;//x pin13
+     78            Delay(1000);
+     79            TIM8->CCR2 = 1500;//z
+     80            Delay(1000);
+     81            TIM8->CCR3 = 2000;//y
+     82            */
+     83            
+     84            while(1){
    \                     ??main_0: (+1)
    \       0x66   0xE7FE             B.N      ??main_0
-     96              /*
-     97              Delay(1500);
-     98              GPIO_ToggleBits(GPIOG,GPIO_Pin_13);
-     99              Delay(1500);
-    100              GPIO_ToggleBits(GPIOG,GPIO_Pin_13);
-    101              Delay(5);
-    102              a=read_Encoder_x();
-    103              b=read_Encoder_y();
-    104              c=read_Encoder_z();*/
-    105          //    printf("%d",TIM12->CNT);
-    106              
-    107          //  TIM8->CCR1 = 1000;
-    108          //  TIM8->CCR2 = 1500;
-    109          //  TIM8->CCR3 = 2000;Delay(3000);
-    110            
-    111            
-    112          //  TIM8->CCR3=-800;Delay(3000);
-    113            
-    114          //    if(att.pit<-27){//jump up
+     85              /*
+     86              Delay(1500);
+     87              GPIO_ToggleBits(GPIOG,GPIO_Pin_13);
+     88              Delay(1500);
+     89              GPIO_ToggleBits(GPIOG,GPIO_Pin_13);
+     90              Delay(5);
+     91              a=read_Encoder_x();
+     92              b=read_Encoder_y();
+     93              c=read_Encoder_z();*/
+     94          //    printf("%d",TIM12->CNT);
+     95              
+     96          //  TIM8->CCR1 = 1000;
+     97          //  TIM8->CCR2 = 1500;
+     98          //  TIM8->CCR3 = 2000;Delay(3000);
+     99            
+    100            
+    101          //  TIM8->CCR3=-800;Delay(3000);
+    102            
+    103          //    if(att.pit<-27){//jump up
+    104          //      Delay(3000);
+    105          //      nvic_flag = 0;
+    106          //      PWM_X =0;
+    107          //      set_pwm(PWM_X);
+    108          //      TIM2->CCR3=1250;//1500;
+    109          //      Delay(50);
+    110          //      nvic_flag = 1;
+    111          //      Delay(200);
+    112          //      TIM2->CCR3=1700;
+    113          //      Delay(200);
+    114          //    }else if(att.pit>27){//jump up
     115          //      Delay(3000);
     116          //      nvic_flag = 0;
     117          //      PWM_X =0;
@@ -297,20 +297,9 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\main.c
     122          //      Delay(200);
     123          //      TIM2->CCR3=1700;
     124          //      Delay(200);
-    125          //    }else if(att.pit>27){//jump up
-    126          //      Delay(3000);
-    127          //      nvic_flag = 0;
-    128          //      PWM_X =0;
-    129          //      set_pwm(PWM_X);
-    130          //      TIM2->CCR3=1250;//1500;
-    131          //      Delay(50);
-    132          //      nvic_flag = 1;
-    133          //      Delay(200);
-    134          //      TIM2->CCR3=1700;
-    135          //      Delay(200);
-    136          //    }
-    137            }
-    138          }
+    125          //    }
+    126            }
+    127          }
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable2:

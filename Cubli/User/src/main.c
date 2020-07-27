@@ -2,19 +2,7 @@
 
 #include "timer.h"
 #include "pwm.h"
-//void TM4_Interrupt_Init(void){
-//  TIM_TimeBaseInitTypeDef TIM_BaseStruct;
-//  RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4,ENABLE);
-//  TIM_BaseStruct.TIM_Prescaler = 90-1;
-//  TIM_BaseStruct.TIM_Period=5000-1;
-//  TIM_BaseStruct.TIM_CounterMode=TIM_CounterMode_Up;
-//  TIM_BaseStruct.TIM_ClockDivision=TIM_CKD_DIV1;
-//  TIM_BaseStruct.TIM_RepetitionCounter=0;
-//  TIM_TimeBaseInit(TIM4,&TIM_BaseStruct);
-//  TIM_Cmd(TIM4,ENABLE);
-//  TIM_ClearFlag(TIM4,TIM_FLAG_Update);
-//  TIM_ITConfig(TIM4,TIM_IT_Update,ENABLE);
-//}
+
 void TM5_Interrupt_Init(void){
   TIM_TimeBaseInitTypeDef TIM_BaseStruct;
   RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM5,ENABLE);
@@ -88,10 +76,11 @@ void main(void){
   /*
   TIM8->CCR1 = 1000;//x pin13
   Delay(1000);
-  TIM8->CCR2 = 2000;//z
+  TIM8->CCR2 = 1500;//z
   Delay(1000);
   TIM8->CCR3 = 2000;//y
   */
+  
   while(1){
     /*
     Delay(1500);
