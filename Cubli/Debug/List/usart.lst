@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         27/Jul/2020  17:44:10
+# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         29/Jul/2020  14:43:02
 # Copyright 1999-2019 IAR Systems AB.
 #
 #    Cpu mode     =  
@@ -8,7 +8,7 @@
 #    Source file  =
 #        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\usart.c
 #    Command line =
-#        -f C:\Users\Evan\AppData\Local\Temp\EW86E.tmp
+#        -f C:\Users\Evan\AppData\Local\Temp\EWE883.tmp
 #        (E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\usart.c
 #        -D USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
 #        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List
@@ -60,9 +60,9 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\usart.c
       7          
       8          //int fputc(int ch,FILE *f)
       9          //{
-     10          //    USART1->SR; 
-     11          //    USART_SendData(USART1, (unsigned char) ch);
-     12          //    while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);
+     10          //    USART6->SR; 
+     11          //    USART_SendData(USART6, (unsigned char) ch);
+     12          //    while(USART_GetFlagStatus(USART6,USART_FLAG_TC)!=SET);
      13          //    return(ch);
      14          //} 
      15          
@@ -155,10 +155,10 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\usart.c
      44          //int usart1_read(uint8_t** buf)
      45          //{
      46          //    int rx_len;
-     47          //    if(USART_GetFlagStatus(USART1,USART_FLAG_IDLE)!=RESET)
+     47          //    if(USART_GetFlagStatus(USART6,USART_FLAG_IDLE)!=RESET)
      48          //    {
-     49          //		rx_len = USART1->SR;
-     50          //        rx_len = USART1->DR;
+     49          //		rx_len = USART6->SR;
+     50          //        rx_len = USART6->DR;
      51          //		DMA_Cmd(DMA1_Channel5, DISABLE);                                    
      52          //        DMA_ClearFlag(DMA1_FLAG_TC5);
      53          //        rx_len = usart1_rx_len - DMA_GetCurrDataCounter(DMA1_Channel5);
@@ -171,15 +171,15 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\usart.c
      60          //    return -1;
      61          //}
      62          
-     63          //void USART1_IRQHandler(void)
+     63          //void USART6_IRQHandler(void)
      64          //{
      65          //	int rx_len;    
-     66          //	if(USART_GetITStatus(USART1, USART_IT_IDLE) != RESET)
+     66          //	if(USART_GetITStatus(USART6, USART_IT_IDLE) != RESET)
      67          //	{
-     68          //		rx_len = USART1->SR;
-     69          //        rx_len = USART1->DR;
+     68          //		rx_len = USART6->SR;
+     69          //        rx_len = USART6->DR;
      70          //		DMA_Cmd(DMA1_Channel5, DISABLE);                                    
-     71          //        USART_ClearITPendingBit(USART1, USART_IT_IDLE);                       
+     71          //        USART_ClearITPendingBit(USART6, USART_IT_IDLE);                       
      72          //        rx_len = usart1_rx_len - DMA_GetCurrDataCounter(DMA1_Channel5);
      73          //		DMA_SetCurrDataCounter(DMA1_Channel5,usart1_rx_len);                
      74          //		DMA_Cmd(DMA1_Channel5, ENABLE);
@@ -205,8 +205,8 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\usart.c
      82            DMA_DeInit(DMAy_Streamx);                                                                                                       
    \       0x16   0x0020             MOVS     R0,R4
    \       0x18   0x....'....        BL       DMA_DeInit
-     83            DMA_InitStructure.DMA_Channel = DMA_Channel_4;
-   \       0x1C   0xF05F 0x6000      MOVS     R0,#+134217728
+     83            DMA_InitStructure.DMA_Channel = DMA_Channel_5;
+   \       0x1C   0xF05F 0x6020      MOVS     R0,#+167772160
    \       0x20   0x9000             STR      R0,[SP, #+0]
      84            DMA_InitStructure.DMA_PeripheralBaseAddr = peripheral_addr;             //外設地址 給DMA的目的初始位址 (USART的Data register)  
    \       0x22   0x9601             STR      R6,[SP, #+4]
@@ -218,7 +218,7 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\usart.c
      87            DMA_InitStructure.DMA_BufferSize = data_length;                         //傳輸長度                      
    \       0x2A   0xB2AD             UXTH     R5,R5            ;; ZeroExt  R5,R5,#+16,#+16
    \       0x2C   0x9504             STR      R5,[SP, #+16]
-     88            DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;        //外設地址不變 DMA只與USART1建立聯絡     
+     88            DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;        //外設地址不變 DMA只與USART6建立聯絡     
    \       0x2E   0x2000             MOVS     R0,#+0
    \       0x30   0x9005             STR      R0,[SP, #+20]
      89            DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;                 //内存地址自增  
@@ -315,31 +315,31 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\usart.c
     147            GPIO_InitTypeDef   GPIO_InitStructure;   //初始化GPIO
     148            USART_InitTypeDef  USART_InitStructure;  //初始化Usart
     149            
-    150            RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);   //使能GPIOA
+    150            RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOG, ENABLE);   //使能GPIOG
    \        0x6   0x2101             MOVS     R1,#+1
-   \        0x8   0x2001             MOVS     R0,#+1
+   \        0x8   0x2040             MOVS     R0,#+64
    \        0xA   0x....'....        BL       RCC_AHB1PeriphClockCmd
-    151            RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1,ENABLE);   //使能USART2
+    151            RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART6,ENABLE);   //使能USART2
    \        0xE   0x2101             MOVS     R1,#+1
-   \       0x10   0x2010             MOVS     R0,#+16
+   \       0x10   0x2020             MOVS     R0,#+32
    \       0x12   0x....'....        BL       RCC_APB2PeriphClockCmd
     152            
-    153            GPIO_PinAFConfig(GPIOA,GPIO_PinSource9,GPIO_AF_USART1);
-   \       0x16   0x....'....        LDR.W    R5,??DataTable8_4  ;; 0x40020000
-   \       0x1A   0x2207             MOVS     R2,#+7
-   \       0x1C   0x2109             MOVS     R1,#+9
+    153            GPIO_PinAFConfig(GPIOG,GPIO_PinSource14,GPIO_AF_USART6);
+   \       0x16   0x....'....        LDR.W    R5,??DataTable8_4  ;; 0x40021800
+   \       0x1A   0x2208             MOVS     R2,#+8
+   \       0x1C   0x210E             MOVS     R1,#+14
    \       0x1E   0x0028             MOVS     R0,R5
    \       0x20   0x....'....        BL       GPIO_PinAFConfig
-    154            GPIO_PinAFConfig(GPIOA,GPIO_PinSource10,GPIO_AF_USART1);
-   \       0x24   0x2207             MOVS     R2,#+7
-   \       0x26   0x210A             MOVS     R1,#+10
+    154            GPIO_PinAFConfig(GPIOG,GPIO_PinSource9,GPIO_AF_USART6);
+   \       0x24   0x2208             MOVS     R2,#+8
+   \       0x26   0x2109             MOVS     R1,#+9
    \       0x28   0x0028             MOVS     R0,R5
    \       0x2A   0x....'....        BL       GPIO_PinAFConfig
     155            
     156            
-    157            //USART1 Tx(PA.09) 
-    158            GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9; 
-   \       0x2E   0xF44F 0x7000      MOV      R0,#+512
+    157            //USART6 Tx(PA.09) 
+    158            GPIO_InitStructure.GPIO_Pin = GPIO_Pin_14; 
+   \       0x2E   0xF44F 0x4080      MOV      R0,#+16384
    \       0x32   0x9000             STR      R0,[SP, #+0]
     159            GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; 
    \       0x34   0x2002             MOVS     R0,#+2
@@ -350,13 +350,13 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\usart.c
     161            GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
    \       0x40   0x2000             MOVS     R0,#+0
    \       0x42   0xF88D 0x0006      STRB     R0,[SP, #+6]
-    162            GPIO_Init(GPIOA, &GPIO_InitStructure);
+    162            GPIO_Init(GPIOG, &GPIO_InitStructure);
    \       0x46   0x4669             MOV      R1,SP
    \       0x48   0x0028             MOVS     R0,R5
    \       0x4A   0x....'....        BL       GPIO_Init
-    163            //USART1 Rx(PA.10) 
-    164            GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10; 
-   \       0x4E   0xF44F 0x6080      MOV      R0,#+1024
+    163            //USART6 Rx(PA.10) 
+    164            GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9; 
+   \       0x4E   0xF44F 0x7000      MOV      R0,#+512
    \       0x52   0x9000             STR      R0,[SP, #+0]
     165            GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; 
    \       0x54   0x2002             MOVS     R0,#+2
@@ -367,7 +367,7 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\usart.c
     167            GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN; // allow low voltage or high voltage 
    \       0x60   0x2000             MOVS     R0,#+0
    \       0x62   0xF88D 0x0004      STRB     R0,[SP, #+4]
-    168            GPIO_Init(GPIOA, &GPIO_InitStructure);
+    168            GPIO_Init(GPIOG, &GPIO_InitStructure);
    \       0x66   0x4669             MOV      R1,SP
    \       0x68   0x0028             MOVS     R0,R5
    \       0x6A   0x....'....        BL       GPIO_Init
@@ -390,41 +390,41 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\usart.c
     176            USART_InitStructure.USART_Mode = USART_Mode_Tx | USART_Mode_Rx; 
    \       0x88   0x200C             MOVS     R0,#+12
    \       0x8A   0xF8AD 0x0012      STRH     R0,[SP, #+18]
-    177            USART_Init(USART1, &USART_InitStructure);
-   \       0x8E   0x....'....        LDR.W    R4,??DataTable8_5  ;; 0x40011000
+    177            USART_Init(USART6, &USART_InitStructure);
+   \       0x8E   0x....'....        LDR.W    R4,??DataTable8_5  ;; 0x40011400
    \       0x92   0xA902             ADD      R1,SP,#+8
    \       0x94   0x0020             MOVS     R0,R4
    \       0x96   0x....'....        BL       USART_Init
     178            
-    179            USART_Cmd(USART1, ENABLE);   
+    179            USART_Cmd(USART6, ENABLE);   
    \       0x9A   0x2101             MOVS     R1,#+1
    \       0x9C   0x0020             MOVS     R0,R4
    \       0x9E   0x....'....        BL       USART_Cmd
-    180            USART_DMACmd(USART1, USART_DMAReq_Tx, ENABLE); //開啟usart的DMA傳輸功能
+    180            USART_DMACmd(USART6, USART_DMAReq_Tx, ENABLE); //開啟usart的DMA傳輸功能
    \       0xA2   0x2201             MOVS     R2,#+1
    \       0xA4   0x2180             MOVS     R1,#+128
    \       0xA6   0x0020             MOVS     R0,R4
    \       0xA8   0x....'....        BL       USART_DMACmd
-    181            USART_DMACmd(USART1, USART_DMAReq_Rx, ENABLE); 
+    181            USART_DMACmd(USART6, USART_DMAReq_Rx, ENABLE); 
    \       0xAC   0x2201             MOVS     R2,#+1
    \       0xAE   0x2140             MOVS     R1,#+64
    \       0xB0   0x0020             MOVS     R0,R4
    \       0xB2   0x....'....        BL       USART_DMACmd
-    182            USART_ITConfig(USART1, USART_IT_IDLE, ENABLE);
+    182            USART_ITConfig(USART6, USART_IT_IDLE, ENABLE);
    \       0xB6   0x2201             MOVS     R2,#+1
    \       0xB8   0xF240 0x4124      MOVW     R1,#+1060
    \       0xBC   0x0020             MOVS     R0,R4
    \       0xBE   0x....'....        BL       USART_ITConfig
     183            
-    184            dma_tx_config(DMA2_Stream7,(uint32_t)&USART1->DR,(uint32_t)usart1_dma_tx_buf,usart1_tx_len); //設定外設USART1->DR而usart1_dma_tx_buf為資料初始位址 也就是我們上位機的資料
+    184            dma_tx_config(DMA2_Stream7,(uint32_t)&USART6->DR,(uint32_t)usart1_dma_tx_buf,usart1_tx_len); //設定外設USART6->DR而usart1_dma_tx_buf為資料初始位址 也就是我們上位機的資料
    \       0xC2   0xF44F 0x6380      MOV      R3,#+1024
    \       0xC6   0x....'....        LDR.W    R2,??DataTable8_3
-   \       0xCA   0x....'....        LDR.W    R1,??DataTable8_6  ;; 0x40011004
+   \       0xCA   0x....'....        LDR.W    R1,??DataTable8_6  ;; 0x40011404
    \       0xCE   0x....'....        LDR.W    R0,??DataTable8  ;; 0x400264b8
    \       0xD2   0x....'....        BL       dma_tx_config
-    185            //    dma_rx_config(DMA1_Channel5,(u32)&USART1->DR,(u32)usart1_dma_rx_buf,usart1_rx_len);
+    185            //    dma_rx_config(DMA1_Channel5,(u32)&USART6->DR,(u32)usart1_dma_rx_buf,usart1_rx_len);
     186            
-    187            //    NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn;
+    187            //    NVIC_InitStructure.NVIC_IRQChannel = USART6_IRQn;
     188            //    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=2 ;
     189            //    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 2;		
     190            //    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;			
@@ -1542,7 +1542,7 @@ Warning[Pa093]: implicit conversion from floating point to integer
     543              }
     544            case 5:
     545              {
-    546                ANO_DT_Send_PWM_Motor(PWM_X,encoder_x,0,0,1500,1600,1700,1800);
+    546                ANO_DT_Send_PWM_Motor(PWM_x,encoder_x,0,0,1500,1600,1700,1800);
    \                     ??Anotc_SendData_4: (+1)
    \       0xB2   0xF44F 0x60E1      MOV      R0,#+1800
    \       0xB6   0x9003             STR      R0,[SP, #+12]
@@ -1656,15 +1656,15 @@ Warning[Pa093]: implicit conversion from floating point to integer
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable8_4:
-   \        0x0   0x4002'0000        DC32     0x40020000
+   \        0x0   0x4002'1800        DC32     0x40021800
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable8_5:
-   \        0x0   0x4001'1000        DC32     0x40011000
+   \        0x0   0x4001'1400        DC32     0x40011400
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable8_6:
-   \        0x0   0x4001'1004        DC32     0x40011004
+   \        0x0   0x4001'1404        DC32     0x40011404
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable8_7:
@@ -1704,7 +1704,7 @@ Warning[Pa093]: implicit conversion from floating point to integer
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable8_16:
-   \        0x0   0x....'....        DC32     PWM_X
+   \        0x0   0x....'....        DC32     PWM_x
     609          
     610          
     611          

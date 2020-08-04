@@ -35,19 +35,19 @@ void MPU6050_Init(void){
   IIC_Send(SlaveAddress,YG_OFFS_USRH, 0xff);
   IIC_Send(SlaveAddress,ZG_OFFS_USRL, 0x16);
   IIC_Send(SlaveAddress,ZG_OFFS_USRH, 0x00);*/
-  IIC_Send(SlaveAddress,XA_OFFSET_L_TC, 0x57);
+  IIC_Send(SlaveAddress,XA_OFFSET_L_TC, 0x39);
   IIC_Send(SlaveAddress,XA_OFFSET_H, 0xf7);
-  IIC_Send(SlaveAddress,YA_OFFSET_L_TC, 0x8c);
+  IIC_Send(SlaveAddress,YA_OFFSET_L_TC, 0x6f);
   IIC_Send(SlaveAddress,YA_OFFSET_H, 0x04);
   
-  IIC_Send(SlaveAddress,ZA_OFFSET_L_TC, 0x07);
+  IIC_Send(SlaveAddress,ZA_OFFSET_L_TC, 0x30);
   IIC_Send(SlaveAddress,ZA_OFFSET_H, 0x06); //65536 or 4096
   
-  IIC_Send(SlaveAddress,XG_OFFS_USRL, 0x54);
+  IIC_Send(SlaveAddress,XG_OFFS_USRL, 0x55);
   IIC_Send(SlaveAddress,XG_OFFS_USRH, 0x00);
-  IIC_Send(SlaveAddress,YG_OFFS_USRL, 0xef);
+  IIC_Send(SlaveAddress,YG_OFFS_USRL, 0xf0);
   IIC_Send(SlaveAddress,YG_OFFS_USRH, 0xff);
-  IIC_Send(SlaveAddress,ZG_OFFS_USRL, 0x49);
+  IIC_Send(SlaveAddress,ZG_OFFS_USRL, 0x0c);
   IIC_Send(SlaveAddress,ZG_OFFS_USRH, 0x00);
 }
 

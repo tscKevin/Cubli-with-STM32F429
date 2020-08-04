@@ -28,6 +28,7 @@ void NVIC_Set(void){
   NVIC_Init(&NVIC_InitStructure);
   
   /*DMA1_Stream6_IRQn*/
+
   NVIC_InitStructure.NVIC_IRQChannel = DMA2_Stream7_IRQn;
   NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=2;
   NVIC_InitStructure.NVIC_IRQChannelSubPriority = 2;		
@@ -36,13 +37,21 @@ void NVIC_Set(void){
 }
 void LED_On_Board(void){
   GPIO_InitTypeDef GPIO_InitStructure;
-  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOG,ENABLE); //enable GPIOA clock   //
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15;
+  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB,ENABLE); //enable GPIOA clock   //
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13;// | GPIO_Pin_14 | GPIO_Pin_15;
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
   GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
   GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
-  GPIO_Init(GPIOG, &GPIO_InitStructure);
+  GPIO_Init(GPIOB, &GPIO_InitStructure); //enable GPIOA clock   //
+  
+  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD,ENABLE); //enable GPIOA clock   //
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8 | GPIO_Pin_9;
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+  GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
+  GPIO_Init(GPIOD, &GPIO_InitStructure); //enable GPIOA clock   //
 }
 int a,b,c;
 void main(void){
@@ -61,36 +70,82 @@ void main(void){
   
   TM8_PWM_Init();
   LED_On_Board();
-  
+
   IIC_GPIO_Init();
   MPU6050_Init();
   get_mpu_id();
-
   get_iir_factor(&Mpu.att_acc_factor,0.005f,25);
-  TM5_Interrupt_Init();
+  
+  usart1_init(115200);
+//  TM5_Interrupt_Init();
   NVIC_Set();
   
   Delay(2000);
-  nvic_flag = 1;
+  nvic_flag = 0;  /**/
   
   /*
-  TIM8->CCR1 = 1000;//x pin13
+  TIM8->CCR1 = 500;//x pin13
   Delay(1000);
-  TIM8->CCR2 = 1500;//z
+  TIM8->CCR2 = 500;//y
   Delay(1000);
-  TIM8->CCR3 = 2000;//y
+  TIM8->CCR3 = 500;//z
   */
   
+  
   while(1){
-    /*
-    Delay(1500);
-    GPIO_ToggleBits(GPIOG,GPIO_Pin_13);
-    Delay(1500);
-    GPIO_ToggleBits(GPIOG,GPIO_Pin_13);
-    Delay(5);
-    a=read_Encoder_x();
-    b=read_Encoder_y();
-    c=read_Encoder_z();*/
+  GPIO_SetBits(GPIOB,GPIO_Pin_13);  //x
+//  GPIO_ResetBits(GPIOB,GPIO_Pin_13);
+  
+  GPIO_SetBits(GPIOD,GPIO_Pin_8);  //y
+//  GPIO_ResetBits(GPIOD,GPIO_Pin_8);
+  
+  GPIO_SetBits(GPIOD,GPIO_Pin_9);  //z
+//  GPIO_ResetBits(GPIOD,GPIO_Pin_9);
+  
+  TIM8->CCR1 = 5500;//x
+  TIM8->CCR2 = 5500;//y
+  TIM8->CCR3 = 5500;//z
+  Delay(2000);
+  
+//  GPIO_SetBits(GPIOB,GPIO_Pin_13);
+  GPIO_ResetBits(GPIOB,GPIO_Pin_13);
+  
+//  GPIO_SetBits(GPIOD,GPIO_Pin_8);
+  GPIO_ResetBits(GPIOD,GPIO_Pin_8);
+  
+//  GPIO_SetBits(GPIOD,GPIO_Pin_9);
+  GPIO_ResetBits(GPIOD,GPIO_Pin_9);
+  
+  TIM8->CCR1 = 10;//x
+  TIM8->CCR2 = 10;//y
+  TIM8->CCR3 = 10;//z
+  Delay(100);
+  TIM8->CCR1 = 0;//x
+  TIM8->CCR2 = 0;//y
+  TIM8->CCR3 = 0;//z
+  Delay(1900);
+  TIM8->CCR1 = 5500;//x
+  TIM8->CCR2 = 5500;//y
+  TIM8->CCR3 = 5500;//z
+  Delay(2000);
+  
+  GPIO_SetBits(GPIOB,GPIO_Pin_13);
+//  GPIO_ResetBits(GPIOB,GPIO_Pin_13);
+  
+  GPIO_SetBits(GPIOD,GPIO_Pin_8);
+//  GPIO_ResetBits(GPIOD,GPIO_Pin_8);
+  
+  GPIO_SetBits(GPIOD,GPIO_Pin_9);
+//  GPIO_ResetBits(GPIOD,GPIO_Pin_9);
+  TIM8->CCR1 = 10;//x
+  TIM8->CCR2 = 10;//y
+  TIM8->CCR3 = 10;//z
+  Delay(100);
+  TIM8->CCR1 = 0;//x
+  TIM8->CCR2 = 0;//y
+  TIM8->CCR3 = 0;//z
+  Delay(1900);
+  
 //    printf("%d",TIM12->CNT);
     
 //  TIM8->CCR1 = 1000;
@@ -103,8 +158,8 @@ void main(void){
 //    if(att.pit<-27){//jump up
 //      Delay(3000);
 //      nvic_flag = 0;
-//      PWM_X =0;
-//      set_pwm(PWM_X);
+//      PWM_x =0;
+//      set_pwm(PWM_x);
 //      TIM2->CCR3=1250;//1500;
 //      Delay(50);
 //      nvic_flag = 1;
@@ -114,8 +169,8 @@ void main(void){
 //    }else if(att.pit>27){//jump up
 //      Delay(3000);
 //      nvic_flag = 0;
-//      PWM_X =0;
-//      set_pwm(PWM_X);
+//      PWM_x =0;
+//      set_pwm(PWM_x);
 //      TIM2->CCR3=1250;//1500;
 //      Delay(50);
 //      nvic_flag = 1;

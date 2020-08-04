@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         24/Jul/2020  14:24:57
+# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         03/Aug/2020  13:45:39
 # Copyright 1999-2019 IAR Systems AB.
 #
 #    Cpu mode     =  
@@ -8,7 +8,7 @@
 #    Source file  =
 #        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\MPU6050.c
 #    Command line =
-#        -f C:\Users\Evan\AppData\Local\Temp\EWB488.tmp
+#        -f C:\Users\Evan\AppData\Local\Temp\EW448F.tmp
 #        (E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\MPU6050.c
 #        -D USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
 #        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List
@@ -140,8 +140,8 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\MPU6050
      35            IIC_Send(SlaveAddress,YG_OFFS_USRH, 0xff);
      36            IIC_Send(SlaveAddress,ZG_OFFS_USRL, 0x16);
      37            IIC_Send(SlaveAddress,ZG_OFFS_USRH, 0x00);*/
-     38            IIC_Send(SlaveAddress,XA_OFFSET_L_TC, 0x57);
-   \       0x34   0x2257             MOVS     R2,#+87
+     38            IIC_Send(SlaveAddress,XA_OFFSET_L_TC, 0x39);
+   \       0x34   0x2239             MOVS     R2,#+57
    \       0x36   0x2107             MOVS     R1,#+7
    \       0x38   0x20D0             MOVS     R0,#+208
    \       0x3A   0x....'....        BL       IIC_Send
@@ -150,8 +150,8 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\MPU6050
    \       0x40   0x2106             MOVS     R1,#+6
    \       0x42   0x20D0             MOVS     R0,#+208
    \       0x44   0x....'....        BL       IIC_Send
-     40            IIC_Send(SlaveAddress,YA_OFFSET_L_TC, 0x8c);
-   \       0x48   0x228C             MOVS     R2,#+140
+     40            IIC_Send(SlaveAddress,YA_OFFSET_L_TC, 0x6f);
+   \       0x48   0x226F             MOVS     R2,#+111
    \       0x4A   0x2109             MOVS     R1,#+9
    \       0x4C   0x20D0             MOVS     R0,#+208
    \       0x4E   0x....'....        BL       IIC_Send
@@ -161,8 +161,8 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\MPU6050
    \       0x56   0x20D0             MOVS     R0,#+208
    \       0x58   0x....'....        BL       IIC_Send
      42            
-     43            IIC_Send(SlaveAddress,ZA_OFFSET_L_TC, 0x07);
-   \       0x5C   0x2207             MOVS     R2,#+7
+     43            IIC_Send(SlaveAddress,ZA_OFFSET_L_TC, 0x30);
+   \       0x5C   0x2230             MOVS     R2,#+48
    \       0x5E   0x210B             MOVS     R1,#+11
    \       0x60   0x20D0             MOVS     R0,#+208
    \       0x62   0x....'....        BL       IIC_Send
@@ -172,8 +172,8 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\MPU6050
    \       0x6A   0x20D0             MOVS     R0,#+208
    \       0x6C   0x....'....        BL       IIC_Send
      45            
-     46            IIC_Send(SlaveAddress,XG_OFFS_USRL, 0x54);
-   \       0x70   0x2254             MOVS     R2,#+84
+     46            IIC_Send(SlaveAddress,XG_OFFS_USRL, 0x55);
+   \       0x70   0x2255             MOVS     R2,#+85
    \       0x72   0x2114             MOVS     R1,#+20
    \       0x74   0x20D0             MOVS     R0,#+208
    \       0x76   0x....'....        BL       IIC_Send
@@ -182,8 +182,8 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\MPU6050
    \       0x7C   0x2113             MOVS     R1,#+19
    \       0x7E   0x20D0             MOVS     R0,#+208
    \       0x80   0x....'....        BL       IIC_Send
-     48            IIC_Send(SlaveAddress,YG_OFFS_USRL, 0xef);
-   \       0x84   0x22EF             MOVS     R2,#+239
+     48            IIC_Send(SlaveAddress,YG_OFFS_USRL, 0xf0);
+   \       0x84   0x22F0             MOVS     R2,#+240
    \       0x86   0x2116             MOVS     R1,#+22
    \       0x88   0x20D0             MOVS     R0,#+208
    \       0x8A   0x....'....        BL       IIC_Send
@@ -192,8 +192,8 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\MPU6050
    \       0x90   0x2115             MOVS     R1,#+21
    \       0x92   0x20D0             MOVS     R0,#+208
    \       0x94   0x....'....        BL       IIC_Send
-     50            IIC_Send(SlaveAddress,ZG_OFFS_USRL, 0x49);
-   \       0x98   0x2249             MOVS     R2,#+73
+     50            IIC_Send(SlaveAddress,ZG_OFFS_USRL, 0x0c);
+   \       0x98   0x220C             MOVS     R2,#+12
    \       0x9A   0x2118             MOVS     R1,#+24
    \       0x9C   0x20D0             MOVS     R0,#+208
    \       0x9E   0x....'....        BL       IIC_Send

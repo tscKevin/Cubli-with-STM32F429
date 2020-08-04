@@ -7,9 +7,9 @@ uint8_t usart1_dma_rx_buf[usart1_rx_len];
 
 //int fputc(int ch,FILE *f)
 //{
-//    USART1->SR; 
-//    USART_SendData(USART1, (unsigned char) ch);
-//    while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);
+//    USART6->SR; 
+//    USART_SendData(USART6, (unsigned char) ch);
+//    while(USART_GetFlagStatus(USART6,USART_FLAG_TC)!=SET);
 //    return(ch);
 //} 
 
@@ -44,10 +44,10 @@ void usart1_send(void* buf, int len){
 //int usart1_read(uint8_t** buf)
 //{
 //    int rx_len;
-//    if(USART_GetFlagStatus(USART1,USART_FLAG_IDLE)!=RESET)
+//    if(USART_GetFlagStatus(USART6,USART_FLAG_IDLE)!=RESET)
 //    {
-//		rx_len = USART1->SR;
-//        rx_len = USART1->DR;
+//		rx_len = USART6->SR;
+//        rx_len = USART6->DR;
 //		DMA_Cmd(DMA1_Channel5, DISABLE);                                    
 //        DMA_ClearFlag(DMA1_FLAG_TC5);
 //        rx_len = usart1_rx_len - DMA_GetCurrDataCounter(DMA1_Channel5);
@@ -60,15 +60,15 @@ void usart1_send(void* buf, int len){
 //    return -1;
 //}
 
-//void USART1_IRQHandler(void)
+//void USART6_IRQHandler(void)
 //{
 //	int rx_len;    
-//	if(USART_GetITStatus(USART1, USART_IT_IDLE) != RESET)
+//	if(USART_GetITStatus(USART6, USART_IT_IDLE) != RESET)
 //	{
-//		rx_len = USART1->SR;
-//        rx_len = USART1->DR;
+//		rx_len = USART6->SR;
+//        rx_len = USART6->DR;
 //		DMA_Cmd(DMA1_Channel5, DISABLE);                                    
-//        USART_ClearITPendingBit(USART1, USART_IT_IDLE);                       
+//        USART_ClearITPendingBit(USART6, USART_IT_IDLE);                       
 //        rx_len = usart1_rx_len - DMA_GetCurrDataCounter(DMA1_Channel5);
 //		DMA_SetCurrDataCounter(DMA1_Channel5,usart1_rx_len);                
 //		DMA_Cmd(DMA1_Channel5, ENABLE);
@@ -80,12 +80,12 @@ void dma_tx_config(DMA_Stream_TypeDef* DMAy_Streamx,u32 peripheral_addr,u32 memo
   DMA_InitTypeDef DMA_InitStructure;
   RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_DMA2, ENABLE);	                    //DMA使能     stm32f103 only have one DMA1                                                                             
   DMA_DeInit(DMAy_Streamx);                                                                                                       
-  DMA_InitStructure.DMA_Channel = DMA_Channel_4;
+  DMA_InitStructure.DMA_Channel = DMA_Channel_5;
   DMA_InitStructure.DMA_PeripheralBaseAddr = peripheral_addr;             //外設地址 給DMA的目的初始位址 (USART的Data register)  
   DMA_InitStructure.DMA_Memory0BaseAddr =memory_addr;                      //内存地址 內存的Buf array位址(usart1_dma_tx_buf)
   DMA_InitStructure.DMA_DIR = DMA_DIR_MemoryToPeripheral;                      //傳輸方向：内存到外設（外設作為目的地）
   DMA_InitStructure.DMA_BufferSize = data_length;                         //傳輸長度                      
-  DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;        //外設地址不變 DMA只與USART1建立聯絡     
+  DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;        //外設地址不變 DMA只與USART6建立聯絡     
   DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;                 //内存地址自增  
   DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte; //字節傳輸  
   DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;         //字節傳輸 一次傳輸8個BITS
@@ -147,25 +147,25 @@ void usart1_init(u32 bound)
   GPIO_InitTypeDef   GPIO_InitStructure;   //初始化GPIO
   USART_InitTypeDef  USART_InitStructure;  //初始化Usart
   
-  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);   //使能GPIOA
-  RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1,ENABLE);   //使能USART2
+  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOG, ENABLE);   //使能GPIOG
+  RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART6,ENABLE);   //使能USART2
   
-  GPIO_PinAFConfig(GPIOA,GPIO_PinSource9,GPIO_AF_USART1);
-  GPIO_PinAFConfig(GPIOA,GPIO_PinSource10,GPIO_AF_USART1);
+  GPIO_PinAFConfig(GPIOG,GPIO_PinSource14,GPIO_AF_USART6);
+  GPIO_PinAFConfig(GPIOG,GPIO_PinSource9,GPIO_AF_USART6);
   
   
-  //USART1 Tx(PA.09) 
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9; 
+  //USART6 Tx(PA.09) 
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_14; 
   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; 
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;  // represent as a usart port 
   GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
-  GPIO_Init(GPIOA, &GPIO_InitStructure);
-  //USART1 Rx(PA.10) 
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10; 
+  GPIO_Init(GPIOG, &GPIO_InitStructure);
+  //USART6 Rx(PA.10) 
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9; 
   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; 
   GPIO_InitStructure.GPIO_OType = GPIO_OType_OD;
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN; // allow low voltage or high voltage 
-  GPIO_Init(GPIOA, &GPIO_InitStructure);
+  GPIO_Init(GPIOG, &GPIO_InitStructure);
   
   //USART_InitTypeDef USART_InitStructure;
   USART_InitStructure.USART_BaudRate = bound; 
@@ -174,17 +174,17 @@ void usart1_init(u32 bound)
   USART_InitStructure.USART_Parity = USART_Parity_No; 
   USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
   USART_InitStructure.USART_Mode = USART_Mode_Tx | USART_Mode_Rx; 
-  USART_Init(USART1, &USART_InitStructure);
+  USART_Init(USART6, &USART_InitStructure);
   
-  USART_Cmd(USART1, ENABLE);   
-  USART_DMACmd(USART1, USART_DMAReq_Tx, ENABLE); //開啟usart的DMA傳輸功能
-  USART_DMACmd(USART1, USART_DMAReq_Rx, ENABLE); 
-  USART_ITConfig(USART1, USART_IT_IDLE, ENABLE);
+  USART_Cmd(USART6, ENABLE);   
+  USART_DMACmd(USART6, USART_DMAReq_Tx, ENABLE); //開啟usart的DMA傳輸功能
+  USART_DMACmd(USART6, USART_DMAReq_Rx, ENABLE); 
+  USART_ITConfig(USART6, USART_IT_IDLE, ENABLE);
   
-  dma_tx_config(DMA2_Stream7,(uint32_t)&USART1->DR,(uint32_t)usart1_dma_tx_buf,usart1_tx_len); //設定外設USART1->DR而usart1_dma_tx_buf為資料初始位址 也就是我們上位機的資料
-  //    dma_rx_config(DMA1_Channel5,(u32)&USART1->DR,(u32)usart1_dma_rx_buf,usart1_rx_len);
+  dma_tx_config(DMA2_Stream7,(uint32_t)&USART6->DR,(uint32_t)usart1_dma_tx_buf,usart1_tx_len); //設定外設USART6->DR而usart1_dma_tx_buf為資料初始位址 也就是我們上位機的資料
+  //    dma_rx_config(DMA1_Channel5,(u32)&USART6->DR,(u32)usart1_dma_rx_buf,usart1_rx_len);
   
-  //    NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn;
+  //    NVIC_InitStructure.NVIC_IRQChannel = USART6_IRQn;
   //    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=2 ;
   //    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 2;		
   //    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;			
@@ -543,7 +543,7 @@ void Anotc_SendData(void)
     }
   case 5:
     {
-      ANO_DT_Send_PWM_Motor(PWM_X,encoder_x,0,0,1500,1600,1700,1800);
+      ANO_DT_Send_PWM_Motor(PWM_x,encoder_x,0,0,1500,1600,1700,1800);
       break;
     }
     /*
