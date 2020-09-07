@@ -1,48 +1,44 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         03/Aug/2020  17:56:30
+# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         01/Sep/2020  01:57:38
 # Copyright 1999-2019 IAR Systems AB.
 #
 #    Cpu mode     =  
 #    Endian       =  little
-#    Source file  =
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\main.c
+#    Source file  =  E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\main.c
 #    Command line =
-#        -f C:\Users\Evan\AppData\Local\Temp\EWEE7C.tmp
-#        (E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\main.c
-#        -D USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List
-#        -o
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\Obj
-#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
-#        --no_clustering --no_scheduling --debug --endian=little
-#        --cpu=Cortex-M4 -e --fpu=None --dlib_config "D:\IAR Systems\Embedded
-#        Workbench 8.3\arm\inc\c\DLib_Config_Normal.h" -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Include\
+#        -f C:\Users\LABPC1~1\AppData\Local\Temp\EWE536.tmp
+#        (E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\main.c -D
+#        USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\Debug\List -o
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\Debug\Obj --no_cse
+#        --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering
+#        --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=None
+#        --dlib_config "D:\IAR Systems\Embedded Workbench
+#        8.3\arm\inc\c\DLib_Config_Normal.h" -I
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Include\
 #        -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\
 #        -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\iar\
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\iar\
 #        -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\inc\
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\inc\
 #        -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\
-#        -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\inc\
-#        -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\
-#        -Ol --use_c++_inline -I "D:\IAR Systems\Embedded Workbench
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\
+#        -I E:\STM32Project\Cubli-with-STM32F429\Cubli\user\inc\ -I
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\user\src\ -Ol
+#        --use_c++_inline -I "D:\IAR Systems\Embedded Workbench
 #        8.3\arm\CMSIS\Core\Include\" -I "D:\IAR Systems\Embedded Workbench
 #        8.3\arm\CMSIS\DSP\Include\")
 #    Locale       =  C
 #    List file    =
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List\main.lst
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\Debug\List\main.lst
 #    Object file  =
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\Obj\main.o
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\Debug\Obj\main.o
 #
 ###############################################################################
 
-E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\main.c
+E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\main.c
       1          #include "stm32f4xx.h"
       2          
       3          #include "timer.h"
@@ -211,208 +207,133 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\main.c
    \                                 In section .text, align 2, keep-with-next
      57          void main(void){
    \                     main: (+1)
-   \        0x0   0xE92D 0x47F0      PUSH     {R4-R10,LR}
+   \        0x0   0xB580             PUSH     {R7,LR}
      58            systick_setup();
-   \        0x4   0x....'....        BL       systick_setup
+   \        0x2   0x....'....        BL       systick_setup
      59            
-     60            TM2_PWM_Init();
-   \        0x8   0x....'....        BL       TM2_PWM_Init
+     60            TM2_PWM_Init();//servo
+   \        0x6   0x....'....        BL       TM2_PWM_Init
      61            TIM2->CCR1=1700;//PA0
-   \        0xC   0xF240 0x60A4      MOVW     R0,#+1700
-   \       0x10   0x....             LDR.N    R1,??DataTable2_3  ;; 0x40000034
-   \       0x12   0x6008             STR      R0,[R1, #+0]
+   \        0xA   0xF240 0x60A4      MOVW     R0,#+1700
+   \        0xE   0x....             LDR.N    R1,??DataTable2_3  ;; 0x40000034
+   \       0x10   0x6008             STR      R0,[R1, #+0]
      62            TIM2->CCR3=1700;//PB10
-   \       0x14   0x....             LDR.N    R1,??DataTable2_4  ;; 0x4000003c
-   \       0x16   0x6008             STR      R0,[R1, #+0]
+   \       0x12   0x....             LDR.N    R1,??DataTable2_4  ;; 0x4000003c
+   \       0x14   0x6008             STR      R0,[R1, #+0]
      63            TIM2->CCR4=1700;//PB11
-   \       0x18   0x....             LDR.N    R1,??DataTable2_5  ;; 0x40000040
-   \       0x1A   0x6008             STR      R0,[R1, #+0]
+   \       0x16   0x....             LDR.N    R1,??DataTable2_5  ;; 0x40000040
+   \       0x18   0x6008             STR      R0,[R1, #+0]
      64            Delay(150);
-   \       0x1C   0x2096             MOVS     R0,#+150
-   \       0x1E   0x....'....        BL       Delay
+   \       0x1A   0x2096             MOVS     R0,#+150
+   \       0x1C   0x....'....        BL       Delay
      65            
-     66            TIM3_EncoderInterface_Init();
-   \       0x22   0x....'....        BL       TIM3_EncoderInterface_Init
-     67            TIM4_EncoderInterface_Init();
-   \       0x26   0x....'....        BL       TIM4_EncoderInterface_Init
-     68            TIM1_EncoderInterface_Init();
-   \       0x2A   0x....'....        BL       TIM1_EncoderInterface_Init
+     66            TIM3_EncoderInterface_Init();//A
+   \       0x20   0x....'....        BL       TIM3_EncoderInterface_Init
+     67            TIM1_EncoderInterface_Init();//B
+   \       0x24   0x....'....        BL       TIM1_EncoderInterface_Init
+     68            TIM4_EncoderInterface_Init();//C
+   \       0x28   0x....'....        BL       TIM4_EncoderInterface_Init
      69            Delay(5);
-   \       0x2E   0x2005             MOVS     R0,#+5
-   \       0x30   0x....'....        BL       Delay
+   \       0x2C   0x2005             MOVS     R0,#+5
+   \       0x2E   0x....'....        BL       Delay
      70            
      71            TM8_PWM_Init();
-   \       0x34   0x....'....        BL       TM8_PWM_Init
-     72            LED_On_Board();
-   \       0x38   0x....'....        BL       LED_On_Board
+   \       0x32   0x....'....        BL       TM8_PWM_Init
+     72            LED_On_Board();//A:B13,B:D8,C:D9
+   \       0x36   0x....'....        BL       LED_On_Board
      73          
      74            IIC_GPIO_Init();
-   \       0x3C   0x....'....        BL       IIC_GPIO_Init
+   \       0x3A   0x....'....        BL       IIC_GPIO_Init
      75            MPU6050_Init();
-   \       0x40   0x....'....        BL       MPU6050_Init
+   \       0x3E   0x....'....        BL       MPU6050_Init
      76            get_mpu_id();
-   \       0x44   0x....'....        BL       get_mpu_id
+   \       0x42   0x....'....        BL       get_mpu_id
      77            get_iir_factor(&Mpu.att_acc_factor,0.005f,25);
-   \       0x48   0x....             LDR.N    R2,??DataTable2_6  ;; 0x41c80000
-   \       0x4A   0x....             LDR.N    R1,??DataTable2_7  ;; 0x3ba3d70a
-   \       0x4C   0x....             LDR.N    R0,??DataTable2_8
-   \       0x4E   0x....'....        BL       get_iir_factor
+   \       0x46   0x....             LDR.N    R2,??DataTable2_6  ;; 0x41c80000
+   \       0x48   0x....             LDR.N    R1,??DataTable2_7  ;; 0x3ba3d70a
+   \       0x4A   0x....             LDR.N    R0,??DataTable2_8
+   \       0x4C   0x....'....        BL       get_iir_factor
      78            
      79            usart1_init(115200);
-   \       0x52   0xF45F 0x30E1      MOVS     R0,#+115200
-   \       0x56   0x....'....        BL       usart1_init
-     80          //  TM5_Interrupt_Init();
+   \       0x50   0xF45F 0x30E1      MOVS     R0,#+115200
+   \       0x54   0x....'....        BL       usart1_init
+     80            TM5_Interrupt_Init();
+   \       0x58   0x....'....        BL       TM5_Interrupt_Init
      81            NVIC_Set();
-   \       0x5A   0x....'....        BL       NVIC_Set
+   \       0x5C   0x....'....        BL       NVIC_Set
      82            
      83            Delay(2000);
-   \       0x5E   0xF44F 0x60FA      MOV      R0,#+2000
-   \       0x62   0x....'....        BL       Delay
-     84            nvic_flag = 0;  /**/
-   \       0x66   0x2000             MOVS     R0,#+0
-   \       0x68   0x....             LDR.N    R1,??DataTable2_9
-   \       0x6A   0x6008             STR      R0,[R1, #+0]
+   \       0x60   0xF44F 0x60FA      MOV      R0,#+2000
+   \       0x64   0x....'....        BL       Delay
+     84            nvic_flag = 1;  /**/
+   \       0x68   0x2001             MOVS     R0,#+1
+   \       0x6A   0x....             LDR.N    R1,??DataTable2_9
+   \       0x6C   0x6008             STR      R0,[R1, #+0]
      85            
      86            /*
-     87            TIM8->CCR1 = 500;//x pin13
+     87            TIM8->CCR1 = 500;//A PC6
      88            Delay(1000);
-     89            TIM8->CCR2 = 500;//y
+     89            TIM8->CCR2 = 700;//B PC7
      90            Delay(1000);
-     91            TIM8->CCR3 = 500;//z
+     91            TIM8->CCR3 = 1000;//C PC8
      92            */
      93            
      94            
      95            while(1){
-     96            GPIO_SetBits(GPIOB,GPIO_Pin_13);  //x
    \                     ??main_0: (+1)
-   \       0x6C   0x....             LDR.N    R4,??DataTable2_1  ;; 0x40020400
-   \       0x6E   0xF44F 0x5100      MOV      R1,#+8192
-   \       0x72   0x0020             MOVS     R0,R4
-   \       0x74   0x....'....        BL       GPIO_SetBits
-     97          //  GPIO_ResetBits(GPIOB,GPIO_Pin_13);
-     98            
-     99            GPIO_SetBits(GPIOD,GPIO_Pin_8);  //y
-   \       0x78   0x....             LDR.N    R5,??DataTable2_2  ;; 0x40020c00
-   \       0x7A   0xF44F 0x7180      MOV      R1,#+256
-   \       0x7E   0x0028             MOVS     R0,R5
-   \       0x80   0x....'....        BL       GPIO_SetBits
-    100          //  GPIO_ResetBits(GPIOD,GPIO_Pin_8);
-    101            
-    102            GPIO_SetBits(GPIOD,GPIO_Pin_9);  //z
-   \       0x84   0xF44F 0x7100      MOV      R1,#+512
-   \       0x88   0x0028             MOVS     R0,R5
-   \       0x8A   0x....'....        BL       GPIO_SetBits
-    103          //  GPIO_ResetBits(GPIOD,GPIO_Pin_9);
-    104            
-    105            TIM8->CCR1 = 5500;//x
-   \       0x8E   0x....             LDR.N    R6,??DataTable2_10  ;; 0x40010434
-   \       0x90   0xF241 0x577C      MOVW     R7,#+5500
-   \       0x94   0x6037             STR      R7,[R6, #+0]
-    106            TIM8->CCR2 = 5500;//y
-   \       0x96   0x....'....        LDR.W    R8,??DataTable2_11  ;; 0x40010438
-   \       0x9A   0xF8C8 0x7000      STR      R7,[R8, #+0]
-    107            TIM8->CCR3 = 5500;//z
-   \       0x9E   0x....'....        LDR.W    R9,??DataTable2_12  ;; 0x4001043c
-   \       0xA2   0xF8C9 0x7000      STR      R7,[R9, #+0]
-    108            Delay(2000);
-   \       0xA6   0xF44F 0x60FA      MOV      R0,#+2000
-   \       0xAA   0x....'....        BL       Delay
-    109            
-    110          //  GPIO_SetBits(GPIOB,GPIO_Pin_13);
-    111            GPIO_ResetBits(GPIOB,GPIO_Pin_13);
-   \       0xAE   0xF44F 0x5100      MOV      R1,#+8192
-   \       0xB2   0x0020             MOVS     R0,R4
-   \       0xB4   0x....'....        BL       GPIO_ResetBits
-    112            
-    113          //  GPIO_SetBits(GPIOD,GPIO_Pin_8);
-    114            GPIO_ResetBits(GPIOD,GPIO_Pin_8);
-   \       0xB8   0xF44F 0x7180      MOV      R1,#+256
-   \       0xBC   0x0028             MOVS     R0,R5
-   \       0xBE   0x....'....        BL       GPIO_ResetBits
-    115            
-    116          //  GPIO_SetBits(GPIOD,GPIO_Pin_9);
-    117            GPIO_ResetBits(GPIOD,GPIO_Pin_9);
-   \       0xC2   0xF44F 0x7100      MOV      R1,#+512
-   \       0xC6   0x0028             MOVS     R0,R5
-   \       0xC8   0x....'....        BL       GPIO_ResetBits
-    118            
-    119            TIM8->CCR1 = 10;//x
-   \       0xCC   0x200A             MOVS     R0,#+10
-   \       0xCE   0x6030             STR      R0,[R6, #+0]
-    120            TIM8->CCR2 = 10;//y
-   \       0xD0   0x200A             MOVS     R0,#+10
-   \       0xD2   0xF8C8 0x0000      STR      R0,[R8, #+0]
-    121            TIM8->CCR3 = 10;//z
-   \       0xD6   0x200A             MOVS     R0,#+10
-   \       0xD8   0xF8C9 0x0000      STR      R0,[R9, #+0]
-    122            Delay(100);
-   \       0xDC   0x2064             MOVS     R0,#+100
-   \       0xDE   0x....'....        BL       Delay
-    123            TIM8->CCR1 = 0;//x
-   \       0xE2   0x2000             MOVS     R0,#+0
-   \       0xE4   0x6030             STR      R0,[R6, #+0]
-    124            TIM8->CCR2 = 0;//y
-   \       0xE6   0x2000             MOVS     R0,#+0
-   \       0xE8   0xF8C8 0x0000      STR      R0,[R8, #+0]
-    125            TIM8->CCR3 = 0;//z
-   \       0xEC   0x2000             MOVS     R0,#+0
-   \       0xEE   0xF8C9 0x0000      STR      R0,[R9, #+0]
-    126            Delay(1900);
-   \       0xF2   0xF240 0x7A6C      MOVW     R10,#+1900
-   \       0xF6   0x4650             MOV      R0,R10
-   \       0xF8   0x....'....        BL       Delay
-    127            TIM8->CCR1 = 5500;//x
-   \       0xFC   0x6037             STR      R7,[R6, #+0]
-    128            TIM8->CCR2 = 5500;//y
-   \       0xFE   0xF8C8 0x7000      STR      R7,[R8, #+0]
-    129            TIM8->CCR3 = 5500;//z
-   \      0x102   0xF8C9 0x7000      STR      R7,[R9, #+0]
-    130            Delay(2000);
-   \      0x106   0xF44F 0x60FA      MOV      R0,#+2000
-   \      0x10A   0x....'....        BL       Delay
-    131            
-    132            GPIO_SetBits(GPIOB,GPIO_Pin_13);
-   \      0x10E   0xF44F 0x5100      MOV      R1,#+8192
-   \      0x112   0x0020             MOVS     R0,R4
-   \      0x114   0x....'....        BL       GPIO_SetBits
-    133          //  GPIO_ResetBits(GPIOB,GPIO_Pin_13);
-    134            
-    135            GPIO_SetBits(GPIOD,GPIO_Pin_8);
-   \      0x118   0xF44F 0x7180      MOV      R1,#+256
-   \      0x11C   0x0028             MOVS     R0,R5
-   \      0x11E   0x....'....        BL       GPIO_SetBits
-    136          //  GPIO_ResetBits(GPIOD,GPIO_Pin_8);
-    137            
-    138            GPIO_SetBits(GPIOD,GPIO_Pin_9);
-   \      0x122   0xF44F 0x7100      MOV      R1,#+512
-   \      0x126   0x0028             MOVS     R0,R5
-   \      0x128   0x....'....        BL       GPIO_SetBits
-    139          //  GPIO_ResetBits(GPIOD,GPIO_Pin_9);
-    140            TIM8->CCR1 = 10;//x
-   \      0x12C   0x200A             MOVS     R0,#+10
-   \      0x12E   0x6030             STR      R0,[R6, #+0]
-    141            TIM8->CCR2 = 10;//y
-   \      0x130   0x200A             MOVS     R0,#+10
-   \      0x132   0xF8C8 0x0000      STR      R0,[R8, #+0]
-    142            TIM8->CCR3 = 10;//z
-   \      0x136   0x200A             MOVS     R0,#+10
-   \      0x138   0xF8C9 0x0000      STR      R0,[R9, #+0]
-    143            Delay(100);
-   \      0x13C   0x2064             MOVS     R0,#+100
-   \      0x13E   0x....'....        BL       Delay
-    144            TIM8->CCR1 = 0;//x
-   \      0x142   0x2000             MOVS     R0,#+0
-   \      0x144   0x6030             STR      R0,[R6, #+0]
-    145            TIM8->CCR2 = 0;//y
-   \      0x146   0x2000             MOVS     R0,#+0
-   \      0x148   0xF8C8 0x0000      STR      R0,[R8, #+0]
-    146            TIM8->CCR3 = 0;//z
-   \      0x14C   0x2000             MOVS     R0,#+0
-   \      0x14E   0xF8C9 0x0000      STR      R0,[R9, #+0]
-    147            Delay(1900);
-   \      0x152   0x4650             MOV      R0,R10
-   \      0x154   0x....'....        BL       Delay
-   \      0x158   0xE788             B.N      ??main_0
+   \       0x6E   0xE7FE             B.N      ??main_0
+     96          //  GPIO_SetBits(GPIOB,GPIO_Pin_13);  //A
+     97          ////  GPIO_ResetBits(GPIOB,GPIO_Pin_13);
+     98          //  
+     99          //  GPIO_SetBits(GPIOD,GPIO_Pin_8);  //B
+    100          ////  GPIO_ResetBits(GPIOD,GPIO_Pin_8);
+    101          //  
+    102          //  GPIO_SetBits(GPIOD,GPIO_Pin_9);  //C
+    103          ////  GPIO_ResetBits(GPIOD,GPIO_Pin_9);
+    104          //  
+    105          //  TIM8->CCR1 = 5500;//A
+    106          //  TIM8->CCR2 = 5500;//B
+    107          //  TIM8->CCR3 = 5500;//C
+    108          //  Delay(2000);
+    109          //  
+    110          ////  GPIO_SetBits(GPIOB,GPIO_Pin_13);
+    111          //  GPIO_ResetBits(GPIOB,GPIO_Pin_13);//A
+    112          //  
+    113          ////  GPIO_SetBits(GPIOD,GPIO_Pin_8);
+    114          //  GPIO_ResetBits(GPIOD,GPIO_Pin_8);//B
+    115          //  
+    116          ////  GPIO_SetBits(GPIOD,GPIO_Pin_9);
+    117          //  GPIO_ResetBits(GPIOD,GPIO_Pin_9);//C
+    118          //  
+    119          //  TIM8->CCR1 = 10;//A
+    120          //  TIM8->CCR2 = 10;//B
+    121          //  TIM8->CCR3 = 10;//C
+    122          //  Delay(100);
+    123          //  TIM8->CCR1 = 0;//A
+    124          //  TIM8->CCR2 = 0;//B
+    125          //  TIM8->CCR3 = 0;//C
+    126          //  Delay(1900);
+    127          //  TIM8->CCR1 = 5500;//A
+    128          //  TIM8->CCR2 = 5500;//B
+    129          //  TIM8->CCR3 = 5500;//C
+    130          //  Delay(2000);
+    131          //  
+    132          //  GPIO_SetBits(GPIOB,GPIO_Pin_13);//A
+    133          ////  GPIO_ResetBits(GPIOB,GPIO_Pin_13);
+    134          //  
+    135          //  GPIO_SetBits(GPIOD,GPIO_Pin_8);//B
+    136          ////  GPIO_ResetBits(GPIOD,GPIO_Pin_8);
+    137          //  
+    138          //  GPIO_SetBits(GPIOD,GPIO_Pin_9);//C
+    139          ////  GPIO_ResetBits(GPIOD,GPIO_Pin_9);
+    140          //  TIM8->CCR1 = 10;//A
+    141          //  TIM8->CCR2 = 10;//B
+    142          //  TIM8->CCR3 = 10;//C
+    143          //  Delay(100);
+    144          //  TIM8->CCR1 = 0;//A
+    145          //  TIM8->CCR2 = 0;//B
+    146          //  TIM8->CCR3 = 0;//C
+    147          //  Delay(1900);
     148            
     149          //    printf("%d",TIM12->CNT);
     150              
@@ -489,18 +410,6 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\main.c
    \                     ??DataTable2_9:
    \        0x0   0x....'....        DC32     nvic_flag
 
-   \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable2_10:
-   \        0x0   0x4001'0434        DC32     0x40010434
-
-   \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable2_11:
-   \        0x0   0x4001'0438        DC32     0x40010438
-
-   \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable2_12:
-   \        0x0   0x4001'043C        DC32     0x4001043c
-
    Maximum stack usage in bytes:
 
    .cstack Function
@@ -517,23 +426,22 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\main.c
         24   -> TIM_Cmd
         24   -> TIM_ITConfig
         24   -> TIM_TimeBaseInit
-      32   main
-        32   -> Delay
-        32   -> GPIO_ResetBits
-        32   -> GPIO_SetBits
-        32   -> IIC_GPIO_Init
-        32   -> LED_On_Board
-        32   -> MPU6050_Init
-        32   -> NVIC_Set
-        32   -> TIM1_EncoderInterface_Init
-        32   -> TIM3_EncoderInterface_Init
-        32   -> TIM4_EncoderInterface_Init
-        32   -> TM2_PWM_Init
-        32   -> TM8_PWM_Init
-        32   -> get_iir_factor
-        32   -> get_mpu_id
-        32   -> systick_setup
-        32   -> usart1_init
+       8   main
+         8   -> Delay
+         8   -> IIC_GPIO_Init
+         8   -> LED_On_Board
+         8   -> MPU6050_Init
+         8   -> NVIC_Set
+         8   -> TIM1_EncoderInterface_Init
+         8   -> TIM3_EncoderInterface_Init
+         8   -> TIM4_EncoderInterface_Init
+         8   -> TM2_PWM_Init
+         8   -> TM5_Interrupt_Init
+         8   -> TM8_PWM_Init
+         8   -> get_iir_factor
+         8   -> get_mpu_id
+         8   -> systick_setup
+         8   -> usart1_init
 
 
    Section sizes:
@@ -542,9 +450,6 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\main.c
    -----  --------------
        4  ??DataTable2
        4  ??DataTable2_1
-       4  ??DataTable2_10
-       4  ??DataTable2_11
-       4  ??DataTable2_12
        4  ??DataTable2_2
        4  ??DataTable2_3
        4  ??DataTable2_4
@@ -559,13 +464,13 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\main.c
        4  a
        4  b
        4  c
-     346  main
+     112  main
 
  
   12 bytes in section .bss
- 644 bytes in section .text
+ 398 bytes in section .text
  
- 644 bytes of CODE memory
+ 398 bytes of CODE memory
   12 bytes of DATA memory
 
 Errors: none

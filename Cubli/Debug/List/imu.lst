@@ -1,48 +1,43 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         28/Jul/2020  16:37:25
+# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         02/Sep/2020  13:55:16
 # Copyright 1999-2019 IAR Systems AB.
 #
 #    Cpu mode     =  
 #    Endian       =  little
-#    Source file  =
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
+#    Source file  =  E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\imu.c
 #    Command line =
-#        -f C:\Users\Evan\AppData\Local\Temp\EW4F6E.tmp
-#        (E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
-#        -D USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List
-#        -o
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\Obj
-#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
-#        --no_clustering --no_scheduling --debug --endian=little
-#        --cpu=Cortex-M4 -e --fpu=None --dlib_config "D:\IAR Systems\Embedded
-#        Workbench 8.3\arm\inc\c\DLib_Config_Normal.h" -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Include\
+#        -f C:\Users\LABPC1~1\AppData\Local\Temp\EW389E.tmp
+#        (E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\imu.c -D
+#        USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\Debug\List -o
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\Debug\Obj --no_cse
+#        --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering
+#        --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=None
+#        --dlib_config "D:\IAR Systems\Embedded Workbench
+#        8.3\arm\inc\c\DLib_Config_Normal.h" -I
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Include\
 #        -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\
 #        -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\iar\
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\iar\
 #        -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\inc\
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\inc\
 #        -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\
-#        -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\inc\
-#        -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\
-#        -Ol --use_c++_inline -I "D:\IAR Systems\Embedded Workbench
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\
+#        -I E:\STM32Project\Cubli-with-STM32F429\Cubli\user\inc\ -I
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\user\src\ -Ol
+#        --use_c++_inline -I "D:\IAR Systems\Embedded Workbench
 #        8.3\arm\CMSIS\Core\Include\" -I "D:\IAR Systems\Embedded Workbench
 #        8.3\arm\CMSIS\DSP\Include\")
 #    Locale       =  C
 #    List file    =
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List\imu.lst
-#    Object file  =
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\Obj\imu.o
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\Debug\List\imu.lst
+#    Object file  =  E:\STM32Project\Cubli-with-STM32F429\Cubli\Debug\Obj\imu.o
 #
 ###############################################################################
 
-E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
+E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\imu.c
       1          #include "imu.h"
 
    \                                 In section .bss, align 4
@@ -51,16 +46,21 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
    \        0x0                      DS8 72
 
    \                                 In section .bss, align 4
-      3          _Attitude att = {0};
+      3          _Matrix Mat_v2 = {0};
+   \                     Mat_v2:
+   \        0x0                      DS8 72
+
+   \                                 In section .bss, align 4
+      4          _Attitude att = {0};
    \                     att:
    \        0x0                      DS8 12
-      4          
-      5          #define kp 2.0f        //proportional gain governs rate of convergence to accelerometer/magnetometer 
-      6          #define ki 0.0001f     //integral gain governs rate of convergenceof gyroscope biases
-      7          
+      5          
+      6          #define kp 2.0f        //proportional gain governs rate of convergence to accelerometer/magnetometer 
+      7          #define ki 0.0001f     //integral gain governs rate of convergenceof gyroscope biases
+      8          
 
    \                                 In section .data, align 4
-      8          float q0 = 1, q1 = 0, q2 = 0, q3 = 0;     //quaternion elements representing theestimated orientation rotation angle is 0 degree 
+      9          float q0 = 1, q1 = 0, q2 = 0, q3 = 0;     //quaternion elements representing theestimated orientation rotation angle is 0 degree 
    \                     q0:
    \        0x0   0x3F80'0000        DC32 0x3f80'0000
 
@@ -77,7 +77,7 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
    \        0x0                      DS8 4
 
    \                                 In section .bss, align 4
-      9          float exInt = 0, eyInt = 0, ezInt = 0;    //scaled integral error  
+     10          float exInt = 0, eyInt = 0, ezInt = 0;    //scaled integral error  
    \                     exInt:
    \        0x0                      DS8 4
 
@@ -88,18 +88,18 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
    \                                 In section .bss, align 4
    \                     ezInt:
    \        0x0                      DS8 4
-     10          
+     11          
 
    \                                 In section .bss, align 4
-     11          _Time_test att_time;
+     12          _Time_test att_time;
    \                     att_time:
    \        0x0                      DS8 16
-     12          
-     13          //Gyroscope units are radians/second, accelerometer and magnetometer units are irrelevant as the vector is normalised.
+     13          
+     14          //Gyroscope units are radians/second, accelerometer and magnetometer units are irrelevant as the vector is normalised.
 
    \                                 In section .text, align 2, keep-with-next
-     14          void mahony_update(float gx, float gy, float gz, float ax, float ay, float az) 
-     15          {
+     15          void mahony_update(float gx, float gy, float gz, float ax, float ay, float az) 
+     16          {
    \                     mahony_update: (+1)
    \        0x0   0xE92D 0x4FFE      PUSH     {R1-R11,LR}
    \        0x4   0x0007             MOVS     R7,R0
@@ -108,11 +108,11 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
    \        0xA   0x001C             MOVS     R4,R3
    \        0xC   0x9E0C             LDR      R6,[SP, #+48]
    \        0xE   0x9D0D             LDR      R5,[SP, #+52]
-     16            float norm;
-     17            float vx, vy, vz;
-     18            float ex, ey, ez;
-     19            //LED();
-     20            if(ax*ay*az==0)
+     17            float norm;
+     18            float vx, vy, vz;
+     19            float ex, ey, ez;
+     20            //LED();
+     21            if(ax*ay*az==0)
    \       0x10   0x0020             MOVS     R0,R4
    \       0x12   0x0031             MOVS     R1,R6
    \       0x14   0x....'....        BL       __aeabi_fmul
@@ -121,20 +121,20 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
    \       0x1E   0x2100             MOVS     R1,#+0
    \       0x20   0x....'....        BL       __aeabi_cfcmpeq
    \       0x24   0xF000 0x8213      BEQ.W    ??mahony_update_0
-     21              return;
+     22              return;
    \                     ??mahony_update_1: (+1)
    \       0x28   0xF8CD 0x9000      STR      R9,[SP, #+0]
    \       0x2C   0xF8CD 0x8008      STR      R8,[SP, #+8]
    \       0x30   0x9701             STR      R7,[SP, #+4]
-     22            
-     23            //姿态解算时间检测
-     24            time_check(&att_time);
-   \       0x32   0x....'....        LDR.W    R8,??DataTable3
+     23            
+     24            //姿态解算时间检测
+     25            time_check(&att_time);
+   \       0x32   0x....'....        LDR.W    R8,??DataTable5
    \       0x36   0x4640             MOV      R0,R8
    \       0x38   0x....'....        BL       time_check
-     25            
-     26            //[ax,ay,az]是机体坐标系下加速度计测得的重力向量(竖直向下)
-     27            norm = invSqrt(ax*ax + ay*ay + az*az);
+     26            
+     27            //[ax,ay,az]是机体坐标系下加速度计测得的重力向量(竖直向下)
+     28            norm = invSqrt(ax*ax + ay*ay + az*az);
    \       0x3C   0x0020             MOVS     R0,R4
    \       0x3E   0x0021             MOVS     R1,R4
    \       0x40   0x....'....        BL       __aeabi_fmul
@@ -152,45 +152,45 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
    \       0x60   0x....'....        BL       __aeabi_fadd
    \       0x64   0x....'....        BL       invSqrt
    \       0x68   0x0007             MOVS     R7,R0
-     28            ax = ax * norm;
+     29            ax = ax * norm;
    \       0x6A   0x0020             MOVS     R0,R4
    \       0x6C   0x0039             MOVS     R1,R7
    \       0x6E   0x....'....        BL       __aeabi_fmul
    \       0x72   0x0004             MOVS     R4,R0
-     29            ay = ay * norm;
+     30            ay = ay * norm;
    \       0x74   0x0030             MOVS     R0,R6
    \       0x76   0x0039             MOVS     R1,R7
    \       0x78   0x....'....        BL       __aeabi_fmul
    \       0x7C   0x0006             MOVS     R6,R0
-     30            az = az * norm;
+     31            az = az * norm;
    \       0x7E   0x0028             MOVS     R0,R5
    \       0x80   0x0039             MOVS     R1,R7
    \       0x82   0x....'....        BL       __aeabi_fmul
    \       0x86   0x0007             MOVS     R7,R0
-     31            
-     32            //VectorA = MatrixC * VectorB
-     33            //VectorA ：参考重力向量转到在机体下的值
-     34            //MatrixC ：地理坐标系转机体坐标系的旋转矩阵  
-     35            //VectorB ：参考重力向量（0,0,1）      
-     36            //[vx,vy,vz]是地理坐标系重力分向量[0,0,1]经过DCM旋转矩阵(C(n->b))计算得到的机体坐标系中的重力向量(竖直向下)    
-     37            
-     38            vx = Mat.DCM_T[0][2];
-   \       0x88   0x....'....        LDR.W    R0,??DataTable3_1
+     32            
+     33            //VectorA = MatrixC * VectorB
+     34            //VectorA ：参考重力向量转到在机体下的值
+     35            //MatrixC ：地理坐标系转机体坐标系的旋转矩阵  
+     36            //VectorB ：参考重力向量（0,0,1）      
+     37            //[vx,vy,vz]是地理坐标系重力分向量[0,0,1]经过DCM旋转矩阵(C(n->b))计算得到的机体坐标系中的重力向量(竖直向下)    
+     38            
+     39            vx = Mat.DCM_T[0][2];
+   \       0x88   0x....'....        LDR.W    R0,??DataTable5_1
    \       0x8C   0xF8D0 0x902C      LDR      R9,[R0, #+44]
-     39            vy = Mat.DCM_T[1][2];
+     40            vy = Mat.DCM_T[1][2];
    \       0x90   0xF8D0 0xA038      LDR      R10,[R0, #+56]
-     40            vz = Mat.DCM_T[2][2];
+     41            vz = Mat.DCM_T[2][2];
    \       0x94   0xF8D0 0xB044      LDR      R11,[R0, #+68]
-     41            
-     42            //机体坐标系下向量叉乘得到误差向量，误差e就是测量得到的vˉ和预测得到的 v^之间的相对旋转。这里的vˉ就是[ax,ay,az]’,v^就是[vx,vy,vz]’
-     43            //利用这个误差来修正DCM方向余弦矩阵(修正DCM矩阵中的四元素)，这个矩阵的作用就是将b系和n正确的转化直到重合。
-     44            //实际上这种修正方法只把b系和n系的XOY平面重合起来，对于z轴旋转的偏航，加速度计无可奈何，
-     45            //但是，由于加速度计无法感知z轴上的旋转运动，所以还需要用地磁计来进一步补偿。
-     46            //两个向量的叉积得到的结果是两个向量的模与他们之间夹角正弦的乘积a×v=|a||v|sinθ,
-     47            //加速度计测量得到的重力向量和预测得到的机体重力向量已经经过单位化，因而他们的模是1，
-     48            //也就是说它们向量的叉积结果仅与sinθ有关，当角度很小时，叉积结果可以近似于角度成正比。
-     49            
-     50            ex = ay*vz - az*vy;
+     42            
+     43            //机体坐标系下向量叉乘得到误差向量，误差e就是测量得到的vˉ和预测得到的 v^之间的相对旋转。这里的vˉ就是[ax,ay,az]’,v^就是[vx,vy,vz]’
+     44            //利用这个误差来修正DCM方向余弦矩阵(修正DCM矩阵中的四元素)，这个矩阵的作用就是将b系和n正确的转化直到重合。
+     45            //实际上这种修正方法只把b系和n系的XOY平面重合起来，对于z轴旋转的偏航，加速度计无可奈何，
+     46            //但是，由于加速度计无法感知z轴上的旋转运动，所以还需要用地磁计来进一步补偿。
+     47            //两个向量的叉积得到的结果是两个向量的模与他们之间夹角正弦的乘积a×v=|a||v|sinθ,
+     48            //加速度计测量得到的重力向量和预测得到的机体重力向量已经经过单位化，因而他们的模是1，
+     49            //也就是说它们向量的叉积结果仅与sinθ有关，当角度很小时，叉积结果可以近似于角度成正比。
+     50            
+     51            ex = ay*vz - az*vy;
    \       0x98   0x0030             MOVS     R0,R6
    \       0x9A   0x4659             MOV      R1,R11
    \       0x9C   0x....'....        BL       __aeabi_fmul
@@ -202,7 +202,7 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
    \       0xAC   0x0028             MOVS     R0,R5
    \       0xAE   0x....'....        BL       __aeabi_fsub
    \       0xB2   0x0005             MOVS     R5,R0
-     51            ey = az*vx - ax*vz;
+     52            ey = az*vx - ax*vz;
    \       0xB4   0x0038             MOVS     R0,R7
    \       0xB6   0x4649             MOV      R1,R9
    \       0xB8   0x....'....        BL       __aeabi_fmul
@@ -214,7 +214,7 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
    \       0xC8   0x0038             MOVS     R0,R7
    \       0xCA   0x....'....        BL       __aeabi_fsub
    \       0xCE   0x0007             MOVS     R7,R0
-     52            ez = ax*vy - ay*vx;
+     53            ez = ax*vy - ay*vx;
    \       0xD0   0x0020             MOVS     R0,R4
    \       0xD2   0x4651             MOV      R1,R10
    \       0xD4   0x....'....        BL       __aeabi_fmul
@@ -226,36 +226,36 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
    \       0xE4   0x0020             MOVS     R0,R4
    \       0xE6   0x....'....        BL       __aeabi_fsub
    \       0xEA   0x0004             MOVS     R4,R0
-     53            
-     54            //对误差向量进行积分
-     55            exInt = exInt + ex*ki;
-   \       0xEC   0x....'....        LDR.W    R10,??DataTable3_2
-   \       0xF0   0x....'....        LDR.W    R11,??DataTable3_3  ;; 0x38d1b717
+     54            
+     55            //对误差向量进行积分
+     56            exInt = exInt + ex*ki;
+   \       0xEC   0x....'....        LDR.W    R10,??DataTable5_2
+   \       0xF0   0x....'....        LDR.W    R11,??DataTable5_3  ;; 0x38d1b717
    \       0xF4   0x0028             MOVS     R0,R5
    \       0xF6   0x4659             MOV      R1,R11
    \       0xF8   0x....'....        BL       __aeabi_fmul
    \       0xFC   0xF8DA 0x1000      LDR      R1,[R10, #+0]
    \      0x100   0x....'....        BL       __aeabi_fadd
    \      0x104   0xF8CA 0x0000      STR      R0,[R10, #+0]
-     56            eyInt = eyInt + ey*ki;
-   \      0x108   0x....'....        LDR.W    R9,??DataTable3_4
+     57            eyInt = eyInt + ey*ki;
+   \      0x108   0x....'....        LDR.W    R9,??DataTable5_4
    \      0x10C   0x0038             MOVS     R0,R7
    \      0x10E   0x4659             MOV      R1,R11
    \      0x110   0x....'....        BL       __aeabi_fmul
    \      0x114   0xF8D9 0x1000      LDR      R1,[R9, #+0]
    \      0x118   0x....'....        BL       __aeabi_fadd
    \      0x11C   0xF8C9 0x0000      STR      R0,[R9, #+0]
-     57            ezInt = ezInt + ez*ki;
-   \      0x120   0x....'....        LDR.W    R6,??DataTable3_5
+     58            ezInt = ezInt + ez*ki;
+   \      0x120   0x....'....        LDR.W    R6,??DataTable5_5
    \      0x124   0x0020             MOVS     R0,R4
    \      0x126   0x4659             MOV      R1,R11
    \      0x128   0x....'....        BL       __aeabi_fmul
    \      0x12C   0x6831             LDR      R1,[R6, #+0]
    \      0x12E   0x....'....        BL       __aeabi_fadd
    \      0x132   0x6030             STR      R0,[R6, #+0]
-     58            
-     59            //通过调节Kp、Ki两个参数，可以控制加速度计修正陀螺仪积分姿态的速度。
-     60            gx = gx + kp*ex + exInt;
+     59            
+     60            //通过调节Kp、Ki两个参数，可以控制加速度计修正陀螺仪积分姿态的速度。
+     61            gx = gx + kp*ex + exInt;
    \      0x134   0xF05F 0x4080      MOVS     R0,#+1073741824
    \      0x138   0x0029             MOVS     R1,R5
    \      0x13A   0x....'....        BL       __aeabi_fmul
@@ -264,7 +264,7 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
    \      0x144   0xF8DA 0x1000      LDR      R1,[R10, #+0]
    \      0x148   0x....'....        BL       __aeabi_fadd
    \      0x14C   0x9001             STR      R0,[SP, #+4]
-     61            gy = gy + kp*ey + eyInt;
+     62            gy = gy + kp*ey + eyInt;
    \      0x14E   0xF05F 0x4080      MOVS     R0,#+1073741824
    \      0x152   0x0039             MOVS     R1,R7
    \      0x154   0x....'....        BL       __aeabi_fmul
@@ -273,7 +273,7 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
    \      0x15E   0xF8D9 0x1000      LDR      R1,[R9, #+0]
    \      0x162   0x....'....        BL       __aeabi_fadd
    \      0x166   0x4681             MOV      R9,R0
-     62            gz = gz + kp*ez + ezInt;
+     63            gz = gz + kp*ez + ezInt;
    \      0x168   0xF05F 0x4080      MOVS     R0,#+1073741824
    \      0x16C   0x0021             MOVS     R1,R4
    \      0x16E   0x....'....        BL       __aeabi_fmul
@@ -282,14 +282,14 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
    \      0x178   0x6831             LDR      R1,[R6, #+0]
    \      0x17A   0x....'....        BL       __aeabi_fadd
    \      0x17E   0x4682             MOV      R10,R0
-     63            
-     64            //一阶龙格库塔法更新四元数  
-     65            q0 = q0 + (-q1*gx - q2*gy - q3*gz)* att_time.delta_time_ms*0.0005f;//0.0005=0.001*1/2
-   \      0x180   0x....'....        LDR.W    R4,??DataTable3_6
-   \      0x184   0x....'....        LDR.W    R11,??DataTable3_7  ;; 0x3a03126f
-   \      0x188   0x....'....        LDR.W    R5,??DataTable3_8
-   \      0x18C   0x....'....        LDR.W    R6,??DataTable3_9
-   \      0x190   0x....'....        LDR.W    R7,??DataTable3_10
+     64            
+     65            //一阶龙格库塔法更新四元数  
+     66            q0 = q0 + (-q1*gx - q2*gy - q3*gz)* att_time.delta_time_ms*0.0005f;//0.0005=0.001*1/2
+   \      0x180   0x....'....        LDR.W    R4,??DataTable5_6
+   \      0x184   0x....'....        LDR.W    R11,??DataTable5_7  ;; 0x3a03126f
+   \      0x188   0x....'....        LDR.W    R5,??DataTable5_8
+   \      0x18C   0x....'....        LDR.W    R6,??DataTable5_9
+   \      0x190   0x....'....        LDR.W    R7,??DataTable5_10
    \      0x194   0x6839             LDR      R1,[R7, #+0]
    \      0x196   0xF091 0x4100      EORS     R1,R1,#0x80000000
    \      0x19A   0x9801             LDR      R0,[SP, #+4]
@@ -315,7 +315,7 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
    \      0x1D2   0x6821             LDR      R1,[R4, #+0]
    \      0x1D4   0x....'....        BL       __aeabi_fadd
    \      0x1D8   0x6020             STR      R0,[R4, #+0]
-     66            q1 = q1 + ( q0*gx + q2*gz - q3*gy)* att_time.delta_time_ms*0.0005f;
+     67            q1 = q1 + ( q0*gx + q2*gz - q3*gy)* att_time.delta_time_ms*0.0005f;
    \      0x1DA   0x6821             LDR      R1,[R4, #+0]
    \      0x1DC   0x9801             LDR      R0,[SP, #+4]
    \      0x1DE   0x....'....        BL       __aeabi_fmul
@@ -339,7 +339,7 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
    \      0x212   0x6839             LDR      R1,[R7, #+0]
    \      0x214   0x....'....        BL       __aeabi_fadd
    \      0x218   0x6038             STR      R0,[R7, #+0]
-     67            q2 = q2 + ( q0*gy - q1*gz + q3*gx)* att_time.delta_time_ms*0.0005f;
+     68            q2 = q2 + ( q0*gy - q1*gz + q3*gx)* att_time.delta_time_ms*0.0005f;
    \      0x21A   0x6820             LDR      R0,[R4, #+0]
    \      0x21C   0x4649             MOV      R1,R9
    \      0x21E   0x....'....        BL       __aeabi_fmul
@@ -363,7 +363,7 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
    \      0x252   0x6831             LDR      R1,[R6, #+0]
    \      0x254   0x....'....        BL       __aeabi_fadd
    \      0x258   0x6030             STR      R0,[R6, #+0]
-     68            q3 = q3 + ( q0*gz + q1*gy - q2*gx)* att_time.delta_time_ms*0.0005f; 
+     69            q3 = q3 + ( q0*gz + q1*gy - q2*gx)* att_time.delta_time_ms*0.0005f; 
    \      0x25A   0x6820             LDR      R0,[R4, #+0]
    \      0x25C   0x4651             MOV      R1,R10
    \      0x25E   0x....'....        BL       __aeabi_fmul
@@ -387,9 +387,9 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
    \      0x292   0x6829             LDR      R1,[R5, #+0]
    \      0x294   0x....'....        BL       __aeabi_fadd
    \      0x298   0x6028             STR      R0,[R5, #+0]
-     69            
-     70            //把上述运算后的四元数进行归一化处理。得到了物体经过旋转后的新的四元数。
-     71            norm = invSqrt(q0*q0 + q1*q1 + q2*q2 + q3*q3);
+     70            
+     71            //把上述运算后的四元数进行归一化处理。得到了物体经过旋转后的新的四元数。
+     72            norm = invSqrt(q0*q0 + q1*q1 + q2*q2 + q3*q3);
    \      0x29A   0x6821             LDR      R1,[R4, #+0]
    \      0x29C   0x6820             LDR      R0,[R4, #+0]
    \      0x29E   0x....'....        BL       __aeabi_fmul
@@ -413,31 +413,31 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
    \      0x2CE   0x....'....        BL       __aeabi_fadd
    \      0x2D2   0x....'....        BL       invSqrt
    \      0x2D6   0x4680             MOV      R8,R0
-     72            q0 = q0 * norm;
+     73            q0 = q0 * norm;
    \      0x2D8   0x6820             LDR      R0,[R4, #+0]
    \      0x2DA   0x4641             MOV      R1,R8
    \      0x2DC   0x....'....        BL       __aeabi_fmul
    \      0x2E0   0x6020             STR      R0,[R4, #+0]
-     73            q1 = q1 * norm;
+     74            q1 = q1 * norm;
    \      0x2E2   0x6838             LDR      R0,[R7, #+0]
    \      0x2E4   0x4641             MOV      R1,R8
    \      0x2E6   0x....'....        BL       __aeabi_fmul
    \      0x2EA   0x6038             STR      R0,[R7, #+0]
-     74            q2 = q2 * norm;
+     75            q2 = q2 * norm;
    \      0x2EC   0x6830             LDR      R0,[R6, #+0]
    \      0x2EE   0x4641             MOV      R1,R8
    \      0x2F0   0x....'....        BL       __aeabi_fmul
    \      0x2F4   0x6030             STR      R0,[R6, #+0]
-     75            q3 = q3 * norm;
+     76            q3 = q3 * norm;
    \      0x2F6   0x6828             LDR      R0,[R5, #+0]
    \      0x2F8   0x4641             MOV      R1,R8
    \      0x2FA   0x....'....        BL       __aeabi_fmul
    \      0x2FE   0x6028             STR      R0,[R5, #+0]
-     76            
-     77            att.pit =  atan2(2.0f*(q0*q1 + q2*q3),q0*q0 - q1*q1 - q2*q2 + q3*q3) * rad_to_angle;
-   \      0x300   0x....'....        LDR.W    R8,??DataTable3_11
+     77            
+     78            att.pit =  atan2(2.0f*(q0*q1 + q2*q3),q0*q0 - q1*q1 - q2*q2 + q3*q3) * rad_to_angle;
+   \      0x300   0x....'....        LDR.W    R8,??DataTable5_11
    \      0x304   0xF05F 0x0A00      MOVS     R10,#+0
-   \      0x308   0x....'....        LDR.W    R11,??DataTable3_12  ;; 0x404ca5dc
+   \      0x308   0x....'....        LDR.W    R11,??DataTable5_12  ;; 0x404ca5dc
    \      0x30C   0x6821             LDR      R1,[R4, #+0]
    \      0x30E   0x6820             LDR      R0,[R4, #+0]
    \      0x310   0x....'....        BL       __aeabi_fmul
@@ -484,7 +484,7 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
    \      0x384   0x....'....        BL       __aeabi_dmul
    \      0x388   0x....'....        BL       __aeabi_d2f
    \      0x38C   0xF8C8 0x0000      STR      R0,[R8, #+0]
-     78            att.rol =  asin(2.0f*(q0*q2 - q1*q3)) * rad_to_angle;
+     79            att.rol =  asin(2.0f*(q0*q2 - q1*q3)) * rad_to_angle;
    \      0x390   0x6821             LDR      R1,[R4, #+0]
    \      0x392   0x6830             LDR      R0,[R6, #+0]
    \      0x394   0x....'....        BL       __aeabi_fmul
@@ -504,9 +504,9 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
    \      0x3BE   0x....'....        BL       __aeabi_dmul
    \      0x3C2   0x....'....        BL       __aeabi_d2f
    \      0x3C6   0xF8C8 0x0004      STR      R0,[R8, #+4]
-     79            //z轴角速度积分的偏航角
-     80            //att.yaw += Mpu.deg_s.z  * att_time.delta_time_ms*0.0001f;
-     81            att.yaw =  atan2(2.0f*(q0*q3 + q1*q2),q0*q0 + q1*q1 - q2*q2 - q3*q3) * rad_to_angle;
+     80            //z轴角速度积分的偏航角
+     81            //att.yaw += Mpu.deg_s.z  * att_time.delta_time_ms*0.0001f;
+     82            att.yaw =  atan2(2.0f*(q0*q3 + q1*q2),q0*q0 + q1*q1 - q2*q2 - q3*q3) * rad_to_angle;
    \      0x3CA   0x6821             LDR      R1,[R4, #+0]
    \      0x3CC   0x6820             LDR      R0,[R4, #+0]
    \      0x3CE   0x....'....        BL       __aeabi_fmul
@@ -553,183 +553,183 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
    \      0x442   0x....'....        BL       __aeabi_dmul
    \      0x446   0x....'....        BL       __aeabi_d2f
    \      0x44A   0xF8C8 0x0008      STR      R0,[R8, #+8]
-     82            
-     83            //printf("the roll is %f\n",att.rol);
-     84            //printf("the pit is %f\n",att.pit);
-     85            //printf("the ex is %f\n",ex);
-     86          }
+     83            
+     84            //printf("the roll is %f\n",att.rol);
+     85            //printf("the pit is %f\n",att.pit);
+     86            //printf("the ex is %f\n",ex);
+     87          }
    \                     ??mahony_update_0: (+1)
    \      0x44E   0xE8BD 0x8FF7      POP      {R0-R2,R4-R11,PC}  ;; return
-     87          
-     88          //旋转矩阵：机体坐标系 -> 地理坐标系(從目標座標軸到初始座標軸)
+     88          
+     89          //旋转矩阵：机体坐标系 -> 地理坐标系(從目標座標軸到初始座標軸)
 
    \                                 In section .text, align 2, keep-with-next
-     89          void rotation_matrix(void)
-     90          {
+     90          void rotation_matrix(void)
+     91          {
    \                     rotation_matrix: (+1)
    \        0x0   0xE92D 0x47F0      PUSH     {R4-R10,LR}
-     91            Mat.DCM[0][0] = 1.0f - 2.0f * q2*q2 - 2.0f * q3*q3;
-   \        0x4   0x....             LDR.N    R4,??DataTable3_1
-   \        0x6   0x....             LDR.N    R5,??DataTable3_8
-   \        0x8   0xF05F 0x4680      MOVS     R6,#+1073741824
-   \        0xC   0x....             LDR.N    R7,??DataTable3_9
-   \        0xE   0x6838             LDR      R0,[R7, #+0]
-   \       0x10   0x0031             MOVS     R1,R6
-   \       0x12   0x....'....        BL       __aeabi_fmul
-   \       0x16   0x6839             LDR      R1,[R7, #+0]
-   \       0x18   0x....'....        BL       __aeabi_fmul
-   \       0x1C   0x0001             MOVS     R1,R0
-   \       0x1E   0xF05F 0x507E      MOVS     R0,#+1065353216
-   \       0x22   0x....'....        BL       __aeabi_fsub
-   \       0x26   0x4680             MOV      R8,R0
-   \       0x28   0x6828             LDR      R0,[R5, #+0]
-   \       0x2A   0x0031             MOVS     R1,R6
-   \       0x2C   0x....'....        BL       __aeabi_fmul
-   \       0x30   0x6829             LDR      R1,[R5, #+0]
-   \       0x32   0x....'....        BL       __aeabi_fmul
-   \       0x36   0x0001             MOVS     R1,R0
-   \       0x38   0x4640             MOV      R0,R8
-   \       0x3A   0x....'....        BL       __aeabi_fsub
-   \       0x3E   0x6020             STR      R0,[R4, #+0]
-     92            Mat.DCM[0][1] = 2.0f * (q1*q2 -q0*q3);
-   \       0x40   0x....'....        LDR.W    R8,??DataTable3_6
-   \       0x44   0x....'....        LDR.W    R9,??DataTable3_10
-   \       0x48   0xF8D9 0x1000      LDR      R1,[R9, #+0]
-   \       0x4C   0x6838             LDR      R0,[R7, #+0]
-   \       0x4E   0x....'....        BL       __aeabi_fmul
-   \       0x52   0x4682             MOV      R10,R0
-   \       0x54   0xF8D8 0x1000      LDR      R1,[R8, #+0]
-   \       0x58   0x6828             LDR      R0,[R5, #+0]
-   \       0x5A   0x....'....        BL       __aeabi_fmul
-   \       0x5E   0x0001             MOVS     R1,R0
-   \       0x60   0x4650             MOV      R0,R10
-   \       0x62   0x....'....        BL       __aeabi_fsub
-   \       0x66   0x0031             MOVS     R1,R6
-   \       0x68   0x....'....        BL       __aeabi_fmul
-   \       0x6C   0x6060             STR      R0,[R4, #+4]
-     93            Mat.DCM[0][2] = 2.0f * (q1*q3 +q0*q2);
-   \       0x6E   0xF8D9 0x1000      LDR      R1,[R9, #+0]
-   \       0x72   0x6828             LDR      R0,[R5, #+0]
-   \       0x74   0x....'....        BL       __aeabi_fmul
-   \       0x78   0x4682             MOV      R10,R0
-   \       0x7A   0xF8D8 0x1000      LDR      R1,[R8, #+0]
-   \       0x7E   0x6838             LDR      R0,[R7, #+0]
-   \       0x80   0x....'....        BL       __aeabi_fmul
-   \       0x84   0x4651             MOV      R1,R10
-   \       0x86   0x....'....        BL       __aeabi_fadd
-   \       0x8A   0x0031             MOVS     R1,R6
-   \       0x8C   0x....'....        BL       __aeabi_fmul
-   \       0x90   0x60A0             STR      R0,[R4, #+8]
-     94            
-     95            Mat.DCM[1][0] = 2.0f * (q1*q2 +q0*q3);
-   \       0x92   0xF8D9 0x1000      LDR      R1,[R9, #+0]
-   \       0x96   0x6838             LDR      R0,[R7, #+0]
-   \       0x98   0x....'....        BL       __aeabi_fmul
-   \       0x9C   0x4682             MOV      R10,R0
-   \       0x9E   0xF8D8 0x1000      LDR      R1,[R8, #+0]
-   \       0xA2   0x6828             LDR      R0,[R5, #+0]
-   \       0xA4   0x....'....        BL       __aeabi_fmul
-   \       0xA8   0x4651             MOV      R1,R10
-   \       0xAA   0x....'....        BL       __aeabi_fadd
-   \       0xAE   0x0031             MOVS     R1,R6
-   \       0xB0   0x....'....        BL       __aeabi_fmul
-   \       0xB4   0x60E0             STR      R0,[R4, #+12]
-     96            Mat.DCM[1][1] = 1.0f - 2.0f * q1*q1 - 2.0f * q3*q3;
-   \       0xB6   0xF8D9 0x0000      LDR      R0,[R9, #+0]
-   \       0xBA   0x0031             MOVS     R1,R6
-   \       0xBC   0x....'....        BL       __aeabi_fmul
-   \       0xC0   0xF8D9 0x1000      LDR      R1,[R9, #+0]
-   \       0xC4   0x....'....        BL       __aeabi_fmul
-   \       0xC8   0x0001             MOVS     R1,R0
-   \       0xCA   0xF05F 0x507E      MOVS     R0,#+1065353216
-   \       0xCE   0x....'....        BL       __aeabi_fsub
-   \       0xD2   0x4682             MOV      R10,R0
-   \       0xD4   0x6828             LDR      R0,[R5, #+0]
-   \       0xD6   0x0031             MOVS     R1,R6
-   \       0xD8   0x....'....        BL       __aeabi_fmul
-   \       0xDC   0x6829             LDR      R1,[R5, #+0]
-   \       0xDE   0x....'....        BL       __aeabi_fmul
-   \       0xE2   0x0001             MOVS     R1,R0
-   \       0xE4   0x4650             MOV      R0,R10
-   \       0xE6   0x....'....        BL       __aeabi_fsub
-   \       0xEA   0x6120             STR      R0,[R4, #+16]
-     97            Mat.DCM[1][2] = 2.0f * (q2*q3 -q0*q1);
-   \       0xEC   0x6839             LDR      R1,[R7, #+0]
-   \       0xEE   0x6828             LDR      R0,[R5, #+0]
-   \       0xF0   0x....'....        BL       __aeabi_fmul
-   \       0xF4   0x4682             MOV      R10,R0
-   \       0xF6   0xF8D8 0x1000      LDR      R1,[R8, #+0]
-   \       0xFA   0xF8D9 0x0000      LDR      R0,[R9, #+0]
-   \       0xFE   0x....'....        BL       __aeabi_fmul
-   \      0x102   0x0001             MOVS     R1,R0
-   \      0x104   0x4650             MOV      R0,R10
-   \      0x106   0x....'....        BL       __aeabi_fsub
-   \      0x10A   0x0031             MOVS     R1,R6
-   \      0x10C   0x....'....        BL       __aeabi_fmul
-   \      0x110   0x6160             STR      R0,[R4, #+20]
-     98            
-     99            Mat.DCM[2][0] = 2.0f * (q1*q3 -q0*q2);
-   \      0x112   0xF8D9 0x1000      LDR      R1,[R9, #+0]
-   \      0x116   0x6828             LDR      R0,[R5, #+0]
-   \      0x118   0x....'....        BL       __aeabi_fmul
-   \      0x11C   0x4682             MOV      R10,R0
-   \      0x11E   0xF8D8 0x1000      LDR      R1,[R8, #+0]
-   \      0x122   0x6838             LDR      R0,[R7, #+0]
-   \      0x124   0x....'....        BL       __aeabi_fmul
-   \      0x128   0x0001             MOVS     R1,R0
-   \      0x12A   0x4650             MOV      R0,R10
-   \      0x12C   0x....'....        BL       __aeabi_fsub
-   \      0x130   0x0031             MOVS     R1,R6
-   \      0x132   0x....'....        BL       __aeabi_fmul
-   \      0x136   0x61A0             STR      R0,[R4, #+24]
-    100            Mat.DCM[2][1] = 2.0f * (q2*q3 +q0*q1);
-   \      0x138   0x6839             LDR      R1,[R7, #+0]
-   \      0x13A   0x6828             LDR      R0,[R5, #+0]
-   \      0x13C   0x....'....        BL       __aeabi_fmul
-   \      0x140   0x0005             MOVS     R5,R0
-   \      0x142   0xF8D8 0x1000      LDR      R1,[R8, #+0]
-   \      0x146   0xF8D9 0x0000      LDR      R0,[R9, #+0]
-   \      0x14A   0x....'....        BL       __aeabi_fmul
-   \      0x14E   0x0029             MOVS     R1,R5
-   \      0x150   0x....'....        BL       __aeabi_fadd
-   \      0x154   0x0031             MOVS     R1,R6
-   \      0x156   0x....'....        BL       __aeabi_fmul
-   \      0x15A   0x61E0             STR      R0,[R4, #+28]
-    101            Mat.DCM[2][2] = 1.0f - 2.0f * q1*q1 - 2.0f * q2*q2;   
-   \      0x15C   0xF8D9 0x0000      LDR      R0,[R9, #+0]
-   \      0x160   0x0031             MOVS     R1,R6
-   \      0x162   0x....'....        BL       __aeabi_fmul
-   \      0x166   0xF8D9 0x1000      LDR      R1,[R9, #+0]
-   \      0x16A   0x....'....        BL       __aeabi_fmul
-   \      0x16E   0x0001             MOVS     R1,R0
-   \      0x170   0xF05F 0x507E      MOVS     R0,#+1065353216
-   \      0x174   0x....'....        BL       __aeabi_fsub
-   \      0x178   0x0005             MOVS     R5,R0
-   \      0x17A   0x6838             LDR      R0,[R7, #+0]
-   \      0x17C   0x0031             MOVS     R1,R6
-   \      0x17E   0x....'....        BL       __aeabi_fmul
-   \      0x182   0x6839             LDR      R1,[R7, #+0]
-   \      0x184   0x....'....        BL       __aeabi_fmul
-   \      0x188   0x0001             MOVS     R1,R0
-   \      0x18A   0x0028             MOVS     R0,R5
-   \      0x18C   0x....'....        BL       __aeabi_fsub
-   \      0x190   0x6220             STR      R0,[R4, #+32]
-    102            
-    103          }
-   \      0x192   0xE8BD 0x87F0      POP      {R4-R10,PC}      ;; return
-    104          
-    105          //旋转矩阵的转置矩阵：地理坐标系 -> 机体坐标系 (從初始座標軸到目標座標軸)
+     92            Mat.DCM[0][0] = 1.0f - 2.0f * q2*q2 - 2.0f * q3*q3;
+   \        0x4   0x....             LDR.N    R4,??DataTable5_1
+   \        0x6   0x....'....        LDR.W    R5,??DataTable5_8
+   \        0xA   0xF05F 0x4680      MOVS     R6,#+1073741824
+   \        0xE   0x....'....        LDR.W    R7,??DataTable5_9
+   \       0x12   0x6838             LDR      R0,[R7, #+0]
+   \       0x14   0x0031             MOVS     R1,R6
+   \       0x16   0x....'....        BL       __aeabi_fmul
+   \       0x1A   0x6839             LDR      R1,[R7, #+0]
+   \       0x1C   0x....'....        BL       __aeabi_fmul
+   \       0x20   0x0001             MOVS     R1,R0
+   \       0x22   0xF05F 0x507E      MOVS     R0,#+1065353216
+   \       0x26   0x....'....        BL       __aeabi_fsub
+   \       0x2A   0x4680             MOV      R8,R0
+   \       0x2C   0x6828             LDR      R0,[R5, #+0]
+   \       0x2E   0x0031             MOVS     R1,R6
+   \       0x30   0x....'....        BL       __aeabi_fmul
+   \       0x34   0x6829             LDR      R1,[R5, #+0]
+   \       0x36   0x....'....        BL       __aeabi_fmul
+   \       0x3A   0x0001             MOVS     R1,R0
+   \       0x3C   0x4640             MOV      R0,R8
+   \       0x3E   0x....'....        BL       __aeabi_fsub
+   \       0x42   0x6020             STR      R0,[R4, #+0]
+     93            Mat.DCM[0][1] = 2.0f * (q1*q2 -q0*q3);
+   \       0x44   0x....'....        LDR.W    R8,??DataTable5_6
+   \       0x48   0x....'....        LDR.W    R9,??DataTable5_10
+   \       0x4C   0xF8D9 0x1000      LDR      R1,[R9, #+0]
+   \       0x50   0x6838             LDR      R0,[R7, #+0]
+   \       0x52   0x....'....        BL       __aeabi_fmul
+   \       0x56   0x4682             MOV      R10,R0
+   \       0x58   0xF8D8 0x1000      LDR      R1,[R8, #+0]
+   \       0x5C   0x6828             LDR      R0,[R5, #+0]
+   \       0x5E   0x....'....        BL       __aeabi_fmul
+   \       0x62   0x0001             MOVS     R1,R0
+   \       0x64   0x4650             MOV      R0,R10
+   \       0x66   0x....'....        BL       __aeabi_fsub
+   \       0x6A   0x0031             MOVS     R1,R6
+   \       0x6C   0x....'....        BL       __aeabi_fmul
+   \       0x70   0x6060             STR      R0,[R4, #+4]
+     94            Mat.DCM[0][2] = 2.0f * (q1*q3 +q0*q2);
+   \       0x72   0xF8D9 0x1000      LDR      R1,[R9, #+0]
+   \       0x76   0x6828             LDR      R0,[R5, #+0]
+   \       0x78   0x....'....        BL       __aeabi_fmul
+   \       0x7C   0x4682             MOV      R10,R0
+   \       0x7E   0xF8D8 0x1000      LDR      R1,[R8, #+0]
+   \       0x82   0x6838             LDR      R0,[R7, #+0]
+   \       0x84   0x....'....        BL       __aeabi_fmul
+   \       0x88   0x4651             MOV      R1,R10
+   \       0x8A   0x....'....        BL       __aeabi_fadd
+   \       0x8E   0x0031             MOVS     R1,R6
+   \       0x90   0x....'....        BL       __aeabi_fmul
+   \       0x94   0x60A0             STR      R0,[R4, #+8]
+     95            
+     96            Mat.DCM[1][0] = 2.0f * (q1*q2 +q0*q3);
+   \       0x96   0xF8D9 0x1000      LDR      R1,[R9, #+0]
+   \       0x9A   0x6838             LDR      R0,[R7, #+0]
+   \       0x9C   0x....'....        BL       __aeabi_fmul
+   \       0xA0   0x4682             MOV      R10,R0
+   \       0xA2   0xF8D8 0x1000      LDR      R1,[R8, #+0]
+   \       0xA6   0x6828             LDR      R0,[R5, #+0]
+   \       0xA8   0x....'....        BL       __aeabi_fmul
+   \       0xAC   0x4651             MOV      R1,R10
+   \       0xAE   0x....'....        BL       __aeabi_fadd
+   \       0xB2   0x0031             MOVS     R1,R6
+   \       0xB4   0x....'....        BL       __aeabi_fmul
+   \       0xB8   0x60E0             STR      R0,[R4, #+12]
+     97            Mat.DCM[1][1] = 1.0f - 2.0f * q1*q1 - 2.0f * q3*q3;
+   \       0xBA   0xF8D9 0x0000      LDR      R0,[R9, #+0]
+   \       0xBE   0x0031             MOVS     R1,R6
+   \       0xC0   0x....'....        BL       __aeabi_fmul
+   \       0xC4   0xF8D9 0x1000      LDR      R1,[R9, #+0]
+   \       0xC8   0x....'....        BL       __aeabi_fmul
+   \       0xCC   0x0001             MOVS     R1,R0
+   \       0xCE   0xF05F 0x507E      MOVS     R0,#+1065353216
+   \       0xD2   0x....'....        BL       __aeabi_fsub
+   \       0xD6   0x4682             MOV      R10,R0
+   \       0xD8   0x6828             LDR      R0,[R5, #+0]
+   \       0xDA   0x0031             MOVS     R1,R6
+   \       0xDC   0x....'....        BL       __aeabi_fmul
+   \       0xE0   0x6829             LDR      R1,[R5, #+0]
+   \       0xE2   0x....'....        BL       __aeabi_fmul
+   \       0xE6   0x0001             MOVS     R1,R0
+   \       0xE8   0x4650             MOV      R0,R10
+   \       0xEA   0x....'....        BL       __aeabi_fsub
+   \       0xEE   0x6120             STR      R0,[R4, #+16]
+     98            Mat.DCM[1][2] = 2.0f * (q2*q3 -q0*q1);
+   \       0xF0   0x6839             LDR      R1,[R7, #+0]
+   \       0xF2   0x6828             LDR      R0,[R5, #+0]
+   \       0xF4   0x....'....        BL       __aeabi_fmul
+   \       0xF8   0x4682             MOV      R10,R0
+   \       0xFA   0xF8D8 0x1000      LDR      R1,[R8, #+0]
+   \       0xFE   0xF8D9 0x0000      LDR      R0,[R9, #+0]
+   \      0x102   0x....'....        BL       __aeabi_fmul
+   \      0x106   0x0001             MOVS     R1,R0
+   \      0x108   0x4650             MOV      R0,R10
+   \      0x10A   0x....'....        BL       __aeabi_fsub
+   \      0x10E   0x0031             MOVS     R1,R6
+   \      0x110   0x....'....        BL       __aeabi_fmul
+   \      0x114   0x6160             STR      R0,[R4, #+20]
+     99            
+    100            Mat.DCM[2][0] = 2.0f * (q1*q3 -q0*q2);
+   \      0x116   0xF8D9 0x1000      LDR      R1,[R9, #+0]
+   \      0x11A   0x6828             LDR      R0,[R5, #+0]
+   \      0x11C   0x....'....        BL       __aeabi_fmul
+   \      0x120   0x4682             MOV      R10,R0
+   \      0x122   0xF8D8 0x1000      LDR      R1,[R8, #+0]
+   \      0x126   0x6838             LDR      R0,[R7, #+0]
+   \      0x128   0x....'....        BL       __aeabi_fmul
+   \      0x12C   0x0001             MOVS     R1,R0
+   \      0x12E   0x4650             MOV      R0,R10
+   \      0x130   0x....'....        BL       __aeabi_fsub
+   \      0x134   0x0031             MOVS     R1,R6
+   \      0x136   0x....'....        BL       __aeabi_fmul
+   \      0x13A   0x61A0             STR      R0,[R4, #+24]
+    101            Mat.DCM[2][1] = 2.0f * (q2*q3 +q0*q1);
+   \      0x13C   0x6839             LDR      R1,[R7, #+0]
+   \      0x13E   0x6828             LDR      R0,[R5, #+0]
+   \      0x140   0x....'....        BL       __aeabi_fmul
+   \      0x144   0x0005             MOVS     R5,R0
+   \      0x146   0xF8D8 0x1000      LDR      R1,[R8, #+0]
+   \      0x14A   0xF8D9 0x0000      LDR      R0,[R9, #+0]
+   \      0x14E   0x....'....        BL       __aeabi_fmul
+   \      0x152   0x0029             MOVS     R1,R5
+   \      0x154   0x....'....        BL       __aeabi_fadd
+   \      0x158   0x0031             MOVS     R1,R6
+   \      0x15A   0x....'....        BL       __aeabi_fmul
+   \      0x15E   0x61E0             STR      R0,[R4, #+28]
+    102            Mat.DCM[2][2] = 1.0f - 2.0f * q1*q1 - 2.0f * q2*q2;   
+   \      0x160   0xF8D9 0x0000      LDR      R0,[R9, #+0]
+   \      0x164   0x0031             MOVS     R1,R6
+   \      0x166   0x....'....        BL       __aeabi_fmul
+   \      0x16A   0xF8D9 0x1000      LDR      R1,[R9, #+0]
+   \      0x16E   0x....'....        BL       __aeabi_fmul
+   \      0x172   0x0001             MOVS     R1,R0
+   \      0x174   0xF05F 0x507E      MOVS     R0,#+1065353216
+   \      0x178   0x....'....        BL       __aeabi_fsub
+   \      0x17C   0x0005             MOVS     R5,R0
+   \      0x17E   0x6838             LDR      R0,[R7, #+0]
+   \      0x180   0x0031             MOVS     R1,R6
+   \      0x182   0x....'....        BL       __aeabi_fmul
+   \      0x186   0x6839             LDR      R1,[R7, #+0]
+   \      0x188   0x....'....        BL       __aeabi_fmul
+   \      0x18C   0x0001             MOVS     R1,R0
+   \      0x18E   0x0028             MOVS     R0,R5
+   \      0x190   0x....'....        BL       __aeabi_fsub
+   \      0x194   0x6220             STR      R0,[R4, #+32]
+    103            
+    104          }
+   \      0x196   0xE8BD 0x87F0      POP      {R4-R10,PC}      ;; return
+    105          
+    106          //旋转矩阵的转置矩阵：地理坐标系 -> 机体坐标系 (從初始座標軸到目標座標軸)
 
    \                                 In section .text, align 2, keep-with-next
-    106          void rotation_matrix_T(void)
-    107          {
+    107          void rotation_matrix_T(void)
+    108          {
    \                     rotation_matrix_T: (+1)
    \        0x0   0xE92D 0x47F0      PUSH     {R4-R10,LR}
-    108            Mat.DCM_T[0][0] = 1.0f - 2.0f * q2*q2 - 2.0f * q3*q3;
-   \        0x4   0x....             LDR.N    R4,??DataTable3_1
-   \        0x6   0x....             LDR.N    R5,??DataTable3_8
+    109            Mat.DCM_T[0][0] = 1.0f - 2.0f * q2*q2 - 2.0f * q3*q3;
+   \        0x4   0x....             LDR.N    R4,??DataTable5_1
+   \        0x6   0x....             LDR.N    R5,??DataTable5_8
    \        0x8   0xF05F 0x4680      MOVS     R6,#+1073741824
-   \        0xC   0x....             LDR.N    R7,??DataTable3_9
+   \        0xC   0x....             LDR.N    R7,??DataTable5_9
    \        0xE   0x6838             LDR      R0,[R7, #+0]
    \       0x10   0x0031             MOVS     R1,R6
    \       0x12   0x....'....        BL       __aeabi_fmul
@@ -748,9 +748,9 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
    \       0x38   0x4640             MOV      R0,R8
    \       0x3A   0x....'....        BL       __aeabi_fsub
    \       0x3E   0x6260             STR      R0,[R4, #+36]
-    109            Mat.DCM_T[0][1] = 2.0f * (q1*q2 +q0*q3);    
-   \       0x40   0x....'....        LDR.W    R8,??DataTable3_6
-   \       0x44   0x....'....        LDR.W    R9,??DataTable3_10
+    110            Mat.DCM_T[0][1] = 2.0f * (q1*q2 +q0*q3);    
+   \       0x40   0x....'....        LDR.W    R8,??DataTable5_6
+   \       0x44   0x....'....        LDR.W    R9,??DataTable5_10
    \       0x48   0xF8D9 0x1000      LDR      R1,[R9, #+0]
    \       0x4C   0x6838             LDR      R0,[R7, #+0]
    \       0x4E   0x....'....        BL       __aeabi_fmul
@@ -763,7 +763,7 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
    \       0x64   0x0031             MOVS     R1,R6
    \       0x66   0x....'....        BL       __aeabi_fmul
    \       0x6A   0x62A0             STR      R0,[R4, #+40]
-    110            Mat.DCM_T[0][2] = 2.0f * (q1*q3 -q0*q2); 
+    111            Mat.DCM_T[0][2] = 2.0f * (q1*q3 -q0*q2); 
    \       0x6C   0xF8D9 0x1000      LDR      R1,[R9, #+0]
    \       0x70   0x6828             LDR      R0,[R5, #+0]
    \       0x72   0x....'....        BL       __aeabi_fmul
@@ -777,8 +777,8 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
    \       0x8A   0x0031             MOVS     R1,R6
    \       0x8C   0x....'....        BL       __aeabi_fmul
    \       0x90   0x62E0             STR      R0,[R4, #+44]
-    111            
-    112            Mat.DCM_T[1][0] = 2.0f * (q1*q2 -q0*q3);
+    112            
+    113            Mat.DCM_T[1][0] = 2.0f * (q1*q2 -q0*q3);
    \       0x92   0xF8D9 0x1000      LDR      R1,[R9, #+0]
    \       0x96   0x6838             LDR      R0,[R7, #+0]
    \       0x98   0x....'....        BL       __aeabi_fmul
@@ -792,7 +792,7 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
    \       0xB0   0x0031             MOVS     R1,R6
    \       0xB2   0x....'....        BL       __aeabi_fmul
    \       0xB6   0x6320             STR      R0,[R4, #+48]
-    113            Mat.DCM_T[1][1] = 1.0f - 2.0f * q1*q1 - 2.0f * q3*q3;  
+    114            Mat.DCM_T[1][1] = 1.0f - 2.0f * q1*q1 - 2.0f * q3*q3;  
    \       0xB8   0xF8D9 0x0000      LDR      R0,[R9, #+0]
    \       0xBC   0x0031             MOVS     R1,R6
    \       0xBE   0x....'....        BL       __aeabi_fmul
@@ -811,7 +811,7 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
    \       0xE6   0x4650             MOV      R0,R10
    \       0xE8   0x....'....        BL       __aeabi_fsub
    \       0xEC   0x6360             STR      R0,[R4, #+52]
-    114            Mat.DCM_T[1][2] = 2.0f * (q2*q3 +q0*q1);    
+    115            Mat.DCM_T[1][2] = 2.0f * (q2*q3 +q0*q1);    
    \       0xEE   0x6839             LDR      R1,[R7, #+0]
    \       0xF0   0x6828             LDR      R0,[R5, #+0]
    \       0xF2   0x....'....        BL       __aeabi_fmul
@@ -824,8 +824,8 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
    \      0x10A   0x0031             MOVS     R1,R6
    \      0x10C   0x....'....        BL       __aeabi_fmul
    \      0x110   0x63A0             STR      R0,[R4, #+56]
-    115            
-    116            Mat.DCM_T[2][0] = 2.0f * (q1*q3 +q0*q2);
+    116            
+    117            Mat.DCM_T[2][0] = 2.0f * (q1*q3 +q0*q2);
    \      0x112   0xF8D9 0x1000      LDR      R1,[R9, #+0]
    \      0x116   0x6828             LDR      R0,[R5, #+0]
    \      0x118   0x....'....        BL       __aeabi_fmul
@@ -838,7 +838,7 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
    \      0x12E   0x0031             MOVS     R1,R6
    \      0x130   0x....'....        BL       __aeabi_fmul
    \      0x134   0x63E0             STR      R0,[R4, #+60]
-    117            Mat.DCM_T[2][1] = 2.0f * (q2*q3 -q0*q1);
+    118            Mat.DCM_T[2][1] = 2.0f * (q2*q3 -q0*q1);
    \      0x136   0x6839             LDR      R1,[R7, #+0]
    \      0x138   0x6828             LDR      R0,[R5, #+0]
    \      0x13A   0x....'....        BL       __aeabi_fmul
@@ -852,7 +852,7 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
    \      0x154   0x0031             MOVS     R1,R6
    \      0x156   0x....'....        BL       __aeabi_fmul
    \      0x15A   0x6420             STR      R0,[R4, #+64]
-    118            Mat.DCM_T[2][2] = 1.0f - 2.0f * q1*q1 - 2.0f * q2*q2;   
+    119            Mat.DCM_T[2][2] = 1.0f - 2.0f * q1*q1 - 2.0f * q2*q2;   
    \      0x15C   0xF8D9 0x0000      LDR      R0,[R9, #+0]
    \      0x160   0x0031             MOVS     R1,R6
    \      0x162   0x....'....        BL       __aeabi_fmul
@@ -871,46 +871,114 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
    \      0x18A   0x0028             MOVS     R0,R5
    \      0x18C   0x....'....        BL       __aeabi_fsub
    \      0x190   0x6460             STR      R0,[R4, #+68]
-    119          }
+    120          }
    \      0x192   0xE8BD 0x87F0      POP      {R4-R10,PC}      ;; return
-    120          
-    121          //矩阵更新，姿态解算时使用
+    121          
 
    \                                 In section .text, align 2, keep-with-next
-    122          void Matrix_ready(void)
-    123          {
+    122          void rotation_matrix_v2(void){
+    123            Mat_v2.DCM[0][0] = 0.8161f;
+   \                     rotation_matrix_v2: (+1)
+   \        0x0   0x....             LDR.N    R0,??DataTable5_13
+   \        0x2   0x....             LDR.N    R1,??DataTable5_14  ;; 0x3f50ebee
+   \        0x4   0x6001             STR      R1,[R0, #+0]
+    124            Mat_v2.DCM[0][1] = -0.4086f;
+   \        0x6   0x....             LDR.N    R1,??DataTable5_15  ;; 0xbed13405
+   \        0x8   0x6041             STR      R1,[R0, #+4]
+    125            Mat_v2.DCM[0][2] = -0.4086f;
+   \        0xA   0x6081             STR      R1,[R0, #+8]
+    126            
+    127            Mat_v2.DCM[1][0] = 0.0f;
+   \        0xC   0x2100             MOVS     R1,#+0
+   \        0xE   0x60C1             STR      R1,[R0, #+12]
+    128            Mat_v2.DCM[1][1] = 0.7071f;
+   \       0x10   0x....             LDR.N    R1,??DataTable5_16  ;; 0x3f350481
+   \       0x12   0x6101             STR      R1,[R0, #+16]
+    129            Mat_v2.DCM[1][2] = -0.7071f;
+   \       0x14   0x....             LDR.N    R1,??DataTable5_17  ;; 0xbf350481
+   \       0x16   0x6141             STR      R1,[R0, #+20]
+    130            
+    131            Mat_v2.DCM[2][0] = 0.5779f;
+   \       0x18   0x....             LDR.N    R1,??DataTable5_18  ;; 0x3f13f141
+   \       0x1A   0x6181             STR      R1,[R0, #+24]
+    132            Mat_v2.DCM[2][1] = 0.5771f;
+   \       0x1C   0x....             LDR.N    R1,??DataTable5_19  ;; 0x3f13bcd3
+   \       0x1E   0x61C1             STR      R1,[R0, #+28]
+    133            Mat_v2.DCM[2][2] = 0.5771f;
+   \       0x20   0x6201             STR      R1,[R0, #+32]
+    134          }
+   \       0x22   0x4770             BX       LR               ;; return
+
+   \                                 In section .text, align 2, keep-with-next
+    135          void rotation_matrix_T_v2(void){
+    136            Mat_v2.DCM[0][0] = 0.8161f;
+   \                     rotation_matrix_T_v2: (+1)
+   \        0x0   0x....             LDR.N    R0,??DataTable5_13
+   \        0x2   0x....             LDR.N    R1,??DataTable5_14  ;; 0x3f50ebee
+   \        0x4   0x6001             STR      R1,[R0, #+0]
+    137            Mat_v2.DCM[0][1] = 0.0f;
+   \        0x6   0x2100             MOVS     R1,#+0
+   \        0x8   0x6041             STR      R1,[R0, #+4]
+    138            Mat_v2.DCM[0][2] = 0.5779f;
+   \        0xA   0x....             LDR.N    R1,??DataTable5_18  ;; 0x3f13f141
+   \        0xC   0x6081             STR      R1,[R0, #+8]
+    139            
+    140            Mat_v2.DCM[1][0] = -0.4086f;
+   \        0xE   0x....             LDR.N    R1,??DataTable5_15  ;; 0xbed13405
+   \       0x10   0x60C1             STR      R1,[R0, #+12]
+    141            Mat_v2.DCM[1][1] = 0.7071f;
+   \       0x12   0x....             LDR.N    R2,??DataTable5_16  ;; 0x3f350481
+   \       0x14   0x6102             STR      R2,[R0, #+16]
+    142            Mat_v2.DCM[1][2] = 0.5771f;
+   \       0x16   0x....             LDR.N    R2,??DataTable5_19  ;; 0x3f13bcd3
+   \       0x18   0x6142             STR      R2,[R0, #+20]
+    143            
+    144            Mat_v2.DCM[2][0] = -0.4086f;
+   \       0x1A   0x6181             STR      R1,[R0, #+24]
+    145            Mat_v2.DCM[2][1] = -0.7071f;
+   \       0x1C   0x....             LDR.N    R1,??DataTable5_17  ;; 0xbf350481
+   \       0x1E   0x61C1             STR      R1,[R0, #+28]
+    146            Mat_v2.DCM[2][2] = 0.5771f;
+   \       0x20   0x6202             STR      R2,[R0, #+32]
+    147          }
+   \       0x22   0x4770             BX       LR               ;; return
+    148          //矩阵更新，姿态解算时使用
+
+   \                                 In section .text, align 2, keep-with-next
+    149          void Matrix_ready(void)
+    150          {
    \                     Matrix_ready: (+1)
    \        0x0   0xB580             PUSH     {R7,LR}
-    124            rotation_matrix();                      //旋转矩阵更新
+    151            rotation_matrix();                      //旋转矩阵更新
    \        0x2   0x....'....        BL       rotation_matrix
-    125            rotation_matrix_T();                    //旋转矩阵的逆矩阵更新
+    152            rotation_matrix_T();                    //旋转矩阵的逆矩阵更新
    \        0x6   0x....'....        BL       rotation_matrix_T
-    126          }
+    153          }
    \        0xA   0xBD01             POP      {R0,PC}          ;; return
-    127          
-    128          //===============================================================
-    129          //===============================================================
-    130          //===============================================================
-    131          //===============================================================
-    132          // Fast inverse square-root
+    154          
+    155          //===============================================================
+    156          //===============================================================
+    157          //===============================================================
+    158          //===============================================================
+    159          // Fast inverse square-root
 
    \                                 In section .text, align 2, keep-with-next
-    133          float invSqrt(float x)
-    134          {
+    160          float invSqrt(float x)
+    161          {
    \                     invSqrt: (+1)
    \        0x0   0xB538             PUSH     {R3-R5,LR}
    \        0x2   0x0004             MOVS     R4,R0
-    135            float halfx = 0.5f * x;
+    162            float halfx = 0.5f * x;
    \        0x4   0xF05F 0x507C      MOVS     R0,#+1056964608
    \        0x8   0x0021             MOVS     R1,R4
    \        0xA   0x....'....        BL       __aeabi_fmul
-    136            float y = x;
-    137            long i = *(long*)&y;
-    138            i = 0x5f3759df - (i>>1);
-   \        0xE   0x....             LDR.N    R5,??DataTable3_13  ;; 0x5f3759df
+    163            float y = x;
+    164            long i = *(long*)&y;
+    165            i = 0x5f3759df - (i>>1);
+   \        0xE   0x....             LDR.N    R5,??DataTable5_20  ;; 0x5f3759df
    \       0x10   0xEBB5 0x0564      SUBS     R5,R5,R4, ASR #+1
-    139            y = *(float*)&i;
-    140            y = y * (1.5f - (halfx * y * y));
+    166            y = *(float*)&i;
+    167            y = y * (1.5f - (halfx * y * y));
    \       0x14   0x0029             MOVS     R1,R5
    \       0x16   0x....'....        BL       __aeabi_fmul
    \       0x1A   0x0029             MOVS     R1,R5
@@ -920,51 +988,51 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
    \       0x26   0x....'....        BL       __aeabi_fsub
    \       0x2A   0x0029             MOVS     R1,R5
    \       0x2C   0x....'....        BL       __aeabi_fmul
-    141            return y;
+    168            return y;
    \       0x30   0xBD32             POP      {R1,R4,R5,PC}    ;; return
-    142          }
-    143          
+    169          }
+    170          
 
    \                                 In section .text, align 2, keep-with-next
-    144          float f_abs(float f)
-    145          {
+    171          float f_abs(float f)
+    172          {
    \                     f_abs: (+1)
    \        0x0   0xB580             PUSH     {R7,LR}
-    146            if (f >= 0.0f)
+    173            if (f >= 0.0f)
    \        0x2   0x2100             MOVS     R1,#+0
    \        0x4   0x....'....        BL       __aeabi_cfrcmple
    \        0x8   0xD901             BLS.N    ??f_abs_0
-    147              return f;
-    148            return -f;
+    174              return f;
+    175            return -f;
    \                     ??f_abs_1: (+1)
    \        0xA   0xF090 0x4000      EORS     R0,R0,#0x80000000
    \                     ??f_abs_0: (+1)
    \        0xE   0xBD02             POP      {R1,PC}          ;; return
-    149          }
-    150          
+    176          }
+    177          
 
    \                                 In section .text, align 2, keep-with-next
-    151          int int_abs(int f)
-    152          {
-    153            if (f >= 0)
+    178          int int_abs(int f)
+    179          {
+    180            if (f >= 0)
    \                     int_abs: (+1)
    \        0x0   0x2800             CMP      R0,#+0
    \        0x2   0xD500             BPL.N    ??int_abs_0
-    154              return f;
-    155            return -f;
+    181              return f;
+    182            return -f;
    \                     ??int_abs_1: (+1)
    \        0x4   0x4240             RSBS     R0,R0,#+0
    \                     ??int_abs_0: (+1)
    \        0x6   0x4770             BX       LR               ;; return
-    156          }
-    157          
+    183          }
+    184          
 
    \                                 In section .text, align 2, keep-with-next
-    158          uint16_t to_limit(uint16_t thr_in,uint16_t thr_min,uint16_t thr_max)
-    159          {
+    185          uint16_t to_limit(uint16_t thr_in,uint16_t thr_min,uint16_t thr_max)
+    186          {
    \                     to_limit: (+1)
    \        0x0   0xB410             PUSH     {R4}
-    160            if(thr_in<thr_min)	thr_in = thr_min;
+    187            if(thr_in<thr_min)	thr_in = thr_min;
    \        0x2   0x0003             MOVS     R3,R0
    \        0x4   0x000C             MOVS     R4,R1
    \        0x6   0xB29B             UXTH     R3,R3            ;; ZeroExt  R3,R3,#+16,#+16
@@ -972,7 +1040,7 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
    \        0xA   0x42A3             CMP      R3,R4
    \        0xC   0xD200             BCS.N    ??to_limit_0
    \        0xE   0x0008             MOVS     R0,R1
-    161            if(thr_in>thr_max)	thr_in = thr_max;
+    188            if(thr_in>thr_max)	thr_in = thr_max;
    \                     ??to_limit_0: (+1)
    \       0x10   0x0011             MOVS     R1,R2
    \       0x12   0x0003             MOVS     R3,R0
@@ -981,22 +1049,22 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
    \       0x18   0x4299             CMP      R1,R3
    \       0x1A   0xD200             BCS.N    ??to_limit_1
    \       0x1C   0x0010             MOVS     R0,R2
-    162            return thr_in;
+    189            return thr_in;
    \                     ??to_limit_1: (+1)
    \       0x1E   0xB280             UXTH     R0,R0            ;; ZeroExt  R0,R0,#+16,#+16
    \       0x20   0xBC10             POP      {R4}
    \       0x22   0x4770             BX       LR               ;; return
-    163          }
-    164          
+    190          }
+    191          
 
    \                                 In section .text, align 2, keep-with-next
-    165          float to_zero(float in_dat,float min_dat,float max_dat)
-    166          {
+    192          float to_zero(float in_dat,float min_dat,float max_dat)
+    193          {
    \                     to_zero: (+1)
    \        0x0   0xB580             PUSH     {R7,LR}
    \        0x2   0x0003             MOVS     R3,R0
    \        0x4   0x0008             MOVS     R0,R1
-    167            if(in_dat>min_dat&&in_dat<max_dat)  
+    194            if(in_dat>min_dat&&in_dat<max_dat)  
    \        0x6   0x0019             MOVS     R1,R3
    \        0x8   0x....'....        BL       __aeabi_cfcmple
    \        0xC   0xD205             BCS.N    ??to_zero_0
@@ -1004,53 +1072,53 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
    \       0x10   0x0011             MOVS     R1,R2
    \       0x12   0x....'....        BL       __aeabi_cfcmple
    \       0x16   0xD200             BCS.N    ??to_zero_0
-    168              in_dat = 0;
+    195              in_dat = 0;
    \       0x18   0x2300             MOVS     R3,#+0
-    169            return in_dat;
+    196            return in_dat;
    \                     ??to_zero_0: (+1)
    \       0x1A   0x0018             MOVS     R0,R3
    \       0x1C   0xBD02             POP      {R1,PC}          ;; return
-    170          }
+    197          }
 
    \                                 In section .text, align 2, keep-with-next
-    171          void  set_value(SI_F_XYZ *_in_data,float value)
-    172          {
-    173            _in_data->x = value;
+    198          void  set_value(SI_F_XYZ *_in_data,float value)
+    199          {
+    200            _in_data->x = value;
    \                     set_value: (+1)
    \        0x0   0x6001             STR      R1,[R0, #+0]
-    174            _in_data->y = value;
+    201            _in_data->y = value;
    \        0x2   0x6041             STR      R1,[R0, #+4]
-    175            _in_data->z = value;
+    202            _in_data->z = value;
    \        0x4   0x6081             STR      R1,[R0, #+8]
-    176          }
+    203          }
    \        0x6   0x4770             BX       LR               ;; return
-    177          
+    204          
 
    \                                 In section .text, align 2, keep-with-next
-    178          void _set_val(SI_F_XYZ *_out_data,SI_F_XYZ *_in_data)
-    179          {
-    180            _out_data->x = _in_data->x;
+    205          void _set_val(SI_F_XYZ *_out_data,SI_F_XYZ *_in_data)
+    206          {
+    207            _out_data->x = _in_data->x;
    \                     _set_val: (+1)
    \        0x0   0x680A             LDR      R2,[R1, #+0]
    \        0x2   0x6002             STR      R2,[R0, #+0]
-    181            _out_data->y = _in_data->y;
+    208            _out_data->y = _in_data->y;
    \        0x4   0x684A             LDR      R2,[R1, #+4]
    \        0x6   0x6042             STR      R2,[R0, #+4]
-    182            _out_data->z = _in_data->z;
+    209            _out_data->z = _in_data->z;
    \        0x8   0x6889             LDR      R1,[R1, #+8]
    \        0xA   0x6081             STR      R1,[R0, #+8]
-    183          }
+    210          }
    \        0xC   0x4770             BX       LR               ;; return
 
    \                                 In section .text, align 2, keep-with-next
-    184          void mymemcpy(void *des,void *src,u32 n)  
-    185          {  
-    186            uint8_t *xdes=des;
-    187            uint8_t *xsrc=src; 
+    211          void mymemcpy(void *des,void *src,u32 n)  
+    212          {  
+    213            uint8_t *xdes=des;
+    214            uint8_t *xsrc=src; 
    \                     mymemcpy: (+1)
    \        0x0   0xE003             B.N      ??mymemcpy_0
-    188            while(n--)
-    189              *xdes++=*xsrc++;  
+    215            while(n--)
+    216              *xdes++=*xsrc++;  
    \                     ??mymemcpy_1: (+1)
    \        0x2   0x780B             LDRB     R3,[R1, #+0]
    \        0x4   0x7003             STRB     R3,[R0, #+0]
@@ -1061,63 +1129,91 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
    \        0xC   0x1E5A             SUBS     R2,R3,#+1
    \        0xE   0x2B00             CMP      R3,#+0
    \       0x10   0xD1F7             BNE.N    ??mymemcpy_1
-    190          }
+    217          }
    \       0x12   0x4770             BX       LR               ;; return
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable3:
+   \                     ??DataTable5:
    \        0x0   0x....'....        DC32     att_time
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable3_1:
+   \                     ??DataTable5_1:
    \        0x0   0x....'....        DC32     Mat
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable3_2:
+   \                     ??DataTable5_2:
    \        0x0   0x....'....        DC32     exInt
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable3_3:
+   \                     ??DataTable5_3:
    \        0x0   0x38D1'B717        DC32     0x38d1b717
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable3_4:
+   \                     ??DataTable5_4:
    \        0x0   0x....'....        DC32     eyInt
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable3_5:
+   \                     ??DataTable5_5:
    \        0x0   0x....'....        DC32     ezInt
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable3_6:
+   \                     ??DataTable5_6:
    \        0x0   0x....'....        DC32     q0
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable3_7:
+   \                     ??DataTable5_7:
    \        0x0   0x3A03'126F        DC32     0x3a03126f
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable3_8:
+   \                     ??DataTable5_8:
    \        0x0   0x....'....        DC32     q3
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable3_9:
+   \                     ??DataTable5_9:
    \        0x0   0x....'....        DC32     q2
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable3_10:
+   \                     ??DataTable5_10:
    \        0x0   0x....'....        DC32     q1
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable3_11:
+   \                     ??DataTable5_11:
    \        0x0   0x....'....        DC32     att
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable3_12:
+   \                     ??DataTable5_12:
    \        0x0   0x404C'A5DC        DC32     0x404ca5dc
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable3_13:
+   \                     ??DataTable5_13:
+   \        0x0   0x....'....        DC32     Mat_v2
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_14:
+   \        0x0   0x3F50'EBEE        DC32     0x3f50ebee
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_15:
+   \        0x0   0xBED1'3405        DC32     0xbed13405
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_16:
+   \        0x0   0x3F35'0481        DC32     0x3f350481
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_17:
+   \        0x0   0xBF35'0481        DC32     0xbf350481
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_18:
+   \        0x0   0x3F13'F141        DC32     0x3f13f141
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_19:
+   \        0x0   0x3F13'BCD3        DC32     0x3f13bcd3
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_20:
    \        0x0   0x5F37'59DF        DC32     0x5f3759df
 
    Maximum stack usage in bytes:
@@ -1155,6 +1251,8 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
         32   -> __aeabi_fadd
         32   -> __aeabi_fmul
         32   -> __aeabi_fsub
+       0   rotation_matrix_T_v2
+       0   rotation_matrix_v2
        0   set_value
        4   to_limit
        8   to_zero
@@ -1165,21 +1263,29 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
 
    Bytes  Function/Label
    -----  --------------
-       4  ??DataTable3
-       4  ??DataTable3_1
-       4  ??DataTable3_10
-       4  ??DataTable3_11
-       4  ??DataTable3_12
-       4  ??DataTable3_13
-       4  ??DataTable3_2
-       4  ??DataTable3_3
-       4  ??DataTable3_4
-       4  ??DataTable3_5
-       4  ??DataTable3_6
-       4  ??DataTable3_7
-       4  ??DataTable3_8
-       4  ??DataTable3_9
+       4  ??DataTable5
+       4  ??DataTable5_1
+       4  ??DataTable5_10
+       4  ??DataTable5_11
+       4  ??DataTable5_12
+       4  ??DataTable5_13
+       4  ??DataTable5_14
+       4  ??DataTable5_15
+       4  ??DataTable5_16
+       4  ??DataTable5_17
+       4  ??DataTable5_18
+       4  ??DataTable5_19
+       4  ??DataTable5_2
+       4  ??DataTable5_20
+       4  ??DataTable5_3
+       4  ??DataTable5_4
+       4  ??DataTable5_5
+       4  ??DataTable5_6
+       4  ??DataTable5_7
+       4  ??DataTable5_8
+       4  ??DataTable5_9
       72  Mat
+      72  Mat_v2
       12  Matrix_ready
       14  _set_val
       12  att
@@ -1196,19 +1302,21 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\imu.c
        4  q1
        4  q2
        4  q3
-     406  rotation_matrix
+     410  rotation_matrix
      406  rotation_matrix_T
+      36  rotation_matrix_T_v2
+      36  rotation_matrix_v2
        8  set_value
       36  to_limit
       30  to_zero
 
  
-   124 bytes in section .bss
+   196 bytes in section .bss
      4 bytes in section .data
- 2'168 bytes in section .text
+ 2'272 bytes in section .text
  
- 2'168 bytes of CODE memory
-   128 bytes of DATA memory
+ 2'272 bytes of CODE memory
+   200 bytes of DATA memory
 
 Errors: none
 Warnings: none

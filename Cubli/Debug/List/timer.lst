@@ -1,48 +1,45 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         03/Aug/2020  17:52:49
+# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         06/Sep/2020  23:10:13
 # Copyright 1999-2019 IAR Systems AB.
 #
 #    Cpu mode     =  
 #    Endian       =  little
 #    Source file  =
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\timer.c
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\timer.c
 #    Command line =
-#        -f C:\Users\Evan\AppData\Local\Temp\EW8D96.tmp
-#        (E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\timer.c
-#        -D USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List
-#        -o
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\Obj
-#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
-#        --no_clustering --no_scheduling --debug --endian=little
-#        --cpu=Cortex-M4 -e --fpu=None --dlib_config "D:\IAR Systems\Embedded
-#        Workbench 8.3\arm\inc\c\DLib_Config_Normal.h" -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Include\
+#        -f C:\Users\LABPC1~1\AppData\Local\Temp\EW26A2.tmp
+#        (E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\timer.c -D
+#        USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\Debug\List -o
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\Debug\Obj --no_cse
+#        --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering
+#        --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=None
+#        --dlib_config "D:\IAR Systems\Embedded Workbench
+#        8.3\arm\inc\c\DLib_Config_Normal.h" -I
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Include\
 #        -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\
 #        -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\iar\
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\iar\
 #        -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\inc\
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\inc\
 #        -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\
-#        -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\inc\
-#        -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\
-#        -Ol --use_c++_inline -I "D:\IAR Systems\Embedded Workbench
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\
+#        -I E:\STM32Project\Cubli-with-STM32F429\Cubli\user\inc\ -I
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\user\src\ -Ol
+#        --use_c++_inline -I "D:\IAR Systems\Embedded Workbench
 #        8.3\arm\CMSIS\Core\Include\" -I "D:\IAR Systems\Embedded Workbench
 #        8.3\arm\CMSIS\DSP\Include\")
 #    Locale       =  C
 #    List file    =
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List\timer.lst
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\Debug\List\timer.lst
 #    Object file  =
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\Obj\timer.o
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\Debug\Obj\timer.o
 #
 ###############################################################################
 
-E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\timer.c
+E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\timer.c
       1          #include "timer.h"
       2          
 
@@ -63,29 +60,29 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\timer.c
    \        0x0                      DS8 4
 
    \                                 In section .data, align 4
-      7          float Velocity_KP_pit = 100;//300;
-   \                     Velocity_KP_pit:
-   \        0x0   0x42C8'0000        DC32 0x42c8'0000
+      7          float Velocity_KP_a = 140;    //140;  //300;
+   \                     Velocity_KP_a:
+   \        0x0   0x430C'0000        DC32 0x430c'0000
+
+   \                                 In section .bss, align 4
+      8          float Velocity_KI_a = 0;      //0     //0.35;
+   \                     Velocity_KI_a:
+   \        0x0                      DS8 4
 
    \                                 In section .data, align 4
-      8          float Velocity_KI_pit = 0.35;
-   \                     Velocity_KI_pit:
-   \        0x0   0x3EB3'3333        DC32 0x3eb3'3333
+      9          float Balance_KP_a = 1850;    //1850; //2000;
+   \                     Balance_KP_a:
+   \        0x0   0x44E7'4000        DC32 0x44e7'4000
+
+   \                                 In section .bss, align 4
+     10          float Balance_KI_a = 0;       //0;    //0.025;
+   \                     Balance_KI_a:
+   \        0x0                      DS8 4
 
    \                                 In section .data, align 4
-      9          float Balance_KP_pit =1500;//2000;
-   \                     Balance_KP_pit:
-   \        0x0   0x44BB'8000        DC32 0x44bb'8000
-
-   \                                 In section .data, align 4
-     10          float Balance_Ki_pit = 0.02;
-   \                     Balance_Ki_pit:
-   \        0x0   0x3CA3'D70A        DC32 0x3ca3'd70a
-
-   \                                 In section .data, align 4
-     11          float Balance_KD_pit = 155.2;
-   \                     Balance_KD_pit:
-   \        0x0   0x431B'3333        DC32 0x431b'3333
+     11          float Balance_KD_a = 320;     //287;  //186.2;
+   \                     Balance_KD_a:
+   \        0x0   0x43A0'0000        DC32 0x43a0'0000
      12          
 
    \                                 In section .data, align 4
@@ -115,50 +112,50 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\timer.c
      18          
 
    \                                 In section .bss, align 4
-     19          float velocity_pwm_x = 0.0;
-   \                     velocity_pwm_x:
+     19          float velocity_pwm_a = 0.0;
+   \                     velocity_pwm_a:
    \        0x0                      DS8 4
 
    \                                 In section .bss, align 4
-     20          float balance_pwm_x = 0.0;
-   \                     balance_pwm_x:
+     20          float balance_pwm_a = 0.0;
+   \                     balance_pwm_a:
    \        0x0                      DS8 4
      21          
 
    \                                 In section .bss, align 4
-     22          float velocity_pwm_y = 0.0;
-   \                     velocity_pwm_y:
+     22          float velocity_pwm_b = 0.0;
+   \                     velocity_pwm_b:
    \        0x0                      DS8 4
 
    \                                 In section .bss, align 4
-     23          float balance_pwm_y = 0.0;
-   \                     balance_pwm_y:
+     23          float balance_pwm_b = 0.0;
+   \                     balance_pwm_b:
    \        0x0                      DS8 4
      24          
 
    \                                 In section .bss, align 4
-     25          float velocity_pwm_z = 0.0;
-   \                     velocity_pwm_z:
+     25          float velocity_pwm_c = 0.0;
+   \                     velocity_pwm_c:
    \        0x0                      DS8 4
 
    \                                 In section .bss, align 4
-     26          float balance_pwm_z = 0.0;
-   \                     balance_pwm_z:
+     26          float balance_pwm_c = 0.0;
+   \                     balance_pwm_c:
    \        0x0                      DS8 4
 
    \                                 In section .bss, align 4
-     27          int PWM_x = 0;
-   \                     PWM_x:
+     27          int PWM_a = 0;
+   \                     PWM_a:
    \        0x0                      DS8 4
 
    \                                 In section .bss, align 4
-     28          int PWM_y = 0;
-   \                     PWM_y:
+     28          int PWM_b = 0;
+   \                     PWM_b:
    \        0x0                      DS8 4
 
    \                                 In section .bss, align 4
-     29          int PWM_z = 0;
-   \                     PWM_z:
+     29          int PWM_c = 0;
+   \                     PWM_c:
    \        0x0                      DS8 4
 
    \                                 In section .bss, align 4
@@ -168,18 +165,18 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\timer.c
      31          
 
    \                                 In section .bss, align 4
-     32          int encoder_x;
-   \                     encoder_x:
+     32          int encoder_a;
+   \                     encoder_a:
    \        0x0                      DS8 4
 
    \                                 In section .bss, align 4
-     33          int encoder_y;
-   \                     encoder_y:
+     33          int encoder_b;
+   \                     encoder_b:
    \        0x0                      DS8 4
 
    \                                 In section .bss, align 4
-     34          int encoder_z;
-   \                     encoder_z:
+     34          int encoder_c;
+   \                     encoder_c:
    \        0x0                      DS8 4
      35          /*===============================
      36          
@@ -225,28 +222,12 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\timer.c
      52          
      53          ===============================*/
 
-   \                                 In section .bss, align 4
-     54            static float Velocity,Encoder_Least,Encoder;
-   \                     Velocity:
-   \        0x0                      DS8 4
-
-   \                                 In section .bss, align 4
-   \                     Encoder_Least:
-   \        0x0                      DS8 4
-
-   \                                 In section .bss, align 4
-   \                     Encoder:
-   \        0x0                      DS8 4
-
-   \                                 In section .bss, align 4
-     55            static float Encoder_Integral;  
-   \                     Encoder_Integral:
-   \        0x0                      DS8 4
-
    \                                 In section .text, align 2, keep-with-next
-     56          float control_velocity_x(int encoder){
+     54          float control_velocity_x(int encoder){
    \                     control_velocity_x: (+1)
    \        0x0   0xB5F8             PUSH     {R3-R7,LR}
+     55            static float Velocity,Encoder_Least,Encoder;
+     56            static float Encoder_Integral;  
      57            //=============速度PI控制器=======================//	
      58            Encoder_Least=encoder;        
    \        0x2   0x....'....        LDR.W    R6,??DataTable11_3
@@ -308,68 +289,77 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\timer.c
    \       0x8E   0x2000             MOVS     R0,#+0
    \       0x90   0x6038             STR      R0,[R7, #+0]
      66            
-     67            Velocity=Encoder*Velocity_KP_pit + Encoder_Integral*Velocity_KI_pit;      //===速度控制
+     67            Velocity=Encoder*Velocity_KP_a;// + Encoder_Integral*Velocity_KI_a;      //===速度控制
    \                     ??control_velocity_x_2: (+1)
-   \       0x92   0x....'....        LDR.W    R6,??DataTable11_12
+   \       0x92   0x....'....        LDR.W    R4,??DataTable11_12
    \       0x96   0x6839             LDR      R1,[R7, #+0]
    \       0x98   0x....'....        LDR.W    R0,??DataTable11_13
    \       0x9C   0x6800             LDR      R0,[R0, #+0]
    \       0x9E   0x....'....        BL       __aeabi_fmul
-   \       0xA2   0x0007             MOVS     R7,R0
-   \       0xA4   0x6821             LDR      R1,[R4, #+0]
-   \       0xA6   0x....'....        LDR.W    R0,??DataTable11_14
-   \       0xAA   0x6800             LDR      R0,[R0, #+0]
-   \       0xAC   0x....'....        BL       __aeabi_fmul
-   \       0xB0   0x0039             MOVS     R1,R7
-   \       0xB2   0x....'....        BL       __aeabi_fadd
-   \       0xB6   0x6030             STR      R0,[R6, #+0]
+   \       0xA2   0x6020             STR      R0,[R4, #+0]
      68            if(flag_stop==1) Velocity=0;     
-   \       0xB8   0x6828             LDR      R0,[R5, #+0]
-   \       0xBA   0x2801             CMP      R0,#+1
-   \       0xBC   0xD101             BNE.N    ??control_velocity_x_3
-   \       0xBE   0x2000             MOVS     R0,#+0
-   \       0xC0   0x6030             STR      R0,[R6, #+0]
+   \       0xA4   0x6828             LDR      R0,[R5, #+0]
+   \       0xA6   0x2801             CMP      R0,#+1
+   \       0xA8   0xD101             BNE.N    ??control_velocity_x_3
+   \       0xAA   0x2000             MOVS     R0,#+0
+   \       0xAC   0x6020             STR      R0,[R4, #+0]
      69            return Velocity;
    \                     ??control_velocity_x_3: (+1)
-   \       0xC2   0x6830             LDR      R0,[R6, #+0]
-   \       0xC4   0xBDF2             POP      {R1,R4-R7,PC}    ;; return
+   \       0xAE   0x6820             LDR      R0,[R4, #+0]
+   \       0xB0   0xBDF2             POP      {R1,R4-R7,PC}    ;; return
      70          }
+
+   \                                 In section .bss, align 4
+   \                     `control_velocity_x::Velocity`:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     `control_velocity_x::Encoder_Least`:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     `control_velocity_x::Encoder`:
+   \        0x0                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     `control_velocity_x::Encoder_Integral`:
+   \        0x0                      DS8 4
      71          
 
    \                                 In section .text, align 2, keep-with-next
      72          float control_balance_x(float angle, float Gyro){
    \                     control_balance_x: (+1)
    \        0x0   0xB5F8             PUSH     {R3-R7,LR}
-   \        0x2   0x0007             MOVS     R7,R0
+   \        0x2   0x0006             MOVS     R6,R0
    \        0x4   0x000C             MOVS     R4,R1
      73            static float Bias_last, Bias_integral, Bias;
      74            float balance;
      75            Bias_last = Bias; 
-   \        0x6   0x....'....        LDR.W    R0,??DataTable11_15
-   \        0xA   0x....'....        LDR.W    R5,??DataTable11_16
+   \        0x6   0x....'....        LDR.W    R0,??DataTable11_14
+   \        0xA   0x....'....        LDR.W    R5,??DataTable11_15
    \        0xE   0x6829             LDR      R1,[R5, #+0]
    \       0x10   0x6001             STR      R1,[R0, #+0]
      76            Bias_integral += Bias_last;
-   \       0x12   0x....'....        LDR.W    R6,??DataTable11_17
-   \       0x16   0x6831             LDR      R1,[R6, #+0]
+   \       0x12   0x....'....        LDR.W    R7,??DataTable11_16
+   \       0x16   0x6839             LDR      R1,[R7, #+0]
    \       0x18   0x6800             LDR      R0,[R0, #+0]
    \       0x1A   0x....'....        BL       __aeabi_fadd
-   \       0x1E   0x6030             STR      R0,[R6, #+0]
+   \       0x1E   0x6038             STR      R0,[R7, #+0]
      77            
      78            if(Bias_integral>4200)  	Bias_integral=4200;               //===積分限幅 4200
-   \       0x20   0x6830             LDR      R0,[R6, #+0]
-   \       0x22   0x....'....        LDR.W    R1,??DataTable11_18  ;; 0x45834001
+   \       0x20   0x6838             LDR      R0,[R7, #+0]
+   \       0x22   0x....'....        LDR.W    R1,??DataTable11_17  ;; 0x45834001
    \       0x26   0x....'....        BL       __aeabi_cfrcmple
    \       0x2A   0xD802             BHI.N    ??control_balance_x_0
-   \       0x2C   0x....'....        LDR.W    R0,??DataTable11_19  ;; 0x45834000
-   \       0x30   0x6030             STR      R0,[R6, #+0]
+   \       0x2C   0x....'....        LDR.W    R0,??DataTable11_18  ;; 0x45834000
+   \       0x30   0x6038             STR      R0,[R7, #+0]
      79            if(Bias_integral<-4200)	Bias_integral=-4200;              //===積分限幅 4200 
    \                     ??control_balance_x_0: (+1)
-   \       0x32   0x....'....        LDR.W    R1,??DataTable11_20  ;; 0xc5834000
-   \       0x36   0x6830             LDR      R0,[R6, #+0]
+   \       0x32   0x....'....        LDR.W    R1,??DataTable11_19  ;; 0xc5834000
+   \       0x36   0x6838             LDR      R0,[R7, #+0]
    \       0x38   0x....'....        BL       __aeabi_cfcmple
    \       0x3C   0xD200             BCS.N    ??control_balance_x_1
-   \       0x3E   0x6031             STR      R1,[R6, #+0]
+   \       0x3E   0x6039             STR      R1,[R7, #+0]
      80            if(flag_stop==1) Bias_integral=0,Bias=0;
    \                     ??control_balance_x_1: (+1)
    \       0x40   0x....'....        LDR.W    R0,??DataTable11_11
@@ -377,41 +367,35 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\timer.c
    \       0x46   0x2801             CMP      R0,#+1
    \       0x48   0xD103             BNE.N    ??control_balance_x_2
    \       0x4A   0x2000             MOVS     R0,#+0
-   \       0x4C   0x6030             STR      R0,[R6, #+0]
+   \       0x4C   0x6038             STR      R0,[R7, #+0]
    \       0x4E   0x2000             MOVS     R0,#+0
    \       0x50   0x6028             STR      R0,[R5, #+0]
      81            
-     82            Bias=(angle+0.325);  //=== 偏差  a 0.1 b  0.2 
+     82            Bias=(angle+47.825);  //=== 偏差  a 0.1 b  0.2 -45度到0度
    \                     ??control_balance_x_2: (+1)
-   \       0x52   0x0038             MOVS     R0,R7
+   \       0x52   0x0030             MOVS     R0,R6
    \       0x54   0x....'....        BL       __aeabi_f2d
-   \       0x58   0x....'....        LDR.W    R2,??DataTable11_21  ;; 0xcccccccd
-   \       0x5C   0x....'....        LDR.W    R3,??DataTable11_22  ;; 0x3fd4cccc
+   \       0x58   0x....'....        LDR.W    R2,??DataTable11_20  ;; 0x9999999a
+   \       0x5C   0x....'....        LDR.W    R3,??DataTable11_21  ;; 0x4047e999
    \       0x60   0x....'....        BL       __aeabi_dadd
    \       0x64   0x....'....        BL       __aeabi_d2f
    \       0x68   0x6028             STR      R0,[R5, #+0]
-     83            balance= Bias*Balance_KP_pit + Bias_integral*Balance_Ki_pit + Gyro*Balance_KD_pit;
+     83          //  balance= Bias*Balance_KP_a + Bias_integral*Balance_KI_a + Gyro*Balance_KD_a;
+     84            balance= Bias*Balance_KP_a + Gyro*Balance_KD_a;
    \       0x6A   0x6829             LDR      R1,[R5, #+0]
-   \       0x6C   0x....'....        LDR.W    R0,??DataTable11_23
+   \       0x6C   0x....'....        LDR.W    R0,??DataTable11_22
    \       0x70   0x6800             LDR      R0,[R0, #+0]
    \       0x72   0x....'....        BL       __aeabi_fmul
    \       0x76   0x0005             MOVS     R5,R0
-   \       0x78   0x6831             LDR      R1,[R6, #+0]
-   \       0x7A   0x....'....        LDR.W    R0,??DataTable11_24
-   \       0x7E   0x6800             LDR      R0,[R0, #+0]
+   \       0x78   0x....'....        LDR.W    R0,??DataTable11_23
+   \       0x7C   0x6800             LDR      R0,[R0, #+0]
+   \       0x7E   0x0021             MOVS     R1,R4
    \       0x80   0x....'....        BL       __aeabi_fmul
    \       0x84   0x0029             MOVS     R1,R5
    \       0x86   0x....'....        BL       __aeabi_fadd
-   \       0x8A   0x0005             MOVS     R5,R0
-   \       0x8C   0x....'....        LDR.W    R0,??DataTable11_25
-   \       0x90   0x6800             LDR      R0,[R0, #+0]
-   \       0x92   0x0021             MOVS     R1,R4
-   \       0x94   0x....'....        BL       __aeabi_fmul
-   \       0x98   0x0029             MOVS     R1,R5
-   \       0x9A   0x....'....        BL       __aeabi_fadd
-     84            return balance;
-   \       0x9E   0xBDF2             POP      {R1,R4-R7,PC}    ;; return
-     85          }
+     85            return balance;
+   \       0x8A   0xBDF2             POP      {R1,R4-R7,PC}    ;; return
+     86          }
 
    \                                 In section .bss, align 4
    \                     `control_balance_x::Bias_last`:
@@ -424,25 +408,25 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\timer.c
    \                                 In section .bss, align 4
    \                     `control_balance_x::Bias`:
    \        0x0                      DS8 4
-     86          /*===============================
-     87          
-     88          PID-Y
-     89          
-     90          ===============================*/
+     87          /*===============================
+     88          
+     89          PID-Y
+     90          
+     91          ===============================*/
 
    \                                 In section .text, align 2, keep-with-next
-     91          float control_velocity_y(int encoder){
+     92          float control_velocity_y(int encoder){
    \                     control_velocity_y: (+1)
    \        0x0   0xB5F8             PUSH     {R3-R7,LR}
-     92            static float Velocity_y,Encoder_Least_y,Encoder_y;
-     93            static float Encoder_Integral_y;  
-     94            //=============速度PI控制器=======================//	
-     95            Encoder_Least_y=encoder;        
-   \        0x2   0x....'....        LDR.W    R6,??DataTable11_26
+     93            static float Velocity_y,Encoder_Least_y,Encoder_y;
+     94            static float Encoder_Integral_y;  
+     95            //=============速度PI控制器=======================//	
+     96            Encoder_Least_y=encoder;        
+   \        0x2   0x....'....        LDR.W    R6,??DataTable11_24
    \        0x6   0x....'....        BL       __aeabi_i2f
    \        0xA   0x6030             STR      R0,[R6, #+0]
-     96            Encoder_y *= 0.7;		                                                  
-   \        0xC   0x....'....        LDR.W    R7,??DataTable11_27
+     97            Encoder_y *= 0.7;		                                                  
+   \        0xC   0x....'....        LDR.W    R7,??DataTable11_25
    \       0x10   0x6838             LDR      R0,[R7, #+0]
    \       0x12   0x....'....        BL       __aeabi_f2d
    \       0x16   0xF05F 0x3266      MOVS     R2,#+1717986918
@@ -450,7 +434,7 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\timer.c
    \       0x1E   0x....'....        BL       __aeabi_dmul
    \       0x22   0x....'....        BL       __aeabi_d2f
    \       0x26   0x6038             STR      R0,[R7, #+0]
-     97            Encoder_y += Encoder_Least_y*0.3;	             
+     98            Encoder_y += Encoder_Least_y*0.3;	             
    \       0x28   0x6838             LDR      R0,[R7, #+0]
    \       0x2A   0x....'....        BL       __aeabi_f2d
    \       0x2E   0x0004             MOVS     R4,R0
@@ -465,28 +449,28 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\timer.c
    \       0x48   0x....'....        BL       __aeabi_dadd
    \       0x4C   0x....'....        BL       __aeabi_d2f
    \       0x50   0x6038             STR      R0,[R7, #+0]
-     98            Encoder_Integral_y +=Encoder_y;                                         //===積分出位移  P比例
-   \       0x52   0x....'....        LDR.W    R4,??DataTable11_28
+     99            Encoder_Integral_y +=Encoder_y;                                         //===積分出位移  P比例
+   \       0x52   0x....'....        LDR.W    R4,??DataTable11_26
    \       0x56   0x6821             LDR      R1,[R4, #+0]
    \       0x58   0x6838             LDR      R0,[R7, #+0]
    \       0x5A   0x....'....        BL       __aeabi_fadd
    \       0x5E   0x6020             STR      R0,[R4, #+0]
-     99            
-    100            if(Encoder_Integral_y>27000) Encoder_Integral_y=27000;//===積分限幅     I積分
+    100            
+    101            if(Encoder_Integral_y>27000) Encoder_Integral_y=27000;//===積分限幅     I積分
    \       0x60   0x6820             LDR      R0,[R4, #+0]
    \       0x62   0x....'....        LDR.W    R1,??DataTable11_8  ;; 0x46d2f001
    \       0x66   0x....'....        BL       __aeabi_cfrcmple
    \       0x6A   0xD802             BHI.N    ??control_velocity_y_0
    \       0x6C   0x....'....        LDR.W    R0,??DataTable11_9  ;; 0x46d2f000
    \       0x70   0x6020             STR      R0,[R4, #+0]
-    101            if(Encoder_Integral_y<-27000)	Encoder_Integral_y=-27000;               //===積分限幅     D微分
+    102            if(Encoder_Integral_y<-27000)	Encoder_Integral_y=-27000;               //===積分限幅     D微分
    \                     ??control_velocity_y_0: (+1)
    \       0x72   0x....'....        LDR.W    R1,??DataTable11_10  ;; 0xc6d2f000
    \       0x76   0x6820             LDR      R0,[R4, #+0]
    \       0x78   0x....'....        BL       __aeabi_cfcmple
    \       0x7C   0xD200             BCS.N    ??control_velocity_y_1
    \       0x7E   0x6021             STR      R1,[R4, #+0]
-    102            if(flag_stop==1) Encoder_Integral_y=0,Encoder_y=0;
+    103            if(flag_stop==1) Encoder_Integral_y=0,Encoder_y=0;
    \                     ??control_velocity_y_1: (+1)
    \       0x80   0x....'....        LDR.W    R5,??DataTable11_11
    \       0x84   0x6828             LDR      R0,[R5, #+0]
@@ -496,32 +480,32 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\timer.c
    \       0x8C   0x6020             STR      R0,[R4, #+0]
    \       0x8E   0x2000             MOVS     R0,#+0
    \       0x90   0x6038             STR      R0,[R7, #+0]
-    103            Velocity_y=Encoder_y*Velocity_KP + Encoder_Integral_y*Velocity_KI;  //===速度控制
+    104            Velocity_y=Encoder_y*Velocity_KP + Encoder_Integral_y*Velocity_KI;  //===速度控制
    \                     ??control_velocity_y_2: (+1)
-   \       0x92   0x....'....        LDR.W    R6,??DataTable11_29
+   \       0x92   0x....'....        LDR.W    R6,??DataTable11_27
    \       0x96   0x6839             LDR      R1,[R7, #+0]
-   \       0x98   0x....'....        LDR.W    R0,??DataTable11_30
+   \       0x98   0x....'....        LDR.W    R0,??DataTable11_28
    \       0x9C   0x6800             LDR      R0,[R0, #+0]
    \       0x9E   0x....'....        BL       __aeabi_fmul
    \       0xA2   0x0007             MOVS     R7,R0
    \       0xA4   0x6821             LDR      R1,[R4, #+0]
-   \       0xA6   0x....'....        LDR.W    R0,??DataTable11_31
+   \       0xA6   0x....'....        LDR.W    R0,??DataTable11_29
    \       0xAA   0x6800             LDR      R0,[R0, #+0]
    \       0xAC   0x....'....        BL       __aeabi_fmul
    \       0xB0   0x0039             MOVS     R1,R7
    \       0xB2   0x....'....        BL       __aeabi_fadd
    \       0xB6   0x6030             STR      R0,[R6, #+0]
-    104            if(flag_stop==1) Velocity_y=0;     
+    105            if(flag_stop==1) Velocity_y=0;     
    \       0xB8   0x6828             LDR      R0,[R5, #+0]
    \       0xBA   0x2801             CMP      R0,#+1
    \       0xBC   0xD101             BNE.N    ??control_velocity_y_3
    \       0xBE   0x2000             MOVS     R0,#+0
    \       0xC0   0x6030             STR      R0,[R6, #+0]
-    105            return Velocity_y;
+    106            return Velocity_y;
    \                     ??control_velocity_y_3: (+1)
    \       0xC2   0x6830             LDR      R0,[R6, #+0]
    \       0xC4   0xBDF2             POP      {R1,R4-R7,PC}    ;; return
-    106          }
+    107          }
 
    \                                 In section .bss, align 4
    \                     `control_velocity_y::Velocity_y`:
@@ -538,43 +522,43 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\timer.c
    \                                 In section .bss, align 4
    \                     `control_velocity_y::Encoder_Integral_y`:
    \        0x0                      DS8 4
-    107          
+    108          
 
    \                                 In section .text, align 2, keep-with-next
-    108          float control_balance_y(float angle, float Gyro){
+    109          float control_balance_y(float angle, float Gyro){
    \                     control_balance_y: (+1)
    \        0x0   0xB5F8             PUSH     {R3-R7,LR}
    \        0x2   0x0007             MOVS     R7,R0
    \        0x4   0x000C             MOVS     R4,R1
-    109            static float Bias_last_y, Bias_integral_y, Bias_y;
-    110            float balance_y;
-    111            Bias_last_y = Bias_y; 
-   \        0x6   0x....'....        LDR.W    R0,??DataTable11_32
-   \        0xA   0x....'....        LDR.W    R5,??DataTable11_33
+    110            static float Bias_last_y, Bias_integral_y, Bias_y;
+    111            float balance_y;
+    112            Bias_last_y = Bias_y; 
+   \        0x6   0x....'....        LDR.W    R0,??DataTable11_30
+   \        0xA   0x....'....        LDR.W    R5,??DataTable11_31
    \        0xE   0x6829             LDR      R1,[R5, #+0]
    \       0x10   0x6001             STR      R1,[R0, #+0]
-    112            Bias_integral_y += Bias_last_y;
-   \       0x12   0x....'....        LDR.W    R6,??DataTable11_34
+    113            Bias_integral_y += Bias_last_y;
+   \       0x12   0x....'....        LDR.W    R6,??DataTable11_32
    \       0x16   0x6831             LDR      R1,[R6, #+0]
    \       0x18   0x6800             LDR      R0,[R0, #+0]
    \       0x1A   0x....'....        BL       __aeabi_fadd
    \       0x1E   0x6030             STR      R0,[R6, #+0]
-    113            
-    114            if(Bias_integral_y>4200)  	Bias_integral_y=4200;               //===積分限幅 4200
+    114            
+    115            if(Bias_integral_y>4200)  	Bias_integral_y=4200;               //===積分限幅 4200
    \       0x20   0x6830             LDR      R0,[R6, #+0]
-   \       0x22   0x....'....        LDR.W    R1,??DataTable11_18  ;; 0x45834001
+   \       0x22   0x....'....        LDR.W    R1,??DataTable11_17  ;; 0x45834001
    \       0x26   0x....'....        BL       __aeabi_cfrcmple
    \       0x2A   0xD802             BHI.N    ??control_balance_y_0
-   \       0x2C   0x....'....        LDR.W    R0,??DataTable11_19  ;; 0x45834000
+   \       0x2C   0x....'....        LDR.W    R0,??DataTable11_18  ;; 0x45834000
    \       0x30   0x6030             STR      R0,[R6, #+0]
-    115            if(Bias_integral_y<-4200)	Bias_integral_y=-4200;              //===積分限幅 4200 
+    116            if(Bias_integral_y<-4200)	Bias_integral_y=-4200;              //===積分限幅 4200 
    \                     ??control_balance_y_0: (+1)
-   \       0x32   0x....'....        LDR.W    R1,??DataTable11_20  ;; 0xc5834000
+   \       0x32   0x....'....        LDR.W    R1,??DataTable11_19  ;; 0xc5834000
    \       0x36   0x6830             LDR      R0,[R6, #+0]
    \       0x38   0x....'....        BL       __aeabi_cfcmple
    \       0x3C   0xD200             BCS.N    ??control_balance_y_1
    \       0x3E   0x6031             STR      R1,[R6, #+0]
-    116            if(flag_stop==1) Bias_integral_y=0,Bias_y=0;
+    117            if(flag_stop==1) Bias_integral_y=0,Bias_y=0;
    \                     ??control_balance_y_1: (+1)
    \       0x40   0x....'....        LDR.W    R0,??DataTable11_11
    \       0x44   0x6800             LDR      R0,[R0, #+0]
@@ -584,43 +568,43 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\timer.c
    \       0x4C   0x6030             STR      R0,[R6, #+0]
    \       0x4E   0x2000             MOVS     R0,#+0
    \       0x50   0x6028             STR      R0,[R5, #+0]
-    117            
-    118            Bias_y=(-45)-(angle+0.325);  //=== 偏差  a 0.1 b  0.2 
+    118            
+    119            Bias_y=(-35.3)-(angle+0.325);  //=== 偏差  a 0.1 b  0.2 
    \                     ??control_balance_y_2: (+1)
    \       0x52   0x0038             MOVS     R0,R7
    \       0x54   0x....'....        BL       __aeabi_f2d
-   \       0x58   0x....'....        LDR.W    R2,??DataTable11_21  ;; 0xcccccccd
-   \       0x5C   0x....'....        LDR.W    R3,??DataTable11_22  ;; 0x3fd4cccc
+   \       0x58   0x....'....        LDR.W    R2,??DataTable11_33  ;; 0xcccccccd
+   \       0x5C   0x....'....        LDR.W    R3,??DataTable11_34  ;; 0x3fd4cccc
    \       0x60   0x....'....        BL       __aeabi_dadd
    \       0x64   0x0002             MOVS     R2,R0
    \       0x66   0x000B             MOVS     R3,R1
-   \       0x68   0x2000             MOVS     R0,#+0
-   \       0x6A   0x....'....        LDR.W    R1,??DataTable11_35  ;; 0xc0468000
-   \       0x6E   0x....'....        BL       __aeabi_dsub
-   \       0x72   0x....'....        BL       __aeabi_d2f
-   \       0x76   0x6028             STR      R0,[R5, #+0]
-    119            balance_y = Bias_y*Balance_KP + Bias_integral_y*Balance_Ki + Gyro*Balance_KD;
-   \       0x78   0x6829             LDR      R1,[R5, #+0]
-   \       0x7A   0x....'....        LDR.W    R0,??DataTable11_36
-   \       0x7E   0x6800             LDR      R0,[R0, #+0]
-   \       0x80   0x....'....        BL       __aeabi_fmul
-   \       0x84   0x0005             MOVS     R5,R0
-   \       0x86   0x6831             LDR      R1,[R6, #+0]
-   \       0x88   0x....'....        LDR.W    R0,??DataTable11_37
-   \       0x8C   0x6800             LDR      R0,[R0, #+0]
-   \       0x8E   0x....'....        BL       __aeabi_fmul
-   \       0x92   0x0029             MOVS     R1,R5
-   \       0x94   0x....'....        BL       __aeabi_fadd
-   \       0x98   0x0005             MOVS     R5,R0
-   \       0x9A   0x....'....        LDR.W    R0,??DataTable11_38
-   \       0x9E   0x6800             LDR      R0,[R0, #+0]
-   \       0xA0   0x0021             MOVS     R1,R4
-   \       0xA2   0x....'....        BL       __aeabi_fmul
-   \       0xA6   0x0029             MOVS     R1,R5
-   \       0xA8   0x....'....        BL       __aeabi_fadd
-    120            return balance_y;
-   \       0xAC   0xBDF2             POP      {R1,R4-R7,PC}    ;; return
-    121          }
+   \       0x68   0xF05F 0x3066      MOVS     R0,#+1717986918
+   \       0x6C   0x....'....        LDR.W    R1,??DataTable11_35  ;; 0xc041a666
+   \       0x70   0x....'....        BL       __aeabi_dsub
+   \       0x74   0x....'....        BL       __aeabi_d2f
+   \       0x78   0x6028             STR      R0,[R5, #+0]
+    120            balance_y = Bias_y*Balance_KP + Bias_integral_y*Balance_Ki + Gyro*Balance_KD;
+   \       0x7A   0x6829             LDR      R1,[R5, #+0]
+   \       0x7C   0x....'....        LDR.W    R0,??DataTable11_36
+   \       0x80   0x6800             LDR      R0,[R0, #+0]
+   \       0x82   0x....'....        BL       __aeabi_fmul
+   \       0x86   0x0005             MOVS     R5,R0
+   \       0x88   0x6831             LDR      R1,[R6, #+0]
+   \       0x8A   0x....'....        LDR.W    R0,??DataTable11_37
+   \       0x8E   0x6800             LDR      R0,[R0, #+0]
+   \       0x90   0x....'....        BL       __aeabi_fmul
+   \       0x94   0x0029             MOVS     R1,R5
+   \       0x96   0x....'....        BL       __aeabi_fadd
+   \       0x9A   0x0005             MOVS     R5,R0
+   \       0x9C   0x....'....        LDR.W    R0,??DataTable11_38
+   \       0xA0   0x6800             LDR      R0,[R0, #+0]
+   \       0xA2   0x0021             MOVS     R1,R4
+   \       0xA4   0x....'....        BL       __aeabi_fmul
+   \       0xA8   0x0029             MOVS     R1,R5
+   \       0xAA   0x....'....        BL       __aeabi_fadd
+    121            return balance_y;
+   \       0xAE   0xBDF2             POP      {R1,R4-R7,PC}    ;; return
+    122          }
 
    \                                 In section .bss, align 4
    \                     `control_balance_y::Bias_last_y`:
@@ -633,24 +617,24 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\timer.c
    \                                 In section .bss, align 4
    \                     `control_balance_y::Bias_y`:
    \        0x0                      DS8 4
-    122          /*===============================
-    123          
-    124          PID-Z
-    125          
-    126          ===============================*/
+    123          /*===============================
+    124          
+    125          PID-Z
+    126          
+    127          ===============================*/
 
    \                                 In section .text, align 2, keep-with-next
-    127          float control_velocity_z(int encoder){
+    128          float control_velocity_z(int encoder){
    \                     control_velocity_z: (+1)
    \        0x0   0xB5F8             PUSH     {R3-R7,LR}
-    128            static float Velocity,Encoder_Least,Encoder;
-    129            static float Encoder_Integral;  
-    130            //=============速度PI控制器=======================//	
-    131            Encoder_Least=encoder;        
+    129            static float Velocity,Encoder_Least,Encoder;
+    130            static float Encoder_Integral;  
+    131            //=============速度PI控制器=======================//	
+    132            Encoder_Least=encoder;        
    \        0x2   0x....'....        LDR.W    R6,??DataTable11_39
    \        0x6   0x....'....        BL       __aeabi_i2f
    \        0xA   0x6030             STR      R0,[R6, #+0]
-    132            Encoder *= 0.7;		                                                  
+    133            Encoder *= 0.7;		                                                  
    \        0xC   0x....'....        LDR.W    R7,??DataTable11_40
    \       0x10   0x6838             LDR      R0,[R7, #+0]
    \       0x12   0x....'....        BL       __aeabi_f2d
@@ -659,7 +643,7 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\timer.c
    \       0x1E   0x....'....        BL       __aeabi_dmul
    \       0x22   0x....'....        BL       __aeabi_d2f
    \       0x26   0x6038             STR      R0,[R7, #+0]
-    133            Encoder += Encoder_Least*0.3;	             
+    134            Encoder += Encoder_Least*0.3;	             
    \       0x28   0x6838             LDR      R0,[R7, #+0]
    \       0x2A   0x....'....        BL       __aeabi_f2d
    \       0x2E   0x0004             MOVS     R4,R0
@@ -674,64 +658,64 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\timer.c
    \       0x48   0x....'....        BL       __aeabi_dadd
    \       0x4C   0x....'....        BL       __aeabi_d2f
    \       0x50   0x6038             STR      R0,[R7, #+0]
-    134            Encoder_Integral +=Encoder;                                       //===積分出位移  P比例
+    135            Encoder_Integral +=Encoder;                                       //===積分出位移  P比例
    \       0x52   0x....'....        LDR.W    R4,??DataTable11_41
    \       0x56   0x6821             LDR      R1,[R4, #+0]
    \       0x58   0x6838             LDR      R0,[R7, #+0]
    \       0x5A   0x....'....        BL       __aeabi_fadd
    \       0x5E   0x6020             STR      R0,[R4, #+0]
-    135            
-    136            if(Encoder_Integral>27000)  	Encoder_Integral=27000;             //===積分限幅    I積分
+    136            
+    137            if(Encoder_Integral>27000)  	Encoder_Integral=27000;             //===積分限幅    I積分
    \       0x60   0x6820             LDR      R0,[R4, #+0]
-   \       0x62   0x....'....        LDR.W    R1,??DataTable11_8  ;; 0x46d2f001
-   \       0x66   0x....'....        BL       __aeabi_cfrcmple
-   \       0x6A   0xD802             BHI.N    ??control_velocity_z_0
-   \       0x6C   0x....'....        LDR.W    R0,??DataTable11_9  ;; 0x46d2f000
-   \       0x70   0x6020             STR      R0,[R4, #+0]
-    137            if(Encoder_Integral<-27000)	Encoder_Integral=-27000;            //===積分限幅    D微分
+   \       0x62   0x....             LDR.N    R1,??DataTable11_8  ;; 0x46d2f001
+   \       0x64   0x....'....        BL       __aeabi_cfrcmple
+   \       0x68   0xD801             BHI.N    ??control_velocity_z_0
+   \       0x6A   0x....             LDR.N    R0,??DataTable11_9  ;; 0x46d2f000
+   \       0x6C   0x6020             STR      R0,[R4, #+0]
+    138            if(Encoder_Integral<-27000)	Encoder_Integral=-27000;            //===積分限幅    D微分
    \                     ??control_velocity_z_0: (+1)
-   \       0x72   0x....'....        LDR.W    R1,??DataTable11_10  ;; 0xc6d2f000
-   \       0x76   0x6820             LDR      R0,[R4, #+0]
-   \       0x78   0x....'....        BL       __aeabi_cfcmple
-   \       0x7C   0xD200             BCS.N    ??control_velocity_z_1
-   \       0x7E   0x6021             STR      R1,[R4, #+0]
-    138            if(flag_stop==1) Encoder_Integral=0,Encoder=0;
+   \       0x6E   0x....             LDR.N    R1,??DataTable11_10  ;; 0xc6d2f000
+   \       0x70   0x6820             LDR      R0,[R4, #+0]
+   \       0x72   0x....'....        BL       __aeabi_cfcmple
+   \       0x76   0xD200             BCS.N    ??control_velocity_z_1
+   \       0x78   0x6021             STR      R1,[R4, #+0]
+    139            if(flag_stop==1) Encoder_Integral=0,Encoder=0;
    \                     ??control_velocity_z_1: (+1)
-   \       0x80   0x....'....        LDR.W    R5,??DataTable11_11
-   \       0x84   0x6828             LDR      R0,[R5, #+0]
-   \       0x86   0x2801             CMP      R0,#+1
-   \       0x88   0xD103             BNE.N    ??control_velocity_z_2
-   \       0x8A   0x2000             MOVS     R0,#+0
-   \       0x8C   0x6020             STR      R0,[R4, #+0]
-   \       0x8E   0x2000             MOVS     R0,#+0
-   \       0x90   0x6038             STR      R0,[R7, #+0]
-    139            
-    140            Velocity=Encoder*Velocity_KP + Encoder_Integral*Velocity_KI;  //===速度控制
+   \       0x7A   0x....             LDR.N    R5,??DataTable11_11
+   \       0x7C   0x6828             LDR      R0,[R5, #+0]
+   \       0x7E   0x2801             CMP      R0,#+1
+   \       0x80   0xD103             BNE.N    ??control_velocity_z_2
+   \       0x82   0x2000             MOVS     R0,#+0
+   \       0x84   0x6020             STR      R0,[R4, #+0]
+   \       0x86   0x2000             MOVS     R0,#+0
+   \       0x88   0x6038             STR      R0,[R7, #+0]
+    140            
+    141            Velocity=Encoder*Velocity_KP + Encoder_Integral*Velocity_KI;  //===速度控制
    \                     ??control_velocity_z_2: (+1)
-   \       0x92   0x....'....        LDR.W    R6,??DataTable11_42
-   \       0x96   0x6839             LDR      R1,[R7, #+0]
-   \       0x98   0x....'....        LDR.W    R0,??DataTable11_30
-   \       0x9C   0x6800             LDR      R0,[R0, #+0]
-   \       0x9E   0x....'....        BL       __aeabi_fmul
-   \       0xA2   0x0007             MOVS     R7,R0
-   \       0xA4   0x6821             LDR      R1,[R4, #+0]
-   \       0xA6   0x....'....        LDR.W    R0,??DataTable11_31
-   \       0xAA   0x6800             LDR      R0,[R0, #+0]
-   \       0xAC   0x....'....        BL       __aeabi_fmul
-   \       0xB0   0x0039             MOVS     R1,R7
-   \       0xB2   0x....'....        BL       __aeabi_fadd
+   \       0x8A   0x....'....        LDR.W    R6,??DataTable11_42
+   \       0x8E   0x6839             LDR      R1,[R7, #+0]
+   \       0x90   0x....'....        LDR.W    R0,??DataTable11_28
+   \       0x94   0x6800             LDR      R0,[R0, #+0]
+   \       0x96   0x....'....        BL       __aeabi_fmul
+   \       0x9A   0x0007             MOVS     R7,R0
+   \       0x9C   0x6821             LDR      R1,[R4, #+0]
+   \       0x9E   0x....             LDR.N    R0,??DataTable11_29
+   \       0xA0   0x6800             LDR      R0,[R0, #+0]
+   \       0xA2   0x....'....        BL       __aeabi_fmul
+   \       0xA6   0x0039             MOVS     R1,R7
+   \       0xA8   0x....'....        BL       __aeabi_fadd
+   \       0xAC   0x6030             STR      R0,[R6, #+0]
+    142            if(flag_stop==1) Velocity=0;     
+   \       0xAE   0x6828             LDR      R0,[R5, #+0]
+   \       0xB0   0x2801             CMP      R0,#+1
+   \       0xB2   0xD101             BNE.N    ??control_velocity_z_3
+   \       0xB4   0x2000             MOVS     R0,#+0
    \       0xB6   0x6030             STR      R0,[R6, #+0]
-    141            if(flag_stop==1) Velocity=0;     
-   \       0xB8   0x6828             LDR      R0,[R5, #+0]
-   \       0xBA   0x2801             CMP      R0,#+1
-   \       0xBC   0xD101             BNE.N    ??control_velocity_z_3
-   \       0xBE   0x2000             MOVS     R0,#+0
-   \       0xC0   0x6030             STR      R0,[R6, #+0]
-    142            return Velocity;
+    143            return Velocity;
    \                     ??control_velocity_z_3: (+1)
-   \       0xC2   0x6830             LDR      R0,[R6, #+0]
-   \       0xC4   0xBDF2             POP      {R1,R4-R7,PC}    ;; return
-    143          }
+   \       0xB8   0x6830             LDR      R0,[R6, #+0]
+   \       0xBA   0xBDF2             POP      {R1,R4-R7,PC}    ;; return
+    144          }
 
    \                                 In section .bss, align 4
    \                     `control_velocity_z::Velocity`:
@@ -748,88 +732,88 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\timer.c
    \                                 In section .bss, align 4
    \                     `control_velocity_z::Encoder_Integral`:
    \        0x0                      DS8 4
-    144          
+    145          
 
    \                                 In section .text, align 2, keep-with-next
-    145          float control_balance_z(float angle, float Gyro){
+    146          float control_balance_z(float angle, float Gyro){
    \                     control_balance_z: (+1)
    \        0x0   0xB5F8             PUSH     {R3-R7,LR}
    \        0x2   0x0007             MOVS     R7,R0
    \        0x4   0x000C             MOVS     R4,R1
-    146            static float Bias_last, Bias_integral, Bias;
-    147            int balance;
-    148            Bias_last = Bias; 
+    147            static float Bias_last, Bias_integral, Bias;
+    148            int balance;
+    149            Bias_last = Bias; 
    \        0x6   0x....'....        LDR.W    R0,??DataTable11_43
    \        0xA   0x....'....        LDR.W    R5,??DataTable11_44
    \        0xE   0x6829             LDR      R1,[R5, #+0]
    \       0x10   0x6001             STR      R1,[R0, #+0]
-    149            Bias_integral += Bias_last;
+    150            Bias_integral += Bias_last;
    \       0x12   0x....'....        LDR.W    R6,??DataTable11_45
    \       0x16   0x6831             LDR      R1,[R6, #+0]
    \       0x18   0x6800             LDR      R0,[R0, #+0]
    \       0x1A   0x....'....        BL       __aeabi_fadd
    \       0x1E   0x6030             STR      R0,[R6, #+0]
-    150            
-    151            if(Bias_integral>4200)  	Bias_integral=4200;               //===積分限幅 4200
+    151            
+    152            if(Bias_integral>4200)  	Bias_integral=4200;               //===積分限幅 4200
    \       0x20   0x6830             LDR      R0,[R6, #+0]
-   \       0x22   0x....'....        LDR.W    R1,??DataTable11_18  ;; 0x45834001
-   \       0x26   0x....'....        BL       __aeabi_cfrcmple
-   \       0x2A   0xD801             BHI.N    ??control_balance_z_0
-   \       0x2C   0x....             LDR.N    R0,??DataTable11_19  ;; 0x45834000
-   \       0x2E   0x6030             STR      R0,[R6, #+0]
-    152            if(Bias_integral<-4200)	Bias_integral=-4200;              //===積分限幅 4200 
+   \       0x22   0x....             LDR.N    R1,??DataTable11_17  ;; 0x45834001
+   \       0x24   0x....'....        BL       __aeabi_cfrcmple
+   \       0x28   0xD801             BHI.N    ??control_balance_z_0
+   \       0x2A   0x....             LDR.N    R0,??DataTable11_18  ;; 0x45834000
+   \       0x2C   0x6030             STR      R0,[R6, #+0]
+    153            if(Bias_integral<-4200)	Bias_integral=-4200;              //===積分限幅 4200 
    \                     ??control_balance_z_0: (+1)
-   \       0x30   0x....             LDR.N    R1,??DataTable11_20  ;; 0xc5834000
-   \       0x32   0x6830             LDR      R0,[R6, #+0]
-   \       0x34   0x....'....        BL       __aeabi_cfcmple
-   \       0x38   0xD200             BCS.N    ??control_balance_z_1
-   \       0x3A   0x6031             STR      R1,[R6, #+0]
-    153            if(flag_stop==1) Bias_integral=0,Bias=0;
+   \       0x2E   0x....             LDR.N    R1,??DataTable11_19  ;; 0xc5834000
+   \       0x30   0x6830             LDR      R0,[R6, #+0]
+   \       0x32   0x....'....        BL       __aeabi_cfcmple
+   \       0x36   0xD200             BCS.N    ??control_balance_z_1
+   \       0x38   0x6031             STR      R1,[R6, #+0]
+    154            if(flag_stop==1) Bias_integral=0,Bias=0;
    \                     ??control_balance_z_1: (+1)
-   \       0x3C   0x....             LDR.N    R0,??DataTable11_11
-   \       0x3E   0x6800             LDR      R0,[R0, #+0]
-   \       0x40   0x2801             CMP      R0,#+1
-   \       0x42   0xD103             BNE.N    ??control_balance_z_2
-   \       0x44   0x2000             MOVS     R0,#+0
-   \       0x46   0x6030             STR      R0,[R6, #+0]
-   \       0x48   0x2000             MOVS     R0,#+0
-   \       0x4A   0x6028             STR      R0,[R5, #+0]
-    154            
-    155            Bias=(angle+0.3);  //=== 偏差  a 0.1 b  0.2 
+   \       0x3A   0x....             LDR.N    R0,??DataTable11_11
+   \       0x3C   0x6800             LDR      R0,[R0, #+0]
+   \       0x3E   0x2801             CMP      R0,#+1
+   \       0x40   0xD103             BNE.N    ??control_balance_z_2
+   \       0x42   0x2000             MOVS     R0,#+0
+   \       0x44   0x6030             STR      R0,[R6, #+0]
+   \       0x46   0x2000             MOVS     R0,#+0
+   \       0x48   0x6028             STR      R0,[R5, #+0]
+    155            
+    156            Bias=(angle+0.3);  //=== 偏差  a 0.1 b  0.2 
    \                     ??control_balance_z_2: (+1)
-   \       0x4C   0x0038             MOVS     R0,R7
-   \       0x4E   0x....'....        BL       __aeabi_f2d
-   \       0x52   0xF05F 0x3233      MOVS     R2,#+858993459
-   \       0x56   0x....             LDR.N    R3,??DataTable11_6  ;; 0x3fd33333
-   \       0x58   0x....'....        BL       __aeabi_dadd
-   \       0x5C   0x....'....        BL       __aeabi_d2f
-   \       0x60   0x6028             STR      R0,[R5, #+0]
-    156            balance= Bias*Balance_KP + Bias_integral*Balance_Ki + Gyro*Balance_KD;
+   \       0x4A   0x0038             MOVS     R0,R7
+   \       0x4C   0x....'....        BL       __aeabi_f2d
+   \       0x50   0xF05F 0x3233      MOVS     R2,#+858993459
+   \       0x54   0x....             LDR.N    R3,??DataTable11_6  ;; 0x3fd33333
+   \       0x56   0x....'....        BL       __aeabi_dadd
+   \       0x5A   0x....'....        BL       __aeabi_d2f
+   \       0x5E   0x6028             STR      R0,[R5, #+0]
+    157            balance= Bias*Balance_KP + Bias_integral*Balance_Ki + Gyro*Balance_KD;
                           ^
 Warning[Pa093]: implicit conversion from floating point to integer
-   \       0x62   0x6829             LDR      R1,[R5, #+0]
-   \       0x64   0x....             LDR.N    R0,??DataTable11_36
-   \       0x66   0x6800             LDR      R0,[R0, #+0]
-   \       0x68   0x....'....        BL       __aeabi_fmul
-   \       0x6C   0x0005             MOVS     R5,R0
-   \       0x6E   0x6831             LDR      R1,[R6, #+0]
-   \       0x70   0x....             LDR.N    R0,??DataTable11_37
-   \       0x72   0x6800             LDR      R0,[R0, #+0]
-   \       0x74   0x....'....        BL       __aeabi_fmul
-   \       0x78   0x0029             MOVS     R1,R5
-   \       0x7A   0x....'....        BL       __aeabi_fadd
-   \       0x7E   0x0005             MOVS     R5,R0
-   \       0x80   0x....             LDR.N    R0,??DataTable11_38
-   \       0x82   0x6800             LDR      R0,[R0, #+0]
-   \       0x84   0x0021             MOVS     R1,R4
-   \       0x86   0x....'....        BL       __aeabi_fmul
-   \       0x8A   0x0029             MOVS     R1,R5
-   \       0x8C   0x....'....        BL       __aeabi_fadd
-   \       0x90   0x....'....        BL       __aeabi_f2iz
-    157            return balance;
-   \       0x94   0x....'....        BL       __aeabi_i2f
-   \       0x98   0xBDF2             POP      {R1,R4-R7,PC}    ;; return
-    158          }
+   \       0x60   0x6829             LDR      R1,[R5, #+0]
+   \       0x62   0x....             LDR.N    R0,??DataTable11_36
+   \       0x64   0x6800             LDR      R0,[R0, #+0]
+   \       0x66   0x....'....        BL       __aeabi_fmul
+   \       0x6A   0x0005             MOVS     R5,R0
+   \       0x6C   0x6831             LDR      R1,[R6, #+0]
+   \       0x6E   0x....             LDR.N    R0,??DataTable11_37
+   \       0x70   0x6800             LDR      R0,[R0, #+0]
+   \       0x72   0x....'....        BL       __aeabi_fmul
+   \       0x76   0x0029             MOVS     R1,R5
+   \       0x78   0x....'....        BL       __aeabi_fadd
+   \       0x7C   0x0005             MOVS     R5,R0
+   \       0x7E   0x....             LDR.N    R0,??DataTable11_38
+   \       0x80   0x6800             LDR      R0,[R0, #+0]
+   \       0x82   0x0021             MOVS     R1,R4
+   \       0x84   0x....'....        BL       __aeabi_fmul
+   \       0x88   0x0029             MOVS     R1,R5
+   \       0x8A   0x....'....        BL       __aeabi_fadd
+   \       0x8E   0x....'....        BL       __aeabi_f2iz
+    158            return balance;
+   \       0x92   0x....'....        BL       __aeabi_i2f
+   \       0x96   0xBDF2             POP      {R1,R4-R7,PC}    ;; return
+    159          }
 
    \                                 In section .bss, align 4
    \                     `control_balance_z::Bias_last`:
@@ -842,15 +826,15 @@ Warning[Pa093]: implicit conversion from floating point to integer
    \                                 In section .bss, align 4
    \                     `control_balance_z::Bias`:
    \        0x0                      DS8 4
-    159          /*===============================
-    160          
-    161          PWM-PITCH
-    162          
-    163          =================================*/
+    160          /*===============================
+    161          
+    162          PWM-PITCH
+    163          
+    164          =================================*/
 
    \                                 In section .text, align 2, keep-with-next
-    164          void Max_pwm_limit(int amplitude){
-    165            if(PWM_x<-amplitude) PWM_x=-amplitude;	
+    165          void Max_pwm_limit(int amplitude){
+    166            if(PWM_a<-amplitude) PWM_a=-amplitude;	
    \                     Max_pwm_limit: (+1)
    \        0x0   0x....             LDR.N    R1,??DataTable11_46
    \        0x2   0x680A             LDR      R2,[R1, #+0]
@@ -858,13 +842,13 @@ Warning[Pa093]: implicit conversion from floating point to integer
    \        0x6   0xDA01             BGE.N    ??Max_pwm_limit_0
    \        0x8   0x4242             RSBS     R2,R0,#+0
    \        0xA   0x600A             STR      R2,[R1, #+0]
-    166            if(PWM_x>amplitude)  PWM_x=amplitude;	
+    167            if(PWM_a>amplitude)  PWM_a=amplitude;	
    \                     ??Max_pwm_limit_0: (+1)
    \        0xC   0x680A             LDR      R2,[R1, #+0]
    \        0xE   0x4290             CMP      R0,R2
    \       0x10   0xDA00             BGE.N    ??Max_pwm_limit_1
    \       0x12   0x6008             STR      R0,[R1, #+0]
-    167            if(PWM_y<-amplitude) PWM_y=-amplitude;	
+    168            if(PWM_b<-amplitude) PWM_b=-amplitude;	
    \                     ??Max_pwm_limit_1: (+1)
    \       0x14   0x....             LDR.N    R1,??DataTable11_47
    \       0x16   0x680A             LDR      R2,[R1, #+0]
@@ -872,13 +856,13 @@ Warning[Pa093]: implicit conversion from floating point to integer
    \       0x1A   0xDA01             BGE.N    ??Max_pwm_limit_2
    \       0x1C   0x4242             RSBS     R2,R0,#+0
    \       0x1E   0x600A             STR      R2,[R1, #+0]
-    168            if(PWM_y>amplitude)  PWM_y=amplitude;	
+    169            if(PWM_b>amplitude)  PWM_b=amplitude;
    \                     ??Max_pwm_limit_2: (+1)
    \       0x20   0x680A             LDR      R2,[R1, #+0]
    \       0x22   0x4290             CMP      R0,R2
    \       0x24   0xDA00             BGE.N    ??Max_pwm_limit_3
    \       0x26   0x6008             STR      R0,[R1, #+0]
-    169            if(PWM_z<-amplitude) PWM_z=-amplitude;	
+    170            if(PWM_c<-amplitude) PWM_c=-amplitude;	
    \                     ??Max_pwm_limit_3: (+1)
    \       0x28   0x....             LDR.N    R1,??DataTable11_48
    \       0x2A   0x680A             LDR      R2,[R1, #+0]
@@ -886,184 +870,179 @@ Warning[Pa093]: implicit conversion from floating point to integer
    \       0x2E   0xDA01             BGE.N    ??Max_pwm_limit_4
    \       0x30   0x4242             RSBS     R2,R0,#+0
    \       0x32   0x600A             STR      R2,[R1, #+0]
-    170            if(PWM_z>amplitude)  PWM_z=amplitude;	
+    171            if(PWM_c>amplitude)  PWM_c=amplitude;	
    \                     ??Max_pwm_limit_4: (+1)
    \       0x34   0x680A             LDR      R2,[R1, #+0]
    \       0x36   0x4290             CMP      R0,R2
    \       0x38   0xDA00             BGE.N    ??Max_pwm_limit_5
    \       0x3A   0x6008             STR      R0,[R1, #+0]
-    171          }
+    172          }
    \                     ??Max_pwm_limit_5: (+1)
    \       0x3C   0x4770             BX       LR               ;; return
-    172          
+    173          
+    174          /*===============================
+    175          
+    176          Set PWM
+    177          
+    178          =================================*/
 
    \                                 In section .text, align 2, keep-with-next
-    173          void set_pwm(int pwm_x){
-   \                     set_pwm: (+1)
+    179          void set_pwm_a(int pwm_a){
+   \                     set_pwm_a: (+1)
    \        0x0   0xB510             PUSH     {R4,LR}
    \        0x2   0x0004             MOVS     R4,R0
-    174            if (pwm_x<0){
+    180            if (pwm_a<0){
    \        0x4   0x2C00             CMP      R4,#+0
-   \        0x6   0xD505             BPL.N    ??set_pwm_0
-    175              GPIO_SetBits(GPIOB,GPIO_Pin_13);
+   \        0x6   0xD505             BPL.N    ??set_pwm_a_0
+    181              GPIO_SetBits(GPIOB,GPIO_Pin_13);
    \        0x8   0xF44F 0x5100      MOV      R1,#+8192
    \        0xC   0x....             LDR.N    R0,??DataTable11_49  ;; 0x40020400
    \        0xE   0x....'....        BL       GPIO_SetBits
-   \       0x12   0xE004             B.N      ??set_pwm_1
-    176            }
-    177            else{ 
-    178              //pwm_x = pwm_x+200;
-    179              GPIO_ResetBits(GPIOB,GPIO_Pin_13);
-   \                     ??set_pwm_0: (+1)
+   \       0x12   0xE004             B.N      ??set_pwm_a_1
+    182            }
+    183            else{ 
+    184              //pwm_a = pwm_a+200;
+    185              GPIO_ResetBits(GPIOB,GPIO_Pin_13);
+   \                     ??set_pwm_a_0: (+1)
    \       0x14   0xF44F 0x5100      MOV      R1,#+8192
    \       0x18   0x....             LDR.N    R0,??DataTable11_49  ;; 0x40020400
    \       0x1A   0x....'....        BL       GPIO_ResetBits
-    180            }
-    181            pwm_x = int_abs(pwm_x);
-   \                     ??set_pwm_1: (+1)
+    186            }
+    187            pwm_a = int_abs(pwm_a);
+   \                     ??set_pwm_a_1: (+1)
    \       0x1E   0x0020             MOVS     R0,R4
    \       0x20   0x....'....        BL       int_abs
-    182            TIM8->CCR1 = pwm_x;
+    188            TIM8->CCR1 = pwm_a;
    \       0x24   0x....             LDR.N    R1,??DataTable11_50  ;; 0x40010434
    \       0x26   0x6008             STR      R0,[R1, #+0]
-    183          }
+    189          }
    \       0x28   0xBD10             POP      {R4,PC}          ;; return
-    184          /*===============================
-    185          
-    186          PWM-YAW
-    187          
-    188          =================================*/
 
    \                                 In section .text, align 2, keep-with-next
-    189          void set_pwm_y(int pwm_y){
-   \                     set_pwm_y: (+1)
+    190          void set_pwm_b(int pwm_b){
+   \                     set_pwm_b: (+1)
    \        0x0   0xB510             PUSH     {R4,LR}
    \        0x2   0x0004             MOVS     R4,R0
-    190            if (pwm_y<0){
+    191            if (pwm_b<0){
    \        0x4   0x2C00             CMP      R4,#+0
-   \        0x6   0xD505             BPL.N    ??set_pwm_y_0
-    191              GPIO_SetBits(GPIOD,GPIO_Pin_8);
+   \        0x6   0xD505             BPL.N    ??set_pwm_b_0
+    192              GPIO_SetBits(GPIOD,GPIO_Pin_8);
    \        0x8   0xF44F 0x7180      MOV      R1,#+256
    \        0xC   0x....             LDR.N    R0,??DataTable11_51  ;; 0x40020c00
    \        0xE   0x....'....        BL       GPIO_SetBits
-   \       0x12   0xE004             B.N      ??set_pwm_y_1
-    192            }
-    193            else{ 
-    194              GPIO_ResetBits(GPIOD,GPIO_Pin_8);
-   \                     ??set_pwm_y_0: (+1)
+   \       0x12   0xE004             B.N      ??set_pwm_b_1
+    193            }
+    194            else{ 
+    195              GPIO_ResetBits(GPIOD,GPIO_Pin_8);
+   \                     ??set_pwm_b_0: (+1)
    \       0x14   0xF44F 0x7180      MOV      R1,#+256
    \       0x18   0x....             LDR.N    R0,??DataTable11_51  ;; 0x40020c00
    \       0x1A   0x....'....        BL       GPIO_ResetBits
-    195            }
-    196            pwm_y = int_abs(pwm_y);
-   \                     ??set_pwm_y_1: (+1)
+    196            }
+    197            pwm_b = int_abs(pwm_b);
+   \                     ??set_pwm_b_1: (+1)
    \       0x1E   0x0020             MOVS     R0,R4
    \       0x20   0x....'....        BL       int_abs
-    197            TIM8->CCR2 = pwm_y;
+    198            TIM8->CCR2 = pwm_b;
    \       0x24   0x....             LDR.N    R1,??DataTable11_52  ;; 0x40010438
    \       0x26   0x6008             STR      R0,[R1, #+0]
-    198          }
+    199          }
    \       0x28   0xBD10             POP      {R4,PC}          ;; return
-    199          /*===============================
-    200          
-    201          PWM-ROLL
-    202          
-    203          =================================*/
 
    \                                 In section .text, align 2, keep-with-next
-    204          void set_pwm_z(int pwm_z){
-   \                     set_pwm_z: (+1)
+    200          void set_pwm_c(int pwm_c){
+   \                     set_pwm_c: (+1)
    \        0x0   0xB510             PUSH     {R4,LR}
    \        0x2   0x0004             MOVS     R4,R0
-    205            if (pwm_z<0){
+    201            if (pwm_c<0){
    \        0x4   0x2C00             CMP      R4,#+0
-   \        0x6   0xD505             BPL.N    ??set_pwm_z_0
-    206              GPIO_SetBits(GPIOD,GPIO_Pin_9);
+   \        0x6   0xD505             BPL.N    ??set_pwm_c_0
+    202              GPIO_SetBits(GPIOD,GPIO_Pin_9);
    \        0x8   0xF44F 0x7100      MOV      R1,#+512
    \        0xC   0x....             LDR.N    R0,??DataTable11_51  ;; 0x40020c00
    \        0xE   0x....'....        BL       GPIO_SetBits
-   \       0x12   0xE004             B.N      ??set_pwm_z_1
-    207            }
-    208            else{ 
-    209              GPIO_ResetBits(GPIOD,GPIO_Pin_9);
-   \                     ??set_pwm_z_0: (+1)
+   \       0x12   0xE004             B.N      ??set_pwm_c_1
+    203            }
+    204            else{ 
+    205              GPIO_ResetBits(GPIOD,GPIO_Pin_9);
+   \                     ??set_pwm_c_0: (+1)
    \       0x14   0xF44F 0x7100      MOV      R1,#+512
    \       0x18   0x....             LDR.N    R0,??DataTable11_51  ;; 0x40020c00
    \       0x1A   0x....'....        BL       GPIO_ResetBits
-    210            }
-    211            pwm_z = int_abs(pwm_z);
-   \                     ??set_pwm_z_1: (+1)
+    206            }
+    207            pwm_c = int_abs(pwm_c);
+   \                     ??set_pwm_c_1: (+1)
    \       0x1E   0x0020             MOVS     R0,R4
    \       0x20   0x....'....        BL       int_abs
-    212            TIM8->CCR3 = pwm_z;
+    208            TIM8->CCR3 = pwm_c;
    \       0x24   0x....             LDR.N    R1,??DataTable11_53  ;; 0x4001043c
    \       0x26   0x6008             STR      R0,[R1, #+0]
-    213          }
+    209          }
    \       0x28   0xBD10             POP      {R4,PC}          ;; return
-    214          /*===============================
+    210          /*===============================
+    211          
+    212          TIM4 interrupt - main
+    213          
+    214          =================================*/
     215          
-    216          TIM4 interrupt - main
-    217          
-    218          =================================*/
-    219          
 
    \                                 In section .bss, align 4
-    220          _Time_test run_start;
+    216          _Time_test run_start;
    \                     run_start:
    \        0x0                      DS8 16
 
    \                                 In section .bss, align 4
-    221          _Time_test run_stop;
+    217          _Time_test run_stop;
    \                     run_stop:
    \        0x0                      DS8 16
 
    \                                 In section .text, align 2, keep-with-next
-    222          void TIM5_IRQHandler(void){
+    218          void TIM5_IRQHandler(void){
    \                     TIM5_IRQHandler: (+1)
    \        0x0   0xE92D 0x4FFE      PUSH     {R1-R11,LR}
-    223            if(TIM5->SR&0X0001){//確認更新中斷旗標為有效
+    219            if(TIM5->SR&0X0001){//確認更新中斷旗標為有效
    \        0x4   0x....             LDR.N    R4,??DataTable11_54  ;; 0x40000c10
    \        0x6   0x8820             LDRH     R0,[R4, #+0]
    \        0x8   0x07C0             LSLS     R0,R0,#+31
-   \        0xA   0xF140 0x80D8      BPL.W    ??TIM5_IRQHandler_0
-    224          //    GPIO_ToggleBits(GPIOB,GPIO_Pin_14);
-    225              MPU6050_Get_Display();
+   \        0xA   0xF140 0x80A1      BPL.W    ??TIM5_IRQHandler_0
+    220              //    GPIO_ToggleBits(GPIOB,GPIO_Pin_14);
+    221              MPU6050_Get_Display();
    \        0xE   0x....'....        BL       MPU6050_Get_Display
-    226              running_tim_cnt++ ;
+    222              running_tim_cnt++ ;
    \       0x12   0x....             LDR.N    R0,??DataTable11
    \       0x14   0x6801             LDR      R1,[R0, #+0]
    \       0x16   0x1C49             ADDS     R1,R1,#+1
    \       0x18   0x6001             STR      R1,[R0, #+0]
-    227              time_check(&run_start);                                                 //timer時間測量
+    223              time_check(&run_start);                                                 //timer時間測量
    \       0x1A   0x....             LDR.N    R0,??DataTable11_55
    \       0x1C   0x....'....        BL       time_check
-    228              
-    229              get_gyro_raw();                                                         //陀螺儀raw data
+    224              
+    225              get_gyro_raw();                                                         //陀螺儀raw data
    \       0x20   0x....'....        BL       get_gyro_raw
-    230              get_deg_s(&gyro_raw_f,&Mpu.deg_s);
+    226              get_deg_s(&gyro_raw_f,&Mpu.deg_s);
    \       0x24   0x....             LDR.N    R6,??DataTable11_56
    \       0x26   0x....             LDR.N    R5,??DataTable11_57
    \       0x28   0x0029             MOVS     R1,R5
    \       0x2A   0x0030             MOVS     R0,R6
    \       0x2C   0x....'....        BL       get_deg_s
-    231              get_rad_s(&gyro_raw_f,&Mpu.rad_s);
+    227              get_rad_s(&gyro_raw_f,&Mpu.rad_s);
    \       0x30   0xF115 0x010C      ADDS     R1,R5,#+12
    \       0x34   0x0030             MOVS     R0,R6
    \       0x36   0x....'....        BL       get_rad_s
-    232              get_acc_raw();                                                          //加速度計raw data
+    228              get_acc_raw();                                                          //加速度計raw data
    \       0x3A   0x....'....        BL       get_acc_raw
-    233              acc_iir_lpf(&acc_raw_f,&acc_att_lpf,Mpu.att_acc_factor);                //姿態演算法需要用的低通濾波器
+    229              acc_iir_lpf(&acc_raw_f,&acc_att_lpf,Mpu.att_acc_factor);                //姿態演算法需要用的低通濾波器
    \       0x3E   0x....             LDR.N    R6,??DataTable11_58
    \       0x40   0x6A6A             LDR      R2,[R5, #+36]
    \       0x42   0x0031             MOVS     R1,R6
    \       0x44   0x....             LDR.N    R0,??DataTable11_59
    \       0x46   0x....'....        BL       acc_iir_lpf
-    234              get_acc_g(&acc_att_lpf,&Mpu.acc_g);  
+    230              get_acc_g(&acc_att_lpf,&Mpu.acc_g);  
    \       0x4A   0xF115 0x0118      ADDS     R1,R5,#+24
    \       0x4E   0x0030             MOVS     R0,R6
    \       0x50   0x....'....        BL       get_acc_g
-    235              //姿態演算
-    236              mahony_update(Mpu.rad_s.x,Mpu.rad_s.y,Mpu.rad_s.z,Mpu.acc_g.x,Mpu.acc_g.y,Mpu.acc_g.z); 
+    231              //姿態演算
+    232              mahony_update(Mpu.rad_s.x,Mpu.rad_s.y,Mpu.rad_s.z,Mpu.acc_g.x,Mpu.acc_g.y,Mpu.acc_g.z); 
    \       0x54   0x6A28             LDR      R0,[R5, #+32]
    \       0x56   0x9001             STR      R0,[SP, #+4]
    \       0x58   0x69E8             LDR      R0,[R5, #+28]
@@ -1073,184 +1052,137 @@ Warning[Pa093]: implicit conversion from floating point to integer
    \       0x60   0x6929             LDR      R1,[R5, #+16]
    \       0x62   0x68E8             LDR      R0,[R5, #+12]
    \       0x64   0x....'....        BL       mahony_update
-    237              Matrix_ready();                                                         //姿態演算矩陣更新                                                       //姿態演算矩陣更新
+    233              Matrix_ready();                                                         //姿態演算矩陣更新
    \       0x68   0x....'....        BL       Matrix_ready
-    238              
-    239              encoder_x=read_Encoder_x();
-   \       0x6C   0x....'....        LDR.W    R8,??DataTable11_60
-   \       0x70   0x....'....        BL       read_Encoder_x
-   \       0x74   0xF8C8 0x0000      STR      R0,[R8, #+0]
-    240              encoder_y=read_Encoder_y();
+    234              
+    235              encoder_a=read_Encoder_a();
+   \       0x6C   0x....'....        LDR.W    R9,??DataTable11_60
+   \       0x70   0x....'....        BL       read_Encoder_a
+   \       0x74   0xF8C9 0x0000      STR      R0,[R9, #+0]
+    236              encoder_b=read_Encoder_b();
    \       0x78   0x....             LDR.N    R6,??DataTable11_61
-   \       0x7A   0x....'....        BL       read_Encoder_y
+   \       0x7A   0x....'....        BL       read_Encoder_b
    \       0x7E   0x6030             STR      R0,[R6, #+0]
-    241              encoder_z=read_Encoder_z();
+    237              encoder_c=read_Encoder_c();
    \       0x80   0x....             LDR.N    R7,??DataTable11_62
-   \       0x82   0x....'....        BL       read_Encoder_z
+   \       0x82   0x....'....        BL       read_Encoder_c
    \       0x86   0x6038             STR      R0,[R7, #+0]
-    242              
-    243              velocity_pwm_x = -control_velocity_x(encoder_x);                          //velocity pid
-   \       0x88   0x....'....        LDR.W    R10,??DataTable11_63
-   \       0x8C   0xF8D8 0x0000      LDR      R0,[R8, #+0]
+    238              
+    239              velocity_pwm_a = -control_velocity_x(encoder_a);                          //velocity pid
+   \       0x88   0x....'....        LDR.W    R8,??DataTable11_63
+   \       0x8C   0xF8D9 0x0000      LDR      R0,[R9, #+0]
    \       0x90   0x....'....        BL       control_velocity_x
    \       0x94   0xF090 0x4000      EORS     R0,R0,#0x80000000
-   \       0x98   0xF8CA 0x0000      STR      R0,[R10, #+0]
-    244              balance_pwm_x = -control_balance_x(att.pit,Mpu.deg_s.x);                //balance_pid
-   \       0x9C   0x....'....        LDR.W    R11,??DataTable11_64
-   \       0xA0   0x....'....        LDR.W    R8,??DataTable11_65
+   \       0x98   0xF8C8 0x0000      STR      R0,[R8, #+0]
+    240              balance_pwm_a = -control_balance_x(att.pit,Mpu.deg_s.x);                //balance_pid
+   \       0x9C   0x....'....        LDR.W    R9,??DataTable11_64
+   \       0xA0   0x....'....        LDR.W    R10,??DataTable11_65
    \       0xA4   0x6829             LDR      R1,[R5, #+0]
-   \       0xA6   0xF8D8 0x0000      LDR      R0,[R8, #+0]
+   \       0xA6   0xF8DA 0x0000      LDR      R0,[R10, #+0]
    \       0xAA   0x....'....        BL       control_balance_x
    \       0xAE   0xF090 0x4000      EORS     R0,R0,#0x80000000
-   \       0xB2   0xF8CB 0x0000      STR      R0,[R11, #+0]
-    245              PWM_x = balance_pwm_x + velocity_pwm_x;
+   \       0xB2   0xF8C9 0x0000      STR      R0,[R9, #+0]
+    241              PWM_a = balance_pwm_a + velocity_pwm_a;
                            ^
 Warning[Pa093]: implicit conversion from floating point to integer
-   \       0xB6   0x....'....        LDR.W    R9,??DataTable11_46
-   \       0xBA   0xF8DB 0x1000      LDR      R1,[R11, #+0]
-   \       0xBE   0xF8DA 0x0000      LDR      R0,[R10, #+0]
+   \       0xB6   0x....'....        LDR.W    R11,??DataTable11_46
+   \       0xBA   0xF8D9 0x1000      LDR      R1,[R9, #+0]
+   \       0xBE   0xF8D8 0x0000      LDR      R0,[R8, #+0]
    \       0xC2   0x....'....        BL       __aeabi_fadd
    \       0xC6   0x....'....        BL       __aeabi_f2iz
-   \       0xCA   0xF8C9 0x0000      STR      R0,[R9, #+0]
+   \       0xCA   0xF8CB 0x0000      STR      R0,[R11, #+0]
+    242              
+    243              velocity_pwm_b = -control_velocity_y(encoder_b);
+   \       0xCE   0x6830             LDR      R0,[R6, #+0]
+   \       0xD0   0x....'....        BL       control_velocity_y
+   \       0xD4   0xF090 0x4000      EORS     R0,R0,#0x80000000
+   \       0xD8   0x....             LDR.N    R1,??DataTable11_66
+   \       0xDA   0x6008             STR      R0,[R1, #+0]
+    244              balance_pwm_b = -control_balance_y(att.rol,Mpu.deg_s.y);
+   \       0xDC   0x6869             LDR      R1,[R5, #+4]
+   \       0xDE   0xF8DA 0x0004      LDR      R0,[R10, #+4]
+   \       0xE2   0x....'....        BL       control_balance_y
+   \       0xE6   0xF090 0x4000      EORS     R0,R0,#0x80000000
+   \       0xEA   0x....             LDR.N    R1,??DataTable11_67
+   \       0xEC   0x6008             STR      R0,[R1, #+0]
+    245              //    PWM_b = balance_pwm_b + velocity_pwm_b;
     246              
-    247              velocity_pwm_y = -control_velocity_y(encoder_y);
-   \       0xCE   0x....'....        LDR.W    R10,??DataTable11_66
-   \       0xD2   0x6830             LDR      R0,[R6, #+0]
-   \       0xD4   0x....'....        BL       control_velocity_y
-   \       0xD8   0xF090 0x4000      EORS     R0,R0,#0x80000000
-   \       0xDC   0xF8CA 0x0000      STR      R0,[R10, #+0]
-    248              balance_pwm_y = -control_balance_y(att.rol,Mpu.deg_s.y);
-   \       0xE0   0x....             LDR.N    R6,??DataTable11_67
-   \       0xE2   0x6869             LDR      R1,[R5, #+4]
-   \       0xE4   0xF8D8 0x0004      LDR      R0,[R8, #+4]
-   \       0xE8   0x....'....        BL       control_balance_y
-   \       0xEC   0xF090 0x4000      EORS     R0,R0,#0x80000000
-   \       0xF0   0x6030             STR      R0,[R6, #+0]
-    249              PWM_y = balance_pwm_y + velocity_pwm_y;
-                           ^
-Warning[Pa093]: implicit conversion from floating point to integer
-   \       0xF2   0x6831             LDR      R1,[R6, #+0]
-   \       0xF4   0xF8DA 0x0000      LDR      R0,[R10, #+0]
-   \       0xF8   0x....'....        BL       __aeabi_fadd
-   \       0xFC   0x....'....        BL       __aeabi_f2iz
-   \      0x100   0x....             LDR.N    R1,??DataTable11_47
-   \      0x102   0x6008             STR      R0,[R1, #+0]
-    250              
-    251              velocity_pwm_z = -control_velocity_z(encoder_z);
-   \      0x104   0x....             LDR.N    R6,??DataTable11_68
-   \      0x106   0x6838             LDR      R0,[R7, #+0]
-   \      0x108   0x....'....        BL       control_velocity_z
-   \      0x10C   0xF090 0x4000      EORS     R0,R0,#0x80000000
-   \      0x110   0x6030             STR      R0,[R6, #+0]
-    252              balance_pwm_z = -control_balance_z(att.yaw,Mpu.deg_s.z);
-   \      0x112   0x....             LDR.N    R7,??DataTable11_69
-   \      0x114   0x68A9             LDR      R1,[R5, #+8]
-   \      0x116   0xF8D8 0x0008      LDR      R0,[R8, #+8]
-   \      0x11A   0x....'....        BL       control_balance_z
-   \      0x11E   0xF090 0x4000      EORS     R0,R0,#0x80000000
-   \      0x122   0x6038             STR      R0,[R7, #+0]
-    253              PWM_z = balance_pwm_z + velocity_pwm_z;
-                           ^
-Warning[Pa093]: implicit conversion from floating point to integer
-   \      0x124   0x6839             LDR      R1,[R7, #+0]
-   \      0x126   0x6830             LDR      R0,[R6, #+0]
-   \      0x128   0x....'....        BL       __aeabi_fadd
-   \      0x12C   0x....'....        BL       __aeabi_f2iz
-   \      0x130   0x....             LDR.N    R1,??DataTable11_48
-   \      0x132   0x6008             STR      R0,[R1, #+0]
-    254              
-    255              if (nvic_flag == 1){
-   \      0x134   0x....             LDR.N    R0,??DataTable11_70
-   \      0x136   0x6800             LDR      R0,[R0, #+0]
-   \      0x138   0x2801             CMP      R0,#+1
-   \      0x13A   0xD13B             BNE.N    ??TIM5_IRQHandler_1
-    256          //      if(Max_Pwm++>8300)Max_Pwm=8300;//慢慢上升
-    257                Max_pwm_limit(Max_Pwm);
-   \      0x13C   0x....             LDR.N    R0,??DataTable11_71
-   \      0x13E   0x6800             LDR      R0,[R0, #+0]
-   \      0x140   0x....'....        BL       Max_pwm_limit
-    258                
-    259                if ((att.pit>=-15) && (att.pit <=15)){//balance
-   \      0x144   0x....             LDR.N    R2,??DataTable11_72  ;; 0xc1700000
-   \      0x146   0xF8D8 0x0000      LDR      R0,[R8, #+0]
-   \      0x14A   0x0011             MOVS     R1,R2
-   \      0x14C   0x....'....        BL       __aeabi_cfrcmple
-   \      0x150   0xD812             BHI.N    ??TIM5_IRQHandler_2
-   \      0x152   0xF8D8 0x0000      LDR      R0,[R8, #+0]
-   \      0x156   0x....             LDR.N    R1,??DataTable11_73  ;; 0x41700001
-   \      0x158   0x....'....        BL       __aeabi_cfcmple
-   \      0x15C   0xD20C             BCS.N    ??TIM5_IRQHandler_2
-    260                  set_pwm(PWM_x);
-   \      0x15E   0xF8D9 0x0000      LDR      R0,[R9, #+0]
-   \      0x162   0x....'....        BL       set_pwm
-    261                  set_pwm_y(PWM_x);
-   \      0x166   0xF8D9 0x0000      LDR      R0,[R9, #+0]
-   \      0x16A   0x....'....        BL       set_pwm_y
-    262                  set_pwm_z(PWM_x);
-   \      0x16E   0xF8D9 0x0000      LDR      R0,[R9, #+0]
-   \      0x172   0x....'....        BL       set_pwm_z
-   \      0x176   0xE01D             B.N      ??TIM5_IRQHandler_1
-    263          //        int PWM_xz=(PWM_x+PWM_z);
-    264          //        if (PWM_xz >=8300) PWM_xz=8300;
-    265          //        if (PWM_xz <=-8300) PWM_xz=-8300;
-    266          //        set_pwm(PWM_xz);
-    267          //        int PWM_xy=(PWM_x+PWM_y);
-    268          //        if (PWM_xy >=8300) PWM_xy=8300;
-    269          //        if (PWM_xy <=-8300) PWM_xy=-8300;
-    270          //        set_pwm_y(PWM_xy);
-    271          //        int PWM_yz=(-PWM_y+PWM_z);
-    272          //        if (PWM_yz >=8300) PWM_yz=8300;
-    273          //        if (PWM_yz <=-8300) PWM_yz=-8300;
-    274          //        set_pwm_z(PWM_yz);
-    275                }else if(((att.pit <-15) && (att.pit >=-27)) || ((att.pit > 15) && (att.pit<=27))) {//out balance, stop wheel
+    247              velocity_pwm_c = -control_velocity_z(encoder_c);
+   \       0xEE   0x6838             LDR      R0,[R7, #+0]
+   \       0xF0   0x....'....        BL       control_velocity_z
+   \       0xF4   0xF090 0x4000      EORS     R0,R0,#0x80000000
+   \       0xF8   0x....             LDR.N    R1,??DataTable11_68
+   \       0xFA   0x6008             STR      R0,[R1, #+0]
+    248              balance_pwm_c = -control_balance_z(att.yaw,Mpu.deg_s.z);
+   \       0xFC   0x68A9             LDR      R1,[R5, #+8]
+   \       0xFE   0xF8DA 0x0008      LDR      R0,[R10, #+8]
+   \      0x102   0x....'....        BL       control_balance_z
+   \      0x106   0xF090 0x4000      EORS     R0,R0,#0x80000000
+   \      0x10A   0x....             LDR.N    R1,??DataTable11_69
+   \      0x10C   0x6008             STR      R0,[R1, #+0]
+    249              //    PWM_c = balance_pwm_c + velocity_pwm_c;
+    250              /*
+    251              float m1,m2,m3;
+    252              m1=0.8161f*balance_pwm_a+balance_pwm_c*0.5779f;
+    253              m2=0.4086f*balance_pwm_a+0.7071f*balance_pwm_b-0.5771f*balance_pwm_c;
+    254              m3=-0.4086f*balance_pwm_a+0.7071f*balance_pwm_b+0.5771f*balance_pwm_c;
+    255              PWM_a=m1+velocity_pwm_a;
+    256              PWM_b=m2+velocity_pwm_b;
+    257              PWM_c=m3+velocity_pwm_c;*/
+    258              if (nvic_flag == 1){
+   \      0x10E   0x....             LDR.N    R0,??DataTable11_70
+   \      0x110   0x6800             LDR      R0,[R0, #+0]
+   \      0x112   0x2801             CMP      R0,#+1
+   \      0x114   0xD117             BNE.N    ??TIM5_IRQHandler_1
+    259                //      if(Max_Pwm++>8300)Max_Pwm=8300;//慢慢上升
+    260                Max_pwm_limit(Max_Pwm);
+   \      0x116   0x....             LDR.N    R0,??DataTable11_71
+   \      0x118   0x6800             LDR      R0,[R0, #+0]
+   \      0x11A   0x....'....        BL       Max_pwm_limit
+    261                if ((att.pit>=-60) && (att.pit <=-30)){//balance
+   \      0x11E   0xF8DA 0x0000      LDR      R0,[R10, #+0]
+   \      0x122   0x....             LDR.N    R1,??DataTable11_72  ;; 0xc2700000
+   \      0x124   0x....'....        BL       __aeabi_cfrcmple
+   \      0x128   0xD80A             BHI.N    ??TIM5_IRQHandler_2
+   \      0x12A   0xF8DA 0x0000      LDR      R0,[R10, #+0]
+   \      0x12E   0x....             LDR.N    R1,??DataTable11_73  ;; 0xc1efffff
+   \      0x130   0x....'....        BL       __aeabi_cfcmple
+   \      0x134   0xD204             BCS.N    ??TIM5_IRQHandler_2
+    262                  set_pwm_a(PWM_a);
+   \      0x136   0xF8DB 0x0000      LDR      R0,[R11, #+0]
+   \      0x13A   0x....'....        BL       set_pwm_a
+   \      0x13E   0xE002             B.N      ??TIM5_IRQHandler_1
+    263                  //        set_pwm_b(PWM_b);
+    264                  //        set_pwm_c(PWM_c);
+    265                }else {//if(((att.pit <-15) && (att.pit >=-27)) || ((att.pit > 15) && (att.pit<=27))) {//out balance, stop wheel
+    266          //        PWM_a = 0;
+    267                  set_pwm_a(0);
    \                     ??TIM5_IRQHandler_2: (+1)
-   \      0x178   0xF8D8 0x0000      LDR      R0,[R8, #+0]
-   \      0x17C   0x0011             MOVS     R1,R2
-   \      0x17E   0x....'....        BL       __aeabi_cfcmple
-   \      0x182   0xD205             BCS.N    ??TIM5_IRQHandler_3
-   \      0x184   0xF8D8 0x0000      LDR      R0,[R8, #+0]
-   \      0x188   0x....             LDR.N    R1,??DataTable11_74  ;; 0xc1d80000
-   \      0x18A   0x....'....        BL       __aeabi_cfrcmple
-   \      0x18E   0xD90B             BLS.N    ??TIM5_IRQHandler_4
-   \                     ??TIM5_IRQHandler_3: (+1)
-   \      0x190   0xF8D8 0x0000      LDR      R0,[R8, #+0]
-   \      0x194   0x....             LDR.N    R1,??DataTable11_73  ;; 0x41700001
-   \      0x196   0x....'....        BL       __aeabi_cfrcmple
-   \      0x19A   0xD80B             BHI.N    ??TIM5_IRQHandler_1
-   \      0x19C   0xF8D8 0x0000      LDR      R0,[R8, #+0]
-   \      0x1A0   0x....             LDR.N    R1,??DataTable11_75  ;; 0x41d80001
-   \      0x1A2   0x....'....        BL       __aeabi_cfcmple
-   \      0x1A6   0xD205             BCS.N    ??TIM5_IRQHandler_1
-    276                  PWM_x = 0;
-   \                     ??TIM5_IRQHandler_4: (+1)
-   \      0x1A8   0x2000             MOVS     R0,#+0
-   \      0x1AA   0xF8C9 0x0000      STR      R0,[R9, #+0]
-    277                  set_pwm(0);
-   \      0x1AE   0x2000             MOVS     R0,#+0
-   \      0x1B0   0x....'....        BL       set_pwm
-    278                }/*else if(att.pit<-27){//jump up
-    279                  PWM_x =-5500;
-    280                  set_pwm(PWM_x);
-    281                }else if(att.pit>27){//jump up
-    282                  PWM_x =6000;
-    283                  set_pwm(PWM_x);
-    284                }*/
-    285              }
-    286              Anotc_SendData();
+   \      0x140   0x2000             MOVS     R0,#+0
+   \      0x142   0x....'....        BL       set_pwm_a
+    268                }/*else if(att.pit<-27){//jump up
+    269                PWM_a =-5500;
+    270                set_pwm_a(PWM_a);
+    271              }else if(att.pit>27){//jump up
+    272                PWM_a =6000;
+    273                set_pwm_a(PWM_a);
+    274              }*/
+    275              }
+    276              Anotc_SendData();
    \                     ??TIM5_IRQHandler_1: (+1)
-   \      0x1B4   0x....'....        BL       Anotc_SendData
-    287              time_check(&run_stop);
-   \      0x1B8   0x....             LDR.N    R0,??DataTable11_76
-   \      0x1BA   0x....'....        BL       time_check
-    288            }
-    289            TIM5->SR&=~(1<<0);//清除更新中斷旗標  TIM4->SR = (uint16_t)~TIM_FLAG;
+   \      0x146   0x....'....        BL       Anotc_SendData
+    277              time_check(&run_stop);
+   \      0x14A   0x....             LDR.N    R0,??DataTable11_74
+   \      0x14C   0x....'....        BL       time_check
+    278            }
+    279            TIM5->SR&=~(1<<0);//清除更新中斷旗標  TIM4->SR = (uint16_t)~TIM_FLAG;
    \                     ??TIM5_IRQHandler_0: (+1)
-   \      0x1BE   0x8821             LDRH     R1,[R4, #+0]
-   \      0x1C0   0xF64F 0x70FE      MOVW     R0,#+65534
-   \      0x1C4   0x4001             ANDS     R1,R0,R1
-   \      0x1C6   0x8021             STRH     R1,[R4, #+0]
-    290          }
-   \      0x1C8   0xE8BD 0x8FF7      POP      {R0-R2,R4-R11,PC}  ;; return
+   \      0x150   0x8821             LDRH     R1,[R4, #+0]
+   \      0x152   0xF64F 0x70FE      MOVW     R0,#+65534
+   \      0x156   0x4001             ANDS     R1,R0,R1
+   \      0x158   0x8021             STRH     R1,[R4, #+0]
+    280          }
+   \      0x15A   0xE8BD 0x8FF7      POP      {R0-R2,R4-R11,PC}  ;; return
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable11:
@@ -1266,11 +1198,11 @@ Warning[Pa093]: implicit conversion from floating point to integer
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable11_3:
-   \        0x0   0x....'....        DC32     Encoder_Least
+   \        0x0   0x....'....        DC32     `control_velocity_x::Encoder_Least`
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable11_4:
-   \        0x0   0x....'....        DC32     Encoder
+   \        0x0   0x....'....        DC32     `control_velocity_x::Encoder`
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable11_5:
@@ -1282,7 +1214,7 @@ Warning[Pa093]: implicit conversion from floating point to integer
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable11_7:
-   \        0x0   0x....'....        DC32     Encoder_Integral
+   \        0x0   0x....'....        DC32     `control_velocity_x::Encoder_Integral`
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable11_8:
@@ -1302,99 +1234,99 @@ Warning[Pa093]: implicit conversion from floating point to integer
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable11_12:
-   \        0x0   0x....'....        DC32     Velocity
+   \        0x0   0x....'....        DC32     `control_velocity_x::Velocity`
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable11_13:
-   \        0x0   0x....'....        DC32     Velocity_KP_pit
+   \        0x0   0x....'....        DC32     Velocity_KP_a
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable11_14:
-   \        0x0   0x....'....        DC32     Velocity_KI_pit
-
-   \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable11_15:
    \        0x0   0x....'....        DC32     `control_balance_x::Bias_last`
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable11_16:
+   \                     ??DataTable11_15:
    \        0x0   0x....'....        DC32     `control_balance_x::Bias`
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable11_17:
+   \                     ??DataTable11_16:
    \        0x0   0x....'....        DC32     `control_balance_x::Bias_integral`
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable11_18:
+   \                     ??DataTable11_17:
    \        0x0   0x4583'4001        DC32     0x45834001
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable11_19:
+   \                     ??DataTable11_18:
    \        0x0   0x4583'4000        DC32     0x45834000
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable11_20:
+   \                     ??DataTable11_19:
    \        0x0   0xC583'4000        DC32     0xc5834000
 
    \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable11_20:
+   \        0x0   0x9999'999A        DC32     0x9999999a
+
+   \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable11_21:
-   \        0x0   0xCCCC'CCCD        DC32     0xcccccccd
+   \        0x0   0x4047'E999        DC32     0x4047e999
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable11_22:
-   \        0x0   0x3FD4'CCCC        DC32     0x3fd4cccc
+   \        0x0   0x....'....        DC32     Balance_KP_a
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable11_23:
-   \        0x0   0x....'....        DC32     Balance_KP_pit
+   \        0x0   0x....'....        DC32     Balance_KD_a
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable11_24:
-   \        0x0   0x....'....        DC32     Balance_Ki_pit
-
-   \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable11_25:
-   \        0x0   0x....'....        DC32     Balance_KD_pit
-
-   \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable11_26:
    \        0x0   0x....'....        DC32     `control_velocity_y::Encoder_Least_y`
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable11_27:
+   \                     ??DataTable11_25:
    \        0x0   0x....'....        DC32     `control_velocity_y::Encoder_y`
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable11_28:
+   \                     ??DataTable11_26:
    \        0x0   0x....'....        DC32     `control_velocity_y::Encoder_Integral_y`
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable11_29:
+   \                     ??DataTable11_27:
    \        0x0   0x....'....        DC32     `control_velocity_y::Velocity_y`
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable11_30:
+   \                     ??DataTable11_28:
    \        0x0   0x....'....        DC32     Velocity_KP
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable11_31:
+   \                     ??DataTable11_29:
    \        0x0   0x....'....        DC32     Velocity_KI
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable11_32:
+   \                     ??DataTable11_30:
    \        0x0   0x....'....        DC32     `control_balance_y::Bias_last_y`
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable11_33:
+   \                     ??DataTable11_31:
    \        0x0   0x....'....        DC32     `control_balance_y::Bias_y`
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable11_34:
+   \                     ??DataTable11_32:
    \        0x0   0x....'....        DC32     `control_balance_y::Bias_integral_y`
 
    \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable11_33:
+   \        0x0   0xCCCC'CCCD        DC32     0xcccccccd
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable11_34:
+   \        0x0   0x3FD4'CCCC        DC32     0x3fd4cccc
+
+   \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable11_35:
-   \        0x0   0xC046'8000        DC32     0xc0468000
+   \        0x0   0xC041'A666        DC32     0xc041a666
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable11_36:
@@ -1438,15 +1370,15 @@ Warning[Pa093]: implicit conversion from floating point to integer
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable11_46:
-   \        0x0   0x....'....        DC32     PWM_x
+   \        0x0   0x....'....        DC32     PWM_a
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable11_47:
-   \        0x0   0x....'....        DC32     PWM_y
+   \        0x0   0x....'....        DC32     PWM_b
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable11_48:
-   \        0x0   0x....'....        DC32     PWM_z
+   \        0x0   0x....'....        DC32     PWM_c
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable11_49:
@@ -1494,23 +1426,23 @@ Warning[Pa093]: implicit conversion from floating point to integer
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable11_60:
-   \        0x0   0x....'....        DC32     encoder_x
+   \        0x0   0x....'....        DC32     encoder_a
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable11_61:
-   \        0x0   0x....'....        DC32     encoder_y
+   \        0x0   0x....'....        DC32     encoder_b
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable11_62:
-   \        0x0   0x....'....        DC32     encoder_z
+   \        0x0   0x....'....        DC32     encoder_c
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable11_63:
-   \        0x0   0x....'....        DC32     velocity_pwm_x
+   \        0x0   0x....'....        DC32     velocity_pwm_a
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable11_64:
-   \        0x0   0x....'....        DC32     balance_pwm_x
+   \        0x0   0x....'....        DC32     balance_pwm_a
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable11_65:
@@ -1518,19 +1450,19 @@ Warning[Pa093]: implicit conversion from floating point to integer
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable11_66:
-   \        0x0   0x....'....        DC32     velocity_pwm_y
+   \        0x0   0x....'....        DC32     velocity_pwm_b
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable11_67:
-   \        0x0   0x....'....        DC32     balance_pwm_y
+   \        0x0   0x....'....        DC32     balance_pwm_b
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable11_68:
-   \        0x0   0x....'....        DC32     velocity_pwm_z
+   \        0x0   0x....'....        DC32     velocity_pwm_c
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable11_69:
-   \        0x0   0x....'....        DC32     balance_pwm_z
+   \        0x0   0x....'....        DC32     balance_pwm_c
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable11_70:
@@ -1542,22 +1474,14 @@ Warning[Pa093]: implicit conversion from floating point to integer
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable11_72:
-   \        0x0   0xC170'0000        DC32     0xc1700000
+   \        0x0   0xC270'0000        DC32     0xc2700000
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable11_73:
-   \        0x0   0x4170'0001        DC32     0x41700001
+   \        0x0   0xC1EF'FFFF        DC32     0xc1efffff
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable11_74:
-   \        0x0   0xC1D8'0000        DC32     0xc1d80000
-
-   \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable11_75:
-   \        0x0   0x41D8'0001        DC32     0x41d80001
-
-   \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable11_76:
    \        0x0   0x....'....        DC32     run_stop
 
    Maximum stack usage in bytes:
@@ -1585,12 +1509,10 @@ Warning[Pa093]: implicit conversion from floating point to integer
         48   -> get_gyro_raw
         48   -> get_rad_s
         48   -> mahony_update
-        48   -> read_Encoder_x
-        48   -> read_Encoder_y
-        48   -> read_Encoder_z
-        48   -> set_pwm
-        48   -> set_pwm_y
-        48   -> set_pwm_z
+        48   -> read_Encoder_a
+        48   -> read_Encoder_b
+        48   -> read_Encoder_c
+        48   -> set_pwm_a
         48   -> time_check
         48 __aeabi_cfcmple
         48 __aeabi_cfrcmple
@@ -1651,15 +1573,15 @@ Warning[Pa093]: implicit conversion from floating point to integer
         24   -> __aeabi_i2f
         24 __aeabi_cfcmple
         24 __aeabi_cfrcmple
-       8   set_pwm
+       8   set_pwm_a
          8   -> GPIO_ResetBits
          8   -> GPIO_SetBits
          8   -> int_abs
-       8   set_pwm_y
+       8   set_pwm_b
          8   -> GPIO_ResetBits
          8   -> GPIO_SetBits
          8   -> int_abs
-       8   set_pwm_z
+       8   set_pwm_c
          8   -> GPIO_ResetBits
          8   -> GPIO_SetBits
          8   -> int_abs
@@ -1746,16 +1668,14 @@ Warning[Pa093]: implicit conversion from floating point to integer
        4  ??DataTable11_72
        4  ??DataTable11_73
        4  ??DataTable11_74
-       4  ??DataTable11_75
-       4  ??DataTable11_76
        4  ??DataTable11_8
        4  ??DataTable11_9
        4  Balance_KD
-       4  Balance_KD_pit
+       4  Balance_KD_a
+       4  Balance_KI_a
        4  Balance_KP
-       4  Balance_KP_pit
+       4  Balance_KP_a
        4  Balance_Ki
-       4  Balance_Ki_pit
        4  Bias
        4  Bias
        4  Bias_integral
@@ -1776,49 +1696,49 @@ Warning[Pa093]: implicit conversion from floating point to integer
        4  Encoder_y
        4  Max_Pwm
       62  Max_pwm_limit
-       4  PWM_x
-       4  PWM_y
-       4  PWM_z
-     460  TIM5_IRQHandler
+       4  PWM_a
+       4  PWM_b
+       4  PWM_c
+     350  TIM5_IRQHandler
        4  Velocity
        4  Velocity
        4  Velocity_KI
-       4  Velocity_KI_pit
+       4  Velocity_KI_a
        4  Velocity_KP
-       4  Velocity_KP_pit
+       4  Velocity_KP_a
        4  Velocity_y
-       4  balance_pwm_x
-       4  balance_pwm_y
-       4  balance_pwm_z
-     160  control_balance_x
-     174  control_balance_y
-     154  control_balance_z
-     198  control_velocity_x
+       4  balance_pwm_a
+       4  balance_pwm_b
+       4  balance_pwm_c
+     140  control_balance_x
+     176  control_balance_y
+     152  control_balance_z
+     178  control_velocity_x
      198  control_velocity_y
-     198  control_velocity_z
-       4  encoder_x
-       4  encoder_y
-       4  encoder_z
+     188  control_velocity_z
+       4  encoder_a
+       4  encoder_b
+       4  encoder_c
        4  flag_stop
        4  nvic_flag
       16  run_start
       16  run_stop
        4  running_tim_cnt
-      42  set_pwm
-      42  set_pwm_y
-      42  set_pwm_z
+      42  set_pwm_a
+      42  set_pwm_b
+      42  set_pwm_c
       58  time_check
-       4  velocity_pwm_x
-       4  velocity_pwm_y
-       4  velocity_pwm_z
+       4  velocity_pwm_a
+       4  velocity_pwm_b
+       4  velocity_pwm_c
 
  
-   176 bytes in section .bss
-    44 bytes in section .data
- 2'096 bytes in section .text
+   184 bytes in section .bss
+    36 bytes in section .data
+ 1'928 bytes in section .text
  
- 2'096 bytes of CODE memory
+ 1'928 bytes of CODE memory
    220 bytes of DATA memory
 
 Errors: none
-Warnings: 4
+Warnings: 2

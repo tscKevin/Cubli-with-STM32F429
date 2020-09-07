@@ -1,5 +1,6 @@
 #include "imu.h"
 _Matrix Mat = {0};
+_Matrix Mat_v2 = {0};
 _Attitude att = {0};
 
 #define kp 2.0f        //proportional gain governs rate of convergence to accelerometer/magnetometer 
@@ -118,6 +119,32 @@ void rotation_matrix_T(void)
   Mat.DCM_T[2][2] = 1.0f - 2.0f * q1*q1 - 2.0f * q2*q2;   
 }
 
+void rotation_matrix_v2(void){
+  Mat_v2.DCM[0][0] = 0.8161f;
+  Mat_v2.DCM[0][1] = -0.4086f;
+  Mat_v2.DCM[0][2] = -0.4086f;
+  
+  Mat_v2.DCM[1][0] = 0.0f;
+  Mat_v2.DCM[1][1] = 0.7071f;
+  Mat_v2.DCM[1][2] = -0.7071f;
+  
+  Mat_v2.DCM[2][0] = 0.5779f;
+  Mat_v2.DCM[2][1] = 0.5771f;
+  Mat_v2.DCM[2][2] = 0.5771f;
+}
+void rotation_matrix_T_v2(void){
+  Mat_v2.DCM[0][0] = 0.8161f;
+  Mat_v2.DCM[0][1] = 0.0f;
+  Mat_v2.DCM[0][2] = 0.5779f;
+  
+  Mat_v2.DCM[1][0] = -0.4086f;
+  Mat_v2.DCM[1][1] = 0.7071f;
+  Mat_v2.DCM[1][2] = 0.5771f;
+  
+  Mat_v2.DCM[2][0] = -0.4086f;
+  Mat_v2.DCM[2][1] = -0.7071f;
+  Mat_v2.DCM[2][2] = 0.5771f;
+}
 //矩阵更新，姿态解算时使用
 void Matrix_ready(void)
 {

@@ -6,6 +6,7 @@
 #include "stm32f4xx_tim.h"
 
 #include "MPU6050.h"
+#include "pwm.h"
 #include "imu.h"
 #include "usart.h"
 
@@ -29,25 +30,29 @@ float control_balance_y(float angle, float Gyro);
 float control_velocity_z(int encoder);
 float control_balance_z(float angle, float Gyro);
 void Max_pwm_limit(int amplitude);
-void set_pwm(int pwm_x);
+void set_pwm_a(int pwm_a);
+void set_pwm_b(int pwm_b);
+void set_pwm_c(int pwm_c);
 
 extern _Time_test run_start;
 extern _Time_test run_stop;
-extern int encoder_x;
-extern int encoder_y;
-extern int encoder_z;
+extern int encoder_a;
+extern int encoder_b;
+extern int encoder_c;
 extern int nvic_flag;
 extern int flag_stop;
 
-extern float velocity_pwm_x;
-extern float balance_pwm_x;
+extern float velocity_pwm_a;
+extern float balance_pwm_a;
 
-extern float velocity_pwm_y;
-extern float balance_pwm_y;
+extern float velocity_pwm_b;
+extern float balance_pwm_b;
 
-extern float velocity_pwm_z;
-extern float balance_pwm_z;
+extern float velocity_pwm_c;
+extern float balance_pwm_c;
 
-extern int PWM_x;
+extern int PWM_a;
+extern int PWM_b;
+extern int PWM_c;
 
 #endif

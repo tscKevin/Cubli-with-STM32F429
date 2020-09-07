@@ -528,7 +528,7 @@ void Anotc_SendData(void)
     }
   case 2:
     {
-      ANO_DT_Send_Senser(acc_raw.x,acc_raw.y,acc_raw.z,Mpu.deg_s.x,Mpu.deg_s.y,(encoder_x*30),0,0,0);//將gyro_z改成看Encoder的值
+      ANO_DT_Send_Senser(acc_raw.x,acc_raw.y,acc_raw.z,Mpu.deg_s.x,Mpu.deg_s.y,(encoder_a*30),0,0,0);//將gyro_z改成看Encoder的值
       break;
     }
   case 3:
@@ -538,12 +538,12 @@ void Anotc_SendData(void)
     }
   case 4:
     {
-      ANO_DT_Send_Power(20,57.63);
+      ANO_DT_Send_Power(20,1.95);
       break;
     }
   case 5:
     {
-      ANO_DT_Send_PWM_Motor(PWM_x,encoder_x,0,0,1500,1600,1700,1800);
+      ANO_DT_Send_PWM_Motor(PWM_a,encoder_a,0,0,1500,1600,1700,1800);
       break;
     }
     /*

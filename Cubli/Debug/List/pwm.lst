@@ -1,48 +1,43 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         22/Jul/2020  18:12:39
+# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         31/Aug/2020  00:24:53
 # Copyright 1999-2019 IAR Systems AB.
 #
 #    Cpu mode     =  
 #    Endian       =  little
-#    Source file  =
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\pwm.c
+#    Source file  =  E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\pwm.c
 #    Command line =
-#        -f C:\Users\Evan\AppData\Local\Temp\EW6750.tmp
-#        (E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\pwm.c
-#        -D USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List
-#        -o
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\Obj
-#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
-#        --no_clustering --no_scheduling --debug --endian=little
-#        --cpu=Cortex-M4 -e --fpu=None --dlib_config "D:\IAR Systems\Embedded
-#        Workbench 8.3\arm\inc\c\DLib_Config_Normal.h" -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Include\
+#        -f C:\Users\LABPC1~1\AppData\Local\Temp\EW998A.tmp
+#        (E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\pwm.c -D
+#        USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\Debug\List -o
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\Debug\Obj --no_cse
+#        --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering
+#        --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=None
+#        --dlib_config "D:\IAR Systems\Embedded Workbench
+#        8.3\arm\inc\c\DLib_Config_Normal.h" -I
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Include\
 #        -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\
 #        -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\iar\
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\iar\
 #        -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\inc\
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\inc\
 #        -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\
-#        -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\inc\
-#        -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\
-#        -Ol --use_c++_inline -I "D:\IAR Systems\Embedded Workbench
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\
+#        -I E:\STM32Project\Cubli-with-STM32F429\Cubli\user\inc\ -I
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\user\src\ -Ol
+#        --use_c++_inline -I "D:\IAR Systems\Embedded Workbench
 #        8.3\arm\CMSIS\Core\Include\" -I "D:\IAR Systems\Embedded Workbench
 #        8.3\arm\CMSIS\DSP\Include\")
 #    Locale       =  C
 #    List file    =
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List\pwm.lst
-#    Object file  =
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\Obj\pwm.o
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\Debug\List\pwm.lst
+#    Object file  =  E:\STM32Project\Cubli-with-STM32F429\Cubli\Debug\Obj\pwm.o
 #
 ###############################################################################
 
-E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\pwm.c
+E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\pwm.c
       1          #include "pwm.h"
       2          /*=========================================================
       3          
@@ -554,17 +549,17 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\pwm.c
     319          
     320          
     321          TIM3 EncoderInterface pwm PA6、PA7
-    322          TIM4 EncoderInterface pwm PB6、PB7
-    323          TIM1 EncoderInterface pwm PA8、PA9
+    322          TIM1 EncoderInterface pwm PA8、PA9
+    323          TIM4 EncoderInterface pwm PB6、PB7
     324          
     325          =========================================================*/
     326          
     327          
 
    \                                 In section .text, align 2, keep-with-next
-    328          int read_Encoder_x(void){
+    328          int read_Encoder_a(void){
     329            int Encoder_a = 0;
-   \                     read_Encoder_x: (+1)
+   \                     read_Encoder_a: (+1)
    \        0x0   0x2000             MOVS     R0,#+0
     330            Encoder_a = (short)TIM3->CNT; //因為設定是65535 所以用short來將逆向的馬達計數轉為負號
    \        0x2   0x....             LDR.N    R1,??DataTable7_4  ;; 0x40000424
@@ -578,9 +573,9 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\pwm.c
     333          }
 
    \                                 In section .text, align 2, keep-with-next
-    334          int read_Encoder_y(void){
+    334          int read_Encoder_c(void){
     335            int Encoder_a = 0;
-   \                     read_Encoder_y: (+1)
+   \                     read_Encoder_c: (+1)
    \        0x0   0x2000             MOVS     R0,#+0
     336            Encoder_a = (short)TIM4->CNT; //因為設定是65535 所以用short來將逆向的馬達計數轉為負號
    \        0x2   0x....             LDR.N    R1,??DataTable7_5  ;; 0x40000824
@@ -594,9 +589,9 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\pwm.c
     339          }
 
    \                                 In section .text, align 2, keep-with-next
-    340          int read_Encoder_z(void){
+    340          int read_Encoder_b(void){
     341            int Encoder_a = 0;
-   \                     read_Encoder_z: (+1)
+   \                     read_Encoder_b: (+1)
    \        0x0   0x2000             MOVS     R0,#+0
     342            Encoder_a = (short)TIM1->CNT; //因為設定是65535 所以用short來將逆向的馬達計數轉為負號
    \        0x2   0x....             LDR.N    R1,??DataTable7_6  ;; 0x40010024
@@ -1083,9 +1078,9 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\pwm.c
         48   -> TIM_OC2Init
         48   -> TIM_OC3Init
         48   -> TIM_TimeBaseInit
-       0   read_Encoder_x
-       0   read_Encoder_y
-       0   read_Encoder_z
+       0   read_Encoder_a
+       0   read_Encoder_b
+       0   read_Encoder_c
 
 
    Section sizes:
@@ -1107,9 +1102,9 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\pwm.c
      188  TIM4_EncoderInterface_Init
      284  TM2_PWM_Init
      230  TM8_PWM_Init
-      14  read_Encoder_x
-      14  read_Encoder_y
-      14  read_Encoder_z
+      14  read_Encoder_a
+      14  read_Encoder_b
+      14  read_Encoder_c
 
  
  1'162 bytes in section .text

@@ -57,19 +57,19 @@ int a,b,c;
 void main(void){
   systick_setup();
   
-  TM2_PWM_Init();
+  TM2_PWM_Init();//servo
   TIM2->CCR1=1700;//PA0
   TIM2->CCR3=1700;//PB10
   TIM2->CCR4=1700;//PB11
   Delay(150);
   
-  TIM3_EncoderInterface_Init();
-  TIM4_EncoderInterface_Init();
-  TIM1_EncoderInterface_Init();
+  TIM3_EncoderInterface_Init();//A
+  TIM1_EncoderInterface_Init();//B
+  TIM4_EncoderInterface_Init();//C
   Delay(5);
   
   TM8_PWM_Init();
-  LED_On_Board();
+  LED_On_Board();//A:B13,B:D8,C:D9
 
   IIC_GPIO_Init();
   MPU6050_Init();
@@ -77,74 +77,74 @@ void main(void){
   get_iir_factor(&Mpu.att_acc_factor,0.005f,25);
   
   usart1_init(115200);
-//  TM5_Interrupt_Init();
+  TM5_Interrupt_Init();
   NVIC_Set();
   
   Delay(2000);
-  nvic_flag = 0;  /**/
+  nvic_flag = 1;  /**/
   
   /*
-  TIM8->CCR1 = 500;//x pin13
+  TIM8->CCR1 = 500;//A PC6
   Delay(1000);
-  TIM8->CCR2 = 500;//y
+  TIM8->CCR2 = 700;//B PC7
   Delay(1000);
-  TIM8->CCR3 = 500;//z
+  TIM8->CCR3 = 1000;//C PC8
   */
   
   
   while(1){
-  GPIO_SetBits(GPIOB,GPIO_Pin_13);  //x
-//  GPIO_ResetBits(GPIOB,GPIO_Pin_13);
-  
-  GPIO_SetBits(GPIOD,GPIO_Pin_8);  //y
-//  GPIO_ResetBits(GPIOD,GPIO_Pin_8);
-  
-  GPIO_SetBits(GPIOD,GPIO_Pin_9);  //z
-//  GPIO_ResetBits(GPIOD,GPIO_Pin_9);
-  
-  TIM8->CCR1 = 5500;//x
-  TIM8->CCR2 = 5500;//y
-  TIM8->CCR3 = 5500;//z
-  Delay(2000);
-  
-//  GPIO_SetBits(GPIOB,GPIO_Pin_13);
-  GPIO_ResetBits(GPIOB,GPIO_Pin_13);
-  
-//  GPIO_SetBits(GPIOD,GPIO_Pin_8);
-  GPIO_ResetBits(GPIOD,GPIO_Pin_8);
-  
-//  GPIO_SetBits(GPIOD,GPIO_Pin_9);
-  GPIO_ResetBits(GPIOD,GPIO_Pin_9);
-  
-  TIM8->CCR1 = 10;//x
-  TIM8->CCR2 = 10;//y
-  TIM8->CCR3 = 10;//z
-  Delay(100);
-  TIM8->CCR1 = 0;//x
-  TIM8->CCR2 = 0;//y
-  TIM8->CCR3 = 0;//z
-  Delay(1900);
-  TIM8->CCR1 = 5500;//x
-  TIM8->CCR2 = 5500;//y
-  TIM8->CCR3 = 5500;//z
-  Delay(2000);
-  
-  GPIO_SetBits(GPIOB,GPIO_Pin_13);
-//  GPIO_ResetBits(GPIOB,GPIO_Pin_13);
-  
-  GPIO_SetBits(GPIOD,GPIO_Pin_8);
-//  GPIO_ResetBits(GPIOD,GPIO_Pin_8);
-  
-  GPIO_SetBits(GPIOD,GPIO_Pin_9);
-//  GPIO_ResetBits(GPIOD,GPIO_Pin_9);
-  TIM8->CCR1 = 10;//x
-  TIM8->CCR2 = 10;//y
-  TIM8->CCR3 = 10;//z
-  Delay(100);
-  TIM8->CCR1 = 0;//x
-  TIM8->CCR2 = 0;//y
-  TIM8->CCR3 = 0;//z
-  Delay(1900);
+//  GPIO_SetBits(GPIOB,GPIO_Pin_13);  //A
+////  GPIO_ResetBits(GPIOB,GPIO_Pin_13);
+//  
+//  GPIO_SetBits(GPIOD,GPIO_Pin_8);  //B
+////  GPIO_ResetBits(GPIOD,GPIO_Pin_8);
+//  
+//  GPIO_SetBits(GPIOD,GPIO_Pin_9);  //C
+////  GPIO_ResetBits(GPIOD,GPIO_Pin_9);
+//  
+//  TIM8->CCR1 = 5500;//A
+//  TIM8->CCR2 = 5500;//B
+//  TIM8->CCR3 = 5500;//C
+//  Delay(2000);
+//  
+////  GPIO_SetBits(GPIOB,GPIO_Pin_13);
+//  GPIO_ResetBits(GPIOB,GPIO_Pin_13);//A
+//  
+////  GPIO_SetBits(GPIOD,GPIO_Pin_8);
+//  GPIO_ResetBits(GPIOD,GPIO_Pin_8);//B
+//  
+////  GPIO_SetBits(GPIOD,GPIO_Pin_9);
+//  GPIO_ResetBits(GPIOD,GPIO_Pin_9);//C
+//  
+//  TIM8->CCR1 = 10;//A
+//  TIM8->CCR2 = 10;//B
+//  TIM8->CCR3 = 10;//C
+//  Delay(100);
+//  TIM8->CCR1 = 0;//A
+//  TIM8->CCR2 = 0;//B
+//  TIM8->CCR3 = 0;//C
+//  Delay(1900);
+//  TIM8->CCR1 = 5500;//A
+//  TIM8->CCR2 = 5500;//B
+//  TIM8->CCR3 = 5500;//C
+//  Delay(2000);
+//  
+//  GPIO_SetBits(GPIOB,GPIO_Pin_13);//A
+////  GPIO_ResetBits(GPIOB,GPIO_Pin_13);
+//  
+//  GPIO_SetBits(GPIOD,GPIO_Pin_8);//B
+////  GPIO_ResetBits(GPIOD,GPIO_Pin_8);
+//  
+//  GPIO_SetBits(GPIOD,GPIO_Pin_9);//C
+////  GPIO_ResetBits(GPIOD,GPIO_Pin_9);
+//  TIM8->CCR1 = 10;//A
+//  TIM8->CCR2 = 10;//B
+//  TIM8->CCR3 = 10;//C
+//  Delay(100);
+//  TIM8->CCR1 = 0;//A
+//  TIM8->CCR2 = 0;//B
+//  TIM8->CCR3 = 0;//C
+//  Delay(1900);
   
 //    printf("%d",TIM12->CNT);
     

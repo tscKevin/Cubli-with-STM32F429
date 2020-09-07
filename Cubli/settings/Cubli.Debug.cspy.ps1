@@ -23,9 +23,9 @@
 
 if ($debugfile -eq "")
 {
-& "D:\IAR Systems\Embedded Workbench 8.3\common\bin\cspybat" -f "E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\settings\Cubli.Debug.general.xcl" --backend -f "E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\settings\Cubli.Debug.driver.xcl" 
+& "D:\IAR Systems\Embedded Workbench 8.3\common\bin\cspybat" -f "E:\STM32Project\Cubli-with-STM32F429\Cubli\settings\Cubli.Debug.general.xcl" --backend -f "E:\STM32Project\Cubli-with-STM32F429\Cubli\settings\Cubli.Debug.driver.xcl" 
 }
 else
 {
-& "D:\IAR Systems\Embedded Workbench 8.3\common\bin\cspybat" -f "E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\settings\Cubli.Debug.general.xcl" --debug_file=$debugfile --backend -f "E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\settings\Cubli.Debug.driver.xcl" 
+& "D:\IAR Systems\Embedded Workbench 8.3\common\bin\cspybat" -f "E:\STM32Project\Cubli-with-STM32F429\Cubli\settings\Cubli.Debug.general.xcl" --debug_file=$debugfile --backend -f "E:\STM32Project\Cubli-with-STM32F429\Cubli\settings\Cubli.Debug.driver.xcl" 
 }

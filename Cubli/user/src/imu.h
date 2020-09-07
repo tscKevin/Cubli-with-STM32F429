@@ -34,6 +34,7 @@ typedef struct
 }_Matrix;
 
 extern _Matrix Mat;
+extern _Matrix Mat_v2;
 extern _Attitude att;
 
 //imath
@@ -48,6 +49,10 @@ void mymemcpy(void *des,void *src,u32 n);
 void mahony_update(float gx, float gy, float gz, float ax, float ay, float az) ;
 void rotation_matrix(void);
 void rotation_matrix_T(void);
+
+void rotation_matrix_v2(void);
+void rotation_matrix_T_v2(void);
+
 void Matrix_ready(void);
 
 //void MadgwickQuaternionUpdate(float gx,float gy,float gz,float ax,float ay,float az);

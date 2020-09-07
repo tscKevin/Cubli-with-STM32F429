@@ -1,48 +1,45 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         29/Jul/2020  14:43:02
+# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         01/Sep/2020  01:57:38
 # Copyright 1999-2019 IAR Systems AB.
 #
 #    Cpu mode     =  
 #    Endian       =  little
 #    Source file  =
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\usart.c
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\usart.c
 #    Command line =
-#        -f C:\Users\Evan\AppData\Local\Temp\EWE883.tmp
-#        (E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\usart.c
-#        -D USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List
-#        -o
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\Obj
-#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
-#        --no_clustering --no_scheduling --debug --endian=little
-#        --cpu=Cortex-M4 -e --fpu=None --dlib_config "D:\IAR Systems\Embedded
-#        Workbench 8.3\arm\inc\c\DLib_Config_Normal.h" -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Include\
+#        -f C:\Users\LABPC1~1\AppData\Local\Temp\EWE557.tmp
+#        (E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\usart.c -D
+#        USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\Debug\List -o
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\Debug\Obj --no_cse
+#        --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering
+#        --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=None
+#        --dlib_config "D:\IAR Systems\Embedded Workbench
+#        8.3\arm\inc\c\DLib_Config_Normal.h" -I
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Include\
 #        -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\
 #        -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\iar\
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\iar\
 #        -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\inc\
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\inc\
 #        -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\
-#        -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\inc\
-#        -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\
-#        -Ol --use_c++_inline -I "D:\IAR Systems\Embedded Workbench
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\
+#        -I E:\STM32Project\Cubli-with-STM32F429\Cubli\user\inc\ -I
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\user\src\ -Ol
+#        --use_c++_inline -I "D:\IAR Systems\Embedded Workbench
 #        8.3\arm\CMSIS\Core\Include\" -I "D:\IAR Systems\Embedded Workbench
 #        8.3\arm\CMSIS\DSP\Include\")
 #    Locale       =  C
 #    List file    =
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List\usart.lst
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\Debug\List\usart.lst
 #    Object file  =
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\Obj\usart.o
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\Debug\Obj\usart.o
 #
 ###############################################################################
 
-E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\usart.c
+E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\usart.c
       1          #include "usart.h"
       2          
       3          #define usart1_tx_len 1024
@@ -1468,13 +1465,13 @@ Warning[Pa093]: implicit conversion from floating point to integer
     528              }
     529            case 2:
     530              {
-    531                ANO_DT_Send_Senser(acc_raw.x,acc_raw.y,acc_raw.z,Mpu.deg_s.x,Mpu.deg_s.y,(encoder_x*30),0,0,0);//將gyro_z改成看Encoder的值
+    531                ANO_DT_Send_Senser(acc_raw.x,acc_raw.y,acc_raw.z,Mpu.deg_s.x,Mpu.deg_s.y,(encoder_a*30),0,0,0);//將gyro_z改成看Encoder的值
                                                                         ^
 Warning[Pa093]: implicit conversion from floating point to integer
 
-        ANO_DT_Send_Senser(acc_raw.x,acc_raw.y,acc_raw.z,Mpu.deg_s.x,Mpu.deg_s.y,(encoder_x*30),0,0,0);//將gyro_z改成看Encoder的值
+        ANO_DT_Send_Senser(acc_raw.x,acc_raw.y,acc_raw.z,Mpu.deg_s.x,Mpu.deg_s.y,(encoder_a*30),0,0,0);//將gyro_z改成看Encoder的值
                                                                      ^
-"E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\usart.c",531  Warning[Pa093]: 
+"E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\usart.c",531  Warning[Pa093]: 
           implicit conversion from floating point to integer
    \                     ??Anotc_SendData_3: (+1)
    \       0x2C   0x....             LDR.N    R4,??DataTable8_11
@@ -1532,9 +1529,9 @@ Warning[Pa093]: implicit conversion from floating point to integer
     538              }
     539            case 4:
     540              {
-    541                ANO_DT_Send_Power(20,57.63);
+    541                ANO_DT_Send_Power(20,1.95);
    \                     ??Anotc_SendData_5: (+1)
-   \       0xA8   0x....             LDR.N    R1,??DataTable8_14  ;; 0x4266851f
+   \       0xA8   0x....             LDR.N    R1,??DataTable8_14  ;; 0x3ff9999a
    \       0xAA   0x....             LDR.N    R0,??DataTable8_15  ;; 0x41a00000
    \       0xAC   0x....'....        BL       ANO_DT_Send_Power
     542                break;
@@ -1542,7 +1539,7 @@ Warning[Pa093]: implicit conversion from floating point to integer
     543              }
     544            case 5:
     545              {
-    546                ANO_DT_Send_PWM_Motor(PWM_x,encoder_x,0,0,1500,1600,1700,1800);
+    546                ANO_DT_Send_PWM_Motor(PWM_a,encoder_a,0,0,1500,1600,1700,1800);
    \                     ??Anotc_SendData_4: (+1)
    \       0xB2   0xF44F 0x60E1      MOV      R0,#+1800
    \       0xB6   0x9003             STR      R0,[SP, #+12]
@@ -1692,11 +1689,11 @@ Warning[Pa093]: implicit conversion from floating point to integer
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable8_13:
-   \        0x0   0x....'....        DC32     encoder_x
+   \        0x0   0x....'....        DC32     encoder_a
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable8_14:
-   \        0x0   0x4266'851F        DC32     0x4266851f
+   \        0x0   0x3FF9'999A        DC32     0x3ff9999a
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable8_15:
@@ -1704,7 +1701,7 @@ Warning[Pa093]: implicit conversion from floating point to integer
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable8_16:
-   \        0x0   0x....'....        DC32     PWM_x
+   \        0x0   0x....'....        DC32     PWM_a
     609          
     610          
     611          

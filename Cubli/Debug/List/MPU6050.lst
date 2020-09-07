@@ -1,48 +1,45 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         03/Aug/2020  13:45:39
+# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         02/Sep/2020  13:45:16
 # Copyright 1999-2019 IAR Systems AB.
 #
 #    Cpu mode     =  
 #    Endian       =  little
 #    Source file  =
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\MPU6050.c
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\MPU6050.c
 #    Command line =
-#        -f C:\Users\Evan\AppData\Local\Temp\EW448F.tmp
-#        (E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\MPU6050.c
-#        -D USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List
-#        -o
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\Obj
-#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
-#        --no_clustering --no_scheduling --debug --endian=little
-#        --cpu=Cortex-M4 -e --fpu=None --dlib_config "D:\IAR Systems\Embedded
-#        Workbench 8.3\arm\inc\c\DLib_Config_Normal.h" -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Include\
+#        -f C:\Users\LABPC1~1\AppData\Local\Temp\EW12CB.tmp
+#        (E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\MPU6050.c -D
+#        USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\Debug\List -o
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\Debug\Obj --no_cse
+#        --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering
+#        --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=None
+#        --dlib_config "D:\IAR Systems\Embedded Workbench
+#        8.3\arm\inc\c\DLib_Config_Normal.h" -I
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Include\
 #        -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\
 #        -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\iar\
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\iar\
 #        -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\inc\
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\inc\
 #        -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\
-#        -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\inc\
-#        -I
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\
-#        -Ol --use_c++_inline -I "D:\IAR Systems\Embedded Workbench
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\..\STM32F4xx_DSP_StdPeriph_Lib_V1.8.0\Libraries\STM32F4xx_StdPeriph_Driver\src\
+#        -I E:\STM32Project\Cubli-with-STM32F429\Cubli\user\inc\ -I
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\user\src\ -Ol
+#        --use_c++_inline -I "D:\IAR Systems\Embedded Workbench
 #        8.3\arm\CMSIS\Core\Include\" -I "D:\IAR Systems\Embedded Workbench
 #        8.3\arm\CMSIS\DSP\Include\")
 #    Locale       =  C
 #    List file    =
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\List\MPU6050.lst
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\Debug\List\MPU6050.lst
 #    Object file  =
-#        E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\Debug\Obj\MPU6050.o
+#        E:\STM32Project\Cubli-with-STM32F429\Cubli\Debug\Obj\MPU6050.o
 #
 ###############################################################################
 
-E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\MPU6050.c
+E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\MPU6050.c
       1          #include "MPU6050.h"
       2          
 
@@ -77,10 +74,12 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\MPU6050
    \        0x0                      DS8 12
       9          //SI_F_XYZ gyro_offset = {0,10,-2} ;   //-128 33 -18     //陀螺儀校正數據存取
 
-   \                                 In section .bss, align 4
-     10          SI_F_XYZ gyro_offset = {0,0,0} ;   //-128 33 -18     //陀螺儀校正數據存取
+   \                                 In section .data, align 4
+     10          SI_F_XYZ gyro_offset = {0,2,-1} ;   //-128 33 -18     //陀螺儀校正數據存取
    \                     gyro_offset:
-   \        0x0                      DS8 12
+   \        0x0   0x0000'0000        DC32 0x0, 0x4000'0000, 0xbf80'0000
+   \              0x4000'0000  
+   \              0xBF80'0000  
 
    \                                 In section .bss, align 4
      11          _Mpu6050_data Mpu = {0};
@@ -126,82 +125,82 @@ E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\MPU6050
    \       0x2E   0x20D0             MOVS     R0,#+208
    \       0x30   0x....'....        BL       IIC_Send
      23          
-     24            /*IIC_Send(SlaveAddress,XA_OFFSET_L_TC, 0xDB);
-     25            IIC_Send(SlaveAddress,XA_OFFSET_H, 0xFD);
-     26            IIC_Send(SlaveAddress,YA_OFFSET_L_TC, 0x5F);
-     27            IIC_Send(SlaveAddress,YA_OFFSET_H, 0x0a);
-     28            
-     29            IIC_Send(SlaveAddress,ZA_OFFSET_L_TC, 0x58);
-     30            IIC_Send(SlaveAddress,ZA_OFFSET_H, 0x04); //65536 or 4096
-     31            
-     32            IIC_Send(SlaveAddress,XG_OFFS_USRL, 0xAC);
-     33            IIC_Send(SlaveAddress,XG_OFFS_USRH, 0xff);
-     34            IIC_Send(SlaveAddress,YG_OFFS_USRL, 0xFe);
-     35            IIC_Send(SlaveAddress,YG_OFFS_USRH, 0xff);
-     36            IIC_Send(SlaveAddress,ZG_OFFS_USRL, 0x16);
-     37            IIC_Send(SlaveAddress,ZG_OFFS_USRH, 0x00);*/
-     38            IIC_Send(SlaveAddress,XA_OFFSET_L_TC, 0x39);
-   \       0x34   0x2239             MOVS     R2,#+57
+     24            IIC_Send(SlaveAddress,XA_OFFSET_L_TC, 0x40);
+   \       0x34   0x2240             MOVS     R2,#+64
    \       0x36   0x2107             MOVS     R1,#+7
    \       0x38   0x20D0             MOVS     R0,#+208
    \       0x3A   0x....'....        BL       IIC_Send
-     39            IIC_Send(SlaveAddress,XA_OFFSET_H, 0xf7);
-   \       0x3E   0x22F7             MOVS     R2,#+247
+     25            IIC_Send(SlaveAddress,XA_OFFSET_H, 0xff);
+   \       0x3E   0x22FF             MOVS     R2,#+255
    \       0x40   0x2106             MOVS     R1,#+6
    \       0x42   0x20D0             MOVS     R0,#+208
    \       0x44   0x....'....        BL       IIC_Send
-     40            IIC_Send(SlaveAddress,YA_OFFSET_L_TC, 0x6f);
-   \       0x48   0x226F             MOVS     R2,#+111
+     26            IIC_Send(SlaveAddress,YA_OFFSET_L_TC, 0xAb);
+   \       0x48   0x22AB             MOVS     R2,#+171
    \       0x4A   0x2109             MOVS     R1,#+9
    \       0x4C   0x20D0             MOVS     R0,#+208
    \       0x4E   0x....'....        BL       IIC_Send
-     41            IIC_Send(SlaveAddress,YA_OFFSET_H, 0x04);
-   \       0x52   0x2204             MOVS     R2,#+4
+     27            IIC_Send(SlaveAddress,YA_OFFSET_H, 0xfa);
+   \       0x52   0x22FA             MOVS     R2,#+250
    \       0x54   0x2108             MOVS     R1,#+8
    \       0x56   0x20D0             MOVS     R0,#+208
    \       0x58   0x....'....        BL       IIC_Send
-     42            
-     43            IIC_Send(SlaveAddress,ZA_OFFSET_L_TC, 0x30);
-   \       0x5C   0x2230             MOVS     R2,#+48
+     28            
+     29            IIC_Send(SlaveAddress,ZA_OFFSET_L_TC, 0x67);
+   \       0x5C   0x2267             MOVS     R2,#+103
    \       0x5E   0x210B             MOVS     R1,#+11
    \       0x60   0x20D0             MOVS     R0,#+208
    \       0x62   0x....'....        BL       IIC_Send
-     44            IIC_Send(SlaveAddress,ZA_OFFSET_H, 0x06); //65536 or 4096
-   \       0x66   0x2206             MOVS     R2,#+6
+     30            IIC_Send(SlaveAddress,ZA_OFFSET_H, 0x01); //65536 or 4096
+   \       0x66   0x2201             MOVS     R2,#+1
    \       0x68   0x210A             MOVS     R1,#+10
    \       0x6A   0x20D0             MOVS     R0,#+208
    \       0x6C   0x....'....        BL       IIC_Send
-     45            
-     46            IIC_Send(SlaveAddress,XG_OFFS_USRL, 0x55);
-   \       0x70   0x2255             MOVS     R2,#+85
+     31            
+     32            IIC_Send(SlaveAddress,XG_OFFS_USRL, 0x6a);
+   \       0x70   0x226A             MOVS     R2,#+106
    \       0x72   0x2114             MOVS     R1,#+20
    \       0x74   0x20D0             MOVS     R0,#+208
    \       0x76   0x....'....        BL       IIC_Send
-     47            IIC_Send(SlaveAddress,XG_OFFS_USRH, 0x00);
+     33            IIC_Send(SlaveAddress,XG_OFFS_USRH, 0x00);
    \       0x7A   0x2200             MOVS     R2,#+0
    \       0x7C   0x2113             MOVS     R1,#+19
    \       0x7E   0x20D0             MOVS     R0,#+208
    \       0x80   0x....'....        BL       IIC_Send
-     48            IIC_Send(SlaveAddress,YG_OFFS_USRL, 0xf0);
-   \       0x84   0x22F0             MOVS     R2,#+240
+     34            IIC_Send(SlaveAddress,YG_OFFS_USRL, 0xe2);
+   \       0x84   0x22E2             MOVS     R2,#+226
    \       0x86   0x2116             MOVS     R1,#+22
    \       0x88   0x20D0             MOVS     R0,#+208
    \       0x8A   0x....'....        BL       IIC_Send
-     49            IIC_Send(SlaveAddress,YG_OFFS_USRH, 0xff);
+     35            IIC_Send(SlaveAddress,YG_OFFS_USRH, 0xff);
    \       0x8E   0x22FF             MOVS     R2,#+255
    \       0x90   0x2115             MOVS     R1,#+21
    \       0x92   0x20D0             MOVS     R0,#+208
    \       0x94   0x....'....        BL       IIC_Send
-     50            IIC_Send(SlaveAddress,ZG_OFFS_USRL, 0x0c);
-   \       0x98   0x220C             MOVS     R2,#+12
+     36            IIC_Send(SlaveAddress,ZG_OFFS_USRL, 0x1b);
+   \       0x98   0x221B             MOVS     R2,#+27
    \       0x9A   0x2118             MOVS     R1,#+24
    \       0x9C   0x20D0             MOVS     R0,#+208
    \       0x9E   0x....'....        BL       IIC_Send
-     51            IIC_Send(SlaveAddress,ZG_OFFS_USRH, 0x00);
+     37            IIC_Send(SlaveAddress,ZG_OFFS_USRH, 0x00);
    \       0xA2   0x2200             MOVS     R2,#+0
    \       0xA4   0x2117             MOVS     R1,#+23
    \       0xA6   0x20D0             MOVS     R0,#+208
    \       0xA8   0x....'....        BL       IIC_Send
+     38            /*IIC_Send(SlaveAddress,XA_OFFSET_L_TC, 0x34);
+     39            IIC_Send(SlaveAddress,XA_OFFSET_H, 0xf7);
+     40            IIC_Send(SlaveAddress,YA_OFFSET_L_TC, 0x64);
+     41            IIC_Send(SlaveAddress,YA_OFFSET_H, 0x04);
+     42            
+     43            IIC_Send(SlaveAddress,ZA_OFFSET_L_TC, 0x30);
+     44            IIC_Send(SlaveAddress,ZA_OFFSET_H, 0x06); //65536 or 4096
+     45            
+     46            IIC_Send(SlaveAddress,XG_OFFS_USRL, 0x55);
+     47            IIC_Send(SlaveAddress,XG_OFFS_USRH, 0x00);
+     48            IIC_Send(SlaveAddress,YG_OFFS_USRL, 0xf0);
+     49            IIC_Send(SlaveAddress,YG_OFFS_USRH, 0xff);
+     50            IIC_Send(SlaveAddress,ZG_OFFS_USRL, 0x0c);
+     51            IIC_Send(SlaveAddress,ZG_OFFS_USRH, 0x00);*/
      52          }
    \       0xAC   0xBD01             POP      {R0,PC}          ;; return
      53          
@@ -926,8 +925,8 @@ Warning[Pa093]: implicit conversion from floating point to integer
        4  gz
 
  
-   300 bytes in section .bss
-    48 bytes in section .data
+   288 bytes in section .bss
+    60 bytes in section .data
     16 bytes in section .rodata
  1'026 bytes in section .text
  

@@ -7,7 +7,7 @@ SI_F_XYZ gyro_raw_f = {0};
 SI_F_XYZ acc_att_lpf = {0};
 SI_F_XYZ gyro_lpf = {0};
 //SI_F_XYZ gyro_offset = {0,10,-2} ;   //-128 33 -18     //陀螺儀校正數據存取
-SI_F_XYZ gyro_offset = {0,0,0} ;   //-128 33 -18     //陀螺儀校正數據存取
+SI_F_XYZ gyro_offset = {0,2,-1} ;   //-128 33 -18     //陀螺儀校正數據存取
 _Mpu6050_data Mpu = {0};
 SI_F_XYZ accel_offset={0,0,0};
 
@@ -21,23 +21,23 @@ void MPU6050_Init(void){
   IIC_Send(SlaveAddress,GYRO_CONFIG,0x18);// gyro scale  ：+-2000deg/s REGISTER 27
   IIC_Send(SlaveAddress,ACCEL_CONFIG,0x10);// Accel scale ：+-8g (65536/16=4096 LSB/g) REGISTER 28 
 
-  /*IIC_Send(SlaveAddress,XA_OFFSET_L_TC, 0xDB);
-  IIC_Send(SlaveAddress,XA_OFFSET_H, 0xFD);
-  IIC_Send(SlaveAddress,YA_OFFSET_L_TC, 0x5F);
-  IIC_Send(SlaveAddress,YA_OFFSET_H, 0x0a);
+  IIC_Send(SlaveAddress,XA_OFFSET_L_TC, 0x40);
+  IIC_Send(SlaveAddress,XA_OFFSET_H, 0xff);
+  IIC_Send(SlaveAddress,YA_OFFSET_L_TC, 0xAb);
+  IIC_Send(SlaveAddress,YA_OFFSET_H, 0xfa);
   
-  IIC_Send(SlaveAddress,ZA_OFFSET_L_TC, 0x58);
-  IIC_Send(SlaveAddress,ZA_OFFSET_H, 0x04); //65536 or 4096
+  IIC_Send(SlaveAddress,ZA_OFFSET_L_TC, 0x67);
+  IIC_Send(SlaveAddress,ZA_OFFSET_H, 0x01); //65536 or 4096
   
-  IIC_Send(SlaveAddress,XG_OFFS_USRL, 0xAC);
-  IIC_Send(SlaveAddress,XG_OFFS_USRH, 0xff);
-  IIC_Send(SlaveAddress,YG_OFFS_USRL, 0xFe);
+  IIC_Send(SlaveAddress,XG_OFFS_USRL, 0x6a);
+  IIC_Send(SlaveAddress,XG_OFFS_USRH, 0x00);
+  IIC_Send(SlaveAddress,YG_OFFS_USRL, 0xe2);
   IIC_Send(SlaveAddress,YG_OFFS_USRH, 0xff);
-  IIC_Send(SlaveAddress,ZG_OFFS_USRL, 0x16);
-  IIC_Send(SlaveAddress,ZG_OFFS_USRH, 0x00);*/
-  IIC_Send(SlaveAddress,XA_OFFSET_L_TC, 0x39);
+  IIC_Send(SlaveAddress,ZG_OFFS_USRL, 0x1b);
+  IIC_Send(SlaveAddress,ZG_OFFS_USRH, 0x00);
+  /*IIC_Send(SlaveAddress,XA_OFFSET_L_TC, 0x34);
   IIC_Send(SlaveAddress,XA_OFFSET_H, 0xf7);
-  IIC_Send(SlaveAddress,YA_OFFSET_L_TC, 0x6f);
+  IIC_Send(SlaveAddress,YA_OFFSET_L_TC, 0x64);
   IIC_Send(SlaveAddress,YA_OFFSET_H, 0x04);
   
   IIC_Send(SlaveAddress,ZA_OFFSET_L_TC, 0x30);
@@ -48,7 +48,7 @@ void MPU6050_Init(void){
   IIC_Send(SlaveAddress,YG_OFFS_USRL, 0xf0);
   IIC_Send(SlaveAddress,YG_OFFS_USRH, 0xff);
   IIC_Send(SlaveAddress,ZG_OFFS_USRL, 0x0c);
-  IIC_Send(SlaveAddress,ZG_OFFS_USRH, 0x00);
+  IIC_Send(SlaveAddress,ZG_OFFS_USRH, 0x00);*/
 }
 
 

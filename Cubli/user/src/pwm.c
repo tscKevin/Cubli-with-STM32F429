@@ -319,25 +319,25 @@ void TM8_PWM_Init(void){
 
 
 TIM3 EncoderInterface pwm PA6、PA7
-TIM4 EncoderInterface pwm PB6、PB7
 TIM1 EncoderInterface pwm PA8、PA9
+TIM4 EncoderInterface pwm PB6、PB7
 
 =========================================================*/
 
 
-int read_Encoder_x(void){
+int read_Encoder_a(void){
   int Encoder_a = 0;
   Encoder_a = (short)TIM3->CNT; //因為設定是65535 所以用short來將逆向的馬達計數轉為負號
   TIM3->CNT = 0;
   return Encoder_a ;
 }
-int read_Encoder_y(void){
+int read_Encoder_c(void){
   int Encoder_a = 0;
   Encoder_a = (short)TIM4->CNT; //因為設定是65535 所以用short來將逆向的馬達計數轉為負號
   TIM4->CNT = 0;
   return Encoder_a ;
 }
-int read_Encoder_z(void){
+int read_Encoder_b(void){
   int Encoder_a = 0;
   Encoder_a = (short)TIM1->CNT; //因為設定是65535 所以用short來將逆向的馬達計數轉為負號
   TIM1->CNT = 0;

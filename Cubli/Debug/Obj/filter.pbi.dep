@@ -1,6 +1,5 @@
-filter.pbi: \
-  E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src\filter.c \
-  E:\STM32Project\Cubli_with_STM32F429\Cubli-with-STM32F429\Cubli\user\src/filter.h \
+filter.pbi: E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\filter.c \
+  E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src/filter.h \
   D:\IAR\ Systems\Embedded\ Workbench\ 8.3\arm\inc\c\stdlib.h \
   D:\IAR\ Systems\Embedded\ Workbench\ 8.3\arm\inc\c\ycheck.h \
   D:\IAR\ Systems\Embedded\ Workbench\ 8.3\arm\inc\c\yvals.h \
