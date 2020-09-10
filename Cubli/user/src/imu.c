@@ -75,8 +75,8 @@ void mahony_update(float gx, float gy, float gz, float ax, float ay, float az)
   q2 = q2 * norm;
   q3 = q3 * norm;
   
-  att.pit =  atan2(2.0f*(q0*q1 + q2*q3),q0*q0 - q1*q1 - q2*q2 + q3*q3) * rad_to_angle;
-  att.rol =  asin(2.0f*(q0*q2 - q1*q3)) * rad_to_angle;
+  att.rol =  atan2(2.0f*(q0*q1 + q2*q3),q0*q0 - q1*q1 - q2*q2 + q3*q3) * rad_to_angle;
+  att.pit =  asin(2.0f*(q0*q2 - q1*q3)) * rad_to_angle;
   //z轴角速度积分的偏航角
   //att.yaw += Mpu.deg_s.z  * att_time.delta_time_ms*0.0001f;
   att.yaw =  atan2(2.0f*(q0*q3 + q1*q2),q0*q0 + q1*q1 - q2*q2 - q3*q3) * rad_to_angle;

@@ -8,13 +8,19 @@ float Velocity_KP_a = 140;    //140;  //300;
 float Velocity_KI_a = 0;      //0     //0.35;
 float Balance_KP_a = 1850;    //1850; //2000;
 float Balance_KI_a = 0;       //0;    //0.025;
-float Balance_KD_a = 320;     //287;  //186.2;
+float Balance_KD_a = 300;     //287;  //186.2;
 
-float Velocity_KP = 150;
-float Velocity_KI = 0.55;
-float Balance_KP =1500;
-float Balance_Ki = 0.02;
-float Balance_KD = 186.2;
+float Velocity_KP_b = 140;
+float Velocity_KI_b = 0;
+float Balance_KP_b =1850;
+float Balance_Ki_b = 0;
+float Balance_KD_b = 320;
+
+float Velocity_KP_c = 98;       //140*0.7;
+float Velocity_KI_c = 0;
+float Balance_KP_c =1295;       //1850*0.7;
+float Balance_Ki_c = 0;
+float Balance_KD_c = 224;       //320*0.7;
 
 float velocity_pwm_a = 0.0;
 float balance_pwm_a = 0.0;
@@ -79,8 +85,8 @@ float control_balance_x(float angle, float Gyro){
   if(Bias_integral<-4200)	Bias_integral=-4200;              //===積分限幅 4200 
   if(flag_stop==1) Bias_integral=0,Bias=0;
   
-  Bias=(angle+47.825);  //=== 偏差  a 0.1 b  0.2 -45度到0度
-//  balance= Bias*Balance_KP_a + Bias_integral*Balance_KI_a + Gyro*Balance_KD_a;
+  Bias=(angle+47.85+2);  //=== 偏差  a 0.1 b  0.2 -45度到0度
+  //  balance= Bias*Balance_KP_a + Bias_integral*Balance_KI_a + Gyro*Balance_KD_a;
   balance= Bias*Balance_KP_a + Gyro*Balance_KD_a;
   return balance;
 }
@@ -101,7 +107,7 @@ float control_velocity_y(int encoder){
   if(Encoder_Integral_y>27000) Encoder_Integral_y=27000;//===積分限幅     I積分
   if(Encoder_Integral_y<-27000)	Encoder_Integral_y=-27000;               //===積分限幅     D微分
   if(flag_stop==1) Encoder_Integral_y=0,Encoder_y=0;
-  Velocity_y=Encoder_y*Velocity_KP + Encoder_Integral_y*Velocity_KI;  //===速度控制
+  Velocity_y=Encoder_y*Velocity_KP_b;  //===速度控制
   if(flag_stop==1) Velocity_y=0;     
   return Velocity_y;
 }
@@ -116,8 +122,8 @@ float control_balance_y(float angle, float Gyro){
   if(Bias_integral_y<-4200)	Bias_integral_y=-4200;              //===積分限幅 4200 
   if(flag_stop==1) Bias_integral_y=0,Bias_y=0;
   
-  Bias_y=(-35.3)-(angle+0.325);  //=== 偏差  a 0.1 b  0.2 
-  balance_y = Bias_y*Balance_KP + Bias_integral_y*Balance_Ki + Gyro*Balance_KD;
+  Bias_y=(angle+54.7-0.3);  //=== 偏差  a 0.1 b  0.2 
+  balance_y = Bias_y*Balance_KP_b + Gyro*Balance_KD_b;
   return balance_y;
 }
 /*===============================
@@ -138,7 +144,7 @@ float control_velocity_z(int encoder){
   if(Encoder_Integral<-27000)	Encoder_Integral=-27000;            //===積分限幅    D微分
   if(flag_stop==1) Encoder_Integral=0,Encoder=0;
   
-  Velocity=Encoder*Velocity_KP + Encoder_Integral*Velocity_KI;  //===速度控制
+  Velocity=Encoder*Velocity_KP_c;  //===速度控制
   if(flag_stop==1) Velocity=0;     
   return Velocity;
 }
@@ -153,8 +159,8 @@ float control_balance_z(float angle, float Gyro){
   if(Bias_integral<-4200)	Bias_integral=-4200;              //===積分限幅 4200 
   if(flag_stop==1) Bias_integral=0,Bias=0;
   
-  Bias=(angle+0.3);  //=== 偏差  a 0.1 b  0.2 
-  balance= Bias*Balance_KP + Bias_integral*Balance_Ki + Gyro*Balance_KD;
+  Bias=(angle-25.3);  //=== 偏差  a 0.1 b  0.2 
+  balance= Bias*Balance_KP_c + Gyro*Balance_KD_c;
   return balance;
 }
 /*===============================
@@ -181,7 +187,6 @@ void set_pwm_a(int pwm_a){
     GPIO_SetBits(GPIOB,GPIO_Pin_13);
   }
   else{ 
-    //pwm_a = pwm_a+200;
     GPIO_ResetBits(GPIOB,GPIO_Pin_13);
   }
   pwm_a = int_abs(pwm_a);
@@ -237,38 +242,41 @@ void TIM5_IRQHandler(void){
     encoder_c=read_Encoder_c();
     
     velocity_pwm_a = -control_velocity_x(encoder_a);                          //velocity pid
-    balance_pwm_a = -control_balance_x(att.pit,Mpu.deg_s.x);                //balance_pid
-    PWM_a = balance_pwm_a + velocity_pwm_a;
+    balance_pwm_a = -control_balance_x(att.rol,Mpu.deg_s.x);                //balance_pid
+    //PWM_a = balance_pwm_a + velocity_pwm_a;
     
     velocity_pwm_b = -control_velocity_y(encoder_b);
-    balance_pwm_b = -control_balance_y(att.rol,Mpu.deg_s.y);
+    balance_pwm_b = -control_balance_y(att.pit,Mpu.deg_s.y);
     //PWM_b = balance_pwm_b + velocity_pwm_b;
     
     velocity_pwm_c = -control_velocity_z(encoder_c);
     balance_pwm_c = -control_balance_z(att.yaw,Mpu.deg_s.z);
     //PWM_c = balance_pwm_c + velocity_pwm_c;
-    /*
-    float m1,m2,m3;
-    m1=0.8161f*balance_pwm_a+balance_pwm_c*0.5779f;
-    m2=0.4086f*balance_pwm_a+0.7071f*balance_pwm_b-0.5771f*balance_pwm_c;
-    m3=-0.4086f*balance_pwm_a+0.7071f*balance_pwm_b+0.5771f*balance_pwm_c;
-    PWM_a=m1+velocity_pwm_a;
-    PWM_b=m2+velocity_pwm_b;
-    PWM_c=m3+velocity_pwm_c;*/
+    
+    PWM_a=0.8161f*balance_pwm_a+balance_pwm_c*0.5779f+velocity_pwm_a;
+    PWM_b=0.4086f*balance_pwm_a+0.7071f*balance_pwm_b-0.5771f*balance_pwm_c+velocity_pwm_b;
+    PWM_c=-0.4086f*balance_pwm_a+0.7071f*balance_pwm_b+0.5771f*balance_pwm_c+velocity_pwm_c;
+    
+//    PWM_a=0.7071f*balance_pwm_a +0.4086f*balance_pwm_b+0.5771f*balance_pwm_c+velocity_pwm_a;
+//    PWM_b=                       0.8161f*balance_pwm_b-0.5779f*balance_pwm_c+velocity_pwm_b;
+//    PWM_c=-0.7071f*balance_pwm_a+0.4086f*balance_pwm_b+0.5771f*balance_pwm_c+velocity_pwm_c;
+    
     if (nvic_flag == 1){
       //      if(Max_Pwm++>8300)Max_Pwm=8300;//慢慢上升
       Max_pwm_limit(Max_Pwm);
-      if ((att.pit>=-60) && (att.pit <=-30)){//balance
+      if ((att.rol>=-60) && (att.rol <=-30)){//balance
         set_pwm_a(PWM_a);
-        //        set_pwm_b(PWM_b);
-        //        set_pwm_c(PWM_c);
-      }else {//if(((att.pit <-15) && (att.pit >=-27)) || ((att.pit > 15) && (att.pit<=27))) {//out balance, stop wheel
-//        PWM_a = 0;
+        set_pwm_b(PWM_b);
+        set_pwm_c(PWM_c);
+      }else {//if(((att.rol <-15) && (att.rol >=-27)) || ((att.rol > 15) && (att.rol<=27))) {//out balance, stop wheel
+        //        PWM_a = 0;
         set_pwm_a(0);
-      }/*else if(att.pit<-27){//jump up
+        set_pwm_b(0);
+        set_pwm_c(0);
+      }/*else if(att.rol<-27){//jump up
       PWM_a =-5500;
       set_pwm_a(PWM_a);
-    }else if(att.pit>27){//jump up
+    }else if(att.rol>27){//jump up
       PWM_a =6000;
       set_pwm_a(PWM_a);
     }*/

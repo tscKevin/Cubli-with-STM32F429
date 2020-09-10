@@ -1,13 +1,13 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         02/Sep/2020  13:55:16
+# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         09/Sep/2020  00:03:59
 # Copyright 1999-2019 IAR Systems AB.
 #
 #    Cpu mode     =  
 #    Endian       =  little
 #    Source file  =  E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\imu.c
 #    Command line =
-#        -f C:\Users\LABPC1~1\AppData\Local\Temp\EW389E.tmp
+#        -f C:\Users\LABPC1~1\AppData\Local\Temp\EWEA5A.tmp
 #        (E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\imu.c -D
 #        USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
 #        E:\STM32Project\Cubli-with-STM32F429\Cubli\Debug\List -o
@@ -434,7 +434,7 @@ E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\imu.c
    \      0x2FA   0x....'....        BL       __aeabi_fmul
    \      0x2FE   0x6028             STR      R0,[R5, #+0]
      77            
-     78            att.pit =  atan2(2.0f*(q0*q1 + q2*q3),q0*q0 - q1*q1 - q2*q2 + q3*q3) * rad_to_angle;
+     78            att.rol =  atan2(2.0f*(q0*q1 + q2*q3),q0*q0 - q1*q1 - q2*q2 + q3*q3) * rad_to_angle;
    \      0x300   0x....'....        LDR.W    R8,??DataTable5_11
    \      0x304   0xF05F 0x0A00      MOVS     R10,#+0
    \      0x308   0x....'....        LDR.W    R11,??DataTable5_12  ;; 0x404ca5dc
@@ -483,8 +483,8 @@ E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\imu.c
    \      0x382   0x465B             MOV      R3,R11
    \      0x384   0x....'....        BL       __aeabi_dmul
    \      0x388   0x....'....        BL       __aeabi_d2f
-   \      0x38C   0xF8C8 0x0000      STR      R0,[R8, #+0]
-     79            att.rol =  asin(2.0f*(q0*q2 - q1*q3)) * rad_to_angle;
+   \      0x38C   0xF8C8 0x0004      STR      R0,[R8, #+4]
+     79            att.pit =  asin(2.0f*(q0*q2 - q1*q3)) * rad_to_angle;
    \      0x390   0x6821             LDR      R1,[R4, #+0]
    \      0x392   0x6830             LDR      R0,[R6, #+0]
    \      0x394   0x....'....        BL       __aeabi_fmul
@@ -503,7 +503,7 @@ E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\imu.c
    \      0x3BC   0x465B             MOV      R3,R11
    \      0x3BE   0x....'....        BL       __aeabi_dmul
    \      0x3C2   0x....'....        BL       __aeabi_d2f
-   \      0x3C6   0xF8C8 0x0004      STR      R0,[R8, #+4]
+   \      0x3C6   0xF8C8 0x0000      STR      R0,[R8, #+0]
      80            //z轴角速度积分的偏航角
      81            //att.yaw += Mpu.deg_s.z  * att_time.delta_time_ms*0.0001f;
      82            att.yaw =  atan2(2.0f*(q0*q3 + q1*q2),q0*q0 + q1*q1 - q2*q2 - q3*q3) * rad_to_angle;
