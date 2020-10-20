@@ -21,17 +21,17 @@ void MPU6050_Init(void){
   IIC_Send(SlaveAddress,GYRO_CONFIG,0x18);// gyro scale  ：+-2000deg/s REGISTER 27
   IIC_Send(SlaveAddress,ACCEL_CONFIG,0x10);// Accel scale ：+-8g (65536/16=4096 LSB/g) REGISTER 28 
 
-  IIC_Send(SlaveAddress,XA_OFFSET_L_TC, 0x43);
+  IIC_Send(SlaveAddress,XA_OFFSET_L_TC, 0x3d);
   IIC_Send(SlaveAddress,XA_OFFSET_H, 0xff);
-  IIC_Send(SlaveAddress,YA_OFFSET_L_TC, 0x9c);
+  IIC_Send(SlaveAddress,YA_OFFSET_L_TC, 0xbc);
   IIC_Send(SlaveAddress,YA_OFFSET_H, 0xfa);
   
-  IIC_Send(SlaveAddress,ZA_OFFSET_L_TC, 0x67);
+  IIC_Send(SlaveAddress,ZA_OFFSET_L_TC, 0x74);
   IIC_Send(SlaveAddress,ZA_OFFSET_H, 0x01); //65536 or 4096
   
-  IIC_Send(SlaveAddress,XG_OFFS_USRL, 0x6b);
+  IIC_Send(SlaveAddress,XG_OFFS_USRL, 0x6d);
   IIC_Send(SlaveAddress,XG_OFFS_USRH, 0x00);
-  IIC_Send(SlaveAddress,YG_OFFS_USRL, 0xe2);
+  IIC_Send(SlaveAddress,YG_OFFS_USRL, 0xe1);
   IIC_Send(SlaveAddress,YG_OFFS_USRH, 0xff);
   IIC_Send(SlaveAddress,ZG_OFFS_USRL, 0x1b);
   IIC_Send(SlaveAddress,ZG_OFFS_USRH, 0x00);
