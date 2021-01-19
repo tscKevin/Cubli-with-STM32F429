@@ -13,6 +13,33 @@
 #include "pwm.h"
 #include "Delay.h"
 
+typedef union{
+  struct{
+    uint8_t b;
+    uint8_t a;
+  }byte;
+  int16_t value;
+  uint16_t uValue;
+}_receiver;
+
+typedef struct{
+  int16_t kp;
+}_pControl;
+
+typedef struct{
+  int16_t kp;
+  int16_t kd;
+}_pdControl;
+
+typedef struct{
+  _pdControl control1;
+  _pdControl control2;
+  _pdControl control3;
+  _pControl control4;
+  _pControl control5;
+  _pControl control6;
+}_genes;
+
 void usart1_init(u32 bound);
 void usart1_send(void* buf, int len);
 //void dma_tx_config(DMA_Channel_TypeDef* DMA_CHx,u32 peripheral_addr,u32 memory_addr,u16 data_length);

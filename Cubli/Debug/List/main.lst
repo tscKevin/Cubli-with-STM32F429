@@ -1,13 +1,13 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         20/Oct/2020  19:34:02
+# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         04/Jan/2021  12:22:44
 # Copyright 1999-2019 IAR Systems AB.
 #
 #    Cpu mode     =  
 #    Endian       =  little
 #    Source file  =  E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\main.c
 #    Command line =
-#        -f C:\Users\LABPC1~1\AppData\Local\Temp\EWEE34.tmp
+#        -f C:\Users\LABPC1~1\AppData\Local\Temp\EWFC7A.tmp
 #        (E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\main.c -D
 #        USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
 #        E:\STM32Project\Cubli-with-STM32F429\Cubli\Debug\List -o
@@ -49,40 +49,40 @@ E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\main.c
       6          void TM5_Interrupt_Init(void){
    \                     TM5_Interrupt_Init: (+1)
    \        0x0   0xB51F             PUSH     {R0-R4,LR}
-      7            TIM_TimeBaseInitTypeDef TIM_BaseStruct;
-      8            RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM5,ENABLE);
+      7              TIM_TimeBaseInitTypeDef TIM_BaseStruct;
+      8              RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM5,ENABLE);
    \        0x2   0x2101             MOVS     R1,#+1
    \        0x4   0x2008             MOVS     R0,#+8
    \        0x6   0x....'....        BL       RCC_APB1PeriphClockCmd
-      9            TIM_BaseStruct.TIM_Prescaler = 90-1;
+      9              TIM_BaseStruct.TIM_Prescaler = 90-1;
    \        0xA   0x2059             MOVS     R0,#+89
    \        0xC   0xF8AD 0x0000      STRH     R0,[SP, #+0]
-     10            TIM_BaseStruct.TIM_Period=5000-1;
+     10              TIM_BaseStruct.TIM_Period=5000-1;
    \       0x10   0xF241 0x3087      MOVW     R0,#+4999
    \       0x14   0x9001             STR      R0,[SP, #+4]
-     11            TIM_BaseStruct.TIM_CounterMode=TIM_CounterMode_Up;
+     11              TIM_BaseStruct.TIM_CounterMode=TIM_CounterMode_Up;
    \       0x16   0x2000             MOVS     R0,#+0
    \       0x18   0xF8AD 0x0002      STRH     R0,[SP, #+2]
-     12            TIM_BaseStruct.TIM_ClockDivision=TIM_CKD_DIV1;
+     12              TIM_BaseStruct.TIM_ClockDivision=TIM_CKD_DIV1;
    \       0x1C   0x2000             MOVS     R0,#+0
    \       0x1E   0xF8AD 0x0008      STRH     R0,[SP, #+8]
-     13            TIM_BaseStruct.TIM_RepetitionCounter=0;
+     13              TIM_BaseStruct.TIM_RepetitionCounter=0;
    \       0x22   0x2000             MOVS     R0,#+0
    \       0x24   0xF88D 0x000A      STRB     R0,[SP, #+10]
-     14            TIM_TimeBaseInit(TIM5,&TIM_BaseStruct);
-   \       0x28   0x....             LDR.N    R4,??DataTable2  ;; 0x40000c00
+     14              TIM_TimeBaseInit(TIM5,&TIM_BaseStruct);
+   \       0x28   0x....             LDR.N    R4,??DataTable4  ;; 0x40000c00
    \       0x2A   0x4669             MOV      R1,SP
    \       0x2C   0x0020             MOVS     R0,R4
    \       0x2E   0x....'....        BL       TIM_TimeBaseInit
-     15            TIM_Cmd(TIM5,ENABLE);
+     15              TIM_Cmd(TIM5,ENABLE);
    \       0x32   0x2101             MOVS     R1,#+1
    \       0x34   0x0020             MOVS     R0,R4
    \       0x36   0x....'....        BL       TIM_Cmd
-     16            TIM_ClearFlag(TIM5,TIM_FLAG_Update);
+     16              TIM_ClearFlag(TIM5,TIM_FLAG_Update);
    \       0x3A   0x2101             MOVS     R1,#+1
    \       0x3C   0x0020             MOVS     R0,R4
    \       0x3E   0x....'....        BL       TIM_ClearFlag
-     17            TIM_ITConfig(TIM5,TIM_IT_Update,ENABLE);
+     17              TIM_ITConfig(TIM5,TIM_IT_Update,ENABLE);
    \       0x42   0x2201             MOVS     R2,#+1
    \       0x44   0x2101             MOVS     R1,#+1
    \       0x46   0x0020             MOVS     R0,R4
@@ -94,139 +94,280 @@ E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\main.c
      19          void NVIC_Set(void){
    \                     NVIC_Set: (+1)
    \        0x0   0xB580             PUSH     {R7,LR}
-     20            NVIC_InitTypeDef NVIC_InitStructure;
-     21            NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);//0~2
+     20              NVIC_InitTypeDef NVIC_InitStructure;
+     21              NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);//0~2
    \        0x2   0xF44F 0x60A0      MOV      R0,#+1280
    \        0x6   0x....'....        BL       NVIC_PriorityGroupConfig
-     22            
-     23            /*TIM5*/
-     24            NVIC_InitStructure.NVIC_IRQChannel = TIM5_IRQn;    
+     22              
+     23              /*TIM5*/
+     24              NVIC_InitStructure.NVIC_IRQChannel = TIM5_IRQn;    
    \        0xA   0x2032             MOVS     R0,#+50
    \        0xC   0xF88D 0x0000      STRB     R0,[SP, #+0]
-     25            NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
+     25              NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
    \       0x10   0x2001             MOVS     R0,#+1
    \       0x12   0xF88D 0x0001      STRB     R0,[SP, #+1]
-     26            NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+     26              NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
    \       0x16   0x2000             MOVS     R0,#+0
    \       0x18   0xF88D 0x0002      STRB     R0,[SP, #+2]
-     27            NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;            
+     27              NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;            
    \       0x1C   0x2001             MOVS     R0,#+1
    \       0x1E   0xF88D 0x0003      STRB     R0,[SP, #+3]
-     28            NVIC_Init(&NVIC_InitStructure);
+     28              NVIC_Init(&NVIC_InitStructure);
    \       0x22   0x4668             MOV      R0,SP
    \       0x24   0x....'....        BL       NVIC_Init
-     29            
-     30            /*DMA2_Stream7_IRQn Tx*/
-     31            
-     32            NVIC_InitStructure.NVIC_IRQChannel = DMA2_Stream7_IRQn;
+     29              
+     30              /*DMA2_Stream7_IRQn Tx*/
+     31              
+     32              NVIC_InitStructure.NVIC_IRQChannel = DMA2_Stream7_IRQn;
    \       0x28   0x2046             MOVS     R0,#+70
    \       0x2A   0xF88D 0x0000      STRB     R0,[SP, #+0]
-     33            NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=2;
+     33              NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=2;
    \       0x2E   0x2002             MOVS     R0,#+2
    \       0x30   0xF88D 0x0001      STRB     R0,[SP, #+1]
-     34            NVIC_InitStructure.NVIC_IRQChannelSubPriority = 2;		
+     34              NVIC_InitStructure.NVIC_IRQChannelSubPriority = 2;
    \       0x34   0x2002             MOVS     R0,#+2
    \       0x36   0xF88D 0x0002      STRB     R0,[SP, #+2]
-     35            NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;			
+     35              NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
    \       0x3A   0x2001             MOVS     R0,#+1
    \       0x3C   0xF88D 0x0003      STRB     R0,[SP, #+3]
-     36            NVIC_Init(&NVIC_InitStructure);
+     36              NVIC_Init(&NVIC_InitStructure);
    \       0x40   0x4668             MOV      R0,SP
    \       0x42   0x....'....        BL       NVIC_Init
-     37            
-     38            /*DMA2_Stream1_IRQn Rx*/
-     39            
-     40            NVIC_InitStructure.NVIC_IRQChannel = DMA2_Stream1_IRQn;
+     37              
+     38              /*DMA2_Stream1_IRQn Rx*/
+     39              NVIC_InitStructure.NVIC_IRQChannel = DMA2_Stream1_IRQn;
    \       0x46   0x2039             MOVS     R0,#+57
    \       0x48   0xF88D 0x0000      STRB     R0,[SP, #+0]
-     41            NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=2;
+     40              NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=2;
    \       0x4C   0x2002             MOVS     R0,#+2
    \       0x4E   0xF88D 0x0001      STRB     R0,[SP, #+1]
-     42            NVIC_InitStructure.NVIC_IRQChannelSubPriority = 2;		
+     41              NVIC_InitStructure.NVIC_IRQChannelSubPriority = 2;		
    \       0x52   0x2002             MOVS     R0,#+2
    \       0x54   0xF88D 0x0002      STRB     R0,[SP, #+2]
-     43            NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;			
+     42              NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;			
    \       0x58   0x2001             MOVS     R0,#+1
    \       0x5A   0xF88D 0x0003      STRB     R0,[SP, #+3]
-     44            NVIC_Init(&NVIC_InitStructure);
+     43              NVIC_Init(&NVIC_InitStructure);
    \       0x5E   0x4668             MOV      R0,SP
    \       0x60   0x....'....        BL       NVIC_Init
-     45            NVIC_InitStructure.NVIC_IRQChannel = USART6_IRQn;
+     44              
+     45              /*USART6_IRQn Rx*/
+     46              NVIC_InitStructure.NVIC_IRQChannel = USART6_IRQn;
    \       0x64   0x2047             MOVS     R0,#+71
    \       0x66   0xF88D 0x0000      STRB     R0,[SP, #+0]
-     46            NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=2;
+     47              NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=2;
    \       0x6A   0x2002             MOVS     R0,#+2
    \       0x6C   0xF88D 0x0001      STRB     R0,[SP, #+1]
-     47            NVIC_InitStructure.NVIC_IRQChannelSubPriority = 2;		
+     48              NVIC_InitStructure.NVIC_IRQChannelSubPriority = 2;
    \       0x70   0x2002             MOVS     R0,#+2
    \       0x72   0xF88D 0x0002      STRB     R0,[SP, #+2]
-     48            NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;			
+     49              NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
    \       0x76   0x2001             MOVS     R0,#+1
    \       0x78   0xF88D 0x0003      STRB     R0,[SP, #+3]
-     49            NVIC_Init(&NVIC_InitStructure);
+     50              NVIC_Init(&NVIC_InitStructure);
    \       0x7C   0x4668             MOV      R0,SP
    \       0x7E   0x....'....        BL       NVIC_Init
-     50          }
+     51          }
    \       0x82   0xBD01             POP      {R0,PC}          ;; return
-     51          
+     52          
 
    \                                 In section .text, align 2, keep-with-next
-     52          void LED_On_Board(void){
+     53          void LED_On_Board(void){
    \                     LED_On_Board: (+1)
    \        0x0   0xB5E0             PUSH     {R5-R7,LR}
-     53            GPIO_InitTypeDef GPIO_InitStructure;
-     54            RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB,ENABLE); //enable GPIOA clock   //
+     54              GPIO_InitTypeDef GPIO_InitStructure;
+     55              RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB,ENABLE); //enable GPIOA clock   //
    \        0x2   0x2101             MOVS     R1,#+1
    \        0x4   0x2002             MOVS     R0,#+2
    \        0x6   0x....'....        BL       RCC_AHB1PeriphClockCmd
-     55            GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13;// | GPIO_Pin_14 | GPIO_Pin_15;
+     56              GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13;// | GPIO_Pin_14 | GPIO_Pin_15;
    \        0xA   0xF44F 0x5000      MOV      R0,#+8192
    \        0xE   0x9000             STR      R0,[SP, #+0]
-     56            GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+     57              GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
    \       0x10   0x2001             MOVS     R0,#+1
    \       0x12   0xF88D 0x0004      STRB     R0,[SP, #+4]
-     57            GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+     58              GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
    \       0x16   0x2002             MOVS     R0,#+2
    \       0x18   0xF88D 0x0005      STRB     R0,[SP, #+5]
-     58            GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+     59              GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
    \       0x1C   0x2000             MOVS     R0,#+0
    \       0x1E   0xF88D 0x0006      STRB     R0,[SP, #+6]
-     59            GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
+     60              GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
    \       0x22   0x2000             MOVS     R0,#+0
    \       0x24   0xF88D 0x0007      STRB     R0,[SP, #+7]
-     60            GPIO_Init(GPIOB, &GPIO_InitStructure); //enable GPIOA clock   //
+     61              GPIO_Init(GPIOB, &GPIO_InitStructure); //enable GPIOA clock   //
    \       0x28   0x4669             MOV      R1,SP
-   \       0x2A   0x....             LDR.N    R0,??DataTable2_1  ;; 0x40020400
+   \       0x2A   0x....             LDR.N    R0,??DataTable4_1  ;; 0x40020400
    \       0x2C   0x....'....        BL       GPIO_Init
-     61            
-     62            RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD,ENABLE); //enable GPIOA clock   /1/
+     62              
+     63              RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD,ENABLE); //enable GPIOA clock   /1/
    \       0x30   0x2101             MOVS     R1,#+1
    \       0x32   0x2008             MOVS     R0,#+8
    \       0x34   0x....'....        BL       RCC_AHB1PeriphClockCmd
-     63            GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8 | GPIO_Pin_9;
+     64              GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8 | GPIO_Pin_9;
    \       0x38   0xF44F 0x7040      MOV      R0,#+768
    \       0x3C   0x9000             STR      R0,[SP, #+0]
-     64            GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+     65              GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
    \       0x3E   0x2001             MOVS     R0,#+1
    \       0x40   0xF88D 0x0004      STRB     R0,[SP, #+4]
-     65            GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+     66              GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
    \       0x44   0x2002             MOVS     R0,#+2
    \       0x46   0xF88D 0x0005      STRB     R0,[SP, #+5]
-     66            GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+     67              GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
    \       0x4A   0x2000             MOVS     R0,#+0
    \       0x4C   0xF88D 0x0006      STRB     R0,[SP, #+6]
-     67            GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
+     68              GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
    \       0x50   0x2000             MOVS     R0,#+0
    \       0x52   0xF88D 0x0007      STRB     R0,[SP, #+7]
-     68            GPIO_Init(GPIOD, &GPIO_InitStructure); //enable GPIOA clock   //
+     69              GPIO_Init(GPIOD, &GPIO_InitStructure); //enable GPIOA clock
    \       0x56   0x4669             MOV      R1,SP
-   \       0x58   0x....             LDR.N    R0,??DataTable2_2  ;; 0x40020c00
+   \       0x58   0x....             LDR.N    R0,??DataTable4_2  ;; 0x40020c00
    \       0x5A   0x....'....        BL       GPIO_Init
-     69          }
+     70          }
    \       0x5E   0xBD07             POP      {R0-R2,PC}       ;; return
 
+   \                                 In section .text, align 2, keep-with-next
+     71          void EXTI0_IRQHandler(void) {
+   \                     EXTI0_IRQHandler: (+1)
+   \        0x0   0xB580             PUSH     {R7,LR}
+     72              /* Make sure that interrupt flag is set */
+     73              if (EXTI_GetITStatus(EXTI_Line0) != RESET) {
+   \        0x2   0x2001             MOVS     R0,#+1
+   \        0x4   0x....'....        BL       EXTI_GetITStatus
+   \        0x8   0x2800             CMP      R0,#+0
+   \        0xA   0xD011             BEQ.N    ??EXTI0_IRQHandler_0
+     74                  /* Do your stuff when PD0 is changed */
+     75                  if (flag_stop){
+   \        0xC   0x....             LDR.N    R1,??DataTable4_3
+   \        0xE   0x6808             LDR      R0,[R1, #+0]
+   \       0x10   0x2800             CMP      R0,#+0
+   \       0x12   0xD005             BEQ.N    ??EXTI0_IRQHandler_1
+     76                      flag_stop = 0;
+   \       0x14   0x2000             MOVS     R0,#+0
+   \       0x16   0x6008             STR      R0,[R1, #+0]
+     77                      nvic_flag = 1;
+   \       0x18   0x2001             MOVS     R0,#+1
+   \       0x1A   0x....             LDR.N    R1,??DataTable4_4
+   \       0x1C   0x6008             STR      R0,[R1, #+0]
+   \       0x1E   0xE004             B.N      ??EXTI0_IRQHandler_2
+     78                  }else{
+     79                      flag_stop = 1;
+   \                     ??EXTI0_IRQHandler_1: (+1)
+   \       0x20   0x2001             MOVS     R0,#+1
+   \       0x22   0x6008             STR      R0,[R1, #+0]
+     80                      nvic_flag = 0;
+   \       0x24   0x2000             MOVS     R0,#+0
+   \       0x26   0x....             LDR.N    R1,??DataTable4_4
+   \       0x28   0x6008             STR      R0,[R1, #+0]
+     81                  }
+     82                  /* Clear interrupt flag */
+     83                  EXTI_ClearITPendingBit(EXTI_Line0);
+   \                     ??EXTI0_IRQHandler_2: (+1)
+   \       0x2A   0x2001             MOVS     R0,#+1
+   \       0x2C   0x....'....        BL       EXTI_ClearITPendingBit
+     84              }
+     85          }
+   \                     ??EXTI0_IRQHandler_0: (+1)
+   \       0x30   0xBD01             POP      {R0,PC}          ;; return
+     86          /* Configure pins to be interrupts */
+
+   \                                 In section .text, align 2, keep-with-next
+     87          void Configure_PA0(void) {
+   \                     Configure_PA0: (+1)
+   \        0x0   0xB500             PUSH     {LR}
+   \        0x2   0xB085             SUB      SP,SP,#+20
+     88              /* Set variables used */
+     89              GPIO_InitTypeDef GPIO_InitStruct;
+     90              EXTI_InitTypeDef EXTI_InitStruct;
+     91              NVIC_InitTypeDef NVIC_InitStruct;
+     92              
+     93              /* Enable clock for GPIOD */
+     94              RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
+   \        0x4   0x2101             MOVS     R1,#+1
+   \        0x6   0x2001             MOVS     R0,#+1
+   \        0x8   0x....'....        BL       RCC_AHB1PeriphClockCmd
+     95              /* Enable clock for SYSCFG */
+     96              RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);
+   \        0xC   0x2101             MOVS     R1,#+1
+   \        0xE   0xF44F 0x4080      MOV      R0,#+16384
+   \       0x12   0x....'....        BL       RCC_APB2PeriphClockCmd
+     97              
+     98              /* Set pin as input */
+     99              
+    100              GPIO_InitStruct.GPIO_Pin = GPIO_Pin_0;
+   \       0x16   0x2001             MOVS     R0,#+1
+   \       0x18   0x9001             STR      R0,[SP, #+4]
+    101              GPIO_InitStruct.GPIO_Mode = GPIO_Mode_IN;
+   \       0x1A   0x2000             MOVS     R0,#+0
+   \       0x1C   0xF88D 0x0008      STRB     R0,[SP, #+8]
+    102              GPIO_InitStruct.GPIO_OType = GPIO_OType_PP;
+   \       0x20   0x2000             MOVS     R0,#+0
+   \       0x22   0xF88D 0x000A      STRB     R0,[SP, #+10]
+    103              GPIO_InitStruct.GPIO_PuPd = GPIO_PuPd_DOWN;
+   \       0x26   0x2002             MOVS     R0,#+2
+   \       0x28   0xF88D 0x000B      STRB     R0,[SP, #+11]
+    104              GPIO_InitStruct.GPIO_Speed = GPIO_Speed_100MHz;
+   \       0x2C   0x2003             MOVS     R0,#+3
+   \       0x2E   0xF88D 0x0009      STRB     R0,[SP, #+9]
+    105              GPIO_Init(GPIOA, &GPIO_InitStruct);
+   \       0x32   0xA901             ADD      R1,SP,#+4
+   \       0x34   0x....             LDR.N    R0,??DataTable4_5  ;; 0x40020000
+   \       0x36   0x....'....        BL       GPIO_Init
+    106              
+    107              /* Tell system that you will use PD0 for EXTI_Line0 */
+    108              SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOA, EXTI_PinSource0);
+   \       0x3A   0x2100             MOVS     R1,#+0
+   \       0x3C   0x2000             MOVS     R0,#+0
+   \       0x3E   0x....'....        BL       SYSCFG_EXTILineConfig
+    109              
+    110              /* PD0 is connected to EXTI_Line0 */
+    111              EXTI_InitStruct.EXTI_Line = EXTI_Line0;
+   \       0x42   0x2001             MOVS     R0,#+1
+   \       0x44   0x9003             STR      R0,[SP, #+12]
+    112              /* Enable interrupt */
+    113              EXTI_InitStruct.EXTI_LineCmd = ENABLE;
+   \       0x46   0x2001             MOVS     R0,#+1
+   \       0x48   0xF88D 0x0012      STRB     R0,[SP, #+18]
+    114              /* Interrupt mode */
+    115              EXTI_InitStruct.EXTI_Mode = EXTI_Mode_Interrupt;
+   \       0x4C   0x2000             MOVS     R0,#+0
+   \       0x4E   0xF88D 0x0010      STRB     R0,[SP, #+16]
+    116              /* Triggers on rising and falling edge */
+    117              EXTI_InitStruct.EXTI_Trigger = EXTI_Trigger_Falling;
+   \       0x52   0x200C             MOVS     R0,#+12
+   \       0x54   0xF88D 0x0011      STRB     R0,[SP, #+17]
+    118              /* Add to EXTI */
+    119              EXTI_Init(&EXTI_InitStruct);
+   \       0x58   0xA803             ADD      R0,SP,#+12
+   \       0x5A   0x....'....        BL       EXTI_Init
+    120              
+    121              /* Add IRQ vector to NVIC */
+    122              /* PD0 is connected to EXTI_Line0, which has EXTI0_IRQn vector */
+    123              NVIC_InitStruct.NVIC_IRQChannel = EXTI0_IRQn;
+   \       0x5E   0x2006             MOVS     R0,#+6
+   \       0x60   0xF88D 0x0000      STRB     R0,[SP, #+0]
+    124              /* Set priority */
+    125              NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 0x00;
+   \       0x64   0x2000             MOVS     R0,#+0
+   \       0x66   0xF88D 0x0001      STRB     R0,[SP, #+1]
+    126              /* Set sub priority */
+    127              NVIC_InitStruct.NVIC_IRQChannelSubPriority = 0x00;
+   \       0x6A   0x2000             MOVS     R0,#+0
+   \       0x6C   0xF88D 0x0002      STRB     R0,[SP, #+2]
+    128              /* Enable interrupt */
+    129              NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
+   \       0x70   0x2001             MOVS     R0,#+1
+   \       0x72   0xF88D 0x0003      STRB     R0,[SP, #+3]
+    130              /* Add to NVIC */
+    131              NVIC_Init(&NVIC_InitStruct);
+   \       0x76   0x4668             MOV      R0,SP
+   \       0x78   0x....'....        BL       NVIC_Init
+    132          }
+   \       0x7C   0xB005             ADD      SP,SP,#+20
+   \       0x7E   0xBD00             POP      {PC}             ;; return
+
    \                                 In section .bss, align 4
-     70          int a,b,c;
+    133          int a,b,c;
    \                     a:
    \        0x0                      DS8 4
 
@@ -237,221 +378,240 @@ E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\main.c
    \                                 In section .bss, align 4
    \                     c:
    \        0x0                      DS8 4
+    134          
 
    \                                 In section .text, align 2, keep-with-next
-     71          void main(void){
+    135          void main(void){
    \                     main: (+1)
    \        0x0   0xB580             PUSH     {R7,LR}
-     72            systick_setup();
+    136              systick_setup();
    \        0x2   0x....'....        BL       systick_setup
-     73            
-     74            TM2_PWM_Init();//servo
+    137              
+    138              TM2_PWM_Init();//servo
    \        0x6   0x....'....        BL       TM2_PWM_Init
-     75            TIM2->CCR1=2000;//PA0
+    139              TIM2->CCR1=2000;//PA0
    \        0xA   0xF44F 0x60FA      MOV      R0,#+2000
-   \        0xE   0x....             LDR.N    R1,??DataTable2_3  ;; 0x40000034
+   \        0xE   0x....             LDR.N    R1,??DataTable4_6  ;; 0x40000034
    \       0x10   0x6008             STR      R0,[R1, #+0]
-     76            TIM2->CCR3=1700;//PB10
+    140              TIM2->CCR3=1700;//PB10
    \       0x12   0xF240 0x60A4      MOVW     R0,#+1700
-   \       0x16   0x....             LDR.N    R1,??DataTable2_4  ;; 0x4000003c
+   \       0x16   0x....             LDR.N    R1,??DataTable4_7  ;; 0x4000003c
    \       0x18   0x6008             STR      R0,[R1, #+0]
-     77            TIM2->CCR4=1700;//PB11
-   \       0x1A   0x....             LDR.N    R1,??DataTable2_5  ;; 0x40000040
+    141              TIM2->CCR4=1700;//PB11
+   \       0x1A   0x....             LDR.N    R1,??DataTable4_8  ;; 0x40000040
    \       0x1C   0x6008             STR      R0,[R1, #+0]
-     78            Delay(150);
+    142              Delay(150);
    \       0x1E   0x2096             MOVS     R0,#+150
    \       0x20   0x....'....        BL       Delay
-     79            
-     80            TIM3_EncoderInterface_Init();//A
+    143              
+    144              TIM3_EncoderInterface_Init();//A
    \       0x24   0x....'....        BL       TIM3_EncoderInterface_Init
-     81            TIM1_EncoderInterface_Init();//B
+    145              TIM1_EncoderInterface_Init();//B
    \       0x28   0x....'....        BL       TIM1_EncoderInterface_Init
-     82            TIM4_EncoderInterface_Init();//C
+    146              TIM4_EncoderInterface_Init();//C
    \       0x2C   0x....'....        BL       TIM4_EncoderInterface_Init
-     83            Delay(5);
+    147              Delay(5);
    \       0x30   0x2005             MOVS     R0,#+5
    \       0x32   0x....'....        BL       Delay
-     84            
-     85            TM8_PWM_Init();
+    148              
+    149              TM8_PWM_Init();
    \       0x36   0x....'....        BL       TM8_PWM_Init
-     86            LED_On_Board();//A:B13,B:D8,C:D9
+    150              LED_On_Board();//A:B13,B:D8,C:D9
    \       0x3A   0x....'....        BL       LED_On_Board
-     87            //
-     88            IIC_GPIO_Init();
+    151              //
+    152              IIC_GPIO_Init();
    \       0x3E   0x....'....        BL       IIC_GPIO_Init
-     89            MPU6050_Init();
+    153              MPU6050_Init();
    \       0x42   0x....'....        BL       MPU6050_Init
-     90            get_mpu_id();
+    154              get_mpu_id();
    \       0x46   0x....'....        BL       get_mpu_id
-     91            get_iir_factor(&Mpu.att_acc_factor,0.005f,25);
-   \       0x4A   0x....             LDR.N    R2,??DataTable2_6  ;; 0x41c80000
-   \       0x4C   0x....             LDR.N    R1,??DataTable2_7  ;; 0x3ba3d70a
-   \       0x4E   0x....             LDR.N    R0,??DataTable2_8
+    155              get_iir_factor(&Mpu.att_acc_factor,0.005f,25);
+   \       0x4A   0x....             LDR.N    R2,??DataTable4_9  ;; 0x41c80000
+   \       0x4C   0x....             LDR.N    R1,??DataTable4_10  ;; 0x3ba3d70a
+   \       0x4E   0x....             LDR.N    R0,??DataTable4_11
    \       0x50   0x....'....        BL       get_iir_factor
-     92            //  
-     93            usart1_init(115200);
+    156              //  
+    157              usart1_init(115200);
    \       0x54   0xF45F 0x30E1      MOVS     R0,#+115200
    \       0x58   0x....'....        BL       usart1_init
-     94            TM5_Interrupt_Init();
-   \       0x5C   0x....'....        BL       TM5_Interrupt_Init
-     95            NVIC_Set();
-   \       0x60   0x....'....        BL       NVIC_Set
-     96            //  
-     97            Delay(2000);
-   \       0x64   0xF44F 0x60FA      MOV      R0,#+2000
-   \       0x68   0x....'....        BL       Delay
-     98            nvic_flag = 0;  /**/
-   \       0x6C   0x2000             MOVS     R0,#+0
-   \       0x6E   0x....             LDR.N    R1,??DataTable2_9
-   \       0x70   0x6008             STR      R0,[R1, #+0]
-     99            
-    100            /*
-    101            TIM8->CCR1 = 8999*0.05;//A PC6
-    102            Delay(1000);
-    103            TIM8->CCR2 = 8999*0.1;//B PC7
-    104            Delay(1000);
-    105            TIM8->CCR3 = 8999*0.15;//C PC8
-    106            */
-    107            
-    108            int a;
-                       ^
-Warning[Pe177]: variable "a" was declared but never referenced
-    109            while(1){
-   \                     ??main_0: (+1)
-   \       0x72   0xE7FE             B.N      ??main_0
-    110          
-    111              //  GPIO_SetBits(GPIOB,GPIO_Pin_13);  //A
-    112              ////  GPIO_ResetBits(GPIOB,GPIO_Pin_13);
-    113              //  
-    114              //  GPIO_SetBits(GPIOD,GPIO_Pin_8);  //B
-    115              ////  GPIO_ResetBits(GPIOD,GPIO_Pin_8);
-    116              //  
-    117              //  GPIO_SetBits(GPIOD,GPIO_Pin_9);  //C
-    118              ////  GPIO_ResetBits(GPIOD,GPIO_Pin_9);
-    119              //  
-    120              //  TIM8->CCR1 = 5500;//A
-    121              //  TIM8->CCR2 = 5500;//B
-    122              //  TIM8->CCR3 = 5500;//C
-    123              //  Delay(2000);
-    124              //  
-    125              ////  GPIO_SetBits(GPIOB,GPIO_Pin_13);
-    126              //  GPIO_ResetBits(GPIOB,GPIO_Pin_13);//A
-    127              //  
-    128              ////  GPIO_SetBits(GPIOD,GPIO_Pin_8);
-    129              //  GPIO_ResetBits(GPIOD,GPIO_Pin_8);//B
-    130              //  
-    131              ////  GPIO_SetBits(GPIOD,GPIO_Pin_9);
-    132              //  GPIO_ResetBits(GPIOD,GPIO_Pin_9);//C
-    133              //  
-    134              //  TIM8->CCR1 = 10;//A
-    135              //  TIM8->CCR2 = 10;//B
-    136              //  TIM8->CCR3 = 10;//C
-    137              //  Delay(100);
-    138              //  TIM8->CCR1 = 0;//A
-    139              //  TIM8->CCR2 = 0;//B
-    140              //  TIM8->CCR3 = 0;//C
-    141              //  Delay(1900);
-    142              //  TIM8->CCR1 = 5500;//A
-    143              //  TIM8->CCR2 = 5500;//B
-    144              //  TIM8->CCR3 = 5500;//C
-    145              //  Delay(2000);
-    146              //  
-    147              //  GPIO_SetBits(GPIOB,GPIO_Pin_13);//A
-    148              ////  GPIO_ResetBits(GPIOB,GPIO_Pin_13);
-    149              //  
-    150              //  GPIO_SetBits(GPIOD,GPIO_Pin_8);//B
-    151              ////  GPIO_ResetBits(GPIOD,GPIO_Pin_8);
-    152              //  
-    153              //  GPIO_SetBits(GPIOD,GPIO_Pin_9);//C
-    154              ////  GPIO_ResetBits(GPIOD,GPIO_Pin_9);
-    155              //  TIM8->CCR1 = 10;//A
-    156              //  TIM8->CCR2 = 10;//B
-    157              //  TIM8->CCR3 = 10;//C
-    158              //  Delay(100);
-    159              //  TIM8->CCR1 = 0;//A
-    160              //  TIM8->CCR2 = 0;//B
-    161              //  TIM8->CCR3 = 0;//C
-    162              //  Delay(1900);
-    163              
-    164              //    printf("%d",TIM12->CNT);
+    158              nvic_flag = 0;
+   \       0x5C   0x2000             MOVS     R0,#+0
+   \       0x5E   0x....             LDR.N    R1,??DataTable4_4
+   \       0x60   0x6008             STR      R0,[R1, #+0]
+    159              flag_stop = 1;
+   \       0x62   0x2001             MOVS     R0,#+1
+   \       0x64   0x....             LDR.N    R1,??DataTable4_3
+   \       0x66   0x6008             STR      R0,[R1, #+0]
+    160              TM5_Interrupt_Init();
+   \       0x68   0x....'....        BL       TM5_Interrupt_Init
+    161              NVIC_Set();
+   \       0x6C   0x....'....        BL       NVIC_Set
+    162              //  
+    163              Delay(1000);
+   \       0x70   0xF44F 0x707A      MOV      R0,#+1000
+   \       0x74   0x....'....        BL       Delay
+    164              Configure_PA0();
+   \       0x78   0x....'....        BL       Configure_PA0
     165              
-    166              //  TIM8->CCR1 = 1000;
-    167              //  TIM8->CCR2 = 1500;
-    168              //  TIM8->CCR3 = 2000;Delay(3000);
-    169              
-    170              
-    171              //  TIM8->CCR3=-800;Delay(3000);
-    172              //  
-    173              //    if(att.rol<-80){//jump up
-    174              ////      Delay(3000);
-    175              //////      nvic_flag = 0;
-    176              //////      PWM_a =0;
-    177              //////      set_pwm_a(PWM_a);
-    178              ////      TIM2->CCR1=1400;//1500;
-    179              //////      Delay(50);
-    180              //////      nvic_flag = 1;
-    181              ////      Delay(200);
-    182              ////      TIM2->CCR1=2000;
-    183              ////      Delay(200);
-    184              //    }else if(att.rol>-27){//jump up
-    185              //      Delay(3000);
-    186              ////      nvic_flag = 0;
-    187              ////      PWM_a =0;
-    188              ////      set_pwm_a(PWM_a);
-    189              //      TIM2->CCR1=1400;//1500;
-    190              ////      Delay(50);
-    191              ////      nvic_flag = 1;
-    192              //      Delay(200);
-    193              //      TIM2->CCR1=2000;
-    194              //      Delay(150);
-    195              //    }
-    196            }
-    197          }
+    166          //    TIM8->CCR1 = 8999*0.4;//A PC6
+    167          //    Delay(1000);
+    168          //    TIM8->CCR2 = 8999*0.8;//B PC7
+    169          //    Delay(1000);
+    170          //    TIM8->CCR3 = 8999*0.4;//C PC8
+    171              
+    172              
+    173              while(1){
+   \                     ??main_0: (+1)
+   \       0x7C   0xE7FE             B.N      ??main_0
+    174                  //  printf("%d",usart1_read(a));
+    175          //          GPIO_SetBits(GPIOB,GPIO_Pin_13);  //A
+    176                  ////  GPIO_ResetBits(GPIOB,GPIO_Pin_13);
+    177                  //  
+    178          //          GPIO_SetBits(GPIOD,GPIO_Pin_8);  //B
+    179          //          GPIO_ResetBits(GPIOD,GPIO_Pin_8);
+    180                  //  
+    181          //          GPIO_SetBits(GPIOD,GPIO_Pin_9);  //C
+    182          //          GPIO_ResetBits(GPIOD,GPIO_Pin_9);
+    183                  //  
+    184                  //  TIM8->CCR1 = 5500;//A
+    185                  //  TIM8->CCR2 = 5500;//B
+    186                  //  TIM8->CCR3 = 5500;//C
+    187                  ////  GPIO_SetBits(GPIOB,GPIO_Pin_13);
+    188                  //  GPIO_ResetBits(GPIOB,GPIO_Pin_13);//A
+    189                  //  
+    190                  ////  GPIO_SetBits(GPIOD,GPIO_Pin_8);
+    191                  //  GPIO_ResetBits(GPIOD,GPIO_Pin_8);//B
+    192                  //  
+    193                  ////  GPIO_SetBits(GPIOD,GPIO_Pin_9);
+    194                  //  GPIO_ResetBits(GPIOD,GPIO_Pin_9);//C
+    195                  //  
+    196          //          TIM8->CCR1 = 10;//A
+    197          //          TIM8->CCR2 = 10;//B
+    198          //          TIM8->CCR3 = 10;//C
+    199          //          Delay(100);
+    200          //          TIM8->CCR1 = 0;//A
+    201          //          TIM8->CCR2 = 0;//B
+    202          //          TIM8->CCR3 = 0;//C
+    203          //          Delay(1900);
+    204          //          TIM8->CCR1 = 5500;//A
+    205          //          TIM8->CCR2 = 5500;//B
+    206          //          TIM8->CCR3 = 5500;//C
+    207          //          Delay(2000);
+    208                  //  
+    209                  //  GPIO_SetBits(GPIOB,GPIO_Pin_13);//A
+    210                  ////  GPIO_ResetBits(GPIOB,GPIO_Pin_13);
+    211                  //  
+    212                  //  GPIO_SetBits(GPIOD,GPIO_Pin_8);//B
+    213                  ////  GPIO_ResetBits(GPIOD,GPIO_Pin_8);
+    214                  //  
+    215          //          GPIO_SetBits(GPIOD,GPIO_Pin_9);//C
+    216                  ////  GPIO_ResetBits(GPIOD,GPIO_Pin_9);
+    217                  //  TIM8->CCR1 = 10;//A
+    218                  //  TIM8->CCR2 = 10;//B
+    219                  //  TIM8->CCR3 = 10;//C
+    220                  //  Delay(100);
+    221                  //  TIM8->CCR1 = 0;//A
+    222                  //  TIM8->CCR2 = 0;//B
+    223                  //  TIM8->CCR3 = 0;//C
+    224          //          Delay(1900);
+    225                  
+    226                  //    printf("%d",TIM12->CNT);
+    227                  
+    228                  //  TIM8->CCR1 = 1000;
+    229                  //  TIM8->CCR2 = 1500;
+    230                  //  TIM8->CCR3 = 2000;Delay(3000);
+    231                  
+    232                  
+    233                  //  TIM8->CCR3=-800;Delay(3000);
+    234                  //  
+    235                  //    if(att.rol<-80){//jump up
+    236                  ////      Delay(3000);
+    237                  //////      nvic_flag = 0;
+    238                  //////      PWM_a =0;
+    239                  //////      set_pwm_a(PWM_a);
+    240                  ////      TIM2->CCR1=1400;//1500;
+    241                  //////      Delay(50);
+    242                  //////      nvic_flag = 1;
+    243                  ////      Delay(200);
+    244                  ////      TIM2->CCR1=2000;
+    245                  ////      Delay(200);
+    246                  //    }else if(att.rol>-27){//jump up
+    247                  //      Delay(3000);
+    248                  ////      nvic_flag = 0;
+    249                  ////      PWM_a =0;
+    250                  ////      set_pwm_a(PWM_a);
+    251                  //      TIM2->CCR1=1400;//1500;
+    252                  ////      Delay(50);
+    253                  ////      nvic_flag = 1;
+    254                  //      Delay(200);
+    255                  //      TIM2->CCR1=2000;
+    256                  //      Delay(150);
+    257                  //    }
+    258              }
+    259          }
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable2:
+   \                     ??DataTable4:
    \        0x0   0x4000'0C00        DC32     0x40000c00
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable2_1:
+   \                     ??DataTable4_1:
    \        0x0   0x4002'0400        DC32     0x40020400
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable2_2:
+   \                     ??DataTable4_2:
    \        0x0   0x4002'0C00        DC32     0x40020c00
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable2_3:
+   \                     ??DataTable4_3:
+   \        0x0   0x....'....        DC32     flag_stop
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_4:
+   \        0x0   0x....'....        DC32     nvic_flag
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_5:
+   \        0x0   0x4002'0000        DC32     0x40020000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_6:
    \        0x0   0x4000'0034        DC32     0x40000034
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable2_4:
+   \                     ??DataTable4_7:
    \        0x0   0x4000'003C        DC32     0x4000003c
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable2_5:
+   \                     ??DataTable4_8:
    \        0x0   0x4000'0040        DC32     0x40000040
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable2_6:
+   \                     ??DataTable4_9:
    \        0x0   0x41C8'0000        DC32     0x41c80000
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable2_7:
+   \                     ??DataTable4_10:
    \        0x0   0x3BA3'D70A        DC32     0x3ba3d70a
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable2_8:
+   \                     ??DataTable4_11:
    \        0x0   0x....'....        DC32     Mpu+0x24
-
-   \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable2_9:
-   \        0x0   0x....'....        DC32     nvic_flag
 
    Maximum stack usage in bytes:
 
    .cstack Function
    ------- --------
+      24   Configure_PA0
+        24   -> EXTI_Init
+        24   -> GPIO_Init
+        24   -> NVIC_Init
+        24   -> RCC_AHB1PeriphClockCmd
+        24   -> RCC_APB2PeriphClockCmd
+        24   -> SYSCFG_EXTILineConfig
+       8   EXTI0_IRQHandler
+         8   -> EXTI_ClearITPendingBit
+         8   -> EXTI_GetITStatus
       16   LED_On_Board
         16   -> GPIO_Init
         16   -> RCC_AHB1PeriphClockCmd
@@ -465,6 +625,7 @@ Warning[Pe177]: variable "a" was declared but never referenced
         24   -> TIM_ITConfig
         24   -> TIM_TimeBaseInit
        8   main
+         8   -> Configure_PA0
          8   -> Delay
          8   -> IIC_GPIO_Init
          8   -> LED_On_Board
@@ -486,30 +647,34 @@ Warning[Pe177]: variable "a" was declared but never referenced
 
    Bytes  Function/Label
    -----  --------------
-       4  ??DataTable2
-       4  ??DataTable2_1
-       4  ??DataTable2_2
-       4  ??DataTable2_3
-       4  ??DataTable2_4
-       4  ??DataTable2_5
-       4  ??DataTable2_6
-       4  ??DataTable2_7
-       4  ??DataTable2_8
-       4  ??DataTable2_9
+       4  ??DataTable4
+       4  ??DataTable4_1
+       4  ??DataTable4_10
+       4  ??DataTable4_11
+       4  ??DataTable4_2
+       4  ??DataTable4_3
+       4  ??DataTable4_4
+       4  ??DataTable4_5
+       4  ??DataTable4_6
+       4  ??DataTable4_7
+       4  ??DataTable4_8
+       4  ??DataTable4_9
+     128  Configure_PA0
+      50  EXTI0_IRQHandler
       96  LED_On_Board
      132  NVIC_Set
       78  TM5_Interrupt_Init
        4  a
        4  b
        4  c
-     116  main
+     126  main
 
  
   12 bytes in section .bss
- 462 bytes in section .text
+ 658 bytes in section .text
  
- 462 bytes of CODE memory
+ 658 bytes of CODE memory
   12 bytes of DATA memory
 
 Errors: none
-Warnings: 1
+Warnings: none

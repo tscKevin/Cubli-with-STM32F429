@@ -13,10 +13,10 @@
 
 typedef struct
 {
-  float last_time_us;
-  float now_time_us;
-  float delta_time_us;
-  float delta_time_ms;
+        float last_time_us;
+        float now_time_us;
+        float delta_time_us;
+        float delta_time_ms;
 }_Time_test;
 
 
@@ -33,6 +33,25 @@ void Max_pwm_limit(int amplitude);
 void set_pwm_a(int pwm_a);
 void set_pwm_b(int pwm_b);
 void set_pwm_c(int pwm_c);
+
+
+extern float Velocity_KP_a;
+//extern float Velocity_KI_a;
+extern float Balance_KP_a;
+//extern float Balance_KI_a;
+extern float Balance_KD_a;
+
+extern float Velocity_KP_b;
+//extern float Velocity_KI_b;
+extern float Balance_KP_b;
+//extern float Balance_Ki_b;
+extern float Balance_KD_b;
+
+extern float Velocity_KP_c;
+//extern float Velocity_KI_c;
+extern float Balance_KP_c;
+//extern float Balance_Ki_c;
+extern float Balance_KD_c;
 
 extern _Time_test run_start;
 extern _Time_test run_stop;
@@ -54,5 +73,7 @@ extern float balance_pwm_c;
 extern int PWM_a;
 extern int PWM_b;
 extern int PWM_c;
+
+extern float yaw_angle_targer;
 
 #endif

@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         20/Oct/2020  19:33:12
+# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         31/Dec/2020  18:56:44
 # Copyright 1999-2019 IAR Systems AB.
 #
 #    Cpu mode     =  
@@ -8,7 +8,7 @@
 #    Source file  =
 #        E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\usart.c
 #    Command line =
-#        -f C:\Users\LABPC1~1\AppData\Local\Temp\EW2A21.tmp
+#        -f C:\Users\LABPC1~1\AppData\Local\Temp\EW3380.tmp
 #        (E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\usart.c -D
 #        USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
 #        E:\STM32Project\Cubli-with-STM32F429\Cubli\Debug\List -o
@@ -43,7 +43,7 @@ E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\usart.c
       1          #include "usart.h"
       2          
       3          #define usart1_tx_len 1024
-      4          #define usart1_rx_len 1024
+      4          #define usart1_rx_len 20
 
    \                                 In section .bss, align 4
       5          uint8_t usart1_dma_tx_buf[usart1_tx_len];
@@ -53,10 +53,10 @@ E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\usart.c
    \                                 In section .bss, align 4
       6          uint8_t usart1_dma_rx_buf[usart1_rx_len];
    \                     usart1_dma_rx_buf:
-   \        0x0                      DS8 1'024
+   \        0x0                      DS8 20
 
    \                                 In section .bss, align 4
-      7          u32 receiveData;
+      7          uint8_t* receiveData;
    \                     receiveData:
    \        0x0                      DS8 4
       8          //int fputc(int ch,FILE *f)
@@ -83,8 +83,8 @@ E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\usart.c
    \                     DMA2_Stream7_IRQHandler: (+1)
    \        0x0   0xB510             PUSH     {R4,LR}
      23            if(DMA_GetITStatus(DMA2_Stream7,DMA_IT_TCIF7) != RESET) //等待通道7傳輸完成
-   \        0x2   0x....'....        LDR.W    R4,??DataTable13  ;; 0x400264b8
-   \        0x6   0x....'....        LDR.W    R1,??DataTable13_1  ;; 0x28008000
+   \        0x2   0x....'....        LDR.W    R4,??DataTable12  ;; 0x400264b8
+   \        0x6   0x....'....        LDR.W    R1,??DataTable12_1  ;; 0x28008000
    \        0xA   0x0020             MOVS     R0,R4
    \        0xC   0x....'....        BL       DMA_GetITStatus
    \       0x10   0x2800             CMP      R0,#+0
@@ -102,7 +102,7 @@ E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\usart.c
      28            usart1_sent = 1;//重新令usart_sent的指令為1
    \                     ??DMA2_Stream7_IRQHandler_0: (+1)
    \       0x26   0x2001             MOVS     R0,#+1
-   \       0x28   0x....'....        LDR.W    R1,??DataTable13_2
+   \       0x28   0x....'....        LDR.W    R1,??DataTable12_2
    \       0x2C   0x7008             STRB     R0,[R1, #+0]
      29          }
    \       0x2E   0xBD10             POP      {R4,PC}          ;; return
@@ -122,7 +122,7 @@ E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\usart.c
    \        0x8   0x2000             MOVS     R0,#+0
    \        0xA   0x7008             STRB     R0,[R1, #+0]
    \                     ??usart1_send_0: (+1)
-   \        0xC   0x....'....        LDR.W    R1,??DataTable13_2
+   \        0xC   0x....'....        LDR.W    R1,??DataTable12_2
    \       0x10   0x7808             LDRB     R0,[R1, #+0]
    \       0x12   0x2800             CMP      R0,#+0
    \       0x14   0xD0F8             BEQ.N    ??usart1_send_1
@@ -138,10 +138,10 @@ E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\usart.c
    \                     ??usart1_send_2: (+1)
    \       0x22   0x0022             MOVS     R2,R4
    \       0x24   0x0019             MOVS     R1,R3
-   \       0x26   0x....'....        LDR.W    R0,??DataTable13_3
+   \       0x26   0x....'....        LDR.W    R0,??DataTable12_3
    \       0x2A   0x....'....        BL       mymemcpy
      40            DMA_SetCurrDataCounter(DMA2_Stream7,len); //設置DMA內存大小
-   \       0x2E   0x....'....        LDR.W    R5,??DataTable13  ;; 0x400264b8
+   \       0x2E   0x....'....        LDR.W    R5,??DataTable12  ;; 0x400264b8
    \       0x32   0x0021             MOVS     R1,R4
    \       0x34   0xB289             UXTH     R1,R1            ;; ZeroExt  R1,R1,#+16,#+16
    \       0x36   0x0028             MOVS     R0,R5
@@ -150,159 +150,359 @@ E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\usart.c
    \       0x3C   0x2101             MOVS     R1,#+1
    \       0x3E   0x0028             MOVS     R0,R5
    \       0x40   0x....'....        BL       DMA_Cmd
-     42          } 
+     42          }
    \       0x44   0xBD31             POP      {R0,R4,R5,PC}    ;; return
      43          
-
-   \                                 In section .text, align 2, keep-with-next
-     44          void DMA2_Stream1_IRQHandler(void)
-     45          {  
-   \                     DMA2_Stream1_IRQHandler: (+1)
-   \        0x0   0xB510             PUSH     {R4,LR}
-     46            if(DMA_GetITStatus(DMA2_Stream1,DMA_IT_TCIF1) != RESET) //等待通道1傳輸完成
-   \        0x2   0x....'....        LDR.W    R4,??DataTable13_4  ;; 0x40026428
-   \        0x6   0x....'....        LDR.W    R1,??DataTable13_5  ;; 0x10008800
-   \        0xA   0x0020             MOVS     R0,R4
-   \        0xC   0x....'....        BL       DMA_GetITStatus
-   \       0x10   0x2800             CMP      R0,#+0
-   \       0x12   0xD00D             BEQ.N    ??DMA2_Stream1_IRQHandler_0
-     47            {
-     48              printf("%d",10101);
-   \       0x14   0xF242 0x7175      MOVW     R1,#+10101
-   \       0x18   0x....             ADR.N    R0,??DataTable6  ;; 0x25, 0x64, 0x00, 0x00
-   \       0x1A   0x....'....        BL       printf
-     49              DMA_Cmd(DMA2_Stream1, DISABLE);
-   \       0x1E   0x2100             MOVS     R1,#+0
-   \       0x20   0x0020             MOVS     R0,R4
-   \       0x22   0x....'....        BL       DMA_Cmd
-     50              DMA_ClearFlag(DMA2_Stream1,DMA_FLAG_TCIF1);//清除通道1的完成標誌
-   \       0x26   0x....'....        LDR.W    R1,??DataTable13_6  ;; 0x10000800
-   \       0x2A   0x0020             MOVS     R0,R4
-   \       0x2C   0x....'....        BL       DMA_ClearFlag
-     51            }
-     52          }
-   \                     ??DMA2_Stream1_IRQHandler_0: (+1)
-   \       0x30   0xBD10             POP      {R4,PC}          ;; return
+     44          //void DMA2_Stream1_IRQHandler(void)
+     45          //{  
+     46          //  if(DMA_GetITStatus(DMA2_Stream1,DMA_IT_TCIF1) != RESET) //等待通道1傳輸完成
+     47          //  {
+     48          //    printf("%d",10101);
+     49          //    DMA_Cmd(DMA2_Stream1, DISABLE);
+     50          //    DMA_ClearFlag(DMA2_Stream1,DMA_FLAG_TCIF1);//清除通道1的完成標誌
+     51          //  }
+     52          //}
      53          
-
-   \                                 In section .text, align 2, keep-with-next
-     54          int usart1_read(uint8_t** buf)
-     55          {
-   \                     usart1_read: (+1)
-   \        0x0   0xB570             PUSH     {R4-R6,LR}
-   \        0x2   0x0004             MOVS     R4,R0
-     56              int rx_len;
-     57              if(USART_GetFlagStatus(USART6,USART_FLAG_IDLE)!=RESET)
-   \        0x4   0x2110             MOVS     R1,#+16
-   \        0x6   0x....'....        LDR.W    R0,??DataTable13_7  ;; 0x40011400
-   \        0xA   0x....'....        BL       USART_GetFlagStatus
-   \        0xE   0x2800             CMP      R0,#+0
-   \       0x10   0xD01E             BEQ.N    ??usart1_read_0
-     58              {
-     59          //		rx_len = USART6->SR;
-     60                  rx_len = USART6->DR;
-   \       0x12   0x....'....        LDR.W    R0,??DataTable13_8  ;; 0x40011404
-   \       0x16   0x8800             LDRH     R0,[R0, #+0]
-   \       0x18   0xB280             UXTH     R0,R0            ;; ZeroExt  R0,R0,#+16,#+16
-     61          //		DMA_Cmd(DMA2_Stream1, DISABLE);                                    
-     62                  DMA_ClearFlag(DMA2_Stream1,DMA_FLAG_TCIF1);
-   \       0x1A   0x....'....        LDR.W    R6,??DataTable13_4  ;; 0x40026428
-   \       0x1E   0x....'....        LDR.W    R1,??DataTable13_6  ;; 0x10000800
-   \       0x22   0x0030             MOVS     R0,R6
-   \       0x24   0x....'....        BL       DMA_ClearFlag
-     63                  rx_len = usart1_rx_len - DMA_GetCurrDataCounter(DMA2_Stream1);
-   \       0x28   0x0030             MOVS     R0,R6
-   \       0x2A   0x....'....        BL       DMA_GetCurrDataCounter
-   \       0x2E   0x0005             MOVS     R5,R0
-   \       0x30   0xF5D5 0x6580      RSBS     R5,R5,#+1024
-     64                  *buf = usart1_dma_rx_buf;
-   \       0x34   0x....'....        LDR.W    R0,??DataTable13_9
-   \       0x38   0x6020             STR      R0,[R4, #+0]
-     65                  DMA_SetCurrDataCounter(DMA2_Stream1,usart1_rx_len);                
-   \       0x3A   0xF44F 0x6180      MOV      R1,#+1024
-   \       0x3E   0x0030             MOVS     R0,R6
-   \       0x40   0x....'....        BL       DMA_SetCurrDataCounter
-     66                  DMA_Cmd(DMA2_Stream1, ENABLE);
-   \       0x44   0x2101             MOVS     R1,#+1
-   \       0x46   0x0030             MOVS     R0,R6
-   \       0x48   0x....'....        BL       DMA_Cmd
-     67                  
-     68                  return rx_len;
-   \       0x4C   0x0028             MOVS     R0,R5
-   \       0x4E   0xE001             B.N      ??usart1_read_1
-     69              }
-     70              return -1;
-   \                     ??usart1_read_0: (+1)
-   \       0x50   0xF05F 0x30FF      MOVS     R0,#-1
-   \                     ??usart1_read_1: (+1)
-   \       0x54   0xBD70             POP      {R4-R6,PC}       ;; return
-     71          }
+     54          //int usart1_read(uint8_t** buf)
+     55          //{
+     56          //    int rx_len;
+     57          //    if(USART_GetFlagStatus(USART6,USART_FLAG_IDLE)!=RESET)
+     58          //    {
+     59          ////		rx_len = USART6->SR;
+     60          //        rx_len = USART6->DR;
+     61          ////		DMA_Cmd(DMA2_Stream1, DISABLE);                                    
+     62          //        DMA_ClearFlag(DMA2_Stream1,DMA_FLAG_TCIF1);
+     63          //        rx_len = usart1_rx_len - DMA_GetCurrDataCounter(DMA2_Stream1);
+     64          //        *buf = usart1_dma_rx_buf;
+     65          //        DMA_SetCurrDataCounter(DMA2_Stream1,usart1_rx_len);                
+     66          //        DMA_Cmd(DMA2_Stream1, ENABLE);
+     67          //        
+     68          //        return rx_len;
+     69          //    }
+     70          //    return -1;
+     71          //}
      72          
 
-   \                                 In section .text, align 2, keep-with-next
-     73          void USART6_IRQHandler(void)
-     74          {
-   \                     USART6_IRQHandler: (+1)
-   \        0x0   0xB570             PUSH     {R4-R6,LR}
-     75            receiveData=100;
-   \        0x2   0x....'....        LDR.W    R4,??DataTable13_10
-   \        0x6   0x2064             MOVS     R0,#+100
-   \        0x8   0x6020             STR      R0,[R4, #+0]
-     76            int rx_len;
-                       ^
-Warning[Pe550]: variable "rx_len" was set but never used
-     77            if(USART_GetITStatus(USART6, USART_IT_IDLE) != RESET){
-   \        0xA   0x....'....        LDR.W    R5,??DataTable13_7  ;; 0x40011400
-   \        0xE   0xF240 0x4124      MOVW     R1,#+1060
-   \       0x12   0x0028             MOVS     R0,R5
-   \       0x14   0x....'....        BL       USART_GetITStatus
-   \       0x18   0x2800             CMP      R0,#+0
-   \       0x1A   0xD01C             BEQ.N    ??USART6_IRQHandler_0
-     78              DMA_Cmd(DMA2_Stream1, DISABLE);
-   \       0x1C   0x....'....        LDR.W    R6,??DataTable13_4  ;; 0x40026428
-   \       0x20   0x2100             MOVS     R1,#+0
-   \       0x22   0x0030             MOVS     R0,R6
-   \       0x24   0x....'....        BL       DMA_Cmd
-     79              rx_len = usart1_rx_len - DMA_GetCurrDataCounter(DMA2_Stream1);
-   \       0x28   0x0030             MOVS     R0,R6
-   \       0x2A   0x....'....        BL       DMA_GetCurrDataCounter
-   \       0x2E   0xF5D0 0x6080      RSBS     R0,R0,#+1024
-     80              DMA_SetCurrDataCounter(DMA2_Stream1,usart1_rx_len);
-   \       0x32   0xF44F 0x6180      MOV      R1,#+1024
-   \       0x36   0x0030             MOVS     R0,R6
-   \       0x38   0x....'....        BL       DMA_SetCurrDataCounter
-     81              DMA_Cmd(DMA2_Stream1, ENABLE);
-   \       0x3C   0x2101             MOVS     R1,#+1
-   \       0x3E   0x0030             MOVS     R0,R6
-   \       0x40   0x....'....        BL       DMA_Cmd
-     82              DMA_ClearFlag(DMA2_Stream1,DMA_FLAG_TCIF1);//清除通道1的完成標誌
-   \       0x44   0x....'....        LDR.W    R1,??DataTable13_6  ;; 0x10000800
-   \       0x48   0x0030             MOVS     R0,R6
-   \       0x4A   0x....'....        BL       DMA_ClearFlag
-     83              receiveData=USART_ReceiveData(USART6);
-   \       0x4E   0x0028             MOVS     R0,R5
-   \       0x50   0x....'....        BL       USART_ReceiveData
-   \       0x54   0x6020             STR      R0,[R4, #+0]
-     84            }
-     85          //	   int rx_len; 
-     86          //	if(USART_GetITStatus(USART6, USART_IT_IDLE) != RESET)
-     87          //	{
-     88          ////		rx_len = USART6->SR;
-     89          //        rx_len = USART6->DR;
-     90          ////		DMA_Cmd(DMA2_Stream1, DISABLE);                                    
-     91          //        USART_ClearITPendingBit(USART6, USART_IT_IDLE);                       
-     92          //        rx_len = usart1_rx_len - DMA_GetCurrDataCounter(DMA2_Stream1);
-     93          ////		DMA_SetCurrDataCounter(DMA2_Stream1,usart1_rx_len);                
-     94          ////		DMA_Cmd(DMA2_Stream1, ENABLE);
-     95          //	}
-     96          }
-   \                     ??USART6_IRQHandler_0: (+1)
-   \       0x56   0xBD70             POP      {R4-R6,PC}       ;; return
-     97          
+   \                                 In section .bss, align 4
+     73          int index=0;
+   \                     index:
+   \        0x0                      DS8 4
+
+   \                                 In section .data, align 4
+     74          int STATUS_START=0x1;
+   \                     STATUS_START:
+   \        0x0   0x0000'0001        DC32 1
+
+   \                                 In section .data, align 4
+     75          int STATUS_WAIT=0x2;
+   \                     STATUS_WAIT:
+   \        0x0   0x0000'0002        DC32 2
+
+   \                                 In section .data, align 4
+     76          int STATUS_DONE=0x3;
+   \                     STATUS_DONE:
+   \        0x0   0x0000'0003        DC32 3
+
+   \                                 In section .data, align 4
+     77          int STATUS_RECEIVING=0x10;
+   \                     STATUS_RECEIVING:
+   \        0x0   0x0000'0010        DC32 16
+
+   \                                 In section .data, align 4
+     78          int STATUS_RECEIVED=0x11;
+   \                     STATUS_RECEIVED:
+   \        0x0   0x0000'0011        DC32 17
+
+   \                                 In section .data, align 4
+     79          int STATUS_CURRENT=0x10;
+   \                     STATUS_CURRENT:
+   \        0x0   0x0000'0010        DC32 16
+
+   \                                 In section .bss, align 2
+     80          _receiver data;
+   \                     `data`:
+   \        0x0                      DS8 2
+
+   \                                 In section .bss, align 4
+     81          _genes genes;
+   \                     genes:
+   \        0x0                      DS8 20
 
    \                                 In section .text, align 2, keep-with-next
-     98          void dma_tx_config(DMA_Stream_TypeDef* DMAy_Streamx,u32 peripheral_addr,u32 memory_addr,u16 data_length)
-     99          {
+     82          void receiver_data(void){
+   \                     receiver_data: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+     83            data.byte.a=usart1_dma_rx_buf[0];
+   \        0x2   0x....'....        LDR.W    R0,??DataTable12_4
+   \        0x6   0x....'....        LDR.W    R1,??DataTable12_5
+   \        0xA   0x780A             LDRB     R2,[R1, #+0]
+   \        0xC   0x7042             STRB     R2,[R0, #+1]
+     84            data.byte.b=usart1_dma_rx_buf[1];
+   \        0xE   0x784A             LDRB     R2,[R1, #+1]
+   \       0x10   0x7002             STRB     R2,[R0, #+0]
+     85            genes.control1.kp=data.value;
+   \       0x12   0x....'....        LDR.W    R4,??DataTable12_6
+   \       0x16   0x8802             LDRH     R2,[R0, #+0]
+   \       0x18   0x8022             STRH     R2,[R4, #+0]
+     86          //  printf("value = %d, uvalue = %d\n",data.value,data.uValue);    
+     87            data.byte.a=usart1_dma_rx_buf[2];
+   \       0x1A   0x788A             LDRB     R2,[R1, #+2]
+   \       0x1C   0x7042             STRB     R2,[R0, #+1]
+     88            data.byte.b=usart1_dma_rx_buf[3];
+   \       0x1E   0x78CA             LDRB     R2,[R1, #+3]
+   \       0x20   0x7002             STRB     R2,[R0, #+0]
+     89            genes.control1.kd=data.value;
+   \       0x22   0x8802             LDRH     R2,[R0, #+0]
+   \       0x24   0x8062             STRH     R2,[R4, #+2]
+     90          //  printf("value = %d, uvalue = %d\n",data.value,data.uValue);    
+     91            data.byte.a=usart1_dma_rx_buf[4];
+   \       0x26   0x790A             LDRB     R2,[R1, #+4]
+   \       0x28   0x7042             STRB     R2,[R0, #+1]
+     92            data.byte.b=usart1_dma_rx_buf[5];
+   \       0x2A   0x794A             LDRB     R2,[R1, #+5]
+   \       0x2C   0x7002             STRB     R2,[R0, #+0]
+     93            genes.control4.kp=data.value;
+   \       0x2E   0x8802             LDRH     R2,[R0, #+0]
+   \       0x30   0x81A2             STRH     R2,[R4, #+12]
+     94          //  printf("value = %d, uvalue = %d\n",data.value,data.uValue);  
+     95            data.byte.a=usart1_dma_rx_buf[6];
+   \       0x32   0x798A             LDRB     R2,[R1, #+6]
+   \       0x34   0x7042             STRB     R2,[R0, #+1]
+     96            data.byte.b=usart1_dma_rx_buf[7];
+   \       0x36   0x79CA             LDRB     R2,[R1, #+7]
+   \       0x38   0x7002             STRB     R2,[R0, #+0]
+     97            genes.control2.kp=data.value;
+   \       0x3A   0x8802             LDRH     R2,[R0, #+0]
+   \       0x3C   0x80A2             STRH     R2,[R4, #+4]
+     98          //  printf("value = %d, uvalue = %d\n",data.value,data.uValue);  
+     99            data.byte.a=usart1_dma_rx_buf[8];
+   \       0x3E   0x7A0A             LDRB     R2,[R1, #+8]
+   \       0x40   0x7042             STRB     R2,[R0, #+1]
+    100            data.byte.b=usart1_dma_rx_buf[9];
+   \       0x42   0x7A4A             LDRB     R2,[R1, #+9]
+   \       0x44   0x7002             STRB     R2,[R0, #+0]
+    101            genes.control2.kd=data.value;
+   \       0x46   0x8802             LDRH     R2,[R0, #+0]
+   \       0x48   0x80E2             STRH     R2,[R4, #+6]
+    102          //  printf("value = %d, uvalue = %d\n",data.value,data.uValue);  
+    103            data.byte.a=usart1_dma_rx_buf[10];
+   \       0x4A   0x7A8A             LDRB     R2,[R1, #+10]
+   \       0x4C   0x7042             STRB     R2,[R0, #+1]
+    104            data.byte.b=usart1_dma_rx_buf[11];
+   \       0x4E   0x7ACA             LDRB     R2,[R1, #+11]
+   \       0x50   0x7002             STRB     R2,[R0, #+0]
+    105            genes.control5.kp=data.value;
+   \       0x52   0x8802             LDRH     R2,[R0, #+0]
+   \       0x54   0x81E2             STRH     R2,[R4, #+14]
+    106          //  printf("value = %d, uvalue = %d\n",data.value,data.uValue);  
+    107            data.byte.a=usart1_dma_rx_buf[12];
+   \       0x56   0x7B0A             LDRB     R2,[R1, #+12]
+   \       0x58   0x7042             STRB     R2,[R0, #+1]
+    108            data.byte.b=usart1_dma_rx_buf[13];
+   \       0x5A   0x7B4A             LDRB     R2,[R1, #+13]
+   \       0x5C   0x7002             STRB     R2,[R0, #+0]
+    109            genes.control3.kp=data.value;
+   \       0x5E   0x8802             LDRH     R2,[R0, #+0]
+   \       0x60   0x8122             STRH     R2,[R4, #+8]
+    110          //  printf("value = %d, uvalue = %d\n",data.value,data.uValue);  
+    111            data.byte.a=usart1_dma_rx_buf[14];
+   \       0x62   0x7B8A             LDRB     R2,[R1, #+14]
+   \       0x64   0x7042             STRB     R2,[R0, #+1]
+    112            data.byte.b=usart1_dma_rx_buf[15];
+   \       0x66   0x7BCA             LDRB     R2,[R1, #+15]
+   \       0x68   0x7002             STRB     R2,[R0, #+0]
+    113            genes.control3.kd=data.value;
+   \       0x6A   0x8802             LDRH     R2,[R0, #+0]
+   \       0x6C   0x8162             STRH     R2,[R4, #+10]
+    114          //  printf("value = %d, uvalue = %d\n",data.value,data.uValue);    
+    115            data.byte.a=usart1_dma_rx_buf[16];
+   \       0x6E   0x7C0A             LDRB     R2,[R1, #+16]
+   \       0x70   0x7042             STRB     R2,[R0, #+1]
+    116            data.byte.b=usart1_dma_rx_buf[17];
+   \       0x72   0x7C49             LDRB     R1,[R1, #+17]
+   \       0x74   0x7001             STRB     R1,[R0, #+0]
+    117            genes.control6.kp=data.value;
+   \       0x76   0x8800             LDRH     R0,[R0, #+0]
+   \       0x78   0x8220             STRH     R0,[R4, #+16]
+    118          //  printf("value = %d, uvalue = %d\n",data.value,data.uValue);
+    119            
+    120            Velocity_KP_a=genes.control4.kp;
+   \       0x7A   0xF9B4 0x000C      LDRSH    R0,[R4, #+12]
+   \       0x7E   0x....'....        BL       __aeabi_i2f
+   \       0x82   0x....'....        LDR.W    R1,??DataTable12_7
+   \       0x86   0x6008             STR      R0,[R1, #+0]
+    121            //extern float Velocity_KI_a;
+    122            Balance_KP_a=genes.control1.kp;
+   \       0x88   0xF9B4 0x0000      LDRSH    R0,[R4, #+0]
+   \       0x8C   0x....'....        BL       __aeabi_i2f
+   \       0x90   0x....'....        LDR.W    R1,??DataTable12_8
+   \       0x94   0x6008             STR      R0,[R1, #+0]
+    123            //extern float Balance_KI_a;
+    124            Balance_KD_a=genes.control1.kd;
+   \       0x96   0xF9B4 0x0002      LDRSH    R0,[R4, #+2]
+   \       0x9A   0x....'....        BL       __aeabi_i2f
+   \       0x9E   0x....'....        LDR.W    R1,??DataTable12_9
+   \       0xA2   0x6008             STR      R0,[R1, #+0]
+    125            Velocity_KP_b=genes.control5.kp;
+   \       0xA4   0xF9B4 0x000E      LDRSH    R0,[R4, #+14]
+   \       0xA8   0x....'....        BL       __aeabi_i2f
+   \       0xAC   0x....'....        LDR.W    R1,??DataTable12_10
+   \       0xB0   0x6008             STR      R0,[R1, #+0]
+    126            //extern float Velocity_KI_b;
+    127            Balance_KP_b=genes.control2.kp;
+   \       0xB2   0xF9B4 0x0004      LDRSH    R0,[R4, #+4]
+   \       0xB6   0x....'....        BL       __aeabi_i2f
+   \       0xBA   0x....'....        LDR.W    R1,??DataTable12_11
+   \       0xBE   0x6008             STR      R0,[R1, #+0]
+    128            //extern float Balance_Ki_b;
+    129            Balance_KD_b=genes.control2.kd;
+   \       0xC0   0xF9B4 0x0006      LDRSH    R0,[R4, #+6]
+   \       0xC4   0x....'....        BL       __aeabi_i2f
+   \       0xC8   0x....'....        LDR.W    R1,??DataTable12_12
+   \       0xCC   0x6008             STR      R0,[R1, #+0]
+    130            Velocity_KP_c=genes.control6.kp;
+   \       0xCE   0xF9B4 0x0010      LDRSH    R0,[R4, #+16]
+   \       0xD2   0x....'....        BL       __aeabi_i2f
+   \       0xD6   0x....'....        LDR.W    R1,??DataTable12_13
+   \       0xDA   0x6008             STR      R0,[R1, #+0]
+    131            //extern float Velocity_KI_c;
+    132            Balance_KP_c=genes.control3.kp;
+   \       0xDC   0xF9B4 0x0008      LDRSH    R0,[R4, #+8]
+   \       0xE0   0x....'....        BL       __aeabi_i2f
+   \       0xE4   0x....'....        LDR.W    R1,??DataTable12_14
+   \       0xE8   0x6008             STR      R0,[R1, #+0]
+    133            //extern float Balance_Ki_c;
+    134            Balance_KD_c=genes.control3.kd;
+   \       0xEA   0xF9B4 0x000A      LDRSH    R0,[R4, #+10]
+   \       0xEE   0x....'....        BL       __aeabi_i2f
+   \       0xF2   0x....'....        LDR.W    R1,??DataTable12_15
+   \       0xF6   0x6008             STR      R0,[R1, #+0]
+    135          }
+   \       0xF8   0xBD10             POP      {R4,PC}          ;; return
+
+   \                                 In section .text, align 2, keep-with-next
+    136          void USART6_IRQHandler(void){
+   \                     USART6_IRQHandler: (+1)
+   \        0x0   0xB538             PUSH     {R3-R5,LR}
+    137            int rx_len; 
+                       ^
+Warning[Pe550]: variable "rx_len" was set but never used
+    138            if(USART_GetITStatus(USART6, USART_IT_IDLE) != RESET){
+   \        0x2   0x....'....        LDR.W    R4,??DataTable12_16  ;; 0x40011400
+   \        0x6   0xF240 0x4524      MOVW     R5,#+1060
+   \        0xA   0x0029             MOVS     R1,R5
+   \        0xC   0x0020             MOVS     R0,R4
+   \        0xE   0x....'....        BL       USART_GetITStatus
+   \       0x12   0x2800             CMP      R0,#+0
+   \       0x14   0xD05C             BEQ.N    ??USART6_IRQHandler_0
+    139              rx_len = USART6->DR;
+   \       0x16   0x....'....        LDR.W    R0,??DataTable12_17  ;; 0x40011404
+   \       0x1A   0x8800             LDRH     R0,[R0, #+0]
+   \       0x1C   0xB280             UXTH     R0,R0            ;; ZeroExt  R0,R0,#+16,#+16
+    140              USART_ClearITPendingBit(USART6, USART_IT_IDLE);
+   \       0x1E   0x0029             MOVS     R1,R5
+   \       0x20   0x0020             MOVS     R0,R4
+   \       0x22   0x....'....        BL       USART_ClearITPendingBit
+    141              DMA_Cmd(DMA2_Stream1, DISABLE);
+   \       0x26   0x....'....        LDR.W    R4,??DataTable12_18  ;; 0x40026428
+   \       0x2A   0x2100             MOVS     R1,#+0
+   \       0x2C   0x0020             MOVS     R0,R4
+   \       0x2E   0x....'....        BL       DMA_Cmd
+    142              DMA_SetCurrDataCounter(DMA2_Stream1,usart1_rx_len);
+   \       0x32   0x2114             MOVS     R1,#+20
+   \       0x34   0x0020             MOVS     R0,R4
+   \       0x36   0x....'....        BL       DMA_SetCurrDataCounter
+    143              if (STATUS_CURRENT == STATUS_RECEIVING){
+   \       0x3A   0x....'....        LDR.W    R1,??DataTable12_19
+   \       0x3E   0x....'....        LDR.W    R0,??DataTable12_20
+   \       0x42   0x6802             LDR      R2,[R0, #+0]
+   \       0x44   0x680B             LDR      R3,[R1, #+0]
+   \       0x46   0x429A             CMP      R2,R3
+   \       0x48   0xD106             BNE.N    ??USART6_IRQHandler_1
+    144                STATUS_CURRENT = STATUS_RECEIVED;
+   \       0x4A   0x....'....        LDR.W    R1,??DataTable12_21
+   \       0x4E   0x6809             LDR      R1,[R1, #+0]
+   \       0x50   0x6001             STR      R1,[R0, #+0]
+    145                receiver_data();
+   \       0x52   0x....'....        BL       receiver_data
+   \       0x56   0xE032             B.N      ??USART6_IRQHandler_2
+    146              }else if(STATUS_CURRENT == STATUS_RECEIVED){
+   \                     ??USART6_IRQHandler_1: (+1)
+   \       0x58   0x6802             LDR      R2,[R0, #+0]
+   \       0x5A   0x....'....        LDR.W    R3,??DataTable12_21
+   \       0x5E   0x681B             LDR      R3,[R3, #+0]
+   \       0x60   0x429A             CMP      R2,R3
+   \       0x62   0xD114             BNE.N    ??USART6_IRQHandler_3
+    147                //接收完PID參數等待執行訊號
+    148                if (usart1_dma_rx_buf[0]==STATUS_START){
+   \       0x64   0x....'....        LDR.W    R1,??DataTable12_5
+   \       0x68   0x7809             LDRB     R1,[R1, #+0]
+   \       0x6A   0x....'....        LDR.W    R2,??DataTable12_22
+   \       0x6E   0x6812             LDR      R2,[R2, #+0]
+   \       0x70   0x4291             CMP      R1,R2
+   \       0x72   0xD124             BNE.N    ??USART6_IRQHandler_2
+    149                  //開始訊號，開始測試並且回傳角度
+    150                  STATUS_CURRENT = STATUS_WAIT;
+   \       0x74   0x....'....        LDR.W    R1,??DataTable12_23
+   \       0x78   0x6809             LDR      R1,[R1, #+0]
+   \       0x7A   0x6001             STR      R1,[R0, #+0]
+    151                  flag_stop=0;
+   \       0x7C   0x2000             MOVS     R0,#+0
+   \       0x7E   0x....'....        LDR.W    R1,??DataTable12_24
+   \       0x82   0x6008             STR      R0,[R1, #+0]
+    152                  nvic_flag=1;
+   \       0x84   0x2001             MOVS     R0,#+1
+   \       0x86   0x....'....        LDR.W    R1,??DataTable12_25
+   \       0x8A   0x6008             STR      R0,[R1, #+0]
+   \       0x8C   0xE017             B.N      ??USART6_IRQHandler_2
+    153                }
+    154              }else if(STATUS_CURRENT == STATUS_WAIT){
+   \                     ??USART6_IRQHandler_3: (+1)
+   \       0x8E   0x6802             LDR      R2,[R0, #+0]
+   \       0x90   0x....'....        LDR.W    R3,??DataTable12_23
+   \       0x94   0x681B             LDR      R3,[R3, #+0]
+   \       0x96   0x429A             CMP      R2,R3
+   \       0x98   0xD111             BNE.N    ??USART6_IRQHandler_2
+    155                if (usart1_dma_rx_buf[0] == STATUS_DONE){
+   \       0x9A   0x....'....        LDR.W    R2,??DataTable12_5
+   \       0x9E   0x7812             LDRB     R2,[R2, #+0]
+   \       0xA0   0x....'....        LDR.W    R3,??DataTable12_26
+   \       0xA4   0x681B             LDR      R3,[R3, #+0]
+   \       0xA6   0x429A             CMP      R2,R3
+   \       0xA8   0xD109             BNE.N    ??USART6_IRQHandler_2
+    156                  // 結束訊號，停止輪子
+    157                  STATUS_CURRENT = STATUS_RECEIVING;
+   \       0xAA   0x6809             LDR      R1,[R1, #+0]
+   \       0xAC   0x6001             STR      R1,[R0, #+0]
+    158                  flag_stop=1;
+   \       0xAE   0x2001             MOVS     R0,#+1
+   \       0xB0   0x....'....        LDR.W    R1,??DataTable12_24
+   \       0xB4   0x6008             STR      R0,[R1, #+0]
+    159                  nvic_flag=0;
+   \       0xB6   0x2000             MOVS     R0,#+0
+   \       0xB8   0x....'....        LDR.W    R1,??DataTable12_25
+   \       0xBC   0x6008             STR      R0,[R1, #+0]
+    160          //        MPU6050_RESET();
+    161                }
+    162              }    
+    163              DMA_Cmd(DMA2_Stream1, ENABLE);
+   \                     ??USART6_IRQHandler_2: (+1)
+   \       0xBE   0x2101             MOVS     R1,#+1
+   \       0xC0   0x0020             MOVS     R0,R4
+   \       0xC2   0x....'....        BL       DMA_Cmd
+    164              DMA_ClearFlag(DMA2_Stream1,DMA_FLAG_TCIF1);//清除通道1的完成標誌
+   \       0xC6   0x....'....        LDR.W    R1,??DataTable12_27  ;; 0x10000800
+   \       0xCA   0x0020             MOVS     R0,R4
+   \       0xCC   0x....'....        BL       DMA_ClearFlag
+    165            }
+    166          }
+   \                     ??USART6_IRQHandler_0: (+1)
+   \       0xD0   0xBD31             POP      {R0,R4,R5,PC}    ;; return
+    167          
+
+   \                                 In section .text, align 2, keep-with-next
+    168          void dma_tx_config(DMA_Stream_TypeDef* DMAy_Streamx,u32 peripheral_addr,u32 memory_addr,u16 data_length)
+    169          {
    \                     dma_tx_config: (+1)
    \        0x0   0xB5F0             PUSH     {R4-R7,LR}
    \        0x2   0xB08F             SUB      SP,SP,#+60
@@ -310,83 +510,83 @@ Warning[Pe550]: variable "rx_len" was set but never used
    \        0x6   0x000E             MOVS     R6,R1
    \        0x8   0x0017             MOVS     R7,R2
    \        0xA   0x001D             MOVS     R5,R3
-    100            DMA_InitTypeDef DMA_InitStructure;
-    101            RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_DMA2, ENABLE);	                    //DMA使能     stm32f103 only have one DMA1                                                                             
+    170            DMA_InitTypeDef DMA_InitStructure;
+    171            RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_DMA2, ENABLE);	                    //DMA使能     stm32f103 only have one DMA1                                                                             
    \        0xC   0x2101             MOVS     R1,#+1
    \        0xE   0xF45F 0x0080      MOVS     R0,#+4194304
    \       0x12   0x....'....        BL       RCC_AHB1PeriphClockCmd
-    102            DMA_DeInit(DMAy_Streamx);                                                                                                       
+    172            DMA_DeInit(DMAy_Streamx);                                                                                                       
    \       0x16   0x0020             MOVS     R0,R4
    \       0x18   0x....'....        BL       DMA_DeInit
-    103            DMA_InitStructure.DMA_Channel = DMA_Channel_5;
+    173            DMA_InitStructure.DMA_Channel = DMA_Channel_5;
    \       0x1C   0xF05F 0x6020      MOVS     R0,#+167772160
    \       0x20   0x9000             STR      R0,[SP, #+0]
-    104            DMA_InitStructure.DMA_PeripheralBaseAddr = peripheral_addr;             //外設地址 給DMA的目的初始位址 (USART的Data register)  
+    174            DMA_InitStructure.DMA_PeripheralBaseAddr = peripheral_addr;             //外設地址 給DMA的目的初始位址 (USART的Data register)  
    \       0x22   0x9601             STR      R6,[SP, #+4]
-    105            DMA_InitStructure.DMA_Memory0BaseAddr =memory_addr;                      //内存地址 內存的Buf array位址(usart1_dma_tx_buf)
+    175            DMA_InitStructure.DMA_Memory0BaseAddr =memory_addr;                      //内存地址 內存的Buf array位址(usart1_dma_tx_buf)
    \       0x24   0x9702             STR      R7,[SP, #+8]
-    106            DMA_InitStructure.DMA_DIR = DMA_DIR_MemoryToPeripheral;                      //傳輸方向：内存到外設（外設作為目的地）
+    176            DMA_InitStructure.DMA_DIR = DMA_DIR_MemoryToPeripheral;                      //傳輸方向：内存到外設（外設作為目的地）
    \       0x26   0x2040             MOVS     R0,#+64
    \       0x28   0x9003             STR      R0,[SP, #+12]
-    107            DMA_InitStructure.DMA_BufferSize = data_length;                         //傳輸長度                      
+    177            DMA_InitStructure.DMA_BufferSize = data_length;                         //傳輸長度                      
    \       0x2A   0xB2AD             UXTH     R5,R5            ;; ZeroExt  R5,R5,#+16,#+16
    \       0x2C   0x9504             STR      R5,[SP, #+16]
-    108            DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;        //外設地址不變 DMA只與USART6建立聯絡     
+    178            DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;        //外設地址不變 DMA只與USART6建立聯絡     
    \       0x2E   0x2000             MOVS     R0,#+0
    \       0x30   0x9005             STR      R0,[SP, #+20]
-    109            DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;                 //内存地址自增  
+    179            DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;                 //内存地址自增  
    \       0x32   0xF44F 0x6080      MOV      R0,#+1024
    \       0x36   0x9006             STR      R0,[SP, #+24]
-    110            DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte; //字節傳輸  
+    180            DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte; //字節傳輸  
    \       0x38   0x2000             MOVS     R0,#+0
    \       0x3A   0x9007             STR      R0,[SP, #+28]
-    111            DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;         //字節傳輸 一次傳輸8個BITS
+    181            DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;         //字節傳輸 一次傳輸8個BITS
    \       0x3C   0x2000             MOVS     R0,#+0
    \       0x3E   0x9008             STR      R0,[SP, #+32]
-    112            DMA_InitStructure.DMA_Mode = DMA_Mode_Normal;                           //正常模式（非循環），只傳輸一次，如一次傳輸完成，下次傳輸则重新配置（關閉后再使能）其地址及長度等                                    
+    182            DMA_InitStructure.DMA_Mode = DMA_Mode_Normal;                           //正常模式（非循環），只傳輸一次，如一次傳輸完成，下次傳輸则重新配置（關閉后再使能）其地址及長度等                                    
    \       0x40   0x2000             MOVS     R0,#+0
    \       0x42   0x9009             STR      R0,[SP, #+36]
-    113            DMA_InitStructure.DMA_Priority = DMA_Priority_VeryHigh;             
+    183            DMA_InitStructure.DMA_Priority = DMA_Priority_VeryHigh;             
    \       0x44   0xF45F 0x3040      MOVS     R0,#+196608
    \       0x48   0x900A             STR      R0,[SP, #+40]
-    114            DMA_InitStructure.DMA_FIFOMode = DMA_FIFOMode_Disable;
+    184            DMA_InitStructure.DMA_FIFOMode = DMA_FIFOMode_Disable;
    \       0x4A   0x2000             MOVS     R0,#+0
    \       0x4C   0x900B             STR      R0,[SP, #+44]
-    115            DMA_InitStructure.DMA_FIFOThreshold = DMA_FIFOThreshold_HalfFull;
+    185            DMA_InitStructure.DMA_FIFOThreshold = DMA_FIFOThreshold_HalfFull;
    \       0x4E   0x2001             MOVS     R0,#+1
    \       0x50   0x900C             STR      R0,[SP, #+48]
-    116            DMA_InitStructure.DMA_MemoryBurst = DMA_MemoryBurst_Single;
+    186            DMA_InitStructure.DMA_MemoryBurst = DMA_MemoryBurst_Single;
    \       0x52   0x2000             MOVS     R0,#+0
    \       0x54   0x900D             STR      R0,[SP, #+52]
-    117            DMA_InitStructure.DMA_PeripheralBurst = DMA_PeripheralBurst_Single;
+    187            DMA_InitStructure.DMA_PeripheralBurst = DMA_PeripheralBurst_Single;
    \       0x56   0x2000             MOVS     R0,#+0
    \       0x58   0x900E             STR      R0,[SP, #+56]
-    118            
-    119            //DMA_InitStructure.DMA_M2M = DMA_M2M_Disable;                            //禁止内存到内存傳輸                                     
-    120            DMA_Init(DMAy_Streamx, &DMA_InitStructure);     
+    188            
+    189            //DMA_InitStructure.DMA_M2M = DMA_M2M_Disable;                            //禁止内存到内存傳輸                                     
+    190            DMA_Init(DMAy_Streamx, &DMA_InitStructure);     
    \       0x5A   0x4669             MOV      R1,SP
    \       0x5C   0x0020             MOVS     R0,R4
    \       0x5E   0x....'....        BL       DMA_Init
-    121            
-    122            DMA_ITConfig(DMAy_Streamx,DMA_IT_TC,ENABLE);
+    191            
+    192            DMA_ITConfig(DMAy_Streamx,DMA_IT_TC,ENABLE);
    \       0x62   0x2201             MOVS     R2,#+1
    \       0x64   0x2110             MOVS     R1,#+16
    \       0x66   0x0020             MOVS     R0,R4
    \       0x68   0x....'....        BL       DMA_ITConfig
-    123            //    DMA_ITConfig(DMA_CHx,DMA1_IT_TC4,ENABLE);                             //發送完成中斷使能
-    124            
-    125            //    NVIC_InitStructure.NVIC_IRQChannel = DMA1_Stream6_IRQn;
-    126            //    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=3 ;
-    127            //    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 3;		
-    128            //    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;			
-    129            //    NVIC_Init(&NVIC_InitStructure);	
-    130          }
+    193            //    DMA_ITConfig(DMA_CHx,DMA1_IT_TC4,ENABLE);                             //發送完成中斷使能
+    194            
+    195            //    NVIC_InitStructure.NVIC_IRQChannel = DMA1_Stream6_IRQn;
+    196            //    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=3 ;
+    197            //    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 3;		
+    198            //    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;			
+    199            //    NVIC_Init(&NVIC_InitStructure);	
+    200          }
    \       0x6C   0xB00F             ADD      SP,SP,#+60
    \       0x6E   0xBDF0             POP      {R4-R7,PC}       ;; return
 
    \                                 In section .text, align 2, keep-with-next
-    131          void dma_rx_config(DMA_Stream_TypeDef* DMAy_Streamx,u32 peripheral_addr,u32 memory_addr,u16 data_length)
-    132          {
+    201          void dma_rx_config(DMA_Stream_TypeDef* DMAy_Streamx,u32 peripheral_addr,u32 memory_addr,u16 data_length)
+    202          {
    \                     dma_rx_config: (+1)
    \        0x0   0xB5F0             PUSH     {R4-R7,LR}
    \        0x2   0xB08F             SUB      SP,SP,#+60
@@ -394,372 +594,372 @@ Warning[Pe550]: variable "rx_len" was set but never used
    \        0x6   0x000E             MOVS     R6,R1
    \        0x8   0x0017             MOVS     R7,R2
    \        0xA   0x001D             MOVS     R5,R3
-    133              DMA_InitTypeDef DMA_InitStructure;
-    134              RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_DMA2, ENABLE);
+    203            DMA_InitTypeDef DMA_InitStructure;
+    204            RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_DMA2, ENABLE);
    \        0xC   0x2101             MOVS     R1,#+1
    \        0xE   0xF45F 0x0080      MOVS     R0,#+4194304
    \       0x12   0x....'....        BL       RCC_AHB1PeriphClockCmd
-    135              
-    136              DMA_Cmd(DMAy_Streamx, DISABLE);
+    205            
+    206            DMA_Cmd(DMAy_Streamx, DISABLE);
    \       0x16   0x2100             MOVS     R1,#+0
    \       0x18   0x0020             MOVS     R0,R4
    \       0x1A   0x....'....        BL       DMA_Cmd
-    137              DMA_DeInit(DMAy_Streamx);
+    207            DMA_DeInit(DMAy_Streamx);
    \       0x1E   0x0020             MOVS     R0,R4
    \       0x20   0x....'....        BL       DMA_DeInit
-    138              DMA_InitStructure.DMA_Channel = DMA_Channel_5;
+    208            DMA_InitStructure.DMA_Channel = DMA_Channel_5;
    \       0x24   0xF05F 0x6020      MOVS     R0,#+167772160
    \       0x28   0x9000             STR      R0,[SP, #+0]
-    139              DMA_InitStructure.DMA_PeripheralBaseAddr = peripheral_addr;  
+    209            DMA_InitStructure.DMA_PeripheralBaseAddr = peripheral_addr;  
    \       0x2A   0x9601             STR      R6,[SP, #+4]
-    140              DMA_InitStructure.DMA_Memory0BaseAddr = memory_addr;  
+    210            DMA_InitStructure.DMA_Memory0BaseAddr = memory_addr;  
    \       0x2C   0x9702             STR      R7,[SP, #+8]
-    141              DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralToMemory;                    
+    211            DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralToMemory;                    
    \       0x2E   0x2000             MOVS     R0,#+0
    \       0x30   0x9003             STR      R0,[SP, #+12]
-    142              DMA_InitStructure.DMA_BufferSize = data_length;  
+    212            DMA_InitStructure.DMA_BufferSize = data_length;  
    \       0x32   0xB2AD             UXTH     R5,R5            ;; ZeroExt  R5,R5,#+16,#+16
    \       0x34   0x9504             STR      R5,[SP, #+16]
-    143              DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;  
+    213            DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;  
    \       0x36   0x2000             MOVS     R0,#+0
    \       0x38   0x9005             STR      R0,[SP, #+20]
-    144              DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable; 
+    214            DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable; 
    \       0x3A   0xF44F 0x6080      MOV      R0,#+1024
    \       0x3E   0x9006             STR      R0,[SP, #+24]
-    145              DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte; 
+    215            DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte; 
    \       0x40   0x2000             MOVS     R0,#+0
    \       0x42   0x9007             STR      R0,[SP, #+28]
-    146              DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte; 
+    216            DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte; 
    \       0x44   0x2000             MOVS     R0,#+0
    \       0x46   0x9008             STR      R0,[SP, #+32]
-    147              DMA_InitStructure.DMA_Mode = DMA_Mode_Normal;//DMA_Mode_Circular;                                      
-   \       0x48   0x2000             MOVS     R0,#+0
-   \       0x4A   0x9009             STR      R0,[SP, #+36]
-    148              DMA_InitStructure.DMA_Priority = DMA_Priority_VeryHigh;
-   \       0x4C   0xF45F 0x3040      MOVS     R0,#+196608
-   \       0x50   0x900A             STR      R0,[SP, #+40]
-    149              //DMA_InitStructure.DMA_M2M = DMA_M2M_Disable;  
-    150              DMA_Init(DMAy_Streamx, &DMA_InitStructure);    
-   \       0x52   0x4669             MOV      R1,SP
-   \       0x54   0x0020             MOVS     R0,R4
-   \       0x56   0x....'....        BL       DMA_Init
-    151          //    DMA_SetCurrDataCounter(DMAy_Streamx,usart1_rx_len);
-    152              DMA_ClearFlag(DMA2_Stream1,DMA_FLAG_FEIF1 || DMA_FLAG_DMEIF1 || DMA_FLAG_TEIF1 || DMA_FLAG_HTIF1 || DMA_FLAG_TCIF1);
-   \       0x5A   0x2101             MOVS     R1,#+1
-   \       0x5C   0x....'....        LDR.W    R0,??DataTable13_4  ;; 0x40026428
-   \       0x60   0x....'....        BL       DMA_ClearFlag
-    153          //    DMA_ITConfig(DMAy_Streamx,DMA_IT_TC,ENABLE);
-    154          //    DMA_ITConfig(DMAy_Streamx,DMA1_IT_TC5,ENABLE); 
-    155              DMA_Cmd(DMAy_Streamx, ENABLE);
-   \       0x64   0x2101             MOVS     R1,#+1
-   \       0x66   0x0020             MOVS     R0,R4
-   \       0x68   0x....'....        BL       DMA_Cmd
-    156          
-    157          //    NVIC_InitTypeDef NVIC_InitStructure;
-    158          //    NVIC_InitStructure.NVIC_IRQChannel = DMA2_Stream1_IRQn;
-    159          //    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=1 ;
-    160          //    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;		
-    161          //    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;			
-    162          //    NVIC_Init(&NVIC_InitStructure);	
-    163              
-    164          }
-   \       0x6C   0xB00F             ADD      SP,SP,#+60
-   \       0x6E   0xBDF0             POP      {R4-R7,PC}       ;; return
-    165          
+    217            DMA_InitStructure.DMA_Mode = DMA_Mode_Circular;                                      
+   \       0x48   0xF44F 0x7080      MOV      R0,#+256
+   \       0x4C   0x9009             STR      R0,[SP, #+36]
+    218            DMA_InitStructure.DMA_Priority = DMA_Priority_VeryHigh;
+   \       0x4E   0xF45F 0x3040      MOVS     R0,#+196608
+   \       0x52   0x900A             STR      R0,[SP, #+40]
+    219            //DMA_InitStructure.DMA_M2M = DMA_M2M_Disable;  
+    220            DMA_Init(DMAy_Streamx, &DMA_InitStructure);    
+   \       0x54   0x4669             MOV      R1,SP
+   \       0x56   0x0020             MOVS     R0,R4
+   \       0x58   0x....'....        BL       DMA_Init
+    221            //    DMA_SetCurrDataCounter(DMAy_Streamx,usart1_rx_len);
+    222            DMA_ClearFlag(DMA2_Stream1,DMA_FLAG_FEIF1 || DMA_FLAG_DMEIF1 || DMA_FLAG_TEIF1 || DMA_FLAG_HTIF1 || DMA_FLAG_TCIF1);
+   \       0x5C   0x2101             MOVS     R1,#+1
+   \       0x5E   0x....'....        LDR.W    R0,??DataTable12_18  ;; 0x40026428
+   \       0x62   0x....'....        BL       DMA_ClearFlag
+    223            //    DMA_ITConfig(DMAy_Streamx,DMA_IT_TC,ENABLE);
+    224            //    DMA_ITConfig(DMAy_Streamx,DMA1_IT_TC5,ENABLE); 
+    225            DMA_Cmd(DMAy_Streamx, ENABLE);
+   \       0x66   0x2101             MOVS     R1,#+1
+   \       0x68   0x0020             MOVS     R0,R4
+   \       0x6A   0x....'....        BL       DMA_Cmd
+    226            
+    227            //    NVIC_InitTypeDef NVIC_InitStructure;
+    228            //    NVIC_InitStructure.NVIC_IRQChannel = DMA2_Stream1_IRQn;
+    229            //    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=1 ;
+    230            //    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;		
+    231            //    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;			
+    232            //    NVIC_Init(&NVIC_InitStructure);	
+    233            
+    234          }
+   \       0x6E   0xB00F             ADD      SP,SP,#+60
+   \       0x70   0xBDF0             POP      {R4-R7,PC}       ;; return
+    235          
 
    \                                 In section .text, align 2, keep-with-next
-    166          void usart1_init(u32 bound)
-    167          {
+    236          void usart1_init(u32 bound)
+    237          {
    \                     usart1_init: (+1)
    \        0x0   0xB538             PUSH     {R3-R5,LR}
    \        0x2   0xB086             SUB      SP,SP,#+24
    \        0x4   0x0004             MOVS     R4,R0
-    168            GPIO_InitTypeDef   GPIO_InitStructure;   //初始化GPIO
-    169            USART_InitTypeDef  USART_InitStructure;  //初始化Usart
-    170            
-    171            RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOG, ENABLE);   //使能GPIOG
+    238            GPIO_InitTypeDef   GPIO_InitStructure;   //初始化GPIO
+    239            USART_InitTypeDef  USART_InitStructure;  //初始化Usart
+    240            
+    241            RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOG, ENABLE);   //使能GPIOG
    \        0x6   0x2101             MOVS     R1,#+1
    \        0x8   0x2040             MOVS     R0,#+64
    \        0xA   0x....'....        BL       RCC_AHB1PeriphClockCmd
-    172            RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART6,ENABLE);   //使能USART2
+    242            RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART6,ENABLE);   //使能USART2
    \        0xE   0x2101             MOVS     R1,#+1
    \       0x10   0x2020             MOVS     R0,#+32
    \       0x12   0x....'....        BL       RCC_APB2PeriphClockCmd
-    173            
-    174            GPIO_PinAFConfig(GPIOG,GPIO_PinSource14,GPIO_AF_USART6);
-   \       0x16   0x....'....        LDR.W    R5,??DataTable13_11  ;; 0x40021800
+    243            
+    244            GPIO_PinAFConfig(GPIOG,GPIO_PinSource14,GPIO_AF_USART6);
+   \       0x16   0x....'....        LDR.W    R5,??DataTable12_28  ;; 0x40021800
    \       0x1A   0x2208             MOVS     R2,#+8
    \       0x1C   0x210E             MOVS     R1,#+14
    \       0x1E   0x0028             MOVS     R0,R5
    \       0x20   0x....'....        BL       GPIO_PinAFConfig
-    175            GPIO_PinAFConfig(GPIOG,GPIO_PinSource9,GPIO_AF_USART6);
+    245            GPIO_PinAFConfig(GPIOG,GPIO_PinSource9,GPIO_AF_USART6);
    \       0x24   0x2208             MOVS     R2,#+8
    \       0x26   0x2109             MOVS     R1,#+9
    \       0x28   0x0028             MOVS     R0,R5
    \       0x2A   0x....'....        BL       GPIO_PinAFConfig
-    176            
-    177            
-    178            //USART6 Tx(PG.09) 
-    179            GPIO_InitStructure.GPIO_Pin = GPIO_Pin_14; 
+    246            
+    247            
+    248            //USART6 Tx(PG.09) 
+    249            GPIO_InitStructure.GPIO_Pin = GPIO_Pin_14; 
    \       0x2E   0xF44F 0x4080      MOV      R0,#+16384
    \       0x32   0x9000             STR      R0,[SP, #+0]
-    180            GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; 
+    250            GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; 
    \       0x34   0x2002             MOVS     R0,#+2
    \       0x36   0xF88D 0x0005      STRB     R0,[SP, #+5]
-    181            GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;  // represent as a usart port 
+    251            GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;  // represent as a usart port 
    \       0x3A   0x2002             MOVS     R0,#+2
    \       0x3C   0xF88D 0x0004      STRB     R0,[SP, #+4]
-    182            GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+    252            GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
    \       0x40   0x2000             MOVS     R0,#+0
    \       0x42   0xF88D 0x0006      STRB     R0,[SP, #+6]
-    183            GPIO_Init(GPIOG, &GPIO_InitStructure);
+    253            GPIO_Init(GPIOG, &GPIO_InitStructure);
    \       0x46   0x4669             MOV      R1,SP
    \       0x48   0x0028             MOVS     R0,R5
    \       0x4A   0x....'....        BL       GPIO_Init
-    184            //USART6 Rx(PG.10) 
-    185            GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9; 
+    254            //USART6 Rx(PG.10) 
+    255            GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9; 
    \       0x4E   0xF44F 0x7000      MOV      R0,#+512
    \       0x52   0x9000             STR      R0,[SP, #+0]
-    186            GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; 
+    256            GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; 
    \       0x54   0x2002             MOVS     R0,#+2
    \       0x56   0xF88D 0x0005      STRB     R0,[SP, #+5]
-    187          //  GPIO_InitStructure.GPIO_OType = GPIO_Mode_AF;
-    188            GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF; // allow low voltage or high voltage 
+    257            //  GPIO_InitStructure.GPIO_OType = GPIO_Mode_AF;
+    258            GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF; // allow low voltage or high voltage 
    \       0x5A   0x2002             MOVS     R0,#+2
    \       0x5C   0xF88D 0x0004      STRB     R0,[SP, #+4]
-    189            GPIO_Init(GPIOG, &GPIO_InitStructure);
+    259            GPIO_Init(GPIOG, &GPIO_InitStructure);
    \       0x60   0x4669             MOV      R1,SP
    \       0x62   0x0028             MOVS     R0,R5
    \       0x64   0x....'....        BL       GPIO_Init
-    190            
-    191            //USART_InitTypeDef USART_InitStructure;
-    192            USART_InitStructure.USART_BaudRate = bound; 
+    260            
+    261            //USART_InitTypeDef USART_InitStructure;
+    262            USART_InitStructure.USART_BaudRate = bound; 
    \       0x68   0x9402             STR      R4,[SP, #+8]
-    193            USART_InitStructure.USART_WordLength = USART_WordLength_8b; 
+    263            USART_InitStructure.USART_WordLength = USART_WordLength_8b; 
    \       0x6A   0x2000             MOVS     R0,#+0
    \       0x6C   0xF8AD 0x000C      STRH     R0,[SP, #+12]
-    194            USART_InitStructure.USART_StopBits = USART_StopBits_1; 
+    264            USART_InitStructure.USART_StopBits = USART_StopBits_1; 
    \       0x70   0x2000             MOVS     R0,#+0
    \       0x72   0xF8AD 0x000E      STRH     R0,[SP, #+14]
-    195            USART_InitStructure.USART_Parity = USART_Parity_No; 
+    265            USART_InitStructure.USART_Parity = USART_Parity_No; 
    \       0x76   0x2000             MOVS     R0,#+0
    \       0x78   0xF8AD 0x0010      STRH     R0,[SP, #+16]
-    196            USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
+    266            USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
    \       0x7C   0x2000             MOVS     R0,#+0
    \       0x7E   0xF8AD 0x0014      STRH     R0,[SP, #+20]
-    197            USART_InitStructure.USART_Mode = USART_Mode_Tx | USART_Mode_Rx; 
+    267            USART_InitStructure.USART_Mode = USART_Mode_Tx | USART_Mode_Rx; 
    \       0x82   0x200C             MOVS     R0,#+12
    \       0x84   0xF8AD 0x0012      STRH     R0,[SP, #+18]
-    198            USART_Init(USART6, &USART_InitStructure);
-   \       0x88   0x....'....        LDR.W    R4,??DataTable13_7  ;; 0x40011400
+    268            USART_Init(USART6, &USART_InitStructure);
+   \       0x88   0x....'....        LDR.W    R4,??DataTable12_16  ;; 0x40011400
    \       0x8C   0xA902             ADD      R1,SP,#+8
    \       0x8E   0x0020             MOVS     R0,R4
    \       0x90   0x....'....        BL       USART_Init
-    199            
-    200            USART_Cmd(USART6, ENABLE);   
+    269            
+    270            USART_Cmd(USART6, ENABLE);   
    \       0x94   0x2101             MOVS     R1,#+1
    \       0x96   0x0020             MOVS     R0,R4
    \       0x98   0x....'....        BL       USART_Cmd
-    201            USART_DMACmd(USART6, USART_DMAReq_Tx, ENABLE); //開啟usart的DMA傳輸功能
+    271            USART_DMACmd(USART6, USART_DMAReq_Tx, ENABLE); //開啟usart的DMA傳輸功能
    \       0x9C   0x2201             MOVS     R2,#+1
    \       0x9E   0x2180             MOVS     R1,#+128
    \       0xA0   0x0020             MOVS     R0,R4
    \       0xA2   0x....'....        BL       USART_DMACmd
-    202            USART_DMACmd(USART6, USART_DMAReq_Rx, ENABLE); 
+    272            USART_DMACmd(USART6, USART_DMAReq_Rx, ENABLE); 
    \       0xA6   0x2201             MOVS     R2,#+1
    \       0xA8   0x2140             MOVS     R1,#+64
    \       0xAA   0x0020             MOVS     R0,R4
    \       0xAC   0x....'....        BL       USART_DMACmd
-    203            USART_ITConfig(USART6, USART_IT_IDLE, ENABLE);
+    273            USART_ITConfig(USART6, USART_IT_IDLE, ENABLE);
    \       0xB0   0x2201             MOVS     R2,#+1
    \       0xB2   0xF240 0x4124      MOVW     R1,#+1060
    \       0xB6   0x0020             MOVS     R0,R4
    \       0xB8   0x....'....        BL       USART_ITConfig
-    204            
-    205            dma_tx_config(DMA2_Stream7,(uint32_t)&USART6->DR,(uint32_t)usart1_dma_tx_buf,usart1_tx_len); //設定外設USART6->DR而usart1_dma_tx_buf為資料初始位址 也就是我們上位機的資料
-   \       0xBC   0x....'....        LDR.W    R4,??DataTable13_8  ;; 0x40011404
+    274            
+    275            dma_tx_config(DMA2_Stream7,(uint32_t)&USART6->DR,(uint32_t)usart1_dma_tx_buf,usart1_tx_len); //設定外設USART6->DR而usart1_dma_tx_buf為資料初始位址 也就是我們上位機的資料
+   \       0xBC   0x....'....        LDR.W    R4,??DataTable12_17  ;; 0x40011404
    \       0xC0   0xF44F 0x6380      MOV      R3,#+1024
-   \       0xC4   0x....'....        LDR.W    R2,??DataTable13_3
+   \       0xC4   0x....'....        LDR.W    R2,??DataTable12_3
    \       0xC8   0x0021             MOVS     R1,R4
-   \       0xCA   0x....'....        LDR.W    R0,??DataTable13  ;; 0x400264b8
+   \       0xCA   0x....'....        LDR.W    R0,??DataTable12  ;; 0x400264b8
    \       0xCE   0x....'....        BL       dma_tx_config
-    206            dma_rx_config(DMA2_Stream1,(u32)&USART6->DR,(u32)usart1_dma_rx_buf,usart1_rx_len);
-   \       0xD2   0xF44F 0x6380      MOV      R3,#+1024
-   \       0xD6   0x....'....        LDR.W    R2,??DataTable13_9
-   \       0xDA   0x0021             MOVS     R1,R4
-   \       0xDC   0x....'....        LDR.W    R0,??DataTable13_4  ;; 0x40026428
-   \       0xE0   0x....'....        BL       dma_rx_config
-    207            
-    208            //    NVIC_InitStructure.NVIC_IRQChannel = USART6_IRQn;
-    209            //    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=2 ;
-    210            //    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 2;		
-    211            //    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;			
-    212            //    NVIC_Init(&NVIC_InitStructure);	
-    213          }
-   \       0xE4   0xB007             ADD      SP,SP,#+28
-   \       0xE6   0xBD30             POP      {R4,R5,PC}       ;; return
-    214          
-    215          
-    216          /**********************************ANO**********************************/
-    217          
-    218          #define BYTE0(dwTemp)       ( *( (char *)(&dwTemp)    ) )
-    219          #define BYTE1(dwTemp)       ( *( (char *)(&dwTemp) + 1) )
-    220          #define BYTE2(dwTemp)       ( *( (char *)(&dwTemp) + 2) )
-    221          #define BYTE3(dwTemp)       ( *( (char *)(&dwTemp) + 3) )
-    222          
+    276            dma_rx_config(DMA2_Stream1,(u32)&USART6->DR,(u32)usart1_dma_rx_buf,usart1_rx_len);
+   \       0xD2   0x2314             MOVS     R3,#+20
+   \       0xD4   0x....'....        LDR.W    R2,??DataTable12_5
+   \       0xD8   0x0021             MOVS     R1,R4
+   \       0xDA   0x....'....        LDR.W    R0,??DataTable12_18  ;; 0x40026428
+   \       0xDE   0x....'....        BL       dma_rx_config
+    277            
+    278            //    NVIC_InitStructure.NVIC_IRQChannel = USART6_IRQn;
+    279            //    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=2 ;
+    280            //    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 2;		
+    281            //    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;			
+    282            //    NVIC_Init(&NVIC_InitStructure);	
+    283          }
+   \       0xE2   0xB007             ADD      SP,SP,#+28
+   \       0xE4   0xBD30             POP      {R4,R5,PC}       ;; return
+    284          
+    285          
+    286          /**********************************ANO**********************************/
+    287          
+    288          #define BYTE0(dwTemp)       ( *( (char *)(&dwTemp)    ) )
+    289          #define BYTE1(dwTemp)       ( *( (char *)(&dwTemp) + 1) )
+    290          #define BYTE2(dwTemp)       ( *( (char *)(&dwTemp) + 2) )
+    291          #define BYTE3(dwTemp)       ( *( (char *)(&dwTemp) + 3) )
+    292          
 
    \                                 In section .bss, align 4
-    223          uint8_t data_to_send[100];
+    293          uint8_t data_to_send[100];
    \                     data_to_send:
    \        0x0                      DS8 100
 
    \                                 In section .text, align 2, keep-with-next
-    224          void ANO_DT_Send_Status(void)                   
-    225          {
+    294          void ANO_DT_Send_Status(void)                   
+    295          {
    \                     ANO_DT_Send_Status: (+1)
    \        0x0   0xB5F8             PUSH     {R3-R7,LR}
-    226            u8 _cnt=0;
+    296            u8 _cnt=0;
    \        0x2   0x2500             MOVS     R5,#+0
-    227            vs16 _temp;
-    228            vs32 _temp2;
-    229            u8 sum = 0;
+    297            vs16 _temp;
+    298            vs32 _temp2;
+    299            u8 sum = 0;
    \        0x4   0x2000             MOVS     R0,#+0
-    230            u8 i;
-    231            data_to_send[_cnt++]=0xAA;
-   \        0x6   0x....'....        LDR.W    R4,??DataTable13_12
+    300            u8 i;
+    301            data_to_send[_cnt++]=0xAA;
+   \        0x6   0x....'....        LDR.W    R4,??DataTable12_29
    \        0xA   0x20AA             MOVS     R0,#+170
    \        0xC   0x0029             MOVS     R1,R5
    \        0xE   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \       0x10   0x5460             STRB     R0,[R4, R1]
    \       0x12   0x1C6D             ADDS     R5,R5,#+1
-    232            data_to_send[_cnt++]=0xAA;
+    302            data_to_send[_cnt++]=0xAA;
    \       0x14   0x20AA             MOVS     R0,#+170
    \       0x16   0x0029             MOVS     R1,R5
    \       0x18   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \       0x1A   0x5460             STRB     R0,[R4, R1]
    \       0x1C   0x1C6D             ADDS     R5,R5,#+1
-    233            data_to_send[_cnt++]=0x01;
+    303            data_to_send[_cnt++]=0x01;
    \       0x1E   0x2001             MOVS     R0,#+1
    \       0x20   0x0029             MOVS     R1,R5
    \       0x22   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \       0x24   0x5460             STRB     R0,[R4, R1]
    \       0x26   0x1C6D             ADDS     R5,R5,#+1
-    234            data_to_send[_cnt++]=0;
+    304            data_to_send[_cnt++]=0;
    \       0x28   0x2000             MOVS     R0,#+0
    \       0x2A   0x0029             MOVS     R1,R5
    \       0x2C   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \       0x2E   0x5460             STRB     R0,[R4, R1]
    \       0x30   0x1C6D             ADDS     R5,R5,#+1
-    235            
-    236            _temp = (int)(att.rol*100);                     
-   \       0x32   0x....'....        LDR.W    R6,??DataTable13_13  ;; 0x42c80000
-   \       0x36   0x....'....        LDR.W    R7,??DataTable13_14
+    305            
+    306            _temp = (int)(att.rol*100);                     
+   \       0x32   0x....'....        LDR.W    R6,??DataTable12_30  ;; 0x42c80000
+   \       0x36   0x....'....        LDR.W    R7,??DataTable12_31
    \       0x3A   0x6878             LDR      R0,[R7, #+4]
    \       0x3C   0x0031             MOVS     R1,R6
    \       0x3E   0x....'....        BL       __aeabi_fmul
    \       0x42   0x....'....        BL       __aeabi_f2iz
    \       0x46   0xF8AD 0x0000      STRH     R0,[SP, #+0]
-    237            data_to_send[_cnt++]=BYTE1(_temp);
+    307            data_to_send[_cnt++]=BYTE1(_temp);
    \       0x4A   0xF89D 0x0001      LDRB     R0,[SP, #+1]
    \       0x4E   0x0029             MOVS     R1,R5
    \       0x50   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \       0x52   0x5460             STRB     R0,[R4, R1]
    \       0x54   0x1C6D             ADDS     R5,R5,#+1
-    238            data_to_send[_cnt++]=BYTE0(_temp);
+    308            data_to_send[_cnt++]=BYTE0(_temp);
    \       0x56   0xF89D 0x0000      LDRB     R0,[SP, #+0]
    \       0x5A   0x0029             MOVS     R1,R5
    \       0x5C   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \       0x5E   0x5460             STRB     R0,[R4, R1]
    \       0x60   0x1C6D             ADDS     R5,R5,#+1
-    239            
-    240            _temp = (int)(att.pit*100);                      
+    309            
+    310            _temp = (int)(att.pit*100);                      
    \       0x62   0x6838             LDR      R0,[R7, #+0]
    \       0x64   0x0031             MOVS     R1,R6
    \       0x66   0x....'....        BL       __aeabi_fmul
    \       0x6A   0x....'....        BL       __aeabi_f2iz
    \       0x6E   0xF8AD 0x0000      STRH     R0,[SP, #+0]
-    241            data_to_send[_cnt++]=BYTE1(_temp);
+    311            data_to_send[_cnt++]=BYTE1(_temp);
    \       0x72   0xF89D 0x0001      LDRB     R0,[SP, #+1]
    \       0x76   0x0029             MOVS     R1,R5
    \       0x78   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \       0x7A   0x5460             STRB     R0,[R4, R1]
    \       0x7C   0x1C6D             ADDS     R5,R5,#+1
-    242            data_to_send[_cnt++]=BYTE0(_temp);
+    312            data_to_send[_cnt++]=BYTE0(_temp);
    \       0x7E   0xF89D 0x0000      LDRB     R0,[SP, #+0]
    \       0x82   0x0029             MOVS     R1,R5
    \       0x84   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \       0x86   0x5460             STRB     R0,[R4, R1]
    \       0x88   0x1C6D             ADDS     R5,R5,#+1
-    243            
-    244            _temp = (int)(att.yaw*100);                     
+    313            
+    314            _temp = (int)(att.yaw*100);                     
    \       0x8A   0x68B8             LDR      R0,[R7, #+8]
    \       0x8C   0x0031             MOVS     R1,R6
    \       0x8E   0x....'....        BL       __aeabi_fmul
    \       0x92   0x....'....        BL       __aeabi_f2iz
    \       0x96   0xF8AD 0x0000      STRH     R0,[SP, #+0]
-    245            data_to_send[_cnt++]=BYTE1(_temp);
+    315            data_to_send[_cnt++]=BYTE1(_temp);
    \       0x9A   0xF89D 0x0001      LDRB     R0,[SP, #+1]
    \       0x9E   0x0029             MOVS     R1,R5
    \       0xA0   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \       0xA2   0x5460             STRB     R0,[R4, R1]
    \       0xA4   0x1C6D             ADDS     R5,R5,#+1
-    246            data_to_send[_cnt++]=BYTE0(_temp);
+    316            data_to_send[_cnt++]=BYTE0(_temp);
    \       0xA6   0xF89D 0x0000      LDRB     R0,[SP, #+0]
    \       0xAA   0x0029             MOVS     R1,R5
    \       0xAC   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \       0xAE   0x5460             STRB     R0,[R4, R1]
    \       0xB0   0x1C6D             ADDS     R5,R5,#+1
-    247            
-    248            _temp2 = (int32_t)(0);       		
+    317            
+    318            _temp2 = (int32_t)(0);       		
    \       0xB2   0x2000             MOVS     R0,#+0
    \       0xB4   0x9000             STR      R0,[SP, #+0]
-    249            data_to_send[_cnt++]=BYTE3(_temp2);
+    319            data_to_send[_cnt++]=BYTE3(_temp2);
    \       0xB6   0xF89D 0x0003      LDRB     R0,[SP, #+3]
    \       0xBA   0x0029             MOVS     R1,R5
    \       0xBC   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \       0xBE   0x5460             STRB     R0,[R4, R1]
    \       0xC0   0x1C6D             ADDS     R5,R5,#+1
-    250            data_to_send[_cnt++]=BYTE2(_temp2);
+    320            data_to_send[_cnt++]=BYTE2(_temp2);
    \       0xC2   0xF89D 0x0002      LDRB     R0,[SP, #+2]
    \       0xC6   0x0029             MOVS     R1,R5
    \       0xC8   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \       0xCA   0x5460             STRB     R0,[R4, R1]
    \       0xCC   0x1C6D             ADDS     R5,R5,#+1
-    251            data_to_send[_cnt++]=BYTE1(_temp2);
+    321            data_to_send[_cnt++]=BYTE1(_temp2);
    \       0xCE   0xF89D 0x0001      LDRB     R0,[SP, #+1]
    \       0xD2   0x0029             MOVS     R1,R5
    \       0xD4   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \       0xD6   0x5460             STRB     R0,[R4, R1]
    \       0xD8   0x1C6D             ADDS     R5,R5,#+1
-    252            data_to_send[_cnt++]=BYTE0(_temp2);
+    322            data_to_send[_cnt++]=BYTE0(_temp2);
    \       0xDA   0xF89D 0x0000      LDRB     R0,[SP, #+0]
    \       0xDE   0x0029             MOVS     R1,R5
    \       0xE0   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \       0xE2   0x5460             STRB     R0,[R4, R1]
    \       0xE4   0x1C6D             ADDS     R5,R5,#+1
-    253            
-    254            data_to_send[_cnt++]=0x01;  					
+    323            
+    324            data_to_send[_cnt++]=0x01;  					
    \       0xE6   0x2001             MOVS     R0,#+1
    \       0xE8   0x0029             MOVS     R1,R5
    \       0xEA   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \       0xEC   0x5460             STRB     R0,[R4, R1]
    \       0xEE   0x1C6D             ADDS     R5,R5,#+1
-    255            data_to_send[_cnt++]= 1;              
+    325            data_to_send[_cnt++]= 1;              
    \       0xF0   0x2001             MOVS     R0,#+1
    \       0xF2   0x0029             MOVS     R1,R5
    \       0xF4   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \       0xF6   0x5460             STRB     R0,[R4, R1]
    \       0xF8   0x1C6D             ADDS     R5,R5,#+1
-    256            
-    257            data_to_send[3] = _cnt-4;
+    326            
+    327            data_to_send[3] = _cnt-4;
    \       0xFA   0x1F28             SUBS     R0,R5,#+4
    \       0xFC   0x70E0             STRB     R0,[R4, #+3]
-    258            sum = 0;
+    328            sum = 0;
    \       0xFE   0x2100             MOVS     R1,#+0
-    259            for(i=0;i<_cnt;i++)
+    329            for(i=0;i<_cnt;i++)
    \      0x100   0x2200             MOVS     R2,#+0
    \      0x102   0xE004             B.N      ??ANO_DT_Send_Status_0
-    260              sum += data_to_send[i];
+    330              sum += data_to_send[i];
    \                     ??ANO_DT_Send_Status_1: (+1)
    \      0x104   0x0010             MOVS     R0,R2
    \      0x106   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
@@ -773,204 +973,204 @@ Warning[Pe550]: variable "rx_len" was set but never used
    \      0x114   0xB2DB             UXTB     R3,R3            ;; ZeroExt  R3,R3,#+24,#+24
    \      0x116   0x4298             CMP      R0,R3
    \      0x118   0xD3F4             BCC.N    ??ANO_DT_Send_Status_1
-    261            data_to_send[_cnt++]=sum;
+    331            data_to_send[_cnt++]=sum;
    \      0x11A   0x0028             MOVS     R0,R5
    \      0x11C   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
    \      0x11E   0x5421             STRB     R1,[R4, R0]
    \      0x120   0x1C6D             ADDS     R5,R5,#+1
-    262            
-    263            usart1_send((data_to_send),_cnt);  
+    332            
+    333            usart1_send((data_to_send),_cnt);  
    \      0x122   0xB2ED             UXTB     R5,R5            ;; ZeroExt  R5,R5,#+24,#+24
    \      0x124   0x0029             MOVS     R1,R5
    \      0x126   0x0020             MOVS     R0,R4
    \      0x128   0x....'....        BL       usart1_send
-    264          }
+    334          }
    \      0x12C   0xBDF1             POP      {R0,R4-R7,PC}    ;; return
-    265          
-    266          
+    335          
+    336          
 
    \                                 In section .text, align 2, keep-with-next
-    267          void ANO_DT_Send_Senser(s16 a_x,s16 a_y,s16 a_z,s16 g_x,s16 g_y,s16 g_z,s16 m_x,s16 m_y,s16 m_z)
-    268          {
+    337          void ANO_DT_Send_Senser(s16 a_x,s16 a_y,s16 a_z,s16 g_x,s16 g_y,s16 g_z,s16 m_x,s16 m_y,s16 m_z)
+    338          {
    \                     ANO_DT_Send_Senser: (+1)
    \        0x0   0xB5F8             PUSH     {R3-R7,LR}
-    269            u8 _cnt=0;
+    339            u8 _cnt=0;
    \        0x2   0x2500             MOVS     R5,#+0
-    270            vs16 _temp;
-    271            u8 sum = 0;
+    340            vs16 _temp;
+    341            u8 sum = 0;
    \        0x4   0x2400             MOVS     R4,#+0
-    272            u8 i=0;
+    342            u8 i=0;
    \        0x6   0x2400             MOVS     R4,#+0
-    273            data_to_send[_cnt++]=0xAA;
-   \        0x8   0x....'....        LDR.W    R4,??DataTable13_12
+    343            data_to_send[_cnt++]=0xAA;
+   \        0x8   0x....'....        LDR.W    R4,??DataTable12_29
    \        0xC   0x26AA             MOVS     R6,#+170
    \        0xE   0x002F             MOVS     R7,R5
    \       0x10   0xB2FF             UXTB     R7,R7            ;; ZeroExt  R7,R7,#+24,#+24
    \       0x12   0x55E6             STRB     R6,[R4, R7]
    \       0x14   0x1C6D             ADDS     R5,R5,#+1
-    274            data_to_send[_cnt++]=0xAA;
+    344            data_to_send[_cnt++]=0xAA;
    \       0x16   0x26AA             MOVS     R6,#+170
    \       0x18   0x002F             MOVS     R7,R5
    \       0x1A   0xB2FF             UXTB     R7,R7            ;; ZeroExt  R7,R7,#+24,#+24
    \       0x1C   0x55E6             STRB     R6,[R4, R7]
    \       0x1E   0x1C6D             ADDS     R5,R5,#+1
-    275            data_to_send[_cnt++]=0x02;
+    345            data_to_send[_cnt++]=0x02;
    \       0x20   0x2602             MOVS     R6,#+2
    \       0x22   0x002F             MOVS     R7,R5
    \       0x24   0xB2FF             UXTB     R7,R7            ;; ZeroExt  R7,R7,#+24,#+24
    \       0x26   0x55E6             STRB     R6,[R4, R7]
    \       0x28   0x1C6D             ADDS     R5,R5,#+1
-    276            data_to_send[_cnt++]=0;
+    346            data_to_send[_cnt++]=0;
    \       0x2A   0x2600             MOVS     R6,#+0
    \       0x2C   0x002F             MOVS     R7,R5
    \       0x2E   0xB2FF             UXTB     R7,R7            ;; ZeroExt  R7,R7,#+24,#+24
    \       0x30   0x55E6             STRB     R6,[R4, R7]
    \       0x32   0x1C6D             ADDS     R5,R5,#+1
-    277            
-    278            _temp = a_x;    
+    347            
+    348            _temp = a_x;    
    \       0x34   0xF8AD 0x0000      STRH     R0,[SP, #+0]
-    279            data_to_send[_cnt++]=BYTE1(_temp);
+    349            data_to_send[_cnt++]=BYTE1(_temp);
    \       0x38   0xF89D 0x0001      LDRB     R0,[SP, #+1]
    \       0x3C   0x002E             MOVS     R6,R5
    \       0x3E   0xB2F6             UXTB     R6,R6            ;; ZeroExt  R6,R6,#+24,#+24
    \       0x40   0x55A0             STRB     R0,[R4, R6]
    \       0x42   0x1C6D             ADDS     R5,R5,#+1
-    280            data_to_send[_cnt++]=BYTE0(_temp);
+    350            data_to_send[_cnt++]=BYTE0(_temp);
    \       0x44   0xF89D 0x0000      LDRB     R0,[SP, #+0]
    \       0x48   0x002E             MOVS     R6,R5
    \       0x4A   0xB2F6             UXTB     R6,R6            ;; ZeroExt  R6,R6,#+24,#+24
    \       0x4C   0x55A0             STRB     R0,[R4, R6]
    \       0x4E   0x1C6D             ADDS     R5,R5,#+1
-    281            _temp = a_y;
+    351            _temp = a_y;
    \       0x50   0xF8AD 0x1000      STRH     R1,[SP, #+0]
-    282            data_to_send[_cnt++]=BYTE1(_temp);
+    352            data_to_send[_cnt++]=BYTE1(_temp);
    \       0x54   0xF89D 0x0001      LDRB     R0,[SP, #+1]
    \       0x58   0x0029             MOVS     R1,R5
    \       0x5A   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \       0x5C   0x5460             STRB     R0,[R4, R1]
    \       0x5E   0x1C6D             ADDS     R5,R5,#+1
-    283            data_to_send[_cnt++]=BYTE0(_temp);
+    353            data_to_send[_cnt++]=BYTE0(_temp);
    \       0x60   0xF89D 0x0000      LDRB     R0,[SP, #+0]
    \       0x64   0x0029             MOVS     R1,R5
    \       0x66   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \       0x68   0x5460             STRB     R0,[R4, R1]
    \       0x6A   0x1C6D             ADDS     R5,R5,#+1
-    284            _temp = a_z;
+    354            _temp = a_z;
    \       0x6C   0xF8AD 0x2000      STRH     R2,[SP, #+0]
-    285            data_to_send[_cnt++]=BYTE1(_temp);
+    355            data_to_send[_cnt++]=BYTE1(_temp);
    \       0x70   0xF89D 0x0001      LDRB     R0,[SP, #+1]
    \       0x74   0x0029             MOVS     R1,R5
    \       0x76   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \       0x78   0x5460             STRB     R0,[R4, R1]
    \       0x7A   0x1C6D             ADDS     R5,R5,#+1
-    286            data_to_send[_cnt++]=BYTE0(_temp);
+    356            data_to_send[_cnt++]=BYTE0(_temp);
    \       0x7C   0xF89D 0x0000      LDRB     R0,[SP, #+0]
    \       0x80   0x0029             MOVS     R1,R5
    \       0x82   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \       0x84   0x5460             STRB     R0,[R4, R1]
    \       0x86   0x1C6D             ADDS     R5,R5,#+1
-    287            
-    288            _temp = g_x;
+    357            
+    358            _temp = g_x;
    \       0x88   0xF8AD 0x3000      STRH     R3,[SP, #+0]
-    289            data_to_send[_cnt++]=BYTE1(_temp);
+    359            data_to_send[_cnt++]=BYTE1(_temp);
    \       0x8C   0xF89D 0x0001      LDRB     R0,[SP, #+1]
    \       0x90   0x0029             MOVS     R1,R5
    \       0x92   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \       0x94   0x5460             STRB     R0,[R4, R1]
    \       0x96   0x1C6D             ADDS     R5,R5,#+1
-    290            data_to_send[_cnt++]=BYTE0(_temp);
+    360            data_to_send[_cnt++]=BYTE0(_temp);
    \       0x98   0xF89D 0x0000      LDRB     R0,[SP, #+0]
    \       0x9C   0x0029             MOVS     R1,R5
    \       0x9E   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \       0xA0   0x5460             STRB     R0,[R4, R1]
    \       0xA2   0x1C6D             ADDS     R5,R5,#+1
-    291            _temp = g_y;
+    361            _temp = g_y;
    \       0xA4   0xF9BD 0x0018      LDRSH    R0,[SP, #+24]
    \       0xA8   0xF8AD 0x0000      STRH     R0,[SP, #+0]
-    292            data_to_send[_cnt++]=BYTE1(_temp);
+    362            data_to_send[_cnt++]=BYTE1(_temp);
    \       0xAC   0xF89D 0x0001      LDRB     R0,[SP, #+1]
    \       0xB0   0x0029             MOVS     R1,R5
    \       0xB2   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \       0xB4   0x5460             STRB     R0,[R4, R1]
    \       0xB6   0x1C6D             ADDS     R5,R5,#+1
-    293            data_to_send[_cnt++]=BYTE0(_temp);
+    363            data_to_send[_cnt++]=BYTE0(_temp);
    \       0xB8   0xF89D 0x0000      LDRB     R0,[SP, #+0]
    \       0xBC   0x0029             MOVS     R1,R5
    \       0xBE   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \       0xC0   0x5460             STRB     R0,[R4, R1]
    \       0xC2   0x1C6D             ADDS     R5,R5,#+1
-    294            _temp = g_z;
+    364            _temp = g_z;
    \       0xC4   0xF9BD 0x001C      LDRSH    R0,[SP, #+28]
    \       0xC8   0xF8AD 0x0000      STRH     R0,[SP, #+0]
-    295            data_to_send[_cnt++]=BYTE1(_temp);
+    365            data_to_send[_cnt++]=BYTE1(_temp);
    \       0xCC   0xF89D 0x0001      LDRB     R0,[SP, #+1]
    \       0xD0   0x0029             MOVS     R1,R5
    \       0xD2   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \       0xD4   0x5460             STRB     R0,[R4, R1]
    \       0xD6   0x1C6D             ADDS     R5,R5,#+1
-    296            data_to_send[_cnt++]=BYTE0(_temp);
+    366            data_to_send[_cnt++]=BYTE0(_temp);
    \       0xD8   0xF89D 0x0000      LDRB     R0,[SP, #+0]
    \       0xDC   0x0029             MOVS     R1,R5
    \       0xDE   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \       0xE0   0x5460             STRB     R0,[R4, R1]
    \       0xE2   0x1C6D             ADDS     R5,R5,#+1
-    297            
-    298            _temp = m_x;
+    367            
+    368            _temp = m_x;
    \       0xE4   0xF9BD 0x0020      LDRSH    R0,[SP, #+32]
    \       0xE8   0xF8AD 0x0000      STRH     R0,[SP, #+0]
-    299            data_to_send[_cnt++]=BYTE1(_temp);
+    369            data_to_send[_cnt++]=BYTE1(_temp);
    \       0xEC   0xF89D 0x0001      LDRB     R0,[SP, #+1]
    \       0xF0   0x0029             MOVS     R1,R5
    \       0xF2   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \       0xF4   0x5460             STRB     R0,[R4, R1]
    \       0xF6   0x1C6D             ADDS     R5,R5,#+1
-    300            data_to_send[_cnt++]=BYTE0(_temp);
+    370            data_to_send[_cnt++]=BYTE0(_temp);
    \       0xF8   0xF89D 0x0000      LDRB     R0,[SP, #+0]
    \       0xFC   0x0029             MOVS     R1,R5
    \       0xFE   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \      0x100   0x5460             STRB     R0,[R4, R1]
    \      0x102   0x1C6D             ADDS     R5,R5,#+1
-    301            _temp = m_y;
+    371            _temp = m_y;
    \      0x104   0xF9BD 0x0024      LDRSH    R0,[SP, #+36]
    \      0x108   0xF8AD 0x0000      STRH     R0,[SP, #+0]
-    302            data_to_send[_cnt++]=BYTE1(_temp);
+    372            data_to_send[_cnt++]=BYTE1(_temp);
    \      0x10C   0xF89D 0x0001      LDRB     R0,[SP, #+1]
    \      0x110   0x0029             MOVS     R1,R5
    \      0x112   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \      0x114   0x5460             STRB     R0,[R4, R1]
    \      0x116   0x1C6D             ADDS     R5,R5,#+1
-    303            data_to_send[_cnt++]=BYTE0(_temp);
+    373            data_to_send[_cnt++]=BYTE0(_temp);
    \      0x118   0xF89D 0x0000      LDRB     R0,[SP, #+0]
    \      0x11C   0x0029             MOVS     R1,R5
    \      0x11E   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \      0x120   0x5460             STRB     R0,[R4, R1]
    \      0x122   0x1C6D             ADDS     R5,R5,#+1
-    304            _temp = m_z;
+    374            _temp = m_z;
    \      0x124   0xF9BD 0x0028      LDRSH    R0,[SP, #+40]
    \      0x128   0xF8AD 0x0000      STRH     R0,[SP, #+0]
-    305            data_to_send[_cnt++]=BYTE1(_temp);
+    375            data_to_send[_cnt++]=BYTE1(_temp);
    \      0x12C   0xF89D 0x0001      LDRB     R0,[SP, #+1]
    \      0x130   0x0029             MOVS     R1,R5
    \      0x132   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \      0x134   0x5460             STRB     R0,[R4, R1]
    \      0x136   0x1C6D             ADDS     R5,R5,#+1
-    306            data_to_send[_cnt++]=BYTE0(_temp);
+    376            data_to_send[_cnt++]=BYTE0(_temp);
    \      0x138   0xF89D 0x0000      LDRB     R0,[SP, #+0]
    \      0x13C   0x0029             MOVS     R1,R5
    \      0x13E   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \      0x140   0x5460             STRB     R0,[R4, R1]
    \      0x142   0x1C6D             ADDS     R5,R5,#+1
-    307            
-    308            data_to_send[3] = _cnt-4;
+    377            
+    378            data_to_send[3] = _cnt-4;
    \      0x144   0x1F28             SUBS     R0,R5,#+4
    \      0x146   0x70E0             STRB     R0,[R4, #+3]
-    309            
-    310            sum = 0;
+    379            
+    380            sum = 0;
    \      0x148   0x2100             MOVS     R1,#+0
-    311            for(i=0;i<_cnt;i++)
+    381            for(i=0;i<_cnt;i++)
    \      0x14A   0x2200             MOVS     R2,#+0
    \      0x14C   0xE004             B.N      ??ANO_DT_Send_Senser_0
-    312              sum += data_to_send[i];
+    382              sum += data_to_send[i];
    \                     ??ANO_DT_Send_Senser_1: (+1)
    \      0x14E   0x0010             MOVS     R0,R2
    \      0x150   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
@@ -984,199 +1184,199 @@ Warning[Pe550]: variable "rx_len" was set but never used
    \      0x15E   0xB2DB             UXTB     R3,R3            ;; ZeroExt  R3,R3,#+24,#+24
    \      0x160   0x4298             CMP      R0,R3
    \      0x162   0xD3F4             BCC.N    ??ANO_DT_Send_Senser_1
-    313            data_to_send[_cnt++] = sum;
+    383            data_to_send[_cnt++] = sum;
    \      0x164   0x0028             MOVS     R0,R5
    \      0x166   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
    \      0x168   0x5421             STRB     R1,[R4, R0]
    \      0x16A   0x1C6D             ADDS     R5,R5,#+1
-    314            
-    315            usart1_send((data_to_send),_cnt);  
+    384            
+    385            usart1_send((data_to_send),_cnt);  
    \      0x16C   0xB2ED             UXTB     R5,R5            ;; ZeroExt  R5,R5,#+24,#+24
    \      0x16E   0x0029             MOVS     R1,R5
    \      0x170   0x0020             MOVS     R0,R4
    \      0x172   0x....'....        BL       usart1_send
-    316          }
+    386          }
    \      0x176   0xBDF1             POP      {R0,R4-R7,PC}    ;; return
-    317          
+    387          
 
    \                                 In section .text, align 2, keep-with-next
-    318          void ANO_DT_Send_RCData(u16 thr,u16 yaw,u16 rol,u16 pit,u16 aux1,u16 aux2,u16 aux3,u16 aux4,u16 aux5,u16 aux6)
-    319          {
+    388          void ANO_DT_Send_RCData(u16 thr,u16 yaw,u16 rol,u16 pit,u16 aux1,u16 aux2,u16 aux3,u16 aux4,u16 aux5,u16 aux6)
+    389          {
    \                     ANO_DT_Send_RCData: (+1)
    \        0x0   0xB53F             PUSH     {R0-R5,LR}
    \        0x2   0xB081             SUB      SP,SP,#+4
-    320            u8 _cnt=0;
+    390            u8 _cnt=0;
    \        0x4   0x2100             MOVS     R1,#+0
-    321            u8 i=0;
+    391            u8 i=0;
    \        0x6   0x2000             MOVS     R0,#+0
-    322            u8 sum = 0;
+    392            u8 sum = 0;
    \        0x8   0x2000             MOVS     R0,#+0
-    323            data_to_send[_cnt++]=0xAA;
-   \        0xA   0x....'....        LDR.W    R0,??DataTable13_12
+    393            data_to_send[_cnt++]=0xAA;
+   \        0xA   0x....'....        LDR.W    R0,??DataTable12_29
    \        0xE   0x22AA             MOVS     R2,#+170
    \       0x10   0x000B             MOVS     R3,R1
    \       0x12   0xB2DB             UXTB     R3,R3            ;; ZeroExt  R3,R3,#+24,#+24
    \       0x14   0x54C2             STRB     R2,[R0, R3]
    \       0x16   0x1C49             ADDS     R1,R1,#+1
-    324            data_to_send[_cnt++]=0xAA;
+    394            data_to_send[_cnt++]=0xAA;
    \       0x18   0x22AA             MOVS     R2,#+170
    \       0x1A   0x000B             MOVS     R3,R1
    \       0x1C   0xB2DB             UXTB     R3,R3            ;; ZeroExt  R3,R3,#+24,#+24
    \       0x1E   0x54C2             STRB     R2,[R0, R3]
    \       0x20   0x1C49             ADDS     R1,R1,#+1
-    325            data_to_send[_cnt++]=0x03;
+    395            data_to_send[_cnt++]=0x03;
    \       0x22   0x2203             MOVS     R2,#+3
    \       0x24   0x000B             MOVS     R3,R1
    \       0x26   0xB2DB             UXTB     R3,R3            ;; ZeroExt  R3,R3,#+24,#+24
    \       0x28   0x54C2             STRB     R2,[R0, R3]
    \       0x2A   0x1C49             ADDS     R1,R1,#+1
-    326            data_to_send[_cnt++]=0;
+    396            data_to_send[_cnt++]=0;
    \       0x2C   0x2200             MOVS     R2,#+0
    \       0x2E   0x000B             MOVS     R3,R1
    \       0x30   0xB2DB             UXTB     R3,R3            ;; ZeroExt  R3,R3,#+24,#+24
    \       0x32   0x54C2             STRB     R2,[R0, R3]
    \       0x34   0x1C49             ADDS     R1,R1,#+1
-    327            
-    328            data_to_send[_cnt++]=BYTE1(thr);
+    397            
+    398            data_to_send[_cnt++]=BYTE1(thr);
    \       0x36   0xF89D 0x2005      LDRB     R2,[SP, #+5]
    \       0x3A   0x000B             MOVS     R3,R1
    \       0x3C   0xB2DB             UXTB     R3,R3            ;; ZeroExt  R3,R3,#+24,#+24
    \       0x3E   0x54C2             STRB     R2,[R0, R3]
    \       0x40   0x1C49             ADDS     R1,R1,#+1
-    329            data_to_send[_cnt++]=BYTE0(thr);
+    399            data_to_send[_cnt++]=BYTE0(thr);
    \       0x42   0xF89D 0x2004      LDRB     R2,[SP, #+4]
    \       0x46   0x000B             MOVS     R3,R1
    \       0x48   0xB2DB             UXTB     R3,R3            ;; ZeroExt  R3,R3,#+24,#+24
    \       0x4A   0x54C2             STRB     R2,[R0, R3]
    \       0x4C   0x1C49             ADDS     R1,R1,#+1
-    330            
-    331            data_to_send[_cnt++]=BYTE1(yaw);
+    400            
+    401            data_to_send[_cnt++]=BYTE1(yaw);
    \       0x4E   0xF89D 0x2009      LDRB     R2,[SP, #+9]
    \       0x52   0x000B             MOVS     R3,R1
    \       0x54   0xB2DB             UXTB     R3,R3            ;; ZeroExt  R3,R3,#+24,#+24
    \       0x56   0x54C2             STRB     R2,[R0, R3]
    \       0x58   0x1C49             ADDS     R1,R1,#+1
-    332            data_to_send[_cnt++]=BYTE0(yaw);
+    402            data_to_send[_cnt++]=BYTE0(yaw);
    \       0x5A   0xF89D 0x2008      LDRB     R2,[SP, #+8]
    \       0x5E   0x000B             MOVS     R3,R1
    \       0x60   0xB2DB             UXTB     R3,R3            ;; ZeroExt  R3,R3,#+24,#+24
    \       0x62   0x54C2             STRB     R2,[R0, R3]
    \       0x64   0x1C49             ADDS     R1,R1,#+1
-    333            
-    334            data_to_send[_cnt++]=BYTE1(rol);
+    403            
+    404            data_to_send[_cnt++]=BYTE1(rol);
    \       0x66   0xF89D 0x200D      LDRB     R2,[SP, #+13]
    \       0x6A   0x000B             MOVS     R3,R1
    \       0x6C   0xB2DB             UXTB     R3,R3            ;; ZeroExt  R3,R3,#+24,#+24
    \       0x6E   0x54C2             STRB     R2,[R0, R3]
    \       0x70   0x1C49             ADDS     R1,R1,#+1
-    335            data_to_send[_cnt++]=BYTE0(rol);
+    405            data_to_send[_cnt++]=BYTE0(rol);
    \       0x72   0xF89D 0x200C      LDRB     R2,[SP, #+12]
    \       0x76   0x000B             MOVS     R3,R1
    \       0x78   0xB2DB             UXTB     R3,R3            ;; ZeroExt  R3,R3,#+24,#+24
    \       0x7A   0x54C2             STRB     R2,[R0, R3]
    \       0x7C   0x1C49             ADDS     R1,R1,#+1
-    336            
-    337            data_to_send[_cnt++]=BYTE1(pit);
+    406            
+    407            data_to_send[_cnt++]=BYTE1(pit);
    \       0x7E   0xF89D 0x2011      LDRB     R2,[SP, #+17]
    \       0x82   0x000B             MOVS     R3,R1
    \       0x84   0xB2DB             UXTB     R3,R3            ;; ZeroExt  R3,R3,#+24,#+24
    \       0x86   0x54C2             STRB     R2,[R0, R3]
    \       0x88   0x1C49             ADDS     R1,R1,#+1
-    338            data_to_send[_cnt++]=BYTE0(pit);
+    408            data_to_send[_cnt++]=BYTE0(pit);
    \       0x8A   0xF89D 0x2010      LDRB     R2,[SP, #+16]
    \       0x8E   0x000B             MOVS     R3,R1
    \       0x90   0xB2DB             UXTB     R3,R3            ;; ZeroExt  R3,R3,#+24,#+24
    \       0x92   0x54C2             STRB     R2,[R0, R3]
    \       0x94   0x1C49             ADDS     R1,R1,#+1
-    339            
-    340            data_to_send[_cnt++]=BYTE1(aux1);
+    409            
+    410            data_to_send[_cnt++]=BYTE1(aux1);
    \       0x96   0xF89D 0x2021      LDRB     R2,[SP, #+33]
    \       0x9A   0x000B             MOVS     R3,R1
    \       0x9C   0xB2DB             UXTB     R3,R3            ;; ZeroExt  R3,R3,#+24,#+24
    \       0x9E   0x54C2             STRB     R2,[R0, R3]
    \       0xA0   0x1C49             ADDS     R1,R1,#+1
-    341            data_to_send[_cnt++]=BYTE0(aux1);
+    411            data_to_send[_cnt++]=BYTE0(aux1);
    \       0xA2   0xF89D 0x2020      LDRB     R2,[SP, #+32]
    \       0xA6   0x000B             MOVS     R3,R1
    \       0xA8   0xB2DB             UXTB     R3,R3            ;; ZeroExt  R3,R3,#+24,#+24
    \       0xAA   0x54C2             STRB     R2,[R0, R3]
    \       0xAC   0x1C49             ADDS     R1,R1,#+1
-    342            
-    343            data_to_send[_cnt++]=BYTE1(aux2);
+    412            
+    413            data_to_send[_cnt++]=BYTE1(aux2);
    \       0xAE   0xF89D 0x2025      LDRB     R2,[SP, #+37]
    \       0xB2   0x000B             MOVS     R3,R1
    \       0xB4   0xB2DB             UXTB     R3,R3            ;; ZeroExt  R3,R3,#+24,#+24
    \       0xB6   0x54C2             STRB     R2,[R0, R3]
    \       0xB8   0x1C49             ADDS     R1,R1,#+1
-    344            data_to_send[_cnt++]=BYTE0(aux2);
+    414            data_to_send[_cnt++]=BYTE0(aux2);
    \       0xBA   0xF89D 0x2024      LDRB     R2,[SP, #+36]
    \       0xBE   0x000B             MOVS     R3,R1
    \       0xC0   0xB2DB             UXTB     R3,R3            ;; ZeroExt  R3,R3,#+24,#+24
    \       0xC2   0x54C2             STRB     R2,[R0, R3]
    \       0xC4   0x1C49             ADDS     R1,R1,#+1
-    345            
-    346            data_to_send[_cnt++]=BYTE1(aux3);
+    415            
+    416            data_to_send[_cnt++]=BYTE1(aux3);
    \       0xC6   0xF89D 0x2029      LDRB     R2,[SP, #+41]
    \       0xCA   0x000B             MOVS     R3,R1
    \       0xCC   0xB2DB             UXTB     R3,R3            ;; ZeroExt  R3,R3,#+24,#+24
    \       0xCE   0x54C2             STRB     R2,[R0, R3]
    \       0xD0   0x1C49             ADDS     R1,R1,#+1
-    347            data_to_send[_cnt++]=BYTE0(aux3);
+    417            data_to_send[_cnt++]=BYTE0(aux3);
    \       0xD2   0xF89D 0x2028      LDRB     R2,[SP, #+40]
    \       0xD6   0x000B             MOVS     R3,R1
    \       0xD8   0xB2DB             UXTB     R3,R3            ;; ZeroExt  R3,R3,#+24,#+24
    \       0xDA   0x54C2             STRB     R2,[R0, R3]
    \       0xDC   0x1C49             ADDS     R1,R1,#+1
-    348            
-    349            data_to_send[_cnt++]=BYTE1(aux4);
+    418            
+    419            data_to_send[_cnt++]=BYTE1(aux4);
    \       0xDE   0xF89D 0x202D      LDRB     R2,[SP, #+45]
    \       0xE2   0x000B             MOVS     R3,R1
    \       0xE4   0xB2DB             UXTB     R3,R3            ;; ZeroExt  R3,R3,#+24,#+24
    \       0xE6   0x54C2             STRB     R2,[R0, R3]
    \       0xE8   0x1C49             ADDS     R1,R1,#+1
-    350            data_to_send[_cnt++]=BYTE0(aux4);
+    420            data_to_send[_cnt++]=BYTE0(aux4);
    \       0xEA   0xF89D 0x202C      LDRB     R2,[SP, #+44]
    \       0xEE   0x000B             MOVS     R3,R1
    \       0xF0   0xB2DB             UXTB     R3,R3            ;; ZeroExt  R3,R3,#+24,#+24
    \       0xF2   0x54C2             STRB     R2,[R0, R3]
    \       0xF4   0x1C49             ADDS     R1,R1,#+1
-    351            
-    352            data_to_send[_cnt++]=BYTE1(aux5);
+    421            
+    422            data_to_send[_cnt++]=BYTE1(aux5);
    \       0xF6   0xF89D 0x2031      LDRB     R2,[SP, #+49]
    \       0xFA   0x000B             MOVS     R3,R1
    \       0xFC   0xB2DB             UXTB     R3,R3            ;; ZeroExt  R3,R3,#+24,#+24
    \       0xFE   0x54C2             STRB     R2,[R0, R3]
    \      0x100   0x1C49             ADDS     R1,R1,#+1
-    353            data_to_send[_cnt++]=BYTE0(aux5);
+    423            data_to_send[_cnt++]=BYTE0(aux5);
    \      0x102   0xF89D 0x2030      LDRB     R2,[SP, #+48]
    \      0x106   0x000B             MOVS     R3,R1
    \      0x108   0xB2DB             UXTB     R3,R3            ;; ZeroExt  R3,R3,#+24,#+24
    \      0x10A   0x54C2             STRB     R2,[R0, R3]
    \      0x10C   0x1C49             ADDS     R1,R1,#+1
-    354            
-    355            data_to_send[_cnt++]=BYTE1(aux6);
+    424            
+    425            data_to_send[_cnt++]=BYTE1(aux6);
    \      0x10E   0xF89D 0x2035      LDRB     R2,[SP, #+53]
    \      0x112   0x000B             MOVS     R3,R1
    \      0x114   0xB2DB             UXTB     R3,R3            ;; ZeroExt  R3,R3,#+24,#+24
    \      0x116   0x54C2             STRB     R2,[R0, R3]
    \      0x118   0x1C49             ADDS     R1,R1,#+1
-    356            data_to_send[_cnt++]=BYTE0(aux6);
+    426            data_to_send[_cnt++]=BYTE0(aux6);
    \      0x11A   0xF89D 0x2034      LDRB     R2,[SP, #+52]
    \      0x11E   0x000B             MOVS     R3,R1
    \      0x120   0xB2DB             UXTB     R3,R3            ;; ZeroExt  R3,R3,#+24,#+24
    \      0x122   0x54C2             STRB     R2,[R0, R3]
    \      0x124   0x1C49             ADDS     R1,R1,#+1
-    357            
-    358            data_to_send[3] = _cnt-4;
+    427            
+    428            data_to_send[3] = _cnt-4;
    \      0x126   0x1F0A             SUBS     R2,R1,#+4
    \      0x128   0x70C2             STRB     R2,[R0, #+3]
-    359            
-    360            sum = 0;
+    429            
+    430            sum = 0;
    \      0x12A   0x2400             MOVS     R4,#+0
-    361            for(i=0;i<_cnt;i++)
+    431            for(i=0;i<_cnt;i++)
    \      0x12C   0x2300             MOVS     R3,#+0
    \      0x12E   0xE004             B.N      ??ANO_DT_Send_RCData_0
-    362              sum += data_to_send[i];
+    432              sum += data_to_send[i];
    \                     ??ANO_DT_Send_RCData_1: (+1)
    \      0x130   0x001A             MOVS     R2,R3
    \      0x132   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
@@ -1190,384 +1390,384 @@ Warning[Pe550]: variable "rx_len" was set but never used
    \      0x140   0xB2ED             UXTB     R5,R5            ;; ZeroExt  R5,R5,#+24,#+24
    \      0x142   0x42AA             CMP      R2,R5
    \      0x144   0xD3F4             BCC.N    ??ANO_DT_Send_RCData_1
-    363            
-    364            data_to_send[_cnt++]=sum;
+    433            
+    434            data_to_send[_cnt++]=sum;
    \      0x146   0x000A             MOVS     R2,R1
    \      0x148   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
    \      0x14A   0x5484             STRB     R4,[R0, R2]
    \      0x14C   0x1C49             ADDS     R1,R1,#+1
-    365            
-    366            usart1_send((data_to_send),_cnt);  
+    435            
+    436            usart1_send((data_to_send),_cnt);  
    \      0x14E   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \      0x150   0x....'....        BL       usart1_send
-    367          }
+    437          }
    \      0x154   0xB005             ADD      SP,SP,#+20
    \      0x156   0xBD30             POP      {R4,R5,PC}       ;; return
-    368          
-    369          
+    438          
+    439          
 
    \                                 In section .text, align 2, keep-with-next
-    370          void ANO_DT_Send_Power(float votage, float current)
-    371          {
+    440          void ANO_DT_Send_Power(float votage, float current)
+    441          {
    \                     ANO_DT_Send_Power: (+1)
    \        0x0   0xB5F8             PUSH     {R3-R7,LR}
    \        0x2   0x000E             MOVS     R6,R1
-    372            u8 _cnt=0;
+    442            u8 _cnt=0;
    \        0x4   0x2500             MOVS     R5,#+0
-    373            u16 temp;
-    374            
-    375            data_to_send[_cnt++]=0xAA;
-   \        0x6   0x....             LDR.N    R4,??DataTable13_12
-   \        0x8   0x21AA             MOVS     R1,#+170
-   \        0xA   0x002A             MOVS     R2,R5
-   \        0xC   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
-   \        0xE   0x54A1             STRB     R1,[R4, R2]
-   \       0x10   0x1C6D             ADDS     R5,R5,#+1
-    376            data_to_send[_cnt++]=0xAA;
-   \       0x12   0x21AA             MOVS     R1,#+170
-   \       0x14   0x002A             MOVS     R2,R5
-   \       0x16   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
-   \       0x18   0x54A1             STRB     R1,[R4, R2]
-   \       0x1A   0x1C6D             ADDS     R5,R5,#+1
-    377            data_to_send[_cnt++]=0x05;
-   \       0x1C   0x2105             MOVS     R1,#+5
-   \       0x1E   0x002A             MOVS     R2,R5
-   \       0x20   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
-   \       0x22   0x54A1             STRB     R1,[R4, R2]
-   \       0x24   0x1C6D             ADDS     R5,R5,#+1
-    378            data_to_send[_cnt++]=0;
-   \       0x26   0x2100             MOVS     R1,#+0
-   \       0x28   0x002A             MOVS     R2,R5
-   \       0x2A   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
-   \       0x2C   0x54A1             STRB     R1,[R4, R2]
-   \       0x2E   0x1C6D             ADDS     R5,R5,#+1
-    379            
-    380            temp = (uint16_t)100*votage;
+    443            u16 temp;
+    444            
+    445            data_to_send[_cnt++]=0xAA;
+   \        0x6   0x....'....        LDR.W    R4,??DataTable12_29
+   \        0xA   0x21AA             MOVS     R1,#+170
+   \        0xC   0x002A             MOVS     R2,R5
+   \        0xE   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
+   \       0x10   0x54A1             STRB     R1,[R4, R2]
+   \       0x12   0x1C6D             ADDS     R5,R5,#+1
+    446            data_to_send[_cnt++]=0xAA;
+   \       0x14   0x21AA             MOVS     R1,#+170
+   \       0x16   0x002A             MOVS     R2,R5
+   \       0x18   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
+   \       0x1A   0x54A1             STRB     R1,[R4, R2]
+   \       0x1C   0x1C6D             ADDS     R5,R5,#+1
+    447            data_to_send[_cnt++]=0x05;
+   \       0x1E   0x2105             MOVS     R1,#+5
+   \       0x20   0x002A             MOVS     R2,R5
+   \       0x22   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
+   \       0x24   0x54A1             STRB     R1,[R4, R2]
+   \       0x26   0x1C6D             ADDS     R5,R5,#+1
+    448            data_to_send[_cnt++]=0;
+   \       0x28   0x2100             MOVS     R1,#+0
+   \       0x2A   0x002A             MOVS     R2,R5
+   \       0x2C   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
+   \       0x2E   0x54A1             STRB     R1,[R4, R2]
+   \       0x30   0x1C6D             ADDS     R5,R5,#+1
+    449            
+    450            temp = (uint16_t)100*votage;
                         ^
 Warning[Pa093]: implicit conversion from floating point to integer
-   \       0x30   0x....             LDR.N    R7,??DataTable13_13  ;; 0x42c80000
-   \       0x32   0x0039             MOVS     R1,R7
-   \       0x34   0x....'....        BL       __aeabi_fmul
-   \       0x38   0x....'....        BL       __aeabi_f2iz
-   \       0x3C   0xF8AD 0x0000      STRH     R0,[SP, #+0]
-    381            data_to_send[_cnt++]=BYTE1(temp);
-   \       0x40   0xF89D 0x0001      LDRB     R0,[SP, #+1]
-   \       0x44   0x0029             MOVS     R1,R5
-   \       0x46   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
-   \       0x48   0x5460             STRB     R0,[R4, R1]
-   \       0x4A   0x1C6D             ADDS     R5,R5,#+1
-    382            data_to_send[_cnt++]=BYTE0(temp);
-   \       0x4C   0xF89D 0x0000      LDRB     R0,[SP, #+0]
-   \       0x50   0x0029             MOVS     R1,R5
-   \       0x52   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
-   \       0x54   0x5460             STRB     R0,[R4, R1]
-   \       0x56   0x1C6D             ADDS     R5,R5,#+1
-    383            temp = (uint16_t)100*current;
+   \       0x32   0x....'....        LDR.W    R7,??DataTable12_30  ;; 0x42c80000
+   \       0x36   0x0039             MOVS     R1,R7
+   \       0x38   0x....'....        BL       __aeabi_fmul
+   \       0x3C   0x....'....        BL       __aeabi_f2iz
+   \       0x40   0xF8AD 0x0000      STRH     R0,[SP, #+0]
+    451            data_to_send[_cnt++]=BYTE1(temp);
+   \       0x44   0xF89D 0x0001      LDRB     R0,[SP, #+1]
+   \       0x48   0x0029             MOVS     R1,R5
+   \       0x4A   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0x4C   0x5460             STRB     R0,[R4, R1]
+   \       0x4E   0x1C6D             ADDS     R5,R5,#+1
+    452            data_to_send[_cnt++]=BYTE0(temp);
+   \       0x50   0xF89D 0x0000      LDRB     R0,[SP, #+0]
+   \       0x54   0x0029             MOVS     R1,R5
+   \       0x56   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0x58   0x5460             STRB     R0,[R4, R1]
+   \       0x5A   0x1C6D             ADDS     R5,R5,#+1
+    453            temp = (uint16_t)100*current;
                         ^
 Warning[Pa093]: implicit conversion from floating point to integer
-   \       0x58   0x0030             MOVS     R0,R6
-   \       0x5A   0x0039             MOVS     R1,R7
-   \       0x5C   0x....'....        BL       __aeabi_fmul
-   \       0x60   0x....'....        BL       __aeabi_f2iz
-   \       0x64   0xF8AD 0x0000      STRH     R0,[SP, #+0]
-    384            data_to_send[_cnt++]=BYTE1(temp);
-   \       0x68   0xF89D 0x0001      LDRB     R0,[SP, #+1]
-   \       0x6C   0x0029             MOVS     R1,R5
-   \       0x6E   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
-   \       0x70   0x5460             STRB     R0,[R4, R1]
-   \       0x72   0x1C6D             ADDS     R5,R5,#+1
-    385            data_to_send[_cnt++]=BYTE0(temp);
-   \       0x74   0xF89D 0x0000      LDRB     R0,[SP, #+0]
-   \       0x78   0x0029             MOVS     R1,R5
-   \       0x7A   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
-   \       0x7C   0x5460             STRB     R0,[R4, R1]
-   \       0x7E   0x1C6D             ADDS     R5,R5,#+1
-    386            
-    387            data_to_send[3] = _cnt-4;
-   \       0x80   0x1F28             SUBS     R0,R5,#+4
-   \       0x82   0x70E0             STRB     R0,[R4, #+3]
-    388            
-    389            u8 sum = 0;
-   \       0x84   0x2100             MOVS     R1,#+0
-    390            for(u8 i=0;i<_cnt;i++)
-   \       0x86   0x2200             MOVS     R2,#+0
-   \       0x88   0xE004             B.N      ??ANO_DT_Send_Power_0
-    391              sum += data_to_send[i];
+   \       0x5C   0x0030             MOVS     R0,R6
+   \       0x5E   0x0039             MOVS     R1,R7
+   \       0x60   0x....'....        BL       __aeabi_fmul
+   \       0x64   0x....'....        BL       __aeabi_f2iz
+   \       0x68   0xF8AD 0x0000      STRH     R0,[SP, #+0]
+    454            data_to_send[_cnt++]=BYTE1(temp);
+   \       0x6C   0xF89D 0x0001      LDRB     R0,[SP, #+1]
+   \       0x70   0x0029             MOVS     R1,R5
+   \       0x72   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0x74   0x5460             STRB     R0,[R4, R1]
+   \       0x76   0x1C6D             ADDS     R5,R5,#+1
+    455            data_to_send[_cnt++]=BYTE0(temp);
+   \       0x78   0xF89D 0x0000      LDRB     R0,[SP, #+0]
+   \       0x7C   0x0029             MOVS     R1,R5
+   \       0x7E   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \       0x80   0x5460             STRB     R0,[R4, R1]
+   \       0x82   0x1C6D             ADDS     R5,R5,#+1
+    456            
+    457            data_to_send[3] = _cnt-4;
+   \       0x84   0x1F28             SUBS     R0,R5,#+4
+   \       0x86   0x70E0             STRB     R0,[R4, #+3]
+    458            
+    459            u8 sum = 0;
+   \       0x88   0x2100             MOVS     R1,#+0
+    460            for(u8 i=0;i<_cnt;i++)
+   \       0x8A   0x2200             MOVS     R2,#+0
+   \       0x8C   0xE004             B.N      ??ANO_DT_Send_Power_0
+    461              sum += data_to_send[i];
    \                     ??ANO_DT_Send_Power_1: (+1)
-   \       0x8A   0x0010             MOVS     R0,R2
-   \       0x8C   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
-   \       0x8E   0x5C20             LDRB     R0,[R4, R0]
-   \       0x90   0x1841             ADDS     R1,R0,R1
-   \       0x92   0x1C52             ADDS     R2,R2,#+1
+   \       0x8E   0x0010             MOVS     R0,R2
+   \       0x90   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x92   0x5C20             LDRB     R0,[R4, R0]
+   \       0x94   0x1841             ADDS     R1,R0,R1
+   \       0x96   0x1C52             ADDS     R2,R2,#+1
    \                     ??ANO_DT_Send_Power_0: (+1)
-   \       0x94   0x0010             MOVS     R0,R2
-   \       0x96   0x002B             MOVS     R3,R5
-   \       0x98   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
-   \       0x9A   0xB2DB             UXTB     R3,R3            ;; ZeroExt  R3,R3,#+24,#+24
-   \       0x9C   0x4298             CMP      R0,R3
-   \       0x9E   0xD3F4             BCC.N    ??ANO_DT_Send_Power_1
-    392            data_to_send[_cnt++]=sum;
-   \       0xA0   0x0028             MOVS     R0,R5
-   \       0xA2   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
-   \       0xA4   0x5421             STRB     R1,[R4, R0]
-   \       0xA6   0x1C6D             ADDS     R5,R5,#+1
-    393            
-    394            usart1_send((data_to_send),_cnt);  
-   \       0xA8   0xB2ED             UXTB     R5,R5            ;; ZeroExt  R5,R5,#+24,#+24
-   \       0xAA   0x0029             MOVS     R1,R5
-   \       0xAC   0x0020             MOVS     R0,R4
-   \       0xAE   0x....'....        BL       usart1_send
-    395          }
-   \       0xB2   0xBDF1             POP      {R0,R4-R7,PC}    ;; return
-    396          
-    397          /* 
-    398          void ANO_DT_Send_User(    s16 user1,s16 user2,s16 user3,s16 user4,s16 user5,
-    399          float user6,float user7,float user8,float user9,float user10,
-    400          float user11,float user12,float user13,float user14,float user15)
-    401          {
-    402          u8 _cnt=0;
-    403          vs16 _temp;
-    404          float _temp_f;
-    405          
-    406          u8 sum = 0;
-    407          u8 i=0;
-    408          data_to_send[_cnt++]=0xAA;
-    409          data_to_send[_cnt++]=0xAA;
-    410          data_to_send[_cnt++]=0xF1;
-    411          data_to_send[_cnt++]=0;
-    412          
-    413          //1-5  int16
-    414          _temp = user1;    
-    415          data_to_send[_cnt++]=BYTE1(_temp);
-    416          data_to_send[_cnt++]=BYTE0(_temp);
-    417          _temp = user2;
-    418          data_to_send[_cnt++]=BYTE1(_temp);
-    419          data_to_send[_cnt++]=BYTE0(_temp);
-    420          _temp = user3;
-    421          data_to_send[_cnt++]=BYTE1(_temp);
-    422          data_to_send[_cnt++]=BYTE0(_temp);
-    423          _temp = user4;    
-    424          data_to_send[_cnt++]=BYTE1(_temp);
-    425          data_to_send[_cnt++]=BYTE0(_temp);
-    426          _temp = user5;
-    427          data_to_send[_cnt++]=BYTE1(_temp);
-    428          data_to_send[_cnt++]=BYTE0(_temp);
-    429          
-    430          //6-10 :float
-    431          _temp_f = user6;
-    432          data_to_send[_cnt++]=BYTE3(_temp_f);
-    433          data_to_send[_cnt++]=BYTE2(_temp_f);
-    434          data_to_send[_cnt++]=BYTE1(_temp_f);
-    435          data_to_send[_cnt++]=BYTE0(_temp_f);
-    436          _temp_f = user7;
-    437          data_to_send[_cnt++]=BYTE3(_temp_f);
-    438          data_to_send[_cnt++]=BYTE2(_temp_f);
-    439          data_to_send[_cnt++]=BYTE1(_temp_f);
-    440          data_to_send[_cnt++]=BYTE0(_temp_f);
-    441          _temp_f = user8;
-    442          data_to_send[_cnt++]=BYTE3(_temp_f);
-    443          data_to_send[_cnt++]=BYTE2(_temp_f);
-    444          data_to_send[_cnt++]=BYTE1(_temp_f);
-    445          data_to_send[_cnt++]=BYTE0(_temp_f);
-    446          _temp_f = user9;
-    447          data_to_send[_cnt++]=BYTE3(_temp_f);
-    448          data_to_send[_cnt++]=BYTE2(_temp_f);
-    449          data_to_send[_cnt++]=BYTE1(_temp_f);
-    450          data_to_send[_cnt++]=BYTE0(_temp_f);
-    451          _temp_f = user10;
-    452          data_to_send[_cnt++]=BYTE3(_temp_f);
-    453          data_to_send[_cnt++]=BYTE2(_temp_f);
-    454          data_to_send[_cnt++]=BYTE1(_temp_f);
-    455          data_to_send[_cnt++]=BYTE0(_temp_f);
-    456          
-    457          
-    458          _temp_f = user11;
-    459          data_to_send[_cnt++]=BYTE3(_temp_f);
-    460          data_to_send[_cnt++]=BYTE2(_temp_f);
-    461          data_to_send[_cnt++]=BYTE1(_temp_f);
-    462          data_to_send[_cnt++]=BYTE0(_temp_f);
-    463          _temp_f = user12;
-    464          data_to_send[_cnt++]=BYTE3(_temp_f);
-    465          data_to_send[_cnt++]=BYTE2(_temp_f);
-    466          data_to_send[_cnt++]=BYTE1(_temp_f);
-    467          data_to_send[_cnt++]=BYTE0(_temp_f);
-    468          _temp_f = user13;
-    469          data_to_send[_cnt++]=BYTE3(_temp_f);
-    470          data_to_send[_cnt++]=BYTE2(_temp_f);
-    471          data_to_send[_cnt++]=BYTE1(_temp_f);
-    472          data_to_send[_cnt++]=BYTE0(_temp_f);
-    473          _temp_f = user14;
-    474          data_to_send[_cnt++]=BYTE3(_temp_f);
-    475          data_to_send[_cnt++]=BYTE2(_temp_f);
-    476          data_to_send[_cnt++]=BYTE1(_temp_f);
-    477          data_to_send[_cnt++]=BYTE0(_temp_f); 
-    478          _temp_f = user15;
-    479          data_to_send[_cnt++]=BYTE3(_temp_f);
-    480          data_to_send[_cnt++]=BYTE2(_temp_f);
-    481          data_to_send[_cnt++]=BYTE1(_temp_f);
-    482          data_to_send[_cnt++]=BYTE0(_temp_f);
-    483          
-    484          data_to_send[3] = _cnt-4;
-    485          
-    486          sum = 0;
-    487          for(i=0;i<_cnt;i++)
-    488          sum += data_to_send[i];
-    489          data_to_send[_cnt++] = sum;
-    490          
-    491          usart1_send((data_to_send),_cnt);  
-    492          }
-    493          */
+   \       0x98   0x0010             MOVS     R0,R2
+   \       0x9A   0x002B             MOVS     R3,R5
+   \       0x9C   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0x9E   0xB2DB             UXTB     R3,R3            ;; ZeroExt  R3,R3,#+24,#+24
+   \       0xA0   0x4298             CMP      R0,R3
+   \       0xA2   0xD3F4             BCC.N    ??ANO_DT_Send_Power_1
+    462            data_to_send[_cnt++]=sum;
+   \       0xA4   0x0028             MOVS     R0,R5
+   \       0xA6   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \       0xA8   0x5421             STRB     R1,[R4, R0]
+   \       0xAA   0x1C6D             ADDS     R5,R5,#+1
+    463            
+    464            usart1_send((data_to_send),_cnt);  
+   \       0xAC   0xB2ED             UXTB     R5,R5            ;; ZeroExt  R5,R5,#+24,#+24
+   \       0xAE   0x0029             MOVS     R1,R5
+   \       0xB0   0x0020             MOVS     R0,R4
+   \       0xB2   0x....'....        BL       usart1_send
+    465          }
+   \       0xB6   0xBDF1             POP      {R0,R4-R7,PC}    ;; return
+    466          
+    467          /* 
+    468          void ANO_DT_Send_User(    s16 user1,s16 user2,s16 user3,s16 user4,s16 user5,
+    469          float user6,float user7,float user8,float user9,float user10,
+    470          float user11,float user12,float user13,float user14,float user15)
+    471          {
+    472          u8 _cnt=0;
+    473          vs16 _temp;
+    474          float _temp_f;
+    475          
+    476          u8 sum = 0;
+    477          u8 i=0;
+    478          data_to_send[_cnt++]=0xAA;
+    479          data_to_send[_cnt++]=0xAA;
+    480          data_to_send[_cnt++]=0xF1;
+    481          data_to_send[_cnt++]=0;
+    482          
+    483          //1-5  int16
+    484          _temp = user1;    
+    485          data_to_send[_cnt++]=BYTE1(_temp);
+    486          data_to_send[_cnt++]=BYTE0(_temp);
+    487          _temp = user2;
+    488          data_to_send[_cnt++]=BYTE1(_temp);
+    489          data_to_send[_cnt++]=BYTE0(_temp);
+    490          _temp = user3;
+    491          data_to_send[_cnt++]=BYTE1(_temp);
+    492          data_to_send[_cnt++]=BYTE0(_temp);
+    493          _temp = user4;    
+    494          data_to_send[_cnt++]=BYTE1(_temp);
+    495          data_to_send[_cnt++]=BYTE0(_temp);
+    496          _temp = user5;
+    497          data_to_send[_cnt++]=BYTE1(_temp);
+    498          data_to_send[_cnt++]=BYTE0(_temp);
+    499          
+    500          //6-10 :float
+    501          _temp_f = user6;
+    502          data_to_send[_cnt++]=BYTE3(_temp_f);
+    503          data_to_send[_cnt++]=BYTE2(_temp_f);
+    504          data_to_send[_cnt++]=BYTE1(_temp_f);
+    505          data_to_send[_cnt++]=BYTE0(_temp_f);
+    506          _temp_f = user7;
+    507          data_to_send[_cnt++]=BYTE3(_temp_f);
+    508          data_to_send[_cnt++]=BYTE2(_temp_f);
+    509          data_to_send[_cnt++]=BYTE1(_temp_f);
+    510          data_to_send[_cnt++]=BYTE0(_temp_f);
+    511          _temp_f = user8;
+    512          data_to_send[_cnt++]=BYTE3(_temp_f);
+    513          data_to_send[_cnt++]=BYTE2(_temp_f);
+    514          data_to_send[_cnt++]=BYTE1(_temp_f);
+    515          data_to_send[_cnt++]=BYTE0(_temp_f);
+    516          _temp_f = user9;
+    517          data_to_send[_cnt++]=BYTE3(_temp_f);
+    518          data_to_send[_cnt++]=BYTE2(_temp_f);
+    519          data_to_send[_cnt++]=BYTE1(_temp_f);
+    520          data_to_send[_cnt++]=BYTE0(_temp_f);
+    521          _temp_f = user10;
+    522          data_to_send[_cnt++]=BYTE3(_temp_f);
+    523          data_to_send[_cnt++]=BYTE2(_temp_f);
+    524          data_to_send[_cnt++]=BYTE1(_temp_f);
+    525          data_to_send[_cnt++]=BYTE0(_temp_f);
+    526          
+    527          
+    528          _temp_f = user11;
+    529          data_to_send[_cnt++]=BYTE3(_temp_f);
+    530          data_to_send[_cnt++]=BYTE2(_temp_f);
+    531          data_to_send[_cnt++]=BYTE1(_temp_f);
+    532          data_to_send[_cnt++]=BYTE0(_temp_f);
+    533          _temp_f = user12;
+    534          data_to_send[_cnt++]=BYTE3(_temp_f);
+    535          data_to_send[_cnt++]=BYTE2(_temp_f);
+    536          data_to_send[_cnt++]=BYTE1(_temp_f);
+    537          data_to_send[_cnt++]=BYTE0(_temp_f);
+    538          _temp_f = user13;
+    539          data_to_send[_cnt++]=BYTE3(_temp_f);
+    540          data_to_send[_cnt++]=BYTE2(_temp_f);
+    541          data_to_send[_cnt++]=BYTE1(_temp_f);
+    542          data_to_send[_cnt++]=BYTE0(_temp_f);
+    543          _temp_f = user14;
+    544          data_to_send[_cnt++]=BYTE3(_temp_f);
+    545          data_to_send[_cnt++]=BYTE2(_temp_f);
+    546          data_to_send[_cnt++]=BYTE1(_temp_f);
+    547          data_to_send[_cnt++]=BYTE0(_temp_f); 
+    548          _temp_f = user15;
+    549          data_to_send[_cnt++]=BYTE3(_temp_f);
+    550          data_to_send[_cnt++]=BYTE2(_temp_f);
+    551          data_to_send[_cnt++]=BYTE1(_temp_f);
+    552          data_to_send[_cnt++]=BYTE0(_temp_f);
+    553          
+    554          data_to_send[3] = _cnt-4;
+    555          
+    556          sum = 0;
+    557          for(i=0;i<_cnt;i++)
+    558          sum += data_to_send[i];
+    559          data_to_send[_cnt++] = sum;
+    560          
+    561          usart1_send((data_to_send),_cnt);  
+    562          }
+    563          */
 
    \                                 In section .text, align 2, keep-with-next
-    494          void ANO_DT_Send_PWM_Motor(u16 M1,u16 M2,u16 M3,u16 M4,u16 M5,u16 M6,u16 M7,u16 M8)
-    495          {
+    564          void ANO_DT_Send_PWM_Motor(u16 M1,u16 M2,u16 M3,u16 M4,u16 M5,u16 M6,u16 M7,u16 M8)
+    565          {
    \                     ANO_DT_Send_PWM_Motor: (+1)
    \        0x0   0xB53F             PUSH     {R0-R5,LR}
    \        0x2   0xB081             SUB      SP,SP,#+4
-    496            u8 _cnt=0;
+    566            u8 _cnt=0;
    \        0x4   0x2100             MOVS     R1,#+0
-    497            u8 i=0;
+    567            u8 i=0;
    \        0x6   0x2000             MOVS     R0,#+0
-    498            u8 sum = 0;
+    568            u8 sum = 0;
    \        0x8   0x2300             MOVS     R3,#+0
-    499            data_to_send[_cnt++]=0xAA;
-   \        0xA   0x....             LDR.N    R0,??DataTable13_12
+    569            data_to_send[_cnt++]=0xAA;
+   \        0xA   0x....             LDR.N    R0,??DataTable12_29
    \        0xC   0x22AA             MOVS     R2,#+170
    \        0xE   0x000C             MOVS     R4,R1
    \       0x10   0xB2E4             UXTB     R4,R4            ;; ZeroExt  R4,R4,#+24,#+24
    \       0x12   0x5502             STRB     R2,[R0, R4]
    \       0x14   0x1C49             ADDS     R1,R1,#+1
-    500            data_to_send[_cnt++]=0xAA;
+    570            data_to_send[_cnt++]=0xAA;
    \       0x16   0x22AA             MOVS     R2,#+170
    \       0x18   0x000C             MOVS     R4,R1
    \       0x1A   0xB2E4             UXTB     R4,R4            ;; ZeroExt  R4,R4,#+24,#+24
    \       0x1C   0x5502             STRB     R2,[R0, R4]
    \       0x1E   0x1C49             ADDS     R1,R1,#+1
-    501            data_to_send[_cnt++]=0x06;
+    571            data_to_send[_cnt++]=0x06;
    \       0x20   0x2206             MOVS     R2,#+6
    \       0x22   0x000C             MOVS     R4,R1
    \       0x24   0xB2E4             UXTB     R4,R4            ;; ZeroExt  R4,R4,#+24,#+24
    \       0x26   0x5502             STRB     R2,[R0, R4]
    \       0x28   0x1C49             ADDS     R1,R1,#+1
-    502            data_to_send[_cnt++]=0;
+    572            data_to_send[_cnt++]=0;
    \       0x2A   0x2200             MOVS     R2,#+0
    \       0x2C   0x000C             MOVS     R4,R1
    \       0x2E   0xB2E4             UXTB     R4,R4            ;; ZeroExt  R4,R4,#+24,#+24
    \       0x30   0x5502             STRB     R2,[R0, R4]
    \       0x32   0x1C49             ADDS     R1,R1,#+1
-    503            
-    504            data_to_send[_cnt++]=BYTE1(M1);
+    573            
+    574            data_to_send[_cnt++]=BYTE1(M1);
    \       0x34   0xF89D 0x2005      LDRB     R2,[SP, #+5]
    \       0x38   0x000C             MOVS     R4,R1
    \       0x3A   0xB2E4             UXTB     R4,R4            ;; ZeroExt  R4,R4,#+24,#+24
    \       0x3C   0x5502             STRB     R2,[R0, R4]
    \       0x3E   0x1C49             ADDS     R1,R1,#+1
-    505            data_to_send[_cnt++]=BYTE0(M1);
+    575            data_to_send[_cnt++]=BYTE0(M1);
    \       0x40   0xF89D 0x2004      LDRB     R2,[SP, #+4]
    \       0x44   0x000C             MOVS     R4,R1
    \       0x46   0xB2E4             UXTB     R4,R4            ;; ZeroExt  R4,R4,#+24,#+24
    \       0x48   0x5502             STRB     R2,[R0, R4]
    \       0x4A   0x1C49             ADDS     R1,R1,#+1
-    506            
-    507            data_to_send[_cnt++]=BYTE1(M2);
+    576            
+    577            data_to_send[_cnt++]=BYTE1(M2);
    \       0x4C   0xF89D 0x2009      LDRB     R2,[SP, #+9]
    \       0x50   0x000C             MOVS     R4,R1
    \       0x52   0xB2E4             UXTB     R4,R4            ;; ZeroExt  R4,R4,#+24,#+24
    \       0x54   0x5502             STRB     R2,[R0, R4]
    \       0x56   0x1C49             ADDS     R1,R1,#+1
-    508            data_to_send[_cnt++]=BYTE0(M2);
+    578            data_to_send[_cnt++]=BYTE0(M2);
    \       0x58   0xF89D 0x2008      LDRB     R2,[SP, #+8]
    \       0x5C   0x000C             MOVS     R4,R1
    \       0x5E   0xB2E4             UXTB     R4,R4            ;; ZeroExt  R4,R4,#+24,#+24
    \       0x60   0x5502             STRB     R2,[R0, R4]
    \       0x62   0x1C49             ADDS     R1,R1,#+1
-    509            
-    510            data_to_send[_cnt++]=BYTE1(M3);
+    579            
+    580            data_to_send[_cnt++]=BYTE1(M3);
    \       0x64   0xF89D 0x200D      LDRB     R2,[SP, #+13]
    \       0x68   0x000C             MOVS     R4,R1
    \       0x6A   0xB2E4             UXTB     R4,R4            ;; ZeroExt  R4,R4,#+24,#+24
    \       0x6C   0x5502             STRB     R2,[R0, R4]
    \       0x6E   0x1C49             ADDS     R1,R1,#+1
-    511            data_to_send[_cnt++]=BYTE0(M3);
+    581            data_to_send[_cnt++]=BYTE0(M3);
    \       0x70   0xF89D 0x200C      LDRB     R2,[SP, #+12]
    \       0x74   0x000C             MOVS     R4,R1
    \       0x76   0xB2E4             UXTB     R4,R4            ;; ZeroExt  R4,R4,#+24,#+24
    \       0x78   0x5502             STRB     R2,[R0, R4]
    \       0x7A   0x1C49             ADDS     R1,R1,#+1
-    512            
-    513            data_to_send[_cnt++]=BYTE1(M4);
+    582            
+    583            data_to_send[_cnt++]=BYTE1(M4);
    \       0x7C   0xF89D 0x2011      LDRB     R2,[SP, #+17]
    \       0x80   0x000C             MOVS     R4,R1
    \       0x82   0xB2E4             UXTB     R4,R4            ;; ZeroExt  R4,R4,#+24,#+24
    \       0x84   0x5502             STRB     R2,[R0, R4]
    \       0x86   0x1C49             ADDS     R1,R1,#+1
-    514            data_to_send[_cnt++]=BYTE0(M4);
+    584            data_to_send[_cnt++]=BYTE0(M4);
    \       0x88   0xF89D 0x2010      LDRB     R2,[SP, #+16]
    \       0x8C   0x000C             MOVS     R4,R1
    \       0x8E   0xB2E4             UXTB     R4,R4            ;; ZeroExt  R4,R4,#+24,#+24
    \       0x90   0x5502             STRB     R2,[R0, R4]
    \       0x92   0x1C49             ADDS     R1,R1,#+1
-    515            
-    516            data_to_send[_cnt++]=BYTE1(M5);
+    585            
+    586            data_to_send[_cnt++]=BYTE1(M5);
    \       0x94   0xF89D 0x2021      LDRB     R2,[SP, #+33]
    \       0x98   0x000C             MOVS     R4,R1
    \       0x9A   0xB2E4             UXTB     R4,R4            ;; ZeroExt  R4,R4,#+24,#+24
    \       0x9C   0x5502             STRB     R2,[R0, R4]
    \       0x9E   0x1C49             ADDS     R1,R1,#+1
-    517            data_to_send[_cnt++]=BYTE0(M5);
+    587            data_to_send[_cnt++]=BYTE0(M5);
    \       0xA0   0xF89D 0x2020      LDRB     R2,[SP, #+32]
    \       0xA4   0x000C             MOVS     R4,R1
    \       0xA6   0xB2E4             UXTB     R4,R4            ;; ZeroExt  R4,R4,#+24,#+24
    \       0xA8   0x5502             STRB     R2,[R0, R4]
    \       0xAA   0x1C49             ADDS     R1,R1,#+1
-    518            
-    519            data_to_send[_cnt++]=BYTE1(M6);
+    588            
+    589            data_to_send[_cnt++]=BYTE1(M6);
    \       0xAC   0xF89D 0x2025      LDRB     R2,[SP, #+37]
    \       0xB0   0x000C             MOVS     R4,R1
    \       0xB2   0xB2E4             UXTB     R4,R4            ;; ZeroExt  R4,R4,#+24,#+24
    \       0xB4   0x5502             STRB     R2,[R0, R4]
    \       0xB6   0x1C49             ADDS     R1,R1,#+1
-    520            data_to_send[_cnt++]=BYTE0(M6);
+    590            data_to_send[_cnt++]=BYTE0(M6);
    \       0xB8   0xF89D 0x2024      LDRB     R2,[SP, #+36]
    \       0xBC   0x000C             MOVS     R4,R1
    \       0xBE   0xB2E4             UXTB     R4,R4            ;; ZeroExt  R4,R4,#+24,#+24
    \       0xC0   0x5502             STRB     R2,[R0, R4]
    \       0xC2   0x1C49             ADDS     R1,R1,#+1
-    521            
-    522            data_to_send[_cnt++]=BYTE1(M7);
+    591            
+    592            data_to_send[_cnt++]=BYTE1(M7);
    \       0xC4   0xF89D 0x2029      LDRB     R2,[SP, #+41]
    \       0xC8   0x000C             MOVS     R4,R1
    \       0xCA   0xB2E4             UXTB     R4,R4            ;; ZeroExt  R4,R4,#+24,#+24
    \       0xCC   0x5502             STRB     R2,[R0, R4]
    \       0xCE   0x1C49             ADDS     R1,R1,#+1
-    523            data_to_send[_cnt++]=BYTE0(M7);
+    593            data_to_send[_cnt++]=BYTE0(M7);
    \       0xD0   0xF89D 0x2028      LDRB     R2,[SP, #+40]
    \       0xD4   0x000C             MOVS     R4,R1
    \       0xD6   0xB2E4             UXTB     R4,R4            ;; ZeroExt  R4,R4,#+24,#+24
    \       0xD8   0x5502             STRB     R2,[R0, R4]
    \       0xDA   0x1C49             ADDS     R1,R1,#+1
-    524            
-    525            data_to_send[_cnt++]=BYTE1(M8);
+    594            
+    595            data_to_send[_cnt++]=BYTE1(M8);
    \       0xDC   0xF89D 0x202D      LDRB     R2,[SP, #+45]
    \       0xE0   0x000C             MOVS     R4,R1
    \       0xE2   0xB2E4             UXTB     R4,R4            ;; ZeroExt  R4,R4,#+24,#+24
    \       0xE4   0x5502             STRB     R2,[R0, R4]
    \       0xE6   0x1C49             ADDS     R1,R1,#+1
-    526            data_to_send[_cnt++]=BYTE0(M8);
+    596            data_to_send[_cnt++]=BYTE0(M8);
    \       0xE8   0xF89D 0x202C      LDRB     R2,[SP, #+44]
    \       0xEC   0x000C             MOVS     R4,R1
    \       0xEE   0xB2E4             UXTB     R4,R4            ;; ZeroExt  R4,R4,#+24,#+24
    \       0xF0   0x5502             STRB     R2,[R0, R4]
    \       0xF2   0x1C49             ADDS     R1,R1,#+1
-    527            
-    528            data_to_send[3] = _cnt-4;
+    597            
+    598            data_to_send[3] = _cnt-4;
    \       0xF4   0x1F0A             SUBS     R2,R1,#+4
    \       0xF6   0x70C2             STRB     R2,[R0, #+3]
-    529            
-    530            for(i=0;i<_cnt;i++) 
+    599            
+    600            for(i=0;i<_cnt;i++) 
    \       0xF8   0x2400             MOVS     R4,#+0
    \       0xFA   0xE004             B.N      ??ANO_DT_Send_PWM_Motor_0
-    531              sum += data_to_send[i];
+    601              sum += data_to_send[i];
    \                     ??ANO_DT_Send_PWM_Motor_1: (+1)
    \       0xFC   0x0022             MOVS     R2,R4
    \       0xFE   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
@@ -1581,393 +1781,454 @@ Warning[Pa093]: implicit conversion from floating point to integer
    \      0x10C   0xB2ED             UXTB     R5,R5            ;; ZeroExt  R5,R5,#+24,#+24
    \      0x10E   0x42AA             CMP      R2,R5
    \      0x110   0xD3F4             BCC.N    ??ANO_DT_Send_PWM_Motor_1
-    532            data_to_send[_cnt++]=sum;
+    602            data_to_send[_cnt++]=sum;
    \      0x112   0x000A             MOVS     R2,R1
    \      0x114   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
    \      0x116   0x5483             STRB     R3,[R0, R2]
    \      0x118   0x1C49             ADDS     R1,R1,#+1
-    533            
-    534            usart1_send((data_to_send),_cnt);  	
+    603            
+    604            usart1_send((data_to_send),_cnt);  	
    \      0x11A   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \      0x11C   0x....'....        BL       usart1_send
-    535          }
+    605          }
    \      0x120   0xB005             ADD      SP,SP,#+20
    \      0x122   0xBD30             POP      {R4,R5,PC}       ;; return
-    536          
+    606          
 
    \                                 In section .text, align 2, keep-with-next
-    537          void Send_to_MATLAB(){//float roll, float pitch, float yaw){
+    607          void Send_to_MATLAB(){//float roll, float pitch, float yaw){
    \                     Send_to_MATLAB: (+1)
    \        0x0   0xB5F8             PUSH     {R3-R7,LR}
-    538          
-    539            u8 _cnt=0;
+    608            
+    609            u8 _cnt=0;
    \        0x2   0x2400             MOVS     R4,#+0
-    540            vs16 _temp;
-    541            vs16 temp;
-    542            _temp = (int)(att.rol*100);                     
-   \        0x4   0x....             LDR.N    R5,??DataTable13_13  ;; 0x42c80000
-   \        0x6   0x....             LDR.N    R6,??DataTable13_14
+    610            vs16 _temp;
+    611            vs16 temp;
+    612            _temp = (int)(att.rol*100);                     
+   \        0x4   0x....             LDR.N    R5,??DataTable12_30  ;; 0x42c80000
+   \        0x6   0x....             LDR.N    R6,??DataTable12_31
    \        0x8   0x6870             LDR      R0,[R6, #+4]
    \        0xA   0x0029             MOVS     R1,R5
    \        0xC   0x....'....        BL       __aeabi_fmul
    \       0x10   0x....'....        BL       __aeabi_f2iz
    \       0x14   0xF8AD 0x0000      STRH     R0,[SP, #+0]
-    543            data_to_send[_cnt++]=BYTE1(_temp);
-   \       0x18   0x....             LDR.N    R7,??DataTable13_12
+    613            data_to_send[_cnt++]=BYTE1(_temp);
+   \       0x18   0x....             LDR.N    R7,??DataTable12_29
    \       0x1A   0xF89D 0x0001      LDRB     R0,[SP, #+1]
    \       0x1E   0x0021             MOVS     R1,R4
    \       0x20   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \       0x22   0x5478             STRB     R0,[R7, R1]
    \       0x24   0x1C64             ADDS     R4,R4,#+1
-    544            data_to_send[_cnt++]=BYTE0(_temp);
+    614            data_to_send[_cnt++]=BYTE0(_temp);
    \       0x26   0xF89D 0x0000      LDRB     R0,[SP, #+0]
    \       0x2A   0x0021             MOVS     R1,R4
    \       0x2C   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \       0x2E   0x5478             STRB     R0,[R7, R1]
    \       0x30   0x1C64             ADDS     R4,R4,#+1
-    545            
-    546            _temp = (int)(att.pit*100);                      
+    615            
+    616            _temp = (int)(att.pit*100);                      
    \       0x32   0x6830             LDR      R0,[R6, #+0]
    \       0x34   0x0029             MOVS     R1,R5
    \       0x36   0x....'....        BL       __aeabi_fmul
    \       0x3A   0x....'....        BL       __aeabi_f2iz
    \       0x3E   0xF8AD 0x0000      STRH     R0,[SP, #+0]
-    547            data_to_send[_cnt++]=BYTE1(_temp);
+    617            data_to_send[_cnt++]=BYTE1(_temp);
    \       0x42   0xF89D 0x0001      LDRB     R0,[SP, #+1]
    \       0x46   0x0021             MOVS     R1,R4
    \       0x48   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \       0x4A   0x5478             STRB     R0,[R7, R1]
    \       0x4C   0x1C64             ADDS     R4,R4,#+1
-    548            data_to_send[_cnt++]=BYTE0(_temp);
+    618            data_to_send[_cnt++]=BYTE0(_temp);
    \       0x4E   0xF89D 0x0000      LDRB     R0,[SP, #+0]
    \       0x52   0x0021             MOVS     R1,R4
    \       0x54   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \       0x56   0x5478             STRB     R0,[R7, R1]
    \       0x58   0x1C64             ADDS     R4,R4,#+1
-    549            
-    550            _temp = (int)(att.yaw*100);                     
+    619            
+    620            _temp = (int)(att.yaw*100);                     
    \       0x5A   0x68B0             LDR      R0,[R6, #+8]
    \       0x5C   0x0029             MOVS     R1,R5
    \       0x5E   0x....'....        BL       __aeabi_fmul
    \       0x62   0x....'....        BL       __aeabi_f2iz
    \       0x66   0xF8AD 0x0000      STRH     R0,[SP, #+0]
-    551            data_to_send[_cnt++]=BYTE1(_temp);
+    621            data_to_send[_cnt++]=BYTE1(_temp);
    \       0x6A   0xF89D 0x0001      LDRB     R0,[SP, #+1]
    \       0x6E   0x0021             MOVS     R1,R4
    \       0x70   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \       0x72   0x5478             STRB     R0,[R7, R1]
    \       0x74   0x1C64             ADDS     R4,R4,#+1
-    552            data_to_send[_cnt++]=BYTE0(_temp);
+    622            data_to_send[_cnt++]=BYTE0(_temp);
    \       0x76   0xF89D 0x0000      LDRB     R0,[SP, #+0]
    \       0x7A   0x0021             MOVS     R1,R4
    \       0x7C   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \       0x7E   0x5478             STRB     R0,[R7, R1]
    \       0x80   0x1C64             ADDS     R4,R4,#+1
-    553          
-    554            usart1_send((data_to_send),_cnt);
+    623            
+    624            usart1_send((data_to_send),_cnt);
    \       0x82   0xB2E4             UXTB     R4,R4            ;; ZeroExt  R4,R4,#+24,#+24
    \       0x84   0x0021             MOVS     R1,R4
    \       0x86   0x0038             MOVS     R0,R7
    \       0x88   0x....'....        BL       usart1_send
-    555          }
+    625          }
    \       0x8C   0xBDF1             POP      {R0,R4-R7,PC}    ;; return
 
    \                                 In section .text, align 2, keep-with-next
-    556          void Anotc_SendData(void)
-    557          {
+    626          void Anotc_SendData(void)
+    627          {
    \                     Anotc_SendData: (+1)
    \        0x0   0xB538             PUSH     {R3-R5,LR}
    \        0x2   0xB086             SUB      SP,SP,#+24
-    558            static uint8_t ANO_debug_cnt = 0;
-    559            //ANO_debug_cnt++; //如果做MATLAB則註解這一行
-    560            switch(ANO_debug_cnt)
-   \        0x4   0x....             LDR.N    R0,??DataTable13_15
+    628            static uint8_t ANO_debug_cnt = 0;
+    629            ANO_debug_cnt++; //如果做MATLAB則註解這一行
+   \        0x4   0x....             LDR.N    R0,??DataTable12_32
    \        0x6   0x7801             LDRB     R1,[R0, #+0]
-   \        0x8   0x2900             CMP      R1,#+0
-   \        0xA   0xD009             BEQ.N    ??Anotc_SendData_0
-   \        0xC   0x2902             CMP      R1,#+2
-   \        0xE   0xD00D             BEQ.N    ??Anotc_SendData_1
-   \       0x10   0xD309             BCC.N    ??Anotc_SendData_2
-   \       0x12   0x2904             CMP      R1,#+4
-   \       0x14   0xD03D             BEQ.N    ??Anotc_SendData_3
-   \       0x16   0xD329             BCC.N    ??Anotc_SendData_4
-   \       0x18   0x2906             CMP      R1,#+6
-   \       0x1A   0xD063             BEQ.N    ??Anotc_SendData_5
-   \       0x1C   0xD33E             BCC.N    ??Anotc_SendData_6
-   \       0x1E   0xE064             B.N      ??Anotc_SendData_7
-    561            {
-    562            case 0:
-    563              {
-    564                Send_to_MATLAB();//att.pit,att.rol,att.yaw);
+   \        0x8   0x1C49             ADDS     R1,R1,#+1
+   \        0xA   0x7001             STRB     R1,[R0, #+0]
+    630            switch(ANO_debug_cnt)
+   \        0xC   0x7801             LDRB     R1,[R0, #+0]
+   \        0xE   0x2900             CMP      R1,#+0
+   \       0x10   0xD009             BEQ.N    ??Anotc_SendData_0
+   \       0x12   0x2902             CMP      R1,#+2
+   \       0x14   0xD00D             BEQ.N    ??Anotc_SendData_1
+   \       0x16   0xD309             BCC.N    ??Anotc_SendData_2
+   \       0x18   0x2904             CMP      R1,#+4
+   \       0x1A   0xD03D             BEQ.N    ??Anotc_SendData_3
+   \       0x1C   0xD329             BCC.N    ??Anotc_SendData_4
+   \       0x1E   0x2906             CMP      R1,#+6
+   \       0x20   0xD063             BEQ.N    ??Anotc_SendData_5
+   \       0x22   0xD33E             BCC.N    ??Anotc_SendData_6
+   \       0x24   0xE064             B.N      ??Anotc_SendData_7
+    631            {
+    632            case 0:
+    633              {
+    634                Send_to_MATLAB();//att.pit,att.rol,att.yaw);
    \                     ??Anotc_SendData_0: (+1)
-   \       0x20   0x....'....        BL       Send_to_MATLAB
-    565                break;
-   \       0x24   0xE061             B.N      ??Anotc_SendData_8
-    566              }
-    567            case 1:
-    568              {
-    569                ANO_DT_Send_Status();
+   \       0x26   0x....'....        BL       Send_to_MATLAB
+    635                break;
+   \       0x2A   0xE061             B.N      ??Anotc_SendData_8
+    636              }
+    637            case 1:
+    638              {
+    639                ANO_DT_Send_Status();
    \                     ??Anotc_SendData_2: (+1)
-   \       0x26   0x....'....        BL       ANO_DT_Send_Status
-    570                break;
-   \       0x2A   0xE05E             B.N      ??Anotc_SendData_8
-    571              }
-    572            case 2:
-    573              {
-    574                ANO_DT_Send_Senser(acc_raw.x,acc_raw.y,acc_raw.z,Mpu.deg_s.x,Mpu.deg_s.y,Mpu.deg_s.z,0,0,0);//將gyro_z改成看Encoder的值
+   \       0x2C   0x....'....        BL       ANO_DT_Send_Status
+    640                break;
+   \       0x30   0xE05E             B.N      ??Anotc_SendData_8
+    641              }
+    642            case 2:
+    643              {
+    644                ANO_DT_Send_Senser(acc_raw.x,acc_raw.y,acc_raw.z,Mpu.deg_s.x,Mpu.deg_s.y,Mpu.deg_s.z,0,0,0);//將gyro_z改成看Encoder的值
                                                                         ^
 Warning[Pa093]: implicit conversion from floating point to integer
 
         ANO_DT_Send_Senser(acc_raw.x,acc_raw.y,acc_raw.z,Mpu.deg_s.x,Mpu.deg_s.y,Mpu.deg_s.z,0,0,0);//將gyro_z改成看Encoder的值
                                                                      ^
-"E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\usart.c",574  Warning[Pa093]: 
+"E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\usart.c",644  Warning[Pa093]: 
           implicit conversion from floating point to integer
 
         ANO_DT_Send_Senser(acc_raw.x,acc_raw.y,acc_raw.z,Mpu.deg_s.x,Mpu.deg_s.y,Mpu.deg_s.z,0,0,0);//將gyro_z改成看Encoder的值
                                                                                  ^
-"E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\usart.c",574  Warning[Pa093]: 
+"E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\usart.c",644  Warning[Pa093]: 
           implicit conversion from floating point to integer
    \                     ??Anotc_SendData_1: (+1)
-   \       0x2C   0x....             LDR.N    R4,??DataTable13_16
-   \       0x2E   0x....             LDR.N    R5,??DataTable13_17
-   \       0x30   0x2000             MOVS     R0,#+0
-   \       0x32   0x9004             STR      R0,[SP, #+16]
-   \       0x34   0x2000             MOVS     R0,#+0
-   \       0x36   0x9003             STR      R0,[SP, #+12]
-   \       0x38   0x2000             MOVS     R0,#+0
-   \       0x3A   0x9002             STR      R0,[SP, #+8]
-   \       0x3C   0x68A8             LDR      R0,[R5, #+8]
-   \       0x3E   0x....'....        BL       __aeabi_f2iz
-   \       0x42   0xB200             SXTH     R0,R0            ;; SignExt  R0,R0,#+16,#+16
-   \       0x44   0x9001             STR      R0,[SP, #+4]
-   \       0x46   0x6868             LDR      R0,[R5, #+4]
-   \       0x48   0x....'....        BL       __aeabi_f2iz
-   \       0x4C   0xB200             SXTH     R0,R0            ;; SignExt  R0,R0,#+16,#+16
-   \       0x4E   0x9000             STR      R0,[SP, #+0]
-   \       0x50   0x6828             LDR      R0,[R5, #+0]
-   \       0x52   0x....'....        BL       __aeabi_f2iz
-   \       0x56   0x0003             MOVS     R3,R0
-   \       0x58   0xB21B             SXTH     R3,R3            ;; SignExt  R3,R3,#+16,#+16
-   \       0x5A   0xF9B4 0x2004      LDRSH    R2,[R4, #+4]
-   \       0x5E   0xF9B4 0x1002      LDRSH    R1,[R4, #+2]
-   \       0x62   0xF9B4 0x0000      LDRSH    R0,[R4, #+0]
-   \       0x66   0x....'....        BL       ANO_DT_Send_Senser
-    575                break;
-   \       0x6A   0xE03E             B.N      ??Anotc_SendData_8
-    576              }
-    577            case 3:
-    578              {
-    579                ANO_DT_Send_RCData(0,0,0,0,0,0,0,0,0,0);
+   \       0x32   0x....             LDR.N    R4,??DataTable12_33
+   \       0x34   0x....             LDR.N    R5,??DataTable12_34
+   \       0x36   0x2000             MOVS     R0,#+0
+   \       0x38   0x9004             STR      R0,[SP, #+16]
+   \       0x3A   0x2000             MOVS     R0,#+0
+   \       0x3C   0x9003             STR      R0,[SP, #+12]
+   \       0x3E   0x2000             MOVS     R0,#+0
+   \       0x40   0x9002             STR      R0,[SP, #+8]
+   \       0x42   0x68A8             LDR      R0,[R5, #+8]
+   \       0x44   0x....'....        BL       __aeabi_f2iz
+   \       0x48   0xB200             SXTH     R0,R0            ;; SignExt  R0,R0,#+16,#+16
+   \       0x4A   0x9001             STR      R0,[SP, #+4]
+   \       0x4C   0x6868             LDR      R0,[R5, #+4]
+   \       0x4E   0x....'....        BL       __aeabi_f2iz
+   \       0x52   0xB200             SXTH     R0,R0            ;; SignExt  R0,R0,#+16,#+16
+   \       0x54   0x9000             STR      R0,[SP, #+0]
+   \       0x56   0x6828             LDR      R0,[R5, #+0]
+   \       0x58   0x....'....        BL       __aeabi_f2iz
+   \       0x5C   0x0003             MOVS     R3,R0
+   \       0x5E   0xB21B             SXTH     R3,R3            ;; SignExt  R3,R3,#+16,#+16
+   \       0x60   0xF9B4 0x2004      LDRSH    R2,[R4, #+4]
+   \       0x64   0xF9B4 0x1002      LDRSH    R1,[R4, #+2]
+   \       0x68   0xF9B4 0x0000      LDRSH    R0,[R4, #+0]
+   \       0x6C   0x....'....        BL       ANO_DT_Send_Senser
+    645                break;
+   \       0x70   0xE03E             B.N      ??Anotc_SendData_8
+    646              }
+    647            case 3:
+    648              {
+    649                ANO_DT_Send_RCData(0,0,0,0,0,0,0,0,0,0);
    \                     ??Anotc_SendData_4: (+1)
-   \       0x6C   0x2000             MOVS     R0,#+0
-   \       0x6E   0x9005             STR      R0,[SP, #+20]
-   \       0x70   0x2000             MOVS     R0,#+0
-   \       0x72   0x9004             STR      R0,[SP, #+16]
-   \       0x74   0x2000             MOVS     R0,#+0
-   \       0x76   0x9003             STR      R0,[SP, #+12]
-   \       0x78   0x2000             MOVS     R0,#+0
-   \       0x7A   0x9002             STR      R0,[SP, #+8]
-   \       0x7C   0x2000             MOVS     R0,#+0
-   \       0x7E   0x9001             STR      R0,[SP, #+4]
-   \       0x80   0x2000             MOVS     R0,#+0
-   \       0x82   0x9000             STR      R0,[SP, #+0]
-   \       0x84   0x2300             MOVS     R3,#+0
-   \       0x86   0x2200             MOVS     R2,#+0
-   \       0x88   0x2100             MOVS     R1,#+0
-   \       0x8A   0x2000             MOVS     R0,#+0
-   \       0x8C   0x....'....        BL       ANO_DT_Send_RCData
-    580                break;
-   \       0x90   0xE02B             B.N      ??Anotc_SendData_8
-    581              }
-    582            case 4:
-    583              {
-    584                ANO_DT_Send_Power(20,1.95);
+   \       0x72   0x2000             MOVS     R0,#+0
+   \       0x74   0x9005             STR      R0,[SP, #+20]
+   \       0x76   0x2000             MOVS     R0,#+0
+   \       0x78   0x9004             STR      R0,[SP, #+16]
+   \       0x7A   0x2000             MOVS     R0,#+0
+   \       0x7C   0x9003             STR      R0,[SP, #+12]
+   \       0x7E   0x2000             MOVS     R0,#+0
+   \       0x80   0x9002             STR      R0,[SP, #+8]
+   \       0x82   0x2000             MOVS     R0,#+0
+   \       0x84   0x9001             STR      R0,[SP, #+4]
+   \       0x86   0x2000             MOVS     R0,#+0
+   \       0x88   0x9000             STR      R0,[SP, #+0]
+   \       0x8A   0x2300             MOVS     R3,#+0
+   \       0x8C   0x2200             MOVS     R2,#+0
+   \       0x8E   0x2100             MOVS     R1,#+0
+   \       0x90   0x2000             MOVS     R0,#+0
+   \       0x92   0x....'....        BL       ANO_DT_Send_RCData
+    650                break;
+   \       0x96   0xE02B             B.N      ??Anotc_SendData_8
+    651              }
+    652            case 4:
+    653              {
+    654                ANO_DT_Send_Power(20,1.95);
    \                     ??Anotc_SendData_3: (+1)
-   \       0x92   0x....             LDR.N    R1,??DataTable13_18  ;; 0x3ff9999a
-   \       0x94   0x....             LDR.N    R0,??DataTable13_19  ;; 0x41a00000
-   \       0x96   0x....'....        BL       ANO_DT_Send_Power
-    585                break;
-   \       0x9A   0xE026             B.N      ??Anotc_SendData_8
-    586              }
-    587            case 5:
-    588              {
-    589                ANO_DT_Send_PWM_Motor(PWM_a,PWM_b,PWM_c,encoder_a*30,encoder_b*30,encoder_c*30,0,0);
+   \       0x98   0x....             LDR.N    R1,??DataTable12_35  ;; 0x3ff9999a
+   \       0x9A   0x....             LDR.N    R0,??DataTable12_36  ;; 0x41a00000
+   \       0x9C   0x....'....        BL       ANO_DT_Send_Power
+    655                break;
+   \       0xA0   0xE026             B.N      ??Anotc_SendData_8
+    656              }
+    657            case 5:
+    658              {
+    659                ANO_DT_Send_PWM_Motor(PWM_a,PWM_b,PWM_c,encoder_a*30,encoder_b*30,encoder_c*30,0,0);
    \                     ??Anotc_SendData_6: (+1)
-   \       0x9C   0x201E             MOVS     R0,#+30
-   \       0x9E   0x2100             MOVS     R1,#+0
-   \       0xA0   0x9103             STR      R1,[SP, #+12]
-   \       0xA2   0x2100             MOVS     R1,#+0
-   \       0xA4   0x9102             STR      R1,[SP, #+8]
-   \       0xA6   0x....             LDR.N    R1,??DataTable13_20
-   \       0xA8   0x6809             LDR      R1,[R1, #+0]
-   \       0xAA   0xFB11 0xF100      SMULBB   R1,R1,R0
-   \       0xAE   0xB289             UXTH     R1,R1            ;; ZeroExt  R1,R1,#+16,#+16
-   \       0xB0   0x9101             STR      R1,[SP, #+4]
-   \       0xB2   0x....             LDR.N    R1,??DataTable13_21
-   \       0xB4   0x6809             LDR      R1,[R1, #+0]
-   \       0xB6   0xFB11 0xF100      SMULBB   R1,R1,R0
-   \       0xBA   0xB289             UXTH     R1,R1            ;; ZeroExt  R1,R1,#+16,#+16
-   \       0xBC   0x9100             STR      R1,[SP, #+0]
-   \       0xBE   0x....             LDR.N    R1,??DataTable13_22
-   \       0xC0   0x6809             LDR      R1,[R1, #+0]
-   \       0xC2   0xFB11 0xF300      SMULBB   R3,R1,R0
-   \       0xC6   0xB29B             UXTH     R3,R3            ;; ZeroExt  R3,R3,#+16,#+16
-   \       0xC8   0x....             LDR.N    R0,??DataTable13_23
-   \       0xCA   0x6800             LDR      R0,[R0, #+0]
-   \       0xCC   0x0002             MOVS     R2,R0
-   \       0xCE   0xB292             UXTH     R2,R2            ;; ZeroExt  R2,R2,#+16,#+16
-   \       0xD0   0x....             LDR.N    R0,??DataTable13_24
-   \       0xD2   0x6800             LDR      R0,[R0, #+0]
-   \       0xD4   0x0001             MOVS     R1,R0
-   \       0xD6   0xB289             UXTH     R1,R1            ;; ZeroExt  R1,R1,#+16,#+16
-   \       0xD8   0x....             LDR.N    R0,??DataTable13_25
-   \       0xDA   0x6800             LDR      R0,[R0, #+0]
-   \       0xDC   0xB280             UXTH     R0,R0            ;; ZeroExt  R0,R0,#+16,#+16
-   \       0xDE   0x....'....        BL       ANO_DT_Send_PWM_Motor
-    590                break;
-   \       0xE2   0xE002             B.N      ??Anotc_SendData_8
-    591              }
-    592            case 6:
-    593              {
-    594                ANO_debug_cnt = 0;
+   \       0xA2   0x201E             MOVS     R0,#+30
+   \       0xA4   0x2100             MOVS     R1,#+0
+   \       0xA6   0x9103             STR      R1,[SP, #+12]
+   \       0xA8   0x2100             MOVS     R1,#+0
+   \       0xAA   0x9102             STR      R1,[SP, #+8]
+   \       0xAC   0x....             LDR.N    R1,??DataTable12_37
+   \       0xAE   0x6809             LDR      R1,[R1, #+0]
+   \       0xB0   0xFB11 0xF100      SMULBB   R1,R1,R0
+   \       0xB4   0xB289             UXTH     R1,R1            ;; ZeroExt  R1,R1,#+16,#+16
+   \       0xB6   0x9101             STR      R1,[SP, #+4]
+   \       0xB8   0x....             LDR.N    R1,??DataTable12_38
+   \       0xBA   0x6809             LDR      R1,[R1, #+0]
+   \       0xBC   0xFB11 0xF100      SMULBB   R1,R1,R0
+   \       0xC0   0xB289             UXTH     R1,R1            ;; ZeroExt  R1,R1,#+16,#+16
+   \       0xC2   0x9100             STR      R1,[SP, #+0]
+   \       0xC4   0x....             LDR.N    R1,??DataTable12_39
+   \       0xC6   0x6809             LDR      R1,[R1, #+0]
+   \       0xC8   0xFB11 0xF300      SMULBB   R3,R1,R0
+   \       0xCC   0xB29B             UXTH     R3,R3            ;; ZeroExt  R3,R3,#+16,#+16
+   \       0xCE   0x....             LDR.N    R0,??DataTable12_40
+   \       0xD0   0x6800             LDR      R0,[R0, #+0]
+   \       0xD2   0x0002             MOVS     R2,R0
+   \       0xD4   0xB292             UXTH     R2,R2            ;; ZeroExt  R2,R2,#+16,#+16
+   \       0xD6   0x....             LDR.N    R0,??DataTable12_41
+   \       0xD8   0x6800             LDR      R0,[R0, #+0]
+   \       0xDA   0x0001             MOVS     R1,R0
+   \       0xDC   0xB289             UXTH     R1,R1            ;; ZeroExt  R1,R1,#+16,#+16
+   \       0xDE   0x....             LDR.N    R0,??DataTable12_42
+   \       0xE0   0x6800             LDR      R0,[R0, #+0]
+   \       0xE2   0xB280             UXTH     R0,R0            ;; ZeroExt  R0,R0,#+16,#+16
+   \       0xE4   0x....'....        BL       ANO_DT_Send_PWM_Motor
+    660                break;
+   \       0xE8   0xE002             B.N      ??Anotc_SendData_8
+    661              }
+    662            case 6:
+    663              {
+    664                ANO_debug_cnt = 0;
    \                     ??Anotc_SendData_5: (+1)
-   \       0xE4   0x2100             MOVS     R1,#+0
-   \       0xE6   0x7001             STRB     R1,[R0, #+0]
-    595                break;
-   \       0xE8   0xE7FF             B.N      ??Anotc_SendData_8
-    596              }
-    597            default: break;
-    598            }
-    599          }
+   \       0xEA   0x2100             MOVS     R1,#+0
+   \       0xEC   0x7001             STRB     R1,[R0, #+0]
+    665                break;
+   \       0xEE   0xE7FF             B.N      ??Anotc_SendData_8
+    666              }
+    667            default: break;
+    668            }
+    669          }
    \                     ??Anotc_SendData_7: (+1)
    \                     ??Anotc_SendData_8: (+1)
-   \       0xEA   0xB007             ADD      SP,SP,#+28
-   \       0xEC   0xBD30             POP      {R4,R5,PC}       ;; return
+   \       0xF0   0xB007             ADD      SP,SP,#+28
+   \       0xF2   0xBD30             POP      {R4,R5,PC}       ;; return
 
    \                                 In section .bss, align 1
    \                     `Anotc_SendData::ANO_debug_cnt`:
    \        0x0                      DS8 1
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable6:
-   \        0x0   0x25 0x64          DC8      0x25, 0x64, 0x00, 0x00
-   \              0x00 0x00    
-
-   \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13:
+   \                     ??DataTable12:
    \        0x0   0x4002'64B8        DC32     0x400264b8
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_1:
+   \                     ??DataTable12_1:
    \        0x0   0x2800'8000        DC32     0x28008000
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_2:
+   \                     ??DataTable12_2:
    \        0x0   0x....'....        DC32     usart1_sent
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_3:
+   \                     ??DataTable12_3:
    \        0x0   0x....'....        DC32     usart1_dma_tx_buf
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_4:
-   \        0x0   0x4002'6428        DC32     0x40026428
+   \                     ??DataTable12_4:
+   \        0x0   0x....'....        DC32     `data`
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_5:
-   \        0x0   0x1000'8800        DC32     0x10008800
-
-   \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_6:
-   \        0x0   0x1000'0800        DC32     0x10000800
-
-   \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_7:
-   \        0x0   0x4001'1400        DC32     0x40011400
-
-   \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_8:
-   \        0x0   0x4001'1404        DC32     0x40011404
-
-   \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_9:
+   \                     ??DataTable12_5:
    \        0x0   0x....'....        DC32     usart1_dma_rx_buf
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_10:
-   \        0x0   0x....'....        DC32     receiveData
+   \                     ??DataTable12_6:
+   \        0x0   0x....'....        DC32     genes
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_11:
+   \                     ??DataTable12_7:
+   \        0x0   0x....'....        DC32     Velocity_KP_a
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable12_8:
+   \        0x0   0x....'....        DC32     Balance_KP_a
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable12_9:
+   \        0x0   0x....'....        DC32     Balance_KD_a
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable12_10:
+   \        0x0   0x....'....        DC32     Velocity_KP_b
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable12_11:
+   \        0x0   0x....'....        DC32     Balance_KP_b
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable12_12:
+   \        0x0   0x....'....        DC32     Balance_KD_b
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable12_13:
+   \        0x0   0x....'....        DC32     Velocity_KP_c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable12_14:
+   \        0x0   0x....'....        DC32     Balance_KP_c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable12_15:
+   \        0x0   0x....'....        DC32     Balance_KD_c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable12_16:
+   \        0x0   0x4001'1400        DC32     0x40011400
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable12_17:
+   \        0x0   0x4001'1404        DC32     0x40011404
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable12_18:
+   \        0x0   0x4002'6428        DC32     0x40026428
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable12_19:
+   \        0x0   0x....'....        DC32     STATUS_RECEIVING
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable12_20:
+   \        0x0   0x....'....        DC32     STATUS_CURRENT
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable12_21:
+   \        0x0   0x....'....        DC32     STATUS_RECEIVED
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable12_22:
+   \        0x0   0x....'....        DC32     STATUS_START
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable12_23:
+   \        0x0   0x....'....        DC32     STATUS_WAIT
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable12_24:
+   \        0x0   0x....'....        DC32     flag_stop
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable12_25:
+   \        0x0   0x....'....        DC32     nvic_flag
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable12_26:
+   \        0x0   0x....'....        DC32     STATUS_DONE
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable12_27:
+   \        0x0   0x1000'0800        DC32     0x10000800
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable12_28:
    \        0x0   0x4002'1800        DC32     0x40021800
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_12:
+   \                     ??DataTable12_29:
    \        0x0   0x....'....        DC32     data_to_send
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_13:
+   \                     ??DataTable12_30:
    \        0x0   0x42C8'0000        DC32     0x42c80000
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_14:
+   \                     ??DataTable12_31:
    \        0x0   0x....'....        DC32     att
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_15:
+   \                     ??DataTable12_32:
    \        0x0   0x....'....        DC32     `Anotc_SendData::ANO_debug_cnt`
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_16:
+   \                     ??DataTable12_33:
    \        0x0   0x....'....        DC32     acc_raw
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_17:
+   \                     ??DataTable12_34:
    \        0x0   0x....'....        DC32     Mpu
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_18:
+   \                     ??DataTable12_35:
    \        0x0   0x3FF9'999A        DC32     0x3ff9999a
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_19:
+   \                     ??DataTable12_36:
    \        0x0   0x41A0'0000        DC32     0x41a00000
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_20:
+   \                     ??DataTable12_37:
    \        0x0   0x....'....        DC32     encoder_c
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_21:
+   \                     ??DataTable12_38:
    \        0x0   0x....'....        DC32     encoder_b
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_22:
+   \                     ??DataTable12_39:
    \        0x0   0x....'....        DC32     encoder_a
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_23:
+   \                     ??DataTable12_40:
    \        0x0   0x....'....        DC32     PWM_c
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_24:
+   \                     ??DataTable12_41:
    \        0x0   0x....'....        DC32     PWM_b
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_25:
+   \                     ??DataTable12_42:
    \        0x0   0x....'....        DC32     PWM_a
-
-   \                                 In section .rodata, align 4
-   \        0x0   0x25 0x64          DC8 "%d"
-   \              0x00         
-   \        0x3   0x00               DC8 0
-    600          
-    601          
-    602          
-    603          
-    604          
-    605          
-    606          
+    670          
+    671          
+    672          
+    673          
+    674          
+    675          
+    676          
 
    Maximum stack usage in bytes:
 
@@ -1995,11 +2256,6 @@ Warning[Pa093]: implicit conversion from floating point to integer
         40   -> ANO_DT_Send_Status
         40   -> Send_to_MATLAB
         40   -> __aeabi_f2iz
-       8   DMA2_Stream1_IRQHandler
-         8   -> DMA_ClearFlag
-         8   -> DMA_Cmd
-         8   -> DMA_GetITStatus
-         8   -> printf
        8   DMA2_Stream7_IRQHandler
          8   -> DMA_ClearFlag
          8   -> DMA_Cmd
@@ -2011,10 +2267,10 @@ Warning[Pa093]: implicit conversion from floating point to integer
       16   USART6_IRQHandler
         16   -> DMA_ClearFlag
         16   -> DMA_Cmd
-        16   -> DMA_GetCurrDataCounter
         16   -> DMA_SetCurrDataCounter
+        16   -> USART_ClearITPendingBit
         16   -> USART_GetITStatus
-        16   -> USART_ReceiveData
+        16   -> receiver_data
       80   dma_rx_config
         80   -> DMA_ClearFlag
         80   -> DMA_Cmd
@@ -2026,6 +2282,8 @@ Warning[Pa093]: implicit conversion from floating point to integer
         80   -> DMA_ITConfig
         80   -> DMA_Init
         80   -> RCC_AHB1PeriphClockCmd
+       8   receiver_data
+         8   -> __aeabi_i2f
       40   usart1_init
         40   -> GPIO_Init
         40   -> GPIO_PinAFConfig
@@ -2037,12 +2295,6 @@ Warning[Pa093]: implicit conversion from floating point to integer
         40   -> USART_Init
         40   -> dma_rx_config
         40   -> dma_tx_config
-      16   usart1_read
-        16   -> DMA_ClearFlag
-        16   -> DMA_Cmd
-        16   -> DMA_GetCurrDataCounter
-        16   -> DMA_SetCurrDataCounter
-        16   -> USART_GetFlagStatus
       16   usart1_send
         16   -> DMA_Cmd
         16   -> DMA_SetCurrDataCounter
@@ -2053,65 +2305,86 @@ Warning[Pa093]: implicit conversion from floating point to integer
 
    Bytes  Function/Label
    -----  --------------
-       4  ??DataTable13
-       4  ??DataTable13_1
-       4  ??DataTable13_10
-       4  ??DataTable13_11
-       4  ??DataTable13_12
-       4  ??DataTable13_13
-       4  ??DataTable13_14
-       4  ??DataTable13_15
-       4  ??DataTable13_16
-       4  ??DataTable13_17
-       4  ??DataTable13_18
-       4  ??DataTable13_19
-       4  ??DataTable13_2
-       4  ??DataTable13_20
-       4  ??DataTable13_21
-       4  ??DataTable13_22
-       4  ??DataTable13_23
-       4  ??DataTable13_24
-       4  ??DataTable13_25
-       4  ??DataTable13_3
-       4  ??DataTable13_4
-       4  ??DataTable13_5
-       4  ??DataTable13_6
-       4  ??DataTable13_7
-       4  ??DataTable13_8
-       4  ??DataTable13_9
-       4  ??DataTable6
-       4  ?_0
+       4  ??DataTable12
+       4  ??DataTable12_1
+       4  ??DataTable12_10
+       4  ??DataTable12_11
+       4  ??DataTable12_12
+       4  ??DataTable12_13
+       4  ??DataTable12_14
+       4  ??DataTable12_15
+       4  ??DataTable12_16
+       4  ??DataTable12_17
+       4  ??DataTable12_18
+       4  ??DataTable12_19
+       4  ??DataTable12_2
+       4  ??DataTable12_20
+       4  ??DataTable12_21
+       4  ??DataTable12_22
+       4  ??DataTable12_23
+       4  ??DataTable12_24
+       4  ??DataTable12_25
+       4  ??DataTable12_26
+       4  ??DataTable12_27
+       4  ??DataTable12_28
+       4  ??DataTable12_29
+       4  ??DataTable12_3
+       4  ??DataTable12_30
+       4  ??DataTable12_31
+       4  ??DataTable12_32
+       4  ??DataTable12_33
+       4  ??DataTable12_34
+       4  ??DataTable12_35
+       4  ??DataTable12_36
+       4  ??DataTable12_37
+       4  ??DataTable12_38
+       4  ??DataTable12_39
+       4  ??DataTable12_4
+       4  ??DataTable12_40
+       4  ??DataTable12_41
+       4  ??DataTable12_42
+       4  ??DataTable12_5
+       4  ??DataTable12_6
+       4  ??DataTable12_7
+       4  ??DataTable12_8
+       4  ??DataTable12_9
      292  ANO_DT_Send_PWM_Motor
-     180  ANO_DT_Send_Power
+     184  ANO_DT_Send_Power
      344  ANO_DT_Send_RCData
      376  ANO_DT_Send_Senser
      302  ANO_DT_Send_Status
        1  ANO_debug_cnt
-     238  Anotc_SendData
-      50  DMA2_Stream1_IRQHandler
+     244  Anotc_SendData
       48  DMA2_Stream7_IRQHandler
+       4  STATUS_CURRENT
+       4  STATUS_DONE
+       4  STATUS_RECEIVED
+       4  STATUS_RECEIVING
+       4  STATUS_START
+       4  STATUS_WAIT
      142  Send_to_MATLAB
-      88  USART6_IRQHandler
+     210  USART6_IRQHandler
+       2  data
      100  data_to_send
-     112  dma_rx_config
+     114  dma_rx_config
      112  dma_tx_config
+      20  genes
+       4  index
        4  receiveData
-    1024  usart1_dma_rx_buf
+     250  receiver_data
+      20  usart1_dma_rx_buf
     1024  usart1_dma_tx_buf
-     232  usart1_init
-      86  usart1_read
+     230  usart1_init
       70  usart1_send
        1  usart1_sent
 
  
- 2'153 bytes in section .bss
-     1 byte  in section .data
-     4 bytes in section .rodata
- 2'780 bytes in section .text
+ 1'175 bytes in section .bss
+    25 bytes in section .data
+ 3'090 bytes in section .text
  
- 2'780 bytes of CODE  memory
-     4 bytes of CONST memory
- 2'154 bytes of DATA  memory
+ 3'090 bytes of CODE memory
+ 1'200 bytes of DATA memory
 
 Errors: none
 Warnings: 6

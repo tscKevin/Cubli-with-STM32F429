@@ -1,10 +1,10 @@
 #include "usart.h"
 
 #define usart1_tx_len 1024
-#define usart1_rx_len 1024
+#define usart1_rx_len 20
 uint8_t usart1_dma_tx_buf[usart1_tx_len];
 uint8_t usart1_dma_rx_buf[usart1_rx_len];
-u32 receiveData;
+uint8_t* receiveData;
 //int fputc(int ch,FILE *f)
 //{
 //    USART6->SR; 
@@ -39,7 +39,7 @@ void usart1_send(void* buf, int len){
   mymemcpy(usart1_dma_tx_buf,buf,len); //put the buf's data into usart1_dma_tx_buf
   DMA_SetCurrDataCounter(DMA2_Stream7,len); //設置DMA內存大小
   DMA_Cmd(DMA2_Stream7, ENABLE);//開啟DMA傳輸通道 完成上述步驟即代表我們啟動一次Usart1的DMA傳輸了
-} 
+}
 
 //void DMA2_Stream1_IRQHandler(void)
 //{  
@@ -70,29 +70,99 @@ void usart1_send(void* buf, int len){
 //    return -1;
 //}
 
-void USART6_IRQHandler(void)
-{
-  receiveData=100;
-  int rx_len;
+int index=0;
+int STATUS_START=0x1;
+int STATUS_WAIT=0x2;
+int STATUS_DONE=0x3;
+int STATUS_RECEIVING=0x10;
+int STATUS_RECEIVED=0x11;
+int STATUS_CURRENT=0x10;
+_receiver data;
+_genes genes;
+void receiver_data(void){
+  data.byte.a=usart1_dma_rx_buf[0];
+  data.byte.b=usart1_dma_rx_buf[1];
+  genes.control1.kp=data.value;
+//  printf("value = %d, uvalue = %d\n",data.value,data.uValue);    
+  data.byte.a=usart1_dma_rx_buf[2];
+  data.byte.b=usart1_dma_rx_buf[3];
+  genes.control1.kd=data.value;
+//  printf("value = %d, uvalue = %d\n",data.value,data.uValue);    
+  data.byte.a=usart1_dma_rx_buf[4];
+  data.byte.b=usart1_dma_rx_buf[5];
+  genes.control4.kp=data.value;
+//  printf("value = %d, uvalue = %d\n",data.value,data.uValue);  
+  data.byte.a=usart1_dma_rx_buf[6];
+  data.byte.b=usart1_dma_rx_buf[7];
+  genes.control2.kp=data.value;
+//  printf("value = %d, uvalue = %d\n",data.value,data.uValue);  
+  data.byte.a=usart1_dma_rx_buf[8];
+  data.byte.b=usart1_dma_rx_buf[9];
+  genes.control2.kd=data.value;
+//  printf("value = %d, uvalue = %d\n",data.value,data.uValue);  
+  data.byte.a=usart1_dma_rx_buf[10];
+  data.byte.b=usart1_dma_rx_buf[11];
+  genes.control5.kp=data.value;
+//  printf("value = %d, uvalue = %d\n",data.value,data.uValue);  
+  data.byte.a=usart1_dma_rx_buf[12];
+  data.byte.b=usart1_dma_rx_buf[13];
+  genes.control3.kp=data.value;
+//  printf("value = %d, uvalue = %d\n",data.value,data.uValue);  
+  data.byte.a=usart1_dma_rx_buf[14];
+  data.byte.b=usart1_dma_rx_buf[15];
+  genes.control3.kd=data.value;
+//  printf("value = %d, uvalue = %d\n",data.value,data.uValue);    
+  data.byte.a=usart1_dma_rx_buf[16];
+  data.byte.b=usart1_dma_rx_buf[17];
+  genes.control6.kp=data.value;
+//  printf("value = %d, uvalue = %d\n",data.value,data.uValue);
+  
+  Velocity_KP_a=genes.control4.kp;
+  //extern float Velocity_KI_a;
+  Balance_KP_a=genes.control1.kp;
+  //extern float Balance_KI_a;
+  Balance_KD_a=genes.control1.kd;
+  Velocity_KP_b=genes.control5.kp;
+  //extern float Velocity_KI_b;
+  Balance_KP_b=genes.control2.kp;
+  //extern float Balance_Ki_b;
+  Balance_KD_b=genes.control2.kd;
+  Velocity_KP_c=genes.control6.kp;
+  //extern float Velocity_KI_c;
+  Balance_KP_c=genes.control3.kp;
+  //extern float Balance_Ki_c;
+  Balance_KD_c=genes.control3.kd;
+}
+void USART6_IRQHandler(void){
+  int rx_len; 
   if(USART_GetITStatus(USART6, USART_IT_IDLE) != RESET){
+    rx_len = USART6->DR;
+    USART_ClearITPendingBit(USART6, USART_IT_IDLE);
     DMA_Cmd(DMA2_Stream1, DISABLE);
-    rx_len = usart1_rx_len - DMA_GetCurrDataCounter(DMA2_Stream1);
     DMA_SetCurrDataCounter(DMA2_Stream1,usart1_rx_len);
+    if (STATUS_CURRENT == STATUS_RECEIVING){
+      STATUS_CURRENT = STATUS_RECEIVED;
+      receiver_data();
+    }else if(STATUS_CURRENT == STATUS_RECEIVED){
+      //接收完PID參數等待執行訊號
+      if (usart1_dma_rx_buf[0]==STATUS_START){
+        //開始訊號，開始測試並且回傳角度
+        STATUS_CURRENT = STATUS_WAIT;
+        flag_stop=0;
+        nvic_flag=1;
+      }
+    }else if(STATUS_CURRENT == STATUS_WAIT){
+      if (usart1_dma_rx_buf[0] == STATUS_DONE){
+        // 結束訊號，停止輪子
+        STATUS_CURRENT = STATUS_RECEIVING;
+        flag_stop=1;
+        nvic_flag=0;
+//        MPU6050_RESET();
+      }
+    }    
     DMA_Cmd(DMA2_Stream1, ENABLE);
     DMA_ClearFlag(DMA2_Stream1,DMA_FLAG_TCIF1);//清除通道1的完成標誌
-    receiveData=USART_ReceiveData(USART6);
   }
-//	   int rx_len; 
-//	if(USART_GetITStatus(USART6, USART_IT_IDLE) != RESET)
-//	{
-////		rx_len = USART6->SR;
-//        rx_len = USART6->DR;
-////		DMA_Cmd(DMA2_Stream1, DISABLE);                                    
-//        USART_ClearITPendingBit(USART6, USART_IT_IDLE);                       
-//        rx_len = usart1_rx_len - DMA_GetCurrDataCounter(DMA2_Stream1);
-////		DMA_SetCurrDataCounter(DMA2_Stream1,usart1_rx_len);                
-////		DMA_Cmd(DMA2_Stream1, ENABLE);
-//	}
 }
 
 void dma_tx_config(DMA_Stream_TypeDef* DMAy_Streamx,u32 peripheral_addr,u32 memory_addr,u16 data_length)
@@ -130,37 +200,37 @@ void dma_tx_config(DMA_Stream_TypeDef* DMAy_Streamx,u32 peripheral_addr,u32 memo
 }
 void dma_rx_config(DMA_Stream_TypeDef* DMAy_Streamx,u32 peripheral_addr,u32 memory_addr,u16 data_length)
 {
-    DMA_InitTypeDef DMA_InitStructure;
-    RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_DMA2, ENABLE);
-    
-    DMA_Cmd(DMAy_Streamx, DISABLE);
-    DMA_DeInit(DMAy_Streamx);
-    DMA_InitStructure.DMA_Channel = DMA_Channel_5;
-    DMA_InitStructure.DMA_PeripheralBaseAddr = peripheral_addr;  
-    DMA_InitStructure.DMA_Memory0BaseAddr = memory_addr;  
-    DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralToMemory;                    
-    DMA_InitStructure.DMA_BufferSize = data_length;  
-    DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;  
-    DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable; 
-    DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte; 
-    DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte; 
-    DMA_InitStructure.DMA_Mode = DMA_Mode_Normal;//DMA_Mode_Circular;                                      
-    DMA_InitStructure.DMA_Priority = DMA_Priority_VeryHigh;
-    //DMA_InitStructure.DMA_M2M = DMA_M2M_Disable;  
-    DMA_Init(DMAy_Streamx, &DMA_InitStructure);    
-//    DMA_SetCurrDataCounter(DMAy_Streamx,usart1_rx_len);
-    DMA_ClearFlag(DMA2_Stream1,DMA_FLAG_FEIF1 || DMA_FLAG_DMEIF1 || DMA_FLAG_TEIF1 || DMA_FLAG_HTIF1 || DMA_FLAG_TCIF1);
-//    DMA_ITConfig(DMAy_Streamx,DMA_IT_TC,ENABLE);
-//    DMA_ITConfig(DMAy_Streamx,DMA1_IT_TC5,ENABLE); 
-    DMA_Cmd(DMAy_Streamx, ENABLE);
-
-//    NVIC_InitTypeDef NVIC_InitStructure;
-//    NVIC_InitStructure.NVIC_IRQChannel = DMA2_Stream1_IRQn;
-//    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=1 ;
-//    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;		
-//    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;			
-//    NVIC_Init(&NVIC_InitStructure);	
-    
+  DMA_InitTypeDef DMA_InitStructure;
+  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_DMA2, ENABLE);
+  
+  DMA_Cmd(DMAy_Streamx, DISABLE);
+  DMA_DeInit(DMAy_Streamx);
+  DMA_InitStructure.DMA_Channel = DMA_Channel_5;
+  DMA_InitStructure.DMA_PeripheralBaseAddr = peripheral_addr;  
+  DMA_InitStructure.DMA_Memory0BaseAddr = memory_addr;  
+  DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralToMemory;                    
+  DMA_InitStructure.DMA_BufferSize = data_length;  
+  DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;  
+  DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable; 
+  DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte; 
+  DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte; 
+  DMA_InitStructure.DMA_Mode = DMA_Mode_Circular;                                      
+  DMA_InitStructure.DMA_Priority = DMA_Priority_VeryHigh;
+  //DMA_InitStructure.DMA_M2M = DMA_M2M_Disable;  
+  DMA_Init(DMAy_Streamx, &DMA_InitStructure);    
+  //    DMA_SetCurrDataCounter(DMAy_Streamx,usart1_rx_len);
+  DMA_ClearFlag(DMA2_Stream1,DMA_FLAG_FEIF1 || DMA_FLAG_DMEIF1 || DMA_FLAG_TEIF1 || DMA_FLAG_HTIF1 || DMA_FLAG_TCIF1);
+  //    DMA_ITConfig(DMAy_Streamx,DMA_IT_TC,ENABLE);
+  //    DMA_ITConfig(DMAy_Streamx,DMA1_IT_TC5,ENABLE); 
+  DMA_Cmd(DMAy_Streamx, ENABLE);
+  
+  //    NVIC_InitTypeDef NVIC_InitStructure;
+  //    NVIC_InitStructure.NVIC_IRQChannel = DMA2_Stream1_IRQn;
+  //    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=1 ;
+  //    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;		
+  //    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;			
+  //    NVIC_Init(&NVIC_InitStructure);	
+  
 }
 
 void usart1_init(u32 bound)
@@ -184,7 +254,7 @@ void usart1_init(u32 bound)
   //USART6 Rx(PG.10) 
   GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9; 
   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; 
-//  GPIO_InitStructure.GPIO_OType = GPIO_Mode_AF;
+  //  GPIO_InitStructure.GPIO_OType = GPIO_Mode_AF;
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF; // allow low voltage or high voltage 
   GPIO_Init(GPIOG, &GPIO_InitStructure);
   
@@ -535,7 +605,7 @@ void ANO_DT_Send_PWM_Motor(u16 M1,u16 M2,u16 M3,u16 M4,u16 M5,u16 M6,u16 M7,u16 
 }
 
 void Send_to_MATLAB(){//float roll, float pitch, float yaw){
-
+  
   u8 _cnt=0;
   vs16 _temp;
   vs16 temp;
@@ -550,13 +620,13 @@ void Send_to_MATLAB(){//float roll, float pitch, float yaw){
   _temp = (int)(att.yaw*100);                     
   data_to_send[_cnt++]=BYTE1(_temp);
   data_to_send[_cnt++]=BYTE0(_temp);
-
+  
   usart1_send((data_to_send),_cnt);
 }
 void Anotc_SendData(void)
 {
   static uint8_t ANO_debug_cnt = 0;
-  //ANO_debug_cnt++; //如果做MATLAB則註解這一行
+  ANO_debug_cnt++; //如果做MATLAB則註解這一行
   switch(ANO_debug_cnt)
   {
   case 0:

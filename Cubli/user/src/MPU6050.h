@@ -19,7 +19,7 @@
 *                       Type definition
 *****************************************************************/
 
-#define DEV_ADDR 0xD0 // 6050 器件地址 
+//#define DEV_ADDR 0xD0 // 6050 器件地址 
 //----------------------------------------- 
 // 定义MPU6050内部地址 
 //----------------------------------------- 
@@ -64,6 +64,12 @@
 #define WHO_AM_I 0x75 //IIC地址寄存器(默认数值0x68，只读) 
 #define SlaveAddress 0xD0 //IIC写入时的地址字节数据，+1为读取 
 
+/*用於陀螺儀，加速度計，溫度傳感器的模擬和數字信號通道的復位。
+復位會還原模數轉換信號通道和清除他們的上電配置*/
+//#define MPU6050_RA_SIGNAL_PATH_RESET    0x68
+//bit2  重置陀螺儀的信號路徑
+//bit1  重置加速度傳感器的信號路徑
+//bit0  重置溫度傳感器的信號路徑
 
 #define PI                      3.1415926535898f
 #define gyro_raw_to_deg_s       0.061037018952f   //+-250°/s:131LSB/°/s   +-500°/s:65.5LSB/°/s   +-1000°/s:32.8LSB/°/s    +-2000°/s:16.38LSB/°/s(本次所以); s=2^16/2x°/s,x=250,500,1000,2000.
@@ -75,6 +81,7 @@
 #define gravity_mss    9.80665f                    // acceleration due to gravity in m/s/s
 #define acc_to_1g      gravity_mss / accmax_1g
 #define one_g_to_acc   accmax_1g / gravity_mss
+
 
 /*
 #define XGOFFS_TC        0x00 // Bit 7 PWR_MODE, bits 6:1 XG_OFFS_TC, bit 0 OTP_BNK_VLD                 
@@ -248,6 +255,7 @@ extern SI_F_XYZ accel_offset;
 extern _Mpu6050_data Mpu;
 
 void MPU6050_Init(void);
+void MPU6050_RESET(void);
 uint8_t get_mpu_id(void);
 void get_acc_raw(void);
 void get_gyro_raw(void);
