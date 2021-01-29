@@ -1,13 +1,13 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         04/Jan/2021  12:22:44
+# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         29/Jan/2021  12:29:42
 # Copyright 1999-2019 IAR Systems AB.
 #
 #    Cpu mode     =  
 #    Endian       =  little
 #    Source file  =  E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\main.c
 #    Command line =
-#        -f C:\Users\LABPC1~1\AppData\Local\Temp\EWFC7A.tmp
+#        -f C:\Users\LABPC1~1\AppData\Local\Temp\EWDED3.tmp
 #        (E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\main.c -D
 #        USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
 #        E:\STM32Project\Cubli-with-STM32F429\Cubli\Debug\List -o
@@ -414,7 +414,7 @@ E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\main.c
    \       0x30   0x2005             MOVS     R0,#+5
    \       0x32   0x....'....        BL       Delay
     148              
-    149              TM8_PWM_Init();
+    149              TM8_PWM_Init(); 
    \       0x36   0x....'....        BL       TM8_PWM_Init
     150              LED_On_Board();//A:B13,B:D8,C:D9
    \       0x3A   0x....'....        BL       LED_On_Board

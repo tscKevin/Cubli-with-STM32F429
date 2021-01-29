@@ -146,7 +146,7 @@ void main(void){
     TIM4_EncoderInterface_Init();//C
     Delay(5);
     
-    TM8_PWM_Init();
+    TM8_PWM_Init(); 
     LED_On_Board();//A:B13,B:D8,C:D9
     //
     IIC_GPIO_Init();

@@ -464,8 +464,8 @@ void ANO_DT_Send_Power(float votage, float current)
   usart1_send((data_to_send),_cnt);  
 }
 
-/* 
-void ANO_DT_Send_User(    s16 user1,s16 user2,s16 user3,s16 user4,s16 user5,
+
+void ANO_DT_Send_User(s16 user1,s16 user2,s16 user3,s16 user4,s16 user5,
 float user6,float user7,float user8,float user9,float user10,
 float user11,float user12,float user13,float user14,float user15)
 {
@@ -560,7 +560,7 @@ data_to_send[_cnt++] = sum;
 
 usart1_send((data_to_send),_cnt);  
 }
-*/
+
 void ANO_DT_Send_PWM_Motor(u16 M1,u16 M2,u16 M3,u16 M4,u16 M5,u16 M6,u16 M7,u16 M8)
 {
   u8 _cnt=0;
@@ -641,12 +641,14 @@ void Anotc_SendData(void)
     }
   case 2:
     {
-      ANO_DT_Send_Senser(acc_raw.x,acc_raw.y,acc_raw.z,Mpu.deg_s.x,Mpu.deg_s.y,Mpu.deg_s.z,0,0,0);//將gyro_z改成看Encoder的值
+//      ANO_DT_Send_Senser(acc_raw.x,acc_raw.y,acc_raw.z,Mpu.deg_s.x,Mpu.deg_s.y,Mpu.deg_s.z,0,0,0);//將gyr改成看PWM的值
+//      ANO_DT_Send_Senser(acc_raw.x,acc_raw.y,acc_raw.z,Mpu.deg_s.x,Mpu.deg_s.y,Mpu.deg_s.z,PWM_a,PWM_b,PWM_c);//將gyr改成看PWM的值
+      ANO_DT_Send_Senser(acc_raw.x,acc_raw.y,acc_raw.z,Mpu.deg_s.x,Mpu.deg_s.y,Mpu.deg_s.z,PWM_a,encoder_a*30,0);//將gyr改成看PWM的值
       break;
     }
   case 3:
     {
-      ANO_DT_Send_RCData(0,0,0,0,0,0,0,0,0,0);
+      ANO_DT_Send_RCData(1,2,3,4,5,6,7,8,9,10);
       break;
     }
   case 4:
@@ -656,7 +658,7 @@ void Anotc_SendData(void)
     }
   case 5:
     {
-      ANO_DT_Send_PWM_Motor(PWM_a,PWM_b,PWM_c,encoder_a*30,encoder_b*30,encoder_c*30,0,0);
+      ANO_DT_Send_PWM_Motor(PWM_a,PWM_b,PWM_c,encoder_a*30,encoder_b*30,encoder_c*30,1,2);
       break;
     }
   case 6:

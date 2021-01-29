@@ -27,9 +27,10 @@ float control_balance_x(float angle, float Gyro);
 float control_velocity_y(int encoder);
 float control_balance_y(float angle, float Gyro);
 
-float control_velocity_z(int encoder);
+//float control_velocity_z(int encoder);
+//float control_balance_z(float Gyro);
 float control_balance_z(float angle, float Gyro);
-void Max_pwm_limit(int amplitude);
+void pwm_limit(int amplitude);
 void set_pwm_a(int pwm_a);
 void set_pwm_b(int pwm_b);
 void set_pwm_c(int pwm_c);
@@ -67,7 +68,7 @@ extern float balance_pwm_a;
 extern float velocity_pwm_b;
 extern float balance_pwm_b;
 
-extern float velocity_pwm_c;
+//extern float velocity_pwm_c;
 extern float balance_pwm_c;
 
 extern int PWM_a;
