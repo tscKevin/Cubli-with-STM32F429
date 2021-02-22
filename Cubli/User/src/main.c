@@ -155,13 +155,15 @@ void main(void){
     get_iir_factor(&Mpu.att_acc_factor,0.005f,25);
     //  
     usart1_init(115200);
-    nvic_flag = 0;
     flag_stop = 1;
+    nvic_flag = 0;
     TM5_Interrupt_Init();
     NVIC_Set();
     //  
     Delay(1000);
     Configure_PA0();
+            flag_stop = 0;
+            nvic_flag = 1;
     
 //    TIM8->CCR1 = 8999*0.4;//A PC6
 //    Delay(1000);

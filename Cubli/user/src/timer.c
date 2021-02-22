@@ -6,13 +6,21 @@ int Max_Pwm = 8300;
 int flag_stop = 0;
 
 //80 0.035 870 6.5 300 90
-float Velocity_KP = 13.5;
+//140 0.35 1850 0.025 350
+//float Velocity_KP = 11;
+//float Velocity_KI = 0.035;
+//float Balance_KP = 874;
+////float Balance_KI = 0;
+//float Balance_KD = 6.7;
+//float Gryo_KP = 0.5;
+//float Gryo_KD = 2;
+float Velocity_KP = 80;
 float Velocity_KI = 0.035;
-float Balance_KP = 874;
+float Balance_KP = 870;
 //float Balance_KI = 0;
-float Balance_KD = 5.6;
-float Gryo_KP = 0.5;
-float Gryo_KD = 2;
+float Balance_KD = 6.5;
+float Gryo_KP = 300;
+float Gryo_KD = 150;
 /*------------------------not use------------------------*/
 float Velocity_KP_a = 140;//110;//80;//140;    //140;  //300;
 float Velocity_KI_a = 0.35;      //0     //0.35;
@@ -44,16 +52,17 @@ float balance_pwm_c = 0.0;
 #define Y_PARAMETER (0.8660254037844f)      //sqrt(3)/2.f
 #define L_PARAMETER (1.0f)
 int PWM_a = 0, PWM_b = 0, PWM_c = 0;
+float Move_X,Move_Y,Move_Z;
 int encoder_a, encoder_b, encoder_c;
 float Encoder_X,Encoder_Y,Encoder_Z;
 
 int nvic_flag=0;
 
-float rol_angle_targer=-1.5;//-2.4;//-47.4+45;
+float rol_angle_targer=-0.95;//-1.5;//-2.4;//-47.4+45;
 float rol_angle_offset_r=15;//-33.0+45;
 float rol_angle_offset_l=-15;//-63.0+45;
 
-float pit_angle_targer=-1.5;//-53.45;
+float pit_angle_targer=-0.8;//-1.5;//-53.45;
 float pit_angle_offset_r=15;//-38.45;
 float pit_angle_offset_l=-15;//-68.45;
 
@@ -108,7 +117,8 @@ float control_balance_x(float angle, float Gyro){
     */
     Bias =(angle-rol_angle_targer);                                 //=== 偏差
     //    balance = Bias*Balance_KP + Bias_integral*Balance_KI + Gyro*Balance_KD;
-    balance = Bias*Balance_KP                              + (Bias-Bias_last)*Balance_KD;
+//    balance = Bias*Balance_KP + Gyro*Balance_KD;
+    balance = Bias*Balance_KP + (Bias-Bias_last)*Balance_KD;
     Bias_last=Bias;
     if(flag_stop==1) balance=0;
     return balance;
@@ -149,7 +159,8 @@ float control_balance_y(float angle, float Gyro){
     */
     Bias =(angle-pit_angle_targer);                                 //=== 偏差
     //    balance = Bias*Balance_KP + Bias_integral*Balance_KI + Gyro*Balance_KD;
-    balance = Bias*Balance_KP                              + (Bias-Bias_last)*Balance_KD;
+//    balance = Bias*Balance_KP                              + Gyro*Balance_KD;
+    balance = Bias*Balance_KP + (Bias-Bias_last)*Balance_KD;
     Bias_last=Bias;
     if(flag_stop==1) balance=0;
     return balance;
@@ -160,8 +171,9 @@ PID-Z
 
 ===============================*/
 float control_balance_z(float angle, float Gyro){
-    static float angle_last, Bias_last;
-    float balance, Bias, D_Bias;    
+    static float Bias_last;
+    float Bias, D_Bias;
+    int balance;    
     if(flag_stop==1) Bias_last=0;
     Bias = Gyro;
     D_Bias= Bias - Bias_last;
@@ -220,15 +232,6 @@ void set_pwm_c(int pwm_c){
     TIM8->CCR3 = pwm_c;
 }
 /*===============================
-逆向運動學分析
-===============================*/
-void Kinematic_Analysis(float Vx,float Vy,float Vz)
-{
-    PWM_a = Vx + L_PARAMETER*Vz;
-    PWM_b = -X_PARAMETER*Vx + Y_PARAMETER*Vy + L_PARAMETER*Vz;
-    PWM_c = -X_PARAMETER*Vx - Y_PARAMETER*Vy + L_PARAMETER*Vz;
-}
-/*===============================
 正向運動學分析
 ===============================*/
 void Encoder_Analysis(float Va,float Vb,float Vc)
@@ -236,6 +239,15 @@ void Encoder_Analysis(float Va,float Vb,float Vc)
     Encoder_X = Va*2-Vb-Vc;
     Encoder_Y = (Vb-Vc)*1.7320508075688773;
     Encoder_Z = Va+Vb+Vc;
+}
+/*===============================
+逆向運動學分析
+===============================*/
+void Kinematic_Analysis(float Vx,float Vy,float Vz)
+{
+    PWM_a = Vx + L_PARAMETER*Vz;
+    PWM_b = -X_PARAMETER*Vx + Y_PARAMETER*Vy + L_PARAMETER*Vz;
+    PWM_c = -X_PARAMETER*Vx - Y_PARAMETER*Vy + L_PARAMETER*Vz;
 }
 
 /*===============================
@@ -266,22 +278,21 @@ void TIM5_IRQHandler(void){
         time_check(&run_start);                                                 //timer時間測量
         
         ahrs();
-        
         encoder_a=-read_Encoder_a();
         encoder_b=-read_Encoder_b();
         encoder_c=-read_Encoder_c();
         //正向運動學分析
         Encoder_Analysis(encoder_a,encoder_b,encoder_c);
-        //velocity pid
-        velocity_pwm_a = control_velocity_x(Encoder_X);
-        velocity_pwm_b = control_velocity_y(Encoder_Y);
         //balance_pid
         balance_pwm_a = -control_balance_x(att.rol,Mpu.deg_s.x);
         balance_pwm_b = control_balance_y(att.pit,Mpu.deg_s.y);
         balance_pwm_c = control_balance_z(att.yaw,Mpu.deg_s.z);
-        float Move_X = balance_pwm_a + velocity_pwm_a;
-        float Move_Y = balance_pwm_b + velocity_pwm_b;
-        float Move_Z = -balance_pwm_c;
+        //velocity pid
+        velocity_pwm_a = control_velocity_x(Encoder_X);
+        velocity_pwm_b = control_velocity_y(Encoder_Y);
+        Move_X = balance_pwm_a + velocity_pwm_a;
+        Move_Y = balance_pwm_b + velocity_pwm_b;
+        Move_Z = -balance_pwm_c;
         //逆向運動學分析
 		Kinematic_Analysis(Move_X,Move_Y,Move_Z);
         
@@ -306,7 +317,7 @@ void TIM5_IRQHandler(void){
 //                set_pwm_a(PWM_a);
 //                set_pwm_b(PWM_b);
 //                set_pwm_c(-PWM_c);
-            }else if((att.rol <rol_angle_offset_l) || (att.rol >-rol_angle_offset_l)) {//out balance, stop wheel
+            }else if((att.rol <rol_angle_offset_l) || (att.rol >rol_angle_offset_r)) {//out balance, stop wheel
                 nvic_flag = 0;
                 flag_stop = 1;
                 PWM_a = 0;
@@ -332,7 +343,7 @@ void TIM5_IRQHandler(void){
             set_pwm_a(PWM_a);
         }*/
         }else{
-            yaw_angle_targer=att.yaw;
+//            yaw_angle_targer=att.yaw;
             set_pwm_a(0);
             set_pwm_b(0);
             set_pwm_c(0);

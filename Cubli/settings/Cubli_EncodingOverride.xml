@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<userOverrides>
+    <override>
+        <path>E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\timer.c</path>
+        <encoding>System</encoding>
+    </override>
+</userOverrides>
