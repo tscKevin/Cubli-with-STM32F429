@@ -117,8 +117,8 @@ float control_balance_x(float angle, float Gyro){
     */
     Bias =(angle-rol_angle_targer);                                 //=== °¾®t
     //    balance = Bias*Balance_KP + Bias_integral*Balance_KI + Gyro*Balance_KD;
-//    balance = Bias*Balance_KP + Gyro*Balance_KD;
-    balance = Bias*Balance_KP + (Bias-Bias_last)*Balance_KD;
+    balance = Bias*Balance_KP + Gyro*Balance_KD;
+//    balance = Bias*Balance_KP + (Bias-Bias_last)*Balance_KD;
     Bias_last=Bias;
     if(flag_stop==1) balance=0;
     return balance;
@@ -159,8 +159,8 @@ float control_balance_y(float angle, float Gyro){
     */
     Bias =(angle-pit_angle_targer);                                 //=== °¾®t
     //    balance = Bias*Balance_KP + Bias_integral*Balance_KI + Gyro*Balance_KD;
-//    balance = Bias*Balance_KP                              + Gyro*Balance_KD;
-    balance = Bias*Balance_KP + (Bias-Bias_last)*Balance_KD;
+    balance = Bias*Balance_KP                              + Gyro*Balance_KD;
+//    balance = Bias*Balance_KP + (Bias-Bias_last)*Balance_KD;
     Bias_last=Bias;
     if(flag_stop==1) balance=0;
     return balance;
