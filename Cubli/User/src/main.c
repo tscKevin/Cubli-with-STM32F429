@@ -50,8 +50,16 @@ void NVIC_Set(void){
     NVIC_Init(&NVIC_InitStructure);
 }
 
-void LED_On_Board(void){
+void GPIO_On_Board(void){
     GPIO_InitTypeDef GPIO_InitStructure;
+    RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOG,ENABLE); //enable GPIOA clock   //
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13 | GPIO_Pin_14 ;//| GPIO_Pin_15;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+    GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
+    GPIO_Init(GPIOG, &GPIO_InitStructure); //enable GPIOA clock
+    
     RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB,ENABLE); //enable GPIOA clock   //
     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13;// | GPIO_Pin_14 | GPIO_Pin_15;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
@@ -68,23 +76,32 @@ void LED_On_Board(void){
     GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
     GPIO_Init(GPIOD, &GPIO_InitStructure); //enable GPIOA clock
 }
-void EXTI0_IRQHandler(void) {
+void EXTI1_IRQHandler(void) {
     /* Make sure that interrupt flag is set */
-    if (EXTI_GetITStatus(EXTI_Line0) != RESET) {
+    if (EXTI_GetITStatus(EXTI_Line1) != RESET) {
         /* Do your stuff when PD0 is changed */
         if (flag_stop){
+            GPIO_SetBits(GPIOG,GPIO_Pin_13);
             flag_stop = 0;
             nvic_flag = 1;
         }else{
+            GPIO_ResetBits(GPIOG,GPIO_Pin_13);
             flag_stop = 1;
             nvic_flag = 0;
         }
         /* Clear interrupt flag */
-        EXTI_ClearITPendingBit(EXTI_Line0);
+        EXTI_ClearITPendingBit(EXTI_Line1);
     }
 }
 /* Configure pins to be interrupts */
-void Configure_PA0(void) {
+void Configure_PA1(void) {
+    /*EXTI0_IRQn	EXTI0_IRQHandler	    Handler for pins connected to line 0
+    EXTI1_IRQn	    EXTI1_IRQHandler	    Handler for pins connected to line 1
+    EXTI2_IRQn	    EXTI2_IRQHandler	    Handler for pins connected to line 2
+    EXTI3_IRQn	    EXTI3_IRQHandler	    Handler for pins connected to line 3
+    EXTI4_IRQn	    EXTI4_IRQHandler	    Handler for pins connected to line 4
+    EXTI9_5_IRQn	EXTI9_5_IRQHandler	    Handler for pins connected to line 5 to 9
+    EXTI15_10_IRQn	EXTI15_10_IRQHandler	Handler for pins connected to line 10 to 15*/
     /* Set variables used */
     GPIO_InitTypeDef GPIO_InitStruct;
     EXTI_InitTypeDef EXTI_InitStruct;
@@ -97,7 +114,7 @@ void Configure_PA0(void) {
     
     /* Set pin as input */
     
-    GPIO_InitStruct.GPIO_Pin = GPIO_Pin_0;
+    GPIO_InitStruct.GPIO_Pin = GPIO_Pin_1;
     GPIO_InitStruct.GPIO_Mode = GPIO_Mode_IN;
     GPIO_InitStruct.GPIO_OType = GPIO_OType_PP;
     GPIO_InitStruct.GPIO_PuPd = GPIO_PuPd_DOWN;
@@ -105,10 +122,10 @@ void Configure_PA0(void) {
     GPIO_Init(GPIOA, &GPIO_InitStruct);
     
     /* Tell system that you will use PD0 for EXTI_Line0 */
-    SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOA, EXTI_PinSource0);
+    SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOA, EXTI_PinSource1);
     
     /* PD0 is connected to EXTI_Line0 */
-    EXTI_InitStruct.EXTI_Line = EXTI_Line0;
+    EXTI_InitStruct.EXTI_Line = EXTI_Line1;
     /* Enable interrupt */
     EXTI_InitStruct.EXTI_LineCmd = ENABLE;
     /* Interrupt mode */
@@ -120,7 +137,7 @@ void Configure_PA0(void) {
     
     /* Add IRQ vector to NVIC */
     /* PD0 is connected to EXTI_Line0, which has EXTI0_IRQn vector */
-    NVIC_InitStruct.NVIC_IRQChannel = EXTI0_IRQn;
+    NVIC_InitStruct.NVIC_IRQChannel = EXTI1_IRQn;
     /* Set priority */
     NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 0x00;
     /* Set sub priority */
@@ -134,6 +151,14 @@ int a,b,c;
 
 void main(void){
     systick_setup();
+    flag_stop = 1;
+    nvic_flag = 0;
+    GPIO_On_Board();//A:B13,B:D8,C:D9
+    usart1_init(115200);
+    
+    IIC_GPIO_Init();
+    MPU6050_Init();//    get_mpu_id();
+    get_iir_factor(&Mpu.att_acc_factor,0.005f,25);
     
     TM2_PWM_Init();//servo
     TIM2->CCR1=2000;//PA0
@@ -141,29 +166,18 @@ void main(void){
     TIM2->CCR4=1700;//PB11
     Delay(150);
     
-    TIM3_EncoderInterface_Init();//A
-    TIM1_EncoderInterface_Init();//B
+    TIM1_EncoderInterface_Init();//A
+    TIM3_EncoderInterface_Init();//B
     TIM4_EncoderInterface_Init();//C
     Delay(5);
-    
-    TM8_PWM_Init(); 
-    LED_On_Board();//A:B13,B:D8,C:D9
-    //
-    IIC_GPIO_Init();
-    MPU6050_Init();
-    get_mpu_id();
-    get_iir_factor(&Mpu.att_acc_factor,0.005f,25);
-    //  
-    usart1_init(115200);
-    flag_stop = 1;
-    nvic_flag = 0;
+    TM8_PWM_Init();
     TM5_Interrupt_Init();
+    Configure_PA1();
     NVIC_Set();
-    //  
+    
     Delay(1000);
-    Configure_PA0();
-            flag_stop = 0;
-            nvic_flag = 1;
+//    flag_stop = 0;
+//    nvic_flag = 1;
     
 //    TIM8->CCR1 = 8999*0.4;//A PC6
 //    Delay(1000);
@@ -173,9 +187,13 @@ void main(void){
     
     
     while(1){
+//          GPIO_SetBits(GPIOG,GPIO_Pin_13);
+//          Delay(100);
+//          GPIO_ResetBits(GPIOG,GPIO_Pin_13);
+//          Delay(100);
         //  printf("%d",usart1_read(a));
 //          GPIO_SetBits(GPIOB,GPIO_Pin_13);  //A
-        ////  GPIO_ResetBits(GPIOB,GPIO_Pin_13);
+//          GPIO_ResetBits(GPIOB,GPIO_Pin_13);
         //  
 //          GPIO_SetBits(GPIOD,GPIO_Pin_8);  //B
 //          GPIO_ResetBits(GPIOD,GPIO_Pin_8);

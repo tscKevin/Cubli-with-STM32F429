@@ -76,7 +76,6 @@ void IIC_Send_Byte(u8 msg){
     SDA_OUT();
     while(i--){
         SCL_LOW;IIC_Delay;
-        
         if (msg & 0x80){
             SDA_HIGH;
         }else{

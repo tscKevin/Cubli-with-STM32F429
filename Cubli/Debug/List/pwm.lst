@@ -1,13 +1,13 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         23/Dec/2020  16:53:46
+# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         23/Feb/2021  16:56:55
 # Copyright 1999-2019 IAR Systems AB.
 #
 #    Cpu mode     =  
 #    Endian       =  little
 #    Source file  =  E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\pwm.c
 #    Command line =
-#        -f C:\Users\LABPC1~1\AppData\Local\Temp\EWC135.tmp
+#        -f C:\Users\LABPC1~1\AppData\Local\Temp\EW3678.tmp
 #        (E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\pwm.c -D
 #        USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
 #        E:\STM32Project\Cubli-with-STM32F429\Cubli\Debug\List -o
@@ -548,8 +548,8 @@ E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\pwm.c
     318          /*=========================================================
     319          
     320          
-    321          TIM3 EncoderInterface pwm PA6、PA7
-    322          TIM1 EncoderInterface pwm PA8、PA9
+    321          TIM1 EncoderInterface pwm PA8、PA9
+    322          TIM3 EncoderInterface pwm PA6、PA7
     323          TIM4 EncoderInterface pwm PB6、PB7
     324          
     325          =========================================================*/
@@ -561,11 +561,11 @@ E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\pwm.c
     329              int Encoder_a = 0;
    \                     read_Encoder_a: (+1)
    \        0x0   0x2000             MOVS     R0,#+0
-    330              Encoder_a = (short)TIM3->CNT; //因為設定是65535 所以用short來將逆向的馬達計數轉為負號
-   \        0x2   0x....             LDR.N    R1,??DataTable7_4  ;; 0x40000424
+    330              Encoder_a = (short)TIM1->CNT; //因為設定是65535 所以用short來將逆向的馬達計數轉為負號
+   \        0x2   0x....             LDR.N    R1,??DataTable7_4  ;; 0x40010024
    \        0x4   0x6808             LDR      R0,[R1, #+0]
    \        0x6   0xB200             SXTH     R0,R0            ;; SignExt  R0,R0,#+16,#+16
-    331              TIM3->CNT = 0;
+    331              TIM1->CNT = 0;
    \        0x8   0x2200             MOVS     R2,#+0
    \        0xA   0x600A             STR      R2,[R1, #+0]
     332              return Encoder_a ;
@@ -573,15 +573,15 @@ E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\pwm.c
     333          }
 
    \                                 In section .text, align 2, keep-with-next
-    334          int read_Encoder_c(void){
+    334          int read_Encoder_b(void){
     335              int Encoder_a = 0;
-   \                     read_Encoder_c: (+1)
+   \                     read_Encoder_b: (+1)
    \        0x0   0x2000             MOVS     R0,#+0
-    336              Encoder_a = (short)TIM4->CNT; //因為設定是65535 所以用short來將逆向的馬達計數轉為負號
-   \        0x2   0x....             LDR.N    R1,??DataTable7_5  ;; 0x40000824
+    336              Encoder_a = (short)TIM3->CNT; //因為設定是65535 所以用short來將逆向的馬達計數轉為負號
+   \        0x2   0x....             LDR.N    R1,??DataTable7_5  ;; 0x40000424
    \        0x4   0x6808             LDR      R0,[R1, #+0]
    \        0x6   0xB200             SXTH     R0,R0            ;; SignExt  R0,R0,#+16,#+16
-    337              TIM4->CNT = 0;
+    337              TIM3->CNT = 0;
    \        0x8   0x2200             MOVS     R2,#+0
    \        0xA   0x600A             STR      R2,[R1, #+0]
     338              return Encoder_a ;
@@ -589,15 +589,15 @@ E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\pwm.c
     339          }
 
    \                                 In section .text, align 2, keep-with-next
-    340          int read_Encoder_b(void){
+    340          int read_Encoder_c(void){
     341              int Encoder_a = 0;
-   \                     read_Encoder_b: (+1)
+   \                     read_Encoder_c: (+1)
    \        0x0   0x2000             MOVS     R0,#+0
-    342              Encoder_a = (short)TIM1->CNT; //因為設定是65535 所以用short來將逆向的馬達計數轉為負號
-   \        0x2   0x....             LDR.N    R1,??DataTable7_6  ;; 0x40010024
+    342              Encoder_a = (short)TIM4->CNT; //因為設定是65535 所以用short來將逆向的馬達計數轉為負號
+   \        0x2   0x....             LDR.N    R1,??DataTable7_6  ;; 0x40000824
    \        0x4   0x6808             LDR      R0,[R1, #+0]
    \        0x6   0xB200             SXTH     R0,R0            ;; SignExt  R0,R0,#+16,#+16
-    343              TIM1->CNT = 0;
+    343              TIM4->CNT = 0;
    \        0x8   0x2200             MOVS     R2,#+0
    \        0xA   0x600A             STR      R2,[R1, #+0]
     344              return Encoder_a ;
@@ -607,143 +607,143 @@ E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\pwm.c
     347          //EncoderInterface
 
    \                                 In section .text, align 2, keep-with-next
-    348          void TIM3_EncoderInterface_Init(void) {
-   \                     TIM3_EncoderInterface_Init: (+1)
+    348          void TIM1_EncoderInterface_Init(void) {
+   \                     TIM1_EncoderInterface_Init: (+1)
    \        0x0   0xB510             PUSH     {R4,LR}
    \        0x2   0xB088             SUB      SP,SP,#+32
     349              GPIO_InitTypeDef GPIO_InitStructure;
-    350              RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);
+    350              RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM1, ENABLE);
    \        0x4   0x2101             MOVS     R1,#+1
-   \        0x6   0x2002             MOVS     R0,#+2
-   \        0x8   0x....'....        BL       RCC_APB1PeriphClockCmd
+   \        0x6   0x2001             MOVS     R0,#+1
+   \        0x8   0x....'....        BL       RCC_APB2PeriphClockCmd
     351              // GPIOB Clock Enable
     352              RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
    \        0xC   0x2101             MOVS     R1,#+1
    \        0xE   0x2001             MOVS     R0,#+1
    \       0x10   0x....'....        BL       RCC_AHB1PeriphClockCmd
-    353              // Initalize PB6 (TIM4 Ch1) and PB7 (TIM4 Ch2)
-    354              GPIO_InitStructure.GPIO_Pin     = GPIO_Pin_6 | GPIO_Pin_7;
-   \       0x14   0x20C0             MOVS     R0,#+192
-   \       0x16   0x9000             STR      R0,[SP, #+0]
+    353              // Initalize PB5 (TIM1 Ch1) and PB6 (TIM1 Ch2)
+    354              GPIO_InitStructure.GPIO_Pin     = GPIO_Pin_8 | GPIO_Pin_9;
+   \       0x14   0xF44F 0x7040      MOV      R0,#+768
+   \       0x18   0x9000             STR      R0,[SP, #+0]
     355              GPIO_InitStructure.GPIO_Mode    = GPIO_Mode_AF;
-   \       0x18   0x2002             MOVS     R0,#+2
-   \       0x1A   0xF88D 0x0004      STRB     R0,[SP, #+4]
+   \       0x1A   0x2002             MOVS     R0,#+2
+   \       0x1C   0xF88D 0x0004      STRB     R0,[SP, #+4]
     356              GPIO_InitStructure.GPIO_Speed   = GPIO_Speed_100MHz;    // GPIO_High_Speed
-   \       0x1E   0x2003             MOVS     R0,#+3
-   \       0x20   0xF88D 0x0005      STRB     R0,[SP, #+5]
+   \       0x20   0x2003             MOVS     R0,#+3
+   \       0x22   0xF88D 0x0005      STRB     R0,[SP, #+5]
     357              GPIO_InitStructure.GPIO_OType   = GPIO_OType_PP;
-   \       0x24   0x2000             MOVS     R0,#+0
-   \       0x26   0xF88D 0x0006      STRB     R0,[SP, #+6]
+   \       0x26   0x2000             MOVS     R0,#+0
+   \       0x28   0xF88D 0x0006      STRB     R0,[SP, #+6]
     358              GPIO_InitStructure.GPIO_PuPd    = GPIO_PuPd_UP;         // Weak Pull-up for safety during startup
-   \       0x2A   0x2001             MOVS     R0,#+1
-   \       0x2C   0xF88D 0x0007      STRB     R0,[SP, #+7]
+   \       0x2C   0x2001             MOVS     R0,#+1
+   \       0x2E   0xF88D 0x0007      STRB     R0,[SP, #+7]
     359              GPIO_Init(GPIOA, &GPIO_InitStructure);
-   \       0x30   0x....             LDR.N    R4,??DataTable7  ;; 0x40020000
-   \       0x32   0x4669             MOV      R1,SP
-   \       0x34   0x0020             MOVS     R0,R4
-   \       0x36   0x....'....        BL       GPIO_Init
+   \       0x32   0x....             LDR.N    R4,??DataTable7  ;; 0x40020000
+   \       0x34   0x4669             MOV      R1,SP
+   \       0x36   0x0020             MOVS     R0,R4
+   \       0x38   0x....'....        BL       GPIO_Init
     360              
     361              // Assign Alternate Functions to pins
-    362              GPIO_PinAFConfig(GPIOA, GPIO_PinSource6, GPIO_AF_TIM3);
-   \       0x3A   0x2202             MOVS     R2,#+2
-   \       0x3C   0x2106             MOVS     R1,#+6
-   \       0x3E   0x0020             MOVS     R0,R4
-   \       0x40   0x....'....        BL       GPIO_PinAFConfig
-    363              GPIO_PinAFConfig(GPIOA, GPIO_PinSource7, GPIO_AF_TIM3);
-   \       0x44   0x2202             MOVS     R2,#+2
-   \       0x46   0x2107             MOVS     R1,#+7
-   \       0x48   0x0020             MOVS     R0,R4
-   \       0x4A   0x....'....        BL       GPIO_PinAFConfig
+    362              GPIO_PinAFConfig(GPIOA, GPIO_PinSource8, GPIO_AF_TIM1);
+   \       0x3C   0x2201             MOVS     R2,#+1
+   \       0x3E   0x2108             MOVS     R1,#+8
+   \       0x40   0x0020             MOVS     R0,R4
+   \       0x42   0x....'....        BL       GPIO_PinAFConfig
+    363              GPIO_PinAFConfig(GPIOA, GPIO_PinSource9, GPIO_AF_TIM1);
+   \       0x46   0x2201             MOVS     R2,#+1
+   \       0x48   0x2109             MOVS     R1,#+9
+   \       0x4A   0x0020             MOVS     R0,R4
+   \       0x4C   0x....'....        BL       GPIO_PinAFConfig
     364              
     365              TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure;
     366              TIM_TimeBaseInitStructure.TIM_Period =65535;  //reload value
-   \       0x4E   0xF64F 0x70FF      MOVW     R0,#+65535
-   \       0x52   0x9003             STR      R0,[SP, #+12]
+   \       0x50   0xF64F 0x70FF      MOVW     R0,#+65535
+   \       0x54   0x9003             STR      R0,[SP, #+12]
     367              TIM_TimeBaseInitStructure.TIM_Prescaler=0;  //無分頻
-   \       0x54   0x2000             MOVS     R0,#+0
-   \       0x56   0xF8AD 0x0008      STRH     R0,[SP, #+8]
+   \       0x56   0x2000             MOVS     R0,#+0
+   \       0x58   0xF8AD 0x0008      STRH     R0,[SP, #+8]
     368              TIM_TimeBaseInitStructure.TIM_ClockDivision = 0;
-   \       0x5A   0x2000             MOVS     R0,#+0
-   \       0x5C   0xF8AD 0x0010      STRH     R0,[SP, #+16]
+   \       0x5C   0x2000             MOVS     R0,#+0
+   \       0x5E   0xF8AD 0x0010      STRH     R0,[SP, #+16]
     369              TIM_TimeBaseInitStructure.TIM_CounterMode=TIM_CounterMode_Up; //向上計數
-   \       0x60   0x2000             MOVS     R0,#+0
-   \       0x62   0xF8AD 0x000A      STRH     R0,[SP, #+10]
+   \       0x62   0x2000             MOVS     R0,#+0
+   \       0x64   0xF8AD 0x000A      STRH     R0,[SP, #+10]
     370              TIM_TimeBaseInitStructure.TIM_ClockDivision=TIM_CKD_DIV1; 
-   \       0x66   0x2000             MOVS     R0,#+0
-   \       0x68   0xF8AD 0x0010      STRH     R0,[SP, #+16]
-    371              TIM_TimeBaseInit(TIM3, &TIM_TimeBaseInitStructure);
-   \       0x6C   0x....             LDR.N    R4,??DataTable7_7  ;; 0x40000400
-   \       0x6E   0xA902             ADD      R1,SP,#+8
-   \       0x70   0x0020             MOVS     R0,R4
-   \       0x72   0x....'....        BL       TIM_TimeBaseInit
+   \       0x68   0x2000             MOVS     R0,#+0
+   \       0x6A   0xF8AD 0x0010      STRH     R0,[SP, #+16]
+    371              TIM_TimeBaseInit(TIM1, &TIM_TimeBaseInitStructure);
+   \       0x6E   0x....             LDR.N    R4,??DataTable7_7  ;; 0x40010000
+   \       0x70   0xA902             ADD      R1,SP,#+8
+   \       0x72   0x0020             MOVS     R0,R4
+   \       0x74   0x....'....        BL       TIM_TimeBaseInit
     372              
     373              
     374              TIM_ICInitTypeDef TIM_ICInitStructure;
-    375              TIM_EncoderInterfaceConfig(TIM3, TIM_EncoderMode_TI12, TIM_ICPolarity_Rising ,TIM_ICPolarity_Rising); // 四分頻stm讀取encoder設置
-   \       0x76   0x2300             MOVS     R3,#+0
-   \       0x78   0x2200             MOVS     R2,#+0
-   \       0x7A   0x2103             MOVS     R1,#+3
-   \       0x7C   0x0020             MOVS     R0,R4
-   \       0x7E   0x....'....        BL       TIM_EncoderInterfaceConfig
+    375              TIM_EncoderInterfaceConfig(TIM1, TIM_EncoderMode_TI12, TIM_ICPolarity_Rising ,TIM_ICPolarity_Rising); // 四分頻stm讀取encoder設置
+   \       0x78   0x2300             MOVS     R3,#+0
+   \       0x7A   0x2200             MOVS     R2,#+0
+   \       0x7C   0x2103             MOVS     R1,#+3
+   \       0x7E   0x0020             MOVS     R0,R4
+   \       0x80   0x....'....        BL       TIM_EncoderInterfaceConfig
     376              TIM_ICStructInit(&TIM_ICInitStructure); 
-   \       0x82   0xA805             ADD      R0,SP,#+20
-   \       0x84   0x....'....        BL       TIM_ICStructInit
+   \       0x84   0xA805             ADD      R0,SP,#+20
+   \       0x86   0x....'....        BL       TIM_ICStructInit
     377              TIM_ICInitStructure.TIM_ICFilter = 10;//濾波器值(從第10個訊號後才開始計數)
-   \       0x88   0x200A             MOVS     R0,#+10
-   \       0x8A   0xF8AD 0x001C      STRH     R0,[SP, #+28]
-    378              TIM_ICInit(TIM3, &TIM_ICInitStructure);
-   \       0x8E   0xA905             ADD      R1,SP,#+20
-   \       0x90   0x0020             MOVS     R0,R4
-   \       0x92   0x....'....        BL       TIM_ICInit
+   \       0x8A   0x200A             MOVS     R0,#+10
+   \       0x8C   0xF8AD 0x001C      STRH     R0,[SP, #+28]
+    378              TIM_ICInit(TIM1, &TIM_ICInitStructure);
+   \       0x90   0xA905             ADD      R1,SP,#+20
+   \       0x92   0x0020             MOVS     R0,R4
+   \       0x94   0x....'....        BL       TIM_ICInit
     379              
-    380              TIM_ClearFlag(TIM3, TIM_FLAG_Update);//清除TIM3的更新旗標
-   \       0x96   0x2101             MOVS     R1,#+1
-   \       0x98   0x0020             MOVS     R0,R4
-   \       0x9A   0x....'....        BL       TIM_ClearFlag
-    381              TIM_ITConfig(TIM3, TIM_IT_Update, ENABLE);//運行更新
-   \       0x9E   0x2201             MOVS     R2,#+1
-   \       0xA0   0x2101             MOVS     R1,#+1
-   \       0xA2   0x0020             MOVS     R0,R4
-   \       0xA4   0x....'....        BL       TIM_ITConfig
+    380              TIM_ClearFlag(TIM1, TIM_FLAG_Update);//清除TIM1的更新旗標
+   \       0x98   0x2101             MOVS     R1,#+1
+   \       0x9A   0x0020             MOVS     R0,R4
+   \       0x9C   0x....'....        BL       TIM_ClearFlag
+    381              TIM_ITConfig(TIM1, TIM_IT_Update, ENABLE);//運行更新
+   \       0xA0   0x2201             MOVS     R2,#+1
+   \       0xA2   0x2101             MOVS     R1,#+1
+   \       0xA4   0x0020             MOVS     R0,R4
+   \       0xA6   0x....'....        BL       TIM_ITConfig
     382              //IM3定時器
     383              
     384              //  NVIC_InitTypeDef NVIC_InitStructure;    
     385              //  NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);           
     386              //  
-    387              //  NVIC_InitStructure.NVIC_IRQChannel = TIM3_IRQn;    
+    387              //  NVIC_InitStructure.NVIC_IRQChannel = TIM1_IRQn;    
     388              //  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 3;               
     389              //  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
     390              //  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;            
     391              //  NVIC_Init(&NVIC_InitStructure);
-    392              TIM_SetCounter(TIM3,0); //TIM3->CNT=0
-   \       0xA8   0x2100             MOVS     R1,#+0
-   \       0xAA   0x0020             MOVS     R0,R4
-   \       0xAC   0x....'....        BL       TIM_SetCounter
-    393              TIM_Cmd(TIM3, ENABLE); 
-   \       0xB0   0x2101             MOVS     R1,#+1
-   \       0xB2   0x0020             MOVS     R0,R4
-   \       0xB4   0x....'....        BL       TIM_Cmd
+    392              TIM_SetCounter(TIM1,0); //TIM1->CNT=0
+   \       0xAA   0x2100             MOVS     R1,#+0
+   \       0xAC   0x0020             MOVS     R0,R4
+   \       0xAE   0x....'....        BL       TIM_SetCounter
+    393              TIM_Cmd(TIM1, ENABLE); 
+   \       0xB2   0x2101             MOVS     R1,#+1
+   \       0xB4   0x0020             MOVS     R0,R4
+   \       0xB6   0x....'....        BL       TIM_Cmd
     394          }
-   \       0xB8   0xB008             ADD      SP,SP,#+32
-   \       0xBA   0xBD10             POP      {R4,PC}          ;; return
+   \       0xBA   0xB008             ADD      SP,SP,#+32
+   \       0xBC   0xBD10             POP      {R4,PC}          ;; return
     395          //EncoderInterface
 
    \                                 In section .text, align 2, keep-with-next
-    396          void TIM4_EncoderInterface_Init(void) {
-   \                     TIM4_EncoderInterface_Init: (+1)
+    396          void TIM3_EncoderInterface_Init(void) {
+   \                     TIM3_EncoderInterface_Init: (+1)
    \        0x0   0xB510             PUSH     {R4,LR}
    \        0x2   0xB088             SUB      SP,SP,#+32
     397              GPIO_InitTypeDef GPIO_InitStructure;
-    398              RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4, ENABLE);
+    398              RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);
    \        0x4   0x2101             MOVS     R1,#+1
-   \        0x6   0x2004             MOVS     R0,#+4
+   \        0x6   0x2002             MOVS     R0,#+2
    \        0x8   0x....'....        BL       RCC_APB1PeriphClockCmd
     399              // GPIOB Clock Enable
-    400              RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
+    400              RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
    \        0xC   0x2101             MOVS     R1,#+1
-   \        0xE   0x2002             MOVS     R0,#+2
+   \        0xE   0x2001             MOVS     R0,#+1
    \       0x10   0x....'....        BL       RCC_AHB1PeriphClockCmd
-    401              // Initalize PB14 (TIM4 Ch1) and PB15 (TIM4 Ch2)
+    401              // Initalize PB6 (TIM4 Ch1) and PB7 (TIM4 Ch2)
     402              GPIO_InitStructure.GPIO_Pin     = GPIO_Pin_6 | GPIO_Pin_7;
    \       0x14   0x20C0             MOVS     R0,#+192
    \       0x16   0x9000             STR      R0,[SP, #+0]
@@ -759,19 +759,19 @@ E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\pwm.c
     406              GPIO_InitStructure.GPIO_PuPd    = GPIO_PuPd_UP;         // Weak Pull-up for safety during startup
    \       0x2A   0x2001             MOVS     R0,#+1
    \       0x2C   0xF88D 0x0007      STRB     R0,[SP, #+7]
-    407              GPIO_Init(GPIOB, &GPIO_InitStructure);
-   \       0x30   0x....             LDR.N    R4,??DataTable7_1  ;; 0x40020400
+    407              GPIO_Init(GPIOA, &GPIO_InitStructure);
+   \       0x30   0x....             LDR.N    R4,??DataTable7  ;; 0x40020000
    \       0x32   0x4669             MOV      R1,SP
    \       0x34   0x0020             MOVS     R0,R4
    \       0x36   0x....'....        BL       GPIO_Init
     408              
     409              // Assign Alternate Functions to pins
-    410              GPIO_PinAFConfig(GPIOB, GPIO_PinSource6, GPIO_AF_TIM4);
+    410              GPIO_PinAFConfig(GPIOA, GPIO_PinSource6, GPIO_AF_TIM3);
    \       0x3A   0x2202             MOVS     R2,#+2
    \       0x3C   0x2106             MOVS     R1,#+6
    \       0x3E   0x0020             MOVS     R0,R4
    \       0x40   0x....'....        BL       GPIO_PinAFConfig
-    411              GPIO_PinAFConfig(GPIOB, GPIO_PinSource7, GPIO_AF_TIM4);
+    411              GPIO_PinAFConfig(GPIOA, GPIO_PinSource7, GPIO_AF_TIM3);
    \       0x44   0x2202             MOVS     R2,#+2
    \       0x46   0x2107             MOVS     R1,#+7
    \       0x48   0x0020             MOVS     R0,R4
@@ -793,15 +793,15 @@ E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\pwm.c
     418              TIM_TimeBaseInitStructure.TIM_ClockDivision=TIM_CKD_DIV1; 
    \       0x66   0x2000             MOVS     R0,#+0
    \       0x68   0xF8AD 0x0010      STRH     R0,[SP, #+16]
-    419              TIM_TimeBaseInit(TIM4, &TIM_TimeBaseInitStructure);
-   \       0x6C   0x....             LDR.N    R4,??DataTable7_8  ;; 0x40000800
+    419              TIM_TimeBaseInit(TIM3, &TIM_TimeBaseInitStructure);
+   \       0x6C   0x....             LDR.N    R4,??DataTable7_8  ;; 0x40000400
    \       0x6E   0xA902             ADD      R1,SP,#+8
    \       0x70   0x0020             MOVS     R0,R4
    \       0x72   0x....'....        BL       TIM_TimeBaseInit
     420              
     421              
     422              TIM_ICInitTypeDef TIM_ICInitStructure;
-    423              TIM_EncoderInterfaceConfig(TIM4, TIM_EncoderMode_TI12, TIM_ICPolarity_Rising ,TIM_ICPolarity_Rising); // 四分頻stm讀取encoder設置
+    423              TIM_EncoderInterfaceConfig(TIM3, TIM_EncoderMode_TI12, TIM_ICPolarity_Rising ,TIM_ICPolarity_Rising); // 四分頻stm讀取encoder設置
    \       0x76   0x2300             MOVS     R3,#+0
    \       0x78   0x2200             MOVS     R2,#+0
    \       0x7A   0x2103             MOVS     R1,#+3
@@ -813,16 +813,16 @@ E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\pwm.c
     425              TIM_ICInitStructure.TIM_ICFilter = 10;//濾波器值(從第10個訊號後才開始計數)
    \       0x88   0x200A             MOVS     R0,#+10
    \       0x8A   0xF8AD 0x001C      STRH     R0,[SP, #+28]
-    426              TIM_ICInit(TIM4, &TIM_ICInitStructure);
+    426              TIM_ICInit(TIM3, &TIM_ICInitStructure);
    \       0x8E   0xA905             ADD      R1,SP,#+20
    \       0x90   0x0020             MOVS     R0,R4
    \       0x92   0x....'....        BL       TIM_ICInit
     427              
-    428              TIM_ClearFlag(TIM4, TIM_FLAG_Update);//清除TIM4的更新旗標
+    428              TIM_ClearFlag(TIM3, TIM_FLAG_Update);//清除TIM3的更新旗標
    \       0x96   0x2101             MOVS     R1,#+1
    \       0x98   0x0020             MOVS     R0,R4
    \       0x9A   0x....'....        BL       TIM_ClearFlag
-    429              TIM_ITConfig(TIM4, TIM_IT_Update, ENABLE);//運行更新
+    429              TIM_ITConfig(TIM3, TIM_IT_Update, ENABLE);//運行更新
    \       0x9E   0x2201             MOVS     R2,#+1
    \       0xA0   0x2101             MOVS     R1,#+1
    \       0xA2   0x0020             MOVS     R0,R4
@@ -832,16 +832,16 @@ E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\pwm.c
     432              //  NVIC_InitTypeDef NVIC_InitStructure;    
     433              //  NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);           
     434              //  
-    435              //  NVIC_InitStructure.NVIC_IRQChannel = TIM4_IRQn;    
+    435              //  NVIC_InitStructure.NVIC_IRQChannel = TIM3_IRQn;    
     436              //  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 3;               
     437              //  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
     438              //  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;            
     439              //  NVIC_Init(&NVIC_InitStructure);
-    440              TIM_SetCounter(TIM4,0); //TIM4->CNT=0
+    440              TIM_SetCounter(TIM3,0); //TIM3->CNT=0
    \       0xA8   0x2100             MOVS     R1,#+0
    \       0xAA   0x0020             MOVS     R0,R4
    \       0xAC   0x....'....        BL       TIM_SetCounter
-    441              TIM_Cmd(TIM4, ENABLE); 
+    441              TIM_Cmd(TIM3, ENABLE); 
    \       0xB0   0x2101             MOVS     R1,#+1
    \       0xB2   0x0020             MOVS     R0,R4
    \       0xB4   0x....'....        BL       TIM_Cmd
@@ -851,125 +851,125 @@ E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\pwm.c
     443          //EncoderInterface
 
    \                                 In section .text, align 2, keep-with-next
-    444          void TIM1_EncoderInterface_Init(void) {
-   \                     TIM1_EncoderInterface_Init: (+1)
+    444          void TIM4_EncoderInterface_Init(void) {
+   \                     TIM4_EncoderInterface_Init: (+1)
    \        0x0   0xB510             PUSH     {R4,LR}
    \        0x2   0xB088             SUB      SP,SP,#+32
     445              GPIO_InitTypeDef GPIO_InitStructure;
-    446              RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM1, ENABLE);
+    446              RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4, ENABLE);
    \        0x4   0x2101             MOVS     R1,#+1
-   \        0x6   0x2001             MOVS     R0,#+1
-   \        0x8   0x....'....        BL       RCC_APB2PeriphClockCmd
+   \        0x6   0x2004             MOVS     R0,#+4
+   \        0x8   0x....'....        BL       RCC_APB1PeriphClockCmd
     447              // GPIOB Clock Enable
-    448              RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
+    448              RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
    \        0xC   0x2101             MOVS     R1,#+1
-   \        0xE   0x2001             MOVS     R0,#+1
+   \        0xE   0x2002             MOVS     R0,#+2
    \       0x10   0x....'....        BL       RCC_AHB1PeriphClockCmd
-    449              // Initalize PB5 (TIM1 Ch1) and PB6 (TIM1 Ch2)
-    450              GPIO_InitStructure.GPIO_Pin     = GPIO_Pin_8 | GPIO_Pin_9;
-   \       0x14   0xF44F 0x7040      MOV      R0,#+768
-   \       0x18   0x9000             STR      R0,[SP, #+0]
+    449              // Initalize PB14 (TIM4 Ch1) and PB15 (TIM4 Ch2)
+    450              GPIO_InitStructure.GPIO_Pin     = GPIO_Pin_6 | GPIO_Pin_7;
+   \       0x14   0x20C0             MOVS     R0,#+192
+   \       0x16   0x9000             STR      R0,[SP, #+0]
     451              GPIO_InitStructure.GPIO_Mode    = GPIO_Mode_AF;
-   \       0x1A   0x2002             MOVS     R0,#+2
-   \       0x1C   0xF88D 0x0004      STRB     R0,[SP, #+4]
+   \       0x18   0x2002             MOVS     R0,#+2
+   \       0x1A   0xF88D 0x0004      STRB     R0,[SP, #+4]
     452              GPIO_InitStructure.GPIO_Speed   = GPIO_Speed_100MHz;    // GPIO_High_Speed
-   \       0x20   0x2003             MOVS     R0,#+3
-   \       0x22   0xF88D 0x0005      STRB     R0,[SP, #+5]
+   \       0x1E   0x2003             MOVS     R0,#+3
+   \       0x20   0xF88D 0x0005      STRB     R0,[SP, #+5]
     453              GPIO_InitStructure.GPIO_OType   = GPIO_OType_PP;
-   \       0x26   0x2000             MOVS     R0,#+0
-   \       0x28   0xF88D 0x0006      STRB     R0,[SP, #+6]
+   \       0x24   0x2000             MOVS     R0,#+0
+   \       0x26   0xF88D 0x0006      STRB     R0,[SP, #+6]
     454              GPIO_InitStructure.GPIO_PuPd    = GPIO_PuPd_UP;         // Weak Pull-up for safety during startup
-   \       0x2C   0x2001             MOVS     R0,#+1
-   \       0x2E   0xF88D 0x0007      STRB     R0,[SP, #+7]
-    455              GPIO_Init(GPIOA, &GPIO_InitStructure);
-   \       0x32   0x....             LDR.N    R4,??DataTable7  ;; 0x40020000
-   \       0x34   0x4669             MOV      R1,SP
-   \       0x36   0x0020             MOVS     R0,R4
-   \       0x38   0x....'....        BL       GPIO_Init
+   \       0x2A   0x2001             MOVS     R0,#+1
+   \       0x2C   0xF88D 0x0007      STRB     R0,[SP, #+7]
+    455              GPIO_Init(GPIOB, &GPIO_InitStructure);
+   \       0x30   0x....             LDR.N    R4,??DataTable7_1  ;; 0x40020400
+   \       0x32   0x4669             MOV      R1,SP
+   \       0x34   0x0020             MOVS     R0,R4
+   \       0x36   0x....'....        BL       GPIO_Init
     456              
     457              // Assign Alternate Functions to pins
-    458              GPIO_PinAFConfig(GPIOA, GPIO_PinSource8, GPIO_AF_TIM1);
-   \       0x3C   0x2201             MOVS     R2,#+1
-   \       0x3E   0x2108             MOVS     R1,#+8
-   \       0x40   0x0020             MOVS     R0,R4
-   \       0x42   0x....'....        BL       GPIO_PinAFConfig
-    459              GPIO_PinAFConfig(GPIOA, GPIO_PinSource9, GPIO_AF_TIM1);
-   \       0x46   0x2201             MOVS     R2,#+1
-   \       0x48   0x2109             MOVS     R1,#+9
-   \       0x4A   0x0020             MOVS     R0,R4
-   \       0x4C   0x....'....        BL       GPIO_PinAFConfig
+    458              GPIO_PinAFConfig(GPIOB, GPIO_PinSource6, GPIO_AF_TIM4);
+   \       0x3A   0x2202             MOVS     R2,#+2
+   \       0x3C   0x2106             MOVS     R1,#+6
+   \       0x3E   0x0020             MOVS     R0,R4
+   \       0x40   0x....'....        BL       GPIO_PinAFConfig
+    459              GPIO_PinAFConfig(GPIOB, GPIO_PinSource7, GPIO_AF_TIM4);
+   \       0x44   0x2202             MOVS     R2,#+2
+   \       0x46   0x2107             MOVS     R1,#+7
+   \       0x48   0x0020             MOVS     R0,R4
+   \       0x4A   0x....'....        BL       GPIO_PinAFConfig
     460              
     461              TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure;
     462              TIM_TimeBaseInitStructure.TIM_Period =65535;  //reload value
-   \       0x50   0xF64F 0x70FF      MOVW     R0,#+65535
-   \       0x54   0x9003             STR      R0,[SP, #+12]
+   \       0x4E   0xF64F 0x70FF      MOVW     R0,#+65535
+   \       0x52   0x9003             STR      R0,[SP, #+12]
     463              TIM_TimeBaseInitStructure.TIM_Prescaler=0;  //無分頻
-   \       0x56   0x2000             MOVS     R0,#+0
-   \       0x58   0xF8AD 0x0008      STRH     R0,[SP, #+8]
+   \       0x54   0x2000             MOVS     R0,#+0
+   \       0x56   0xF8AD 0x0008      STRH     R0,[SP, #+8]
     464              TIM_TimeBaseInitStructure.TIM_ClockDivision = 0;
-   \       0x5C   0x2000             MOVS     R0,#+0
-   \       0x5E   0xF8AD 0x0010      STRH     R0,[SP, #+16]
+   \       0x5A   0x2000             MOVS     R0,#+0
+   \       0x5C   0xF8AD 0x0010      STRH     R0,[SP, #+16]
     465              TIM_TimeBaseInitStructure.TIM_CounterMode=TIM_CounterMode_Up; //向上計數
-   \       0x62   0x2000             MOVS     R0,#+0
-   \       0x64   0xF8AD 0x000A      STRH     R0,[SP, #+10]
+   \       0x60   0x2000             MOVS     R0,#+0
+   \       0x62   0xF8AD 0x000A      STRH     R0,[SP, #+10]
     466              TIM_TimeBaseInitStructure.TIM_ClockDivision=TIM_CKD_DIV1; 
-   \       0x68   0x2000             MOVS     R0,#+0
-   \       0x6A   0xF8AD 0x0010      STRH     R0,[SP, #+16]
-    467              TIM_TimeBaseInit(TIM1, &TIM_TimeBaseInitStructure);
-   \       0x6E   0x....             LDR.N    R4,??DataTable7_9  ;; 0x40010000
-   \       0x70   0xA902             ADD      R1,SP,#+8
-   \       0x72   0x0020             MOVS     R0,R4
-   \       0x74   0x....'....        BL       TIM_TimeBaseInit
+   \       0x66   0x2000             MOVS     R0,#+0
+   \       0x68   0xF8AD 0x0010      STRH     R0,[SP, #+16]
+    467              TIM_TimeBaseInit(TIM4, &TIM_TimeBaseInitStructure);
+   \       0x6C   0x....             LDR.N    R4,??DataTable7_9  ;; 0x40000800
+   \       0x6E   0xA902             ADD      R1,SP,#+8
+   \       0x70   0x0020             MOVS     R0,R4
+   \       0x72   0x....'....        BL       TIM_TimeBaseInit
     468              
     469              
     470              TIM_ICInitTypeDef TIM_ICInitStructure;
-    471              TIM_EncoderInterfaceConfig(TIM1, TIM_EncoderMode_TI12, TIM_ICPolarity_Rising ,TIM_ICPolarity_Rising); // 四分頻stm讀取encoder設置
-   \       0x78   0x2300             MOVS     R3,#+0
-   \       0x7A   0x2200             MOVS     R2,#+0
-   \       0x7C   0x2103             MOVS     R1,#+3
-   \       0x7E   0x0020             MOVS     R0,R4
-   \       0x80   0x....'....        BL       TIM_EncoderInterfaceConfig
+    471              TIM_EncoderInterfaceConfig(TIM4, TIM_EncoderMode_TI12, TIM_ICPolarity_Rising ,TIM_ICPolarity_Rising); // 四分頻stm讀取encoder設置
+   \       0x76   0x2300             MOVS     R3,#+0
+   \       0x78   0x2200             MOVS     R2,#+0
+   \       0x7A   0x2103             MOVS     R1,#+3
+   \       0x7C   0x0020             MOVS     R0,R4
+   \       0x7E   0x....'....        BL       TIM_EncoderInterfaceConfig
     472              TIM_ICStructInit(&TIM_ICInitStructure); 
-   \       0x84   0xA805             ADD      R0,SP,#+20
-   \       0x86   0x....'....        BL       TIM_ICStructInit
+   \       0x82   0xA805             ADD      R0,SP,#+20
+   \       0x84   0x....'....        BL       TIM_ICStructInit
     473              TIM_ICInitStructure.TIM_ICFilter = 10;//濾波器值(從第10個訊號後才開始計數)
-   \       0x8A   0x200A             MOVS     R0,#+10
-   \       0x8C   0xF8AD 0x001C      STRH     R0,[SP, #+28]
-    474              TIM_ICInit(TIM1, &TIM_ICInitStructure);
-   \       0x90   0xA905             ADD      R1,SP,#+20
-   \       0x92   0x0020             MOVS     R0,R4
-   \       0x94   0x....'....        BL       TIM_ICInit
+   \       0x88   0x200A             MOVS     R0,#+10
+   \       0x8A   0xF8AD 0x001C      STRH     R0,[SP, #+28]
+    474              TIM_ICInit(TIM4, &TIM_ICInitStructure);
+   \       0x8E   0xA905             ADD      R1,SP,#+20
+   \       0x90   0x0020             MOVS     R0,R4
+   \       0x92   0x....'....        BL       TIM_ICInit
     475              
-    476              TIM_ClearFlag(TIM1, TIM_FLAG_Update);//清除TIM1的更新旗標
-   \       0x98   0x2101             MOVS     R1,#+1
-   \       0x9A   0x0020             MOVS     R0,R4
-   \       0x9C   0x....'....        BL       TIM_ClearFlag
-    477              TIM_ITConfig(TIM1, TIM_IT_Update, ENABLE);//運行更新
-   \       0xA0   0x2201             MOVS     R2,#+1
-   \       0xA2   0x2101             MOVS     R1,#+1
-   \       0xA4   0x0020             MOVS     R0,R4
-   \       0xA6   0x....'....        BL       TIM_ITConfig
+    476              TIM_ClearFlag(TIM4, TIM_FLAG_Update);//清除TIM4的更新旗標
+   \       0x96   0x2101             MOVS     R1,#+1
+   \       0x98   0x0020             MOVS     R0,R4
+   \       0x9A   0x....'....        BL       TIM_ClearFlag
+    477              TIM_ITConfig(TIM4, TIM_IT_Update, ENABLE);//運行更新
+   \       0x9E   0x2201             MOVS     R2,#+1
+   \       0xA0   0x2101             MOVS     R1,#+1
+   \       0xA2   0x0020             MOVS     R0,R4
+   \       0xA4   0x....'....        BL       TIM_ITConfig
     478              //IM3定時器
     479              
     480              //  NVIC_InitTypeDef NVIC_InitStructure;    
     481              //  NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);           
     482              //  
-    483              //  NVIC_InitStructure.NVIC_IRQChannel = TIM1_IRQn;    
+    483              //  NVIC_InitStructure.NVIC_IRQChannel = TIM4_IRQn;    
     484              //  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 3;               
     485              //  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
     486              //  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;            
     487              //  NVIC_Init(&NVIC_InitStructure);
-    488              TIM_SetCounter(TIM1,0); //TIM1->CNT=0
-   \       0xAA   0x2100             MOVS     R1,#+0
-   \       0xAC   0x0020             MOVS     R0,R4
-   \       0xAE   0x....'....        BL       TIM_SetCounter
-    489              TIM_Cmd(TIM1, ENABLE); 
-   \       0xB2   0x2101             MOVS     R1,#+1
-   \       0xB4   0x0020             MOVS     R0,R4
-   \       0xB6   0x....'....        BL       TIM_Cmd
+    488              TIM_SetCounter(TIM4,0); //TIM4->CNT=0
+   \       0xA8   0x2100             MOVS     R1,#+0
+   \       0xAA   0x0020             MOVS     R0,R4
+   \       0xAC   0x....'....        BL       TIM_SetCounter
+    489              TIM_Cmd(TIM4, ENABLE); 
+   \       0xB0   0x2101             MOVS     R1,#+1
+   \       0xB2   0x0020             MOVS     R0,R4
+   \       0xB4   0x....'....        BL       TIM_Cmd
     490          }
-   \       0xBA   0xB008             ADD      SP,SP,#+32
-   \       0xBC   0xBD10             POP      {R4,PC}          ;; return
+   \       0xB8   0xB008             ADD      SP,SP,#+32
+   \       0xBA   0xBD10             POP      {R4,PC}          ;; return
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable7:
@@ -989,27 +989,27 @@ E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\pwm.c
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable7_4:
-   \        0x0   0x4000'0424        DC32     0x40000424
-
-   \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable7_5:
-   \        0x0   0x4000'0824        DC32     0x40000824
-
-   \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable7_6:
    \        0x0   0x4001'0024        DC32     0x40010024
 
    \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_5:
+   \        0x0   0x4000'0424        DC32     0x40000424
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable7_6:
+   \        0x0   0x4000'0824        DC32     0x40000824
+
+   \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable7_7:
-   \        0x0   0x4000'0400        DC32     0x40000400
+   \        0x0   0x4001'0000        DC32     0x40010000
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable7_8:
-   \        0x0   0x4000'0800        DC32     0x40000800
+   \        0x0   0x4000'0400        DC32     0x40000400
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable7_9:
-   \        0x0   0x4001'0000        DC32     0x40010000
+   \        0x0   0x4000'0800        DC32     0x40000800
 
    Maximum stack usage in bytes:
 

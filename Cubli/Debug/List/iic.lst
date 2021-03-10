@@ -1,13 +1,13 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         23/Dec/2020  16:53:45
+# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         26/Feb/2021  13:46:04
 # Copyright 1999-2019 IAR Systems AB.
 #
 #    Cpu mode     =  
 #    Endian       =  little
 #    Source file  =  E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\iic.c
 #    Command line =
-#        -f C:\Users\LABPC1~1\AppData\Local\Temp\EWC124.tmp
+#        -f C:\Users\LABPC1~1\AppData\Local\Temp\EWDC55.tmp
 #        (E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\iic.c -D
 #        USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
 #        E:\STM32Project\Cubli-with-STM32F429\Cubli\Debug\List -o
@@ -350,17 +350,16 @@ Warning[Pa131]: this is a function pointer constant. Did you intend a function
                   ^
 "E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\iic.c",78  Warning[Pe174]: 
           expression has no effect
-     79                  
-     80                  if (msg & 0x80){
-     81                      SDA_HIGH;
-     82                  }else{
-     83                      SDA_LOW;
+     79                  if (msg & 0x80){
+     80                      SDA_HIGH;
+     81                  }else{
+     82                      SDA_LOW;
    \                     ??IIC_Send_Byte_1: (+1)
    \        0xC   0x2102             MOVS     R1,#+2
    \        0xE   0x0030             MOVS     R0,R6
    \       0x10   0x....'....        BL       GPIO_ResetBits
    \       0x14   0xE00B             B.N      ??IIC_Send_Byte_2
-     84                  }
+     83                  }
    \                     ??IIC_Send_Byte_3: (+1)
    \       0x16   0x....             LDR.N    R6,??DataTable7  ;; 0x40020400
    \       0x18   0x2101             MOVS     R1,#+1
@@ -372,206 +371,206 @@ Warning[Pa131]: this is a function pointer constant. Did you intend a function
    \       0x26   0x2102             MOVS     R1,#+2
    \       0x28   0x0030             MOVS     R0,R6
    \       0x2A   0x....'....        BL       GPIO_SetBits
-     85                  msg<<=1;IIC_Delay;
+     84                  msg<<=1;IIC_Delay;
                                  ^
 Warning[Pa131]: this is a function pointer constant. Did you intend a function
           call?
 
           msg<<=1;IIC_Delay;
                   ^
-"E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\iic.c",85  Warning[Pe174]: 
+"E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\iic.c",84  Warning[Pe174]: 
           expression has no effect
    \                     ??IIC_Send_Byte_2: (+1)
    \       0x2E   0x0064             LSLS     R4,R4,#+1
-     86                  SCL_HIGH;IIC_Delay;
+     85                  SCL_HIGH;IIC_Delay;
                                   ^
 Warning[Pa131]: this is a function pointer constant. Did you intend a function
           call?
 
           SCL_HIGH;IIC_Delay;
                    ^
-"E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\iic.c",86  Warning[Pe174]: 
+"E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\iic.c",85  Warning[Pe174]: 
           expression has no effect
    \       0x30   0x2101             MOVS     R1,#+1
    \       0x32   0x0030             MOVS     R0,R6
    \       0x34   0x....'....        BL       GPIO_SetBits
-     87              }
+     86              }
    \                     ??IIC_Send_Byte_0: (+1)
    \       0x38   0x0028             MOVS     R0,R5
    \       0x3A   0x1E45             SUBS     R5,R0,#+1
    \       0x3C   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
    \       0x3E   0x2800             CMP      R0,#+0
    \       0x40   0xD1E9             BNE.N    ??IIC_Send_Byte_3
-     88              SCL_LOW;
+     87              SCL_LOW;
    \                     ??IIC_Send_Byte_4: (+1)
    \       0x42   0x2101             MOVS     R1,#+1
    \       0x44   0x....             LDR.N    R0,??DataTable7  ;; 0x40020400
    \       0x46   0x....'....        BL       GPIO_ResetBits
-     89              if (IIC_Ack()==0){
+     88              if (IIC_Ack()==0){
    \       0x4A   0x....'....        BL       IIC_Ack
    \       0x4E   0x2800             CMP      R0,#+0
    \       0x50   0xD0FF             BEQ.N    ??IIC_Send_Byte_5
-     90                  return;
-     91              }
-     92          }
+     89                  return;
+     90              }
+     91          }
    \                     ??IIC_Send_Byte_6: (+1)
    \                     ??IIC_Send_Byte_5: (+1)
    \       0x52   0xBDF1             POP      {R0,R4-R7,PC}    ;; return
-     93          
+     92          
 
    \                                 In section .text, align 2, keep-with-next
-     94          u8 IIC_Read_Byte(void){
+     93          u8 IIC_Read_Byte(void){
    \                     IIC_Read_Byte: (+1)
    \        0x0   0xB5F8             PUSH     {R3-R7,LR}
-     95              u8 i=0, data=0;
+     94              u8 i=0, data=0;
    \        0x2   0x2000             MOVS     R0,#+0
    \        0x4   0x2500             MOVS     R5,#+0
-     96              SDA_IN();
+     95              SDA_IN();
    \        0x6   0x....'....        BL       SDA_IN
-     97              for(i=0;i<8;i++){
+     96              for(i=0;i<8;i++){
    \        0xA   0x2400             MOVS     R4,#+0
    \        0xC   0xE011             B.N      ??IIC_Read_Byte_0
-     98                  data <<=1;
+     97                  data <<=1;
    \                     ??IIC_Read_Byte_1: (+1)
    \        0xE   0x006D             LSLS     R5,R5,#+1
-     99                  SCL_HIGH;IIC_Delay;
+     98                  SCL_HIGH;IIC_Delay;
                                   ^
 Warning[Pa131]: this is a function pointer constant. Did you intend a function
           call?
 
           SCL_HIGH;IIC_Delay;
                    ^
-"E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\iic.c",99  Warning[Pe174]: 
+"E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\iic.c",98  Warning[Pe174]: 
           expression has no effect
    \       0x10   0x....             LDR.N    R6,??DataTable7  ;; 0x40020400
    \       0x12   0x2101             MOVS     R1,#+1
    \       0x14   0x0030             MOVS     R0,R6
    \       0x16   0x....'....        BL       GPIO_SetBits
    \       0x1A   0x....             LDR.N    R7,??DataTable7_1
-    100                  data |= SDA_READ;
+     99                  data |= SDA_READ;
    \       0x1C   0x....             LDR.N    R0,??DataTable7_2  ;; 0x40020410
    \       0x1E   0x6800             LDR      R0,[R0, #+0]
    \       0x20   0x0840             LSRS     R0,R0,#+1
    \       0x22   0xF010 0x0001      ANDS     R0,R0,#0x1
    \       0x26   0x4305             ORRS     R5,R0,R5
-    101                  SCL_LOW;IIC_Delay;
+    100                  SCL_LOW;IIC_Delay;
                                  ^
 Warning[Pa131]: this is a function pointer constant. Did you intend a function
           call?
 
           SCL_LOW;IIC_Delay;
                   ^
-"E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\iic.c",101  Warning[Pe174]: 
+"E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\iic.c",100  Warning[Pe174]: 
           expression has no effect
    \       0x28   0x2101             MOVS     R1,#+1
    \       0x2A   0x0030             MOVS     R0,R6
    \       0x2C   0x....'....        BL       GPIO_ResetBits
-    102              }
+    101              }
    \       0x30   0x1C64             ADDS     R4,R4,#+1
    \                     ??IIC_Read_Byte_0: (+1)
    \       0x32   0x0020             MOVS     R0,R4
    \       0x34   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
    \       0x36   0x2808             CMP      R0,#+8
    \       0x38   0xDBE9             BLT.N    ??IIC_Read_Byte_1
-    103              return data;
+    102              return data;
    \       0x3A   0x0028             MOVS     R0,R5
    \       0x3C   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
    \       0x3E   0xBDF2             POP      {R1,R4-R7,PC}    ;; return
-    104          }
-    105          
+    103          }
+    104          
 
    \                                 In section .text, align 2, keep-with-next
-    106          void IIC_Send(u8 slaveAddr, u8 regAddr, u8 msg){
+    105          void IIC_Send(u8 slaveAddr, u8 regAddr, u8 msg){
    \                     IIC_Send: (+1)
    \        0x0   0xB570             PUSH     {R4-R6,LR}
    \        0x2   0x0004             MOVS     R4,R0
    \        0x4   0x000D             MOVS     R5,R1
    \        0x6   0x0016             MOVS     R6,R2
-    107              IIC_Start();
+    106              IIC_Start();
    \        0x8   0x....'....        BL       IIC_Start
-    108              IIC_Send_Byte(slaveAddr);
+    107              IIC_Send_Byte(slaveAddr);
    \        0xC   0x0020             MOVS     R0,R4
    \        0xE   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
    \       0x10   0x....'....        BL       IIC_Send_Byte
-    109              IIC_Send_Byte(regAddr);
+    108              IIC_Send_Byte(regAddr);
    \       0x14   0x0028             MOVS     R0,R5
    \       0x16   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
    \       0x18   0x....'....        BL       IIC_Send_Byte
-    110              IIC_Send_Byte(msg);
+    109              IIC_Send_Byte(msg);
    \       0x1C   0x0030             MOVS     R0,R6
    \       0x1E   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
    \       0x20   0x....'....        BL       IIC_Send_Byte
-    111              IIC_Stop();  
+    110              IIC_Stop();  
    \       0x24   0x....'....        BL       IIC_Stop
-    112          }
+    111          }
    \       0x28   0xBD70             POP      {R4-R6,PC}       ;; return
-    113          
+    112          
 
    \                                 In section .text, align 2, keep-with-next
-    114          u8 IIC_Read(u8 slaveAddr, u8 regAddr){
+    113          u8 IIC_Read(u8 slaveAddr, u8 regAddr){
    \                     IIC_Read: (+1)
    \        0x0   0xB538             PUSH     {R3-R5,LR}
    \        0x2   0x0004             MOVS     R4,R0
    \        0x4   0x000D             MOVS     R5,R1
-    115              u8 dataBuffer;
-    116              IIC_Start();
+    114              u8 dataBuffer;
+    115              IIC_Start();
    \        0x6   0x....'....        BL       IIC_Start
-    117              IIC_Send_Byte(slaveAddr);
+    116              IIC_Send_Byte(slaveAddr);
    \        0xA   0x0020             MOVS     R0,R4
    \        0xC   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
    \        0xE   0x....'....        BL       IIC_Send_Byte
-    118              IIC_Send_Byte(regAddr);
+    117              IIC_Send_Byte(regAddr);
    \       0x12   0x0028             MOVS     R0,R5
    \       0x14   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
    \       0x16   0x....'....        BL       IIC_Send_Byte
-    119              IIC_Start();
+    118              IIC_Start();
    \       0x1A   0x....'....        BL       IIC_Start
-    120              IIC_Send_Byte(slaveAddr+1);
+    119              IIC_Send_Byte(slaveAddr+1);
    \       0x1E   0x1C64             ADDS     R4,R4,#+1
    \       0x20   0x0020             MOVS     R0,R4
    \       0x22   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
    \       0x24   0x....'....        BL       IIC_Send_Byte
-    121              dataBuffer = IIC_Read_Byte();
+    120              dataBuffer = IIC_Read_Byte();
    \       0x28   0x....'....        BL       IIC_Read_Byte
    \       0x2C   0x0004             MOVS     R4,R0
-    122              IIC_Ack();
+    121              IIC_Ack();
    \       0x2E   0x....'....        BL       IIC_Ack
-    123              IIC_Stop();
+    122              IIC_Stop();
    \       0x32   0x....'....        BL       IIC_Stop
-    124              return dataBuffer; 
+    123              return dataBuffer; 
    \       0x36   0x0020             MOVS     R0,R4
    \       0x38   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
    \       0x3A   0xBD32             POP      {R1,R4,R5,PC}    ;; return
-    125          }
-    126          
+    124          }
+    125          
 
    \                                 In section .text, align 2, keep-with-next
-    127          s16 IIC_Read_Two_Byte(u8 slaveAddr, u8 regAddr){
+    126          s16 IIC_Read_Two_Byte(u8 slaveAddr, u8 regAddr){
    \                     IIC_Read_Two_Byte: (+1)
    \        0x0   0xB570             PUSH     {R4-R6,LR}
    \        0x2   0x0004             MOVS     R4,R0
    \        0x4   0x000D             MOVS     R5,R1
-    128              u8 data_h = IIC_Read(slaveAddr, regAddr);
+    127              u8 data_h = IIC_Read(slaveAddr, regAddr);
    \        0x6   0x0029             MOVS     R1,R5
    \        0x8   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \        0xA   0x0020             MOVS     R0,R4
    \        0xC   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
    \        0xE   0x....'....        BL       IIC_Read
    \       0x12   0x0006             MOVS     R6,R0
-    129              u8 data_l = IIC_Read(slaveAddr, regAddr+1);
+    128              u8 data_l = IIC_Read(slaveAddr, regAddr+1);
    \       0x14   0x1C6D             ADDS     R5,R5,#+1
    \       0x16   0x0029             MOVS     R1,R5
    \       0x18   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
    \       0x1A   0x0020             MOVS     R0,R4
    \       0x1C   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
    \       0x1E   0x....'....        BL       IIC_Read
-    130              return (data_h<<8)| data_l;
+    129              return (data_h<<8)| data_l;
    \       0x22   0xB2F6             UXTB     R6,R6            ;; ZeroExt  R6,R6,#+24,#+24
    \       0x24   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
    \       0x26   0xEA50 0x2006      ORRS     R0,R0,R6, LSL #+8
    \       0x2A   0xB200             SXTH     R0,R0            ;; SignExt  R0,R0,#+16,#+16
    \       0x2C   0xBD70             POP      {R4-R6,PC}       ;; return
-    131          }
+    130          }
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable7:

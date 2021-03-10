@@ -318,14 +318,20 @@ void TM8_PWM_Init(void){
 /*=========================================================
 
 
-TIM3 EncoderInterface pwm PA6、PA7
 TIM1 EncoderInterface pwm PA8、PA9
+TIM3 EncoderInterface pwm PA6、PA7
 TIM4 EncoderInterface pwm PB6、PB7
 
 =========================================================*/
 
 
 int read_Encoder_a(void){
+    int Encoder_a = 0;
+    Encoder_a = (short)TIM1->CNT; //因為設定是65535 所以用short來將逆向的馬達計數轉為負號
+    TIM1->CNT = 0;
+    return Encoder_a ;
+}
+int read_Encoder_b(void){
     int Encoder_a = 0;
     Encoder_a = (short)TIM3->CNT; //因為設定是65535 所以用short來將逆向的馬達計數轉為負號
     TIM3->CNT = 0;
@@ -337,13 +343,55 @@ int read_Encoder_c(void){
     TIM4->CNT = 0;
     return Encoder_a ;
 }
-int read_Encoder_b(void){
-    int Encoder_a = 0;
-    Encoder_a = (short)TIM1->CNT; //因為設定是65535 所以用short來將逆向的馬達計數轉為負號
-    TIM1->CNT = 0;
-    return Encoder_a ;
-}
 
+//EncoderInterface
+void TIM1_EncoderInterface_Init(void) {
+    GPIO_InitTypeDef GPIO_InitStructure;
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM1, ENABLE);
+    // GPIOB Clock Enable
+    RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
+    // Initalize PB5 (TIM1 Ch1) and PB6 (TIM1 Ch2)
+    GPIO_InitStructure.GPIO_Pin     = GPIO_Pin_8 | GPIO_Pin_9;
+    GPIO_InitStructure.GPIO_Mode    = GPIO_Mode_AF;
+    GPIO_InitStructure.GPIO_Speed   = GPIO_Speed_100MHz;    // GPIO_High_Speed
+    GPIO_InitStructure.GPIO_OType   = GPIO_OType_PP;
+    GPIO_InitStructure.GPIO_PuPd    = GPIO_PuPd_UP;         // Weak Pull-up for safety during startup
+    GPIO_Init(GPIOA, &GPIO_InitStructure);
+    
+    // Assign Alternate Functions to pins
+    GPIO_PinAFConfig(GPIOA, GPIO_PinSource8, GPIO_AF_TIM1);
+    GPIO_PinAFConfig(GPIOA, GPIO_PinSource9, GPIO_AF_TIM1);
+    
+    TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure;
+    TIM_TimeBaseInitStructure.TIM_Period =65535;  //reload value
+    TIM_TimeBaseInitStructure.TIM_Prescaler=0;  //無分頻
+    TIM_TimeBaseInitStructure.TIM_ClockDivision = 0;
+    TIM_TimeBaseInitStructure.TIM_CounterMode=TIM_CounterMode_Up; //向上計數
+    TIM_TimeBaseInitStructure.TIM_ClockDivision=TIM_CKD_DIV1; 
+    TIM_TimeBaseInit(TIM1, &TIM_TimeBaseInitStructure);
+    
+    
+    TIM_ICInitTypeDef TIM_ICInitStructure;
+    TIM_EncoderInterfaceConfig(TIM1, TIM_EncoderMode_TI12, TIM_ICPolarity_Rising ,TIM_ICPolarity_Rising); // 四分頻stm讀取encoder設置
+    TIM_ICStructInit(&TIM_ICInitStructure); 
+    TIM_ICInitStructure.TIM_ICFilter = 10;//濾波器值(從第10個訊號後才開始計數)
+    TIM_ICInit(TIM1, &TIM_ICInitStructure);
+    
+    TIM_ClearFlag(TIM1, TIM_FLAG_Update);//清除TIM1的更新旗標
+    TIM_ITConfig(TIM1, TIM_IT_Update, ENABLE);//運行更新
+    //IM3定時器
+    
+    //  NVIC_InitTypeDef NVIC_InitStructure;    
+    //  NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);           
+    //  
+    //  NVIC_InitStructure.NVIC_IRQChannel = TIM1_IRQn;    
+    //  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 3;               
+    //  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+    //  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;            
+    //  NVIC_Init(&NVIC_InitStructure);
+    TIM_SetCounter(TIM1,0); //TIM1->CNT=0
+    TIM_Cmd(TIM1, ENABLE); 
+}
 //EncoderInterface
 void TIM3_EncoderInterface_Init(void) {
     GPIO_InitTypeDef GPIO_InitStructure;
@@ -439,52 +487,4 @@ void TIM4_EncoderInterface_Init(void) {
     //  NVIC_Init(&NVIC_InitStructure);
     TIM_SetCounter(TIM4,0); //TIM4->CNT=0
     TIM_Cmd(TIM4, ENABLE); 
-}
-//EncoderInterface
-void TIM1_EncoderInterface_Init(void) {
-    GPIO_InitTypeDef GPIO_InitStructure;
-    RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM1, ENABLE);
-    // GPIOB Clock Enable
-    RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
-    // Initalize PB5 (TIM1 Ch1) and PB6 (TIM1 Ch2)
-    GPIO_InitStructure.GPIO_Pin     = GPIO_Pin_8 | GPIO_Pin_9;
-    GPIO_InitStructure.GPIO_Mode    = GPIO_Mode_AF;
-    GPIO_InitStructure.GPIO_Speed   = GPIO_Speed_100MHz;    // GPIO_High_Speed
-    GPIO_InitStructure.GPIO_OType   = GPIO_OType_PP;
-    GPIO_InitStructure.GPIO_PuPd    = GPIO_PuPd_UP;         // Weak Pull-up for safety during startup
-    GPIO_Init(GPIOA, &GPIO_InitStructure);
-    
-    // Assign Alternate Functions to pins
-    GPIO_PinAFConfig(GPIOA, GPIO_PinSource8, GPIO_AF_TIM1);
-    GPIO_PinAFConfig(GPIOA, GPIO_PinSource9, GPIO_AF_TIM1);
-    
-    TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure;
-    TIM_TimeBaseInitStructure.TIM_Period =65535;  //reload value
-    TIM_TimeBaseInitStructure.TIM_Prescaler=0;  //無分頻
-    TIM_TimeBaseInitStructure.TIM_ClockDivision = 0;
-    TIM_TimeBaseInitStructure.TIM_CounterMode=TIM_CounterMode_Up; //向上計數
-    TIM_TimeBaseInitStructure.TIM_ClockDivision=TIM_CKD_DIV1; 
-    TIM_TimeBaseInit(TIM1, &TIM_TimeBaseInitStructure);
-    
-    
-    TIM_ICInitTypeDef TIM_ICInitStructure;
-    TIM_EncoderInterfaceConfig(TIM1, TIM_EncoderMode_TI12, TIM_ICPolarity_Rising ,TIM_ICPolarity_Rising); // 四分頻stm讀取encoder設置
-    TIM_ICStructInit(&TIM_ICInitStructure); 
-    TIM_ICInitStructure.TIM_ICFilter = 10;//濾波器值(從第10個訊號後才開始計數)
-    TIM_ICInit(TIM1, &TIM_ICInitStructure);
-    
-    TIM_ClearFlag(TIM1, TIM_FLAG_Update);//清除TIM1的更新旗標
-    TIM_ITConfig(TIM1, TIM_IT_Update, ENABLE);//運行更新
-    //IM3定時器
-    
-    //  NVIC_InitTypeDef NVIC_InitStructure;    
-    //  NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);           
-    //  
-    //  NVIC_InitStructure.NVIC_IRQChannel = TIM1_IRQn;    
-    //  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 3;               
-    //  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
-    //  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;            
-    //  NVIC_Init(&NVIC_InitStructure);
-    TIM_SetCounter(TIM1,0); //TIM1->CNT=0
-    TIM_Cmd(TIM1, ENABLE); 
 }

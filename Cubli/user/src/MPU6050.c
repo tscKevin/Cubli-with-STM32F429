@@ -21,18 +21,17 @@ void MPU6050_Init(void){
     when DLPF is enabled, 陀螺儀輸出頻率 = 1KHz, 加速度傳感器輸出率是1 khz。
     fs(採樣頻率) = 陀螺儀輸出頻率 / (1 + SMPLRT_DIV)*/	
     IIC_Send(SlaveAddress,SMPLRT_DIV,0x00);//sample rate.  Fsample= 1Khz/(<this value>+1) = 1000Hz
-    
     IIC_Send(SlaveAddress,CONFIG,0x03);//内部低通  acc:44hz	gyro:42hz register 26
     IIC_Send(SlaveAddress,GYRO_CONFIG,0x18);// gyro scale  ：+-2000deg/s REGISTER 27
     IIC_Send(SlaveAddress,ACCEL_CONFIG,0x10);// Accel scale ：+-8g (65536/16=4096 LSB/g) REGISTER 28 
     
-    IIC_Send(SlaveAddress,XA_OFFSET_L_TC, 175);
+    IIC_Send(SlaveAddress,XA_OFFSET_L_TC, 205);
     IIC_Send(SlaveAddress,XA_OFFSET_H, 255);
-    IIC_Send(SlaveAddress,YA_OFFSET_L_TC, 147);
+    IIC_Send(SlaveAddress,YA_OFFSET_L_TC, 150);
     IIC_Send(SlaveAddress,YA_OFFSET_H, 7);
     
-    IIC_Send(SlaveAddress,ZA_OFFSET_L_TC, 17);
-    IIC_Send(SlaveAddress,ZA_OFFSET_H, 2); //65536 or 4096
+    IIC_Send(SlaveAddress,ZA_OFFSET_L_TC, 255);
+    IIC_Send(SlaveAddress,ZA_OFFSET_H, 1); //65536 or 4096
     
     IIC_Send(SlaveAddress,XG_OFFS_USRL, 129);
     IIC_Send(SlaveAddress,XG_OFFS_USRH, 0);
@@ -40,45 +39,7 @@ void MPU6050_Init(void){
     IIC_Send(SlaveAddress,YG_OFFS_USRH, 255);
     IIC_Send(SlaveAddress,ZG_OFFS_USRL, 45);
     IIC_Send(SlaveAddress,ZG_OFFS_USRH, 0);
-    //
-    //  IIC_Send(SlaveAddress,XA_OFFSET_L_TC, 0x40);
-    //  IIC_Send(SlaveAddress,XA_OFFSET_H, 0xff);
-    //  IIC_Send(SlaveAddress,YA_OFFSET_L_TC, 0xca);
-    //  IIC_Send(SlaveAddress,YA_OFFSET_H, 0xfa);
-    //  
-    //  IIC_Send(SlaveAddress,ZA_OFFSET_L_TC, 0x78);
-    //  IIC_Send(SlaveAddress,ZA_OFFSET_H, 0x01); //65536 or 4096
-    //  
-    //  IIC_Send(SlaveAddress,XG_OFFS_USRL, 0x68);
-    //  IIC_Send(SlaveAddress,XG_OFFS_USRH, 0x00);
-    //  IIC_Send(SlaveAddress,YG_OFFS_USRL, 0xd4);
-    //  IIC_Send(SlaveAddress,YG_OFFS_USRH, 0xff);
-    //  IIC_Send(SlaveAddress,ZG_OFFS_USRL, 0xfb);
-    //  IIC_Send(SlaveAddress,ZG_OFFS_USRH, 0xff);
-    
-//    IIC_Send(SlaveAddress,XA_OFFSET_L_TC, 0xb0);
-//    IIC_Send(SlaveAddress,XA_OFFSET_H, 0xf7);
-//    IIC_Send(SlaveAddress,YA_OFFSET_L_TC, 0x98);
-//    IIC_Send(SlaveAddress,YA_OFFSET_H, 0x04);
-//    
-//    IIC_Send(SlaveAddress,ZA_OFFSET_L_TC, 0x4f);
-//    IIC_Send(SlaveAddress,ZA_OFFSET_H, 0x03); //65536 or 4096
-//    
-//    IIC_Send(SlaveAddress,XG_OFFS_USRL, 0x4f);
-//    IIC_Send(SlaveAddress,XG_OFFS_USRH, 0x00);
-//    IIC_Send(SlaveAddress,YG_OFFS_USRL, 0xf2);
-//    IIC_Send(SlaveAddress,YG_OFFS_USRH, 0xff);
-//    IIC_Send(SlaveAddress,ZG_OFFS_USRL, 0x05);
-//    IIC_Send(SlaveAddress,ZG_OFFS_USRH, 0x00);
 }
-
-//void MPU6050_RESET(void){  
-//  //bit2  重置陀螺儀的信號路徑
-//  //bit1  重置加速度傳感器的信號路徑
-//  //bit0  重置溫度傳感器的信號路徑
-//  IIC_Send(SlaveAddress,MPU6050_RA_SIGNAL_PATH_RESET,0x07);
-//  MPU6050_Init();
-//}
 
 //two bytes data access
 static s16 get_data(u8 REG_Address){
@@ -98,8 +59,6 @@ u8 get_mpu_id(void){
 存取加速度計三軸raw data
 ==================================*/
 void get_acc_raw(void){
-    //  accel_offset.x = get_data(0x06);
-    //  accel_offset.y = get_data(0x08);
     acc_raw.x = get_data(ACCEL_XOUT_H); // get acceleration x data 
     acc_raw.y = get_data(ACCEL_YOUT_H);
     acc_raw.z = get_data(ACCEL_ZOUT_H); 
@@ -129,14 +88,14 @@ void get_gyro_raw(void)
     gyro_raw_f.y = (float)butterworth_lpf(((float)gyro_raw.y),&gyro_butter_data[1],&gyro_30hz_parameter);
     gyro_raw_f.z = (float)butterworth_lpf(((float)gyro_raw.z),&gyro_butter_data[2],&gyro_30hz_parameter);
 }
-//raw -> deg/s
+//raw -> deg/s (degree)
 void get_deg_s(SI_F_XYZ *gyro_in,SI_F_XYZ *gyro_deg_out)
 {
     gyro_deg_out->x = (float)(gyro_in->x * gyro_raw_to_deg_s);
     gyro_deg_out->y = (float)(gyro_in->y * gyro_raw_to_deg_s);
     gyro_deg_out->z = (float)(gyro_in->z * gyro_raw_to_deg_s);    
 }
-//raw -> rad/s
+//raw -> rad/s (radian) 1 rad = 180°/π = 57.295779513°
 void get_rad_s(SI_F_XYZ *gyro_in,SI_F_XYZ *gyro_out)
 {
     gyro_out->x = (float)(gyro_in->x * gyro_raw_to_radian_s);
@@ -153,10 +112,10 @@ void get_iir_factor(float *out_factor,float Time, float Cut_Off)//30 or 25
 加速度計
 ==================================*/
 //IIR低通濾波器(加速度)
-void acc_iir_lpf(SI_F_XYZ *acc_in,SI_F_XYZ *acc_out,float lpf_factor)
+void acc_iir_lpf(SI_F_XYZ *acc_in, SI_F_XYZ *acc_out, float lpf_factor)
 {
     acc_out->x = acc_out->x + lpf_factor*(acc_in->x - acc_out->x); 
-    acc_out->y = acc_out->y + lpf_factor*(acc_in->y - acc_out->y); 
+    acc_out->y = acc_out->y + lpf_factor*(acc_in->y - acc_out->y);
     acc_out->z = acc_out->z + lpf_factor*(acc_in->z - acc_out->z); 
 }
 //加速度計濾波參數
@@ -170,20 +129,20 @@ _Butterworth_parameter acc_5hz_parameter =
     //    1,   -1.911197067426,   0.9149758348014,
     //    0.0009446918438402,  0.00188938368768,0.0009446918438402
     //200hz---5hz
-    1,                  -1.778631777825,    0.8008026466657,
-    0.005542717210281,   0.01108543442056,  0.005542717210281
-        //200hz---10hz
-        //        1,   -1.561018075801,   0.6413515380576,
-        //        0.02008336556421,  0.04016673112842,  0.02008336556421
-        //200hz---15hz
-        //    1,   -1.348967745253,   0.5139818942197,
-        //    0.04125353724172,  0.08250707448344,  0.04125353724172
-        //200hz---20hz
-        //    1,    -1.14298050254,   0.4128015980962,
-        //    0.06745527388907,   0.1349105477781,  0.06745527388907
-        //200hz---30hz
-        //    1,  -0.7477891782585,    0.272214937925,
-        //    0.1311064399166,   0.2622128798333,   0.1311064399166 
+    //    1,                  -1.778631777825,    0.8008026466657,
+    //    0.005542717210281,   0.01108543442056,  0.005542717210281
+    //200hz---10hz
+    //        1,   -1.561018075801,   0.6413515380576,
+    //        0.02008336556421,  0.04016673112842,  0.02008336556421
+    //200hz---15hz
+    //    1,   -1.348967745253,   0.5139818942197,
+    //    0.04125353724172,  0.08250707448344,  0.04125353724172
+    //200hz---20hz
+    //    1,    -1.14298050254,   0.4128015980962,
+    //    0.06745527388907,   0.1349105477781,  0.06745527388907
+    //200hz---30hz
+        1,  -0.7477891782585,    0.272214937925,
+        0.1311064399166,   0.2622128798333,   0.1311064399166 
 };     
 
 _Butterworth_data   acc_butter_data[3];

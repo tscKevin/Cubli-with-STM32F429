@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         22/Feb/2021  15:00:05
+# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         08/Mar/2021  14:32:53
 # Copyright 1999-2019 IAR Systems AB.
 #
 #    Cpu mode     =  
@@ -8,7 +8,7 @@
 #    Source file  =
 #        E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\usart.c
 #    Command line =
-#        -f C:\Users\LABPC1~1\AppData\Local\Temp\EWE07B.tmp
+#        -f C:\Users\LABPC1~1\AppData\Local\Temp\EWFC26.tmp
 #        (E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\usart.c -D
 #        USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
 #        E:\STM32Project\Cubli-with-STM32F429\Cubli\Debug\List -o
@@ -2248,17 +2248,17 @@ Warning[Pa093]: implicit conversion from floating point to integer
     641              }
     642            case 2:
     643              {
-    644          //      ANO_DT_Send_Senser(acc_raw.x,acc_raw.y,acc_raw.z,Mpu.deg_s.x,Mpu.deg_s.y,Mpu.deg_s.z,0,0,0);//將gyr改成看PWM的值
-    645                ANO_DT_Send_Senser(acc_raw.x,acc_raw.y,acc_raw.z,Mpu.deg_s.x,Mpu.deg_s.y,Mpu.deg_s.z,PWM_a,PWM_b,PWM_c);//將gyr改成看PWM的值
+    644          //      ANO_DT_Send_Senser(acc_raw.x,acc_raw.y,acc_raw.z,Mpu.deg_s.x,Mpu.deg_s.y,Mpu.deg_s.z,acc_att_lpf.x,acc_att_lpf.y,acc_att_lpf.z);
+    645                ANO_DT_Send_Senser(acc_raw.x,acc_raw.y,acc_raw.z,Mpu.deg_s.x,Mpu.deg_s.y,Mpu.deg_s.z,PWM_a,PWM_b,PWM_c);    
                                                                         ^
 Warning[Pa093]: implicit conversion from floating point to integer
 
-        ANO_DT_Send_Senser(acc_raw.x,acc_raw.y,acc_raw.z,Mpu.deg_s.x,Mpu.deg_s.y,Mpu.deg_s.z,PWM_a,PWM_b,PWM_c);//將gyr改成看PWM的值
+        ANO_DT_Send_Senser(acc_raw.x,acc_raw.y,acc_raw.z,Mpu.deg_s.x,Mpu.deg_s.y,Mpu.deg_s.z,PWM_a,PWM_b,PWM_c);    
                                                                      ^
 "E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\usart.c",645  Warning[Pa093]: 
           implicit conversion from floating point to integer
 
-        ANO_DT_Send_Senser(acc_raw.x,acc_raw.y,acc_raw.z,Mpu.deg_s.x,Mpu.deg_s.y,Mpu.deg_s.z,PWM_a,PWM_b,PWM_c);//將gyr改成看PWM的值
+        ANO_DT_Send_Senser(acc_raw.x,acc_raw.y,acc_raw.z,Mpu.deg_s.x,Mpu.deg_s.y,Mpu.deg_s.z,PWM_a,PWM_b,PWM_c);    
                                                                                  ^
 "E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\usart.c",645  Warning[Pa093]: 
           implicit conversion from floating point to integer
@@ -2293,7 +2293,7 @@ Warning[Pa093]: implicit conversion from floating point to integer
    \       0x70   0xF9B4 0x1002      LDRSH    R1,[R4, #+2]
    \       0x74   0xF9B4 0x0000      LDRSH    R0,[R4, #+0]
    \       0x78   0x....'....        BL       ANO_DT_Send_Senser
-    646          //      ANO_DT_Send_Senser(acc_raw.x,acc_raw.y,acc_raw.z,Mpu.deg_s.x,Mpu.deg_s.y,Mpu.deg_s.z,PWM_a,encoder_a*30,0);//將gyr改成看PWM的值
+    646          //      ANO_DT_Send_Senser(acc_raw.x,acc_raw.y,acc_raw.z,Mpu.deg_s.x,Mpu.deg_s.y,Mpu.deg_s.z,PWM_a,encoder_a*30,0);
     647                break;
    \       0x7C   0xE03E             B.N      ??Anotc_SendData_8
     648              }

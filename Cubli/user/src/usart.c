@@ -641,9 +641,9 @@ void Anotc_SendData(void)
     }
   case 2:
     {
-//      ANO_DT_Send_Senser(acc_raw.x,acc_raw.y,acc_raw.z,Mpu.deg_s.x,Mpu.deg_s.y,Mpu.deg_s.z,0,0,0);//將gyr改成看PWM的值
-      ANO_DT_Send_Senser(acc_raw.x,acc_raw.y,acc_raw.z,Mpu.deg_s.x,Mpu.deg_s.y,Mpu.deg_s.z,PWM_a,PWM_b,PWM_c);//將gyr改成看PWM的值
-//      ANO_DT_Send_Senser(acc_raw.x,acc_raw.y,acc_raw.z,Mpu.deg_s.x,Mpu.deg_s.y,Mpu.deg_s.z,PWM_a,encoder_a*30,0);//將gyr改成看PWM的值
+//      ANO_DT_Send_Senser(acc_raw.x,acc_raw.y,acc_raw.z,Mpu.deg_s.x,Mpu.deg_s.y,Mpu.deg_s.z,acc_att_lpf.x,acc_att_lpf.y,acc_att_lpf.z);
+      ANO_DT_Send_Senser(acc_raw.x,acc_raw.y,acc_raw.z,Mpu.deg_s.x,Mpu.deg_s.y,Mpu.deg_s.z,PWM_a,PWM_b,PWM_c);    
+//      ANO_DT_Send_Senser(acc_raw.x,acc_raw.y,acc_raw.z,Mpu.deg_s.x,Mpu.deg_s.y,Mpu.deg_s.z,PWM_a,encoder_a*30,0);
       break;
     }
   case 3:
