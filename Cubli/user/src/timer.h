@@ -13,10 +13,10 @@
 
 typedef struct
 {
-        float last_time_us;
-        float now_time_us;
-        float delta_time_us;
-        float delta_time_ms;
+    float last_time_us;
+    float now_time_us;
+    float delta_time_us;
+    float delta_time_ms;
 }_Time_test;
 
 
@@ -61,6 +61,7 @@ extern int encoder_b;
 extern int encoder_c;
 extern int nvic_flag;
 extern int flag_stop;
+extern int jump_state; // 0=>stop, 1=>jump on roll (2D), 2=> jump on pitch (3D)
 
 extern float velocity_pwm_a;
 extern float balance_pwm_a;
@@ -74,7 +75,8 @@ extern float balance_pwm_c;
 extern int PWM_a;
 extern int PWM_b;
 extern int PWM_c;
-
+extern int jump_pwm;
+extern int jump_pwm_max;
 extern float yaw_angle_targer;
 
 #endif

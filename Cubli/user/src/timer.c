@@ -4,12 +4,14 @@ uint32_t running_tim_cnt = 0;
 
 int Max_Pwm = 8300;
 int flag_stop = 0;
+int nvic_flag=0;
+int jump_state=0;
 
-float rol_angle_targer=0.1;//-0.95;//-1.5;
+float rol_angle_targer=-1.2;//0.7;//-0.95;//-1.5;
 float rol_angle_offset_r=15;//-33.0+45;
 float rol_angle_offset_l=-15;//-63.0+45;
 
-float pit_angle_targer=-1.8;//-53.45;
+float pit_angle_targer=1.6;//1.8;//-53.45;
 float pit_angle_offset_r=15;//-38.45;
 float pit_angle_offset_l=-15;//-68.45;
 
@@ -25,11 +27,11 @@ float Gryo_KP = 0.5;
 float Gryo_KD = 2;*/
 float Velocity_KP = 60;
 float Velocity_KI = 0.030;
-float Balance_KP = 1200;
+float Balance_KP = 1250;
 //float Balance_KI = 0;
-float Balance_KD = 200.7;
-float Gryo_KP = 0.7;
-float Gryo_KD = 0.05;
+float Balance_KD = 210.7; //209.7
+float Gryo_KP = 0.55;
+float Gryo_KD = 0.9;
 /*------------------------not use------------------------*/
 float Velocity_KP_a = 140;//110;//80;//140;    //140;  //300;
 float Velocity_KI_a = 0.35;      //0     //0.35;
@@ -64,7 +66,6 @@ int PWM_a = 0, PWM_b = 0, PWM_c = 0;
 float Move_X,Move_Y,Move_Z;
 int encoder_a, encoder_b, encoder_c;
 float Encoder_X,Encoder_Y,Encoder_Z;
-int nvic_flag=0;
 /*===============================
 
 測試系統運行時間
@@ -116,7 +117,7 @@ float control_balance_x(float angle, float Gyro){
     Bias =(angle-rol_angle_targer);                                 //=== 偏差
     //    balance = Bias*Balance_KP + Bias_integral*Balance_KI + Gyro*Balance_KD;
     balance = Bias*Balance_KP + Gyro*Balance_KD;
-//    balance = Bias*Balance_KP + (Bias-Bias_last)*Balance_KD;
+    //    balance = Bias*Balance_KP + (Bias-Bias_last)*Balance_KD;
     Bias_last=Bias;
     if(flag_stop==1) balance=0;
     return balance;
@@ -150,7 +151,7 @@ float control_balance_y(float angle, float Gyro){
     /*
     Bias_last = Bias; 
     Bias_integral += Bias_last;
-
+    
     if(Bias_integral>4200)  Bias_integral=4200;                     //===積分限幅 4200
     if(Bias_integral<-4200)	Bias_integral=-4200;                    //===積分限幅 4200 
     if(flag_stop==1) Bias_integral=0,Bias=0;
@@ -158,7 +159,7 @@ float control_balance_y(float angle, float Gyro){
     Bias =(angle-pit_angle_targer);                                 //=== 偏差
     //    balance = Bias*Balance_KP + Bias_integral*Balance_KI + Gyro*Balance_KD;
     balance = Bias*Balance_KP + Gyro*Balance_KD;
-//    balance = Bias*Balance_KP + (Bias-Bias_last)*Balance_KD;
+    //    balance = Bias*Balance_KP + (Bias-Bias_last)*Balance_KD;
     Bias_last=Bias;
     if(flag_stop==1) balance=0;
     return balance;
@@ -257,7 +258,7 @@ void set_pwm_b(int pwm_b){
     TIM8->CCR2 = pwm_b;
 }
 void set_pwm_c(int pwm_c){
-    if (pwm_c>0){
+    if (pwm_c<0){
         GPIO_SetBits(GPIOD,GPIO_Pin_9);
     }
     else{ 
@@ -297,7 +298,7 @@ TIM4 interrupt - main
 
 _Time_test run_start;
 _Time_test run_stop;
-int bb;
+int jump_pwm=0,jump_pwm_max=0;
 void ahrs(void){
     get_gyro_raw();                                                         //陀螺儀raw data
     get_deg_s(&gyro_raw_f,&Mpu.deg_s);
@@ -335,7 +336,7 @@ void TIM5_IRQHandler(void){
         Move_Z = -balance_pwm_c;
         //逆向運動學分析
 		Kinematic_Analysis(Move_X,Move_Y,Move_Z);
-/*
+        /*
         encoder_a=read_Encoder_a();
         encoder_b=read_Encoder_b();
         encoder_c=read_Encoder_c();
@@ -349,45 +350,55 @@ void TIM5_IRQHandler(void){
         PWM_a=0.816137590080160f*balance_pwm_a+0.577857624383505f*balance_pwm_c;//+velocity_pwm_a;
         PWM_b=-0.408607044761925f*balance_pwm_a+0.707106781186548f*balance_pwm_b+0.577096424326928f*balance_pwm_c;//+velocity_pwm_b;
         PWM_c=-0.408607044761925f*balance_pwm_a-0.707106781186548f*balance_pwm_b+0.577096424326928f*balance_pwm_c;//+velocity_pwm_c;
-*/      
+        */      
+        
         Max_pwm_limit(Max_Pwm);
         if (nvic_flag == 1){
-            //      if(Max_Pwm++>8300)Max_Pwm=8300;//慢慢上升
-            if ((att.rol>= rol_angle_offset_l) && (att.rol <= rol_angle_offset_r)/* && (att.pit>= pit_angle_offset_l) && (att.pit <=pit_angle_offset_r)*/){//balance
-//                set_pwm_a(1.3*PWM_a);
-                set_pwm_a(PWM_a);
-                set_pwm_b(PWM_b);
-                set_pwm_c(-PWM_c);
-            }else if((att.rol <rol_angle_offset_l) || (att.rol >rol_angle_offset_r)) {//out balance, stop wheel
+            // if(Max_Pwm++>8300)Max_Pwm=8300;//慢慢上升
+            if(jump_state==1 && (att.rol<= -8 || att.rol>=8)){ // jumping
+                if(att.rol <= -8 && att.rol > -13){
+                    PWM_a=-6600;
+                    set_pwm_a(PWM_a);
+//                }else if(att.rol <= -10 && att.rol > -12){
+//                    PWM_a=-7300;
+//                    set_pwm_a(PWM_a);
+                }else if(att.rol <= -13){
+                    PWM_a=-7000;
+                    set_pwm_a(PWM_a);
+                }
+            }else if((att.rol > -8) && (att.rol < 30) && (att.pit > -10)){
+                if(att.pit < 10){ //3D balance
+                    set_pwm_a(PWM_a);
+                    set_pwm_b(PWM_b);
+                    set_pwm_c(PWM_c);
+                }else if(att.pit > 15 && att.pit<=30){//2D balance
+                    set_pwm_a(1.3*PWM_a);
+                    if (jump_state==2){
+                        if(jump_pwm+=100>jump_pwm_max) jump_pwm=jump_pwm_max;//slowly add
+                        set_pwm_b(jump_pwm);
+                        set_pwm_c(-jump_pwm);
+                    }else{
+                        set_pwm_b(0);
+                        set_pwm_c(0);
+                    }
+                }
+            }
+            if((att.rol<-12 && jump_state==0) || (att.rol > 30 && jump_state==0) || (att.rol > 30  && jump_state==1) || att.pit < -10){
                 nvic_flag = 0;
                 flag_stop = 1;
+                jump_state = 0;
+                jump_pwm = 0;
                 PWM_a = 0;
                 PWM_b = 0;
                 PWM_c = 0;
                 set_pwm_a(0);
                 set_pwm_b(0);
                 set_pwm_c(0);
-            }/*else if(att.rol<-80){//jump up
-            PWM_a =-0;
-            set_pwm_a(PWM_a);
-        }else if(att.rol>=-13){//jump up give up
-            PWM_a =0;
-            set_pwm_a(PWM_a);
-        }else if(att.rol<-13 && att.rol>=-18){//jump up
-            PWM_a =7500;
-            set_pwm_a(PWM_a);
-        }else if(att.rol<-18 && att.rol>=-20){//jump up
-            PWM_a =5350;
-            set_pwm_a(PWM_a);
-        }else if(att.rol<-20 && att.rol>=-27){//jump up
-            PWM_a =3850;
-            set_pwm_a(PWM_a);
-        }*/
+            }
         }else{
-//            yaw_angle_targer=att.yaw;
-            set_pwm_a(0);
-            set_pwm_b(0);
-            set_pwm_c(0);
+            //            set_pwm_a(0);
+            //            set_pwm_b(0);
+            //            set_pwm_c(0);
         }
         Anotc_SendData();
         time_check(&run_stop);

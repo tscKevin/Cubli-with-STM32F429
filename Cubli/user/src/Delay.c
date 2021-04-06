@@ -124,7 +124,7 @@ void Delay(int nTime)
   */
 void systick_setup(void)
 {
-  if (SysTick_Config(168000)) // 168000 也可以用 SystemCoreClock / 1000 取代
+  if (SysTick_Config(180000)) // 168000 也可以用 SystemCoreClock / 1000 取代
     { 
         while (1);// SysTick_Config() 的值設定太大，所以終止繼續運行 (人為疏失)
     }
