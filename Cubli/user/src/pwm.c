@@ -376,33 +376,28 @@ void TM8_PWM_Init(void){
 }
 
 /*=========================================================
-
 TIM2 EncoderInterface pwm PA2、PA3
 TIM3 EncoderInterface pwm PA6、PA7
 TIM4 EncoderInterface pwm PB6、PB7
-
 =========================================================*/
-
-
-int read_Encoder_a(void){
+int read_Encoder(int encoder_num){
     int Encoder = 0;
-    Encoder = (short)TIM2->CNT; //因為設定是65535 所以用short來將逆向的馬達計數轉為負號
-    TIM2->CNT = 0;
+    switch(encoder_num){
+    case 1:
+        Encoder = (short)TIM2->CNT;//因為設定是65535所以用short來將逆向的馬達計數轉為負號
+        TIM2->CNT = 0;
+        break;
+    case 2:
+        Encoder = (short)TIM3->CNT;
+        TIM3->CNT = 0;
+        break;
+    case 3:
+        Encoder = (short)TIM4->CNT;
+        TIM4->CNT = 0;
+        break;
+    }
     return Encoder;
 }
-int read_Encoder_b(void){
-    int Encoder = 0;
-    Encoder = (short)TIM3->CNT; //因為設定是65535 所以用short來將逆向的馬達計數轉為負號
-    TIM3->CNT = 0;
-    return Encoder;
-}
-int read_Encoder_c(void){
-    int Encoder = 0;
-    Encoder = (short)TIM4->CNT; //因為設定是65535 所以用short來將逆向的馬達計數轉為負號
-    TIM4->CNT = 0;
-    return Encoder;
-}
-
 //TIM1 EncoderInterface unuse
 void TIM1_EncoderInterface_Init(void) {
     GPIO_InitTypeDef GPIO_InitStructure;
@@ -536,15 +531,6 @@ void TIM3_EncoderInterface_Init(void) {
     TIM_ClearFlag(TIM3, TIM_FLAG_Update);//清除TIM3的更新旗標
     TIM_ITConfig(TIM3, TIM_IT_Update, ENABLE);//運行更新
     //IM3定時器
-    
-    //  NVIC_InitTypeDef NVIC_InitStructure;    
-    //  NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);           
-    //  
-    //  NVIC_InitStructure.NVIC_IRQChannel = TIM3_IRQn;    
-    //  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 3;               
-    //  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
-    //  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;            
-    //  NVIC_Init(&NVIC_InitStructure);
     TIM_SetCounter(TIM3,0); //TIM3->CNT=0
     TIM_Cmd(TIM3, ENABLE); 
 }

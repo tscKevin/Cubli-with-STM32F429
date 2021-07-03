@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         22/Mar/2021  18:22:45
+# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         15/Jun/2021  00:05:11
 # Copyright 1999-2019 IAR Systems AB.
 #
 #    Cpu mode     =  
@@ -8,7 +8,7 @@
 #    Source file  =
 #        E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\usart.c
 #    Command line =
-#        -f C:\Users\LABPC1~1\AppData\Local\Temp\EW4293.tmp
+#        -f C:\Users\LABPC1~1\AppData\Local\Temp\EWF6E.tmp
 #        (E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\usart.c -D
 #        USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
 #        E:\STM32Project\Cubli-with-STM32F429\Cubli\Debug\List -o
@@ -102,7 +102,7 @@ E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\usart.c
      28            usart1_sent = 1;//重新令usart_sent的指令為1
    \                     ??DMA2_Stream7_IRQHandler_0: (+1)
    \       0x26   0x2001             MOVS     R0,#+1
-   \       0x28   0x....'....        LDR.W    R1,??DataTable12
+   \       0x28   0x....'....        LDR.W    R1,??DataTable11_2
    \       0x2C   0x7008             STRB     R0,[R1, #+0]
      29          }
    \       0x2E   0xBD10             POP      {R4,PC}          ;; return
@@ -122,7 +122,7 @@ E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\usart.c
    \        0x8   0x2000             MOVS     R0,#+0
    \        0xA   0x7008             STRB     R0,[R1, #+0]
    \                     ??usart1_send_0: (+1)
-   \        0xC   0x....'....        LDR.W    R1,??DataTable12
+   \        0xC   0x....'....        LDR.W    R1,??DataTable11_2
    \       0x10   0x7808             LDRB     R0,[R1, #+0]
    \       0x12   0x2800             CMP      R0,#+0
    \       0x14   0xD0F8             BEQ.N    ??usart1_send_1
@@ -138,7 +138,7 @@ E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\usart.c
    \                     ??usart1_send_2: (+1)
    \       0x22   0x0022             MOVS     R2,R4
    \       0x24   0x0019             MOVS     R1,R3
-   \       0x26   0x....'....        LDR.W    R0,??DataTable12_1
+   \       0x26   0x....'....        LDR.W    R0,??DataTable12
    \       0x2A   0x....'....        BL       mymemcpy
      40            DMA_SetCurrDataCounter(DMA2_Stream7,len); //設置DMA內存大小
    \       0x2E   0x....'....        LDR.W    R5,??DataTable11  ;; 0x400264b8
@@ -230,155 +230,61 @@ E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\usart.c
 
    \                                 In section .text, align 2, keep-with-next
      82          void receiver_data(void){
-   \                     receiver_data: (+1)
-   \        0x0   0xB510             PUSH     {R4,LR}
-     83            data.byte.a=usart1_dma_rx_buf[0];
-   \        0x2   0x....'....        LDR.W    R0,??DataTable12_2
-   \        0x6   0x....'....        LDR.W    R1,??DataTable12_3
-   \        0xA   0x780A             LDRB     R2,[R1, #+0]
-   \        0xC   0x7042             STRB     R2,[R0, #+1]
-     84            data.byte.b=usart1_dma_rx_buf[1];
-   \        0xE   0x784A             LDRB     R2,[R1, #+1]
-   \       0x10   0x7002             STRB     R2,[R0, #+0]
-     85            genes.control1.kp=data.value;
-   \       0x12   0x....'....        LDR.W    R4,??DataTable12_4
-   \       0x16   0x8802             LDRH     R2,[R0, #+0]
-   \       0x18   0x8022             STRH     R2,[R4, #+0]
-     86          //  printf("value = %d, uvalue = %d\n",data.value,data.uValue);    
-     87            data.byte.a=usart1_dma_rx_buf[2];
-   \       0x1A   0x788A             LDRB     R2,[R1, #+2]
-   \       0x1C   0x7042             STRB     R2,[R0, #+1]
-     88            data.byte.b=usart1_dma_rx_buf[3];
-   \       0x1E   0x78CA             LDRB     R2,[R1, #+3]
-   \       0x20   0x7002             STRB     R2,[R0, #+0]
-     89            genes.control1.kd=data.value;
-   \       0x22   0x8802             LDRH     R2,[R0, #+0]
-   \       0x24   0x8062             STRH     R2,[R4, #+2]
-     90          //  printf("value = %d, uvalue = %d\n",data.value,data.uValue);    
-     91            data.byte.a=usart1_dma_rx_buf[4];
-   \       0x26   0x790A             LDRB     R2,[R1, #+4]
-   \       0x28   0x7042             STRB     R2,[R0, #+1]
-     92            data.byte.b=usart1_dma_rx_buf[5];
-   \       0x2A   0x794A             LDRB     R2,[R1, #+5]
-   \       0x2C   0x7002             STRB     R2,[R0, #+0]
-     93            genes.control4.kp=data.value;
-   \       0x2E   0x8802             LDRH     R2,[R0, #+0]
-   \       0x30   0x81A2             STRH     R2,[R4, #+12]
-     94          //  printf("value = %d, uvalue = %d\n",data.value,data.uValue);  
-     95            data.byte.a=usart1_dma_rx_buf[6];
-   \       0x32   0x798A             LDRB     R2,[R1, #+6]
-   \       0x34   0x7042             STRB     R2,[R0, #+1]
-     96            data.byte.b=usart1_dma_rx_buf[7];
-   \       0x36   0x79CA             LDRB     R2,[R1, #+7]
-   \       0x38   0x7002             STRB     R2,[R0, #+0]
-     97            genes.control2.kp=data.value;
-   \       0x3A   0x8802             LDRH     R2,[R0, #+0]
-   \       0x3C   0x80A2             STRH     R2,[R4, #+4]
-     98          //  printf("value = %d, uvalue = %d\n",data.value,data.uValue);  
-     99            data.byte.a=usart1_dma_rx_buf[8];
-   \       0x3E   0x7A0A             LDRB     R2,[R1, #+8]
-   \       0x40   0x7042             STRB     R2,[R0, #+1]
-    100            data.byte.b=usart1_dma_rx_buf[9];
-   \       0x42   0x7A4A             LDRB     R2,[R1, #+9]
-   \       0x44   0x7002             STRB     R2,[R0, #+0]
-    101            genes.control2.kd=data.value;
-   \       0x46   0x8802             LDRH     R2,[R0, #+0]
-   \       0x48   0x80E2             STRH     R2,[R4, #+6]
-    102          //  printf("value = %d, uvalue = %d\n",data.value,data.uValue);  
-    103            data.byte.a=usart1_dma_rx_buf[10];
-   \       0x4A   0x7A8A             LDRB     R2,[R1, #+10]
-   \       0x4C   0x7042             STRB     R2,[R0, #+1]
-    104            data.byte.b=usart1_dma_rx_buf[11];
-   \       0x4E   0x7ACA             LDRB     R2,[R1, #+11]
-   \       0x50   0x7002             STRB     R2,[R0, #+0]
-    105            genes.control5.kp=data.value;
-   \       0x52   0x8802             LDRH     R2,[R0, #+0]
-   \       0x54   0x81E2             STRH     R2,[R4, #+14]
-    106          //  printf("value = %d, uvalue = %d\n",data.value,data.uValue);  
-    107            data.byte.a=usart1_dma_rx_buf[12];
-   \       0x56   0x7B0A             LDRB     R2,[R1, #+12]
-   \       0x58   0x7042             STRB     R2,[R0, #+1]
-    108            data.byte.b=usart1_dma_rx_buf[13];
-   \       0x5A   0x7B4A             LDRB     R2,[R1, #+13]
-   \       0x5C   0x7002             STRB     R2,[R0, #+0]
-    109            genes.control3.kp=data.value;
-   \       0x5E   0x8802             LDRH     R2,[R0, #+0]
-   \       0x60   0x8122             STRH     R2,[R4, #+8]
-    110          //  printf("value = %d, uvalue = %d\n",data.value,data.uValue);  
-    111            data.byte.a=usart1_dma_rx_buf[14];
-   \       0x62   0x7B8A             LDRB     R2,[R1, #+14]
-   \       0x64   0x7042             STRB     R2,[R0, #+1]
-    112            data.byte.b=usart1_dma_rx_buf[15];
-   \       0x66   0x7BCA             LDRB     R2,[R1, #+15]
-   \       0x68   0x7002             STRB     R2,[R0, #+0]
-    113            genes.control3.kd=data.value;
-   \       0x6A   0x8802             LDRH     R2,[R0, #+0]
-   \       0x6C   0x8162             STRH     R2,[R4, #+10]
-    114          //  printf("value = %d, uvalue = %d\n",data.value,data.uValue);    
-    115            data.byte.a=usart1_dma_rx_buf[16];
-   \       0x6E   0x7C0A             LDRB     R2,[R1, #+16]
-   \       0x70   0x7042             STRB     R2,[R0, #+1]
-    116            data.byte.b=usart1_dma_rx_buf[17];
-   \       0x72   0x7C49             LDRB     R1,[R1, #+17]
-   \       0x74   0x7001             STRB     R1,[R0, #+0]
-    117            genes.control6.kp=data.value;
-   \       0x76   0x8800             LDRH     R0,[R0, #+0]
-   \       0x78   0x8220             STRH     R0,[R4, #+16]
-    118          //  printf("value = %d, uvalue = %d\n",data.value,data.uValue);
-    119            
-    120            Velocity_KP_a=genes.control4.kp;
-   \       0x7A   0xF9B4 0x000C      LDRSH    R0,[R4, #+12]
-   \       0x7E   0x....'....        BL       __aeabi_i2f
-   \       0x82   0x....'....        LDR.W    R1,??DataTable12_5
-   \       0x86   0x6008             STR      R0,[R1, #+0]
-    121            //extern float Velocity_KI_a;
-    122            Balance_KP_a=genes.control1.kp;
-   \       0x88   0xF9B4 0x0000      LDRSH    R0,[R4, #+0]
-   \       0x8C   0x....'....        BL       __aeabi_i2f
-   \       0x90   0x....'....        LDR.W    R1,??DataTable12_6
-   \       0x94   0x6008             STR      R0,[R1, #+0]
-    123            //extern float Balance_KI_a;
-    124            Balance_KD_a=genes.control1.kd;
-   \       0x96   0xF9B4 0x0002      LDRSH    R0,[R4, #+2]
-   \       0x9A   0x....'....        BL       __aeabi_i2f
-   \       0x9E   0x....'....        LDR.W    R1,??DataTable12_7
-   \       0xA2   0x6008             STR      R0,[R1, #+0]
-    125            Velocity_KP_b=genes.control5.kp;
-   \       0xA4   0xF9B4 0x000E      LDRSH    R0,[R4, #+14]
-   \       0xA8   0x....'....        BL       __aeabi_i2f
-   \       0xAC   0x....'....        LDR.W    R1,??DataTable12_8
-   \       0xB0   0x6008             STR      R0,[R1, #+0]
-    126            //extern float Velocity_KI_b;
-    127            Balance_KP_b=genes.control2.kp;
-   \       0xB2   0xF9B4 0x0004      LDRSH    R0,[R4, #+4]
-   \       0xB6   0x....'....        BL       __aeabi_i2f
-   \       0xBA   0x....'....        LDR.W    R1,??DataTable12_9
-   \       0xBE   0x6008             STR      R0,[R1, #+0]
-    128            //extern float Balance_Ki_b;
-    129            Balance_KD_b=genes.control2.kd;
-   \       0xC0   0xF9B4 0x0006      LDRSH    R0,[R4, #+6]
-   \       0xC4   0x....'....        BL       __aeabi_i2f
-   \       0xC8   0x....'....        LDR.W    R1,??DataTable12_10
-   \       0xCC   0x6008             STR      R0,[R1, #+0]
-    130            Velocity_KP_c=genes.control6.kp;
-   \       0xCE   0xF9B4 0x0010      LDRSH    R0,[R4, #+16]
-   \       0xD2   0x....'....        BL       __aeabi_i2f
-   \       0xD6   0x....'....        LDR.W    R1,??DataTable12_11
-   \       0xDA   0x6008             STR      R0,[R1, #+0]
-    131            //extern float Velocity_KI_c;
-    132            Balance_KP_c=genes.control3.kp;
-   \       0xDC   0xF9B4 0x0008      LDRSH    R0,[R4, #+8]
-   \       0xE0   0x....'....        BL       __aeabi_i2f
-   \       0xE4   0x....'....        LDR.W    R1,??DataTable13
-   \       0xE8   0x6008             STR      R0,[R1, #+0]
-    133            //extern float Balance_Ki_c;
-    134            Balance_KD_c=genes.control3.kd;
-   \       0xEA   0xF9B4 0x000A      LDRSH    R0,[R4, #+10]
-   \       0xEE   0x....'....        BL       __aeabi_i2f
-   \       0xF2   0x....'....        LDR.W    R1,??DataTable13_1
-   \       0xF6   0x6008             STR      R0,[R1, #+0]
+     83          //  data.byte.a=usart1_dma_rx_buf[0];
+     84          //  data.byte.b=usart1_dma_rx_buf[1];
+     85          //  genes.control1.kp=data.value;
+     86          ////  printf("value = %d, uvalue = %d\n",data.value,data.uValue);    
+     87          //  data.byte.a=usart1_dma_rx_buf[2];
+     88          //  data.byte.b=usart1_dma_rx_buf[3];
+     89          //  genes.control1.kd=data.value;
+     90          ////  printf("value = %d, uvalue = %d\n",data.value,data.uValue);    
+     91          //  data.byte.a=usart1_dma_rx_buf[4];
+     92          //  data.byte.b=usart1_dma_rx_buf[5];
+     93          //  genes.control4.kp=data.value;
+     94          ////  printf("value = %d, uvalue = %d\n",data.value,data.uValue);  
+     95          //  data.byte.a=usart1_dma_rx_buf[6];
+     96          //  data.byte.b=usart1_dma_rx_buf[7];
+     97          //  genes.control2.kp=data.value;
+     98          ////  printf("value = %d, uvalue = %d\n",data.value,data.uValue);  
+     99          //  data.byte.a=usart1_dma_rx_buf[8];
+    100          //  data.byte.b=usart1_dma_rx_buf[9];
+    101          //  genes.control2.kd=data.value;
+    102          ////  printf("value = %d, uvalue = %d\n",data.value,data.uValue);  
+    103          //  data.byte.a=usart1_dma_rx_buf[10];
+    104          //  data.byte.b=usart1_dma_rx_buf[11];
+    105          //  genes.control5.kp=data.value;
+    106          ////  printf("value = %d, uvalue = %d\n",data.value,data.uValue);  
+    107          //  data.byte.a=usart1_dma_rx_buf[12];
+    108          //  data.byte.b=usart1_dma_rx_buf[13];
+    109          //  genes.control3.kp=data.value;
+    110          ////  printf("value = %d, uvalue = %d\n",data.value,data.uValue);  
+    111          //  data.byte.a=usart1_dma_rx_buf[14];
+    112          //  data.byte.b=usart1_dma_rx_buf[15];
+    113          //  genes.control3.kd=data.value;
+    114          ////  printf("value = %d, uvalue = %d\n",data.value,data.uValue);    
+    115          //  data.byte.a=usart1_dma_rx_buf[16];
+    116          //  data.byte.b=usart1_dma_rx_buf[17];
+    117          //  genes.control6.kp=data.value;
+    118          ////  printf("value = %d, uvalue = %d\n",data.value,data.uValue);
+    119          //  
+    120          //  Velocity_KP_a=genes.control4.kp;
+    121          //  //extern float Velocity_KI_a;
+    122          //  Balance_KP_a=genes.control1.kp;
+    123          //  //extern float Balance_KI_a;
+    124          //  Balance_KD_a=genes.control1.kd;
+    125          //  Velocity_KP_b=genes.control5.kp;
+    126          //  //extern float Velocity_KI_b;
+    127          //  Balance_KP_b=genes.control2.kp;
+    128          //  //extern float Balance_Ki_b;
+    129          //  Balance_KD_b=genes.control2.kd;
+    130          //  Velocity_KP_c=genes.control6.kp;
+    131          //  //extern float Velocity_KI_c;
+    132          //  Balance_KP_c=genes.control3.kp;
+    133          //  //extern float Balance_Ki_c;
+    134          //  Balance_KD_c=genes.control3.kd;
     135          }
-   \       0xF8   0xBD10             POP      {R4,PC}          ;; return
+   \                     receiver_data: (+1)
+   \        0x0   0x4770             BX       LR               ;; return
 
    \                                 In section .text, align 2, keep-with-next
     136          void USART6_IRQHandler(void){
@@ -388,7 +294,7 @@ E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\usart.c
                        ^
 Warning[Pe550]: variable "rx_len" was set but never used
     138            if(USART_GetITStatus(USART6, USART_IT_IDLE) != RESET){
-   \        0x2   0x....'....        LDR.W    R4,??DataTable13_2  ;; 0x40011400
+   \        0x2   0x....'....        LDR.W    R4,??DataTable12_1  ;; 0x40011400
    \        0x6   0xF240 0x4524      MOVW     R5,#+1060
    \        0xA   0x0029             MOVS     R1,R5
    \        0xC   0x0020             MOVS     R0,R4
@@ -396,7 +302,7 @@ Warning[Pe550]: variable "rx_len" was set but never used
    \       0x12   0x2800             CMP      R0,#+0
    \       0x14   0xD05C             BEQ.N    ??USART6_IRQHandler_0
     139              rx_len = USART6->DR;
-   \       0x16   0x....'....        LDR.W    R0,??DataTable13_3  ;; 0x40011404
+   \       0x16   0x....'....        LDR.W    R0,??DataTable12_2  ;; 0x40011404
    \       0x1A   0x8800             LDRH     R0,[R0, #+0]
    \       0x1C   0xB280             UXTH     R0,R0            ;; ZeroExt  R0,R0,#+16,#+16
     140              USART_ClearITPendingBit(USART6, USART_IT_IDLE);
@@ -404,7 +310,7 @@ Warning[Pe550]: variable "rx_len" was set but never used
    \       0x20   0x0020             MOVS     R0,R4
    \       0x22   0x....'....        BL       USART_ClearITPendingBit
     141              DMA_Cmd(DMA2_Stream1, DISABLE);
-   \       0x26   0x....'....        LDR.W    R4,??DataTable13_4  ;; 0x40026428
+   \       0x26   0x....'....        LDR.W    R4,??DataTable12_3  ;; 0x40026428
    \       0x2A   0x2100             MOVS     R1,#+0
    \       0x2C   0x0020             MOVS     R0,R4
    \       0x2E   0x....'....        BL       DMA_Cmd
@@ -413,14 +319,14 @@ Warning[Pe550]: variable "rx_len" was set but never used
    \       0x34   0x0020             MOVS     R0,R4
    \       0x36   0x....'....        BL       DMA_SetCurrDataCounter
     143              if (STATUS_CURRENT == STATUS_RECEIVING){
-   \       0x3A   0x....'....        LDR.W    R1,??DataTable13_5
-   \       0x3E   0x....'....        LDR.W    R0,??DataTable13_6
+   \       0x3A   0x....'....        LDR.W    R1,??DataTable12_4
+   \       0x3E   0x....'....        LDR.W    R0,??DataTable12_5
    \       0x42   0x6802             LDR      R2,[R0, #+0]
    \       0x44   0x680B             LDR      R3,[R1, #+0]
    \       0x46   0x429A             CMP      R2,R3
    \       0x48   0xD106             BNE.N    ??USART6_IRQHandler_1
     144                STATUS_CURRENT = STATUS_RECEIVED;
-   \       0x4A   0x....'....        LDR.W    R1,??DataTable13_7
+   \       0x4A   0x....'....        LDR.W    R1,??DataTable12_6
    \       0x4E   0x6809             LDR      R1,[R1, #+0]
    \       0x50   0x6001             STR      R1,[R0, #+0]
     145                receiver_data();
@@ -429,44 +335,44 @@ Warning[Pe550]: variable "rx_len" was set but never used
     146              }else if(STATUS_CURRENT == STATUS_RECEIVED){
    \                     ??USART6_IRQHandler_1: (+1)
    \       0x58   0x6802             LDR      R2,[R0, #+0]
-   \       0x5A   0x....'....        LDR.W    R3,??DataTable13_7
+   \       0x5A   0x....'....        LDR.W    R3,??DataTable12_6
    \       0x5E   0x681B             LDR      R3,[R3, #+0]
    \       0x60   0x429A             CMP      R2,R3
    \       0x62   0xD114             BNE.N    ??USART6_IRQHandler_3
     147                //接收完PID參數等待執行訊號
     148                if (usart1_dma_rx_buf[0]==STATUS_START){
-   \       0x64   0x....'....        LDR.W    R1,??DataTable12_3
+   \       0x64   0x....'....        LDR.W    R1,??DataTable12_7
    \       0x68   0x7809             LDRB     R1,[R1, #+0]
-   \       0x6A   0x....'....        LDR.W    R2,??DataTable13_8
+   \       0x6A   0x....'....        LDR.W    R2,??DataTable12_8
    \       0x6E   0x6812             LDR      R2,[R2, #+0]
    \       0x70   0x4291             CMP      R1,R2
    \       0x72   0xD124             BNE.N    ??USART6_IRQHandler_2
     149                  //開始訊號，開始測試並且回傳角度
     150                  STATUS_CURRENT = STATUS_WAIT;
-   \       0x74   0x....'....        LDR.W    R1,??DataTable13_9
+   \       0x74   0x....'....        LDR.W    R1,??DataTable12_9
    \       0x78   0x6809             LDR      R1,[R1, #+0]
    \       0x7A   0x6001             STR      R1,[R0, #+0]
     151                  flag_stop=0;
    \       0x7C   0x2000             MOVS     R0,#+0
-   \       0x7E   0x....'....        LDR.W    R1,??DataTable13_10
+   \       0x7E   0x....'....        LDR.W    R1,??DataTable12_10
    \       0x82   0x6008             STR      R0,[R1, #+0]
     152                  nvic_flag=1;
    \       0x84   0x2001             MOVS     R0,#+1
-   \       0x86   0x....'....        LDR.W    R1,??DataTable13_11
+   \       0x86   0x....'....        LDR.W    R1,??DataTable12_11
    \       0x8A   0x6008             STR      R0,[R1, #+0]
    \       0x8C   0xE017             B.N      ??USART6_IRQHandler_2
     153                }
     154              }else if(STATUS_CURRENT == STATUS_WAIT){
    \                     ??USART6_IRQHandler_3: (+1)
    \       0x8E   0x6802             LDR      R2,[R0, #+0]
-   \       0x90   0x....'....        LDR.W    R3,??DataTable13_9
+   \       0x90   0x....'....        LDR.W    R3,??DataTable12_9
    \       0x94   0x681B             LDR      R3,[R3, #+0]
    \       0x96   0x429A             CMP      R2,R3
    \       0x98   0xD111             BNE.N    ??USART6_IRQHandler_2
     155                if (usart1_dma_rx_buf[0] == STATUS_DONE){
-   \       0x9A   0x....'....        LDR.W    R2,??DataTable12_3
+   \       0x9A   0x....'....        LDR.W    R2,??DataTable12_7
    \       0x9E   0x7812             LDRB     R2,[R2, #+0]
-   \       0xA0   0x....'....        LDR.W    R3,??DataTable13_12
+   \       0xA0   0x....'....        LDR.W    R3,??DataTable12_12
    \       0xA4   0x681B             LDR      R3,[R3, #+0]
    \       0xA6   0x429A             CMP      R2,R3
    \       0xA8   0xD109             BNE.N    ??USART6_IRQHandler_2
@@ -476,11 +382,11 @@ Warning[Pe550]: variable "rx_len" was set but never used
    \       0xAC   0x6001             STR      R1,[R0, #+0]
     158                  flag_stop=1;
    \       0xAE   0x2001             MOVS     R0,#+1
-   \       0xB0   0x....'....        LDR.W    R1,??DataTable13_10
+   \       0xB0   0x....'....        LDR.W    R1,??DataTable12_10
    \       0xB4   0x6008             STR      R0,[R1, #+0]
     159                  nvic_flag=0;
    \       0xB6   0x2000             MOVS     R0,#+0
-   \       0xB8   0x....'....        LDR.W    R1,??DataTable13_11
+   \       0xB8   0x....'....        LDR.W    R1,??DataTable12_11
    \       0xBC   0x6008             STR      R0,[R1, #+0]
     160          //        MPU6050_RESET();
     161                }
@@ -491,7 +397,7 @@ Warning[Pe550]: variable "rx_len" was set but never used
    \       0xC0   0x0020             MOVS     R0,R4
    \       0xC2   0x....'....        BL       DMA_Cmd
     164              DMA_ClearFlag(DMA2_Stream1,DMA_FLAG_TCIF1);//清除通道1的完成標誌
-   \       0xC6   0x....'....        LDR.W    R1,??DataTable13_13  ;; 0x10000800
+   \       0xC6   0x....'....        LDR.W    R1,??DataTable12_13  ;; 0x10000800
    \       0xCA   0x0020             MOVS     R0,R4
    \       0xCC   0x....'....        BL       DMA_ClearFlag
     165            }
@@ -646,7 +552,7 @@ Warning[Pe550]: variable "rx_len" was set but never used
     221            //    DMA_SetCurrDataCounter(DMAy_Streamx,usart1_rx_len);
     222            DMA_ClearFlag(DMA2_Stream1,DMA_FLAG_FEIF1 || DMA_FLAG_DMEIF1 || DMA_FLAG_TEIF1 || DMA_FLAG_HTIF1 || DMA_FLAG_TCIF1);
    \       0x5C   0x2101             MOVS     R1,#+1
-   \       0x5E   0x....'....        LDR.W    R0,??DataTable13_4  ;; 0x40026428
+   \       0x5E   0x....'....        LDR.W    R0,??DataTable12_3  ;; 0x40026428
    \       0x62   0x....'....        BL       DMA_ClearFlag
     223            //    DMA_ITConfig(DMAy_Streamx,DMA_IT_TC,ENABLE);
     224            //    DMA_ITConfig(DMAy_Streamx,DMA1_IT_TC5,ENABLE); 
@@ -687,7 +593,7 @@ Warning[Pe550]: variable "rx_len" was set but never used
    \       0x12   0x....'....        BL       RCC_APB2PeriphClockCmd
     243            
     244            GPIO_PinAFConfig(GPIOG,GPIO_PinSource14,GPIO_AF_USART6);
-   \       0x16   0x....'....        LDR.W    R5,??DataTable13_14  ;; 0x40021800
+   \       0x16   0x....'....        LDR.W    R5,??DataTable12_14  ;; 0x40021800
    \       0x1A   0x2208             MOVS     R2,#+8
    \       0x1C   0x210E             MOVS     R1,#+14
    \       0x1E   0x0028             MOVS     R0,R5
@@ -751,7 +657,7 @@ Warning[Pe550]: variable "rx_len" was set but never used
    \       0x82   0x200C             MOVS     R0,#+12
    \       0x84   0xF8AD 0x0012      STRH     R0,[SP, #+18]
     268            USART_Init(USART6, &USART_InitStructure);
-   \       0x88   0x....'....        LDR.W    R4,??DataTable13_2  ;; 0x40011400
+   \       0x88   0x....'....        LDR.W    R4,??DataTable12_1  ;; 0x40011400
    \       0x8C   0xA902             ADD      R1,SP,#+8
    \       0x8E   0x0020             MOVS     R0,R4
    \       0x90   0x....'....        BL       USART_Init
@@ -777,17 +683,17 @@ Warning[Pe550]: variable "rx_len" was set but never used
    \       0xB8   0x....'....        BL       USART_ITConfig
     274            
     275            dma_tx_config(DMA2_Stream7,(uint32_t)&USART6->DR,(uint32_t)usart1_dma_tx_buf,usart1_tx_len); //設定外設USART6->DR而usart1_dma_tx_buf為資料初始位址 也就是我們上位機的資料
-   \       0xBC   0x....'....        LDR.W    R4,??DataTable13_3  ;; 0x40011404
+   \       0xBC   0x....'....        LDR.W    R4,??DataTable12_2  ;; 0x40011404
    \       0xC0   0xF44F 0x6380      MOV      R3,#+1024
-   \       0xC4   0x....'....        LDR.W    R2,??DataTable12_1
+   \       0xC4   0x....'....        LDR.W    R2,??DataTable12
    \       0xC8   0x0021             MOVS     R1,R4
    \       0xCA   0x....'....        LDR.W    R0,??DataTable11  ;; 0x400264b8
    \       0xCE   0x....'....        BL       dma_tx_config
     276            dma_rx_config(DMA2_Stream1,(u32)&USART6->DR,(u32)usart1_dma_rx_buf,usart1_rx_len);
    \       0xD2   0x2314             MOVS     R3,#+20
-   \       0xD4   0x....'....        LDR.W    R2,??DataTable12_3
+   \       0xD4   0x....'....        LDR.W    R2,??DataTable12_7
    \       0xD8   0x0021             MOVS     R1,R4
-   \       0xDA   0x....'....        LDR.W    R0,??DataTable13_4  ;; 0x40026428
+   \       0xDA   0x....'....        LDR.W    R0,??DataTable12_3  ;; 0x40026428
    \       0xDE   0x....'....        BL       dma_rx_config
     277            
     278            //    NVIC_InitStructure.NVIC_IRQChannel = USART6_IRQn;
@@ -826,7 +732,7 @@ Warning[Pe550]: variable "rx_len" was set but never used
    \        0x4   0x2000             MOVS     R0,#+0
     300            u8 i;
     301            data_to_send[_cnt++]=0xAA;
-   \        0x6   0x....'....        LDR.W    R4,??DataTable13_15
+   \        0x6   0x....'....        LDR.W    R4,??DataTable12_15
    \        0xA   0x20AA             MOVS     R0,#+170
    \        0xC   0x0029             MOVS     R1,R5
    \        0xE   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
@@ -852,8 +758,8 @@ Warning[Pe550]: variable "rx_len" was set but never used
    \       0x30   0x1C6D             ADDS     R5,R5,#+1
     305            
     306            _temp = (int)(att.rol*100);                     
-   \       0x32   0x....'....        LDR.W    R6,??DataTable13_16  ;; 0x42c80000
-   \       0x36   0x....'....        LDR.W    R7,??DataTable13_17
+   \       0x32   0x....'....        LDR.W    R6,??DataTable12_16  ;; 0x42c80000
+   \       0x36   0x....'....        LDR.W    R7,??DataTable12_17
    \       0x3A   0x6878             LDR      R0,[R7, #+4]
    \       0x3C   0x0031             MOVS     R1,R6
    \       0x3E   0x....'....        BL       __aeabi_fmul
@@ -1002,7 +908,7 @@ Warning[Pe550]: variable "rx_len" was set but never used
     342            u8 i=0;
    \        0x6   0x2400             MOVS     R4,#+0
     343            data_to_send[_cnt++]=0xAA;
-   \        0x8   0x....'....        LDR.W    R4,??DataTable13_15
+   \        0x8   0x....'....        LDR.W    R4,??DataTable12_15
    \        0xC   0x26AA             MOVS     R6,#+170
    \        0xE   0x002F             MOVS     R7,R5
    \       0x10   0xB2FF             UXTB     R7,R7            ;; ZeroExt  R7,R7,#+24,#+24
@@ -1212,7 +1118,7 @@ Warning[Pe550]: variable "rx_len" was set but never used
     392            u8 sum = 0;
    \        0x8   0x2000             MOVS     R0,#+0
     393            data_to_send[_cnt++]=0xAA;
-   \        0xA   0x....'....        LDR.W    R0,??DataTable13_15
+   \        0xA   0x....'....        LDR.W    R0,??DataTable12_15
    \        0xE   0x22AA             MOVS     R2,#+170
    \       0x10   0x000B             MOVS     R3,R1
    \       0x12   0xB2DB             UXTB     R3,R3            ;; ZeroExt  R3,R3,#+24,#+24
@@ -1417,7 +1323,7 @@ Warning[Pe550]: variable "rx_len" was set but never used
     443            u16 temp;
     444            
     445            data_to_send[_cnt++]=0xAA;
-   \        0x6   0x....'....        LDR.W    R4,??DataTable13_15
+   \        0x6   0x....'....        LDR.W    R4,??DataTable12_15
    \        0xA   0x21AA             MOVS     R1,#+170
    \        0xC   0x002A             MOVS     R2,R5
    \        0xE   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
@@ -1445,7 +1351,7 @@ Warning[Pe550]: variable "rx_len" was set but never used
     450            temp = (uint16_t)100*votage;
                         ^
 Warning[Pa093]: implicit conversion from floating point to integer
-   \       0x32   0x....'....        LDR.W    R7,??DataTable13_16  ;; 0x42c80000
+   \       0x32   0x....'....        LDR.W    R7,??DataTable12_16  ;; 0x42c80000
    \       0x36   0x0039             MOVS     R1,R7
    \       0x38   0x....'....        BL       __aeabi_fmul
    \       0x3C   0x....'....        BL       __aeabi_f2iz
@@ -1539,7 +1445,7 @@ Warning[Pa093]: implicit conversion from floating point to integer
     477          u8 i=0;
    \        0x6   0x2400             MOVS     R4,#+0
     478          data_to_send[_cnt++]=0xAA;
-   \        0x8   0x....'....        LDR.W    R4,??DataTable13_15
+   \        0x8   0x....'....        LDR.W    R4,??DataTable12_15
    \        0xC   0x26AA             MOVS     R6,#+170
    \        0xE   0x002F             MOVS     R7,R5
    \       0x10   0xB2FF             UXTB     R7,R7            ;; ZeroExt  R7,R7,#+24,#+24
@@ -1962,7 +1868,7 @@ Warning[Pa093]: implicit conversion from floating point to integer
     568            u8 sum = 0;
    \        0x8   0x2300             MOVS     R3,#+0
     569            data_to_send[_cnt++]=0xAA;
-   \        0xA   0x....             LDR.N    R0,??DataTable13_15
+   \        0xA   0x....             LDR.N    R0,??DataTable12_15
    \        0xC   0x22AA             MOVS     R2,#+170
    \        0xE   0x000C             MOVS     R4,R1
    \       0x10   0xB2E4             UXTB     R4,R4            ;; ZeroExt  R4,R4,#+24,#+24
@@ -2136,15 +2042,15 @@ Warning[Pa093]: implicit conversion from floating point to integer
     610            vs16 _temp;
     611            vs16 temp;
     612            _temp = (int)(att.rol*100);                     
-   \        0x4   0x....             LDR.N    R5,??DataTable13_16  ;; 0x42c80000
-   \        0x6   0x....             LDR.N    R6,??DataTable13_17
+   \        0x4   0x....             LDR.N    R5,??DataTable12_16  ;; 0x42c80000
+   \        0x6   0x....             LDR.N    R6,??DataTable12_17
    \        0x8   0x6870             LDR      R0,[R6, #+4]
    \        0xA   0x0029             MOVS     R1,R5
    \        0xC   0x....'....        BL       __aeabi_fmul
    \       0x10   0x....'....        BL       __aeabi_f2iz
    \       0x14   0xF8AD 0x0000      STRH     R0,[SP, #+0]
     613            data_to_send[_cnt++]=BYTE1(_temp);
-   \       0x18   0x....             LDR.N    R7,??DataTable13_15
+   \       0x18   0x....             LDR.N    R7,??DataTable12_15
    \       0x1A   0xF89D 0x0001      LDRB     R0,[SP, #+1]
    \       0x1E   0x0021             MOVS     R1,R4
    \       0x20   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
@@ -2211,7 +2117,7 @@ Warning[Pa093]: implicit conversion from floating point to integer
    \        0x2   0xB086             SUB      SP,SP,#+24
     628            static uint8_t ANO_debug_cnt = 0;
     629            ANO_debug_cnt++; //如果做MATLAB則註解這一行
-   \        0x4   0x....             LDR.N    R0,??DataTable13_18
+   \        0x4   0x....             LDR.N    R0,??DataTable12_18
    \        0x6   0x7801             LDRB     R1,[R0, #+0]
    \        0x8   0x1C49             ADDS     R1,R1,#+1
    \        0xA   0x7001             STRB     R1,[R0, #+0]
@@ -2223,12 +2129,12 @@ Warning[Pa093]: implicit conversion from floating point to integer
    \       0x14   0xD00D             BEQ.N    ??Anotc_SendData_1
    \       0x16   0xD309             BCC.N    ??Anotc_SendData_2
    \       0x18   0x2904             CMP      R1,#+4
-   \       0x1A   0xD043             BEQ.N    ??Anotc_SendData_3
-   \       0x1C   0xD32F             BCC.N    ??Anotc_SendData_4
+   \       0x1A   0xD04A             BEQ.N    ??Anotc_SendData_3
+   \       0x1C   0xD336             BCC.N    ??Anotc_SendData_4
    \       0x1E   0x2906             CMP      R1,#+6
-   \       0x20   0xD069             BEQ.N    ??Anotc_SendData_5
-   \       0x22   0xD344             BCC.N    ??Anotc_SendData_6
-   \       0x24   0xE06A             B.N      ??Anotc_SendData_7
+   \       0x20   0xD070             BEQ.N    ??Anotc_SendData_5
+   \       0x22   0xD34B             BCC.N    ??Anotc_SendData_6
+   \       0x24   0xE071             B.N      ??Anotc_SendData_7
     631            {
     632            case 0:
     633              {
@@ -2236,7 +2142,7 @@ Warning[Pa093]: implicit conversion from floating point to integer
    \                     ??Anotc_SendData_0: (+1)
    \       0x26   0x....'....        BL       Send_to_MATLAB
     635                break;
-   \       0x2A   0xE067             B.N      ??Anotc_SendData_8
+   \       0x2A   0xE06E             B.N      ??Anotc_SendData_8
     636              }
     637            case 1:
     638              {
@@ -2244,147 +2150,151 @@ Warning[Pa093]: implicit conversion from floating point to integer
    \                     ??Anotc_SendData_2: (+1)
    \       0x2C   0x....'....        BL       ANO_DT_Send_Status
     640                break;
-   \       0x30   0xE064             B.N      ??Anotc_SendData_8
+   \       0x30   0xE06B             B.N      ??Anotc_SendData_8
     641              }
     642            case 2:
     643              {
     644          //      ANO_DT_Send_Senser(acc_raw.x,acc_raw.y,acc_raw.z,Mpu.deg_s.x,Mpu.deg_s.y,Mpu.deg_s.z,acc_att_lpf.x,acc_att_lpf.y,acc_att_lpf.z);
-    645                ANO_DT_Send_Senser(acc_raw.x,acc_raw.y,acc_raw.z,Mpu.deg_s.x,Mpu.deg_s.y,Mpu.deg_s.z,PWM_a,PWM_b,PWM_c);    
+    645                ANO_DT_Send_Senser(acc_raw.x,acc_raw.y,acc_raw.z,Mpu.deg_s.x,Mpu.deg_s.y,Mpu.deg_s.z,encoder_a*30,encoder_b*30,encoder_c*30);
                                                                         ^
 Warning[Pa093]: implicit conversion from floating point to integer
 
-        ANO_DT_Send_Senser(acc_raw.x,acc_raw.y,acc_raw.z,Mpu.deg_s.x,Mpu.deg_s.y,Mpu.deg_s.z,PWM_a,PWM_b,PWM_c);    
+        ANO_DT_Send_Senser(acc_raw.x,acc_raw.y,acc_raw.z,Mpu.deg_s.x,Mpu.deg_s.y,Mpu.deg_s.z,encoder_a*30,encoder_b*30,encoder_c*30);
                                                                      ^
 "E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\usart.c",645  Warning[Pa093]: 
           implicit conversion from floating point to integer
 
-        ANO_DT_Send_Senser(acc_raw.x,acc_raw.y,acc_raw.z,Mpu.deg_s.x,Mpu.deg_s.y,Mpu.deg_s.z,PWM_a,PWM_b,PWM_c);    
+        ANO_DT_Send_Senser(acc_raw.x,acc_raw.y,acc_raw.z,Mpu.deg_s.x,Mpu.deg_s.y,Mpu.deg_s.z,encoder_a*30,encoder_b*30,encoder_c*30);
                                                                                  ^
 "E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\usart.c",645  Warning[Pa093]: 
           implicit conversion from floating point to integer
    \                     ??Anotc_SendData_1: (+1)
-   \       0x32   0x....             LDR.N    R4,??DataTable13_19
-   \       0x34   0x....             LDR.N    R5,??DataTable13_20
-   \       0x36   0x....             LDR.N    R0,??DataTable13_21
-   \       0x38   0x6800             LDR      R0,[R0, #+0]
-   \       0x3A   0xB200             SXTH     R0,R0            ;; SignExt  R0,R0,#+16,#+16
-   \       0x3C   0x9004             STR      R0,[SP, #+16]
-   \       0x3E   0x....             LDR.N    R0,??DataTable13_22
-   \       0x40   0x6800             LDR      R0,[R0, #+0]
-   \       0x42   0xB200             SXTH     R0,R0            ;; SignExt  R0,R0,#+16,#+16
-   \       0x44   0x9003             STR      R0,[SP, #+12]
-   \       0x46   0x....             LDR.N    R0,??DataTable13_23
-   \       0x48   0x6800             LDR      R0,[R0, #+0]
-   \       0x4A   0xB200             SXTH     R0,R0            ;; SignExt  R0,R0,#+16,#+16
-   \       0x4C   0x9002             STR      R0,[SP, #+8]
-   \       0x4E   0x68A8             LDR      R0,[R5, #+8]
-   \       0x50   0x....'....        BL       __aeabi_f2iz
-   \       0x54   0xB200             SXTH     R0,R0            ;; SignExt  R0,R0,#+16,#+16
-   \       0x56   0x9001             STR      R0,[SP, #+4]
-   \       0x58   0x6868             LDR      R0,[R5, #+4]
-   \       0x5A   0x....'....        BL       __aeabi_f2iz
-   \       0x5E   0xB200             SXTH     R0,R0            ;; SignExt  R0,R0,#+16,#+16
-   \       0x60   0x9000             STR      R0,[SP, #+0]
-   \       0x62   0x6828             LDR      R0,[R5, #+0]
-   \       0x64   0x....'....        BL       __aeabi_f2iz
-   \       0x68   0x0003             MOVS     R3,R0
-   \       0x6A   0xB21B             SXTH     R3,R3            ;; SignExt  R3,R3,#+16,#+16
-   \       0x6C   0xF9B4 0x2004      LDRSH    R2,[R4, #+4]
-   \       0x70   0xF9B4 0x1002      LDRSH    R1,[R4, #+2]
-   \       0x74   0xF9B4 0x0000      LDRSH    R0,[R4, #+0]
-   \       0x78   0x....'....        BL       ANO_DT_Send_Senser
+   \       0x32   0x....             LDR.N    R4,??DataTable12_19
+   \       0x34   0x....             LDR.N    R5,??DataTable12_20
+   \       0x36   0x201E             MOVS     R0,#+30
+   \       0x38   0x....             LDR.N    R1,??DataTable12_21
+   \       0x3A   0x6809             LDR      R1,[R1, #+0]
+   \       0x3C   0xFB11 0xF100      SMULBB   R1,R1,R0
+   \       0x40   0xB209             SXTH     R1,R1            ;; SignExt  R1,R1,#+16,#+16
+   \       0x42   0x9104             STR      R1,[SP, #+16]
+   \       0x44   0x....             LDR.N    R1,??DataTable12_22
+   \       0x46   0x6809             LDR      R1,[R1, #+0]
+   \       0x48   0xFB11 0xF100      SMULBB   R1,R1,R0
+   \       0x4C   0xB209             SXTH     R1,R1            ;; SignExt  R1,R1,#+16,#+16
+   \       0x4E   0x9103             STR      R1,[SP, #+12]
+   \       0x50   0x....             LDR.N    R1,??DataTable12_23
+   \       0x52   0x6809             LDR      R1,[R1, #+0]
+   \       0x54   0xFB11 0xF000      SMULBB   R0,R1,R0
+   \       0x58   0xB200             SXTH     R0,R0            ;; SignExt  R0,R0,#+16,#+16
+   \       0x5A   0x9002             STR      R0,[SP, #+8]
+   \       0x5C   0x68A8             LDR      R0,[R5, #+8]
+   \       0x5E   0x....'....        BL       __aeabi_f2iz
+   \       0x62   0xB200             SXTH     R0,R0            ;; SignExt  R0,R0,#+16,#+16
+   \       0x64   0x9001             STR      R0,[SP, #+4]
+   \       0x66   0x6868             LDR      R0,[R5, #+4]
+   \       0x68   0x....'....        BL       __aeabi_f2iz
+   \       0x6C   0xB200             SXTH     R0,R0            ;; SignExt  R0,R0,#+16,#+16
+   \       0x6E   0x9000             STR      R0,[SP, #+0]
+   \       0x70   0x6828             LDR      R0,[R5, #+0]
+   \       0x72   0x....'....        BL       __aeabi_f2iz
+   \       0x76   0x0003             MOVS     R3,R0
+   \       0x78   0xB21B             SXTH     R3,R3            ;; SignExt  R3,R3,#+16,#+16
+   \       0x7A   0xF9B4 0x2004      LDRSH    R2,[R4, #+4]
+   \       0x7E   0xF9B4 0x1002      LDRSH    R1,[R4, #+2]
+   \       0x82   0xF9B4 0x0000      LDRSH    R0,[R4, #+0]
+   \       0x86   0x....'....        BL       ANO_DT_Send_Senser
     646          //      ANO_DT_Send_Senser(acc_raw.x,acc_raw.y,acc_raw.z,Mpu.deg_s.x,Mpu.deg_s.y,Mpu.deg_s.z,PWM_a,encoder_a*30,0);
     647                break;
-   \       0x7C   0xE03E             B.N      ??Anotc_SendData_8
+   \       0x8A   0xE03E             B.N      ??Anotc_SendData_8
     648              }
     649            case 3:
     650              {
     651                ANO_DT_Send_RCData(1,2,3,4,5,6,7,8,9,10);
    \                     ??Anotc_SendData_4: (+1)
-   \       0x7E   0x200A             MOVS     R0,#+10
-   \       0x80   0x9005             STR      R0,[SP, #+20]
-   \       0x82   0x2009             MOVS     R0,#+9
-   \       0x84   0x9004             STR      R0,[SP, #+16]
-   \       0x86   0x2008             MOVS     R0,#+8
-   \       0x88   0x9003             STR      R0,[SP, #+12]
-   \       0x8A   0x2007             MOVS     R0,#+7
-   \       0x8C   0x9002             STR      R0,[SP, #+8]
-   \       0x8E   0x2006             MOVS     R0,#+6
-   \       0x90   0x9001             STR      R0,[SP, #+4]
-   \       0x92   0x2005             MOVS     R0,#+5
-   \       0x94   0x9000             STR      R0,[SP, #+0]
-   \       0x96   0x2304             MOVS     R3,#+4
-   \       0x98   0x2203             MOVS     R2,#+3
-   \       0x9A   0x2102             MOVS     R1,#+2
-   \       0x9C   0x2001             MOVS     R0,#+1
-   \       0x9E   0x....'....        BL       ANO_DT_Send_RCData
+   \       0x8C   0x200A             MOVS     R0,#+10
+   \       0x8E   0x9005             STR      R0,[SP, #+20]
+   \       0x90   0x2009             MOVS     R0,#+9
+   \       0x92   0x9004             STR      R0,[SP, #+16]
+   \       0x94   0x2008             MOVS     R0,#+8
+   \       0x96   0x9003             STR      R0,[SP, #+12]
+   \       0x98   0x2007             MOVS     R0,#+7
+   \       0x9A   0x9002             STR      R0,[SP, #+8]
+   \       0x9C   0x2006             MOVS     R0,#+6
+   \       0x9E   0x9001             STR      R0,[SP, #+4]
+   \       0xA0   0x2005             MOVS     R0,#+5
+   \       0xA2   0x9000             STR      R0,[SP, #+0]
+   \       0xA4   0x2304             MOVS     R3,#+4
+   \       0xA6   0x2203             MOVS     R2,#+3
+   \       0xA8   0x2102             MOVS     R1,#+2
+   \       0xAA   0x2001             MOVS     R0,#+1
+   \       0xAC   0x....'....        BL       ANO_DT_Send_RCData
     652                break;
-   \       0xA2   0xE02B             B.N      ??Anotc_SendData_8
+   \       0xB0   0xE02B             B.N      ??Anotc_SendData_8
     653              }
     654            case 4:
     655              {
     656                ANO_DT_Send_Power(20,1.95);
    \                     ??Anotc_SendData_3: (+1)
-   \       0xA4   0x....             LDR.N    R1,??DataTable13_24  ;; 0x3ff9999a
-   \       0xA6   0x....             LDR.N    R0,??DataTable13_25  ;; 0x41a00000
-   \       0xA8   0x....'....        BL       ANO_DT_Send_Power
+   \       0xB2   0x....             LDR.N    R1,??DataTable12_24  ;; 0x3ff9999a
+   \       0xB4   0x....             LDR.N    R0,??DataTable12_25  ;; 0x41a00000
+   \       0xB6   0x....'....        BL       ANO_DT_Send_Power
     657                break;
-   \       0xAC   0xE026             B.N      ??Anotc_SendData_8
+   \       0xBA   0xE026             B.N      ??Anotc_SendData_8
     658              }
     659            case 5:
     660              {
     661                ANO_DT_Send_PWM_Motor(PWM_a,PWM_b,PWM_c,encoder_a*30,encoder_b*30,encoder_c*30,1,2);
    \                     ??Anotc_SendData_6: (+1)
-   \       0xAE   0x201E             MOVS     R0,#+30
-   \       0xB0   0x2102             MOVS     R1,#+2
-   \       0xB2   0x9103             STR      R1,[SP, #+12]
-   \       0xB4   0x2101             MOVS     R1,#+1
-   \       0xB6   0x9102             STR      R1,[SP, #+8]
-   \       0xB8   0x....             LDR.N    R1,??DataTable13_26
-   \       0xBA   0x6809             LDR      R1,[R1, #+0]
-   \       0xBC   0xFB11 0xF100      SMULBB   R1,R1,R0
-   \       0xC0   0xB289             UXTH     R1,R1            ;; ZeroExt  R1,R1,#+16,#+16
-   \       0xC2   0x9101             STR      R1,[SP, #+4]
-   \       0xC4   0x....             LDR.N    R1,??DataTable13_27
-   \       0xC6   0x6809             LDR      R1,[R1, #+0]
-   \       0xC8   0xFB11 0xF100      SMULBB   R1,R1,R0
-   \       0xCC   0xB289             UXTH     R1,R1            ;; ZeroExt  R1,R1,#+16,#+16
-   \       0xCE   0x9100             STR      R1,[SP, #+0]
-   \       0xD0   0x....             LDR.N    R1,??DataTable13_28
-   \       0xD2   0x6809             LDR      R1,[R1, #+0]
-   \       0xD4   0xFB11 0xF300      SMULBB   R3,R1,R0
-   \       0xD8   0xB29B             UXTH     R3,R3            ;; ZeroExt  R3,R3,#+16,#+16
-   \       0xDA   0x....             LDR.N    R0,??DataTable13_21
-   \       0xDC   0x6800             LDR      R0,[R0, #+0]
-   \       0xDE   0x0002             MOVS     R2,R0
-   \       0xE0   0xB292             UXTH     R2,R2            ;; ZeroExt  R2,R2,#+16,#+16
-   \       0xE2   0x....             LDR.N    R0,??DataTable13_22
-   \       0xE4   0x6800             LDR      R0,[R0, #+0]
-   \       0xE6   0x0001             MOVS     R1,R0
-   \       0xE8   0xB289             UXTH     R1,R1            ;; ZeroExt  R1,R1,#+16,#+16
-   \       0xEA   0x....             LDR.N    R0,??DataTable13_23
-   \       0xEC   0x6800             LDR      R0,[R0, #+0]
-   \       0xEE   0xB280             UXTH     R0,R0            ;; ZeroExt  R0,R0,#+16,#+16
-   \       0xF0   0x....'....        BL       ANO_DT_Send_PWM_Motor
+   \       0xBC   0x201E             MOVS     R0,#+30
+   \       0xBE   0x2102             MOVS     R1,#+2
+   \       0xC0   0x9103             STR      R1,[SP, #+12]
+   \       0xC2   0x2101             MOVS     R1,#+1
+   \       0xC4   0x9102             STR      R1,[SP, #+8]
+   \       0xC6   0x....             LDR.N    R1,??DataTable12_21
+   \       0xC8   0x6809             LDR      R1,[R1, #+0]
+   \       0xCA   0xFB11 0xF100      SMULBB   R1,R1,R0
+   \       0xCE   0xB289             UXTH     R1,R1            ;; ZeroExt  R1,R1,#+16,#+16
+   \       0xD0   0x9101             STR      R1,[SP, #+4]
+   \       0xD2   0x....             LDR.N    R1,??DataTable12_22
+   \       0xD4   0x6809             LDR      R1,[R1, #+0]
+   \       0xD6   0xFB11 0xF100      SMULBB   R1,R1,R0
+   \       0xDA   0xB289             UXTH     R1,R1            ;; ZeroExt  R1,R1,#+16,#+16
+   \       0xDC   0x9100             STR      R1,[SP, #+0]
+   \       0xDE   0x....             LDR.N    R1,??DataTable12_23
+   \       0xE0   0x6809             LDR      R1,[R1, #+0]
+   \       0xE2   0xFB11 0xF300      SMULBB   R3,R1,R0
+   \       0xE6   0xB29B             UXTH     R3,R3            ;; ZeroExt  R3,R3,#+16,#+16
+   \       0xE8   0x....             LDR.N    R0,??DataTable12_26
+   \       0xEA   0x6800             LDR      R0,[R0, #+0]
+   \       0xEC   0x0002             MOVS     R2,R0
+   \       0xEE   0xB292             UXTH     R2,R2            ;; ZeroExt  R2,R2,#+16,#+16
+   \       0xF0   0x....             LDR.N    R0,??DataTable12_27
+   \       0xF2   0x6800             LDR      R0,[R0, #+0]
+   \       0xF4   0x0001             MOVS     R1,R0
+   \       0xF6   0xB289             UXTH     R1,R1            ;; ZeroExt  R1,R1,#+16,#+16
+   \       0xF8   0x....             LDR.N    R0,??DataTable12_28
+   \       0xFA   0x6800             LDR      R0,[R0, #+0]
+   \       0xFC   0xB280             UXTH     R0,R0            ;; ZeroExt  R0,R0,#+16,#+16
+   \       0xFE   0x....'....        BL       ANO_DT_Send_PWM_Motor
     662                break;
-   \       0xF4   0xE002             B.N      ??Anotc_SendData_8
+   \      0x102   0xE002             B.N      ??Anotc_SendData_8
     663              }
     664            case 6:
     665              {
     666                ANO_debug_cnt = 0;
    \                     ??Anotc_SendData_5: (+1)
-   \       0xF6   0x2100             MOVS     R1,#+0
-   \       0xF8   0x7001             STRB     R1,[R0, #+0]
+   \      0x104   0x2100             MOVS     R1,#+0
+   \      0x106   0x7001             STRB     R1,[R0, #+0]
     667                break;
-   \       0xFA   0xE7FF             B.N      ??Anotc_SendData_8
+   \      0x108   0xE7FF             B.N      ??Anotc_SendData_8
     668              }
     669            default: break;
     670            }
     671          }
    \                     ??Anotc_SendData_7: (+1)
    \                     ??Anotc_SendData_8: (+1)
-   \       0xFC   0xB007             ADD      SP,SP,#+28
-   \       0xFE   0xBD30             POP      {R4,R5,PC}       ;; return
+   \      0x10A   0xB007             ADD      SP,SP,#+28
+   \      0x10C   0xBD30             POP      {R4,R5,PC}       ;; return
 
    \                                 In section .bss, align 1
    \                     `Anotc_SendData::ANO_debug_cnt`:
@@ -2399,168 +2309,124 @@ Warning[Pa093]: implicit conversion from floating point to integer
    \        0x0   0x2800'8000        DC32     0x28008000
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable12:
+   \                     ??DataTable11_2:
    \        0x0   0x....'....        DC32     usart1_sent
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable12_1:
+   \                     ??DataTable12:
    \        0x0   0x....'....        DC32     usart1_dma_tx_buf
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable12_2:
-   \        0x0   0x....'....        DC32     `data`
-
-   \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable12_3:
-   \        0x0   0x....'....        DC32     usart1_dma_rx_buf
-
-   \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable12_4:
-   \        0x0   0x....'....        DC32     genes
-
-   \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable12_5:
-   \        0x0   0x....'....        DC32     Velocity_KP_a
-
-   \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable12_6:
-   \        0x0   0x....'....        DC32     Balance_KP_a
-
-   \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable12_7:
-   \        0x0   0x....'....        DC32     Balance_KD_a
-
-   \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable12_8:
-   \        0x0   0x....'....        DC32     Velocity_KP_b
-
-   \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable12_9:
-   \        0x0   0x....'....        DC32     Balance_KP_b
-
-   \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable12_10:
-   \        0x0   0x....'....        DC32     Balance_KD_b
-
-   \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable12_11:
-   \        0x0   0x....'....        DC32     Velocity_KP_c
-
-   \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13:
-   \        0x0   0x....'....        DC32     Balance_KP_c
-
-   \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_1:
-   \        0x0   0x....'....        DC32     Balance_KD_c
-
-   \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_2:
+   \                     ??DataTable12_1:
    \        0x0   0x4001'1400        DC32     0x40011400
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_3:
+   \                     ??DataTable12_2:
    \        0x0   0x4001'1404        DC32     0x40011404
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_4:
+   \                     ??DataTable12_3:
    \        0x0   0x4002'6428        DC32     0x40026428
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_5:
+   \                     ??DataTable12_4:
    \        0x0   0x....'....        DC32     STATUS_RECEIVING
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_6:
+   \                     ??DataTable12_5:
    \        0x0   0x....'....        DC32     STATUS_CURRENT
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_7:
+   \                     ??DataTable12_6:
    \        0x0   0x....'....        DC32     STATUS_RECEIVED
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_8:
+   \                     ??DataTable12_7:
+   \        0x0   0x....'....        DC32     usart1_dma_rx_buf
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable12_8:
    \        0x0   0x....'....        DC32     STATUS_START
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_9:
+   \                     ??DataTable12_9:
    \        0x0   0x....'....        DC32     STATUS_WAIT
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_10:
+   \                     ??DataTable12_10:
    \        0x0   0x....'....        DC32     flag_stop
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_11:
+   \                     ??DataTable12_11:
    \        0x0   0x....'....        DC32     nvic_flag
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_12:
+   \                     ??DataTable12_12:
    \        0x0   0x....'....        DC32     STATUS_DONE
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_13:
+   \                     ??DataTable12_13:
    \        0x0   0x1000'0800        DC32     0x10000800
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_14:
+   \                     ??DataTable12_14:
    \        0x0   0x4002'1800        DC32     0x40021800
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_15:
+   \                     ??DataTable12_15:
    \        0x0   0x....'....        DC32     data_to_send
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_16:
+   \                     ??DataTable12_16:
    \        0x0   0x42C8'0000        DC32     0x42c80000
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_17:
+   \                     ??DataTable12_17:
    \        0x0   0x....'....        DC32     att
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_18:
+   \                     ??DataTable12_18:
    \        0x0   0x....'....        DC32     `Anotc_SendData::ANO_debug_cnt`
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_19:
+   \                     ??DataTable12_19:
    \        0x0   0x....'....        DC32     acc_raw
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_20:
+   \                     ??DataTable12_20:
    \        0x0   0x....'....        DC32     Mpu
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_21:
-   \        0x0   0x....'....        DC32     PWM_c
-
-   \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_22:
-   \        0x0   0x....'....        DC32     PWM_b
-
-   \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_23:
-   \        0x0   0x....'....        DC32     PWM_a
-
-   \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_24:
-   \        0x0   0x3FF9'999A        DC32     0x3ff9999a
-
-   \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_25:
-   \        0x0   0x41A0'0000        DC32     0x41a00000
-
-   \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_26:
+   \                     ??DataTable12_21:
    \        0x0   0x....'....        DC32     encoder_c
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_27:
+   \                     ??DataTable12_22:
    \        0x0   0x....'....        DC32     encoder_b
 
    \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable13_28:
+   \                     ??DataTable12_23:
    \        0x0   0x....'....        DC32     encoder_a
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable12_24:
+   \        0x0   0x3FF9'999A        DC32     0x3ff9999a
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable12_25:
+   \        0x0   0x41A0'0000        DC32     0x41a00000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable12_26:
+   \        0x0   0x....'....        DC32     PWM_c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable12_27:
+   \        0x0   0x....'....        DC32     PWM_b
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable12_28:
+   \        0x0   0x....'....        DC32     PWM_a
     672          
     673          
     674          
@@ -2623,8 +2489,7 @@ Warning[Pa093]: implicit conversion from floating point to integer
         80   -> DMA_ITConfig
         80   -> DMA_Init
         80   -> RCC_AHB1PeriphClockCmd
-       8   receiver_data
-         8   -> __aeabi_i2f
+       0   receiver_data
       40   usart1_init
         40   -> GPIO_Init
         40   -> GPIO_PinAFConfig
@@ -2648,11 +2513,29 @@ Warning[Pa093]: implicit conversion from floating point to integer
    -----  --------------
        4  ??DataTable11
        4  ??DataTable11_1
+       4  ??DataTable11_2
        4  ??DataTable12
        4  ??DataTable12_1
        4  ??DataTable12_10
        4  ??DataTable12_11
+       4  ??DataTable12_12
+       4  ??DataTable12_13
+       4  ??DataTable12_14
+       4  ??DataTable12_15
+       4  ??DataTable12_16
+       4  ??DataTable12_17
+       4  ??DataTable12_18
+       4  ??DataTable12_19
        4  ??DataTable12_2
+       4  ??DataTable12_20
+       4  ??DataTable12_21
+       4  ??DataTable12_22
+       4  ??DataTable12_23
+       4  ??DataTable12_24
+       4  ??DataTable12_25
+       4  ??DataTable12_26
+       4  ??DataTable12_27
+       4  ??DataTable12_28
        4  ??DataTable12_3
        4  ??DataTable12_4
        4  ??DataTable12_5
@@ -2660,35 +2543,6 @@ Warning[Pa093]: implicit conversion from floating point to integer
        4  ??DataTable12_7
        4  ??DataTable12_8
        4  ??DataTable12_9
-       4  ??DataTable13
-       4  ??DataTable13_1
-       4  ??DataTable13_10
-       4  ??DataTable13_11
-       4  ??DataTable13_12
-       4  ??DataTable13_13
-       4  ??DataTable13_14
-       4  ??DataTable13_15
-       4  ??DataTable13_16
-       4  ??DataTable13_17
-       4  ??DataTable13_18
-       4  ??DataTable13_19
-       4  ??DataTable13_2
-       4  ??DataTable13_20
-       4  ??DataTable13_21
-       4  ??DataTable13_22
-       4  ??DataTable13_23
-       4  ??DataTable13_24
-       4  ??DataTable13_25
-       4  ??DataTable13_26
-       4  ??DataTable13_27
-       4  ??DataTable13_28
-       4  ??DataTable13_3
-       4  ??DataTable13_4
-       4  ??DataTable13_5
-       4  ??DataTable13_6
-       4  ??DataTable13_7
-       4  ??DataTable13_8
-       4  ??DataTable13_9
      292  ANO_DT_Send_PWM_Motor
      184  ANO_DT_Send_Power
      344  ANO_DT_Send_RCData
@@ -2696,7 +2550,7 @@ Warning[Pa093]: implicit conversion from floating point to integer
      302  ANO_DT_Send_Status
      768  ANO_DT_Send_User
        1  ANO_debug_cnt
-     256  Anotc_SendData
+     270  Anotc_SendData
       48  DMA2_Stream7_IRQHandler
        4  STATUS_CURRENT
        4  STATUS_DONE
@@ -2713,7 +2567,7 @@ Warning[Pa093]: implicit conversion from floating point to integer
       20  genes
        4  index
        4  receiveData
-     250  receiver_data
+       2  receiver_data
       20  usart1_dma_rx_buf
     1024  usart1_dma_tx_buf
      230  usart1_init
@@ -2723,9 +2577,9 @@ Warning[Pa093]: implicit conversion from floating point to integer
  
  1'175 bytes in section .bss
     25 bytes in section .data
- 3'870 bytes in section .text
+ 3'592 bytes in section .text
  
- 3'870 bytes of CODE memory
+ 3'592 bytes of CODE memory
  1'200 bytes of DATA memory
 
 Errors: none

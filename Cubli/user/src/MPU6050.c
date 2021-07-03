@@ -25,20 +25,35 @@ void MPU6050_Init(void){
     IIC_Send(SlaveAddress,GYRO_CONFIG,0x18);// gyro scale  ：+-2000deg/s REGISTER 27
     IIC_Send(SlaveAddress,ACCEL_CONFIG,0x10);// Accel scale ：+-8g (65536/16=4096 LSB/g) REGISTER 28 
     
-    IIC_Send(SlaveAddress,XA_OFFSET_L_TC, 149);
+    IIC_Send(SlaveAddress,XA_OFFSET_L_TC, 151);
     IIC_Send(SlaveAddress,XA_OFFSET_H, 255);
-    IIC_Send(SlaveAddress,YA_OFFSET_L_TC, 195);
+    IIC_Send(SlaveAddress,YA_OFFSET_L_TC, 187);
     IIC_Send(SlaveAddress,YA_OFFSET_H, 7);
     
-    IIC_Send(SlaveAddress,ZA_OFFSET_L_TC, 239);
+    IIC_Send(SlaveAddress,ZA_OFFSET_L_TC, 220);
     IIC_Send(SlaveAddress,ZA_OFFSET_H, 1); //65536 or 4096
     
-    IIC_Send(SlaveAddress,XG_OFFS_USRL, 140);
+    IIC_Send(SlaveAddress,XG_OFFS_USRL, 143);
     IIC_Send(SlaveAddress,XG_OFFS_USRH, 0);
-    IIC_Send(SlaveAddress,YG_OFFS_USRL, 175);
+    IIC_Send(SlaveAddress,YG_OFFS_USRL, 176);
     IIC_Send(SlaveAddress,YG_OFFS_USRH, 255);
     IIC_Send(SlaveAddress,ZG_OFFS_USRL, 41);
     IIC_Send(SlaveAddress,ZG_OFFS_USRH, 0);
+    
+//    IIC_Send(SlaveAddress,XA_OFFSET_L_TC, 220);
+//    IIC_Send(SlaveAddress,XA_OFFSET_H, 253);
+//    IIC_Send(SlaveAddress,YA_OFFSET_L_TC, 85);
+//    IIC_Send(SlaveAddress,YA_OFFSET_H, 10);
+//    
+//    IIC_Send(SlaveAddress,ZA_OFFSET_L_TC, 245);
+//    IIC_Send(SlaveAddress,ZA_OFFSET_H, 1); //65536 or 4096
+//    
+//    IIC_Send(SlaveAddress,XG_OFFS_USRL, 159);
+//    IIC_Send(SlaveAddress,XG_OFFS_USRH, 255);
+//    IIC_Send(SlaveAddress,YG_OFFS_USRL, 20);
+//    IIC_Send(SlaveAddress,YG_OFFS_USRH, 0);
+//    IIC_Send(SlaveAddress,ZG_OFFS_USRL, 20);
+//    IIC_Send(SlaveAddress,ZG_OFFS_USRH, 0);
 }
 
 //two bytes data access
@@ -129,8 +144,8 @@ _Butterworth_parameter acc_5hz_parameter =
     //    1,   -1.911197067426,   0.9149758348014,
     //    0.0009446918438402,  0.00188938368768,0.0009446918438402
     //200hz---5hz
-    //    1,                  -1.778631777825,    0.8008026466657,
-    //    0.005542717210281,   0.01108543442056,  0.005542717210281
+        1,                  -1.778631777825,    0.8008026466657,
+        0.005542717210281,   0.01108543442056,  0.005542717210281
     //200hz---10hz
     //        1,   -1.561018075801,   0.6413515380576,
     //        0.02008336556421,  0.04016673112842,  0.02008336556421
@@ -141,8 +156,8 @@ _Butterworth_parameter acc_5hz_parameter =
     //    1,    -1.14298050254,   0.4128015980962,
     //    0.06745527388907,   0.1349105477781,  0.06745527388907
     //200hz---30hz
-        1,  -0.7477891782585,    0.272214937925,
-        0.1311064399166,   0.2622128798333,   0.1311064399166 
+//        1,  -0.7477891782585,    0.272214937925,
+//        0.1311064399166,   0.2622128798333,   0.1311064399166 
 };     
 
 _Butterworth_data   acc_butter_data[3];
