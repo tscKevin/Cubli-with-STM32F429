@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         03/Jul/2021  18:27:28
+# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         06/Aug/2021  00:18:04
 # Copyright 1999-2019 IAR Systems AB.
 #
 #    Cpu mode     =  
@@ -8,7 +8,7 @@
 #    Source file  =
 #        E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\MPU6050.c
 #    Command line =
-#        -f C:\Users\LABPC1~1\AppData\Local\Temp\EW3FF4.tmp
+#        -f C:\Users\LABPC1~1\AppData\Local\Temp\EW9663.tmp
 #        (E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\MPU6050.c -D
 #        USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
 #        E:\STM32Project\Cubli-with-STM32F429\Cubli\Debug\List -o
@@ -127,83 +127,83 @@ E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\MPU6050.c
    \       0x2E   0x20D0             MOVS     R0,#+208
    \       0x30   0x....'....        BL       IIC_Send
      27              
-     28              IIC_Send(SlaveAddress,XA_OFFSET_L_TC, 151);
-   \       0x34   0x2297             MOVS     R2,#+151
+     28          //    IIC_Send(SlaveAddress,XA_OFFSET_L_TC, 161);
+     29          //    IIC_Send(SlaveAddress,XA_OFFSET_H, 255);
+     30          //    IIC_Send(SlaveAddress,YA_OFFSET_L_TC, 130);
+     31          //    IIC_Send(SlaveAddress,YA_OFFSET_H, 7);
+     32          //    
+     33          //    IIC_Send(SlaveAddress,ZA_OFFSET_L_TC, 220);
+     34          //    IIC_Send(SlaveAddress,ZA_OFFSET_H, 1); //65536 or 4096
+     35          //    
+     36          //    IIC_Send(SlaveAddress,XG_OFFS_USRL, 143);
+     37          //    IIC_Send(SlaveAddress,XG_OFFS_USRH, 0);
+     38          //    IIC_Send(SlaveAddress,YG_OFFS_USRL, 176);
+     39          //    IIC_Send(SlaveAddress,YG_OFFS_USRH, 255);
+     40          //    IIC_Send(SlaveAddress,ZG_OFFS_USRL, 41);
+     41          //    IIC_Send(SlaveAddress,ZG_OFFS_USRH, 0);
+     42              
+     43              IIC_Send(SlaveAddress,XA_OFFSET_L_TC, 87);
+   \       0x34   0x2257             MOVS     R2,#+87
    \       0x36   0x2107             MOVS     R1,#+7
    \       0x38   0x20D0             MOVS     R0,#+208
    \       0x3A   0x....'....        BL       IIC_Send
-     29              IIC_Send(SlaveAddress,XA_OFFSET_H, 255);
+     44              IIC_Send(SlaveAddress,XA_OFFSET_H, 255);
    \       0x3E   0x22FF             MOVS     R2,#+255
    \       0x40   0x2106             MOVS     R1,#+6
    \       0x42   0x20D0             MOVS     R0,#+208
    \       0x44   0x....'....        BL       IIC_Send
-     30              IIC_Send(SlaveAddress,YA_OFFSET_L_TC, 187);
-   \       0x48   0x22BB             MOVS     R2,#+187
+     45              IIC_Send(SlaveAddress,YA_OFFSET_L_TC, 158);
+   \       0x48   0x229E             MOVS     R2,#+158
    \       0x4A   0x2109             MOVS     R1,#+9
    \       0x4C   0x20D0             MOVS     R0,#+208
    \       0x4E   0x....'....        BL       IIC_Send
-     31              IIC_Send(SlaveAddress,YA_OFFSET_H, 7);
-   \       0x52   0x2207             MOVS     R2,#+7
+     46              IIC_Send(SlaveAddress,YA_OFFSET_H, 250);
+   \       0x52   0x22FA             MOVS     R2,#+250
    \       0x54   0x2108             MOVS     R1,#+8
    \       0x56   0x20D0             MOVS     R0,#+208
    \       0x58   0x....'....        BL       IIC_Send
-     32              
-     33              IIC_Send(SlaveAddress,ZA_OFFSET_L_TC, 220);
-   \       0x5C   0x22DC             MOVS     R2,#+220
+     47              
+     48              IIC_Send(SlaveAddress,ZA_OFFSET_L_TC, 40);
+   \       0x5C   0x2228             MOVS     R2,#+40
    \       0x5E   0x210B             MOVS     R1,#+11
    \       0x60   0x20D0             MOVS     R0,#+208
    \       0x62   0x....'....        BL       IIC_Send
-     34              IIC_Send(SlaveAddress,ZA_OFFSET_H, 1); //65536 or 4096
-   \       0x66   0x2201             MOVS     R2,#+1
+     49              IIC_Send(SlaveAddress,ZA_OFFSET_H, 3); //65536 or 4096
+   \       0x66   0x2203             MOVS     R2,#+3
    \       0x68   0x210A             MOVS     R1,#+10
    \       0x6A   0x20D0             MOVS     R0,#+208
    \       0x6C   0x....'....        BL       IIC_Send
-     35              
-     36              IIC_Send(SlaveAddress,XG_OFFS_USRL, 143);
-   \       0x70   0x228F             MOVS     R2,#+143
+     50              
+     51              IIC_Send(SlaveAddress,XG_OFFS_USRL, 117);
+   \       0x70   0x2275             MOVS     R2,#+117
    \       0x72   0x2114             MOVS     R1,#+20
    \       0x74   0x20D0             MOVS     R0,#+208
    \       0x76   0x....'....        BL       IIC_Send
-     37              IIC_Send(SlaveAddress,XG_OFFS_USRH, 0);
+     52              IIC_Send(SlaveAddress,XG_OFFS_USRH, 0);
    \       0x7A   0x2200             MOVS     R2,#+0
    \       0x7C   0x2113             MOVS     R1,#+19
    \       0x7E   0x20D0             MOVS     R0,#+208
    \       0x80   0x....'....        BL       IIC_Send
-     38              IIC_Send(SlaveAddress,YG_OFFS_USRL, 176);
-   \       0x84   0x22B0             MOVS     R2,#+176
+     53              IIC_Send(SlaveAddress,YG_OFFS_USRL, 229);
+   \       0x84   0x22E5             MOVS     R2,#+229
    \       0x86   0x2116             MOVS     R1,#+22
    \       0x88   0x20D0             MOVS     R0,#+208
    \       0x8A   0x....'....        BL       IIC_Send
-     39              IIC_Send(SlaveAddress,YG_OFFS_USRH, 255);
+     54              IIC_Send(SlaveAddress,YG_OFFS_USRH, 255);
    \       0x8E   0x22FF             MOVS     R2,#+255
    \       0x90   0x2115             MOVS     R1,#+21
    \       0x92   0x20D0             MOVS     R0,#+208
    \       0x94   0x....'....        BL       IIC_Send
-     40              IIC_Send(SlaveAddress,ZG_OFFS_USRL, 41);
-   \       0x98   0x2229             MOVS     R2,#+41
+     55              IIC_Send(SlaveAddress,ZG_OFFS_USRL, 24);
+   \       0x98   0x2218             MOVS     R2,#+24
    \       0x9A   0x2118             MOVS     R1,#+24
    \       0x9C   0x20D0             MOVS     R0,#+208
    \       0x9E   0x....'....        BL       IIC_Send
-     41              IIC_Send(SlaveAddress,ZG_OFFS_USRH, 0);
+     56              IIC_Send(SlaveAddress,ZG_OFFS_USRH, 0);
    \       0xA2   0x2200             MOVS     R2,#+0
    \       0xA4   0x2117             MOVS     R1,#+23
    \       0xA6   0x20D0             MOVS     R0,#+208
    \       0xA8   0x....'....        BL       IIC_Send
-     42              
-     43          //    IIC_Send(SlaveAddress,XA_OFFSET_L_TC, 220);
-     44          //    IIC_Send(SlaveAddress,XA_OFFSET_H, 253);
-     45          //    IIC_Send(SlaveAddress,YA_OFFSET_L_TC, 85);
-     46          //    IIC_Send(SlaveAddress,YA_OFFSET_H, 10);
-     47          //    
-     48          //    IIC_Send(SlaveAddress,ZA_OFFSET_L_TC, 245);
-     49          //    IIC_Send(SlaveAddress,ZA_OFFSET_H, 1); //65536 or 4096
-     50          //    
-     51          //    IIC_Send(SlaveAddress,XG_OFFS_USRL, 159);
-     52          //    IIC_Send(SlaveAddress,XG_OFFS_USRH, 255);
-     53          //    IIC_Send(SlaveAddress,YG_OFFS_USRL, 20);
-     54          //    IIC_Send(SlaveAddress,YG_OFFS_USRH, 0);
-     55          //    IIC_Send(SlaveAddress,ZG_OFFS_USRL, 20);
-     56          //    IIC_Send(SlaveAddress,ZG_OFFS_USRH, 0);
      57          }
    \       0xAC   0xBD01             POP      {R0,PC}          ;; return
      58          

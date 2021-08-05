@@ -146,52 +146,63 @@ void Brake_system(int enable, int servo){
     /*servo a PA8, b PA9, c PA10*/
     if (enable==1){
         if (servo==1){
-            TIM1->CCR1=1350;
+            TIM1->CCR1=2600;
         }else if (servo==23){
-            TIM1->CCR2=1600;
+            TIM1->CCR2=2500;
             TIM1->CCR3=1550;
         }else if (servo==123){
-            TIM1->CCR1=1630;
-            TIM1->CCR2=1700;
-            TIM1->CCR3=1750;
+            TIM1->CCR1=2600;
+            TIM1->CCR2=2500;
+            TIM1->CCR3=1550;
         }
     }else{
         if (servo==1){
-            TIM1->CCR1=2000;
+            TIM1->CCR1=1550;
         }else if (servo==23){
-            TIM1->CCR2=2000;
+            TIM1->CCR2=1450;
             TIM1->CCR3=2000;
         }else if (servo==123){
-            TIM1->CCR1=2000;
-            TIM1->CCR2=2000;
+            TIM1->CCR1=1550;
+            TIM1->CCR2=1425;
             TIM1->CCR3=2000;
         }
     }
 }
-
+void ShortToChar(short sData,unsigned char cData[])
+{
+	cData[0]=sData&0xff;
+	cData[1]=sData>>8;
+}
+short CharToShort(unsigned char cData[])
+{
+	return ((short)cData[1]<<8)|cData[0];
+}
+unsigned char chrTemp[6];
+float a=0;
 void main(void){
     systick_setup();
     nvic_flag = 0;
+    
     GPIO_On_Board();//A:B13,B:D8,C:D9
     usart1_init(115200);
-
     IIC_GPIO_Init();
+    
     MPU6050_Init();//get_mpu_id();
     get_iir_factor(&Mpu.att_acc_factor,0.005f,25);
     
     TM1_PWM_Init();//servo
     Brake_system(0,123);
+    TM8_PWM_Init();
     
     TIM2_EncoderInterface_Init();//A
     TIM3_EncoderInterface_Init();//B
     TIM4_EncoderInterface_Init();//C
-    TM8_PWM_Init();
     Delay(5);
     TM5_Interrupt_Init();
     Configure_PA0();
     NVIC_Set();
-        
-    while(1){
+    
+    while(1){     
         /* LED AND MOTOR FORWORD AND BACKWORD TEST
         printf("%d",usart1_read(a));
         GPIO_SetBits(GPIOG,GPIO_Pin_13); // LED
@@ -249,35 +260,39 @@ void main(void){
         
         if (nvic_flag==1){
             if((att.rol<-15 || att.rol>12) && jump_state==1){//2D jump up
-//            if(jump_state==1){//2D jump up
-                Delay(4000);
+                Delay(6000);
+                if(!(att.rol<-15)) return;// || att.rol>15)) return;
                 nvic_flag = 0;
                 PWM_a = 0;
                 set_pwm(1,0,0,0);
                 Brake_system(1,1);
-                Delay(40);
+                int wait = 150;
+                while((att.rol<-15) && --wait>0) Delay(1);//|| att.rol>9
                 nvic_flag = 1;
-                Delay(150);
                 Brake_system(0,1);
-                Delay(3000);
-//                if (att.rol>=-9.0 && att.rol <=9.0){
-//                    Delay(2000);
-//                    jump_pwm = 0;
-//                    jump_pwm_max = 7000;
-//                    jump_state=2;
-//                }else{
-//                    jump_state=0;
-//                    set_pwm(1,0,0,0);
-//                }
+                Delay(2000);
+                Delay(2000);
+                if (att.rol>=-9.0 && att.rol <=9.0){
+                    while(int_abs(encoder_a)>=400) Delay(1);
+                    jump_pwm = 0;
+                    jump_pwm_max = 4700;
+                    jump_state=2;
+                }else{
+                    jump_state=1;
+                    set_pwm(1,0,0,0);
+                }
             }
             if(att.rol>=-9.0 && att.rol <=9.0 && att.pit > 8 && jump_state==2){//3D jump up
                 if (jump_pwm>=jump_pwm_max){
-                    Delay(3500);
-                    jump_state==0;
-                    Delay(20);
+                    Delay(4000);
                     Brake_system(1,23);
-                    Delay(150);
+                    Delay(20);
+                    jump_state=0;
+                    int wait = 150;
+                    while((att.pit>15) && --wait>0) Delay(1);//|| att.rol>9
                     Brake_system(0,23);
+                    jump_pwm=0;
+                    jump_pwm_max=0;
                     Delay(2000);
                 }
             }

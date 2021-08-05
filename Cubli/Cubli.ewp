@@ -2413,6 +2413,18 @@
             <name>$PROJ_DIR$\User\src\imu.h</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\User\src\jy901.c</name>
+            <excluded>
+                <configuration>Debug</configuration>
+            </excluded>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\User\src\jy901.h</name>
+            <excluded>
+                <configuration>Debug</configuration>
+            </excluded>
+        </file>
+        <file>
             <name>$PROJ_DIR$\User\src\MPU6050.c</name>
         </file>
         <file>

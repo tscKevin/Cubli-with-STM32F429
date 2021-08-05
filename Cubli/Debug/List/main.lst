@@ -1,13 +1,13 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         04/Jul/2021  01:12:55
+# IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM         06/Aug/2021  04:26:38
 # Copyright 1999-2019 IAR Systems AB.
 #
 #    Cpu mode     =  
 #    Endian       =  little
 #    Source file  =  E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\main.c
 #    Command line =
-#        -f C:\Users\LABPC1~1\AppData\Local\Temp\EW76B9.tmp
+#        -f C:\Users\LABPC1~1\AppData\Local\Temp\EW2DEA.tmp
 #        (E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\main.c -D
 #        USE_STDPERIPH_DRIVER -D STM32F429_439xx -lC
 #        E:\STM32Project\Cubli-with-STM32F429\Cubli\Debug\List -o
@@ -198,34 +198,34 @@ E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\main.c
    \       0x26   0x9000             STR      R0,[SP, #+0]
      62              GPIO_Init(GPIOB, &GPIO_InitStructure);
    \       0x28   0x4669             MOV      R1,SP
-   \       0x2A   0x....             LDR.N    R0,??DataTable5_1  ;; 0x40020400
-   \       0x2C   0x....'....        BL       GPIO_Init
+   \       0x2A   0x....'....        LDR.W    R0,??DataTable5_1  ;; 0x40020400
+   \       0x2E   0x....'....        BL       GPIO_Init
      63              //GPIOD
      64              RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD,ENABLE);
-   \       0x30   0x2101             MOVS     R1,#+1
-   \       0x32   0x2008             MOVS     R0,#+8
-   \       0x34   0x....'....        BL       RCC_AHB1PeriphClockCmd
+   \       0x32   0x2101             MOVS     R1,#+1
+   \       0x34   0x2008             MOVS     R0,#+8
+   \       0x36   0x....'....        BL       RCC_AHB1PeriphClockCmd
      65              GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8 | GPIO_Pin_9;
-   \       0x38   0xF44F 0x7040      MOV      R0,#+768
-   \       0x3C   0x9000             STR      R0,[SP, #+0]
+   \       0x3A   0xF44F 0x7040      MOV      R0,#+768
+   \       0x3E   0x9000             STR      R0,[SP, #+0]
      66              GPIO_Init(GPIOD, &GPIO_InitStructure);
-   \       0x3E   0x4669             MOV      R1,SP
-   \       0x40   0x....             LDR.N    R0,??DataTable5_2  ;; 0x40020c00
-   \       0x42   0x....'....        BL       GPIO_Init
+   \       0x40   0x4669             MOV      R1,SP
+   \       0x42   0x....'....        LDR.W    R0,??DataTable5_2  ;; 0x40020c00
+   \       0x46   0x....'....        BL       GPIO_Init
      67              //GPIOG
      68              RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOG,ENABLE);
-   \       0x46   0x2101             MOVS     R1,#+1
-   \       0x48   0x2040             MOVS     R0,#+64
-   \       0x4A   0x....'....        BL       RCC_AHB1PeriphClockCmd
+   \       0x4A   0x2101             MOVS     R1,#+1
+   \       0x4C   0x2040             MOVS     R0,#+64
+   \       0x4E   0x....'....        BL       RCC_AHB1PeriphClockCmd
      69              GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13 | GPIO_Pin_14;
-   \       0x4E   0xF44F 0x40C0      MOV      R0,#+24576
-   \       0x52   0x9000             STR      R0,[SP, #+0]
+   \       0x52   0xF44F 0x40C0      MOV      R0,#+24576
+   \       0x56   0x9000             STR      R0,[SP, #+0]
      70              GPIO_Init(GPIOG, &GPIO_InitStructure);
-   \       0x54   0x4669             MOV      R1,SP
-   \       0x56   0x....             LDR.N    R0,??DataTable5_3  ;; 0x40021800
-   \       0x58   0x....'....        BL       GPIO_Init
+   \       0x58   0x4669             MOV      R1,SP
+   \       0x5A   0x....'....        LDR.W    R0,??DataTable5_3  ;; 0x40021800
+   \       0x5E   0x....'....        BL       GPIO_Init
      71          }
-   \       0x5C   0xBD07             POP      {R0-R2,PC}       ;; return
+   \       0x62   0xBD07             POP      {R0-R2,PC}       ;; return
      72          
 
    \                                 In section .text, align 2, keep-with-next
@@ -237,44 +237,44 @@ E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\main.c
    \        0x2   0x2001             MOVS     R0,#+1
    \        0x4   0x....'....        BL       EXTI_GetITStatus
    \        0x8   0x2800             CMP      R0,#+0
-   \        0xA   0xD018             BEQ.N    ??EXTI0_IRQHandler_0
+   \        0xA   0xD019             BEQ.N    ??EXTI0_IRQHandler_0
      76                  /* Do your stuff when PD1 is changed */
      77                  if (!nvic_flag){
-   \        0xC   0x....             LDR.N    R4,??DataTable5_4
-   \        0xE   0x6820             LDR      R0,[R4, #+0]
-   \       0x10   0x2800             CMP      R0,#+0
-   \       0x12   0xD10A             BNE.N    ??EXTI0_IRQHandler_1
+   \        0xC   0x....'....        LDR.W    R4,??DataTable5_4
+   \       0x10   0x6820             LDR      R0,[R4, #+0]
+   \       0x12   0x2800             CMP      R0,#+0
+   \       0x14   0xD10A             BNE.N    ??EXTI0_IRQHandler_1
      78                      GPIO_SetBits(GPIOG,GPIO_Pin_13);
-   \       0x14   0xF44F 0x5100      MOV      R1,#+8192
-   \       0x18   0x....             LDR.N    R0,??DataTable5_3  ;; 0x40021800
-   \       0x1A   0x....'....        BL       GPIO_SetBits
+   \       0x16   0xF44F 0x5100      MOV      R1,#+8192
+   \       0x1A   0x....             LDR.N    R0,??DataTable5_3  ;; 0x40021800
+   \       0x1C   0x....'....        BL       GPIO_SetBits
      79                      nvic_flag = 1;
-   \       0x1E   0x2001             MOVS     R0,#+1
-   \       0x20   0x6020             STR      R0,[R4, #+0]
+   \       0x20   0x2001             MOVS     R0,#+1
+   \       0x22   0x6020             STR      R0,[R4, #+0]
      80                      jump_state = 1;
-   \       0x22   0x2001             MOVS     R0,#+1
-   \       0x24   0x....             LDR.N    R1,??DataTable5_5
-   \       0x26   0x6008             STR      R0,[R1, #+0]
-   \       0x28   0xE006             B.N      ??EXTI0_IRQHandler_2
+   \       0x24   0x2001             MOVS     R0,#+1
+   \       0x26   0x....             LDR.N    R1,??DataTable5_5
+   \       0x28   0x6008             STR      R0,[R1, #+0]
+   \       0x2A   0xE006             B.N      ??EXTI0_IRQHandler_2
      81                  }else{
      82                      GPIO_ResetBits(GPIOG,GPIO_Pin_13);
    \                     ??EXTI0_IRQHandler_1: (+1)
-   \       0x2A   0xF44F 0x5100      MOV      R1,#+8192
-   \       0x2E   0x....             LDR.N    R0,??DataTable5_3  ;; 0x40021800
-   \       0x30   0x....'....        BL       GPIO_ResetBits
+   \       0x2C   0xF44F 0x5100      MOV      R1,#+8192
+   \       0x30   0x....             LDR.N    R0,??DataTable5_3  ;; 0x40021800
+   \       0x32   0x....'....        BL       GPIO_ResetBits
      83                      nvic_flag = 0;
-   \       0x34   0x2000             MOVS     R0,#+0
-   \       0x36   0x6020             STR      R0,[R4, #+0]
+   \       0x36   0x2000             MOVS     R0,#+0
+   \       0x38   0x6020             STR      R0,[R4, #+0]
      84                  }
      85                  /* Clear interrupt flag */
      86                  EXTI_ClearITPendingBit(EXTI_Line0);
    \                     ??EXTI0_IRQHandler_2: (+1)
-   \       0x38   0x2001             MOVS     R0,#+1
-   \       0x3A   0x....'....        BL       EXTI_ClearITPendingBit
+   \       0x3A   0x2001             MOVS     R0,#+1
+   \       0x3C   0x....'....        BL       EXTI_ClearITPendingBit
      87              }
      88          }
    \                     ??EXTI0_IRQHandler_0: (+1)
-   \       0x3E   0xBD10             POP      {R4,PC}          ;; return
+   \       0x40   0xBD10             POP      {R4,PC}          ;; return
      89          
      90          /* Configure pins to be interrupts */
 
@@ -391,323 +391,425 @@ E:\STM32Project\Cubli-with-STM32F429\Cubli\User\src\main.c
     148                  if (servo==1){
    \        0x4   0x2901             CMP      R1,#+1
    \        0x6   0xD104             BNE.N    ??Brake_system_1
-    149                      TIM1->CCR1=1350;
-   \        0x8   0xF240 0x5046      MOVW     R0,#+1350
+    149                      TIM1->CCR1=2600;
+   \        0x8   0xF640 0x2028      MOVW     R0,#+2600
    \        0xC   0x....             LDR.N    R1,??DataTable5_7  ;; 0x40010034
    \        0xE   0x6008             STR      R0,[R1, #+0]
-   \       0x10   0xE033             B.N      ??Brake_system_2
+   \       0x10   0xE039             B.N      ??Brake_system_2
     150                  }else if (servo==23){
    \                     ??Brake_system_1: (+1)
    \       0x12   0x2917             CMP      R1,#+23
    \       0x14   0xD108             BNE.N    ??Brake_system_3
-    151                      TIM1->CCR2=1600;
-   \       0x16   0xF44F 0x60C8      MOV      R0,#+1600
+    151                      TIM1->CCR2=2500;
+   \       0x16   0xF640 0x10C4      MOVW     R0,#+2500
    \       0x1A   0x....             LDR.N    R1,??DataTable5_8  ;; 0x40010038
    \       0x1C   0x6008             STR      R0,[R1, #+0]
     152                      TIM1->CCR3=1550;
    \       0x1E   0xF240 0x600E      MOVW     R0,#+1550
    \       0x22   0x....             LDR.N    R1,??DataTable5_9  ;; 0x4001003c
    \       0x24   0x6008             STR      R0,[R1, #+0]
-   \       0x26   0xE028             B.N      ??Brake_system_2
+   \       0x26   0xE02E             B.N      ??Brake_system_2
     153                  }else if (servo==123){
    \                     ??Brake_system_3: (+1)
    \       0x28   0x297B             CMP      R1,#+123
-   \       0x2A   0xD126             BNE.N    ??Brake_system_2
-    154                      TIM1->CCR1=1630;
-   \       0x2C   0xF240 0x605E      MOVW     R0,#+1630
+   \       0x2A   0xD12C             BNE.N    ??Brake_system_2
+    154                      TIM1->CCR1=2600;
+   \       0x2C   0xF640 0x2028      MOVW     R0,#+2600
    \       0x30   0x....             LDR.N    R1,??DataTable5_7  ;; 0x40010034
    \       0x32   0x6008             STR      R0,[R1, #+0]
-    155                      TIM1->CCR2=1700;
-   \       0x34   0xF240 0x60A4      MOVW     R0,#+1700
+    155                      TIM1->CCR2=2500;
+   \       0x34   0xF640 0x10C4      MOVW     R0,#+2500
    \       0x38   0x....             LDR.N    R1,??DataTable5_8  ;; 0x40010038
    \       0x3A   0x6008             STR      R0,[R1, #+0]
-    156                      TIM1->CCR3=1750;
-   \       0x3C   0xF240 0x60D6      MOVW     R0,#+1750
+    156                      TIM1->CCR3=1550;
+   \       0x3C   0xF240 0x600E      MOVW     R0,#+1550
    \       0x40   0x....             LDR.N    R1,??DataTable5_9  ;; 0x4001003c
    \       0x42   0x6008             STR      R0,[R1, #+0]
-   \       0x44   0xE019             B.N      ??Brake_system_2
+   \       0x44   0xE01F             B.N      ??Brake_system_2
     157                  }
     158              }else{
     159                  if (servo==1){
    \                     ??Brake_system_0: (+1)
    \       0x46   0x2901             CMP      R1,#+1
    \       0x48   0xD104             BNE.N    ??Brake_system_4
-    160                      TIM1->CCR1=2000;
-   \       0x4A   0xF44F 0x60FA      MOV      R0,#+2000
+    160                      TIM1->CCR1=1550;
+   \       0x4A   0xF240 0x600E      MOVW     R0,#+1550
    \       0x4E   0x....             LDR.N    R1,??DataTable5_7  ;; 0x40010034
    \       0x50   0x6008             STR      R0,[R1, #+0]
-   \       0x52   0xE012             B.N      ??Brake_system_2
+   \       0x52   0xE018             B.N      ??Brake_system_2
     161                  }else if (servo==23){
    \                     ??Brake_system_4: (+1)
    \       0x54   0x2917             CMP      R1,#+23
-   \       0x56   0xD106             BNE.N    ??Brake_system_5
-    162                      TIM1->CCR2=2000;
-   \       0x58   0xF44F 0x60FA      MOV      R0,#+2000
+   \       0x56   0xD108             BNE.N    ??Brake_system_5
+    162                      TIM1->CCR2=1450;
+   \       0x58   0xF240 0x50AA      MOVW     R0,#+1450
    \       0x5C   0x....             LDR.N    R1,??DataTable5_8  ;; 0x40010038
    \       0x5E   0x6008             STR      R0,[R1, #+0]
     163                      TIM1->CCR3=2000;
-   \       0x60   0x....             LDR.N    R1,??DataTable5_9  ;; 0x4001003c
-   \       0x62   0x6008             STR      R0,[R1, #+0]
-   \       0x64   0xE009             B.N      ??Brake_system_2
+   \       0x60   0xF44F 0x60FA      MOV      R0,#+2000
+   \       0x64   0x....             LDR.N    R1,??DataTable5_9  ;; 0x4001003c
+   \       0x66   0x6008             STR      R0,[R1, #+0]
+   \       0x68   0xE00D             B.N      ??Brake_system_2
     164                  }else if (servo==123){
    \                     ??Brake_system_5: (+1)
-   \       0x66   0x297B             CMP      R1,#+123
-   \       0x68   0xD107             BNE.N    ??Brake_system_2
-    165                      TIM1->CCR1=2000;
-   \       0x6A   0xF44F 0x60FA      MOV      R0,#+2000
-   \       0x6E   0x....             LDR.N    R1,??DataTable5_7  ;; 0x40010034
-   \       0x70   0x6008             STR      R0,[R1, #+0]
-    166                      TIM1->CCR2=2000;
-   \       0x72   0x....             LDR.N    R1,??DataTable5_8  ;; 0x40010038
+   \       0x6A   0x297B             CMP      R1,#+123
+   \       0x6C   0xD10B             BNE.N    ??Brake_system_2
+    165                      TIM1->CCR1=1550;
+   \       0x6E   0xF240 0x600E      MOVW     R0,#+1550
+   \       0x72   0x....             LDR.N    R1,??DataTable5_7  ;; 0x40010034
    \       0x74   0x6008             STR      R0,[R1, #+0]
+    166                      TIM1->CCR2=1425;
+   \       0x76   0xF240 0x5091      MOVW     R0,#+1425
+   \       0x7A   0x....             LDR.N    R1,??DataTable5_8  ;; 0x40010038
+   \       0x7C   0x6008             STR      R0,[R1, #+0]
     167                      TIM1->CCR3=2000;
-   \       0x76   0x....             LDR.N    R1,??DataTable5_9  ;; 0x4001003c
-   \       0x78   0x6008             STR      R0,[R1, #+0]
+   \       0x7E   0xF44F 0x60FA      MOV      R0,#+2000
+   \       0x82   0x....             LDR.N    R1,??DataTable5_9  ;; 0x4001003c
+   \       0x84   0x6008             STR      R0,[R1, #+0]
     168                  }
     169              }
     170          }
    \                     ??Brake_system_2: (+1)
-   \       0x7A   0x4770             BX       LR               ;; return
-    171          
+   \       0x86   0x4770             BX       LR               ;; return
 
    \                                 In section .text, align 2, keep-with-next
-    172          void main(void){
+    171          void ShortToChar(short sData,unsigned char cData[])
+    172          {
+    173          	cData[0]=sData&0xff;
+   \                     ShortToChar: (+1)
+   \        0x0   0x7008             STRB     R0,[R1, #+0]
+    174          	cData[1]=sData>>8;
+   \        0x2   0xB200             SXTH     R0,R0            ;; SignExt  R0,R0,#+16,#+16
+   \        0x4   0x1200             ASRS     R0,R0,#+8
+   \        0x6   0x7048             STRB     R0,[R1, #+1]
+    175          }
+   \        0x8   0x4770             BX       LR               ;; return
+
+   \                                 In section .text, align 2, keep-with-next
+    176          short CharToShort(unsigned char cData[])
+    177          {
+    178          	return ((short)cData[1]<<8)|cData[0];
+   \                     CharToShort: (+1)
+   \        0x0   0x7841             LDRB     R1,[R0, #+1]
+   \        0x2   0x7800             LDRB     R0,[R0, #+0]
+   \        0x4   0xEA50 0x2001      ORRS     R0,R0,R1, LSL #+8
+   \        0x8   0xB200             SXTH     R0,R0            ;; SignExt  R0,R0,#+16,#+16
+   \        0xA   0x4770             BX       LR               ;; return
+    179          }
+
+   \                                 In section .bss, align 4
+    180          unsigned char chrTemp[6];
+   \                     chrTemp:
+   \        0x0                      DS8 8
+
+   \                                 In section .bss, align 4
+    181          float a=0;
+   \                     a:
+   \        0x0                      DS8 4
+
+   \                                 In section .text, align 2, keep-with-next
+    182          void main(void){
    \                     main: (+1)
-   \        0x0   0xB538             PUSH     {R3-R5,LR}
-    173              systick_setup();
-   \        0x2   0x....'....        BL       systick_setup
-    174              nvic_flag = 0;
-   \        0x6   0x....             LDR.N    R4,??DataTable5_4
-   \        0x8   0x2000             MOVS     R0,#+0
-   \        0xA   0x6020             STR      R0,[R4, #+0]
-    175              GPIO_On_Board();//A:B13,B:D8,C:D9
-   \        0xC   0x....'....        BL       GPIO_On_Board
-    176              usart1_init(115200);
-   \       0x10   0xF45F 0x30E1      MOVS     R0,#+115200
-   \       0x14   0x....'....        BL       usart1_init
-    177          
-    178              IIC_GPIO_Init();
-   \       0x18   0x....'....        BL       IIC_GPIO_Init
-    179              MPU6050_Init();//get_mpu_id();
-   \       0x1C   0x....'....        BL       MPU6050_Init
-    180              get_iir_factor(&Mpu.att_acc_factor,0.005f,25);
-   \       0x20   0x....             LDR.N    R2,??DataTable5_10  ;; 0x41c80000
-   \       0x22   0x....             LDR.N    R1,??DataTable5_11  ;; 0x3ba3d70a
-   \       0x24   0x....             LDR.N    R0,??DataTable5_12
-   \       0x26   0x....'....        BL       get_iir_factor
-    181              
-    182              TM1_PWM_Init();//servo
-   \       0x2A   0x....'....        BL       TM1_PWM_Init
-    183              Brake_system(0,123);
-   \       0x2E   0x217B             MOVS     R1,#+123
-   \       0x30   0x2000             MOVS     R0,#+0
-   \       0x32   0x....'....        BL       Brake_system
-    184              
-    185              TIM2_EncoderInterface_Init();//A
-   \       0x36   0x....'....        BL       TIM2_EncoderInterface_Init
-    186              TIM3_EncoderInterface_Init();//B
-   \       0x3A   0x....'....        BL       TIM3_EncoderInterface_Init
-    187              TIM4_EncoderInterface_Init();//C
-   \       0x3E   0x....'....        BL       TIM4_EncoderInterface_Init
-    188              TM8_PWM_Init();
-   \       0x42   0x....'....        BL       TM8_PWM_Init
-    189              Delay(5);
-   \       0x46   0x2005             MOVS     R0,#+5
-   \       0x48   0x....'....        BL       Delay
-    190              TM5_Interrupt_Init();
-   \       0x4C   0x....'....        BL       TM5_Interrupt_Init
-    191              Configure_PA0();
-   \       0x50   0x....'....        BL       Configure_PA0
-    192              NVIC_Set();
-   \       0x54   0x....'....        BL       NVIC_Set
-    193                  
-    194              while(1){
-    195                  /* LED AND MOTOR FORWORD AND BACKWORD TEST
-    196                  printf("%d",usart1_read(a));
-    197                  GPIO_SetBits(GPIOG,GPIO_Pin_13); // LED
-    198                  GPIO_SetBits(GPIOB,GPIO_Pin_13); //A
-    199                  GPIO_SetBits(GPIOD,GPIO_Pin_8);  //B
-    200                  GPIO_SetBits(GPIOD,GPIO_Pin_9);  //C
-    201                  Delay(100);        
-    202                  GPIO_ResetBits(GPIOG,GPIO_Pin_13);
-    203                  GPIO_ResetBits(GPIOB,GPIO_Pin_13);
-    204                  GPIO_ResetBits(GPIOD,GPIO_Pin_8);
-    205                  GPIO_ResetBits(GPIOD,GPIO_Pin_9);*/
-    206                  
-    207                  /* MOTOR PWM TEST
-    208                  TIM8->CCR1 = 8999*0.03;//A PC6
-    209                  Delay(1000);
-    210                  TIM8->CCR2 = 8999*0.8;//B PC7
-    211                  Delay(1000);
-    212                  TIM8->CCR3 = 8999*0.4;//C PC8
-    213                  Delay(500);
-    214                  TIM8->CCR1 = 10;//A
-    215                  TIM8->CCR2 = 10;//B
-    216                  TIM8->CCR3 = 10;//C
-    217                  Delay(500);
-    218                  TIM8->CCR1 = 0;//A
-    219                  TIM8->CCR2 = 0;//B
-    220                  TIM8->CCR3 = 0;//C
-    221                  Delay(500);
-    222                  TIM8->CCR1 = 5500;//A
-    223                  TIM8->CCR2 = 5500;//B
-    224                  TIM8->CCR3 = 5500;//C
-    225                  Delay(500);
-    226                  TIM8->CCR1 = 0;//A
-    227                  TIM8->CCR2 = 0;//B
-    228                  TIM8->CCR3 = 0;//C
-    229                  Delay(500);*/
-    230          
-    231                  /* MMOTOR ADDED TEST
-    232                  if (jump_pwm<8000){
-    233                  jump_pwm+=25;
-    234                  Delay(500);
-    235                  }else if (jump_pwm>8000){
-    236                  jump_pwm=0;
-    237                  }*/
-    238          
-    239                  /* servo motor test
-    240                  Brake_system(1,1);
-    241                  Delay(250);
-    242                  Brake_system(0,1);
-    243                  Delay(2250);
-    244                  Brake_system(1,23);
-    245                  Delay(250);
-    246                  Brake_system(0,23);
-    247                  Delay(2250);        
-    248                  */        
-    249                  
-    250                  if (nvic_flag==1){
-   \                     ??main_0: (+1)
-   \       0x58   0x6820             LDR      R0,[R4, #+0]
-   \       0x5A   0x2801             CMP      R0,#+1
-   \       0x5C   0xD1FC             BNE.N    ??main_0
-    251                      if((att.rol<-15 || att.rol>12) && jump_state==1){//2D jump up
-   \       0x5E   0x....             LDR.N    R5,??DataTable5_13
-   \       0x60   0x6868             LDR      R0,[R5, #+4]
-   \       0x62   0x....             LDR.N    R1,??DataTable5_14  ;; 0xc1700000
-   \       0x64   0x....'....        BL       __aeabi_cfcmple
-   \       0x68   0xD304             BCC.N    ??main_1
-   \       0x6A   0x6868             LDR      R0,[R5, #+4]
-   \       0x6C   0x....             LDR.N    R1,??DataTable5_15  ;; 0x41400001
-   \       0x6E   0x....'....        BL       __aeabi_cfrcmple
-   \       0x72   0xD826             BHI.N    ??main_2
+   \        0x0   0xE92D 0x41F0      PUSH     {R4-R8,LR}
+    183              systick_setup();
+   \        0x4   0x....'....        BL       systick_setup
+    184              nvic_flag = 0;
+   \        0x8   0x....             LDR.N    R4,??DataTable5_4
+   \        0xA   0x2000             MOVS     R0,#+0
+   \        0xC   0x6020             STR      R0,[R4, #+0]
+    185              
+    186              GPIO_On_Board();//A:B13,B:D8,C:D9
+   \        0xE   0x....'....        BL       GPIO_On_Board
+    187              usart1_init(115200);
+   \       0x12   0xF45F 0x30E1      MOVS     R0,#+115200
+   \       0x16   0x....'....        BL       usart1_init
+    188              IIC_GPIO_Init();
+   \       0x1A   0x....'....        BL       IIC_GPIO_Init
+    189              
+    190              MPU6050_Init();//get_mpu_id();
+   \       0x1E   0x....'....        BL       MPU6050_Init
+    191              get_iir_factor(&Mpu.att_acc_factor,0.005f,25);
+   \       0x22   0x....             LDR.N    R2,??DataTable5_10  ;; 0x41c80000
+   \       0x24   0x....             LDR.N    R1,??DataTable5_11  ;; 0x3ba3d70a
+   \       0x26   0x....             LDR.N    R0,??DataTable5_12
+   \       0x28   0x....'....        BL       get_iir_factor
+    192              
+    193              TM1_PWM_Init();//servo
+   \       0x2C   0x....'....        BL       TM1_PWM_Init
+    194              Brake_system(0,123);
+   \       0x30   0x217B             MOVS     R1,#+123
+   \       0x32   0x2000             MOVS     R0,#+0
+   \       0x34   0x....'....        BL       Brake_system
+    195              TM8_PWM_Init();
+   \       0x38   0x....'....        BL       TM8_PWM_Init
+    196              
+    197              TIM2_EncoderInterface_Init();//A
+   \       0x3C   0x....'....        BL       TIM2_EncoderInterface_Init
+    198              TIM3_EncoderInterface_Init();//B
+   \       0x40   0x....'....        BL       TIM3_EncoderInterface_Init
+    199              TIM4_EncoderInterface_Init();//C
+   \       0x44   0x....'....        BL       TIM4_EncoderInterface_Init
+    200              Delay(5);
+   \       0x48   0x2005             MOVS     R0,#+5
+   \       0x4A   0x....'....        BL       Delay
+    201              TM5_Interrupt_Init();
+   \       0x4E   0x....'....        BL       TM5_Interrupt_Init
+    202              Configure_PA0();
+   \       0x52   0x....'....        BL       Configure_PA0
+    203              NVIC_Set();
+   \       0x56   0x....'....        BL       NVIC_Set
+   \       0x5A   0xE018             B.N      ??main_0
+    204              
+    205              while(1){     
+    206                  /* LED AND MOTOR FORWORD AND BACKWORD TEST
+    207                  printf("%d",usart1_read(a));
+    208                  GPIO_SetBits(GPIOG,GPIO_Pin_13); // LED
+    209                  GPIO_SetBits(GPIOB,GPIO_Pin_13); //A
+    210                  GPIO_SetBits(GPIOD,GPIO_Pin_8);  //B
+    211                  GPIO_SetBits(GPIOD,GPIO_Pin_9);  //C
+    212                  Delay(100);        
+    213                  GPIO_ResetBits(GPIOG,GPIO_Pin_13);
+    214                  GPIO_ResetBits(GPIOB,GPIO_Pin_13);
+    215                  GPIO_ResetBits(GPIOD,GPIO_Pin_8);
+    216                  GPIO_ResetBits(GPIOD,GPIO_Pin_9);*/
+    217                  
+    218                  /* MOTOR PWM TEST
+    219                  TIM8->CCR1 = 8999*0.03;//A PC6
+    220                  Delay(1000);
+    221                  TIM8->CCR2 = 8999*0.8;//B PC7
+    222                  Delay(1000);
+    223                  TIM8->CCR3 = 8999*0.4;//C PC8
+    224                  Delay(500);
+    225                  TIM8->CCR1 = 10;//A
+    226                  TIM8->CCR2 = 10;//B
+    227                  TIM8->CCR3 = 10;//C
+    228                  Delay(500);
+    229                  TIM8->CCR1 = 0;//A
+    230                  TIM8->CCR2 = 0;//B
+    231                  TIM8->CCR3 = 0;//C
+    232                  Delay(500);
+    233                  TIM8->CCR1 = 5500;//A
+    234                  TIM8->CCR2 = 5500;//B
+    235                  TIM8->CCR3 = 5500;//C
+    236                  Delay(500);
+    237                  TIM8->CCR1 = 0;//A
+    238                  TIM8->CCR2 = 0;//B
+    239                  TIM8->CCR3 = 0;//C
+    240                  Delay(500);*/
+    241          
+    242                  /* MMOTOR ADDED TEST
+    243                  if (jump_pwm<8000){
+    244                  jump_pwm+=25;
+    245                  Delay(500);
+    246                  }else if (jump_pwm>8000){
+    247                  jump_pwm=0;
+    248                  }*/
+    249          
+    250                  /* servo motor test
+    251                  Brake_system(1,1);
+    252                  Delay(250);
+    253                  Brake_system(0,1);
+    254                  Delay(2250);
+    255                  Brake_system(1,23);
+    256                  Delay(250);
+    257                  Brake_system(0,23);
+    258                  Delay(2250);        
+    259                  */        
+    260                  
+    261                  if (nvic_flag==1){
+    262                      if((att.rol<-15 || att.rol>12) && jump_state==1){//2D jump up
+    263                          Delay(6000);
+    264                          if(!(att.rol<-15)) return;// || att.rol>15)) return;
+    265                          nvic_flag = 0;
+    266                          PWM_a = 0;
+    267                          set_pwm(1,0,0,0);
+    268                          Brake_system(1,1);
+    269                          int wait = 150;
+    270                          while((att.rol<-15) && --wait>0) Delay(1);//|| att.rol>9
+    271                          nvic_flag = 1;
+    272                          Brake_system(0,1);
+    273                          Delay(2000);
+    274                          Delay(2000);
+    275                          if (att.rol>=-9.0 && att.rol <=9.0){
+    276                              while(int_abs(encoder_a)>=400) Delay(1);
+    277                              jump_pwm = 0;
+    278                              jump_pwm_max = 4700;
+    279                              jump_state=2;
+    280                          }else{
+    281                              jump_state=1;
+    282                              set_pwm(1,0,0,0);
+    283                          }
+    284                      }
+    285                      if(att.rol>=-9.0 && att.rol <=9.0 && att.pit > 8 && jump_state==2){//3D jump up
+    286                          if (jump_pwm>=jump_pwm_max){
+    287                              Delay(4000);
+    288                              Brake_system(1,23);
+    289                              Delay(20);
+    290                              jump_state=0;
+    291                              int wait = 150;
+    292                              while((att.pit>15) && --wait>0) Delay(1);//|| att.rol>9
    \                     ??main_1: (+1)
-   \       0x74   0x....             LDR.N    R0,??DataTable5_5
-   \       0x76   0x6800             LDR      R0,[R0, #+0]
-   \       0x78   0x2801             CMP      R0,#+1
-   \       0x7A   0xD122             BNE.N    ??main_2
-    252          //            if(jump_state==1){//2D jump up
-    253                          Delay(4000);
-   \       0x7C   0xF44F 0x607A      MOV      R0,#+4000
-   \       0x80   0x....'....        BL       Delay
-    254                          nvic_flag = 0;
-   \       0x84   0x2000             MOVS     R0,#+0
-   \       0x86   0x6020             STR      R0,[R4, #+0]
-    255                          PWM_a = 0;
-   \       0x88   0x2000             MOVS     R0,#+0
-   \       0x8A   0x....             LDR.N    R1,??DataTable5_16
-   \       0x8C   0x6008             STR      R0,[R1, #+0]
-    256                          set_pwm(1,0,0,0);
-   \       0x8E   0x2300             MOVS     R3,#+0
-   \       0x90   0x2200             MOVS     R2,#+0
-   \       0x92   0x2100             MOVS     R1,#+0
-   \       0x94   0x2001             MOVS     R0,#+1
-   \       0x96   0x....'....        BL       set_pwm
-    257                          Brake_system(1,1);
-   \       0x9A   0x2101             MOVS     R1,#+1
-   \       0x9C   0x2001             MOVS     R0,#+1
-   \       0x9E   0x....'....        BL       Brake_system
-    258                          Delay(40);
-   \       0xA2   0x2028             MOVS     R0,#+40
-   \       0xA4   0x....'....        BL       Delay
-    259                          nvic_flag = 1;
-   \       0xA8   0x2001             MOVS     R0,#+1
-   \       0xAA   0x6020             STR      R0,[R4, #+0]
-    260                          Delay(150);
-   \       0xAC   0x2096             MOVS     R0,#+150
-   \       0xAE   0x....'....        BL       Delay
-    261                          Brake_system(0,1);
-   \       0xB2   0x2101             MOVS     R1,#+1
-   \       0xB4   0x2000             MOVS     R0,#+0
-   \       0xB6   0x....'....        BL       Brake_system
-    262                          Delay(3000);
-   \       0xBA   0xF640 0x30B8      MOVW     R0,#+3000
-   \       0xBE   0x....'....        BL       Delay
-    263          //                if (att.rol>=-9.0 && att.rol <=9.0){
-    264          //                    Delay(2000);
-    265          //                    jump_pwm = 0;
-    266          //                    jump_pwm_max = 7000;
-    267          //                    jump_state=2;
-    268          //                }else{
-    269          //                    jump_state=0;
-    270          //                    set_pwm(1,0,0,0);
-    271          //                }
-    272                      }
-    273                      if(att.rol>=-9.0 && att.rol <=9.0 && att.pit > 8 && jump_state==2){//3D jump up
+   \       0x5C   0x2001             MOVS     R0,#+1
+   \       0x5E   0x....'....        BL       Delay
    \                     ??main_2: (+1)
-   \       0xC2   0x6868             LDR      R0,[R5, #+4]
-   \       0xC4   0x....             LDR.N    R1,??DataTable5_17  ;; 0xc1100000
-   \       0xC6   0x....'....        BL       __aeabi_cfrcmple
-   \       0xCA   0xD8C5             BHI.N    ??main_0
-   \       0xCC   0x6868             LDR      R0,[R5, #+4]
-   \       0xCE   0x....             LDR.N    R1,??DataTable5_18  ;; 0x41100001
-   \       0xD0   0x....'....        BL       __aeabi_cfcmple
-   \       0xD4   0xD2C0             BCS.N    ??main_0
-   \       0xD6   0x6828             LDR      R0,[R5, #+0]
-   \       0xD8   0x....             LDR.N    R1,??DataTable5_19  ;; 0x41000001
-   \       0xDA   0x....'....        BL       __aeabi_cfrcmple
-   \       0xDE   0xD8BB             BHI.N    ??main_0
-   \       0xE0   0x....             LDR.N    R5,??DataTable5_5
-   \       0xE2   0x6828             LDR      R0,[R5, #+0]
-   \       0xE4   0x2802             CMP      R0,#+2
-   \       0xE6   0xD1B7             BNE.N    ??main_0
-    274                          if (jump_pwm>=jump_pwm_max){
-   \       0xE8   0x....             LDR.N    R0,??DataTable5_20
-   \       0xEA   0x6800             LDR      R0,[R0, #+0]
-   \       0xEC   0x....             LDR.N    R1,??DataTable5_21
-   \       0xEE   0x6809             LDR      R1,[R1, #+0]
-   \       0xF0   0x4288             CMP      R0,R1
-   \       0xF2   0xDBB1             BLT.N    ??main_0
-    275                              Delay(3500);
-   \       0xF4   0xF640 0x50AC      MOVW     R0,#+3500
-   \       0xF8   0x....'....        BL       Delay
-    276                              jump_state==0;
-                                     ^
-Warning[Pe174]: expression has no effect
-   \       0xFC   0x6828             LDR      R0,[R5, #+0]
-   \       0xFE   0x2800             CMP      R0,#+0
-   \      0x100   0xD001             BEQ.N    ??main_3
-   \                     ??main_4: (+1)
-   \      0x102   0x2000             MOVS     R0,#+0
-   \      0x104   0xE000             B.N      ??main_5
+   \       0x62   0x6828             LDR      R0,[R5, #+0]
+   \       0x64   0x....             LDR.N    R1,??DataTable5_13  ;; 0x41700001
+   \       0x66   0x....'....        BL       __aeabi_cfrcmple
+   \       0x6A   0xD804             BHI.N    ??main_3
+   \       0x6C   0xF1B8 0x0801      SUBS     R8,R8,#+1
+   \       0x70   0xF1B8 0x0F01      CMP      R8,#+1
+   \       0x74   0xDAF2             BGE.N    ??main_1
+    293                              Brake_system(0,23);
    \                     ??main_3: (+1)
-   \      0x106   0x2001             MOVS     R0,#+1
+   \       0x76   0x2117             MOVS     R1,#+23
+   \       0x78   0x2000             MOVS     R0,#+0
+   \       0x7A   0x....'....        BL       Brake_system
+    294                              jump_pwm=0;
+   \       0x7E   0x2000             MOVS     R0,#+0
+   \       0x80   0x6038             STR      R0,[R7, #+0]
+    295                              jump_pwm_max=0;
+   \       0x82   0x2000             MOVS     R0,#+0
+   \       0x84   0x6030             STR      R0,[R6, #+0]
+    296                              Delay(2000);
+   \       0x86   0xF44F 0x60FA      MOV      R0,#+2000
+   \       0x8A   0x....'....        BL       Delay
+   \                     ??main_0: (+1)
+   \       0x8E   0x6820             LDR      R0,[R4, #+0]
+   \       0x90   0x2801             CMP      R0,#+1
+   \       0x92   0xD1FC             BNE.N    ??main_0
+   \       0x94   0x....             LDR.N    R6,??DataTable5_14  ;; 0xc1700000
+   \       0x96   0x....             LDR.N    R5,??DataTable5_15
+   \       0x98   0x6868             LDR      R0,[R5, #+4]
+   \       0x9A   0x0031             MOVS     R1,R6
+   \       0x9C   0x....'....        BL       __aeabi_cfcmple
+   \       0xA0   0xD304             BCC.N    ??main_4
+   \       0xA2   0x6868             LDR      R0,[R5, #+4]
+   \       0xA4   0x....             LDR.N    R1,??DataTable5_16  ;; 0x41400001
+   \       0xA6   0x....'....        BL       __aeabi_cfrcmple
+   \       0xAA   0xD84D             BHI.N    ??main_5
+   \                     ??main_4: (+1)
+   \       0xAC   0x....             LDR.N    R7,??DataTable5_5
+   \       0xAE   0x6838             LDR      R0,[R7, #+0]
+   \       0xB0   0x2801             CMP      R0,#+1
+   \       0xB2   0xD149             BNE.N    ??main_5
+   \       0xB4   0xF241 0x7070      MOVW     R0,#+6000
+   \       0xB8   0x....'....        BL       Delay
+   \       0xBC   0x6868             LDR      R0,[R5, #+4]
+   \       0xBE   0x0031             MOVS     R1,R6
+   \       0xC0   0x....'....        BL       __aeabi_cfcmple
+   \       0xC4   0xD211             BCS.N    ??main_6
+   \                     ??main_7: (+1)
+   \       0xC6   0x2000             MOVS     R0,#+0
+   \       0xC8   0x6020             STR      R0,[R4, #+0]
+   \       0xCA   0x2000             MOVS     R0,#+0
+   \       0xCC   0x....             LDR.N    R1,??DataTable5_17
+   \       0xCE   0x6008             STR      R0,[R1, #+0]
+   \       0xD0   0x2300             MOVS     R3,#+0
+   \       0xD2   0x2200             MOVS     R2,#+0
+   \       0xD4   0x2100             MOVS     R1,#+0
+   \       0xD6   0x2001             MOVS     R0,#+1
+   \       0xD8   0x....'....        BL       set_pwm
+   \       0xDC   0x2101             MOVS     R1,#+1
+   \       0xDE   0x2001             MOVS     R0,#+1
+   \       0xE0   0x....'....        BL       Brake_system
+   \       0xE4   0xF05F 0x0896      MOVS     R8,#+150
+   \       0xE8   0xE004             B.N      ??main_8
+   \                     ??main_6: (+1)
+   \       0xEA   0xE8BD 0x81F0      POP      {R4-R8,PC}       ;; return
+   \                     ??main_9: (+1)
+   \       0xEE   0x2001             MOVS     R0,#+1
+   \       0xF0   0x....'....        BL       Delay
+   \                     ??main_8: (+1)
+   \       0xF4   0x6868             LDR      R0,[R5, #+4]
+   \       0xF6   0x0031             MOVS     R1,R6
+   \       0xF8   0x....'....        BL       __aeabi_cfcmple
+   \       0xFC   0xD204             BCS.N    ??main_10
+   \       0xFE   0xF1B8 0x0801      SUBS     R8,R8,#+1
+   \      0x102   0xF1B8 0x0F01      CMP      R8,#+1
+   \      0x106   0xDAF2             BGE.N    ??main_9
+   \                     ??main_10: (+1)
+   \      0x108   0x2001             MOVS     R0,#+1
+   \      0x10A   0x6020             STR      R0,[R4, #+0]
+   \      0x10C   0x2101             MOVS     R1,#+1
+   \      0x10E   0x2000             MOVS     R0,#+0
+   \      0x110   0x....'....        BL       Brake_system
+   \      0x114   0xF44F 0x60FA      MOV      R0,#+2000
+   \      0x118   0x....'....        BL       Delay
+   \      0x11C   0xF44F 0x60FA      MOV      R0,#+2000
+   \      0x120   0x....'....        BL       Delay
+   \      0x124   0x6868             LDR      R0,[R5, #+4]
+   \      0x126   0x....             LDR.N    R1,??DataTable5_18  ;; 0xc1100000
+   \      0x128   0x....'....        BL       __aeabi_cfrcmple
+   \      0x12C   0xD804             BHI.N    ??main_11
+   \      0x12E   0x6868             LDR      R0,[R5, #+4]
+   \      0x130   0x....             LDR.N    R1,??DataTable5_19  ;; 0x41100001
+   \      0x132   0x....'....        BL       __aeabi_cfcmple
+   \      0x136   0xD336             BCC.N    ??main_12
+   \                     ??main_11: (+1)
+   \      0x138   0x2001             MOVS     R0,#+1
+   \      0x13A   0x6038             STR      R0,[R7, #+0]
+   \      0x13C   0x2300             MOVS     R3,#+0
+   \      0x13E   0x2200             MOVS     R2,#+0
+   \      0x140   0x2100             MOVS     R1,#+0
+   \      0x142   0x2001             MOVS     R0,#+1
+   \      0x144   0x....'....        BL       set_pwm
    \                     ??main_5: (+1)
-   \      0x108   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
-    277                              Delay(20);
-   \      0x10A   0x2014             MOVS     R0,#+20
-   \      0x10C   0x....'....        BL       Delay
-    278                              Brake_system(1,23);
-   \      0x110   0x2117             MOVS     R1,#+23
-   \      0x112   0x2001             MOVS     R0,#+1
-   \      0x114   0x....'....        BL       Brake_system
-    279                              Delay(150);
-   \      0x118   0x2096             MOVS     R0,#+150
-   \      0x11A   0x....'....        BL       Delay
-    280                              Brake_system(0,23);
-   \      0x11E   0x2117             MOVS     R1,#+23
-   \      0x120   0x2000             MOVS     R0,#+0
-   \      0x122   0x....'....        BL       Brake_system
-    281                              Delay(2000);
-   \      0x126   0xF44F 0x60FA      MOV      R0,#+2000
-   \      0x12A   0x....'....        BL       Delay
-   \      0x12E   0xE793             B.N      ??main_0
-    282                          }
-    283                      }
-    284                  }
-    285              }
-    286          }
+   \      0x148   0x6868             LDR      R0,[R5, #+4]
+   \      0x14A   0x....             LDR.N    R1,??DataTable5_18  ;; 0xc1100000
+   \      0x14C   0x....'....        BL       __aeabi_cfrcmple
+   \      0x150   0xD89D             BHI.N    ??main_0
+   \      0x152   0x6868             LDR      R0,[R5, #+4]
+   \      0x154   0x....             LDR.N    R1,??DataTable5_19  ;; 0x41100001
+   \      0x156   0x....'....        BL       __aeabi_cfcmple
+   \      0x15A   0xD298             BCS.N    ??main_0
+   \      0x15C   0x6828             LDR      R0,[R5, #+0]
+   \      0x15E   0x....             LDR.N    R1,??DataTable5_20  ;; 0x41000001
+   \      0x160   0x....'....        BL       __aeabi_cfrcmple
+   \      0x164   0xD893             BHI.N    ??main_0
+   \      0x166   0x....'....        LDR.W    R8,??DataTable5_5
+   \      0x16A   0xF8D8 0x0000      LDR      R0,[R8, #+0]
+   \      0x16E   0x2802             CMP      R0,#+2
+   \      0x170   0xD18D             BNE.N    ??main_0
+   \      0x172   0x....             LDR.N    R6,??DataTable5_21
+   \      0x174   0x....             LDR.N    R7,??DataTable5_22
+   \      0x176   0x6838             LDR      R0,[R7, #+0]
+   \      0x178   0x6831             LDR      R1,[R6, #+0]
+   \      0x17A   0x4288             CMP      R0,R1
+   \      0x17C   0xDB87             BLT.N    ??main_0
+   \      0x17E   0xF44F 0x607A      MOV      R0,#+4000
+   \      0x182   0x....'....        BL       Delay
+   \      0x186   0x2117             MOVS     R1,#+23
+   \      0x188   0x2001             MOVS     R0,#+1
+   \      0x18A   0x....'....        BL       Brake_system
+   \      0x18E   0x2014             MOVS     R0,#+20
+   \      0x190   0x....'....        BL       Delay
+   \      0x194   0x2000             MOVS     R0,#+0
+   \      0x196   0xF8C8 0x0000      STR      R0,[R8, #+0]
+   \      0x19A   0xF05F 0x0896      MOVS     R8,#+150
+   \      0x19E   0xE760             B.N      ??main_2
+    297                          }
+    298                      }
+   \                     ??main_13: (+1)
+   \      0x1A0   0x2001             MOVS     R0,#+1
+   \      0x1A2   0x....'....        BL       Delay
+   \                     ??main_12: (+1)
+   \      0x1A6   0x....             LDR.N    R0,??DataTable5_23
+   \      0x1A8   0x6800             LDR      R0,[R0, #+0]
+   \      0x1AA   0x....'....        BL       int_abs
+   \      0x1AE   0xF5B0 0x7FC8      CMP      R0,#+400
+   \      0x1B2   0xDAF5             BGE.N    ??main_13
+   \      0x1B4   0x2000             MOVS     R0,#+0
+   \      0x1B6   0x....             LDR.N    R1,??DataTable5_22
+   \      0x1B8   0x6008             STR      R0,[R1, #+0]
+   \      0x1BA   0xF241 0x205C      MOVW     R0,#+4700
+   \      0x1BE   0x....             LDR.N    R1,??DataTable5_21
+   \      0x1C0   0x6008             STR      R0,[R1, #+0]
+   \      0x1C2   0x2002             MOVS     R0,#+2
+   \      0x1C4   0x6038             STR      R0,[R7, #+0]
+   \      0x1C6   0xE7BF             B.N      ??main_5
+    299                  }
+    300              }
+    301          }
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable5:
@@ -763,7 +865,7 @@ Warning[Pe174]: expression has no effect
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable5_13:
-   \        0x0   0x....'....        DC32     att
+   \        0x0   0x4170'0001        DC32     0x41700001
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable5_14:
@@ -771,37 +873,46 @@ Warning[Pe174]: expression has no effect
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable5_15:
-   \        0x0   0x4140'0001        DC32     0x41400001
+   \        0x0   0x....'....        DC32     att
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable5_16:
-   \        0x0   0x....'....        DC32     PWM_a
+   \        0x0   0x4140'0001        DC32     0x41400001
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable5_17:
-   \        0x0   0xC110'0000        DC32     0xc1100000
+   \        0x0   0x....'....        DC32     PWM_a
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable5_18:
-   \        0x0   0x4110'0001        DC32     0x41100001
+   \        0x0   0xC110'0000        DC32     0xc1100000
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable5_19:
-   \        0x0   0x4100'0001        DC32     0x41000001
+   \        0x0   0x4110'0001        DC32     0x41100001
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable5_20:
-   \        0x0   0x....'....        DC32     jump_pwm
+   \        0x0   0x4100'0001        DC32     0x41000001
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable5_21:
    \        0x0   0x....'....        DC32     jump_pwm_max
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_22:
+   \        0x0   0x....'....        DC32     jump_pwm
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_23:
+   \        0x0   0x....'....        DC32     encoder_a
 
    Maximum stack usage in bytes:
 
    .cstack Function
    ------- --------
        0   Brake_system
+       0   CharToShort
       24   Configure_PA0
         24   -> EXTI_Init
         24   -> GPIO_Init
@@ -820,32 +931,34 @@ Warning[Pe174]: expression has no effect
        8   NVIC_Set
          8   -> NVIC_Init
          8   -> NVIC_PriorityGroupConfig
+       0   ShortToChar
       24   TM5_Interrupt_Init
         24   -> RCC_APB1PeriphClockCmd
         24   -> TIM_ClearFlag
         24   -> TIM_Cmd
         24   -> TIM_ITConfig
         24   -> TIM_TimeBaseInit
-      16   main
-        16   -> Brake_system
-        16   -> Configure_PA0
-        16   -> Delay
-        16   -> GPIO_On_Board
-        16   -> IIC_GPIO_Init
-        16   -> MPU6050_Init
-        16   -> NVIC_Set
-        16   -> TIM2_EncoderInterface_Init
-        16   -> TIM3_EncoderInterface_Init
-        16   -> TIM4_EncoderInterface_Init
-        16   -> TM1_PWM_Init
-        16   -> TM5_Interrupt_Init
-        16   -> TM8_PWM_Init
-        16   -> get_iir_factor
-        16   -> set_pwm
-        16   -> systick_setup
-        16   -> usart1_init
-        16 __aeabi_cfcmple
-        16 __aeabi_cfrcmple
+      24   main
+        24   -> Brake_system
+        24   -> Configure_PA0
+        24   -> Delay
+        24   -> GPIO_On_Board
+        24   -> IIC_GPIO_Init
+        24   -> MPU6050_Init
+        24   -> NVIC_Set
+        24   -> TIM2_EncoderInterface_Init
+        24   -> TIM3_EncoderInterface_Init
+        24   -> TIM4_EncoderInterface_Init
+        24   -> TM1_PWM_Init
+        24   -> TM5_Interrupt_Init
+        24   -> TM8_PWM_Init
+        24   -> get_iir_factor
+        24   -> int_abs
+        24   -> set_pwm
+        24   -> systick_setup
+        24   -> usart1_init
+        24 __aeabi_cfcmple
+        24 __aeabi_cfrcmple
 
 
    Section sizes:
@@ -867,6 +980,8 @@ Warning[Pe174]: expression has no effect
        4  ??DataTable5_2
        4  ??DataTable5_20
        4  ??DataTable5_21
+       4  ??DataTable5_22
+       4  ??DataTable5_23
        4  ??DataTable5_3
        4  ??DataTable5_4
        4  ??DataTable5_5
@@ -874,18 +989,24 @@ Warning[Pe174]: expression has no effect
        4  ??DataTable5_7
        4  ??DataTable5_8
        4  ??DataTable5_9
-     124  Brake_system
+     136  Brake_system
+      12  CharToShort
      128  Configure_PA0
-      64  EXTI0_IRQHandler
-      94  GPIO_On_Board
+      66  EXTI0_IRQHandler
+     100  GPIO_On_Board
      132  NVIC_Set
+      10  ShortToChar
       80  TM5_Interrupt_Init
-     304  main
+       4  a
+       8  chrTemp
+     456  main
 
  
- 1'014 bytes in section .text
+    12 bytes in section .bss
+ 1'216 bytes in section .text
  
- 1'014 bytes of CODE memory
+ 1'216 bytes of CODE memory
+    12 bytes of DATA memory
 
 Errors: none
-Warnings: 1
+Warnings: none

@@ -52,6 +52,10 @@ float control_balance_z(float angle, float Gyro);
 ////extern float Balance_Ki_c;
 //extern float Balance_KD_c;
 
+extern float Gryo_KP;
+extern float Gryo_KD;
+
+extern int offset_yaw;
 extern _Time_test run_start;
 extern _Time_test run_stop;
 extern float velocity_pwm_a, velocity_pwm_b;
@@ -62,6 +66,6 @@ extern int nvic_flag;
 extern int flag_stop;
 extern int jump_state; // 0=>stop, 1=>jump on roll (2D), 2=> jump on pitch (3D)
 extern int jump_pwm, jump_pwm_max;
-extern float yaw_angle_targer;
+extern float yaw_angle_target;
 extern int increase;
 #endif

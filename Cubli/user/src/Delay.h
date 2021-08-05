@@ -19,13 +19,10 @@
 /****************************************************************
  *                     Function declaration
 *****************************************************************/
-//void Delay_us(uint64_t nus);
-void Delay(int nTime);
-//void Delay_s(uint64_t ns);
+
 static volatile int TimingDelay;
-//void Delay(int nTime);
 void systick_setup(void);
- 
+void Delay(int nTime);
 #ifdef __cplusplus
 }
 #endif  /* __cplusplus */

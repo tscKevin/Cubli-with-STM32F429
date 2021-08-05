@@ -62,12 +62,13 @@ void SDA_OUT(void);
 void SDA_IN(void);
 void IIC_Start(void);
 void IIC_Stop(void);
-u8 IIC_Ack(void);
+void IIC_Ack(void);
 void IIC_Send_Byte(u8 msg);
-u8 IIC_Read_Byte(void);
+u8 IIC_Read_Byte(u8 ack);
 void IIC_Send(u8 slaveAddr, u8 regAddr, u8 msg);
 u8 IIC_Read(u8 slaveAddr, u8 regAddr);
 s16 IIC_Read_Two_Byte(u8 slaveAddr, u8 regAddr);
+void IIC_JY901_Read(u8 slaveAddr, u8 regAddr, u8 length, u8 *msg);
 
 #ifdef __cplusplus
 }
