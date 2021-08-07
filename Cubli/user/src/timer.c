@@ -32,7 +32,7 @@ float Gryo_KD = 10.9;
 float Velocity_KP = 40;
 float Velocity_KI = 0.03;
 float Balance_KP = 900;
-float Balance_KD = 110;
+float Balance_KD = 155;
 float Gryo_KP = 10;
 float Gryo_KD = 1;
 //=================== old way ===================
@@ -286,10 +286,10 @@ void jump_program(){
         PWM_a =-2470;
         set_pwm(1,PWM_a,0,0);
     }else if(att.rol<-22 && att.rol>=-27){//jump up
-        PWM_a =-4910;
+        PWM_a =-5150;
         set_pwm(1,PWM_a,0,0);
     }else if(att.rol<-40){
-        PWM_a =-4910;
+        PWM_a =-5150;
         set_pwm(1,PWM_a,0,0);
 //    }else if(att.rol>12 && att.rol<15){//jump up
 //        PWM_a =8300;
@@ -383,7 +383,7 @@ void TIM5_IRQHandler(void){
         encoder_c=-read_Encoder(3);
         if (nvic_flag == 1){
             if ((att.rol>=-15.5) && (att.rol <=30.5)){//check 2D balance
-                if (att.pit>=pit_angle_target-6 && att.pit<=pit_angle_target+6){//3D balance
+                if (att.pit>=pit_angle_target-8 && att.pit<=pit_angle_target+8){//3D balance
                     balance_3D();
                     set_pwm(123,PWM_a,PWM_b,PWM_c);
                     auto_correct_target_angle(0);
@@ -391,7 +391,7 @@ void TIM5_IRQHandler(void){
                     balance_2D();
                     jump_pwm+=500;
                     if(jump_pwm>jump_pwm_max) jump_pwm=jump_pwm_max;//slowly add
-                    set_pwm(123,PWM_a,-(jump_pwm+300),jump_pwm);
+                    set_pwm(123,PWM_a,-(jump_pwm+100),jump_pwm);
                 }else{// keep 2D balance
                     balance_2D();
                     set_pwm(123,PWM_a,0,0);

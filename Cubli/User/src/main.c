@@ -148,11 +148,11 @@ void Brake_system(int enable, int servo){
         if (servo==1){
             TIM1->CCR1=2600;
         }else if (servo==23){
-            TIM1->CCR2=2500;
+            TIM1->CCR2=2600;
             TIM1->CCR3=1550;
         }else if (servo==123){
             TIM1->CCR1=2600;
-            TIM1->CCR2=2500;
+            TIM1->CCR2=2600;
             TIM1->CCR3=1550;
         }
     }else{
@@ -160,11 +160,11 @@ void Brake_system(int enable, int servo){
             TIM1->CCR1=1550;
         }else if (servo==23){
             TIM1->CCR2=1450;
-            TIM1->CCR3=2000;
+            TIM1->CCR3=1880;
         }else if (servo==123){
             TIM1->CCR1=1550;
-            TIM1->CCR2=1425;
-            TIM1->CCR3=2000;
+            TIM1->CCR2=1450;
+            TIM1->CCR3=1880;
         }
     }
 }
@@ -259,14 +259,15 @@ void main(void){
         */        
         
         if (nvic_flag==1){
-            if((att.rol<-15 || att.rol>12) && jump_state==1){//2D jump up
+//            if((att.rol<-15 || att.rol>12) && 
+            if(jump_state==1){//2D jump up
                 Delay(6000);
                 if(!(att.rol<-15)) return;// || att.rol>15)) return;
                 nvic_flag = 0;
                 PWM_a = 0;
                 set_pwm(1,0,0,0);
                 Brake_system(1,1);
-                int wait = 150;
+                int wait = 200;
                 while((att.rol<-15) && --wait>0) Delay(1);//|| att.rol>9
                 nvic_flag = 1;
                 Brake_system(0,1);
@@ -275,7 +276,7 @@ void main(void){
                 if (att.rol>=-9.0 && att.rol <=9.0){
                     while(int_abs(encoder_a)>=400) Delay(1);
                     jump_pwm = 0;
-                    jump_pwm_max = 4700;
+                    jump_pwm_max = 4160;
                     jump_state=2;
                 }else{
                     jump_state=1;
@@ -284,7 +285,7 @@ void main(void){
             }
             if(att.rol>=-9.0 && att.rol <=9.0 && att.pit > 8 && jump_state==2){//3D jump up
                 if (jump_pwm>=jump_pwm_max){
-                    Delay(4000);
+                    Delay(6000);
                     Brake_system(1,23);
                     Delay(20);
                     jump_state=0;
