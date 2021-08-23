@@ -40,19 +40,19 @@ void MPU6050_Init(void){
 //    IIC_Send(SlaveAddress,ZG_OFFS_USRL, 41);
 //    IIC_Send(SlaveAddress,ZG_OFFS_USRH, 0);
     
-    IIC_Send(SlaveAddress,XA_OFFSET_L_TC, 87);
+    IIC_Send(SlaveAddress,XA_OFFSET_L_TC, 100);
     IIC_Send(SlaveAddress,XA_OFFSET_H, 255);
-    IIC_Send(SlaveAddress,YA_OFFSET_L_TC, 158);
+    IIC_Send(SlaveAddress,YA_OFFSET_L_TC, 152);
     IIC_Send(SlaveAddress,YA_OFFSET_H, 250);
     
     IIC_Send(SlaveAddress,ZA_OFFSET_L_TC, 40);
     IIC_Send(SlaveAddress,ZA_OFFSET_H, 3); //65536 or 4096
     
-    IIC_Send(SlaveAddress,XG_OFFS_USRL, 117);
+    IIC_Send(SlaveAddress,XG_OFFS_USRL, 112);
     IIC_Send(SlaveAddress,XG_OFFS_USRH, 0);
-    IIC_Send(SlaveAddress,YG_OFFS_USRL, 229);
+    IIC_Send(SlaveAddress,YG_OFFS_USRL, 230);
     IIC_Send(SlaveAddress,YG_OFFS_USRH, 255);
-    IIC_Send(SlaveAddress,ZG_OFFS_USRL, 24);
+    IIC_Send(SlaveAddress,ZG_OFFS_USRL, 28);
     IIC_Send(SlaveAddress,ZG_OFFS_USRH, 0);
 }
 

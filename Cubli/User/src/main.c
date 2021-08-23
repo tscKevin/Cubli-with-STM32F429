@@ -259,15 +259,14 @@ void main(void){
         */        
         
         if (nvic_flag==1){
-//            if((att.rol<-15 || att.rol>12) && 
-            if(jump_state==1){//2D jump up
+            if((att.rol<-15 || att.rol>15) && (jump_state==1)){//2D jump up
                 Delay(6000);
                 if(!(att.rol<-15)) return;// || att.rol>15)) return;
                 nvic_flag = 0;
                 PWM_a = 0;
                 set_pwm(1,0,0,0);
                 Brake_system(1,1);
-                int wait = 200;
+                int wait = 150;
                 while((att.rol<-15) && --wait>0) Delay(1);//|| att.rol>9
                 nvic_flag = 1;
                 Brake_system(0,1);
@@ -276,7 +275,7 @@ void main(void){
                 if (att.rol>=-9.0 && att.rol <=9.0){
                     while(int_abs(encoder_a)>=400) Delay(1);
                     jump_pwm = 0;
-                    jump_pwm_max = 4160;
+                    jump_pwm_max = 4000;
                     jump_state=2;
                 }else{
                     jump_state=1;

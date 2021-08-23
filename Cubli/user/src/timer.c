@@ -289,7 +289,7 @@ void jump_program(){
         PWM_a =-5150;
         set_pwm(1,PWM_a,0,0);
     }else if(att.rol<-40){
-        PWM_a =-5150;
+        PWM_a =-5050;
         set_pwm(1,PWM_a,0,0);
 //    }else if(att.rol>12 && att.rol<15){//jump up
 //        PWM_a =8300;
@@ -339,8 +339,8 @@ void auto_correct_target_angle(u8 axis){
             angle_target_sampling_num_roll+=1;
             if (angle_target_sampling_num_roll>=sampling_range){
                 avg_buffer_roll = angle_target_sampling_buffer_roll/sampling_range;
-                if (avg_buffer_roll < rol_angle_target-0.1) rol_angle_target-=0.025;
-                if (avg_buffer_roll > rol_angle_target+0.1) rol_angle_target+=0.025;
+                if (avg_buffer_roll < rol_angle_target) rol_angle_target-=0.025;
+                if (avg_buffer_roll > rol_angle_target) rol_angle_target+=0.025;
                 angle_target_sampling_buffer_roll=0;
                 angle_target_sampling_num_roll=0;
             }
@@ -352,8 +352,8 @@ void auto_correct_target_angle(u8 axis){
             angle_target_sampling_num_roll+=1;
             if (angle_target_sampling_num_roll>=sampling_range){
                 avg_buffer_roll = angle_target_sampling_buffer_roll/sampling_range;
-                if (avg_buffer_roll < rol_angle_target-0.1) rol_angle_target-=0.025;
-                if (avg_buffer_roll > rol_angle_target+0.1) rol_angle_target+=0.025;
+                if (avg_buffer_roll < rol_angle_target) rol_angle_target-=0.025;
+                if (avg_buffer_roll > rol_angle_target) rol_angle_target+=0.025;
                 angle_target_sampling_buffer_roll=0;
                 angle_target_sampling_num_roll=0;
             }
@@ -363,8 +363,8 @@ void auto_correct_target_angle(u8 axis){
             angle_target_sampling_num_pitch+=1;
             if (angle_target_sampling_num_pitch>=sampling_range){
                 avg_buffer_pitch=angle_target_sampling_buffer_pitch/sampling_range;
-                if (avg_buffer_pitch < pit_angle_target-0.1) pit_angle_target-=0.025;
-                if (avg_buffer_pitch > pit_angle_target+0.1) pit_angle_target+=0.025;
+                if (avg_buffer_pitch < pit_angle_target) pit_angle_target-=0.025;
+                if (avg_buffer_pitch > pit_angle_target) pit_angle_target+=0.025;
                 angle_target_sampling_buffer_pitch=0;
                 angle_target_sampling_num_pitch=0;
             }
@@ -391,7 +391,7 @@ void TIM5_IRQHandler(void){
                     balance_2D();
                     jump_pwm+=500;
                     if(jump_pwm>jump_pwm_max) jump_pwm=jump_pwm_max;//slowly add
-                    set_pwm(123,PWM_a,-(jump_pwm+100),jump_pwm);
+                    set_pwm(123,PWM_a,-(jump_pwm+0),jump_pwm);
                 }else{// keep 2D balance
                     balance_2D();
                     set_pwm(123,PWM_a,0,0);
